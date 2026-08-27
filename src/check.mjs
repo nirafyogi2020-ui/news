@@ -40,7 +40,8 @@ const pages = files.map(f => ({ path: pathOf(f), file: f, html: readFileSync(f, 
 const known = new Set(pages.map(p => p.path));
 /* Files served directly rather than as a page. */
 for (const extra of ['/feed.xml', '/sitemap.xml', '/robots.txt', '/favicon.svg',
-  '/og-image.png', '/qr-pmo-nepal.png', '/today.json', '/event.json', '/assets/site.css']) {
+  '/og-image.png', '/qr-pmo-nepal.png', '/today.json', '/event.json', '/updates.json',
+  '/assets/site.css']) {
   known.add(extra);
 }
 

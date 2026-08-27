@@ -8,6 +8,7 @@
     "build": "node src/build.mjs",
     "check": "node src/check.mjs",
     "dev": "npx wrangler pages dev . --port 8788",
-    "deploy": "./deploy.sh"
+    "deploy": "./deploy.sh",
+    "ping": "node src/indexnow.mjs"
   }
 }
