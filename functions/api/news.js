@@ -39,7 +39,7 @@ import { loadPoliceNews } from './police.js';
 
 const CACHE_SECONDS = 120;
 /* Videos get their own, far longer cache clock; see fetchYoutube. */
-const YT_FRESH_SECONDS = 1800;    // 30 minutes
+const YT_FRESH_SECONDS = 10800;   // 3 hours
 const YT_BACKUP_SECONDS = 86400;  // 24 hours
 /** Card summaries: keep the full text each feed publishes, cleaned to plain
  *  text, capped only to keep one card from running very long. */
@@ -144,9 +144,10 @@ export async function onRequestGet(context) {
   // older than the newest press wire — a straight chronological cap would
   // otherwise let a wave of fresh wire stories quietly bury the one Nepal
   // Police update for the day.
-  const officialFirst = items.filter(i => i.kind !== 'press');
+  const videos = items.filter(i => i.kind === 'video').slice(0, 60);
+  const officialFirst = items.filter(i => i.kind !== 'press' && i.kind !== 'video');
   const pressOnly = items.filter(i => i.kind === 'press');
-  const finalItems = officialFirst.concat(pressOnly).slice(0, 100);
+  const finalItems = officialFirst.concat(pressOnly).slice(0, 100).concat(videos);
   finalItems.sort((a, b) => {
     const at = a.time ? new Date(a.time).getTime() : -Infinity;
     const bt = b.time ? new Date(b.time).getTime() : -Infinity;
@@ -157,6 +158,7 @@ export async function onRequestGet(context) {
     updated: new Date().toISOString(),
     items: finalItems,
     economicLoss: findEconomicLoss(finalItems),
+    reliefFund: findReliefFund(finalItems),
     errors
   }), {
     headers: {
@@ -359,13 +361,42 @@ function cachedJson(data, seconds) {
   });
 }
 
-async function searchYoutube(key) {
-  const query = encodeURIComponent('Rasuwa Bhotekoshi Trishuli flood Nepal');
-  const url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video' +
-    `&order=date&maxResults=24&relevanceLanguage=en&q=${query}&key=${key}`;
+/* Three searches instead of one. A single phrase only ever returned about
+   twenty clips, most of them the same re-uploads, so the Watch tab looked
+   empty. These three cover the place names, the rescue coverage and the
+   Nepali-language reporting, and the results are merged and de-duplicated
+   by video id. Each search costs 100 quota units, so the fresh cache runs
+   on an hour rather than half an hour: 24 refreshes x 301 units is about
+   7,200 of the 10,000 free units a day. */
+const YT_QUERIES = [
+  'Rasuwa Bhotekoshi Trishuli flood Nepal',
+  'Nepal flash flood Rasuwa rescue news',
+  'रसुवा बाढी नेपाल'
+];
 
-  const json = JSON.parse(await getText(url));
-  const found = (json.items || []).filter(item => item.id && item.id.videoId && item.snippet);
+async function searchYoutube(key) {
+  let lastError = '';
+  const results = await Promise.all(YT_QUERIES.map(async q => {
+    const url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video' +
+      `&order=date&maxResults=50&q=${encodeURIComponent(q)}&key=${key}`;
+    try {
+      const json = JSON.parse(await getText(url));
+      return (json.items || []).filter(item => item.id && item.id.videoId && item.snippet);
+    } catch (err) {
+      lastError = err.message;   // one dud query must not empty the whole tab
+      return [];
+    }
+  }));
+
+  const seen = new Set();
+  const found = [];
+  for (const item of results.flat()) {
+    if (seen.has(item.id.videoId)) continue;
+    seen.add(item.id.videoId);
+    found.push(item);
+  }
+  if (!found.length) throw new Error('youtube returned nothing' + (lastError ? ': ' + lastError : ''));
+  found.sort((a, b) => new Date(b.snippet.publishedAt || 0) - new Date(a.snippet.publishedAt || 0));
 
   // One extra call gets the channel logos for every channel in the result.
   // The full-screen player shows the uploader's own picture rather than
@@ -378,7 +409,7 @@ async function searchYoutube(key) {
       return {
         title: cleanTitle(s.title),
         url: 'https://www.youtube.com/watch?v=' + item.id.videoId,
-        source: s.channelTitle || 'YouTube',
+        source: cleanChannel(s.channelTitle),
         time: s.publishedAt || null,
         kind: 'video',
         region: /[ऀ-ॿ]/.test(text) ? 'nepal' : 'global',
@@ -387,6 +418,16 @@ async function searchYoutube(key) {
         summary: summarize(s.description, SUMMARY_MAX)
       };
     });
+}
+
+/* Some channel titles come back with view counts and timestamps glued on
+   ("Rimal Vlogs \u2022 3.1M views \u2022 2 hours ago"). Keep the name only. */
+function cleanChannel(name) {
+  return String(name || 'YouTube')
+    .split(/\s*[\u2022|]\s*/)[0]
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 46) || 'YouTube';
 }
 
 /* Channel pictures, keyed by channel id. Never fatal: if the call fails the
@@ -461,22 +502,64 @@ const STOPWORDS = new Set([
  * one found, credited and linked. Returns null — not a guess — when
  * nothing has actually been reported yet.
  */
-const MONEY_NEAR_LOSS = /(rs\.?|npr|usd|\$|₹)\s?[\d,.]+\s?(billion|crore|million|lakh|अर्ब|करोड|लाख)|(billion|crore|million|lakh|अर्ब|करोड|लाख)[^.]{0,25}(damage|loss|losses|क्षति|नोक्सान)|(damage|loss|losses|क्षति|नोक्सान)[^.]{0,25}(billion|crore|million|lakh|अर्ब|करोड|लाख)/i;
+const AMOUNT = '(?:rs\\.?|npr|usd|us\\$|\\$|₹)\\s?[\\d,.]+\\s?(?:billion|bn|crore|million|lakh|trillion|अर्ब|करोड|लाख)?';
 
-function findEconomicLoss(items) {
+/* A money figure only counts as damage if a damage word sits right next to
+   it. Without that test the first "Rs 1.1 million donated to the relief
+   fund" headline was being shown as the cost of the disaster, which is the
+   opposite of a loss. Donation, pledge, fund and aid wording is thrown out
+   even when a damage word also appears in the sentence. */
+const DAMAGE_WORD = /(damage|damages|destroyed|destruction|loss|losses|worth of damage|क्षति|नोक्सान)/i;
+const MONEY_WORD  = /(donat|donation|contribut|pledg|relief fund|aid|grant|assistance|support|raised|collected|budget|allocat|releas|सहयोग|अनुदान|राहत कोष|दान)/i;
+
+const MONEY_NEAR_DAMAGE = new RegExp(
+  `${AMOUNT}[^.]{0,40}(?:damage|destroyed|destruction|loss|losses|क्षति|नोक्सान)` +
+  `|(?:damage|destroyed|destruction|loss|losses|क्षति|नोक्सान)[^.]{0,40}${AMOUNT}`, 'i');
+
+const MONEY_NEAR_RELIEF = new RegExp(
+  `${AMOUNT}[^.]{0,40}(?:relief fund|disaster fund|for relief|in aid|assistance|राहत कोष)` +
+  `|(?:relief fund|disaster fund|released|allocated|pledged|donated|राहत कोष)[^.]{0,40}${AMOUNT}`, 'i');
+
+/* Rank by size, so a real headline total wins over a single small donation
+   that happens to be mentioned first. */
+const SCALE = { trillion: 1e12, billion: 1e9, bn: 1e9, अर्ब: 1e9, crore: 1e7, करोड: 1e7, million: 1e6, lakh: 1e5, लाख: 1e5 };
+
+function magnitude(text) {
+  const m = String(text).match(/([\d,.]+)\s?(trillion|billion|bn|crore|million|lakh|अर्ब|करोड|लाख)?/i);
+  if (!m) return 0;
+  const n = parseFloat(String(m[1]).replace(/,/g, '')) || 0;
+  return n * (SCALE[String(m[2] || '').toLowerCase()] || 1);
+}
+
+function scanMoney(items, pattern, reject) {
+  let best = null;
   for (const item of items) {
     const text = (item.title || '') + '. ' + (item.summary || '');
-    const match = text.match(MONEY_NEAR_LOSS);
-    if (match) {
-      return {
+    for (const sentence of text.split(/(?<=[.!?])\s+/)) {
+      if (reject && reject.test(sentence)) continue;
+      const match = sentence.match(pattern);
+      if (!match) continue;
+      const found = {
         text: match[0].trim(),
+        size: magnitude(match[0]),
         source: item.source,
         url: item.url,
         title: item.title
       };
+      if (!best || found.size > best.size) best = found;
     }
   }
-  return null;
+  return best;
+}
+
+/** Cost of the damage. Never a donation. */
+function findEconomicLoss(items) {
+  return scanMoney(items, MONEY_NEAR_DAMAGE, MONEY_WORD);
+}
+
+/** Money released or pledged for relief. The other side of the ledger. */
+function findReliefFund(items) {
+  return scanMoney(items, MONEY_NEAR_RELIEF, DAMAGE_WORD);
 }
 
 function significantWords(title) {

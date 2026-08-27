@@ -609,7 +609,21 @@
   .video-sub{font-size:0.8rem; color:var(--text-faint); margin-top:3px;}
   .video-actions{margin-top:6px;}
   .video-actions .post-btn{padding:6px 8px; font-size:0.78rem;}
-  @media (max-width:760px){ .video-grid{grid-template-columns:1fr; gap:20px;} }
+  /* On a phone a stack of full-width 16:9 cards is enormous and you can only
+     see one video at a time. Below 760px the card becomes a row: small
+     thumbnail on the left, title and channel on the right. */
+  @media (max-width:760px){
+    .video-grid, .video-grid.tight{grid-template-columns:1fr; gap:14px; margin-top:16px;}
+    .video-card{flex-direction:row; gap:12px; align-items:flex-start;}
+    .video-thumb{width:144px; flex:none; border-radius:10px;}
+    .video-thumb .v-play{width:38px; height:38px;}
+    .video-thumb .v-play svg{width:17px; height:17px;}
+    .video-meta{margin-top:0; flex:1; min-width:0; gap:0;}
+    .video-meta .v-ava{display:none;}
+    .video-title{font-size:0.9rem; -webkit-line-clamp:3;}
+    .video-sub{font-size:0.76rem;}
+    .video-actions{margin-top:5px;}
+  }
 
   /* ===== Shorts-style full screen video player ===== */
   .shorts{
@@ -630,16 +644,19 @@
     display:flex; align-items:center; justify-content:center;
     background:#000; overflow:hidden;
   }
-  .short-stage{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;}
-  .short-blur{
-    position:absolute; inset:-8%; background-size:cover; background-position:center;
-    filter:blur(38px) saturate(1.3) brightness(0.5); transform:scale(1.1);
+  /* The video fills the screen. A 16:9 clip in a portrait phone is scaled up
+     until it covers, and the overflow is cropped, so there are no blurred
+     bars above and below. Landscape and desktop crop the sides instead. */
+  .short-stage{position:absolute; inset:0; overflow:hidden;}
+  .short-frame{position:absolute; inset:0; background:#000;}
+  .short-frame iframe{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:177.78vh; height:100vh;
+    min-width:100vw; min-height:56.25vw;
+    width:177.78dvh; height:100dvh;
+    min-width:100dvw; min-height:56.25dvw;
+    border:0; pointer-events:none;
   }
-  .short-frame{
-    position:relative; width:100%; max-height:100%;
-    aspect-ratio:16/9; background:#000;
-  }
-  .short-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
   .short-poster{
     position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
   }
@@ -1129,7 +1146,10 @@
   .today-card .tc-sources a{color:var(--navy); text-decoration:none;}
   .today-card .tc-sources a:hover{text-decoration:underline;}
   :root[data-theme="dark"] .today-card .tc-sources a{color:#8fb4ff;}
-  .today-card .post-who .meta .rev{color:var(--critical); font-weight:600;}
+  .today-card .tc-stamp{margin:0; padding:14px 16px 0; font-family:var(--font-mono); font-size:0.72rem;
+    letter-spacing:0.04em; text-transform:uppercase; color:var(--text-faint);}
+  .today-card .tc-stamp .rev{color:var(--critical); font-weight:700;}
+  .today-card .post-body{padding-top:8px;}
   .today-updated{font-family:var(--font-mono); font-size:0.74rem; color:var(--text-faint); margin-top:14px;}
   @media (max-width:640px){ .today-grid{max-width:100%;} }
 </style>
@@ -1262,7 +1282,7 @@
       <button class="modal-close" id="news-modal-close" type="button" aria-label="Close">&times;</button>
     </div>
     <div class="modal-body">
-      <p style="margin-top:14px;">A flash flood came down the Bhotekoshi valley from the Tibet side on the morning of 26 August 2026. Two border towns were hit hardest, six power stations were damaged, and search teams are still working.</p>
+      <p style="margin-top:14px;">A flash flood came down the Bhotekoshi from the Tibet side on the morning of 26 August 2026. Two border towns were hit hardest, six power stations were damaged, and search teams are still working.</p>
       <div id="modal-feed"><div class="skeleton" style="width:80%"></div><div class="skeleton" style="width:65%"></div><div class="skeleton" style="width:72%"></div></div>
     </div>
     <div class="modal-foot">
@@ -1304,8 +1324,8 @@
     <!-- ===== today: story cards, also on the Today tab ===== -->
     <section id="today-home" style="margin-top:6px;">
       <p class="eyebrow" data-i18n="sec.today.eyebrow">Today</p>
-      <h2 data-i18n="sec.today.h2">Today</h2>
-      <p class="measure lede" data-i18n="sec.today.home">Each story of the day in short, checked against the sources. Updated through the day. Tap a card to read the whole thing.</p>
+      <h2 data-i18n="sec.today.h2">Story of the day</h2>
+      <p class="measure lede" data-i18n="sec.today.home">Each story of the day, short and checked. Tap a card to read it all.</p>
       <div class="today-grid" id="today-grid-home" aria-live="polite">
         <p style="font-size:0.9rem; color:var(--text-faint);">Loading&hellip;</p>
       </div>
@@ -1318,15 +1338,15 @@
         <span class="block-note"><span class="livedot" aria-hidden="true"></span><span id="glance-updated">checking&hellip;</span></span>
       </div>
       <div class="numgrid">
-        <button class="stat" data-detail="157 people are confirmed dead in Nepal. Search teams are still reaching cut-off villages, so this number is expected to rise.">
+        <button class="stat" data-detail="Nepal Police confirmed 165 dead in its 8:15am bulletin on 27 August. Bodies are still being recovered downstream, so this number is expected to rise. Three more deaths are confirmed on the China side.">
           <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-9C1 8.5 3 4.5 7 4.5c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6 4 4.5 7.5-1 2-3 4-5 5.5"></path><path d="M4.5 12.5h4l1.5-3 2.5 6 1.5-3h5"></path></svg></span>
-          <span class="n critical">157<em>+</em></span>
+          <span class="n critical">165</span>
           <span class="l" data-i18n="glance.dead">confirmed dead</span>
           <span class="bar"><i style="width:100%"></i></span>
         </button>
-        <button class="stat" data-detail="Over 800 people are reported missing across Nepal. Each name still has to be checked against evacuation lists, so this number moves fast in both directions.">
+        <button class="stat" data-detail="Nepal Police list 826 people missing: 579 tourists, 161 Rasuwa residents, 44 Nepali Army, 28 Nepal Police and 13 Armed Police Force. Names are still being checked against evacuation lists, so this moves in both directions.">
           <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path><path d="M10.5 7.5v3l2 1.5"></path></svg></span>
-          <span class="n critical">800<em>+</em></span>
+          <span class="n critical">826</span>
           <span class="l" data-i18n="glance.missing">reported missing</span>
           <span class="bar"><i style="width:82%"></i></span>
         </button>
@@ -1348,14 +1368,20 @@
           <span class="l" data-i18n="glance.day">since the flood</span>
           <span class="bar"><i style="width:16%"></i></span>
         </button>
-        <button class="stat" id="econ-loss-stat" data-detail="No government or agency has published a total cost of the damage yet. This checks every source on the Live tab automatically and will show a real figure, credited and linked, the moment one is reported.">
+        <button class="stat" id="econ-loss-stat" data-detail="Physical Infrastructure Minister Sunil Lamsal put damage to roads and bridges at about Rs 200 billion on 26 August, and called it preliminary. Hydropower and private property are not in that figure. This updates itself when a bigger or firmer damage figure is reported.">
           <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"></path><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg></span>
-          <span class="n small" id="econ-loss-value">Not yet estimated</span>
-          <span class="l" data-i18n="glance.econLoss">economic loss (official)</span>
+          <span class="n small" id="econ-loss-value">Rs 200bn</span>
+          <span class="l" data-i18n="glance.econLoss">damage, early estimate</span>
           <span class="bar"><i style="width:8%"></i></span>
         </button>
+        <button class="stat" id="relief-fund-stat" data-detail="Money confirmed released or pledged for relief so far: Rs 1 billion released by the government into the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. Donations from the public are not counted here until an official total is published.">
+          <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4-7-9a7 7 0 0 1 14 0c0 5-7 9-7 9z" opacity="0"></path><rect x="2.5" y="6" width="19" height="12" rx="2.5"></rect><circle cx="12" cy="12" r="2.6"></circle><path d="M6 9.5v5M18 9.5v5"></path></svg></span>
+          <span class="n small" id="relief-fund-value">Rs 1bn</span>
+          <span class="l" data-i18n="glance.relief">relief money released</span>
+          <span class="bar"><i style="width:12%"></i></span>
+        </button>
       </div>
-      <p class="detail" id="stat-detail">Tap any number to see what it actually means. In the first days after a disaster, counts are the best guess of people working in the dark. Where sources disagree, the lower confirmed number is shown.</p>
+      <p class="detail" id="stat-detail">Tap any number to see where it comes from. Early counts move. Where sources disagree, the lower confirmed figure is shown.</p>
     </div>
 
     <!-- ===== emergency quick dial ===== -->
@@ -1429,32 +1455,33 @@
     <section id="toll" data-toc="1. Confirmed toll">
       <p class="eyebrow">01. Confirmed</p>
       <h2>Confirmed dead, and where</h2>
-      <p class="measure lede">One event, both sides of the border. Confirmed deaths only, not estimates. Tap a row to see where people are and how much has been confirmed in each place.</p>
+      <p class="measure lede">Confirmed deaths only, both sides of the border. Tap a row for the breakdown.</p>
 
       <div class="accord toll-accord" id="toll-accord">
         <details open>
           <summary>
             <span class="toll-flag" aria-hidden="true"><svg class="flag" style="width:18px;height:22px"><use href="#np-flag"></use></svg></span>
             Nepal
-            <span class="toll-n critical">157</span>
+            <span class="toll-n critical">165</span>
           </summary>
           <div class="accord-body">
-            <p style="margin-bottom:10px;">Hardest hit: Rasuwa and Nuwakot along the river. Bodies were also carried far downstream into Chitwan and Tanahun. Over 800 more people are still reported missing nationwide.</p>
+            <p style="margin-bottom:10px;">The flood started in Rasuwa, but the water carried people far downstream. Most bodies have been recovered in Chitwan, six districts below the source. 826 people are still missing.</p>
             <div class="table-scroll">
               <table class="data-table toll-table">
-                <thead><tr><th>Place</th><th>Confirmed dead</th><th>Still missing</th></tr></thead>
+                <thead><tr><th>District</th><th>Bodies recovered</th></tr></thead>
                 <tbody>
-                  <tr><td>Rasuwa (Timure, Syabrubesi, Rasuwagadhi)</td><td class="num-cell">most missing here</td><td class="num-cell">600+</td></tr>
-                  <tr><td>Nuwakot (Betrawati, Trishuli, Devighat)</td><td class="num-cell">11</td><td class="num-cell">under check</td></tr>
-                  <tr><td>Chitwan (downstream)</td><td class="num-cell">32</td><td class="num-cell">not reported</td></tr>
-                  <tr><td>Dhading</td><td class="num-cell">15</td><td class="num-cell">under check</td></tr>
-                  <tr><td>Gorkha</td><td class="num-cell">15</td><td class="num-cell">not reported</td></tr>
-                  <tr><td>Tanahun</td><td class="num-cell">4</td><td class="num-cell">not reported</td></tr>
-                  <tr><td>Nawalparasi East</td><td class="num-cell">1</td><td class="num-cell">not reported</td></tr>
+                  <tr><td>Chitwan</td><td class="num-cell">65</td></tr>
+                  <tr><td>Dhading</td><td class="num-cell">27</td></tr>
+                  <tr><td>Nawalparasi East</td><td class="num-cell">26</td></tr>
+                  <tr><td>Gorkha</td><td class="num-cell">20</td></tr>
+                  <tr><td>Nuwakot</td><td class="num-cell">12</td></tr>
+                  <tr><td>Tanahun</td><td class="num-cell">9</td></tr>
+                  <tr><td>Nawalparasi West</td><td class="num-cell">5</td></tr>
+                  <tr><td>Rasuwa</td><td class="num-cell">2</td></tr>
                 </tbody>
               </table>
             </div>
-            <p style="font-size:0.78rem; color:var(--text-faint); margin:8px 0 0;">Bodies recovered by district, NDRRMA Situation Report #2. District names in the first column of the recovered-bodies table are where a body was found, not always where the person was from.</p>
+            <p style="font-size:0.78rem; color:var(--text-faint); margin:8px 0 0;">Nepal Police bulletin, 8:15am, 27 August. A district here is where a body was found, not where the person was from.</p>
           </div>
         </details>
         <details>
@@ -1640,8 +1667,8 @@
   <div class="tabpanel" id="panel-today" role="tabpanel" aria-labelledby="tab-today" hidden>
     <section id="today-summary">
       <p class="eyebrow" data-i18n="sec.today.eyebrow">Today</p>
-      <h2 data-i18n="sec.today.h2">Today</h2>
-      <p class="measure lede" data-i18n="sec.today.lede">Each story of the day in short, checked against the sources. New and updated posts appear through the day. Tap a card to read the whole thing.</p>
+      <h2 data-i18n="sec.today.h2">Story of the day</h2>
+      <p class="measure lede" data-i18n="sec.today.lede">Each story of the day, short and checked. New stories appear through the day. Tap a card to read it all.</p>
       <div class="today-grid" id="today-grid" aria-live="polite">
         <p style="font-size:0.9rem; color:var(--text-faint);">Loading&hellip;</p>
       </div>
@@ -1653,7 +1680,7 @@
     <section id="feed-tab" data-toc="1. Latest">
       <p class="eyebrow" data-i18n="sec.feed.eyebrow">Everything, in one scroll</p>
       <h2 data-i18n="sec.feed.h2">Latest updates</h2>
-      <p class="measure lede">Live updates and news about the Rasuwa flood, in one scroll. No likes, no comments. Tap a card to read the full summary, share it, or open the original report.</p>
+      <p class="measure lede">Every update and news report in one scroll. Tap a card to read it or open the original.</p>
 
       <div class="feed-head" style="margin-top:8px;">
         <span class="livedot" aria-hidden="true"></span>
@@ -1781,7 +1808,7 @@
     <section id="videos" data-toc="1. Videos">
       <p class="eyebrow">Watch</p>
       <h2>Videos</h2>
-      <p class="measure lede">Real news videos about the Rasuwa flood, newest first, straight from YouTube. Tap to play here. No likes, no comments, just a share button.</p>
+      <p class="measure lede">Flood videos from YouTube, newest first. Tap one to watch full screen, then swipe for the next.</p>
 
       <div class="feed-head" style="margin-top:20px;">
         <span class="livedot" aria-hidden="true"></span>
@@ -1802,7 +1829,7 @@
     <section id="photos" data-toc="2. Photos">
       <p class="eyebrow" data-i18n="sec.media.eyebrow">On the ground</p>
       <h2 data-i18n="sec.media.h2">Photos</h2>
-      <p class="measure lede">Everything below is either public domain or openly licensed, pulled live from Wikimedia Commons with the photographer and licence attached. Nothing here is copied without permission.</p>
+      <p class="measure lede">Public domain and openly licensed pictures from Wikimedia Commons, with the photographer and licence on each one.</p>
 
       <div class="feed-head" style="margin-top:22px;">
         <span class="livedot" aria-hidden="true"></span>
@@ -1852,7 +1879,7 @@
     <section id="geography" data-toc="1. Follow the water">
       <p class="eyebrow" data-i18n="sec.map.eyebrow">Maps</p>
       <h2 data-i18n="sec.map.h2">Follow the water, step by step</h2>
-      <p class="measure lede">The flood didn't start in Nepal. It started high in the mountains inside Tibet, then dropped over 3,000 metres before reaching the first Nepali town. Tap any stop below and the map flies there.</p>
+      <p class="measure lede">The flood did not start in Nepal. It began high inside Tibet and dropped over 3,000 metres before it reached the first Nepali town. Tap a stop and the map flies there.</p>
 
       <div class="map-shell">
         <div class="map-bar">
@@ -2022,7 +2049,7 @@
     <section id="help" data-toc="2. How to help">
       <p class="eyebrow" data-i18n="sec.help.eyebrow">Give</p>
       <h2 data-i18n="sec.help.h2">How to actually help</h2>
-      <p class="measure lede">Every link here goes to Nepal's own government fund. This site never touches your money, it just points the way.</p>
+      <p class="measure lede">Every link goes to Nepal's own government fund. This site never handles your money.</p>
 
       <div class="donate-box">
         <span class="tag">Official channel, PMO Nepal</span>
@@ -2084,7 +2111,7 @@
     <section id="hazards" data-toc="3. Know the hazards">
       <p class="eyebrow" data-i18n="sec.hazards.eyebrow">Learn</p>
       <h2 data-i18n="sec.hazards.h2">Nepal's natural disasters, explained simply</h2>
-      <p class="measure lede">Nepal sits where two continents collide, under monsoon rain, below melting ice. That combination produces five hazards. Knowing which one you're facing changes what you should do.</p>
+      <p class="measure lede">Nepal sits where two continents collide, under monsoon rain and below melting ice. Five hazards come out of that. Which one you are facing changes what you should do.</p>
 
       <div class="accord">
         <details open>
@@ -2161,7 +2188,7 @@
     <section id="sources" data-toc="4. Sources">
       <p class="eyebrow" data-i18n="sec.sources.eyebrow">Sources</p>
       <h2 data-i18n="sec.sources.h2">Where every fact here comes from</h2>
-      <p class="measure lede">If something on this page isn't traceable to one of these, it shouldn't be on this page. Tell us and we'll pull it.</p>
+      <p class="measure lede">If something here is not traceable to one of these, it should not be here. Tell us and we will pull it.</p>
       <div class="grid-2">
         <div class="card">
           <h3>News reporting</h3>
@@ -2191,10 +2218,6 @@
           Street map data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors.<br>
           Zoomed views embedded from Google Maps under its standard embed terms.</p>
         </div>
-      </div>
-      <div class="card" style="margin-top:1px; border:1px solid var(--border); border-radius:12px;">
-        <h3>What this page is not</h3>
-        <p>Not a government page, and not affiliated with Nepal's government or any relief agency. This is an independent briefing that gathers official and press reporting in one place and explains it in plain language. Numbers move fast in the first days of any disaster, so where this page and an official source disagree, the official source is right.</p>
       </div>
     </section>
   </div>
@@ -2227,8 +2250,8 @@
 
 <footer>
   <div class="shell">
-    <p><strong>Disclosure.</strong> This page takes no donations and carries no advertising. Every giving link here goes straight to the Government of Nepal's own relief fund.</p>
-    <p>An independent volunteer briefing. Not a government website, and not affiliated with the Government of Nepal or any relief agency. Found something wrong? Write to us and we will correct it.</p>
+    <p>An independent volunteer briefing. Not a government site. No ads, no donations taken here: every giving link goes straight to the Government of Nepal's own fund.</p>
+    <p>Where this page and an official source disagree, the official source is right. Found something wrong? Write to us and we will fix it.</p>
     <p>Contact: <a href="mailto:hello@nxtimaginelabs.com">hello@nxtimaginelabs.com</a> &middot; More from us: <a href="https://nxtimaginelabs.com" target="_blank" rel="noopener">nxtimaginelabs.com</a></p>
   </div>
 </footer>
@@ -2297,9 +2320,9 @@ var SITE = {
       'tab.overview': 'अहिले',
       'tab.today': 'आज',
       'sec.today.eyebrow': 'आज',
-      'sec.today.h2': 'आज',
-      'sec.today.lede': 'दिनका हरेक घटना छोटकरीमा, स्रोतसँग मिलाएर जाँचिएको। दिनभर नयाँ र अद्यावधिक पोस्ट थपिन्छन्। पुरा पढ्न कार्डमा ट्याप गर्नुहोस्।',
-      'sec.today.home': 'दिनका हरेक घटना छोटकरीमा, स्रोतसँग जाँचिएको। दिनभर अद्यावधिक। पुरा पढ्न कार्डमा ट्याप गर्नुहोस्।',
+      'sec.today.h2': 'आजको कथा',
+      'sec.today.lede': 'दिनका हरेक घटना छोटकरीमा, जाँचिएको। दिनभर नयाँ कथा थपिन्छन्। पुरा पढ्न कार्डमा ट्याप गर्नुहोस्।',
+      'sec.today.home': 'दिनका हरेक घटना छोटकरीमा, जाँचिएको। पुरा पढ्न कार्डमा ट्याप गर्नुहोस्।',
       'tab.feed': 'फिड',
       'tab.map': 'नक्सा',
       'tab.live': 'प्रत्यक्ष',
@@ -2329,7 +2352,8 @@ var SITE = {
       'glance.power': 'क्षतिग्रस्त विद्युत् आयोजना',
       'glance.pop': 'यस जिल्लामा बस्ने जनसंख्या',
       'glance.day': 'बाढी आएको दिनदेखि',
-      'glance.econLoss': 'आर्थिक क्षति (आधिकारिक)',
+      'glance.econLoss': 'क्षति, प्रारम्भिक अनुमान',
+      'glance.relief': 'राहत रकम जारी',
       'sec.what-happened.eyebrow': '०१. समयरेखा',
       'sec.what-happened.h2': 'के भयो',
       'sec.cause.eyebrow': '०२. कारण',
@@ -3427,8 +3451,8 @@ var LiveFeed = (function(){
       var card = play.closest('.video-card');
       if(!card) return;
       var url = card.getAttribute('data-url');
-      // The Now tab shows a two-video taster; from there the feed opens on
-      // the whole list so it does not dead-end after the second swipe.
+      // The Now tab shows a short taster; from there the feed opens on the
+      // whole list so it does not dead-end after a couple of swipes.
       var list = card.closest('#overview-videos') ? latestVideos : visibleVideos();
       var at = 0;
       for(var n = 0; n < list.length; n++){ if(list[n].url === url){ at = n; break; } }
@@ -3444,13 +3468,13 @@ var LiveFeed = (function(){
     }
   });
 
-  /* The Now tab shows the two newest videos as a taster; the Watch tab has all
+  /* The Now tab shows the four newest videos as a taster; the Watch tab has all
      of them with the source filter. Same card markup, so the same play handler
      and share button work here too. */
   function renderOverviewVideos(all){
     var box = document.getElementById('overview-videos');
     if(!box) return;
-    var items = (all || []).slice(0, 2);
+    var items = (all || []).slice(0, 4);
     if(!items.length){
       box.closest('.preview').hidden = true;
       return;
@@ -3499,15 +3523,35 @@ var LiveFeed = (function(){
     }).join('');
   }
 
+  /* Two money numbers, kept apart on purpose. One is what the flood
+     destroyed, one is what has been put up to help. Mixing them up once
+     showed a Rs 1.1 million donation as the cost of the disaster. The
+     figure printed in the page is only replaced when a source reports a
+     bigger one, and the tap-detail always names that source. */
+  function shortMoney(text){
+    var t = String(text || '').match(/(?:rs\.?|npr|usd|us\$|\$|₹)\s?[\d,.]+\s?(?:trillion|billion|bn|crore|million|lakh)?/i);
+    if(!t) return String(text || '').slice(0, 22);
+    return t[0].replace(/\s?billion/i, 'bn').replace(/\s?million/i, 'm').replace(/\s?trillion/i, 'tn').trim();
+  }
+
+  function renderMoneyStat(found, valueId, statId, lead, floor){
+    var valueEl = document.getElementById(valueId);
+    var statEl = document.getElementById(statId);
+    if(!valueEl || !statEl || !found || !found.text) return;
+    if(floor && found.size && found.size < floor) return;
+    valueEl.textContent = shortMoney(found.text);
+    statEl.setAttribute('data-detail', lead + ' ' + found.source + ' reported it: "' + found.title + '". ' +
+      'Read the article at ' + found.url + '. This is a reported figure, not this site\'s estimate.');
+  }
+
   function renderEconomicLoss(loss){
-    var valueEl = document.getElementById('econ-loss-value');
-    var statEl = document.getElementById('econ-loss-stat');
-    if(!valueEl || !statEl) return;
-    if(loss && loss.text){
-      valueEl.textContent = loss.text;
-      statEl.setAttribute('data-detail', 'Reported by ' + loss.source + ': "' + loss.title + '" (' + loss.url + '). ' +
-        'This is the first figure any of the sources on the Feed tab has actually published — not this site\'s own estimate.');
-    }
+    renderMoneyStat(loss, 'econ-loss-value', 'econ-loss-stat',
+      'Damage figures are preliminary and will change.', 2e11);
+  }
+
+  function renderReliefFund(fund){
+    renderMoneyStat(fund, 'relief-fund-value', 'relief-fund-stat',
+      'Money released or pledged for relief.', 1e9);
   }
 
   function load(){
@@ -3519,6 +3563,7 @@ var LiveFeed = (function(){
         latest = data.items || [];
         lastCheck = Date.now();
         renderEconomicLoss(data.economicLoss);
+        renderReliefFund(data.reliefFund);
         var editorial = latest.filter(function(i){ return i.kind !== 'quake' && i.kind !== 'video'; });
         var official = latest.filter(function(i){ return i.kind === 'official' || i.kind === 'alert'; });
         var videos = latest.filter(function(i){ return i.kind === 'video'; });
@@ -4078,6 +4123,7 @@ var LiveFeed = (function(){
   var raf = 0;
   var scrubbing = false;
   var pushed = false;
+  var soundOn = true;        // whether the viewer wants sound; sticks across swipes
 
   /* ---------- connection-aware preloading ---------- */
   function netTier(){
@@ -4157,7 +4203,6 @@ var LiveFeed = (function(){
     return '' +
     '<section class="short" data-i="' + i + '" data-yt="' + esc(id) + '">' +
       '<div class="short-stage">' +
-        (poster ? '<div class="short-blur" style="background-image:url(' + esc(poster) + ')"></div>' : '') +
         '<div class="short-frame">' +
           '<div class="short-mount" id="short-mount-' + i + '"></div>' +
           (poster ? '<img class="short-poster" referrerpolicy="no-referrer" src="' + esc(poster) + '" alt="">' : '') +
@@ -4204,7 +4249,7 @@ var LiveFeed = (function(){
       players[i] = new YT.Player(mount, {
         videoId: vid,
         playerVars: {
-          autoplay: 0, controls: 0, disablekb: 1, fs: 0, rel: 0,
+          autoplay: 1, mute: 1, controls: 0, disablekb: 1, fs: 0, rel: 0,
           modestbranding: 1, playsinline: 1, iv_load_policy: 3
         },
         events: {
@@ -4232,22 +4277,27 @@ var LiveFeed = (function(){
 
   function isPlayer(i){ return players[i] && ready[i] && typeof players[i].playVideo === 'function'; }
 
+  /* Every player is created muted, because a muted video is the only kind a
+     phone browser will always start on its own. It plays straight away, then
+     we ask for sound back. If the browser refuses, the "Tap for sound" chip
+     appears. Nothing ever opens sitting on a pause icon. */
   function start(i){
     if(!isPlayer(i)) return;
     var p = players[i], slide = slides[i];
+    var chip = slide && slide.querySelector('.short-sound');
     try{ p.playVideo(); }catch(e){}
-    // Some browsers refuse sound-on autoplay. If it did not start, mute
-    // it, play, and offer a one-tap unmute.
+    try{ if(soundOn) p.unMute(); }catch(e){}
     setTimeout(function(){
       if(i !== active || !isPlayer(i)) return;
-      var st = -1;
+      var st = -1, muted = true;
       try{ st = players[i].getPlayerState(); }catch(e){}
+      try{ muted = players[i].isMuted(); }catch(e){}
       if(st !== YT.PlayerState.PLAYING && st !== YT.PlayerState.BUFFERING){
         try{ players[i].mute(); players[i].playVideo(); }catch(e){}
-        var chip = slide && slide.querySelector('.short-sound');
-        if(chip) chip.classList.add('on');
+        muted = true;
       }
-    }, 700);
+      if(chip) chip.classList.toggle('on', !!muted);
+    }, 600);
   }
 
   function stop(i){
@@ -4470,6 +4520,7 @@ var LiveFeed = (function(){
     var sound = e.target.closest('.short-sound');
     if(sound){
       var i = Number(sound.closest('.short').getAttribute('data-i'));
+      soundOn = true;
       if(isPlayer(i)) try{ players[i].unMute(); players[i].setVolume(100); players[i].playVideo(); }catch(err){}
       sound.classList.remove('on');
       return;
@@ -4570,23 +4621,6 @@ var LiveFeed = (function(){
     });
   }
 
-  function initials(name){
-    var w = String(name || '?').trim().split(/\s+/);
-    return ((w[0] || '?')[0] + (w[1] ? w[1][0] : '')).toUpperCase();
-  }
-
-  function timeAgo(iso){
-    var t = new Date(iso).getTime();
-    if(isNaN(t)) return '';
-    var m = Math.round((Date.now() - t) / 60000);
-    if(m < 1) return 'just now';
-    if(m < 60) return m + ' min ago';
-    var h = Math.round(m / 60);
-    if(h < 24) return h + (h === 1 ? ' hour ago' : ' hours ago');
-    var d = Math.round(h / 24);
-    return d + (d === 1 ? ' day ago' : ' days ago');
-  }
-
   function fmtUpdated(iso){
     var d = new Date(iso);
     if(isNaN(d.getTime())) return '';
@@ -4595,6 +4629,24 @@ var LiveFeed = (function(){
     }catch(e){
       return String(iso).slice(0, 16).replace('T', ' ') + ' NPT';
     }
+  }
+
+  /* Card stamp: the day and the Nepal time the figures are from. These
+     stories come from several sources at once, so the card is stamped with
+     a time, not badged with one outlet's name. */
+  function stamp(iso){
+    var d = new Date(iso);
+    if(isNaN(d.getTime())) return 'Today';
+    var same = false;
+    try{
+      var f = { timeZone:'Asia/Kathmandu', day:'numeric', month:'short' };
+      same = d.toLocaleDateString('en-GB', f) === new Date().toLocaleDateString('en-GB', f);
+    }catch(e){}
+    var t = '';
+    try{
+      t = d.toLocaleTimeString('en-GB', { timeZone:'Asia/Kathmandu', hour:'2-digit', minute:'2-digit' });
+    }catch(e){ t = String(iso).slice(11, 16); }
+    return (same ? 'Today' : fmtUpdated(iso).split(',')[0]) + ', ' + t + ' NPT';
   }
 
   function card(post, i){
@@ -4608,17 +4660,11 @@ var LiveFeed = (function(){
       return s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + n + '</a>' : n;
     }).join(', ');
 
-    var rev = post.revised ? ' &middot; <span class="rev">updated</span>' : '';
+    var rev = post.revised ? ' <span class="rev">updated</span>' : '';
 
     return (
       '<article class="post-card today-card" data-url="' + esc(url) + '" data-title="' + esc(post.title || '') + '">' +
-        '<div class="post-head">' +
-          '<div class="post-avatar" aria-hidden="true">' + esc(initials(post.source)) + '</div>' +
-          '<div class="post-who">' +
-            '<span class="name">' + esc(post.source || 'Update') + '</span>' +
-            '<span class="meta">' + esc(timeAgo(post.time)) + rev + '</span>' +
-          '</div>' +
-        '</div>' +
+        '<p class="tc-stamp">' + esc(stamp(post.time)) + rev + '</p>' +
         (post.image
           ? '<img class="post-photo" loading="lazy" referrerpolicy="no-referrer" src="' + esc(post.image) + '" alt="" data-expand="' + uid + '" onerror="this.closest(\'.post-card\').classList.add(\'no-photo\'); this.remove();">'
           : '') +

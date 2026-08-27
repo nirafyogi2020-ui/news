@@ -1,28 +1,42 @@
 {
-  "updated": "2026-08-27T11:00:00+05:45",
+  "updated": "2026-08-27T12:45:00+05:45",
   "posts": [
     {
       "id": "rasuwa-flood",
-      "title": "Rasuwa flood: 162 dead, a second surge still possible",
-      "source": "Nepal Police",
-      "time": "2026-08-27T11:00:00+05:45",
+      "title": "165 confirmed dead in Rasuwa flood, 826 still missing",
+      "time": "2026-08-27T08:15:00+05:45",
       "image": "",
       "body": [
-        "The flash flood that hit Timure in Rasuwa on Wednesday morning has killed 162 people, Nepal Police said on Thursday. The water ran down the Bhote Koshi into the Trishuli and the Narayani, and bodies have been found as far south as Chitwan.",
-        "About 590 people are still missing. Most are travellers, 391 foreign and 93 Nepali. Nepal Police say 133 of the missing foreigners are Indian nationals. Also unaccounted for: 85 soldiers and police, and around 60 hydropower workers.",
-        "Scientists say a second flood is still possible. The debris that blocked the river upstream, on the China side, has not fully cleared. ICIMOD says to treat the warning as live. China has moved people out of Gyirong. Nuwakot and Dhading are being watched downstream.",
+        "Nepal Police put the toll at 165 dead in its 8:15am bulletin on Thursday. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani. Bodies have been found as far south as Chitwan.",
+        "826 people are still missing. Nepal Police list 579 tourists, 161 Rasuwa residents, 44 Nepali Army, 28 Nepal Police and 13 Armed Police Force. Of the missing foreigners, police say 133 are Indian nationals.",
+        "Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.",
+        "A second flood is still possible. ICIMOD says the debris blocking the river upstream, on the China side, has not cleared. China has moved people out of Gyirong. Nuwakot and Dhading are being watched.",
         "The likely trigger is an ice and rock avalanche into the Lhende Khola on the Tibet side, which dammed the river and then broke. ICIMOD says this is not confirmed. Sensors picked up small tremors nearby, but no earthquake link is proven.",
-        "Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave. Galchchi is one of the few still working, so any new warning will come with less notice.",
-        "Out of contact does not mean dead. Phone lines, power and internet are down across the valley and coming back slowly.",
-        "If your family lives near the Bhote Koshi, the Trishuli or the Narayani, keep them off the banks until officials say it is clear."
+        "Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave. Galchchi is one of the few still working, so a new warning would come with less notice.",
+        "Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear."
       ],
       "sources": [
         { "name": "Nepal Police", "url": "https://www.nepalpolice.gov.np/" },
-        { "name": "IANS", "url": "https://ianslive.in/nepal-flash-floods-death-toll-climbs-to-162-search-rescue-ops-intensify--20260827093710" },
-        { "name": "ICIMOD", "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" },
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/26/update-rasuwa-flood-death-toll-climbs-to-72-as-dozens-remain-missing" }
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-flood-death-toll-3.html" },
+        { "name": "ICIMOD", "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" }
       ],
       "revised": true
+    },
+    {
+      "id": "damage-cost",
+      "title": "Infrastructure damage put at Rs 200 billion, early figure",
+      "time": "2026-08-27T09:00:00+05:45",
+      "image": "",
+      "body": [
+        "Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.",
+        "No full damage assessment exists yet. Rasuwa, Nuwakot, Dhading and Chitwan are still being surveyed, and six hydropower stations are not in that figure.",
+        "The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading.",
+        "Insurers say claims will take weeks to settle because most of the damaged sites cannot be reached by road."
+      ],
+      "sources": [
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html" },
+        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" }
+      ]
     }
   ]
 }
