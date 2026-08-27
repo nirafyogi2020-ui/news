@@ -1,3 +1,52 @@
+# READ THIS FIRST — the site is now generated
+
+Editing `today.json` or `event.json` is no longer the whole job. The site has
+real crawlable pages (`/nepal-flood/rasuwa/`, `/nepal-flood/emergency-numbers/`,
+`/ne/`, `/updates/<date>-<slug>/` and so on). Those pages, the sitemap, the
+robots.txt and the briefings baked into `index.html` are **generated** from the
+JSON files and from `src/content.mjs`.
+
+**Always deploy with `./deploy.sh`.** It runs the generator, runs the audit,
+and only then publishes:
+
+```
+./deploy.sh
+```
+
+Never run `wrangler pages deploy` on its own. Doing so publishes a site whose
+article pages still carry the previous day's casualty figures.
+
+`./deploy.sh` refuses to publish if the audit finds a duplicate title, a wrong
+canonical, a broken internal link, an orphan page, a one-way hreflang, invalid
+structured data, or something that looks like a leaked API key. If it stops,
+fix what it names and run it again.
+
+## Where each kind of fact lives
+
+| What you are changing | File to edit |
+|---|---|
+| Today's briefing cards | `today.json` |
+| The counters under the hero | `event.json` |
+| Casualty, damage and cause figures used across all the article pages | `src/content.mjs` |
+| Nepali page wording | `src/content-ne.mjs` and `src/pages-ne.mjs` |
+
+`src/content.mjs` is the one that matters most. `TOLL`, `BODIES_BY_DISTRICT`,
+`DAMAGE`, `TIMELINE` and `CAUSES` there feed roughly twenty pages in two
+languages at once. Change the number there and it changes everywhere, together
+with its "as of" line.
+
+**`TOLL_AS_OF` and `MISSING_AS_OF` are separate on purpose.** When a police
+bulletin gives a new death toll but no new missing figure, move only the one
+it actually updated. The pages then tell readers that the missing count is the
+older of the two, which is true and useful.
+
+Briefings are archived permanently in `data/updates/`. Once a briefing has been
+published it keeps its URL forever, and the generator marks it "overtaken" with
+a link to the newest one as soon as a later briefing exists. Never delete a
+file from `data/updates/`; a URL that disappears is worse than no URL.
+
+---
+
 # How the daily update is made
 
 The **Today** section (its own tab, and a copy on the home page) is a feed of
@@ -28,7 +77,8 @@ daily blob. If two things are genuinely separate news, they are two cards.
 
 6. Set the top-level `updated` to now (Nepal time, `+05:45`).
 
-7. Validate, deploy, commit, push. (Steps in the routine config.)
+7. Validate, then run `./deploy.sh` (generator + audit + publish), then
+   commit and push. Never deploy with wrangler directly.
 
 ## Writing rules — read these, they matter
 
@@ -163,3 +213,7 @@ source reports a larger one. Everything else is exactly what you write.
 - When a new event takes over, write a new `event.json` and start
   `today.json` fresh. Keep the Help tab alone: those hotline numbers do not
   change between events.
+- A new event also needs its own pages under `src/pages.mjs`, and the previous
+  event's pages should keep their URLs with `statusPill: 'archive'` rather than
+  being deleted. Old coverage stays useful; it just must not present itself as
+  live.

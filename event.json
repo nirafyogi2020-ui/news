@@ -1,45 +1,52 @@
 {
   "id": "rasuwa-flood-2026",
   "name": "Rasuwa flood",
-  "where": "Rasuwa, Nuwakot and downstream, Nepal",
-  "started": "2026-08-26T09:05:00+05:45",
+  "where": "Rasuwa, Nuwakot, Dhading and downstream, Nepal",
+  "started": "2026-08-26T09:00:00+05:45",
   "status": "active",
   "headline": "Rasuwa flood, live",
-  "lede": "A flash flood came down the Bhotekoshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
+  "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-08-27T08:15:00+05:45",
+  "asOf": "2026-08-27T14:30:00+05:45",
   "asOfSource": "Nepal Police bulletin",
   "stats": [
     {
       "icon": "dead",
-      "value": "165",
+      "value": "289",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepal Police confirmed 165 dead in its 8:15am bulletin on 27 August. Bodies are still being recovered downstream, so this number is expected to rise. Three more deaths are confirmed on the China side."
+      "detail": "Nepal Police confirmed 289 dead in their 2:30pm bulletin on 27 August, up from 270 an hour earlier and 165 that morning. Bodies found: Chitwan 108, Nawalparasi East 74, Dhading 27, Gorkha 20, Rasuwa 17, Tanahun 16, Nawalparasi West 15, Nuwakot 12. The jumps are search teams reaching areas that had been cut off, not new casualties. Three more deaths are confirmed on the China side."
     },
     {
       "icon": "missing",
       "value": "826",
       "tone": "critical",
-      "label": "reported missing",
+      "label": "listed missing in Nepal",
       "bar": 82,
-      "detail": "Nepal Police list 826 people missing: 579 tourists, 161 Rasuwa residents, 44 Nepali Army, 28 Nepal Police and 13 Armed Police Force. Names are still being checked against evacuation lists, so this moves in both directions."
+      "detail": "From the earlier Nepal Police bulletin at 8:15am on 27 August: 579 travellers (466 of them foreign nationals), 161 Rasuwa residents, 44 Nepali Army, 28 Nepal Police, 13 Armed Police Force and one Nuwakot resident. This figure is older than the death toll above, so some of these people are among the 289 since confirmed dead. Police have not published a revised missing count."
     },
     {
-      "icon": "power",
-      "value": "6",
-      "label": "power plants damaged",
-      "bar": 40,
-      "detail": "Six hydropower stations were damaged: Rasuwagadhi, Chilime, Trishuli 3A, the Trishuli 3B substation, Trishuli Hydropower Station, and Devighat Hydropower Station."
+      "icon": "missing",
+      "value": "558",
+      "label": "missing on the China side",
+      "bar": 56,
+      "detail": "Chinese state media report 558 people missing around Gyirong Port in Xizang (Tibet), 260 of them foreign nationals. Combined with Nepal's list that is more than 1,300 people unaccounted for, although the two countries' counts of foreign nationals may overlap."
     },
     {
       "icon": "people",
-      "value": "~50k",
-      "label": "people in the district hit",
+      "value": "113",
+      "label": "rescued so far",
+      "bar": 30,
+      "detail": "NDRRMA reports 113 people rescued from Timure, Dhunche, Syabrubesi, Uttargaya and Bidur: 88 Nepali citizens, 11 Indian, 8 Chinese, 4 Korean and 2 American. The authority has published their names."
+    },
+    {
+      "icon": "power",
+      "value": "14",
+      "label": "hydropower projects damaged",
       "bar": 60,
-      "detail": "Around 50,000 people live in Rasuwa district, the area hit hardest. Most live along the same river valley the water came down."
+      "detail": "The Nepal Electricity Authority reports 14 projects damaged with a combined capacity of about 748 MW: 9 operating plants (354 MW) and 5 under construction (394 MW). Named ones include Rasuwagadhi, Chilime, Sanjen Khola, Upper Trishuli-1, Trishuli and Devighat, plus a 220 kV substation. An earlier same-day Ministry of Energy estimate said 431 MW."
     },
     {
       "icon": "day",
@@ -55,7 +62,7 @@
       "small": true,
       "label": "damage, early estimate",
       "bar": 8,
-      "detail": "Physical Infrastructure Minister Sunil Lamsal put damage to roads and bridges at about Rs 200 billion on 26 August, and called it preliminary. Hydropower and private property are not in that figure."
+      "detail": "Physical Infrastructure Minister Sunil Lamsal put damage to roads and bridges at about Rs 200 billion on 26 August, and called it preliminary. Hydropower and private property are not in that figure. The whole 42 km road from Betrawati to the Rasuwagadhi border crossing was destroyed at multiple points."
     },
     {
       "icon": "relief",

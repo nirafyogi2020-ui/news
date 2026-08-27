@@ -1,0 +1,19 @@
+# Short, guessable URLs people type or paste. Redirects only — none of these is
+# a page in its own right, so none of them is indexable.
+/rasuwa              /nepal-flood/rasuwa/                 301
+/rasuwa-flood        /nepal-flood/rasuwa/                 301
+/flood               /nepal-flood/                        301
+/floods              /nepal-flood/                        301
+/nepal-floods        /nepal-flood/                        301
+/live                /nepal-flood/rasuwa/live-updates/    301
+/live-updates        /nepal-flood/rasuwa/live-updates/    301
+/map                 /nepal-flood/rasuwa/map/             301
+/emergency           /nepal-flood/emergency-numbers/      301
+/emergency-numbers   /nepal-flood/emergency-numbers/      301
+/helpline            /nepal-flood/emergency-numbers/      301
+/donate              /nepal-flood/relief/                 301
+/relief              /nepal-flood/relief/                 301
+/missing             /nepal-flood/rasuwa/missing-persons/ 301
+/timeline            /nepal-flood/rasuwa/timeline/        301
+/casualties          /nepal-flood/rasuwa/casualties/      301
+/disasters           /nepal-disasters/                    301

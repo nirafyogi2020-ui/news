@@ -3,18 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Nepal Disaster Update Live: Rasuwa Flood 2026, Live Updates, Maps &amp; Helplines</title>
-<meta name="description" content="Nepal disaster live update: the Rasuwa and Nuwakot flash flood of August 2026. Live news feed, Nepal's official incident log, an interactive satellite map of the Bhotekoshi and Trishuli valley, what caused it, emergency helpline numbers, and the verified government relief fund.">
-<meta name="keywords" content="Nepal disaster, Nepal disaster live, Nepal live update, Nepal flood live, Rasuwa flood, Rasuwa disaster, Nuwakot disaster, Bhotekoshi flood, Trishuli flood, Timure, Syabrubesi, Nepal GLOF, glacial lake outburst flood Nepal, Nepal emergency number, Nepal relief fund, Nepal news today">
-<meta name="news_keywords" content="Nepal disaster, Rasuwa flood, Nuwakot, Bhotekoshi, Trishuli, GLOF, Nepal live update">
+<title>Nepal Disaster Update Live: Rasuwa Flood 2026 Toll, Map &amp; Helplines</title>
+<meta name="description" content="Live Nepal disaster dashboard: the August 2026 Rasuwa flash flood. Confirmed toll, interactive map of the Bhote Koshi and Trishuli valley, what caused it, emergency helplines and the official relief fund.">
+<meta name="news_keywords" content="Nepal flood, Rasuwa flood, Bhote Koshi, Trishuli, Nuwakot, glacial lake outburst flood">
 <link rel="canonical" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/">
-<meta name="robots" content="index, follow">
+<link rel="alternate" hreflang="en" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/">
+<link rel="alternate" hreflang="x-default" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="alternate icon" href="/favicon.svg">
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rasuwa Flood Disaster Update: Nepal 2026">
+<meta property="og:title" content="Nepal Disaster Update Live: Rasuwa Flood 2026">
 <meta property="og:description" content="Live briefing on the August 2026 Rasuwa flash flood: timeline, interactive satellite maps, cause investigation, emergency numbers, and the verified official relief fund.">
 <meta property="og:url" content="https://nepaldisasterupdatelive.nxtimaginelabs.com/">
 <meta property="og:site_name" content="Nepal Disaster Update Live">
@@ -26,7 +27,7 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Rasuwa Flood Disaster Update: Nepal 2026">
+<meta name="twitter:title" content="Nepal Disaster Update Live: Rasuwa Flood 2026">
 <meta name="twitter:description" content="Live briefing on the August 2026 Rasuwa flash flood: timeline, interactive maps, cause, emergency numbers, and the verified official relief fund.">
 <meta name="twitter:image" content="https://nepaldisasterupdatelive.nxtimaginelabs.com/og-image.png">
 <link rel="alternate" type="application/rss+xml" title="Nepal Disaster Update, live feed" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/feed.xml">
@@ -37,110 +38,217 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
+<!-- Structured data. One @graph so every node shares the same Organization
+     and WebSite identity as the rest of the site. dateModified is rewritten
+     by src/build.mjs from the newest real bulletin time, never from the
+     time the build happened. -->
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "SpecialAnnouncement",
-  "name": "Rasuwa Flash Flood, Nepal, August 2026",
-  "text": "A flash flood struck the Bhotekoshi and Trishuli river valleys in Rasuwa and Nuwakot districts, Nepal, on 26 August 2026, following a suspected glacial lake outburst or avalanche-dam collapse originating near the Tibet border.",
-  "category": "https://www.wikidata.org/wiki/Q8065",
-  "datePosted": "2026-08-26",
-  "expires": "2026-12-31",
-  "spatialCoverage": {
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization",
+   "name": "Nepal Disaster Update Live",
+   "alternateName": "Nepal Disaster Update",
+   "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/",
+   "email": "hello@nxtimaginelabs.com",
+   "logo": {
+    "@type": "ImageObject",
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#logo",
+    "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/og-image.png",
+    "width": 1200,
+    "height": 630
+   },
+   "description": "An independent volunteer project that collects and cross-checks public information about disasters in Nepal: official bulletins, live news, maps and emergency contacts.",
+   "knowsLanguage": [
+    "en",
+    "ne"
+   ],
+   "areaServed": {
+    "@type": "Country",
+    "name": "Nepal"
+   }
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#website",
+   "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/",
+   "name": "Nepal Disaster Update Live",
+   "inLanguage": "en",
+   "publisher": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#webpage",
+   "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/",
+   "name": "Nepal Disaster Update Live: Rasuwa Flood 2026 Toll, Map & Helplines",
+   "description": "Live Nepal disaster dashboard: the August 2026 Rasuwa flash flood. Confirmed toll, interactive map, cause, emergency helplines and the official relief fund.",
+   "isPartOf": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#website"
+   },
+   "inLanguage": "en",
+   "datePublished": "2026-08-26T12:00:00+05:45",
+   "dateModified": "2026-08-27T15:20:00+05:45",
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/og-image.png",
+    "width": 1200,
+    "height": 630
+   }
+  },
+  {
+   "@type": "NewsArticle",
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#article",
+   "headline": "Nepal Disaster Update Live: Rasuwa flood 2026",
+   "description": "Live briefing on the August 2026 Rasuwa and Nuwakot flash flood in Nepal: confirmed toll, timeline, cause, interactive map, emergency helplines and the official relief fund.",
+   "image": [
+    "https://nepaldisasterupdatelive.nxtimaginelabs.com/og-image.png"
+   ],
+   "datePublished": "2026-08-26T12:00:00+05:45",
+   "dateModified": "2026-08-27T15:20:00+05:45",
+   "inLanguage": "en",
+   "isAccessibleForFree": true,
+   "mainEntityOfPage": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#webpage"
+   },
+   "author": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   },
+   "publisher": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   },
+   "about": [
+    {
+     "@type": "Event",
+     "name": "2026 Rasuwa flash flood",
+     "startDate": "2026-08-26"
+    },
+    {
+     "@type": "Place",
+     "name": "Rasuwa District, Bagmati Province, Nepal"
+    },
+    {
+     "@type": "Place",
+     "name": "Nuwakot District, Bagmati Province, Nepal"
+    }
+   ]
+  },
+  {
+   "@type": "SpecialAnnouncement",
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#announcement",
+   "name": "Rasuwa flash flood, Nepal — active emergency",
+   "text": "A flash flood struck the Bhote Koshi and Trishuli river valleys in Rasuwa and Nuwakot districts, Nepal, on 26 August 2026. Search and rescue continues, and officials warn a second surge is still possible because debris upstream has not cleared. Keep off the banks of the Bhote Koshi, Trishuli and Narayani until officials say it is clear.",
+   "category": "https://www.wikidata.org/wiki/Q8068",
+   "datePosted": "2026-08-26T12:00:00+05:45",
+   "expires": "2026-12-31",
+   "announcementLocation": {
+    "@type": "Place",
+    "name": "Rasuwa and Nuwakot Districts, Nepal",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 28.15,
+     "longitude": 85.35
+    }
+   },
+   "publisher": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   },
+   "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/"
+  },
+  {
+   "@type": "Event",
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#event",
+   "name": "2026 Rasuwa flash flood",
+   "alternateName": "Bhote Koshi–Trishuli flash flood",
+   "startDate": "2026-08-26T09:00:00+05:45",
+   "eventStatus": "https://schema.org/EventScheduled",
+   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+   "description": "Flash flood along the Bhote Koshi and Trishuli rivers in Rasuwa and Nuwakot districts, Nepal, on 26 August 2026, following a suspected ice-and-rock avalanche that dammed and then released the Lende Khola inside Tibet.",
+   "location": {
     "@type": "Place",
     "name": "Rasuwa District, Bagmati Province, Nepal",
-    "geo": { "@type": "GeoCoordinates", "latitude": 28.15, "longitude": 85.35 }
-  },
-  "announcementLocation": {
+    "address": {
+     "@type": "PostalAddress",
+     "addressRegion": "Bagmati Province",
+     "addressCountry": "NP"
+    },
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 28.15,
+     "longitude": 85.35
+    }
+   },
+   "organizer": {
     "@type": "GovernmentOrganization",
     "name": "Government of Nepal"
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Event",
-  "name": "Rasuwa Bhotekoshi-Trishuli Flash Flood",
-  "startDate": "2026-08-26",
-  "eventStatus": "https://schema.org/EventScheduled",
-  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-  "location": {
-    "@type": "Place",
-    "name": "Rasuwa & Nuwakot Districts, Nepal",
-    "address": { "@type": "PostalAddress", "addressCountry": "NP" }
+   }
   },
-  "description": "Flash flood along the Bhotekoshi and Trishuli rivers, Rasuwa District, Nepal, triggered by a suspected glacial lake outburst flood or avalanche-dam collapse near the China-Nepal border on 26 August 2026."
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "NewsArticle",
-  "headline": "Nepal Disaster Update Live: Rasuwa Flood 2026",
-  "description": "Live briefing on the August 2026 Rasuwa and Nuwakot flash flood in Nepal: timeline, cause, interactive maps, emergency helplines and the official relief fund.",
-  "image": ["https://nepaldisasterupdatelive.nxtimaginelabs.com/og-image.png"],
-  "datePublished": "2026-08-26T12:00:00+05:45",
-  "dateModified": "2026-08-26T20:00:00+05:45",
-  "inLanguage": "en",
-  "isAccessibleForFree": true,
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/" },
-  "author": { "@type": "Organization", "name": "Nepal Disaster Update" },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Nepal Disaster Update",
-    "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/"
-  },
-  "about": [
-    { "@type": "Thing", "name": "2026 Nepal floods" },
-    { "@type": "Place", "name": "Rasuwa District, Nepal" },
-    { "@type": "Place", "name": "Nuwakot District, Nepal" }
-  ],
-  "keywords": "Nepal disaster, Nepal live update, Rasuwa flood, Nuwakot disaster, Bhotekoshi, Trishuli, glacial lake outburst flood"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  {
+   "@type": "FAQPage",
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#faq",
+   "mainEntity": [
     {
-      "@type": "Question",
-      "name": "What happened in Rasuwa, Nepal?",
-      "acceptedAnswer": { "@type": "Answer", "text": "On the morning of 26 August 2026 a flash flood came down the Bhotekoshi river from the Tibet side of the border into Rasuwa district, Nepal. The border towns of Timure and Syabrubesi were hit hardest, and the water carried on down the Trishuli river as far as Devighat in Nuwakot district. Six hydropower stations were damaged." }
+     "@type": "Question",
+     "name": "What happened in Rasuwa, Nepal?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "On the morning of 26 August 2026 a flash flood came down the Bhote Koshi river from the Tibet side of the border into Rasuwa district. Timure, Syabrubesi, the Rasuwagadhi border crossing and around a dozen riverside settlements took the heaviest impact, and the water carried on down the Trishuli into the Narayani. The Nepal Electricity Authority reports 14 hydropower projects damaged, about 748 MW."
+     }
     },
     {
-      "@type": "Question",
-      "name": "What caused the Nepal flood of August 2026?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No government has confirmed a cause. The leading explanation from experts reviewing satellite imagery is a mass of ice and rock that fell into the Lende Khola stream inside Tibet, dammed it, and then gave way. A glacial lake outburst flood and a small earthquake minutes earlier are also being examined. It was not raining nearby, which rules out ordinary rainfall." }
+     "@type": "Question",
+     "name": "What caused the Nepal flood of August 2026?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No government has confirmed a cause. The leading explanation, from Nepal's Department of Hydrology and Meteorology and independent glaciologists working with satellite imagery shared through ICIMOD, is an ice-and-rock avalanche that blocked the Lhende Khola inside Tibet about 20 km upstream of the Miteri Bridge, forming a temporary debris-dammed lake that then burst. The US Geological Survey has reassessed the seismic signal recorded minutes earlier as a magnitude 5.2 glacial collapse rather than a tectonic earthquake. Heavy local rainfall in Rasuwa is ruled out."
+     }
     },
     {
-      "@type": "Question",
-      "name": "Which districts of Nepal were affected?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Rasuwa district was hit hardest, especially Timure, Syabrubesi and the Rasuwagadhi border crossing. Nuwakot district was affected downstream along the Trishuli, including Betrawati, Trishuli Bazaar and Devighat. Deaths were also confirmed on the Chinese side near Gyirong." }
+     "@type": "Question",
+     "name": "Which districts of Nepal were affected?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Rasuwa district was hit hardest, especially Timure, Syabrubesi and the Rasuwagadhi border crossing. Nuwakot district was affected downstream along the Trishuli, including Betrawati, Trishuli Bazaar and Devighat. Deaths were also confirmed on the Chinese side near Gyirong."
+     }
     },
     {
-      "@type": "Question",
-      "name": "Is Kathmandu affected by the Rasuwa flood?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kathmandu itself was not flooded. The damage runs along the Bhotekoshi and Trishuli river valleys in Rasuwa and Nuwakot districts, north-west of the capital. Road links to the Chinese border through Rasuwagadhi have been badly disrupted." }
+     "@type": "Question",
+     "name": "Is Kathmandu affected?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Kathmandu itself was not flooded. The damage runs along the Bhotekoshi and Trishuli river valleys in Rasuwa and Nuwakot districts, north-west of the capital. Road links to the Chinese border through Rasuwagadhi have been badly disrupted."
+     }
     },
     {
-      "@type": "Question",
-      "name": "What are the emergency numbers in Nepal?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Nepal Police 100, ambulance 102, fire brigade 101, traffic police 103, and 112 from any mobile phone. The National Emergency Operation Centre disaster hotline is 1149, the Nepal Police toll-free helpline is 1155, and Tourist Police is 1144." }
+     "@type": "Question",
+     "name": "What are the emergency numbers in Nepal?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Nepal Police 100, ambulance 102, fire brigade 101, traffic police 103, and 112 from any mobile phone. The National Emergency Operation Centre disaster hotline is 1149, the Nepal Police toll-free helpline is 1155, and Tourist Police is 1144."
+     }
     },
     {
-      "@type": "Question",
-      "name": "How can I donate to Nepal flood relief?",
-      "acceptedAnswer": { "@type": "Answer", "text": "The Government of Nepal's own channel is the Prime Minister's Natural Disaster Relief Fund, operated by the Office of the Prime Minister. Bank account details and the official QR code are listed on the Help section of this page. Be careful of fake appeals, which appear within hours of any disaster." }
+     "@type": "Question",
+     "name": "How can I donate to Nepal flood relief?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Government of Nepal's own channel is the Prime Minister's Natural Disaster Relief Fund, run by the Office of the Prime Minister. Bank account details and the official QR code are published on this site's relief page. Be careful of fake appeals, which appear within hours of any disaster."
+     }
     },
     {
-      "@type": "Question",
-      "name": "Is it safe to travel to Langtang or Syabrubesi now?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Syabrubesi is the main gateway to Langtang trekking and was directly hit, including the loss of its helipad. Roads along the river valley have been damaged. Check with Nepal Police, the Tourist Police on 1144, and your trekking operator before travelling to the area." }
+     "@type": "Question",
+     "name": "Is it safe to travel to Langtang or Syabrubesi now?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Syabrubesi is the main gateway to Langtang trekking and was directly hit, including the loss of its helipad. Roads along the river valley have been damaged. Check with Nepal Police, the Tourist Police on 1144, and your trekking operator before travelling."
+     }
     }
-  ]
+   ]
+  }
+ ]
 }
 </script>
 
@@ -203,30 +311,63 @@
   p{margin:0 0 1em; color:var(--text);}
   .lede{color:var(--text-muted); font-size:1.05rem;}
 
-  /* ===== animated Nepal flag ===== */
+  /* ===== animated Nepal flag =====
+     The cloth swings on its hoist edge, and a soft highlight travels across
+     it every few seconds so the pennants read as fabric, not as a flat icon. */
   .flag{width:26px; height:32px; flex-shrink:0; overflow:visible;}
-  .flag .cloth{transform-origin:0% 50%; animation:flagwave 3.6s ease-in-out infinite;}
+  .flag .cloth{transform-origin:0% 50%; animation:flagwave 4.4s cubic-bezier(.45,.05,.55,.95) infinite;}
   @keyframes flagwave{
-    0%,100%{transform:perspective(180px) rotateY(0deg) skewY(0deg);}
-    30%{transform:perspective(180px) rotateY(-14deg) skewY(1.6deg);}
-    60%{transform:perspective(180px) rotateY(10deg) skewY(-1.4deg);}
+    0%,100%{transform:perspective(200px) rotateY(0deg) skewY(0deg) translateY(0);}
+    28%{transform:perspective(200px) rotateY(-15deg) skewY(1.7deg) translateY(-0.6%);}
+    58%{transform:perspective(200px) rotateY(11deg) skewY(-1.5deg) translateY(0.5%);}
+    80%{transform:perspective(200px) rotateY(-4deg) skewY(0.5deg) translateY(0);}
   }
+  .flag .np-sheen{animation:flagsheen 6s cubic-bezier(.4,0,.2,1) infinite;}
+  @keyframes flagsheen{
+    0%,58%{transform:translateX(-70px);}
+    88%,100%{transform:translateX(130px);}
+  }
+  .flag .np-fold{opacity:.5;}
   .flag .pole{fill:var(--text-faint);}
   .flag-lg{width:74px; height:92px;}
-  @media (prefers-reduced-motion: reduce){ .flag .cloth{animation:none;} }
+  @media (prefers-reduced-motion: reduce){
+    .flag .cloth, .flag .np-sheen{animation:none;}
+  }
 
   /* ===== site header ===== */
   .sitehead{border-bottom:1px solid var(--border); background:color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter:saturate(1.6) blur(12px); position:sticky; top:0; z-index:60;}
   .sitehead-inner{max-width:1240px; margin:0 auto; padding:0 20px; height:60px; display:flex; align-items:center; gap:20px;}
 
   /* masthead */
-  .brand{display:flex; align-items:center; gap:11px; text-decoration:none; color:var(--text); flex-shrink:0;}
-  .brand-mark{display:grid; place-items:center; width:34px; height:34px; border-radius:9px; background:var(--surface-2); border:1px solid var(--border); flex-shrink:0;}
-  .brand-mark .flag{width:17px; height:21px;}
-  .brand-text{display:flex; flex-direction:column; gap:2px; line-height:1;}
-  .brand-name{font-family:var(--font-display); font-weight:600; font-size:1.06rem; letter-spacing:-0.015em;}
-  .brand-live{display:inline-flex; align-items:center; gap:5px; font-family:var(--font-mono); font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--critical); font-weight:500;}
-  .brand-live i{width:5px; height:5px; border-radius:50%; background:var(--critical); animation:pulse 2s ease-in-out infinite;}
+  .brand{display:flex; align-items:center; gap:13px; text-decoration:none; color:var(--text); flex-shrink:0;}
+  .brand-mark{
+    position:relative; display:grid; place-items:center; width:46px; height:46px; flex-shrink:0;
+    border-radius:14px; border:1px solid var(--border);
+    background:
+      radial-gradient(120% 110% at 22% 8%, color-mix(in srgb, var(--crimson) 15%, transparent), transparent 62%),
+      linear-gradient(158deg, var(--surface), var(--surface-2));
+    box-shadow:0 1px 2px rgba(15,18,24,.06), inset 0 1px 0 rgba(255,255,255,.55);
+    transition:transform .28s cubic-bezier(.2,.85,.3,1), box-shadow .28s, border-color .28s;
+  }
+  :root[data-theme="dark"] .brand-mark{box-shadow:0 1px 2px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06);}
+  /* a slow halo, the same signal as the LIVE dot, tied to the mark itself */
+  .brand-mark::after{
+    content:""; position:absolute; inset:-3px; border-radius:17px; pointer-events:none;
+    border:1.5px solid var(--critical); opacity:0; animation:markhalo 3.6s ease-out infinite;
+  }
+  @keyframes markhalo{
+    0%{opacity:.34; transform:scale(.93);}
+    62%,100%{opacity:0; transform:scale(1.1);}
+  }
+  .brand-mark .flag{width:24px; height:29px;}
+  .brand:hover .brand-mark{transform:translateY(-1.5px); border-color:color-mix(in srgb, var(--crimson) 40%, var(--border));
+    box-shadow:0 8px 20px -10px color-mix(in srgb, var(--crimson) 60%, transparent), inset 0 1px 0 rgba(255,255,255,.55);}
+  .brand:hover .flag .cloth{animation-duration:1.9s;}
+  .brand-text{display:flex; flex-direction:column; gap:4px; line-height:1;}
+  .brand-name{font-family:var(--font-display); font-weight:600; font-size:1.19rem; letter-spacing:-0.022em;}
+  .brand-live{display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--critical); font-weight:500;}
+  .brand-live i{width:6px; height:6px; border-radius:50%; background:var(--critical); animation:pulse 2s ease-in-out infinite; box-shadow:0 0 0 3px color-mix(in srgb, var(--critical) 18%, transparent);}
+  @media (prefers-reduced-motion: reduce){ .brand-mark::after{animation:none; opacity:0;} }
 
   /* primary tabs, desktop */
   .tabbar{display:flex; gap:4px; margin-left:auto;}
@@ -263,7 +404,28 @@
     .search-trigger-label, .search-kbd{display:none;}
     .search-trigger{width:36px; padding:0; justify-content:center;}
   }
-  @media (max-width:400px){ .brand-name{font-size:0.97rem;} }
+  /* Three controls plus the masthead do not fit a small phone at full size, so
+     the mark, the wordmark and the language chip all step down together. */
+  @media (max-width:560px){
+    .brand{gap:10px;}
+    .brand-mark{width:40px; height:40px; border-radius:12px;}
+    .brand-mark .flag{width:21px; height:26px;}
+    .brand-name{font-size:1.04rem;}
+    .sitehead-inner{padding:0 12px; gap:8px;}
+    .head-tools{gap:6px;}
+    /* Keep the globe, drop the code: a globe is readable to someone who reads
+       neither English nor Nepali, which is exactly who needs this button. */
+    .lang-btn{width:36px; padding:0; gap:0; justify-content:center;}
+    .lang-btn .lang-code{display:none;}
+  }
+  @media (max-width:400px){
+    .brand-name{font-size:0.98rem;}
+    .brand-live{font-size:0.54rem; letter-spacing:0.11em;}
+    .brand-mark{width:37px; height:37px; border-radius:11px;}
+    .brand-mark .flag{width:19px; height:23px;}
+    .icon-btn{width:34px; height:34px;}
+    .lang-btn{width:34px;}
+  }
 
   .icon-btn{
     width:36px; height:36px; display:flex; align-items:center; justify-content:center;
@@ -277,7 +439,7 @@
   .bottomnav{display:none;}
   @media (max-width:1080px){
     .bottomnav{
-      display:grid; grid-template-columns:repeat(5,1fr);
+      display:grid; grid-template-columns:repeat(6,1fr);
       position:fixed; left:0; right:0; bottom:0; z-index:80;
       background:color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter:saturate(1.6) blur(14px);
       border-top:1px solid var(--border);
@@ -286,11 +448,12 @@
     .bottomnav button{
       position:relative; display:flex; flex-direction:column; align-items:center; gap:3px;
       background:none; border:none; padding:6px 2px 5px; border-radius:10px; cursor:pointer;
-      font-family:var(--font-body); font-size:0.66rem; font-weight:500; color:var(--text-faint);
+      font-family:var(--font-body); font-size:0.62rem; font-weight:500; color:var(--text-faint);
+      min-width:0; white-space:nowrap;
     }
-    .bottomnav svg{width:21px; height:21px; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round;}
+    .bottomnav svg{width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round;}
     .bottomnav button[aria-selected="true"]{color:var(--critical); font-weight:600;}
-    .bottomnav .dotbadge{position:absolute; top:4px; right:calc(50% - 16px); width:7px; height:7px; border-radius:50%; background:var(--critical);}
+    .bottomnav .dotbadge{position:absolute; top:4px; right:calc(50% - 14px); width:7px; height:7px; border-radius:50%; background:var(--critical);}
     .bottomnav .dotbadge[hidden]{display:none;}
     body{padding-bottom:calc(64px + env(safe-area-inset-bottom));}
     .to-top{bottom:calc(74px + env(safe-area-inset-bottom)) !important;}
@@ -359,6 +522,29 @@
   }
   .seg button[aria-pressed="true"]{background:var(--surface); color:var(--text); font-weight:600; box-shadow:var(--shadow);}
   #lang-seg{grid-template-columns:repeat(2,1fr);}
+  #lang-seg button{font-size:0.78rem;}
+
+  /* language picker in the header */
+  .lang-btn{width:auto; gap:6px; padding:0 10px;}
+  .lang-btn .lang-code{font-family:var(--font-mono); font-size:0.72rem; font-weight:600; letter-spacing:0.04em;}
+  .lang-pop{
+    position:fixed; top:56px; right:16px; z-index:70; width:250px;
+    background:var(--surface); border:1px solid var(--border); border-radius:14px;
+    box-shadow:var(--shadow-lg); padding:8px; animation:popin .13s ease-out;
+  }
+  .lang-pop[hidden]{display:none;}
+  .lang-list{display:grid; gap:2px;}
+  .lang-list button{
+    display:flex; align-items:baseline; gap:9px; width:100%; text-align:left;
+    background:none; border:none; padding:10px 11px; border-radius:9px; cursor:pointer;
+    font-family:var(--font-body); color:var(--text);
+  }
+  .lang-list button b{font-size:1rem; font-weight:600;}
+  .lang-list button span{font-size:0.76rem; color:var(--text-faint);}
+  .lang-list button:hover{background:var(--surface-2);}
+  .lang-list button[aria-pressed="true"]{background:var(--surface-2); box-shadow:inset 0 0 0 1px var(--border);}
+  .lang-list button[aria-pressed="true"]::after{content:"\2713"; margin-left:auto; color:var(--critical); font-weight:700;}
+  .lang-note{margin:6px 4px 2px; padding-top:8px; border-top:1px solid var(--border); font-size:0.72rem; line-height:1.5; color:var(--text-faint);}
   .set-row{display:flex; align-items:center; gap:10px; width:100%; background:none; border:none; padding:10px; border-radius:9px; font-family:var(--font-body); font-size:0.9rem; color:var(--text); text-align:left; cursor:pointer;}
   .set-row:hover{background:var(--surface-2);}
   .set-row[disabled]{color:var(--text-faint); cursor:default;}
@@ -523,7 +709,10 @@
 
 
   /* ===== cards / grid ===== */
-  .grid-2{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-top:20px;}
+  /* Hairlines come from each cell, not from a grey sheet behind the grid, so a
+     part-filled last row leaves no grey ghost cells. */
+  .grid-2{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1px; border-radius:12px; overflow:hidden; margin-top:20px;}
+  .grid-2 > .card{box-shadow:0 0 0 1px var(--border);}
   .grid-3{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-top:20px;}
   .card{background:var(--surface); padding:20px;}
   .card h3{margin-bottom:8px;}
@@ -867,7 +1056,14 @@
   .post-who .name{display:flex; align-items:center; gap:5px; font-size:0.88rem; font-weight:600;}
   .post-who .name .check{color:#1877f2; flex:none;}
   .post-who .meta{font-size:0.72rem; color:var(--text-faint);}
-  .post-photo{width:100%; aspect-ratio:16/9; object-fit:cover; background:var(--surface-2); cursor:pointer; display:block;}
+  /* While a photo is still coming down the wire the element shows a moving
+     placeholder rather than a flat grey block. The image paints over it. */
+  .post-photo{width:100%; aspect-ratio:16/9; object-fit:cover; cursor:pointer; display:block;
+    background:linear-gradient(100deg, var(--surface-2) 32%, color-mix(in srgb, var(--surface-2) 52%, var(--surface)) 50%, var(--surface-2) 68%);
+    background-size:220% 100%; animation:shimmer 1.4s linear infinite;}
+  .post-photo.is-loaded{animation:none; background:var(--surface-2);}
+  @keyframes shimmer{from{background-position:130% 0;} to{background-position:-130% 0;}}
+  @media (prefers-reduced-motion: reduce){ .post-photo{animation:none;} }
   .post-card.no-photo .post-body{padding-top:12px;}
   .post-video{position:relative; width:100%; aspect-ratio:16/9; background:#000;}
   .post-video .post-photo{max-height:none; height:100%; cursor:default;}
@@ -881,7 +1077,8 @@
   .post-summary .more-hint{color:var(--text-faint); font-size:0.82rem;}
   .post-unverified{display:inline-block; margin-top:8px; font-size:0.68rem; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.05em; color:var(--text-faint); border:1px solid var(--border); border-radius:20px; padding:2px 8px;}
   .post-foot{display:flex; align-items:center; gap:6px; padding:6px 8px; border-top:1px solid var(--border);}
-  .post-btn{display:flex; align-items:center; gap:6px; font-size:0.8rem; font-weight:600; color:var(--text-muted); background:none; border:0; border-radius:8px; padding:8px 10px; cursor:pointer;}
+  .post-btn{display:flex; align-items:center; gap:6px; font-size:0.8rem; font-weight:600; color:var(--text-muted); background:none; border:0; border-radius:8px; padding:8px 10px; cursor:pointer; text-decoration:none;}
+  a.post-btn:hover{color:var(--critical);}
   .post-btn:hover{background:var(--surface-2); color:var(--text);}
   .post-btn svg{width:16px; height:16px;}
   .share-menu{position:absolute; bottom:calc(100% + 6px); left:8px; z-index:80; background:var(--surface); border:1px solid var(--border-strong); border-radius:10px; box-shadow:var(--shadow-lg); padding:5px; min-width:160px; display:flex; flex-direction:column;}
@@ -889,7 +1086,8 @@
   .share-menu a:hover, .share-menu button:hover{background:var(--surface-2);}
 
   /* ===== emergency ===== */
-  .call-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-top:20px;}
+  .call-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1px; border-radius:12px; overflow:hidden; margin-top:20px;}
+  .call-grid > .call{box-shadow:0 0 0 1px var(--border);}
   .call{background:var(--surface); padding:18px; text-decoration:none; color:var(--text); display:flex; flex-direction:column; gap:2px;}
   .call:hover{background:var(--surface-2);}
   .call .digits{font-family:var(--font-mono); font-size:1.7rem; font-weight:600; color:var(--critical); line-height:1.1;}
@@ -1039,6 +1237,13 @@
   .hero h1{font-size:clamp(2.1rem, 1.5rem + 2.6vw, 3.4rem);}
   .hero .lede{max-width:52ch; margin-top:12px; font-size:1.12rem;}
   .hero-actions{display:flex; flex-wrap:wrap; gap:9px; margin:20px 0 0;}
+  /* On a phone the two reading actions share a row and the emergency call takes
+     the full width below them, so nothing lands as a stray half-row button. */
+  @media (max-width:560px){
+    .hero-actions{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+    .hero-actions > *{width:100%; justify-content:center;}
+    .hero-actions > .btn-danger{grid-column:1 / -1; padding-top:13px; padding-bottom:13px;}
+  }
   .hero-actions .btn svg{width:16px; height:16px;}
   .btn-danger{background:var(--alert); border-color:var(--alert); color:#fff;}
   .btn-danger:hover{background:#95201a; border-color:#95201a; color:#fff;}
@@ -1154,7 +1359,15 @@
   }
 
   /* ===== Today section: a feed of story cards, same shape as the Live feed ===== */
-  .today-grid{display:flex; flex-direction:column; gap:16px; margin-top:18px; max-width:620px;}
+  .today-grid{display:grid; grid-template-columns:1fr; align-items:start; gap:16px; margin-top:18px; max-width:640px;}
+  /* On a wide screen the day's stories run in two columns instead of leaving
+     half the window empty. The newest story keeps the full width. */
+  @media (min-width:1000px){
+    .today-grid{grid-template-columns:1fr 1fr; gap:18px; max-width:1000px;}
+    .today-grid > .post-card:first-child{grid-column:1 / -1;}
+    .today-grid > .post-card:first-child .tc-title{font-size:1.5rem;}
+    .today-grid > p{grid-column:1 / -1;}
+  }
   .today-grid .post-card{border-radius:14px; box-shadow:var(--shadow);}
   .today-card .post-photo{aspect-ratio:16/9;}
   .today-card .post-body{padding:12px 16px 6px;}
@@ -1176,21 +1389,85 @@
   .today-card .post-body{padding-top:8px;}
   .today-updated{font-family:var(--font-mono); font-size:0.74rem; color:var(--text-faint); margin-top:14px;}
   @media (max-width:640px){ .today-grid{max-width:100%;} }
+
+  /* ===== deep links into the standalone article pages =====
+     Real <a href> links, so a crawler reaches the deeper pages without having
+     to run the tab JavaScript, and a reader gets an obvious way in. */
+  .deeplink{
+    display:inline-flex; align-items:center; gap:7px; margin:14px 0 0;
+    font-size:0.9rem; font-weight:600; text-decoration:none; color:var(--text);
+    border:1px solid var(--border); background:var(--surface); border-radius:11px; padding:9px 14px;
+    transition:border-color .15s, color .15s;
+  }
+  .deeplink::after{content:"\203A"; color:var(--critical); font-weight:400;}
+  .deeplink:hover{border-color:var(--critical); color:var(--critical);}
+  .deeplinks{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;}
+  .deeplinks .deeplink{margin-top:0;}
+
+  .sitemap-nav{margin:0 0 18px;}
+  .sitemap-nav h2{font-family:var(--font-body); font-size:0.78rem; letter-spacing:.09em; text-transform:uppercase; color:var(--text-faint); font-weight:600; margin:0 0 10px;}
+  .sitemap-nav ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:6px 18px;}
+  .sitemap-nav a{font-size:0.88rem; color:var(--text-muted); text-decoration:none;}
+  .sitemap-nav a:hover{color:var(--critical); text-decoration:underline;}
 </style>
 </head>
 <body>
 
 <a href="#main" class="skip-link">Skip to content</a>
 
-<!-- Reusable animated Nepal flag. Two pennants, crimson field, navy border, white moon and sun. -->
+<script>
+/* Feed photos start transparent over a shimmer, so a slow or lazy image never
+   flashes a raw grey block. Capture phase, because `load` does not bubble. */
+(function(){
+  function done(t){ if(t && t.tagName === 'IMG' && t.classList.contains('post-photo')) t.classList.add('is-loaded'); }
+  document.addEventListener('load',  function(e){ done(e.target); }, true);
+  document.addEventListener('error', function(e){ done(e.target); }, true);
+  /* Safety net: anything already complete, or stuck, is shown anyway. */
+  function sweep(){
+    var l = document.querySelectorAll('img.post-photo:not(.is-loaded)'), i;
+    for(i = 0; i < l.length; i++){ if(l[i].complete) l[i].classList.add('is-loaded'); }
+  }
+  document.addEventListener('DOMContentLoaded', sweep);
+  setInterval(sweep, 1500);
+})();
+</script>
+
+<!-- Reusable animated Nepal flag. Two pennants, crimson field, navy border, white moon and sun.
+     The field carries a light-to-dark wash and a highlight that travels across it, so at
+     logo size it reads as cloth in motion rather than a flat crimson shape. -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="np-cloth-grad" x1="0" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#ef2e56"/>
+      <stop offset="46%" stop-color="var(--crimson)"/>
+      <stop offset="100%" stop-color="#a5122e"/>
+    </linearGradient>
+    <linearGradient id="np-sheen-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#fff" stop-opacity="0.34"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="np-fold-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="np-cloth-clip">
+      <path d="M0 0 L78 44 L40 44 L72 90 L0 90 Z"/>
+    </clipPath>
+  </defs>
   <symbol id="np-flag" viewBox="-4 -4 96 106">
     <g class="cloth">
-      <path d="M0 0 L78 44 L40 44 L72 90 L0 90 Z" fill="var(--crimson)" stroke="var(--navy)" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M0 0 L78 44 L40 44 L72 90 L0 90 Z" fill="url(#np-cloth-grad)" stroke="var(--navy)" stroke-width="6" stroke-linejoin="round"/>
+      <g clip-path="url(#np-cloth-clip)">
+        <rect class="np-fold" x="0" y="-6" width="17" height="104" fill="url(#np-fold-grad)"/>
+      </g>
       <path d="M20.00,14.00 L21.45,18.59 L25.00,15.34 L23.96,20.04 L28.66,19.00 L25.41,22.55 L30.00,24.00 L25.41,25.45 L28.66,29.00 L23.96,27.96 L25.00,32.66 L21.45,29.41 L20.00,34.00 L18.55,29.41 L15.00,32.66 L16.04,27.96 L11.34,29.00 L14.59,25.45 L10.00,24.00 L14.59,22.55 L11.34,19.00 L16.04,20.04 L15.00,15.34 L18.55,18.59 Z" fill="#fff"/>
       <path d="M20.00,55.00 L21.60,60.01 L25.50,56.47 L24.38,61.62 L29.53,60.50 L25.99,64.40 L31.00,66.00 L25.99,67.60 L29.53,71.50 L24.38,70.38 L25.50,75.53 L21.60,71.99 L20.00,77.00 L18.40,71.99 L14.50,75.53 L15.62,70.38 L10.47,71.50 L14.01,67.60 L9.00,66.00 L14.01,64.40 L10.47,60.50 L15.62,61.62 L14.50,56.47 L18.40,60.01 Z" fill="#fff"/>
       <circle cx="20" cy="24" r="4.6" fill="var(--crimson)"/>
       <circle cx="23.4" cy="22.2" r="4.4" fill="#fff"/>
+      <g clip-path="url(#np-cloth-clip)">
+        <rect class="np-sheen" x="-34" y="-8" width="26" height="108" fill="url(#np-sheen-grad)"/>
+      </g>
     </g>
   </symbol>
 </svg>
@@ -1206,22 +1483,22 @@
     </a>
 
     <nav class="tabbar" id="tabbar" role="tablist" aria-label="Main sections">
-      <button role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true"  data-tab="overview">
+      <button role="tab" id="tab-overview" aria-label="Now, the main briefing" aria-controls="panel-overview" aria-selected="true"  data-tab="overview">
         <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M6 10.2V20h12v-9.8"/></svg>
         <span data-i18n="tab.overview">Now</span></button>
-      <button role="tab" id="tab-today" aria-controls="panel-today" aria-selected="false" data-tab="today">
+      <button role="tab" id="tab-today" aria-label="Today, the daily stories" aria-controls="panel-today" aria-selected="false" data-tab="today">
         <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>
         <span data-i18n="tab.today">Today</span></button>
-      <button role="tab" id="tab-live" aria-controls="panel-live" aria-selected="false" data-tab="live">
+      <button role="tab" id="tab-live" aria-label="Live updates" aria-controls="panel-live" aria-selected="false" data-tab="live">
         <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2.4"/><path d="M7.8 7.8a5.9 5.9 0 0 0 0 8.4M16.2 16.2a5.9 5.9 0 0 0 0-8.4"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 19.1a10 10 0 0 0 0-14.2"/></svg>
         <span data-i18n="tab.live">Live</span><span class="badge" id="live-badge" hidden>0</span></button>
-      <button role="tab" id="tab-video" aria-controls="panel-video" aria-selected="false" data-tab="video">
+      <button role="tab" id="tab-video" aria-label="Watch, videos and photos" aria-controls="panel-video" aria-selected="false" data-tab="video">
         <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="13" height="13" rx="2.5"/><path d="M16 10.5 21 8v8l-5-2.5z"/></svg>
         <span data-i18n="tab.video">Watch</span><span class="badge" id="media-badge" hidden>0</span></button>
-      <button role="tab" id="tab-map" aria-controls="panel-map" aria-selected="false" data-tab="map">
+      <button role="tab" id="tab-map" aria-label="Map of the flood path" aria-controls="panel-map" aria-selected="false" data-tab="map">
         <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3.6 3.6 6.1v14.3L9 17.9l6 2.5 5.4-2.5V3.6L15 6.1z"/><path d="M9 3.6v14.3M15 6.1v14.3"/></svg>
         <span data-i18n="tab.map">Map</span></button>
-      <button role="tab" id="tab-help" aria-controls="panel-help" aria-selected="false" data-tab="help">
+      <button role="tab" id="tab-help" aria-label="Help, emergency numbers and donations" aria-controls="panel-help" aria-selected="false" data-tab="help">
         <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.4s-7.1-4.2-7.1-9.9A4.55 4.55 0 0 1 12 7.2a4.55 4.55 0 0 1 7.1 3.3c0 5.7-7.1 9.9-7.1 9.9z"/></svg>
         <span data-i18n="tab.help">Help</span></button>
     </nav>
@@ -1231,6 +1508,10 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.6-3.6"></path></svg>
         <span class="search-trigger-label" data-i18n="search.trigger">Search this briefing</span>
         <kbd class="search-kbd" aria-hidden="true">/</kbd>
+      </button>
+      <button class="icon-btn lang-btn" id="lang-btn" type="button" aria-expanded="false" aria-controls="lang-pop" aria-label="Change language">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3.2 9.5h17.6M3.2 14.5h17.6"></path><path d="M12 3a16 16 0 0 1 0 18a16 16 0 0 1 0-18z"></path></svg>
+        <span class="lang-code" id="lang-code">EN</span>
       </button>
       <button class="icon-btn" id="settings-btn" type="button" aria-expanded="false" aria-controls="settings-pop" aria-label="Settings">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"></circle><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1A1.7 1.7 0 008.9 19a1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1A1.7 1.7 0 004.6 8.9a1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V10a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"></path></svg>
@@ -1255,6 +1536,18 @@
       </div>
     </div>
 
+    <!-- language popover -->
+    <div class="lang-pop" id="lang-pop" hidden role="menu" aria-label="Language">
+      <div class="set-head"><b>Language &middot; भाषा &middot; 语言</b></div>
+      <div class="lang-list">
+        <button type="button" data-lang-choice="en" aria-pressed="true"><b>English</b><span>English</span></button>
+        <button type="button" data-lang-choice="ne" aria-pressed="false"><b>नेपाली</b><span>Nepali</span></button>
+        <button type="button" data-lang-choice="hi" aria-pressed="false"><b>हिन्दी</b><span>Hindi</span></button>
+        <button type="button" data-lang-choice="zh" aria-pressed="false"><b>中文</b><span>Chinese</span></button>
+      </div>
+      <p class="lang-note">Headings, buttons and answers change language. News cards stay in the language the source published them in.</p>
+    </div>
+
     <!-- settings popover -->
     <div class="settings-pop" id="settings-pop" hidden role="menu" aria-label="Settings">
       <div class="set-head"><b>Settings</b></div>
@@ -1263,6 +1556,8 @@
         <div class="seg" id="lang-seg" role="group" aria-label="Language">
           <button type="button" data-lang-choice="en" aria-pressed="true">English</button>
           <button type="button" data-lang-choice="ne" aria-pressed="false">नेपाली</button>
+          <button type="button" data-lang-choice="hi" aria-pressed="false">हिन्दी</button>
+          <button type="button" data-lang-choice="zh" aria-pressed="false">中文</button>
         </div>
       </div>
       <div class="set-group">
@@ -1289,8 +1584,8 @@
 
 <button class="statusbar" id="statusbar" type="button">
   <span class="dot" aria-hidden="true"></span>
-  <span><b>MAJOR NEWS UPDATE</b> Active emergency in Rasuwa, Nepal</span>
-  <span id="statusbar-time">Updated 26 Aug 2026, evening NPT</span>
+  <span><b data-i18n="status.label">MAJOR NEWS UPDATE</b> <span data-i18n="status.text">Active emergency in Rasuwa, Nepal</span></span>
+  <span id="statusbar-time">Checking for the latest&hellip;</span>
   <span class="go" aria-hidden="true">Read &rsaquo;</span>
 </button>
 
@@ -1306,7 +1601,7 @@
       <button class="modal-close" id="news-modal-close" type="button" aria-label="Close">&times;</button>
     </div>
     <div class="modal-body">
-      <p style="margin-top:14px;">A flash flood came down the Bhotekoshi from the Tibet side on the morning of 26 August 2026. Two border towns were hit hardest, six power stations were damaged, and search teams are still working.</p>
+      <p style="margin-top:14px;">A flash flood came down the Bhote Koshi from the Tibet side on the morning of 26 August 2026. Nepal Police confirm 289 dead. China has reported a new lake forming upstream and warns it could break, so stay off the riverbanks.</p>
       <div id="modal-feed"><div class="skeleton" style="width:80%"></div><div class="skeleton" style="width:65%"></div><div class="skeleton" style="width:72%"></div></div>
     </div>
     <div class="modal-foot">
@@ -1338,11 +1633,12 @@
       <h1 data-i18n="hero.h1">Rasuwa flood, live</h1>
       <p class="lede" data-i18n="hero.lede">A flash flood came down the Bhotekoshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.</p>
       <div class="hero-actions">
-        <button class="btn btn-primary" type="button" data-goto-tab="live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="2.4"/><path d="M7.8 7.8a5.9 5.9 0 0 0 0 8.4M16.2 16.2a5.9 5.9 0 0 0 0-8.4"/></svg>Latest updates</button>
-        <button class="btn" type="button" data-goto-tab="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3.6 3.6 6.1v14.3L9 17.9l6 2.5 5.4-2.5V3.6L15 6.1z"/></svg>See the map</button>
-        <a class="btn btn-danger" href="tel:100"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.3 3.5h3l1.5 4-2 1.4a12 12 0 0 0 6.3 6.3l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A16.8 16.8 0 0 1 4.3 5.7a2 2 0 0 1 2-2.2z"/></svg>Call 100</a>
+        <button class="btn btn-primary" type="button" data-goto-tab="live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="2.4"/><path d="M7.8 7.8a5.9 5.9 0 0 0 0 8.4M16.2 16.2a5.9 5.9 0 0 0 0-8.4"/></svg><span data-i18n="hero.cta.live">Latest updates</span></button>
+        <button class="btn" type="button" data-goto-tab="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3.6 3.6 6.1v14.3L9 17.9l6 2.5 5.4-2.5V3.6L15 6.1z"/></svg><span data-i18n="hero.cta.map">See the map</span></button>
+        <a class="btn btn-danger" href="tel:100"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.3 3.5h3l1.5 4-2 1.4a12 12 0 0 0 6.3 6.3l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A16.8 16.8 0 0 1 4.3 5.7a2 2 0 0 1 2-2.2z"/></svg><span data-i18n="hero.cta.call">Call 100</span></a>
       </div>
       <p class="byline"><b data-i18n="brand.name">Nepal Disaster Update</b><span data-i18n="hero.reporting">Independent volunteer briefing, built from public sources</span></p>
+      <p style="margin-top:-6px;"><a class="deeplink" href="/ne/" hreflang="ne" lang="ne">नेपालीमा पढ्नुहोस्</a></p>
     </header>
 
     <!-- ===== today: story cards, also on the Today tab ===== -->
@@ -1350,9 +1646,10 @@
       <p class="eyebrow" data-i18n="sec.today.eyebrow">Today</p>
       <h2 data-i18n="sec.today.h2">Story of the day</h2>
       <p class="measure lede" data-i18n="sec.today.home">Each story of the day, short and checked. Tap a card to read it all.</p>
-      <div class="today-grid" id="today-grid-home" aria-live="polite">
-        <p style="font-size:0.9rem; color:var(--text-faint);">Loading&hellip;</p>
+      <div class="today-grid" id="today-grid-home" aria-live="polite" data-ssr="1">
+        <!--ssr:today--><article class="post-card today-card" data-title="289 confirmed dead in the Rasuwa flood as searches reach cut-off areas"><p class="tc-stamp">27 August 2026, 2:30 pm NPT <span class="rev">updated</span></p><div class="post-body"><p class="tc-title">289 confirmed dead in the Rasuwa flood as searches reach cut-off areas</p><div class="post-summary clamped" id="ssr-2026-08-27-toll-289-0" data-expand="ssr-2026-08-27-toll-289-0"><p>Nepal Police put the confirmed toll at 289 in their 2:30pm bulletin on Thursday. It was 270 at 1:30pm and 165 that morning. The jumps are search teams reaching settlements that had been cut off since Wednesday, not new casualties happening.</p><p>Bodies have been recovered in eight districts: Chitwan 108, Nawalparasi East 74, Dhading 27, Gorkha 20, Rasuwa 17, Tanahun 16, Nawalparasi West 15 and Nuwakot 12. A district here is where a body was found, not where the person was from.</p><p>The Armed Police Force says 121 of those were recovered from the Narayani river alone by Thursday afternoon. Chitwan's mortuary has filled and an identification centre is being set up.</p><p>826 people were listed missing in the police bulletin at 8:15am. That figure is older than the toll above, so some of those people are among the 289 now confirmed dead. Police have not published a revised missing count, and this site will not estimate one.</p><p>NDRRMA reports 113 people rescued from Timure, Dhunche, Syabrubesi, Uttargaya and Bidur: 88 Nepali citizens, 11 Indian, 8 Chinese, 4 Korean and 2 American. It has published their names.</p><p>73 people are recorded as injured. Tribhuvan University Teaching Hospital said on Thursday morning it was treating 31 patients from Rasuwa, Nuwakot, Gorkha and Dhading, several in intensive care, and that one had died.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-toll-289-0">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://nepalpolice.gov.np/news/10252/" target="_blank" rel="noopener nofollow">Nepal Police</a>, <a href="https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" target="_blank" rel="noopener nofollow">UN OCHA / ReliefWeb</a>, <a href="https://english.nepalnews.com/s/nation/121-bodies-recovered-from-narayani-river-following-bhote-koshi-flash-flood/" target="_blank" rel="noopener nofollow">Nepalnews</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-toll-289/">Full briefing</a></div></article><article class="post-card today-card" data-title="China reports a new lake forming upstream and warns it could break"><p class="tc-stamp">27 August 2026, 11:00 am NPT</p><div class="post-body"><p class="tc-title">China reports a new lake forming upstream and warns it could break</p><div class="post-summary clamped" id="ssr-2026-08-27-barrier-lake-1" data-expand="ssr-2026-08-27-barrier-lake-1"><p>China's Ministry of Water Resources says a barrier lake, meaning a river blocked by debris into an artificial lake, has formed near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border.</p><p>CCTV reports around 2 million cubic metres of water had collected behind it by Thursday morning. Chinese state media warn it could break.</p><p>Both rivers are upper tributaries of the Trishuli system. A release would run down the same corridor the 26 August flood took, through Rasuwa and Nuwakot.</p><p>Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave, so a warning would come with less notice than normal.</p><p>Downstream in India, authorities in Bihar have opened the Valmikinagar Barrage on the Gandak, the same river that is called the Narayani inside Nepal, as a precaution, and prepared to move 10,000 to 12,000 people.</p><p>Stay off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-barrier-lake-1">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/lake-nepal-border-china-dam-break.html" target="_blank" rel="noopener nofollow">Onlinekhabar (Global Times)</a>, <a href="https://khabarhub.com/2026/27/1016273/" target="_blank" rel="noopener nofollow">Khabarhub</a>, <a href="https://www.setopati.com/politics/396925" target="_blank" rel="noopener nofollow">Setopati</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-barrier-lake/">Full briefing</a></div></article><article class="post-card today-card" data-title="USGS: the tremor was a glacial collapse, not an earthquake"><p class="tc-stamp">27 August 2026, 10:00 am NPT</p><div class="post-body"><p class="tc-title">USGS: the tremor was a glacial collapse, not an earthquake</p><div class="post-summary clamped" id="ssr-2026-08-27-cause-usgs-2" data-expand="ssr-2026-08-27-cause-usgs-2"><p>The US Geological Survey first logged a magnitude 4.4 earthquake at 08:37 on Wednesday, minutes before the river rose. It has now revised that analysis.</p><p>Its conclusion is that the signal was a magnitude 5.2 glacial collapse rather than a tectonic earthquake, based on nearby seismic stations, long-period seismic waves and satellite imagery. In other words the tremor was not a separate trigger. It was the collapse itself being recorded.</p><p>Nepal's Department of Hydrology and Meteorology and independent glaciologists, working from satellite imagery shared by Chinese counterparts through ICIMOD, put forward a preliminary explanation: an ice-and-rock avalanche blocked the Lhende Khola, a Bhote Koshi tributary on the border, about 20 km upstream of the Miteri Bridge. That formed a temporary debris-dammed lake, which then burst.</p><p>No government has officially confirmed a cause. This remains a hypothesis, described as preliminary by the people who proposed it.</p><p>Meteorologists have ruled out heavy local rainfall in Rasuwa, while noting that satellite data showed rain on the Tibetan side of the border.</p><p>A broadly similar flood on the same river in July 2025 was ultimately attributed to the drainage of a supraglacial lake. ICIMOD scientists say cascading glacial hazards are increasing at an unprecedented pace across the Hindu Kush Himalaya.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-cause-usgs-2">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" target="_blank" rel="noopener nofollow">UN OCHA / ReliefWeb</a>, <a href="https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" target="_blank" rel="noopener nofollow">ICIMOD</a>, <a href="https://www.france24.com/en/asia-pacific/20260826-glacier-collapse-may-have-caused-nepal-tibet-landslides-experts-say" target="_blank" rel="noopener nofollow">France 24</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-cause-usgs/">Full briefing</a></div></article><article class="post-card today-card" data-title="14 hydropower projects hit and the whole border road destroyed"><p class="tc-stamp">27 August 2026, 9:30 am NPT</p><div class="post-body"><p class="tc-title">14 hydropower projects hit and the whole border road destroyed</p><div class="post-summary clamped" id="ssr-2026-08-27-damage-infra-3" data-expand="ssr-2026-08-27-damage-infra-3"><p>The Nepal Electricity Authority reports 14 hydropower projects damaged with a combined capacity of about 748 megawatts: nine operating plants totalling 354 MW and five under construction totalling 394 MW.</p><p>Named projects include Rasuwagadhi, Chilime, Sanjen Khola, Upper Trishuli-1, Trishuli and Devighat, along with a 220 kV substation. Twelve staff of the Upper Trishuli-3B project are reported out of contact.</p><p>An earlier estimate the same day, from the Ministry of Energy, put the loss at 431 MW. Both figures were published on 27 August, which is a fair measure of how provisional every damage number is right now.</p><p>The Department of Roads confirms the entire 42 km road from Betrawati in Nuwakot to the Rasuwagadhi border crossing has been destroyed at multiple points, including several concrete bridges. A further 16 km stretch nearer the border, recently upgraded with Chinese government financing, was also swept away.</p><p>That road is Nepal's main overland trade and pilgrimage route to Tibet, and it is also the road rescue teams need. Much of the response has had to go by helicopter instead.</p><p>Nine commercial bank branches were swept away with 26 staff unaccounted for, and the Rasuwa customs office at Timure lost contact with 15 employees.</p><p>No government or humanitarian body has yet published a figure for how many people have been displaced. UN OCHA names that as the priority information gap for the coming days.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-damage-infra-3">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" target="_blank" rel="noopener nofollow">UN OCHA / ReliefWeb</a>, <a href="https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" target="_blank" rel="noopener nofollow">The Kathmandu Post</a>, <a href="https://english.onlinekhabar.com/rasuwa-floods-damage.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-damage-infra/">Full briefing</a></div></article><article class="post-card today-card" data-title="Infrastructure damage put at Rs 200 billion, early figure"><p class="tc-stamp">27 August 2026, 9:00 am NPT</p><div class="post-body"><p class="tc-title">Infrastructure damage put at Rs 200 billion, early figure</p><div class="post-summary clamped" id="ssr-2026-08-27-damage-cost-4" data-expand="ssr-2026-08-27-damage-cost-4"><p>Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.</p><p>No full damage assessment exists yet. Rasuwa, Nuwakot, Dhading and Chitwan are still being surveyed, and six hydropower stations are not in that figure.</p><p>The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading.</p><p>Insurers say claims will take weeks to settle because most of the damaged sites cannot be reached by road.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-damage-cost-4">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/rasuwa-floods-damage.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" target="_blank" rel="noopener nofollow">The Kathmandu Post</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-damage-cost/">Full briefing</a></div></article><article class="post-card today-card" data-title="165 confirmed dead in Rasuwa flood, 826 still missing"><p class="tc-stamp">27 August 2026, 8:15 am NPT <span class="rev">updated</span></p><div class="post-body"><p class="tc-title">165 confirmed dead in Rasuwa flood, 826 still missing</p><div class="post-summary clamped" id="ssr-2026-08-27-rasuwa-flood-5" data-expand="ssr-2026-08-27-rasuwa-flood-5"><p>Nepal Police put the toll at 165 dead in its 8:15am bulletin on Thursday. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani. Bodies have been found as far south as Chitwan.</p><p>826 people are still missing. Nepal Police list 579 tourists, 161 Rasuwa residents, 44 Nepali Army, 28 Nepal Police and 13 Armed Police Force. Of the missing foreigners, police say 133 are Indian nationals.</p><p>Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.</p><p>A second flood is still possible. ICIMOD says the debris blocking the river upstream, on the China side, has not cleared. China has moved people out of Gyirong. Nuwakot and Dhading are being watched.</p><p>The likely trigger is an ice and rock avalanche into the Lhende Khola on the Tibet side, which dammed the river and then broke. ICIMOD says this is not confirmed. Sensors picked up small tremors nearby, but no earthquake link is proven.</p><p>Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave. Galchchi is one of the few still working, so a new warning would come with less notice.</p><p>Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-rasuwa-flood-5">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://www.nepalpolice.gov.np/" target="_blank" rel="noopener nofollow">Nepal Police</a>, <a href="https://english.onlinekhabar.com/rasuwa-flood-death-toll-3.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" target="_blank" rel="noopener nofollow">ICIMOD</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-rasuwa-flood/">Full briefing</a></div></article><p class="today-updated">Updated 27 August 2026, 3:20 pm NPT</p><!--/ssr:today-->
       </div>
+      <p><a class="deeplink" href="/updates/">Read every briefing in the archive</a></p>
     </section>
 
     <!-- ===== live counters =====
@@ -1365,22 +1662,22 @@
       </div>
       <p class="numblock-sub" id="numbers-sub">Rasuwa flash flood, 26 August 2026</p>
       <div class="numgrid" id="numgrid">
-        <button class="stat" data-detail="Nepal Police confirmed 165 dead in its 8:15am bulletin on 27 August. Bodies are still being recovered downstream, so this number is expected to rise. Three more deaths are confirmed on the China side.">
+        <button class="stat" data-detail="Nepal Police confirmed 289 dead in their 2:30pm bulletin on 27 August, up from 270 an hour earlier and 165 that morning. Bodies found: Chitwan 108, Nawalparasi East 74, Dhading 27, Gorkha 20, Rasuwa 17, Tanahun 16, Nawalparasi West 15, Nuwakot 12. Three more deaths are confirmed on the China side.">
           <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-9C1 8.5 3 4.5 7 4.5c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6 4 4.5 7.5-1 2-3 4-5 5.5"></path><path d="M4.5 12.5h4l1.5-3 2.5 6 1.5-3h5"></path></svg></span>
-          <span class="n critical">165</span>
+          <span class="n critical">289</span>
           <span class="l" data-i18n="glance.dead">confirmed dead</span>
           <span class="bar"><i style="width:100%"></i></span>
         </button>
-        <button class="stat" data-detail="Nepal Police list 826 people missing: 579 tourists, 161 Rasuwa residents, 44 Nepali Army, 28 Nepal Police and 13 Armed Police Force. Names are still being checked against evacuation lists, so this moves in both directions.">
+        <button class="stat" data-detail="From the earlier Nepal Police bulletin at 8:15am on 27 August: 579 travellers (466 of them foreign nationals), 161 Rasuwa residents, 44 Nepali Army, 28 Nepal Police, 13 Armed Police Force and one Nuwakot resident. This figure is older than the death toll, so some of these people are among the 289 since confirmed dead. Police have not published a revised missing count.">
           <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path><path d="M10.5 7.5v3l2 1.5"></path></svg></span>
           <span class="n critical">826</span>
-          <span class="l" data-i18n="glance.missing">reported missing</span>
+          <span class="l" data-i18n="glance.missing">listed missing in Nepal</span>
           <span class="bar"><i style="width:82%"></i></span>
         </button>
-        <button class="stat" data-detail="Six hydropower stations were damaged: Rasuwagadhi, Chilime, Trishuli 3A, the Trishuli 3B substation, Trishuli Hydropower Station, and Devighat Hydropower Station.">
+        <button class="stat" data-detail="The Nepal Electricity Authority reports 14 hydropower projects damaged, about 748 MW in total: 9 operating plants (354 MW) and 5 under construction (394 MW). Named ones include Rasuwagadhi, Chilime, Sanjen Khola, Upper Trishuli-1, Trishuli and Devighat, plus a 220 kV substation.">
           <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l5 3V11l5 3V8l8 4v9z"></path><path d="M3 21h18"></path><path d="M13 8V4l3-1v4"></path></svg></span>
-          <span class="n">6</span>
-          <span class="l" data-i18n="glance.power">power plants damaged</span>
+          <span class="n">14</span>
+          <span class="l" data-i18n="glance.power">hydropower projects damaged</span>
           <span class="bar"><i style="width:40%"></i></span>
         </button>
         <button class="stat" data-detail="Around 50,000 people live in Rasuwa district, the area hit hardest. Most live along the same river valley the water came down.">
@@ -1481,7 +1778,7 @@
 
     <section id="toll" data-toc="1. Confirmed toll">
       <p class="eyebrow">01. Confirmed</p>
-      <h2>Confirmed dead, and where</h2>
+      <h2 data-i18n="sec.numbers.h2">Confirmed dead, and where</h2>
       <p class="measure lede">Confirmed deaths only, both sides of the border. Tap a row for the breakdown.</p>
 
       <div class="accord toll-accord" id="toll-accord">
@@ -1536,6 +1833,10 @@
         <span class="livedot" aria-hidden="true"></span> Updated as new figures are confirmed. Where two sources disagree, the lower confirmed number is shown.
         <span id="toll-check-status"></span>
       </p>
+      <div class="deeplinks">
+        <a class="deeplink" href="/nepal-flood/rasuwa/casualties/">Full casualty breakdown, district by district</a>
+        <a class="deeplink" href="/nepal-flood/rasuwa/missing-persons/">Who is missing, and how to report someone</a>
+      </div>
     </section>
 
     <section id="what-happened" data-toc="2. What happened">
@@ -1546,7 +1847,7 @@
       <div class="timeline">
         <div class="tl-item">
           <div class="tl-time" data-i18n="tl.time1">08:37 NPT</div>
-          <p class="measure" data-i18n="tl.text1">The ground shook near Langtang, close to the Tibet border. Investigators think this may have set the flood off.</p>
+          <p class="measure" data-i18n="tl.text1">Seismic stations picked up a signal near the border. The US Geological Survey first called it a magnitude 4.4 earthquake, then revised it: the signal was a magnitude 5.2 glacial collapse, not a quake.</p>
         </div>
         <div class="tl-item">
           <div class="tl-time" data-i18n="tl.time2">~09:00 NPT</div>
@@ -1558,7 +1859,7 @@
         </div>
         <div class="tl-item">
           <div class="tl-time" data-i18n="tl.time4">Same day</div>
-          <p class="measure" data-i18n="tl.text4">The flood reached towns further downstream: Betrawati, Trishuli Bazaar, Devighat. Six power stations were damaged.</p>
+          <p class="measure" data-i18n="tl.text4">The flood reached towns further downstream: Betrawati and Trishuli Bazar, Galchhi and Dhunge Bazaar, then past Muglin into the Narayani. 14 hydropower projects were damaged.</p>
         </div>
         <div class="tl-item">
           <div class="tl-time" data-i18n="tl.time5">Ongoing</div>
@@ -1570,45 +1871,49 @@
         <span class="livedot" aria-hidden="true" title="Watching NDRRMA's site for a newer report"></span>
         <span data-i18n="sec.damage.h2">Damage and rescue, official numbers</span>
       </h3>
-      <p class="measure" style="margin-top:6px; color:var(--text-muted); font-size:0.93rem;">Typed out by hand from official bulletins. Casualty rows are the Nepal Police bulletin of 8:15am, 27 August. Damage and rescue rows are NDRRMA Situation Report #2, 26 August, 9:05pm. Different bulletins at different hours give different counts. The blinking dot means this page is watching for a newer report.</p>
+      <p class="measure" style="margin-top:6px; color:var(--text-muted); font-size:0.93rem;">Typed out by hand from official bulletins. The death toll is the Nepal Police bulletin of 2:30pm, 27 August. The missing figure is from the earlier police bulletin at 8:15am, so it is older than the toll and some of those people are among the confirmed dead. Damage and rescue rows come from the UN OCHA situation overview of 27 August. The blinking dot means this page is watching for a newer report.</p>
 
       <div class="table-scroll">
         <table class="data-table stat-table">
           <thead><tr><th></th><th>Count</th><th>Where</th></tr></thead>
           <tbody>
             <tr>
-              <td><span class="row-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"></circle><path d="M5.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"></path></svg></span>Bodies recovered</td>
-              <td class="num-cell">165</td>
-              <td>Chitwan 65, Dhading 27, Nawalparasi East 26, Gorkha 20, Nuwakot 12, Tanahun 9, Nawalparasi West 5, Rasuwa 2</td>
+              <td><span class="row-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"></circle><path d="M5.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"></path></svg></span><span data-i18n="dr.dead.label">Bodies recovered</span></td>
+              <td class="num-cell">289</td>
+              <td>Chitwan 108, Nawalparasi East 74, Dhading 27, Gorkha 20, Rasuwa 17, Tanahun 16, Nawalparasi West 15, Nuwakot 12</td>
             </tr>
             <tr>
-              <td><span class="row-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></svg></span>Contact lost / unreachable</td>
+              <td><span class="row-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></svg></span><span data-i18n="dr.unreach.label">Contact lost / unreachable</span></td>
               <td class="num-cell">826</td>
-              <td>Tourists 579, Rasuwa residents 161, Nepal Army 44, Nepal Police 28, Armed Police 13, Nuwakot 1</td>
+              <td>Travellers 579 (466 foreign nationals), Rasuwa residents 161, Nepal Army 44, Nepal Police 28, Armed Police 13, Nuwakot 1. From the 8:15am bulletin. A further 558 are missing on the China side.</td>
             </tr>
             <tr>
-              <td><span class="row-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M4 12h16"></path></svg></span>Injured, under treatment</td>
-              <td class="num-cell">55</td>
-              <td>Rasuwa 43, Nuwakot 9, Dhading 3</td>
+              <td><span class="row-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M4 12h16"></path></svg></span><span data-i18n="dr.injured.label">Injured, under treatment</span></td>
+              <td class="num-cell">73</td>
+              <td>31 under treatment at Tribhuvan University Teaching Hospital, from Rasuwa, Nuwakot, Gorkha and Dhading</td>
             </tr>
             <tr>
-              <td><span class="row-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16c2-3.5 6-5.5 9-5.5s7 2 9 5.5"></path><path d="M3 16h18M5.5 16v3.5M18.5 16v3.5M12 10.5V16"></path></svg></span>Bridges damaged</td>
-              <td class="num-cell">80</td>
-              <td>35 motorable, 45 suspension (jhulko) bridges swept or damaged</td>
+              <td><span class="row-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16c2-3.5 6-5.5 9-5.5s7 2 9 5.5"></path><path d="M3 16h18M5.5 16v3.5M18.5 16v3.5M12 10.5V16"></path></svg></span><span data-i18n="dr.bridges.label">Road destroyed</span></td>
+              <td class="num-cell">42 km</td>
+              <td>The whole Betrawati&ndash;Rasuwagadhi road destroyed at multiple points, including several concrete bridges, plus a further 16 km near the border</td>
             </tr>
             <tr>
-              <td><span class="row-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M9 7V4.5h6V7"></path><rect x="7" y="7" width="10" height="5" rx="2"></rect><path d="M10 12l-2.5 5h9L14 12M12 17v3M9 20h6"></path></svg></span>Rescued (air + ground)</td>
-              <td class="num-cell">116 + 80</td>
-              <td>Helicopter: Army 88, civil 28. Ground: Nuwakot 47, Rasuwa 30, Dhading 3</td>
+              <td><span class="row-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M9 7V4.5h6V7"></path><rect x="7" y="7" width="10" height="5" rx="2"></rect><path d="M10 12l-2.5 5h9L14 12M12 17v3M9 20h6"></path></svg></span><span data-i18n="dr.rescue.label">Rescued (air + ground)</span></td>
+              <td class="num-cell">113</td>
+              <td>88 Nepali, 11 Indian, 8 Chinese, 4 Korean, 2 American, from Timure, Dhunche, Syabrubesi, Uttargaya and Bidur</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <p style="margin-top:14px; font-size:0.78rem; color:var(--text-faint);">
-        Sources: Nepal Police daily bulletin, and NDRRMA <em>Sthiti Pratibedan #02</em>. Search and rescue is still running, so every number here can change.
+        Sources: Nepal Police bulletins, and the <a href="https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" target="_blank" rel="noopener">UN OCHA rapid situation overview of 27 August</a>, which draws on NDRRMA, the Department of Roads and the Nepal Electricity Authority. Search and rescue is still running, so every number here can change.
         <span id="official-check-status"></span>
       </p>
+      <div class="deeplinks">
+        <a class="deeplink" href="/nepal-flood/rasuwa/timeline/">The full hour-by-hour timeline</a>
+        <a class="deeplink" href="/nepal-flood/rasuwa/damage/">Damage assessment, station by station</a>
+      </div>
     </section>
 
     <section id="cause" data-toc="3. What caused it">
@@ -1618,9 +1923,9 @@
 
       <ol class="cause-list">
         <li class="cause-item">
-          <div class="cause-rank" data-i18n="cause.rank1">Most likely</div>
-          <h3 data-i18n="cause.h1">Ice and rock fell into a mountain stream</h3>
-          <p data-i18n="cause.p1">Satellite photos show an ice-and-rock landslide in the Lende Khola, about 20 km inside Tibet from the Rasuwagadhi crossing. It likely dammed the stream, then gave way all at once.</p>
+          <div class="cause-rank" data-i18n="cause.rank1">Leading explanation</div>
+          <h3 data-i18n="cause.h1">Ice and rock fell into a mountain stream and dammed it</h3>
+          <p data-i18n="cause.p1">Nepal's Department of Hydrology and Meteorology and independent glaciologists, using satellite images shared through ICIMOD, say an ice-and-rock avalanche blocked the Lhende Khola about 20 km upstream of the Miteri Bridge. That made a temporary lake behind the debris, which then burst. They call it preliminary.</p>
         </li>
         <li class="cause-item">
           <div class="cause-rank" data-i18n="cause.rank2">Also possible</div>
@@ -1628,9 +1933,9 @@
           <p data-i18n="cause.p2">A lake of meltwater held back by ice can break free on its own, with no rain. Over 20 lakes in Nepal are rated dangerous, and many more sit unmonitored across the border.</p>
         </li>
         <li class="cause-item">
-          <div class="cause-rank" data-i18n="cause.rank3">Unclear link</div>
-          <h3 data-i18n="cause.h3">A small earthquake minutes before</h3>
-          <p data-i18n="cause.p3">A small quake hit just before the flood. It may have shaken the blockage loose, or may be unrelated. Not confirmed either way.</p>
+          <div class="cause-rank" data-i18n="cause.rank3">Ruled out</div>
+          <h3 data-i18n="cause.h3">It was not an earthquake</h3>
+          <p data-i18n="cause.p3">The US Geological Survey first logged a magnitude 4.4 earthquake at 08:37, minutes before the water rose. It has since revised that: the signal was a magnitude 5.2 glacial collapse, not a tectonic quake. The tremor was the collapse being recorded, not a separate trigger.</p>
         </li>
       </ol>
 
@@ -1650,6 +1955,10 @@
           <p style="font-size:0.78rem; color:var(--text-faint); margin:10px 0 0;">Map centred near the suspected landslide site, about 20 km north of the border inside Tibet. Exact coordinates are approximate, from published reporting.</p>
         </div>
       </details>
+      <div class="deeplinks">
+        <a class="deeplink" href="/nepal-flood/rasuwa/cause/">What caused the flood, explained in full</a>
+        <a class="deeplink" href="/nepal-disasters/">What a glacial lake outburst flood is</a>
+      </div>
     </section>
 
     <section id="faq" data-toc="4. Common questions">
@@ -1660,15 +1969,15 @@
       <div class="accord">
         <details>
           <summary data-i18n="faq.q1">What happened in Rasuwa, Nepal?</summary>
-          <div class="accord-body"><p data-i18n="faq.a1">On the morning of 26 August 2026 a flash flood came down the Bhotekoshi river from the Tibet side of the border into Rasuwa district. The border towns of Timure and Syabrubesi were hit hardest, and the water carried on down the Trishuli river as far as Devighat in Nuwakot district. Six hydropower stations were damaged.</p></div>
+          <div class="accord-body"><p data-i18n="faq.a1">On the morning of 26 August 2026 a flash flood came down the Bhote Koshi river from the Tibet side of the border into Rasuwa district. Timure, Syabrubesi, the Rasuwagadhi border crossing and around a dozen riverside settlements took the heaviest impact, and the water carried on down the Trishuli into the Narayani. The Nepal Electricity Authority reports 14 hydropower projects damaged, about 748 MW.</p></div>
         </details>
         <details>
           <summary data-i18n="faq.q2">What caused the Nepal flood of August 2026?</summary>
-          <div class="accord-body"><p data-i18n="faq.a2">No government has confirmed a cause. The leading explanation from experts reviewing satellite imagery is a mass of ice and rock that fell into the Lende Khola stream inside Tibet, dammed it, and then gave way. A glacial lake outburst flood, and a small earthquake minutes earlier, are also being examined. It was not raining nearby, which rules out ordinary rainfall.</p></div>
+          <div class="accord-body"><p data-i18n="faq.a2">No government has confirmed a cause. The leading explanation, from Nepal's Department of Hydrology and Meteorology and independent glaciologists working with satellite imagery shared through ICIMOD, is an ice-and-rock avalanche that blocked the Lhende Khola inside Tibet about 20 km upstream of the Miteri Bridge, forming a temporary debris-dammed lake that then burst. The US Geological Survey has reassessed the tremor recorded minutes earlier as a magnitude 5.2 glacial collapse, not an earthquake. Heavy local rainfall in Rasuwa is ruled out. <a href="/nepal-flood/rasuwa/cause/">Full explanation</a>.</p></div>
         </details>
         <details>
           <summary data-i18n="faq.q3">Which districts of Nepal were affected?</summary>
-          <div class="accord-body"><p data-i18n="faq.a3">Rasuwa district was hit hardest, especially Timure, Syabrubesi and the Rasuwagadhi border crossing. Nuwakot district was affected downstream along the Trishuli, including Betrawati, Trishuli Bazaar and Devighat. Deaths were also confirmed on the Chinese side near Gyirong.</p></div>
+          <div class="accord-body"><p data-i18n="faq.a3">Rasuwa took the first and heaviest impact, especially Timure, Syabrubesi and the Rasuwagadhi border crossing. The surge then moved through Betrawati and Trishuli Bazar in Nuwakot, Galchhi and Dhunge Bazaar in Dhading, and past Muglin into the Narayani. Bodies have been recovered in Chitwan, Nawalparasi East and West, Gorkha and Tanahun as well. Three deaths are confirmed on the Chinese side near Gyirong.</p></div>
         </details>
         <details>
           <summary data-i18n="faq.q4">Is Kathmandu affected?</summary>
@@ -1687,6 +1996,10 @@
           <div class="accord-body"><p data-i18n="faq.a7">Syabrubesi is the main gateway to Langtang trekking and was directly hit, including the loss of its helipad. Roads along the river valley have been damaged. Check with Nepal Police, the Tourist Police on 1144, and your trekking operator before travelling.</p></div>
         </details>
       </div>
+      <div class="deeplinks">
+        <a class="deeplink" href="/nepal-flood/rasuwa/">The full Rasuwa flood briefing</a>
+        <a class="deeplink" href="/nepal-flood/">Floods in Nepal, and why rivers rise so fast</a>
+      </div>
     </section>
   </div>
 
@@ -1696,9 +2009,10 @@
       <p class="eyebrow" data-i18n="sec.today.eyebrow">Today</p>
       <h2 data-i18n="sec.today.h2">Story of the day</h2>
       <p class="measure lede" data-i18n="sec.today.lede">Each story of the day, short and checked. New stories appear through the day. Tap a card to read it all.</p>
-      <div class="today-grid" id="today-grid" aria-live="polite">
-        <p style="font-size:0.9rem; color:var(--text-faint);">Loading&hellip;</p>
+      <div class="today-grid" id="today-grid" aria-live="polite" data-ssr="1">
+        <!--ssr:today--><article class="post-card today-card" data-title="289 confirmed dead in the Rasuwa flood as searches reach cut-off areas"><p class="tc-stamp">27 August 2026, 2:30 pm NPT <span class="rev">updated</span></p><div class="post-body"><p class="tc-title">289 confirmed dead in the Rasuwa flood as searches reach cut-off areas</p><div class="post-summary clamped" id="ssr-2026-08-27-toll-289-0" data-expand="ssr-2026-08-27-toll-289-0"><p>Nepal Police put the confirmed toll at 289 in their 2:30pm bulletin on Thursday. It was 270 at 1:30pm and 165 that morning. The jumps are search teams reaching settlements that had been cut off since Wednesday, not new casualties happening.</p><p>Bodies have been recovered in eight districts: Chitwan 108, Nawalparasi East 74, Dhading 27, Gorkha 20, Rasuwa 17, Tanahun 16, Nawalparasi West 15 and Nuwakot 12. A district here is where a body was found, not where the person was from.</p><p>The Armed Police Force says 121 of those were recovered from the Narayani river alone by Thursday afternoon. Chitwan's mortuary has filled and an identification centre is being set up.</p><p>826 people were listed missing in the police bulletin at 8:15am. That figure is older than the toll above, so some of those people are among the 289 now confirmed dead. Police have not published a revised missing count, and this site will not estimate one.</p><p>NDRRMA reports 113 people rescued from Timure, Dhunche, Syabrubesi, Uttargaya and Bidur: 88 Nepali citizens, 11 Indian, 8 Chinese, 4 Korean and 2 American. It has published their names.</p><p>73 people are recorded as injured. Tribhuvan University Teaching Hospital said on Thursday morning it was treating 31 patients from Rasuwa, Nuwakot, Gorkha and Dhading, several in intensive care, and that one had died.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-toll-289-0">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://nepalpolice.gov.np/news/10252/" target="_blank" rel="noopener nofollow">Nepal Police</a>, <a href="https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" target="_blank" rel="noopener nofollow">UN OCHA / ReliefWeb</a>, <a href="https://english.nepalnews.com/s/nation/121-bodies-recovered-from-narayani-river-following-bhote-koshi-flash-flood/" target="_blank" rel="noopener nofollow">Nepalnews</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-toll-289/">Full briefing</a></div></article><article class="post-card today-card" data-title="China reports a new lake forming upstream and warns it could break"><p class="tc-stamp">27 August 2026, 11:00 am NPT</p><div class="post-body"><p class="tc-title">China reports a new lake forming upstream and warns it could break</p><div class="post-summary clamped" id="ssr-2026-08-27-barrier-lake-1" data-expand="ssr-2026-08-27-barrier-lake-1"><p>China's Ministry of Water Resources says a barrier lake, meaning a river blocked by debris into an artificial lake, has formed near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border.</p><p>CCTV reports around 2 million cubic metres of water had collected behind it by Thursday morning. Chinese state media warn it could break.</p><p>Both rivers are upper tributaries of the Trishuli system. A release would run down the same corridor the 26 August flood took, through Rasuwa and Nuwakot.</p><p>Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave, so a warning would come with less notice than normal.</p><p>Downstream in India, authorities in Bihar have opened the Valmikinagar Barrage on the Gandak, the same river that is called the Narayani inside Nepal, as a precaution, and prepared to move 10,000 to 12,000 people.</p><p>Stay off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-barrier-lake-1">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/lake-nepal-border-china-dam-break.html" target="_blank" rel="noopener nofollow">Onlinekhabar (Global Times)</a>, <a href="https://khabarhub.com/2026/27/1016273/" target="_blank" rel="noopener nofollow">Khabarhub</a>, <a href="https://www.setopati.com/politics/396925" target="_blank" rel="noopener nofollow">Setopati</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-barrier-lake/">Full briefing</a></div></article><article class="post-card today-card" data-title="USGS: the tremor was a glacial collapse, not an earthquake"><p class="tc-stamp">27 August 2026, 10:00 am NPT</p><div class="post-body"><p class="tc-title">USGS: the tremor was a glacial collapse, not an earthquake</p><div class="post-summary clamped" id="ssr-2026-08-27-cause-usgs-2" data-expand="ssr-2026-08-27-cause-usgs-2"><p>The US Geological Survey first logged a magnitude 4.4 earthquake at 08:37 on Wednesday, minutes before the river rose. It has now revised that analysis.</p><p>Its conclusion is that the signal was a magnitude 5.2 glacial collapse rather than a tectonic earthquake, based on nearby seismic stations, long-period seismic waves and satellite imagery. In other words the tremor was not a separate trigger. It was the collapse itself being recorded.</p><p>Nepal's Department of Hydrology and Meteorology and independent glaciologists, working from satellite imagery shared by Chinese counterparts through ICIMOD, put forward a preliminary explanation: an ice-and-rock avalanche blocked the Lhende Khola, a Bhote Koshi tributary on the border, about 20 km upstream of the Miteri Bridge. That formed a temporary debris-dammed lake, which then burst.</p><p>No government has officially confirmed a cause. This remains a hypothesis, described as preliminary by the people who proposed it.</p><p>Meteorologists have ruled out heavy local rainfall in Rasuwa, while noting that satellite data showed rain on the Tibetan side of the border.</p><p>A broadly similar flood on the same river in July 2025 was ultimately attributed to the drainage of a supraglacial lake. ICIMOD scientists say cascading glacial hazards are increasing at an unprecedented pace across the Hindu Kush Himalaya.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-cause-usgs-2">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" target="_blank" rel="noopener nofollow">UN OCHA / ReliefWeb</a>, <a href="https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" target="_blank" rel="noopener nofollow">ICIMOD</a>, <a href="https://www.france24.com/en/asia-pacific/20260826-glacier-collapse-may-have-caused-nepal-tibet-landslides-experts-say" target="_blank" rel="noopener nofollow">France 24</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-cause-usgs/">Full briefing</a></div></article><article class="post-card today-card" data-title="14 hydropower projects hit and the whole border road destroyed"><p class="tc-stamp">27 August 2026, 9:30 am NPT</p><div class="post-body"><p class="tc-title">14 hydropower projects hit and the whole border road destroyed</p><div class="post-summary clamped" id="ssr-2026-08-27-damage-infra-3" data-expand="ssr-2026-08-27-damage-infra-3"><p>The Nepal Electricity Authority reports 14 hydropower projects damaged with a combined capacity of about 748 megawatts: nine operating plants totalling 354 MW and five under construction totalling 394 MW.</p><p>Named projects include Rasuwagadhi, Chilime, Sanjen Khola, Upper Trishuli-1, Trishuli and Devighat, along with a 220 kV substation. Twelve staff of the Upper Trishuli-3B project are reported out of contact.</p><p>An earlier estimate the same day, from the Ministry of Energy, put the loss at 431 MW. Both figures were published on 27 August, which is a fair measure of how provisional every damage number is right now.</p><p>The Department of Roads confirms the entire 42 km road from Betrawati in Nuwakot to the Rasuwagadhi border crossing has been destroyed at multiple points, including several concrete bridges. A further 16 km stretch nearer the border, recently upgraded with Chinese government financing, was also swept away.</p><p>That road is Nepal's main overland trade and pilgrimage route to Tibet, and it is also the road rescue teams need. Much of the response has had to go by helicopter instead.</p><p>Nine commercial bank branches were swept away with 26 staff unaccounted for, and the Rasuwa customs office at Timure lost contact with 15 employees.</p><p>No government or humanitarian body has yet published a figure for how many people have been displaced. UN OCHA names that as the priority information gap for the coming days.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-damage-infra-3">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" target="_blank" rel="noopener nofollow">UN OCHA / ReliefWeb</a>, <a href="https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" target="_blank" rel="noopener nofollow">The Kathmandu Post</a>, <a href="https://english.onlinekhabar.com/rasuwa-floods-damage.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-damage-infra/">Full briefing</a></div></article><article class="post-card today-card" data-title="Infrastructure damage put at Rs 200 billion, early figure"><p class="tc-stamp">27 August 2026, 9:00 am NPT</p><div class="post-body"><p class="tc-title">Infrastructure damage put at Rs 200 billion, early figure</p><div class="post-summary clamped" id="ssr-2026-08-27-damage-cost-4" data-expand="ssr-2026-08-27-damage-cost-4"><p>Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.</p><p>No full damage assessment exists yet. Rasuwa, Nuwakot, Dhading and Chitwan are still being surveyed, and six hydropower stations are not in that figure.</p><p>The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading.</p><p>Insurers say claims will take weeks to settle because most of the damaged sites cannot be reached by road.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-damage-cost-4">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/rasuwa-floods-damage.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" target="_blank" rel="noopener nofollow">The Kathmandu Post</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-damage-cost/">Full briefing</a></div></article><article class="post-card today-card" data-title="165 confirmed dead in Rasuwa flood, 826 still missing"><p class="tc-stamp">27 August 2026, 8:15 am NPT <span class="rev">updated</span></p><div class="post-body"><p class="tc-title">165 confirmed dead in Rasuwa flood, 826 still missing</p><div class="post-summary clamped" id="ssr-2026-08-27-rasuwa-flood-5" data-expand="ssr-2026-08-27-rasuwa-flood-5"><p>Nepal Police put the toll at 165 dead in its 8:15am bulletin on Thursday. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani. Bodies have been found as far south as Chitwan.</p><p>826 people are still missing. Nepal Police list 579 tourists, 161 Rasuwa residents, 44 Nepali Army, 28 Nepal Police and 13 Armed Police Force. Of the missing foreigners, police say 133 are Indian nationals.</p><p>Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.</p><p>A second flood is still possible. ICIMOD says the debris blocking the river upstream, on the China side, has not cleared. China has moved people out of Gyirong. Nuwakot and Dhading are being watched.</p><p>The likely trigger is an ice and rock avalanche into the Lhende Khola on the Tibet side, which dammed the river and then broke. ICIMOD says this is not confirmed. Sensors picked up small tremors nearby, but no earthquake link is proven.</p><p>Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave. Galchchi is one of the few still working, so a new warning would come with less notice.</p><p>Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-rasuwa-flood-5">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://www.nepalpolice.gov.np/" target="_blank" rel="noopener nofollow">Nepal Police</a>, <a href="https://english.onlinekhabar.com/rasuwa-flood-death-toll-3.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" target="_blank" rel="noopener nofollow">ICIMOD</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-rasuwa-flood/">Full briefing</a></div></article><p class="today-updated">Updated 27 August 2026, 3:20 pm NPT</p><!--/ssr:today-->
       </div>
+      <p><a class="deeplink" href="/updates/">Read every briefing in the archive</a></p>
     </section>
   </div>
 
@@ -1935,7 +2249,7 @@
         </div>
         <div class="card">
           <h3>It happened here before</h3>
-          <p>This valley flooded before, in 2016. Two of the same power stations were damaged again this time, rebuilt in the same risky spot.</p>
+          <p>A broadly similar flood hit this same river in July 2025, traced to a lake draining off the surface of a glacier. Hydropower on this corridor has now been damaged twice in just over a year.</p>
         </div>
       </div>
 
@@ -1951,6 +2265,10 @@
             <tr><td>Devighat</td><td class="num-cell">~460 m</td><td>Furthest downstream site hit. Hydropower station damaged.</td></tr>
           </tbody>
         </table>
+      </div>
+      <div class="deeplinks">
+        <a class="deeplink" href="/nepal-flood/rasuwa/map/">Every point on the flood path, with coordinates</a>
+        <a class="deeplink" href="/nepal-flood/rasuwa/timeline/">When the water reached each place</a>
       </div>
     </section>
   </div>
@@ -2015,6 +2333,11 @@
       <h3 style="margin-top:34px;">Live earthquakes near Nepal</h3>
       <p class="measure" style="color:var(--text-muted); font-size:0.93rem;">Straight from the US Geological Survey, updated automatically. Aftershocks and new quakes in the Nepal region appear here first.</p>
       <div id="quake-feed"><div class="skeleton" style="width:75%"></div><div class="skeleton" style="width:60%"></div></div>
+
+      <div class="deeplinks">
+        <a class="deeplink" href="/nepal-flood/emergency-numbers/">All Nepal emergency numbers, on one page</a>
+        <a class="deeplink" href="/nepal-flood/rasuwa/missing-persons/">How to report a missing person</a>
+      </div>
     </section>
     <section id="help" data-toc="2. How to help">
       <p class="eyebrow" data-i18n="sec.help.eyebrow">Give</p>
@@ -2051,7 +2374,7 @@
           </div>
           <div class="qr-slot">
             <div class="qr-box">
-              <img src="/qr-pmo-nepal.png" alt="Official donation QR code from the Prime Minister's Office of Nepal" style="width:100%; height:100%; object-fit:contain;">
+              <img src="/qr-pmo-nepal.png" alt="Official donation QR code from the Prime Minister's Office of Nepal" width="556" height="472" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain;">
             </div>
             <p class="qr-caption">Official QR, from PMO Nepal directly.</p>
           </div>
@@ -2076,6 +2399,10 @@
         <a href="https://www.nrcs.org/" target="_blank" rel="noopener">Nepal Red Cross Society &#8599;</a>
         <a href="https://www.opmcm.gov.np/" target="_blank" rel="noopener">Office of the Prime Minister &#8599;</a>
         <a href="https://ndrrma.gov.np/" target="_blank" rel="noopener">NDRRMA, national disaster authority &#8599;</a>
+      </div>
+      <div class="deeplinks">
+        <a class="deeplink" href="/nepal-flood/relief/">The relief fund page: accounts, QR and scam checks</a>
+        <a class="deeplink" href="/nepal-flood/rasuwa/damage/">What the flood destroyed</a>
       </div>
     </section>
     <section id="hazards" data-toc="3. Know the hazards">
@@ -2154,6 +2481,9 @@
         <a href="https://www.dhm.gov.np/" target="_blank" rel="noopener">Dept. of Hydrology &amp; Meteorology &#8599;</a>
         <a href="https://seismonepal.gov.np/" target="_blank" rel="noopener">National Seismological Centre &#8599;</a>
       </div>
+      <div class="deeplinks">
+        <a class="deeplink" href="/nepal-disasters/">The full Nepal hazard guide</a>
+      </div>
     </section>
     <section id="sources" data-toc="4. Sources">
       <p class="eyebrow" data-i18n="sec.sources.eyebrow">Sources</p>
@@ -2189,6 +2519,11 @@
           Place links open in Google Maps in a new tab; no Google imagery is copied onto this page.</p>
         </div>
       </div>
+      <div class="deeplinks">
+        <a class="deeplink" href="/sources/">Every source this site reads, in full</a>
+        <a class="deeplink" href="/about/">About this project, and what it will not publish</a>
+        <a class="deeplink" href="/contact/">Report an error</a>
+      </div>
     </section>
   </div>
 
@@ -2204,6 +2539,9 @@
   <button type="button" data-tab="overview" aria-selected="true">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M6 10.2V20h12v-9.8"/></svg>
     <span data-i18n="tab.overview">Now</span></button>
+  <button type="button" data-tab="today" aria-selected="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>
+    <span data-i18n="tab.today">Today</span></button>
   <button type="button" data-tab="live" aria-selected="false">
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2.4"/><path d="M7.8 7.8a5.9 5.9 0 0 0 0 8.4M16.2 16.2a5.9 5.9 0 0 0 0-8.4"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 19.1a10 10 0 0 0 0-14.2"/></svg>
     <span data-i18n="tab.live">Live</span><span class="dotbadge" id="live-dot" hidden></span></button>
@@ -2220,6 +2558,38 @@
 
 <footer>
   <div class="shell">
+    <!-- Plain links to every page on the site. This is how a crawler reaches
+         the deeper pages without executing the tab JavaScript, and how a
+         reader finds them from the bottom of any tab. -->
+    <nav class="sitemap-nav" aria-label="All pages">
+      <h2>Everything on this site</h2>
+      <ul>
+        <li><a href="/nepal-flood/">Floods in Nepal</a></li>
+        <li><a href="/nepal-flood/rasuwa/">Rasuwa flood 2026</a></li>
+        <li><a href="/nepal-flood/rasuwa/live-updates/">Live updates</a></li>
+        <li><a href="/nepal-flood/rasuwa/casualties/">Casualties</a></li>
+        <li><a href="/nepal-flood/rasuwa/missing-persons/">Missing persons</a></li>
+        <li><a href="/nepal-flood/rasuwa/timeline/">Timeline</a></li>
+        <li><a href="/nepal-flood/rasuwa/cause/">What caused it</a></li>
+        <li><a href="/nepal-flood/rasuwa/damage/">Damage</a></li>
+        <li><a href="/nepal-flood/rasuwa/map/">Map of the flood path</a></li>
+        <li><a href="/nepal-flood/emergency-numbers/">Nepal emergency numbers</a></li>
+        <li><a href="/nepal-flood/relief/">Relief and donations</a></li>
+        <li><a href="/nepal-disasters/">Nepal disaster guide</a></li>
+        <li><a href="/updates/">Update archive</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/contact/">Contact and corrections</a></li>
+        <li><a href="/feed.xml">RSS feed</a></li>
+      </ul>
+      <h2 style="margin-top:16px;">नेपालीमा</h2>
+      <ul>
+        <li><a href="/ne/" hreflang="ne" lang="ne">रसुवा बाढी, पूरा विवरण</a></li>
+        <li><a href="/ne/aapatkalin-number/" hreflang="ne" lang="ne">आपतकालीन नम्बर</a></li>
+        <li><a href="/ne/bepatta/" hreflang="ne" lang="ne">बेपत्ता व्यक्ति कसरी जनाउने</a></li>
+        <li><a href="/ne/rahat/" hreflang="ne" lang="ne">राहत र सहयोग</a></li>
+      </ul>
+    </nav>
     <p>An independent volunteer briefing. Not a government site. No ads, no donations taken here: every giving link goes straight to the Government of Nepal's own fund.</p>
     <p>Where this page and an official source disagree, the official source is right. Found something wrong? Write to us and we will fix it.</p>
     <p>Contact: <a href="mailto:hello@nxtimaginelabs.com">hello@nxtimaginelabs.com</a> &middot; More from us: <a href="https://nxtimaginelabs.com" target="_blank" rel="noopener">nxtimaginelabs.com</a></p>
@@ -2316,10 +2686,15 @@ var SITE = {
       'hero.lede': '२०२६ अगस्ट २६ मा तिब्बततर्फबाट भोटेकोशी हुँदै रसुवामा अचानक बाढी आयो। के पुष्टि भयो, के अझै थाहा छैन, र कसलाई फोन गर्ने — यहाँ छ।',
       'hero.updated': 'अपडेट: २६ अगस्ट २०२६, साँझ (नेपाली समय)',
       'hero.reporting': 'स्वतन्त्र स्वयंसेवी ब्रिफिङ, सार्वजनिक स्रोतबाट निर्मित',
+      'hero.cta.live': 'पछिल्ला अपडेट',
+      'hero.cta.map': 'नक्सा हेर्नुहोस्',
+      'hero.cta.call': '१०० मा फोन गर्नुहोस्',
+      'status.label': 'मुख्य समाचार',
+      'status.text': 'रसुवा, नेपालमा सक्रिय आपतकाल',
       'glance.label': 'एक नजरमा',
       'glance.dead': 'पुष्टि भएको मृत्यु',
-      'glance.missing': 'बेपत्ता रिपोर्ट',
-      'glance.power': 'क्षतिग्रस्त विद्युत् आयोजना',
+      'glance.missing': 'नेपालमा बेपत्ता सूचीमा',
+      'glance.power': 'जलविद्युत् आयोजना क्षतिग्रस्त',
       'glance.pop': 'यस जिल्लामा बस्ने जनसंख्या',
       'glance.day': 'बाढी आएको दिनदेखि',
       'glance.econLoss': 'क्षति, प्रारम्भिक अनुमान',
@@ -2356,31 +2731,31 @@ var SITE = {
 
       'sec.what-happened.lede': 'प्रहरी, स्थानीय अधिकारी र समाचार प्रतिवेदनका आधारमा तयार पारिएको। समय अनुमानित हो।',
       'tl.time1': '०८:३७ ने.स.',
-      'tl.text1': 'तिब्बत सीमा नजिकैको लाङटाङमा भूकम्पीय हल्लो महसुस भयो। अनुसन्धानकर्ताहरूका अनुसार यसैले बाढी सुरु गराएको हुनसक्छ।',
+      'tl.text1': 'सीमा नजिकै भूकम्पीय संकेत रेकर्ड भयो। अमेरिकी भूगर्भ सर्वेक्षण (USGS) ले सुरुमा यसलाई ४.४ म्याग्निच्युडको भूकम्प भन्यो, पछि संशोधन गर्‍यो: त्यो ५.२ म्याग्निच्युडको हिउँ खस्ने घटना थियो, भूकम्प होइन।',
       'tl.time2': '~०९:०० ने.स.',
       'tl.text2': 'सीमामा भोटेकोशी नदी अचानक बढ्यो। नजिकै पानी परेको थिएन, त्यसैले सामान्य वर्षा कारण थिएन।',
       'tl.time3': 'बिहान',
       'tl.text3': 'सीमा नजिकका तिमुरे र स्याफ्रुबेसी सबैभन्दा बढी प्रभावित भए। ९ वटा बैंक शाखा बगेर गए। स्थानीय हेलिप्याड नष्ट भयो, जसले हवाई उद्धारमा ढिलाइ गर्‍यो।',
       'tl.time4': 'सोही दिन',
-      'tl.text4': 'बाढी तल बेत्रावती, त्रिशूली बजार, देवीघाटसम्म पुग्यो। ६ वटा विद्युत् आयोजना क्षतिग्रस्त भए।',
+      'tl.text4': 'बाढी तल्लो तटका बस्तीसम्म पुग्यो: बेत्रावती र त्रिशूली बजार, गल्छी र ढुंगे बजार, अनि मुग्लिन हुँदै नारायणीमा। १४ वटा जलविद्युत् आयोजना क्षतिग्रस्त भए।',
       'tl.time5': 'जारी',
       'tl.text5': 'नेपाली सेना, प्रहरी र सशस्त्र प्रहरी हेलिकप्टरबाट बाँचेकाहरूको खोजी गरिरहेका छन्। चीनले पनि आफ्नोतर्फ मृत्यु पुष्टि गरेको छ।',
 
       'dr.dead.label': 'शव फेला परेको',
       'dr.unreach.label': 'सम्पर्कविहीन',
       'dr.injured.label': 'घाइते, उपचाररत',
-      'dr.bridges.label': 'क्षतिग्रस्त पुल',
+      'dr.bridges.label': 'सडक ध्वस्त',
       'dr.rescue.label': 'उद्धार: हवाईबाट · स्थलमार्गबाट',
 
-      'cause.rank1': 'सबैभन्दा सम्भावित',
-      'cause.h1': 'पहाडी खोलामा बरफ र ढुङ्गा खस्यो',
-      'cause.p1': 'प्ल्यानेट ल्याब्सका स्याटेलाइट तस्बिर हेर्ने विशेषज्ञहरूले रसुवागढी नाकाबाट झन्डै २० किमी टाढा लेन्दे खोलामा बरफ र ढुङ्गाको पहिरो फेला पारेका छन्। यसले खोला थुनेको र पछि एकैचोटि फुटेको हुनसक्छ।',
+      'cause.rank1': 'प्रमुख व्याख्या',
+      'cause.h1': 'हिउँ र ढुंगा खोलामा खसेर बाँध बन्यो',
+      'cause.p1': 'नेपालको जलविज्ञान तथा मौसम विज्ञान विभाग र स्वतन्त्र हिमनदी विज्ञहरूले ICIMOD मार्फत प्राप्त उपग्रह तस्बिर हेरेर भनेका छन्: हिउँ र ढुंगाको पहिरोले मितेरी पुलभन्दा करिब २० किलोमिटर माथि ल्हेन्दे खोला थुन्यो। पछाडि अस्थायी ताल बन्यो र फुट्यो। उनीहरू यसलाई प्रारम्भिक अनुमान भन्छन्।',
       'cause.rank2': 'अर्को सम्भावना',
       'cause.h2': 'हिमताल फुट्यो',
       'cause.p2': 'बरफले थुनिएको हिमताल आफैं फुटेको हुनसक्छ। यस्तो पानी नपरी पनि हुन सक्छ, जुन यहाँ भएको कुरासँग मेल खान्छ।',
-      'cause.rank3': 'अस्पष्ट सम्बन्ध',
-      'cause.h3': 'अघि गएको सानो भूकम्प',
-      'cause.p3': 'बाढी आउनुभन्दा केही मिनेट अघि सानो भूकम्प गएको थियो। यसले थुनिएको भाग हल्लाएको हुनसक्छ, वा सम्बन्ध नभएको पनि हुनसक्छ। अझै पुष्टि भएको छैन।',
+      'cause.rank3': 'अस्वीकृत',
+      'cause.h3': 'यो भूकम्प थिएन',
+      'cause.p3': 'अमेरिकी भूगर्भ सर्वेक्षण (USGS) ले पहिले बिहान ८:३७ मा ४.४ म्याग्निच्युडको भूकम्प रेकर्ड गरेको थियो। पछि संशोधन गर्‍यो: त्यो ५.२ म्याग्निच्युडको हिउँ खस्ने घटना थियो, भूकम्प होइन। त्यो हल्लो नै पहिरोको रेकर्ड थियो, छुट्टै कारण होइन।',
       'cause.rank4': 'यहाँ किन सम्भव छ',
       'cause.h4': 'नजिकै हजारौं लुकेका हिम-चट्टान',
       'cause.p4': 'वैज्ञानिकहरूले हालै तिब्बती पठारमा १ लाख ३० हजारभन्दा बढी ढुङ्गा-बरफका संरचनाहरू फेला पारेका छन्, पहिले थाहा भएभन्दा धेरै। यिनले थोरै संकेतमै पानी थुन्न वा छोड्न सक्छन्।',
@@ -2389,11 +2764,11 @@ var SITE = {
 
       'faq.lede': 'मानिसहरूले सबैभन्दा बढी खोजिरहेका कुराहरू, छोटकरीमा जवाफ।',
       'faq.q1': 'रसुवा, नेपालमा के भयो?',
-      'faq.a1': '२०२६ अगस्ट २६ को बिहान तिब्बततर्फको सीमानाबाट भोटेकोशी नदी हुँदै अचानक बाढी रसुवा जिल्लामा आयो। सीमा नजिकका तिमुरे र स्याफ्रुबेसी सबैभन्दा बढी प्रभावित भए, र पानी त्रिशूली नदी हुँदै तल नुवाकोट जिल्लाको देवीघाटसम्म पुग्यो। ६ वटा जलविद्युत् आयोजना क्षतिग्रस्त भए।',
+      'faq.a1': '२०२६ अगस्ट २६ को बिहान तिब्बततर्फको सीमानाबाट भोटेकोशी नदी हुँदै अचानक बाढी रसुवा जिल्लामा आयो। तिमुरे, स्याफ्रुबेसी, रसुवागढी नाका र उत्तरी रसुवाका करिब एक दर्जन नदी किनारका बस्ती सबैभन्दा बढी प्रभावित भए। पानी त्रिशूली हुँदै नारायणीसम्म पुग्यो। नेपाल विद्युत् प्राधिकरणका अनुसार करिब ७४८ मेगावाटका १४ जलविद्युत् आयोजना क्षतिग्रस्त भए।',
       'faq.q2': '२०२६ अगस्टको नेपाल बाढीको कारण के हो?',
-      'faq.a2': 'कुनै सरकारले अझै कारण पुष्टि गरेको छैन। स्याटेलाइट तस्बिर हेर्ने विशेषज्ञहरूका अनुसार सबैभन्दा सम्भावित व्याख्या भनेको तिब्बतभित्रको लेन्दे खोलामा बरफ र ढुङ्गाको ठूलो पिण्ड खसेर खोला थुनिएको र पछि फुटेको हो। हिमताल विस्फोटन र केही मिनेट अघि गएको सानो भूकम्पलाई पनि जाँचिँदैछ। नजिकै पानी परेको थिएन, त्यसैले सामान्य वर्षालाई कारणबाट हटाइएको छ।',
+      'faq.a2': 'कुनै पनि सरकारले कारण पुष्टि गरेको छैन। प्रमुख व्याख्या यो हो: हिउँ र ढुंगाको पहिरोले तिब्बतभित्र मितेरी पुलभन्दा करिब २० किलोमिटर माथि ल्हेन्दे खोला थुन्यो, अस्थायी ताल बन्यो र फुट्यो। यो नेपालको जलविज्ञान तथा मौसम विज्ञान विभाग र स्वतन्त्र हिमनदी विज्ञहरूको प्रारम्भिक अनुमान हो। केही मिनेट अघिको हल्लोलाई USGS ले अहिले ५.२ म्याग्निच्युडको हिउँ खस्ने घटना भनेको छ, भूकम्प होइन। रसुवामा भारी वर्षा भएको थिएन।',
       'faq.q3': 'नेपालका कुन जिल्लाहरू प्रभावित भए?',
-      'faq.a3': 'रसुवा जिल्ला सबैभन्दा बढी प्रभावित भयो, विशेषगरी तिमुरे, स्याफ्रुबेसी र रसुवागढी नाका। त्रिशूली नदी हुँदै तल नुवाकोट जिल्ला पनि प्रभावित भयो, जसमा बेत्रावती, त्रिशूली बजार र देवीघाट पर्छन्। ग्यीरोङ नजिक चीनतर्फ पनि मृत्युहरू पुष्टि भएका छन्।',
+      'faq.a3': 'रसुवा सबैभन्दा बढी प्रभावित भयो, विशेष गरी तिमुरे, स्याफ्रुबेसी र रसुवागढी नाका। त्यसपछि पानी नुवाकोटको बेत्रावती र त्रिशूली बजार, धादिङको गल्छी र ढुंगे बजार हुँदै मुग्लिन पार गरेर नारायणीमा पुग्यो। चितवन, नवलपरासी पूर्व र पश्चिम, गोरखा र तनहुँमा पनि शव फेला परेका छन्। चीनतर्फ ग्याइरोङ नजिक ३ जनाको मृत्यु पुष्टि भएको छ।',
       'faq.q4': 'काठमाडौं प्रभावित भएको छ?',
       'faq.a4': 'काठमाडौं आफैं डुबेको छैन। क्षति राजधानीको उत्तर-पश्चिममा रहेको रसुवा र नुवाकोट जिल्लाका भोटेकोशी र त्रिशूली नदी उपत्यकामा भएको हो। रसुवागढी हुँदै चीनको सीमासम्मको सडक सम्पर्क नराम्रोसँग बाधित भएको छ।',
       'faq.q5': 'नेपालका आपतकालीन नम्बरहरू के के हुन्?',
@@ -2417,6 +2792,280 @@ var SITE = {
       'em.c6.who': 'आपतकालीन कार्य सञ्चालन केन्द्र', 'em.c6.note': 'राष्ट्रिय विपद् हटलाइन, NEOC',
       'em.c7.who': 'नेपाल प्रहरी हेल्पलाइन', 'em.c7.note': 'निःशुल्क सार्वजनिक हेल्पलाइन',
       'em.c8.who': 'पर्यटक प्रहरी', 'em.c8.note': 'पर्यटक र ट्रेकरहरूका लागि मद्दत'
+    },
+    hi: {
+      'tab.overview': 'अभी',
+      'tab.today': 'आज',
+      'sec.today.eyebrow': 'आज',
+      'sec.today.h2': 'आज की खबर',
+      'sec.today.lede': 'दिन की हर खबर, छोटी और जाँची हुई। दिन भर नई खबरें जुड़ती रहती हैं। पूरा पढ़ने के लिए कार्ड पर टैप करें।',
+      'sec.today.home': 'दिन की हर खबर, छोटी और जाँची हुई। पूरा पढ़ने के लिए कार्ड पर टैप करें।',
+      'tab.feed': 'फ़ीड',
+      'tab.map': 'नक्शा',
+      'tab.live': 'लाइव',
+      'tab.media': 'तस्वीरें',
+      'tab.video': 'देखें',
+      'tab.hazards': 'आपदाएँ',
+      'tab.emergency': 'आपातकाल',
+      'tab.help': 'मदद',
+      'tab.sources': 'स्रोत',
+      'brand.name': 'नेपाल आपदा अपडेट',
+      'brand.tag': 'रसुवा बाढ़, लाइव',
+      'brand.liveTag': 'लाइव कवरेज',
+      'search.trigger': 'इस पेज में खोजें',
+      'settings.language': 'भाषा',
+      'settings.appearance': 'रंग-रूप',
+      'settings.alerts': 'सूचनाएँ',
+      'settings.showMajorUpdate': 'बड़ी खबर दिखाएँ',
+      'settings.popupOnArrival': 'आते ही पॉपअप दिखाएँ',
+      'hero.eyebrow': 'रसुवा, नेपाल · अचानक आई बाढ़',
+      'hero.h1': 'रसुवा बाढ़, लाइव',
+      'hero.lede': '26 अगस्त 2026 को तिब्बत की ओर से भोटेकोशी नदी में अचानक बाढ़ आई और रसुवा तक पहुँची। क्या पक्का है, क्या अब तक पता नहीं, और किसे फ़ोन करना है — सब यहाँ।',
+      'hero.updated': 'अपडेट: 26 अगस्त 2026, शाम (नेपाल समय)',
+      'hero.reporting': 'स्वतंत्र स्वयंसेवी ब्रीफ़िंग, सार्वजनिक स्रोतों से बनी',
+      'hero.cta.live': 'ताज़ा अपडेट',
+      'hero.cta.map': 'नक्शा देखें',
+      'hero.cta.call': '100 पर फ़ोन करें',
+      'status.label': 'बड़ी खबर',
+      'status.text': 'रसुवा, नेपाल में चालू आपातकाल',
+      'glance.label': 'एक नज़र में',
+      'glance.dead': 'पुष्ट मौतें',
+      'glance.missing': 'नेपाल में लापता सूची में',
+      'glance.power': 'जलविद्युत परियोजनाएँ क्षतिग्रस्त',
+      'glance.pop': 'प्रभावित ज़िले की आबादी',
+      'glance.day': 'बाढ़ को हुए दिन',
+      'glance.econLoss': 'नुकसान, शुरुआती अनुमान',
+      'glance.relief': 'जारी की गई राहत राशि',
+      'sec.what-happened.eyebrow': '01. समयक्रम',
+      'sec.what-happened.h2': 'क्या हुआ था',
+      'sec.cause.eyebrow': '02. कारण',
+      'sec.cause.h2': 'इसकी वजह क्या रही होगी',
+      'sec.numbers.eyebrow': '03. आँकड़ों में',
+      'sec.numbers.h2': 'पुष्ट मौतें, देश के अनुसार',
+      'sec.damage.h2': 'नुकसान और बचाव, आधिकारिक आँकड़े',
+      'sec.faq.eyebrow': '04. सवाल',
+      'sec.faq.h2': 'नेपाल बाढ़ पर आम सवाल',
+      'sec.feed.eyebrow': 'लाइव',
+      'sec.feed.h2': 'ताज़ा अपडेट',
+      'sec.map.eyebrow': 'नक्शा',
+      'sec.map.h2': 'पानी का रास्ता, कदम दर कदम',
+      'sec.live.eyebrow': 'आधिकारिक',
+      'sec.live.h2': 'आधिकारिक रिकॉर्ड और बुलेटिन',
+      'sec.media.eyebrow': 'मौके से',
+      'sec.media.h2': 'तस्वीरें',
+      'sec.hazards.eyebrow': 'जानें',
+      'sec.hazards.h2': 'नेपाल की प्राकृतिक आपदाएँ, आसान भाषा में',
+      'sec.emergency.eyebrow': 'आपातकाल',
+      'sec.emergency.h2': 'नेपाल में किसे फ़ोन करें',
+      'sec.help.eyebrow': 'दें',
+      'sec.help.h2': 'असल में मदद कैसे करें',
+      'sec.sources.eyebrow': 'स्रोत',
+      'sec.sources.h2': 'यहाँ का हर तथ्य कहाँ से आया है',
+      'btn.openLive': 'लाइव अपडेट खोलें',
+      'btn.seeMap': 'नक्शा देखें',
+      'btn.close': 'बंद करें',
+      'btn.refresh': 'ताज़ा करें',
+
+      'sec.what-happened.lede': 'पुलिस, स्थानीय अधिकारियों और समाचार रिपोर्टों से जोड़कर बनाया गया। समय अनुमानित है।',
+      'tl.time1': '08:37 नेपाल समय',
+      'tl.text1': 'सीमा के पास भूकंपीय संकेत दर्ज हुआ। अमेरिकी भूवैज्ञानिक सर्वेक्षण (USGS) ने पहले इसे 4.4 तीव्रता का भूकंप बताया, फिर संशोधित किया: वह 5.2 तीव्रता का हिमस्खलन था, भूकंप नहीं।',
+      'tl.time2': '~09:00 नेपाल समय',
+      'tl.text2': 'सीमा पर भोटेकोशी नदी अचानक चढ़ गई। आसपास बारिश नहीं हो रही थी, इसलिए सामान्य बारिश वजह नहीं थी।',
+      'tl.time3': 'सुबह',
+      'tl.text3': 'सीमा के दो कस्बे तिमुरे और स्याफ्रुबेसी सबसे ज़्यादा प्रभावित हुए। नौ बैंक शाखाएँ बह गईं। स्थानीय हेलीपैड नष्ट हो गया, जिससे हवाई बचाव में देरी हुई।',
+      'tl.time4': 'उसी दिन',
+      'tl.text4': 'बाढ़ नीचे की बस्तियों तक पहुँची: बेत्रावती और त्रिशूली बाज़ार, गल्छी और ढुंगे बाज़ार, फिर मुग्लिन होते हुए नारायणी में। 14 जलविद्युत परियोजनाएँ क्षतिग्रस्त हुईं।',
+      'tl.time5': 'जारी',
+      'tl.text5': 'नेपाली सेना, पुलिस और सशस्त्र पुलिस हेलीकॉप्टर से बचे लोगों की तलाश कर रहे हैं। चीन ने भी अपनी ओर मौतों की पुष्टि की है।',
+
+      'dr.dead.label': 'शव मिले',
+      'dr.unreach.label': 'संपर्क टूटा',
+      'dr.injured.label': 'घायल, इलाज में',
+      'dr.bridges.label': 'सड़क नष्ट',
+      'dr.rescue.label': 'बचाव: हवाई · ज़मीनी',
+
+      'cause.rank1': 'मुख्य व्याख्या',
+      'cause.h1': 'बर्फ़ और चट्टान नदी में गिरकर बाँध बन गया',
+      'cause.p1': 'नेपाल के जल विज्ञान एवं मौसम विज्ञान विभाग और स्वतंत्र हिमनद वैज्ञानिकों ने ICIMOD के ज़रिये मिली उपग्रह तस्वीरों से कहा है: बर्फ़ और चट्टान के भूस्खलन ने मितेरी पुल से लगभग 20 किमी ऊपर ल्हेन्दे खोला को रोक दिया। पीछे अस्थायी झील बनी और फिर फूट गई। वे इसे प्रारंभिक अनुमान बताते हैं।',
+      'cause.rank2': 'दूसरी संभावना',
+      'cause.h2': 'हिमनद झील फटी',
+      'cause.p2': 'बर्फ़ से रुकी एक हिमनद झील अपने आप फट सकती है। ऐसा बिना बारिश के भी होता है, जो यहाँ की स्थिति से मेल खाता है।',
+      'cause.rank3': 'खारिज',
+      'cause.h3': 'यह भूकंप नहीं था',
+      'cause.p3': 'USGS ने पहले सुबह 8:37 पर 4.4 तीव्रता का भूकंप दर्ज किया था। बाद में उसने संशोधन किया: वह संकेत 5.2 तीव्रता का हिमस्खलन था, विवर्तनिक भूकंप नहीं। वह कंपन भूस्खलन का ही रिकॉर्ड था, कोई अलग कारण नहीं।',
+      'cause.rank4': 'यहाँ यह क्यों मुमकिन है',
+      'cause.h4': 'पास में हज़ारों छिपे बर्फ़-चट्टान ढेर',
+      'cause.p4': 'वैज्ञानिकों ने हाल ही में तिब्बती पठार पर 1,30,000 से ज़्यादा चट्टान-बर्फ़ संरचनाएँ पाई हैं, जितनी पहले पता थीं उससे कहीं ज़्यादा। ये थोड़े से संकेत पर पानी रोक भी सकती हैं और छोड़ भी सकती हैं।',
+      'cause.lede.strong': 'किसी सरकार ने अब तक कारण की पुष्टि नहीं की है।',
+      'cause.lede.rest': 'अब तक की विशेषज्ञ समीक्षा के आधार पर सबसे संभावित से कम संभावित तक क्रम में। अधिकारियों को और पता चलने पर इसे सुधारा जाएगा।',
+
+      'faq.lede': 'लोग जो सबसे ज़्यादा खोज रहे हैं, संक्षेप में जवाब।',
+      'faq.q1': 'रसुवा, नेपाल में क्या हुआ?',
+      'faq.a1': '26 अगस्त 2026 की सुबह तिब्बत की ओर से भोटेकोशी नदी में अचानक बाढ़ आई और रसुवा ज़िले में घुसी। तिमुरे, स्याफ्रुबेसी, रसुवागढी सीमा चौकी और उत्तरी रसुवा की करीब एक दर्जन नदी किनारे की बस्तियाँ सबसे ज़्यादा प्रभावित हुईं। पानी त्रिशूली होते हुए नारायणी तक पहुँचा। नेपाल विद्युत प्राधिकरण के अनुसार लगभग 748 मेगावाट की 14 जलविद्युत परियोजनाएँ क्षतिग्रस्त हुईं।',
+      'faq.q2': 'अगस्त 2026 की नेपाल बाढ़ का कारण क्या है?',
+      'faq.a2': 'किसी सरकार ने कारण की पुष्टि नहीं की है। मुख्य व्याख्या यह है: बर्फ़ और चट्टान के भूस्खलन ने तिब्बत के भीतर मितेरी पुल से करीब 20 किमी ऊपर ल्हेन्दे खोला को रोका, अस्थायी झील बनी और फूट गई। यह नेपाल के जल विज्ञान एवं मौसम विज्ञान विभाग और स्वतंत्र हिमनद वैज्ञानिकों का प्रारंभिक अनुमान है। कुछ मिनट पहले के कंपन को USGS अब 5.2 तीव्रता का हिमस्खलन बताता है, भूकंप नहीं। रसुवा में भारी वर्षा नहीं हुई थी।',
+      'faq.q3': 'नेपाल के कौन से ज़िले प्रभावित हुए?',
+      'faq.a3': 'रसुवा सबसे ज़्यादा प्रभावित हुआ, ख़ासकर तिमुरे, स्याफ्रुबेसी और रसुवागढी सीमा चौकी। फिर पानी नुवाकोट के बेत्रावती और त्रिशूली बाज़ार, धादिङ के गल्छी और ढुंगे बाज़ार होते हुए मुग्लिन पार कर नारायणी में पहुँचा। चितवन, नवलपरासी पूर्व और पश्चिम, गोरखा और तनहुँ में भी शव मिले हैं। चीन की ओर ग्याइरोङ के पास 3 मौतों की पुष्टि हुई है।',
+      'faq.q4': 'क्या काठमांडू प्रभावित है?',
+      'faq.a4': 'काठमांडू खुद नहीं डूबा। नुकसान राजधानी के उत्तर-पश्चिम में रसुवा और नुवाकोट ज़िलों की भोटेकोशी और त्रिशूली नदी घाटियों में हुआ है। रसुवागढ़ी होकर चीन की सीमा तक सड़क संपर्क बुरी तरह टूटा है।',
+      'faq.q5': 'नेपाल के आपातकालीन नंबर क्या हैं?',
+      'faq.a5a': 'नेपाल पुलिस 100, एम्बुलेंस 102, दमकल 101, ट्रैफ़िक पुलिस 103, और किसी भी मोबाइल से 112। राष्ट्रीय आपातकालीन संचालन केंद्र की आपदा हॉटलाइन 1149 है, नेपाल पुलिस की निःशुल्क हेल्पलाइन 1155, और पर्यटक पुलिस 1144। ये सभी ',
+      'faq.a5b': ' टैब पर एक टैप में डायल हो जाते हैं।',
+      'faq.q6': 'नेपाल बाढ़ राहत में दान कैसे करें?',
+      'faq.a6a': 'नेपाल सरकार का अपना माध्यम प्रधानमंत्री प्राकृतिक आपदा राहत कोष है, जिसे प्रधानमंत्री कार्यालय चलाता है। बैंक खाते का विवरण और आधिकारिक QR कोड ',
+      'faq.a6b': ' टैब पर है। किसी भी आपदा के कुछ ही घंटों में आने वाली नकली अपीलों से सावधान रहें।',
+      'faq.q7': 'क्या अभी लांगटांग या स्याफ्रुबेसी जाना सुरक्षित है?',
+      'faq.a7': 'स्याफ्रुबेसी लांगटांग ट्रेक का मुख्य द्वार है और सीधे प्रभावित हुआ है, इसका हेलीपैड भी चला गया। नदी घाटी की सड़कें क्षतिग्रस्त हैं। जाने से पहले नेपाल पुलिस, पर्यटक पुलिस 1144, और अपने ट्रेकिंग ऑपरेटर से बात करें।',
+
+      'em.lede.a': 'नीचे किसी भी नंबर पर टैप करके फ़ोन करें। ये राष्ट्रीय नंबर हैं और नेपाल के किसी भी फ़ोन से काम करते हैं। मोबाइल से ',
+      'em.lede.b': ' भी आपातकालीन सेवाओं तक पहुँचाता है।',
+      'em.banner.strong': 'अगर कोई अभी सीधे खतरे में है, तो 100 (पुलिस) या मोबाइल से 112 पर फ़ोन करें।',
+      'em.banner.rest': 'इस पेज के बाकी हिस्से के लोड होने का इंतज़ार न करें।',
+      'em.c1.who': 'नेपाल पुलिस', 'em.c1.note': 'सामान्य आपातकाल, बचाव, लापता लोग',
+      'em.c2.who': 'आपातकाल, मोबाइल से', 'em.c2.note': 'जब सही नंबर याद न आए तब भी काम करता है',
+      'em.c3.who': 'एम्बुलेंस', 'em.c3.note': 'चिकित्सा आपातकाल और परिवहन',
+      'em.c4.who': 'दमकल', 'em.c4.note': 'आग और बचाव',
+      'em.c5.who': 'ट्रैफ़िक पुलिस', 'em.c5.note': 'सड़क अवरोध, राजमार्ग दुर्घटनाएँ',
+      'em.c6.who': 'आपातकालीन संचालन केंद्र', 'em.c6.note': 'राष्ट्रीय आपदा हॉटलाइन, NEOC',
+      'em.c7.who': 'नेपाल पुलिस हेल्पलाइन', 'em.c7.note': 'निःशुल्क सार्वजनिक हेल्पलाइन',
+      'em.c8.who': 'पर्यटक पुलिस', 'em.c8.note': 'यात्रियों और ट्रेकरों के लिए मदद'
+    },
+    zh: {
+      'tab.overview': '现在',
+      'tab.today': '今日',
+      'sec.today.eyebrow': '今日',
+      'sec.today.h2': '今日要闻',
+      'sec.today.lede': '当天每条消息，简短且经过核实。新消息全天陆续更新。点击卡片阅读全文。',
+      'sec.today.home': '当天每条消息，简短且经过核实。点击卡片阅读全文。',
+      'tab.feed': '动态',
+      'tab.map': '地图',
+      'tab.live': '直播',
+      'tab.media': '图片',
+      'tab.video': '视频',
+      'tab.hazards': '灾害知识',
+      'tab.emergency': '急救电话',
+      'tab.help': '援助',
+      'tab.sources': '来源',
+      'brand.name': '尼泊尔灾情快报',
+      'brand.tag': '拉苏瓦洪水，直播',
+      'brand.liveTag': '实时报道',
+      'search.trigger': '搜索本页内容',
+      'settings.language': '语言',
+      'settings.appearance': '外观',
+      'settings.alerts': '提醒',
+      'settings.showMajorUpdate': '显示重大新闻',
+      'settings.popupOnArrival': '进入时弹出提示',
+      'hero.eyebrow': '尼泊尔拉苏瓦 · 山洪暴发',
+      'hero.h1': '拉苏瓦洪水，实时',
+      'hero.lede': '2026年8月26日，山洪自西藏一侧沿波特科西河冲入尼泊尔拉苏瓦县。已确认的情况、尚不清楚的部分，以及该打哪些电话，都在这里。',
+      'hero.updated': '更新：2026年8月26日傍晚（尼泊尔时间）',
+      'hero.reporting': '独立志愿简报，全部取自公开来源',
+      'hero.cta.live': '最新动态',
+      'hero.cta.map': '查看地图',
+      'hero.cta.call': '拨打 100',
+      'status.label': '重大新闻',
+      'status.text': '尼泊尔拉苏瓦，紧急状态持续中',
+      'glance.label': '一览',
+      'glance.dead': '确认死亡',
+      'glance.missing': '在尼泊尔失联名单上',
+      'glance.power': '水电项目受损',
+      'glance.pop': '受灾县人口',
+      'glance.day': '洪水发生至今',
+      'glance.econLoss': '损失，初步估计',
+      'glance.relief': '已拨救灾款',
+      'sec.what-happened.eyebrow': '01. 时间线',
+      'sec.what-happened.h2': '发生了什么',
+      'sec.cause.eyebrow': '02. 成因',
+      'sec.cause.h2': '可能的成因',
+      'sec.numbers.eyebrow': '03. 数字',
+      'sec.numbers.h2': '确认死亡人数，按国家',
+      'sec.damage.h2': '损失与救援，官方数字',
+      'sec.faq.eyebrow': '04. 问答',
+      'sec.faq.h2': '关于尼泊尔洪水的常见问题',
+      'sec.feed.eyebrow': '实时',
+      'sec.feed.h2': '最新动态',
+      'sec.map.eyebrow': '地图',
+      'sec.map.h2': '追踪水流，逐段查看',
+      'sec.live.eyebrow': '官方',
+      'sec.live.h2': '官方记录与通报',
+      'sec.media.eyebrow': '现场',
+      'sec.media.h2': '图片',
+      'sec.hazards.eyebrow': '了解',
+      'sec.hazards.h2': '尼泊尔的自然灾害，简单说明',
+      'sec.emergency.eyebrow': '紧急',
+      'sec.emergency.h2': '在尼泊尔该打的电话',
+      'sec.help.eyebrow': '捐助',
+      'sec.help.h2': '如何真正帮上忙',
+      'sec.sources.eyebrow': '来源',
+      'sec.sources.h2': '本页每条事实的出处',
+      'btn.openLive': '查看实时更新',
+      'btn.seeMap': '查看地图',
+      'btn.close': '关闭',
+      'btn.refresh': '刷新',
+
+      'sec.what-happened.lede': '根据警方、地方官员和新闻报道整理。时间为大致时间。',
+      'tl.time1': '08:37 尼泊尔时间',
+      'tl.text1': '边境附近记录到地震信号。美国地质调查局最初判定为4.4级地震，随后修正：该信号实为5.2级冰体崩塌，并非构造地震。',
+      'tl.time2': '约 09:00 尼泊尔时间',
+      'tl.text2': '边境处波特科西河水位骤然上涨。附近并未下雨，因此普通降雨不是成因。',
+      'tl.time3': '上午',
+      'tl.text3': '边境城镇提木雷和夏布如贝西受灾最重。九家银行网点被冲毁。当地直升机坪损毁，空中救援因此延误。',
+      'tl.time4': '当天',
+      'tl.text4': '洪水抵达下游城镇：贝特拉瓦蒂、特里苏里集市、加尔奇和东格集市，随后经穆格林进入纳拉亚尼河。14座水电项目受损。',
+      'tl.time5': '进行中',
+      'tl.text5': '尼泊尔陆军、警察和武装警察正乘直升机搜救幸存者。中国也已确认本国一侧有人遇难。',
+
+      'dr.dead.label': '已寻回遗体',
+      'dr.unreach.label': '失联',
+      'dr.injured.label': '受伤，治疗中',
+      'dr.bridges.label': '道路损毁',
+      'dr.rescue.label': '获救：空中 · 地面',
+
+      'cause.rank1': '主要解释',
+      'cause.h1': '冰岩崩落堵塞了山间河流',
+      'cause.p1': '尼泊尔水文气象局与独立冰川学家依据经ICIMOD共享的卫星影像指出：冰岩崩塌在米特里桥上游约20公里处堵塞了勒恩德河，形成临时堰塞湖，随后溃决。他们称这仍是初步判断。',
+      'cause.rank2': '另一种可能',
+      'cause.h2': '冰湖溃决',
+      'cause.p2': '被冰体拦住的冰湖可能自行溃决。这种情况无需降雨即可发生，与此次的情形吻合。',
+      'cause.rank3': '已排除',
+      'cause.h3': '这不是地震',
+      'cause.p3': '美国地质调查局最初记录到上午8时37分发生4.4级地震，就在洪水前几分钟。此后它修正了判断：该信号是5.2级冰体崩塌，而非构造地震。那次震动记录的就是崩塌本身，并非另一个诱因。',
+      'cause.rank4': '此地为何可能发生',
+      'cause.h4': '附近数以千计的隐蔽冰岩体',
+      'cause.p4': '科学家最近在青藏高原发现超过13万处岩冰构造，远多于此前所知。它们可能在很小的扰动下蓄水或放水。',
+      'cause.lede.strong': '目前尚无任何政府确认成因。',
+      'cause.lede.rest': '依据现有专家分析，从最可能到较不可能排列。官方掌握更多信息后本页将更正。',
+
+      'faq.lede': '大家搜索最多的问题，简短作答。',
+      'faq.q1': '尼泊尔拉苏瓦发生了什么？',
+      'faq.a1': '2026年8月26日上午，洪水从西藏一侧沿波特科西河冲入尼泊尔拉苏瓦县。蒂穆雷、夏布鲁贝西、拉苏瓦加迪口岸以及北拉苏瓦约十余个河岸村落受创最重，洪水随后沿特里苏里河进入纳拉亚尼河。尼泊尔电力局报告14座水电项目受损，约748兆瓦。',
+      'faq.q2': '2026年8月尼泊尔洪水的成因是什么？',
+      'faq.a2': '尚无政府确认成因。主要解释是：冰岩崩塌在西藏境内米特里桥上游约20公里处堵塞勒恩德河，形成临时堰塞湖后溃决。这是尼泊尔水文气象局与独立冰川学家依据经ICIMOD共享的卫星影像作出的初步判断。美国地质调查局已将数分钟前记录到的震动重新判定为5.2级冰体崩塌，而非地震。拉苏瓦当地的强降雨已被排除。',
+      'faq.q3': '尼泊尔哪些县受灾？',
+      'faq.a3': '拉苏瓦受灾最重，尤其是蒂穆雷、夏布鲁贝西和拉苏瓦加迪口岸。洪水随后流经努瓦阔特的贝特拉瓦蒂与特里苏里集市、达丁的加尔奇与东格集市，经穆格林进入纳拉亚尼河。奇特旺、纳瓦尔帕拉西东县与西县、廓尔喀和塔纳胡也发现遇难者遗体。中国一侧吉隆附近确认3人死亡。',
+      'faq.q4': '加德满都受影响吗？',
+      'faq.a4': '加德满都本身没有被淹。灾情集中在首都西北方向拉苏瓦和努瓦科特两县的波特科西河与特里苏利河谷。经拉苏瓦加迪通往中国边境的公路交通严重中断。',
+      'faq.q5': '尼泊尔的紧急电话是多少？',
+      'faq.a5a': '尼泊尔警察 100，救护车 102，消防 101，交警 103，任何手机可拨 112。国家应急行动中心灾害热线为 1149，尼泊尔警察免费热线 1155，旅游警察 1144。以上号码都可在 ',
+      'faq.a5b': ' 标签页一键拨出。',
+      'faq.q6': '如何向尼泊尔洪灾救援捐款？',
+      'faq.a6a': '尼泊尔政府自有的渠道是由总理办公室管理的总理自然灾害救助基金。银行账户信息和官方二维码在 ',
+      'faq.a6b': ' 标签页。请警惕灾后数小时内就会出现的虚假募捐。',
+      'faq.q7': '现在去朗塘或夏布如贝西安全吗？',
+      'faq.a7': '夏布如贝西是朗塘徒步路线的主要门户，此次直接受灾，连直升机坪都已损毁。河谷沿线道路受损。出发前请咨询尼泊尔警察、旅游警察 1144，以及你的徒步旅行社。',
+
+      'em.lede.a': '点击下方任一号码即可拨出。这些是全国通用号码，尼泊尔境内任何电话均可拨打。用手机拨 ',
+      'em.lede.b': ' 同样可以接通紧急服务。',
+      'em.banner.strong': '如果有人此刻正处于危险中，请拨 100（警察），手机可拨 112。',
+      'em.banner.rest': '不要等本页其余内容加载完毕。',
+      'em.c1.who': '尼泊尔警察', 'em.c1.note': '一般紧急情况、救援、失踪人员',
+      'em.c2.who': '紧急，手机拨打', 'em.c2.note': '想不起正确号码时也能用',
+      'em.c3.who': '救护车', 'em.c3.note': '医疗急救与转运',
+      'em.c4.who': '消防', 'em.c4.note': '火灾与救援',
+      'em.c5.who': '交通警察', 'em.c5.note': '道路阻断、公路事故',
+      'em.c6.who': '国家应急行动中心', 'em.c6.note': '全国灾害热线，NEOC',
+      'em.c7.who': '尼泊尔警察热线', 'em.c7.note': '免费公共热线',
+      'em.c8.who': '旅游警察', 'em.c8.note': '为游客和徒步者提供帮助'
     }
   };
 
@@ -2427,8 +3076,12 @@ var SITE = {
 
   try { lang = localStorage.getItem('site-lang') || 'en'; } catch(e){}
 
+  var LANG_CODES = { en:'EN', ne:'ने', hi:'हि', zh:'中' };
+
   function apply(){
-    document.documentElement.lang = lang === 'ne' ? 'ne' : 'en';
+    document.documentElement.lang = DICT[lang] ? lang : 'en';
+    var code = document.getElementById('lang-code');
+    if(code) code.textContent = LANG_CODES[lang] || 'EN';
     nodes.forEach(function(n, i){
       var key = n.getAttribute('data-i18n');
       n.textContent = (lang !== 'en' && DICT[lang] && DICT[lang][key]) || originals[i];
@@ -2443,6 +3096,9 @@ var SITE = {
       lang = b.getAttribute('data-lang-choice');
       try { localStorage.setItem('site-lang', lang); } catch(e){}
       apply();
+      var pop = document.getElementById('lang-pop');
+      var trigger = document.getElementById('lang-btn');
+      if(pop && !pop.hidden){ pop.hidden = true; if(trigger) trigger.setAttribute('aria-expanded','false'); }
     });
   });
   apply();
@@ -2454,7 +3110,8 @@ var SITE = {
 (function(){
   var pairs = [
     { btn: document.getElementById('search-btn'),   pop: document.getElementById('search-pop') },
-    { btn: document.getElementById('settings-btn'), pop: document.getElementById('settings-pop') }
+    { btn: document.getElementById('settings-btn'), pop: document.getElementById('settings-pop') },
+    { btn: document.getElementById('lang-btn'),     pop: document.getElementById('lang-pop') }
   ];
 
   function closeAll(except){
@@ -4700,6 +5357,17 @@ var LiveFeed = (function(){
     return (same ? 'Today' : fmtUpdated(iso).split(',')[0]) + ', ' + t + ' NPT';
   }
 
+  /* Same slug rule as src/build.mjs: the Nepal-time day, then the post id. */
+  function permalink(post){
+    if(!post || !post.time) return '';
+    var d = new Date(post.time);
+    if(isNaN(d.getTime())) return '';
+    var npt = new Date(d.getTime() + (345 + d.getTimezoneOffset()) * 60000);
+    var day = npt.getFullYear() + '-' + String(npt.getMonth() + 1).padStart(2, '0') + '-' + String(npt.getDate()).padStart(2, '0');
+    var slug = String(post.id || post.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70);
+    return slug ? '/updates/' + day + '-' + slug + '/' : '';
+  }
+
   function card(post, i){
     var uid = 'today-' + (post.id ? String(post.id).replace(/[^\w-]/g, '') : i) + '-' + i;
     var paras = Array.isArray(post.body) ? post.body : (post.body ? [post.body] : []);
@@ -4726,6 +5394,11 @@ var LiveFeed = (function(){
           (srcHtml ? '<div class="tc-sources"><b>Sources:</b> ' + srcHtml + '</div>' : '') +
         '</div>' +
         '<div class="post-foot">' +
+          (permalink(post)
+            ? '<a class="post-btn" href="' + esc(permalink(post)) + '">' +
+              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h16M4 19h10"></path></svg>Full briefing' +
+            '</a>'
+            : '') +
           '<button class="post-btn" type="button" data-share="1">' +
             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"></line></svg>Share' +
           '</button>' +
@@ -4760,7 +5433,10 @@ var LiveFeed = (function(){
     .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(render)
     .catch(function(){
+      /* The briefings are already in the HTML this page was served with, so a
+         failed refresh must not wipe them. Only an empty grid gets the notice. */
       grids.forEach(function(g){
+        if(g.getAttribute('data-ssr') === '1' && g.textContent.trim()) return;
         g.innerHTML = '<p style="font-size:0.92rem; color:var(--text-muted);">Today&rsquo;s posts are not up yet. See the <a href="#live" data-tab-link="live">Live</a> tab.</p>';
       });
     });

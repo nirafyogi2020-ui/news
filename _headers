@@ -1,0 +1,35 @@
+# Cloudflare Pages response headers.
+# No Content-Security-Policy is set here: the page legitimately loads map tiles
+# from Esri/OpenTopoMap/OpenStreetMap, fonts from Google, Leaflet from unpkg and
+# video from YouTube, and a mistake in that list breaks the map or the player
+# during an emergency. Everything below is safe to apply unconditionally.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000
+
+# Stylesheet has no content hash in its name, so it is revalidated hourly and
+# served stale while that happens rather than blocking a page load.
+/assets/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/favicon.svg
+  Cache-Control: public, max-age=86400
+
+/og-image.png
+  Cache-Control: public, max-age=86400
+
+/qr-pmo-nepal.png
+  Cache-Control: public, max-age=86400
+
+# Data files the dashboard fetches. Short cache: these carry casualty figures.
+/event.json
+  Cache-Control: public, max-age=60, stale-while-revalidate=300
+  Access-Control-Allow-Origin: *
+
+/today.json
+  Cache-Control: public, max-age=60, stale-while-revalidate=300
+  Access-Control-Allow-Origin: *

@@ -1,0 +1,71 @@
+{
+  "updated": "2026-08-27T15:20:00+05:45",
+  "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
+  "updates": [
+    {
+      "url": "/updates/2026-08-27-toll-289/",
+      "title": "289 confirmed dead in the Rasuwa flood as searches reach cut-off areas",
+      "time": "2026-08-27T14:30:00+05:45",
+      "summary": "Nepal Police put the confirmed toll at 289 in their 2:30pm bulletin on Thursday. It was 270 at 1:30pm and 165 that morning. The jumps are search teams reaching settlements that had been cut off since Wednesday, not new casualties happening.",
+      "sources": [
+        "Nepal Police",
+        "UN OCHA / ReliefWeb",
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-27-barrier-lake/",
+      "title": "China reports a new lake forming upstream and warns it could break",
+      "time": "2026-08-27T11:00:00+05:45",
+      "summary": "China's Ministry of Water Resources says a barrier lake, meaning a river blocked by debris into an artificial lake, has formed near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border.",
+      "sources": [
+        "Onlinekhabar (Global Times)",
+        "Khabarhub",
+        "Setopati"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-27-cause-usgs/",
+      "title": "USGS: the tremor was a glacial collapse, not an earthquake",
+      "time": "2026-08-27T10:00:00+05:45",
+      "summary": "The US Geological Survey first logged a magnitude 4.4 earthquake at 08:37 on Wednesday, minutes before the river rose. It has now revised that analysis.",
+      "sources": [
+        "UN OCHA / ReliefWeb",
+        "ICIMOD",
+        "France 24"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-27-damage-infra/",
+      "title": "14 hydropower projects hit and the whole border road destroyed",
+      "time": "2026-08-27T09:30:00+05:45",
+      "summary": "The Nepal Electricity Authority reports 14 hydropower projects damaged with a combined capacity of about 748 megawatts: nine operating plants totalling 354 MW and five under construction totalling 394 MW.",
+      "sources": [
+        "UN OCHA / ReliefWeb",
+        "The Kathmandu Post",
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-27-damage-cost/",
+      "title": "Infrastructure damage put at Rs 200 billion, early figure",
+      "time": "2026-08-27T09:00:00+05:45",
+      "summary": "Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.",
+      "sources": [
+        "Onlinekhabar",
+        "The Kathmandu Post"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-27-rasuwa-flood/",
+      "title": "165 confirmed dead in Rasuwa flood, 826 still missing",
+      "time": "2026-08-27T08:15:00+05:45",
+      "summary": "Nepal Police put the toll at 165 dead in its 8:15am bulletin on Thursday. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani. Bodies have been found as far south as Chitwan.",
+      "sources": [
+        "Nepal Police",
+        "Onlinekhabar",
+        "ICIMOD"
+      ]
+    }
+  ]
+}
