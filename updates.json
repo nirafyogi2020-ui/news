@@ -1,7 +1,31 @@
 {
-  "updated": "2026-08-28T04:00:00+05:45",
+  "updated": "2026-08-28T05:10:00+05:45",
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-08-28-australia-missing-aid/",
+      "title": "Australia raises its missing count to 39, pledges $5m in aid",
+      "time": "2026-08-28T02:30:00+05:45",
+      "summary": "Australian Foreign Minister Penny Wong said on Friday that 39 Australians are now unaccounted for in the flood, up from the 35 that Nepal's tourism board had listed a day earlier. She said the number could still rise as officials work through the list, and warned some of those missing may not be fou",
+      "sources": [
+        "ABC News Australia",
+        "The Standard"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-27-damage-cost/",
+      "title": "Damage put at Rs 200 billion, hydropower losses still being counted",
+      "time": "2026-08-27T23:30:00+05:45",
+      "summary": "Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.",
+      "sources": [
+        "Onlinekhabar",
+        "The Kathmandu Post",
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "UNICEF"
+      ]
+    },
     {
       "url": "/updates/2026-08-27-rasuwa-flood/",
       "title": "Toll passes 389 as China warns lake may burst within days",
@@ -16,20 +40,6 @@
         "Business Standard",
         "ANI",
         "The Kathmandu Post"
-      ]
-    },
-    {
-      "url": "/updates/2026-08-27-damage-cost/",
-      "title": "Damage put at Rs 200 billion, hydropower losses still being counted",
-      "time": "2026-08-27T22:00:00+05:45",
-      "summary": "Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.",
-      "sources": [
-        "Onlinekhabar",
-        "The Kathmandu Post",
-        "Onlinekhabar",
-        "Onlinekhabar",
-        "Onlinekhabar",
-        "Onlinekhabar"
       ]
     },
     {
