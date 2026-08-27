@@ -3089,6 +3089,25 @@ var FloodMap = (function(){
    clamped summary that expands on tap, share + open-original only.
    No like/comment/follow anywhere — this is a briefing, not a social feed.
    ========================================================================= */
+/* Same hashtag tidy-up the server does, repeated here so cached video lists
+   written before that fix still read properly. */
+window.tidyVideoTitle = function(raw){
+  var text = String(raw == null ? '' : raw).replace(/\s+/g, ' ').trim();
+  var trimmed = text.replace(/(?:\s*#[\w\u0900-\u097F]+)+\s*$/, '').trim();
+  if(trimmed.length >= 12) return trimmed.replace(/\s*[|\-\u2013]\s*$/, '').trim();
+  var tags = text.match(/#[\w\u0900-\u097F]+/g) || [];
+  var seen = {}, kept = [];
+  for(var i = 0; i < tags.length && kept.length < 5; i++){
+    var word = tags[i].slice(1).replace(/_+/g, ' ').trim();
+    if(!word || seen[word.toLowerCase()]) continue;
+    seen[word.toLowerCase()] = 1;
+    kept.push(word);
+  }
+  if(!kept.length) return text.slice(0, 90);
+  var out = kept.join(', ');
+  return out.charAt(0).toUpperCase() + out.slice(1);
+};
+
 var PostCards = (function(){
   function escapeHtml(text){
     return String(text == null ? '' : text).replace(/[&<>"']/g, function(c){
@@ -3325,7 +3344,7 @@ var LiveFeed = (function(){
 
   function videoCardHtml(it){
       var vid = (String(it.url).match(/[?&]v=([\w-]{6,15})/) || [])[1] || '';
-      return '<article class="video-card" data-yt="' + vid + '" data-url="' + it.url + '" data-title="' + String(it.title).replace(/"/g,'&quot;') + '">' +
+      return '<article class="video-card" data-yt="' + vid + '" data-url="' + it.url + '" data-title="' + String(window.tidyVideoTitle(it.title)).replace(/"/g,'&quot;') + '">' +
         '<div class="video-thumb">' +
           (it.image ? '<img loading="lazy" referrerpolicy="no-referrer" src="' + it.image + '" alt="" onerror="this.style.display=\'none\'">' : '') +
           '<button class="v-play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></button>' +
@@ -3335,7 +3354,7 @@ var LiveFeed = (function(){
             ? '<img referrerpolicy="no-referrer" src="' + it.avatar + '" alt="" onerror="this.remove()">'
             : initials(it.source)) + '</div>' +
           '<div class="video-info">' +
-            '<div class="video-title">' + String(it.title).replace(/</g,'&lt;') + '</div>' +
+            '<div class="video-title">' + String(window.tidyVideoTitle(it.title)).replace(/</g,'&lt;') + '</div>' +
             '<div class="video-sub">' + String(it.source || 'YouTube').replace(/</g,'&lt;') + ' · ' + PostCards.timeAgo(it.time) + '</div>' +
             '<div class="video-actions"><button class="post-btn" type="button" data-share="1">' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"></line></svg>Share</button></div>' +
@@ -4141,7 +4160,7 @@ var LiveFeed = (function(){
           '<span class="short-name">' + esc(it.source || 'YouTube') + '</span>' +
         '</div>' +
         '<button class="short-text" type="button">' +
-          '<span class="short-title">' + esc(it.title) + '</span>' +
+          '<span class="short-title">' + esc(window.tidyVideoTitle ? window.tidyVideoTitle(it.title) : it.title) + '</span>' +
           (desc ? '<span class="short-more">more</span>' : '') +
         '</button>' +
       '</div>' +
@@ -4469,7 +4488,7 @@ var LiveFeed = (function(){
     if(!it) return;
     var desc = String(it.summary || '').trim() || 'No description was published with this video.';
     sheetBody.innerHTML =
-      '<div class="ss-title">' + esc(it.title) + '</div>' +
+      '<div class="ss-title">' + esc(window.tidyVideoTitle ? window.tidyVideoTitle(it.title) : it.title) + '</div>' +
       '<div class="ss-sub">' + esc(it.source || 'YouTube') +
         (it.time ? ' &middot; ' + esc(longDate(it.time)) : '') + '</div>' +
       '<div class="ss-desc">' + esc(desc) + '</div>' +
