@@ -3351,6 +3351,7 @@ var LiveFeed = (function(){
   var videoEmpty = document.getElementById('video-empty');
   var latestVideos = [];
   var vregionFilter = 'all';
+  var videoFailed = false;
   Array.prototype.slice.call(document.querySelectorAll('[data-vregion]')).forEach(function(b){
     b.addEventListener('click', function(){
       vregionFilter = b.getAttribute('data-vregion');
@@ -3373,7 +3374,9 @@ var LiveFeed = (function(){
       videoGrid.innerHTML = '';
       if(videoEmpty){
         videoEmpty.hidden = false;
-        videoEmpty.textContent = 'No videos yet. This turns on once a YouTube API key is set for the site (YOUTUBE_API_KEY).';
+        videoEmpty.textContent = videoFailed
+          ? 'YouTube is not answering right now — usually its daily free limit for the day. The list comes back by itself; the videos are also kept for 24 hours, so this should be rare.'
+          : 'No videos yet. This turns on once a YouTube API key is set for the site (YOUTUBE_API_KEY).';
       }
       if(videoStatus) videoStatus.textContent = 'No videos';
       return;
@@ -3520,6 +3523,9 @@ var LiveFeed = (function(){
         var editorial = latest.filter(function(i){ return i.kind !== 'quake' && i.kind !== 'video'; });
         var official = latest.filter(function(i){ return i.kind === 'official' || i.kind === 'alert'; });
         var videos = latest.filter(function(i){ return i.kind === 'video'; });
+        // Tells the empty state whether YouTube failed (quota, outage) or is
+        // simply not configured, so it stops blaming a missing API key.
+        videoFailed = (data.errors || []).some(function(e){ return String(e).indexOf('youtube') === 0; });
 
         PostCards.render(feedEl, editorial, 18);
         renderModalRows(modalEl, editorial, 4);
