@@ -403,7 +403,8 @@ ${table(['When', 'Reported dead', 'Source'], [
     ['Late Wednesday, 26 Aug', '~160', 'NDRRMA and Nepal Police, 157 bodies recovered'],
     ['Thursday morning, 27 Aug', C.TOLL.deadNepalEarlier, 'NDRRMA and Nepal Police'],
     ['13:30 Thursday, 27 Aug', 270, 'Nepal Police'],
-    ['<strong>14:30 Thursday, 27 Aug</strong>', `<strong class="num">${C.TOLL.deadNepal}</strong>`, '<strong>Nepal Police</strong>'],
+    ['14:30 Thursday, 27 Aug', 289, 'Nepal Police'],
+    ['<strong>17:00 Thursday, 27 Aug</strong>', `<strong class="num">${C.TOLL.deadNepal}</strong>`, '<strong>Nepal Police</strong>'],
   ], 'Compiled from Nepal Police bulletins and the UN OCHA situation overview of 27 August.')}
 <p>Three separate things move these figures, and they move at different speeds:</p>
 <ul>
