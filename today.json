@@ -1,42 +1,48 @@
 {
-  "updated": "2026-08-27T12:45:00+05:45",
+  "updated": "2026-08-27T15:30:00+05:45",
   "posts": [
     {
       "id": "rasuwa-flood",
-      "title": "165 confirmed dead in Rasuwa flood, 826 still missing",
-      "time": "2026-08-27T08:15:00+05:45",
+      "title": "165 confirmed dead in Rasuwa flood, cause now pinned on a glacier collapse",
+      "time": "2026-08-27T15:15:00+05:45",
       "image": "",
       "body": [
         "Nepal Police put the toll at 165 dead in its 8:15am bulletin on Thursday. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani. Bodies have been found as far south as Chitwan.",
-        "826 people are still missing. Nepal Police list 579 tourists, 161 Rasuwa residents, 44 Nepali Army, 28 Nepal Police and 13 Armed Police Force. Of the missing foreigners, police say 133 are Indian nationals.",
+        "826 people are still missing, per that same bulletin. Nepal Police list 579 tourists, 161 Rasuwa residents, 44 Nepal Army personnel, 28 Nepal Police and 13 Armed Police Force. Of the missing foreigners, police say 133 are Indian nationals.",
         "Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.",
-        "A second flood is still possible. ICIMOD says the debris blocking the river upstream, on the China side, has not cleared. China has moved people out of Gyirong. Nuwakot and Dhading are being watched.",
-        "The likely trigger is an ice and rock avalanche into the Lhende Khola on the Tibet side, which dammed the river and then broke. ICIMOD says this is not confirmed. Sensors picked up small tremors nearby, but no earthquake link is proven.",
-        "Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave. Galchchi is one of the few still working, so a new warning would come with less notice.",
+        "A second flood is still possible. ICIMOD says the debris blocking the river upstream, on the China side, has not cleared. China has moved people out of Gyirong. Nuwakot and Dhading are being watched. Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave, so a new warning would come with less notice.",
+        "In India, the NDRF and the Sashastra Seema Bal have put rescue teams on standby in Bihar and Uttar Pradesh. The NDRF says the Gandak, which the Narayani becomes downstream, could see higher water levels.",
+        "USGS first read the shaking as a magnitude 5.2 earthquake. On Thursday it said fresh analysis of the seismic waves and satellite images found no earthquake took place. The signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.",
+        "The Nepali Army says it rescued 97 people on Thursday, using five helicopters and more than 2,000 personnel working from Nuwakot to Chitwan. Three were airlifted from the Mailung tunnel and 14 from Timure.",
         "Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear."
       ],
       "sources": [
         { "name": "Nepal Police", "url": "https://www.nepalpolice.gov.np/" },
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-flood-death-toll-3.html" },
-        { "name": "ICIMOD", "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" }
+        { "name": "ICIMOD", "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" },
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/nepali-army-rescue-operations.html" },
+        { "name": "Business Standard", "url": "https://www.business-standard.com/world-news/glacial-collapse-triggered-nepal-flash-floods-not-earthquake-usgs-126082700207_1.html" },
+        { "name": "ANI", "url": "https://aninews.in/news/national/general-news/ndrf-on-high-alert-as-nepal-flash-flood-threatens-gandak-bihar-up-deploy-rescue-teams-in-vulnerable-areas20260827033747/" }
       ],
       "revised": true
     },
     {
       "id": "damage-cost",
-      "title": "Infrastructure damage put at Rs 200 billion, early figure",
-      "time": "2026-08-27T09:00:00+05:45",
+      "title": "Infrastructure damage put at Rs 200 billion, World Bank offers Rs 25 billion in aid",
+      "time": "2026-08-27T15:15:00+05:45",
       "image": "",
       "body": [
         "Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.",
         "No full damage assessment exists yet. Rasuwa, Nuwakot, Dhading and Chitwan are still being surveyed, and six hydropower stations are not in that figure.",
-        "The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading.",
+        "The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. The World Bank has separately offered up to Rs 25 billion in emergency assistance, its Nepal country director told the finance ministry. That is aid, not a damage estimate.",
         "Insurers say claims will take weeks to settle because most of the damaged sites cannot be reached by road."
       ],
       "sources": [
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html" },
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" }
-      ]
+        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" },
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html" }
+      ],
+      "revised": true
     }
   ]
 }
