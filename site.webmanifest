@@ -1,0 +1,16 @@
+{
+  "name": "Nepal Disaster Update Live",
+  "short_name": "Nepal Disaster",
+  "description": "Independent volunteer project cross-checking official bulletins, live news, maps and emergency contacts for disasters in Nepal.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F4F0E6",
+  "theme_color": "#B7343F",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "/favicon-96x96.png", "type": "image/png", "sizes": "96x96" },
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}

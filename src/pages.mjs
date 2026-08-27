@@ -31,10 +31,13 @@ function articleNode(o) {
   };
 }
 
-const EVENT_ABOUT = [
-  { '@type': 'Event', name: '2026 Rasuwa flash flood', startDate: '2026-08-26' },
-  { '@type': 'Place', name: 'Rasuwa District, Bagmati Province, Nepal' },
-];
+/* The flood is described in full by exactly one Event node, on the Rasuwa hub
+   page (`#event`, below). Every other page that is "about" the flood references
+   that node by @id rather than repeating a partial copy: a second, thinner
+   Event on the same page is what made Search Console report a missing
+   "location" field. */
+const EVENT_ID = `${SITE}/nepal-flood/rasuwa/#event`;
+const EVENT_ABOUT = [{ '@id': EVENT_ID }];
 
 function table(head, rows, caption) {
   return `<div class="table-scroll"><table>${caption ? `<caption>${caption}</caption>` : ''}<thead><tr>${

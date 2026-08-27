@@ -137,9 +137,16 @@ function orgGraph() {
       logo: {
         '@type': 'ImageObject',
         '@id': `${SITE}/#logo`,
-        url: `${SITE}/og-image.png`,
-        width: 1200,
-        height: 630,
+        url: `${SITE}/logo.png`,
+        width: 512,
+        height: 512,
+        caption: PUBLISHER,
+      },
+      image: { '@id': `${SITE}/#logo` },
+      parentOrganization: {
+        '@type': 'Organization',
+        name: 'NXT Imagine Labs',
+        url: 'https://nxtimaginelabs.com/',
       },
       description:
         'An independent volunteer project that collects and cross-checks public information about disasters in Nepal: official bulletins, live news, maps and emergency contacts.',
@@ -255,7 +262,10 @@ export function page(o) {
 <link rel="canonical" href="${url}">
 ${alt}
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="${esc(SITE_NAME)}, live feed" href="${SITE}/feed.xml">
 <meta property="og:type" content="article">
 <meta property="og:title" content="${esc(o.ogTitle || o.title)}">

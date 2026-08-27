@@ -1,6 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <path d="M4 3 L21 12 L4 15 Z" fill="#DC143C" stroke="#003893" stroke-width="1.6" stroke-linejoin="round"/>
-  <path d="M4 12 L19 20 L4 29 Z" fill="#DC143C" stroke="#003893" stroke-width="1.6" stroke-linejoin="round"/>
-  <circle cx="10.5" cy="9.5" r="1.6" fill="#fff"/>
-  <circle cx="9.5" cy="21" r="1.7" fill="#fff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <clipPath id="clipLeft">
+      <polygon points="60,16 52,46 58,72 50,104 8,104"/>
+    </clipPath>
+    <clipPath id="clipRight">
+      <polygon points="60,16 112,104 50,104 58,72 52,46"/>
+    </clipPath>
+  </defs>
+  <rect width="120" height="120" rx="22" fill="#F4F0E6"/>
+  <g transform="translate(-7.2,-7.2) scale(1.12)">
+    <polygon points="60,16 52,46 58,72 50,104 8,104" fill="#B7343F"/>
+    <g clip-path="url(#clipLeft)" stroke="#8A2530" stroke-width="1.5" fill="none" opacity="0.55">
+      <path d="M30,60 L55,52"/>
+      <path d="M24,72 L56,64"/>
+      <path d="M18,84 L53,80"/>
+      <path d="M13,96 L51,94"/>
+    </g>
+    <polygon points="60,16 112,104 50,104 58,72 52,46" fill="#2A5EA3"/>
+    <g clip-path="url(#clipRight)" stroke="#1D4A82" stroke-width="1.5" fill="none" opacity="0.5">
+      <path d="M65,52 L95,58"/>
+      <path d="M60,64 L100,70"/>
+      <path d="M56,78 L104,82"/>
+      <path d="M52,92 L108,94"/>
+    </g>
+    <polygon points="60,16 52,30 68,30" fill="#F4F0E6"/>
+    <path d="M60,16 L52,30 L68,30 Z" fill="none" stroke="#D9D2C0" stroke-width="1"/>
+  </g>
 </svg>
