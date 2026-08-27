@@ -183,8 +183,19 @@ ${faq.html}
           mainEntityOfPage: { '@id': `${SITE}${path}#webpage` },
           image: [`${SITE}/og-image.png`],
           about: [
-            { '@type': 'Event', name: '2026 Rasuwa flash flood', startDate: '2026-08-26' },
-            { '@type': 'Place', name: 'Rasuwa District, Bagmati Province, Nepal' },
+            {
+              '@type': 'Event',
+              name: '2026 Rasuwa flash flood',
+              startDate: '2026-08-26T09:00:00+05:45',
+              eventStatus: 'https://schema.org/EventScheduled',
+              eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+              location: {
+                '@type': 'Place',
+                name: 'Rasuwa District, Bagmati Province, Nepal',
+                address: { '@type': 'PostalAddress', addressRegion: 'Bagmati Province', addressCountry: 'NP' },
+                geo: { '@type': 'GeoCoordinates', latitude: 28.15, longitude: 85.35 },
+              },
+            },
           ],
         },
         faq.node,
