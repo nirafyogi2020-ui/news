@@ -38,6 +38,9 @@
 import { loadPoliceNews } from './police.js';
 
 const CACHE_SECONDS = 120;
+/* Videos get their own, far longer cache clock; see fetchYoutube. */
+const YT_FRESH_SECONDS = 1800;    // 30 minutes
+const YT_BACKUP_SECONDS = 86400;  // 24 hours
 /** Card summaries: keep the full text each feed publishes, cleaned to plain
  *  text, capped only to keep one card from running very long. */
 const SUMMARY_MAX = 650;
@@ -108,7 +111,7 @@ export async function onRequestGet(context) {
     fetchFrance24().catch(track(errors, 'france24')),
     fetchBingNews().catch(track(errors, 'bing')),
     loadPoliceNews().catch(track(errors, 'nepalpolice')),
-    fetchYoutube(env).catch(track(errors, 'youtube'))
+    fetchYoutube(env, request, context).catch(track(errors, 'youtube'))
   ]);
 
   const seen = new Set();
@@ -313,10 +316,50 @@ async function fetchBingNews() {
  * a source anyone has to wait on approval for, so absence just means "not
  * configured yet," not "broken."
  */
-async function fetchYoutube(env) {
+async function fetchYoutube(env, request, context) {
   const key = env && env.YOUTUBE_API_KEY;
   if (!key) return [];
 
+  /* The YouTube search endpoint costs 100 quota units a call and the free
+     daily allowance is 10,000, so a search on every 2-minute news refresh
+     would burn the whole day's quota in about three hours and then return
+     HTTP 429 for the rest of the day — which is exactly what happened.
+     Videos are cached on their own, much longer clock, and a 24-hour backup
+     copy is kept so a quota blip never empties the Watch tab. */
+  const cache = caches.default;
+  const base = request.url;
+  const freshKey  = new Request(new URL('/__cache/youtube-fresh', base).toString());
+  const backupKey = new Request(new URL('/__cache/youtube-backup', base).toString());
+
+  const hit = await cache.match(freshKey);
+  if (hit) return hit.json();
+
+  try {
+    const videos = await searchYoutube(key);
+    if (videos.length) {
+      context.waitUntil(cache.put(freshKey, cachedJson(videos, YT_FRESH_SECONDS)));
+      context.waitUntil(cache.put(backupKey, cachedJson(videos, YT_BACKUP_SECONDS)));
+    }
+    return videos;
+  } catch (err) {
+    // Quota exhausted or YouTube down: show yesterday's list rather than
+    // an empty tab with a misleading "no API key" message.
+    const old = await cache.match(backupKey);
+    if (old) return old.json();
+    throw err;
+  }
+}
+
+function cachedJson(data, seconds) {
+  return new Response(JSON.stringify(data), {
+    headers: {
+      'content-type': 'application/json; charset=utf-8',
+      'cache-control': `public, s-maxage=${seconds}`
+    }
+  });
+}
+
+async function searchYoutube(key) {
   const query = encodeURIComponent('Rasuwa Bhotekoshi Trishuli flood Nepal');
   const url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video' +
     `&order=date&maxResults=24&relevanceLanguage=en&q=${query}&key=${key}`;
