@@ -8,7 +8,7 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-08-27T14:30:00+05:45';
+export const TOLL_AS_OF = '2026-08-27T17:00:00+05:45';
 export const TOLL_SOURCE = 'Nepal Police bulletin';
 
 /* The missing list has its own, earlier timestamp. It is deliberately kept
@@ -34,14 +34,14 @@ export const EVENT = {
 
 /** Bodies recovered, by the district where they were found. */
 export const BODIES_BY_DISTRICT = [
-  ['Chitwan', 108],
-  ['Nawalparasi East', 74],
-  ['Dhading', 27],
-  ['Gorkha', 20],
+  ['Chitwan', 132],
+  ['Nawalparasi East', 82],
+  ['Dhading', 33],
+  ['Gorkha', 30],
+  ['Nuwakot', 28],
+  ['Tanahun', 22],
   ['Rasuwa', 17],
-  ['Tanahun', 16],
   ['Nawalparasi West', 15],
-  ['Nuwakot', 12],
 ];
 
 /** Who the 826 missing are, as Nepal Police break the list down. */
@@ -74,7 +74,7 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 289,
+  deadNepal: 359,
   deadNepalEarlier: 165,
   deadChina: 3,
   missing: 826,
@@ -192,6 +192,9 @@ export const TIMELINE = [
   ['13:30 NPT, 27 August', 'Nepal Police raise the toll to 270 as searches reach areas that had been cut off.'],
   ['14:30 NPT, 27 August', 'Nepal Police put the confirmed toll at 289 dead. The Armed Police Force reports 121 bodies recovered from the Narayani alone. NDRRMA reports 113 people rescued, 88 of them Nepali citizens.'],
   ['27 August, ongoing', 'The Nepal Electricity Authority puts hydropower damage at 14 projects and about 748 MW. The Department of Roads confirms the whole 42 km Betrawati-Rasuwagadhi road is destroyed at multiple points. India opens the Valmikinagar Barrage on the Gandak as a precaution and prepares to move 10,000 to 12,000 people downstream.'],
+  ['11:44 NPT, 27 August', 'NDRRMA satellite imagery analysis finds a new lake, about 0.11 square kilometres, has formed on the Lhende Khola roughly 18 km upstream of the Rasuwagadhi border crossing. The authority says the natural dam it has created is of uncertain stability.'],
+  ['17:00 NPT, 27 August', 'Nepal Police put the confirmed toll at 359 dead, spokesperson Abi Narayan Kafle told the Kathmandu Post. Bodies recovered by district: Chitwan 132, Nawalparasi East 82, Dhading 33, Gorkha 30, Nuwakot 28, Tanahun 22, Rasuwa 17, Nawalparasi West 15.'],
+  ['Evening, 27 August', 'NDRRMA says 910 people remain out of contact, up from 826 that morning. Nepal Police have not published a matching revised missing count alongside the newer toll.'],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */
