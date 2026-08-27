@@ -1,83 +1,52 @@
 {
-  "updated": "2026-08-27T15:20:00+05:45",
+  "updated": "2026-08-27T21:30:00+05:45",
   "posts": [
     {
-      "id": "toll-289",
-      "title": "289 confirmed dead in the Rasuwa flood as searches reach cut-off areas",
-      "time": "2026-08-27T14:30:00+05:45",
+      "id": "rasuwa-flood",
+      "title": "Death toll passes 359 as Nepal watches for a second flood",
+      "time": "2026-08-27T21:30:00+05:45",
       "image": "",
       "body": [
-        "Nepal Police put the confirmed toll at 289 in their 2:30pm bulletin on Thursday. It was 270 at 1:30pm and 165 that morning. The jumps are search teams reaching settlements that had been cut off since Wednesday, not new casualties happening.",
-        "Bodies have been recovered in eight districts: Chitwan 108, Nawalparasi East 74, Dhading 27, Gorkha 20, Rasuwa 17, Tanahun 16, Nawalparasi West 15 and Nuwakot 12. A district here is where a body was found, not where the person was from.",
-        "The Armed Police Force says 121 of those were recovered from the Narayani river alone by Thursday afternoon. Chitwan's mortuary has filled and an identification centre is being set up.",
-        "826 people were listed missing in the police bulletin at 8:15am. That figure is older than the toll above, so some of those people are among the 289 now confirmed dead. Police have not published a revised missing count, and this site will not estimate one.",
-        "NDRRMA reports 113 people rescued from Timure, Dhunche, Syabrubesi, Uttargaya and Bidur: 88 Nepali citizens, 11 Indian, 8 Chinese, 4 Korean and 2 American. It has published their names.",
-        "73 people are recorded as injured. Tribhuvan University Teaching Hospital said on Thursday morning it was treating 31 patients from Rasuwa, Nuwakot, Gorkha and Dhading, several in intensive care, and that one had died."
+        "Nepal Police said 359 bodies have been recovered as of Thursday evening, spokesperson Abi Narayan Kafle told the Kathmandu Post. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani. Chitwan has the most dead, 132, followed by Nawalparasi East with 82 and Dhading with 33, the Kathmandu Post reports.",
+        "The National Disaster Risk Reduction and Management Authority says 910 people remain out of contact. Of those, 570 are tourists. Nepal's tourism board says 517 of the missing are foreign nationals from 33 countries, with India's 178 the highest, followed by 65 Americans and 53 Ukrainians.",
+        "Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.",
+        "A second flood is still possible. Nepal's Department of Hydrology and Meteorology says a lake has formed on the Lhende river, about 18 kilometres upstream of the Rasuwagadhi border crossing, where the original collapse happened. The lake covers around 0.11 square kilometres and is still rising, the department says. China passed the warning on through Nepal's foreign ministry.",
+        "USGS first read the shaking as an earthquake. It later found no earthquake took place. The signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.",
+        "Nepal's Army says more than 5,000 army and police personnel are working the flood zone, from Nuwakot to Chitwan. Prime Minister Balendra Shah travelled to Bidur in Nuwakot on Thursday to see the damage.",
+        "In India, the NDRF and the Sashastra Seema Bal have rescue teams on standby in Bihar and Uttar Pradesh. The NDRF says the Gandak, which the Narayani becomes downstream, could see higher water levels.",
+        "Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear."
       ],
       "sources": [
-        { "name": "Nepal Police", "url": "https://nepalpolice.gov.np/news/10252/" },
-        { "name": "UN OCHA / ReliefWeb", "url": "https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" },
-        { "name": "Nepalnews", "url": "https://english.nepalnews.com/s/nation/121-bodies-recovered-from-narayani-river-following-bhote-koshi-flash-flood/" }
+        { "name": "Nepal Police", "url": "https://www.nepalpolice.gov.np/" },
+        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/27/nepal-flood-death-toll-reaches-270-as-hundreds-remain-out-of-contact" },
+        { "name": "Dawn", "url": "https://www.dawn.com/news/2025473/nepal-flood-death-toll-climbs-to-359-as-around-1000-remain-missing" },
+        { "name": "Free Press Journal", "url": "https://www.freepressjournal.in/world/nepal-flash-floods-death-toll-rises-to-359-910-missing-as-major-flood-risk-looms-from-upstream-lake-outburst" },
+        { "name": "Legit.ng", "url": "https://www.legit.ng/world/asia/1727504-nepal-flood-list-33-nations-517-tourists-missing/" },
+        { "name": "ICIMOD", "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" },
+        { "name": "Business Standard", "url": "https://www.business-standard.com/world-news/glacial-collapse-triggered-nepal-flash-floods-not-earthquake-usgs-126082700207_1.html" },
+        { "name": "ANI", "url": "https://aninews.in/news/national/general-news/ndrf-on-high-alert-as-nepal-flash-flood-threatens-gandak-bihar-up-deploy-rescue-teams-in-vulnerable-areas20260827033747/" }
       ],
       "revised": true
     },
     {
-      "id": "barrier-lake",
-      "title": "China reports a new lake forming upstream and warns it could break",
-      "time": "2026-08-27T11:00:00+05:45",
+      "id": "damage-cost",
+      "title": "Infrastructure damage put at Rs 200 billion, hydropower losses still being counted",
+      "time": "2026-08-27T20:30:00+05:45",
       "image": "",
       "body": [
-        "China's Ministry of Water Resources says a barrier lake, meaning a river blocked by debris into an artificial lake, has formed near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border.",
-        "CCTV reports around 2 million cubic metres of water had collected behind it by Thursday morning. Chinese state media warn it could break.",
-        "Both rivers are upper tributaries of the Trishuli system. A release would run down the same corridor the 26 August flood took, through Rasuwa and Nuwakot.",
-        "Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave, so a warning would come with less notice than normal.",
-        "Downstream in India, authorities in Bihar have opened the Valmikinagar Barrage on the Gandak, the same river that is called the Narayani inside Nepal, as a precaution, and prepared to move 10,000 to 12,000 people.",
-        "Stay off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear."
+        "Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.",
+        "That figure does not include energy infrastructure. Energy Minister Biraj Bhakta Shrestha has ordered an immediate assessment of hydropower damage. In Rasuwa, 8 projects have been hit, 5 of them operational with a combined 236 megawatts, and 3 still under construction with a combined 342 megawatts. Nuwakot has lost access to 6 more projects, 4 operational at 123 megawatts and 2 under construction at 53 megawatts.",
+        "Rasuwa, Nuwakot, Dhading and Chitwan are still being surveyed for road and building damage, so the Rs 200 billion figure is expected to rise.",
+        "The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. The World Bank has separately offered up to Rs 25 billion in emergency assistance, its Nepal country director told the finance ministry. That is aid, not a damage estimate.",
+        "Insurers say claims will take weeks to settle because most of the damaged sites cannot be reached by road."
       ],
       "sources": [
-        { "name": "Onlinekhabar (Global Times)", "url": "https://english.onlinekhabar.com/lake-nepal-border-china-dam-break.html" },
-        { "name": "Khabarhub", "url": "https://khabarhub.com/2026/27/1016273/" },
-        { "name": "Setopati", "url": "https://www.setopati.com/politics/396925" }
-      ]
-    },
-    {
-      "id": "cause-usgs",
-      "title": "USGS: the tremor was a glacial collapse, not an earthquake",
-      "time": "2026-08-27T10:00:00+05:45",
-      "image": "",
-      "body": [
-        "The US Geological Survey first logged a magnitude 4.4 earthquake at 08:37 on Wednesday, minutes before the river rose. It has now revised that analysis.",
-        "Its conclusion is that the signal was a magnitude 5.2 glacial collapse rather than a tectonic earthquake, based on nearby seismic stations, long-period seismic waves and satellite imagery. In other words the tremor was not a separate trigger. It was the collapse itself being recorded.",
-        "Nepal's Department of Hydrology and Meteorology and independent glaciologists, working from satellite imagery shared by Chinese counterparts through ICIMOD, put forward a preliminary explanation: an ice-and-rock avalanche blocked the Lhende Khola, a Bhote Koshi tributary on the border, about 20 km upstream of the Miteri Bridge. That formed a temporary debris-dammed lake, which then burst.",
-        "No government has officially confirmed a cause. This remains a hypothesis, described as preliminary by the people who proposed it.",
-        "Meteorologists have ruled out heavy local rainfall in Rasuwa, while noting that satellite data showed rain on the Tibetan side of the border.",
-        "A broadly similar flood on the same river in July 2025 was ultimately attributed to the drainage of a supraglacial lake. ICIMOD scientists say cascading glacial hazards are increasing at an unprecedented pace across the Hindu Kush Himalaya."
-      ],
-      "sources": [
-        { "name": "UN OCHA / ReliefWeb", "url": "https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" },
-        { "name": "ICIMOD", "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" },
-        { "name": "France 24", "url": "https://www.france24.com/en/asia-pacific/20260826-glacier-collapse-may-have-caused-nepal-tibet-landslides-experts-say" }
-      ]
-    },
-    {
-      "id": "damage-infra",
-      "title": "14 hydropower projects hit and the whole border road destroyed",
-      "time": "2026-08-27T09:30:00+05:45",
-      "image": "",
-      "body": [
-        "The Nepal Electricity Authority reports 14 hydropower projects damaged with a combined capacity of about 748 megawatts: nine operating plants totalling 354 MW and five under construction totalling 394 MW.",
-        "Named projects include Rasuwagadhi, Chilime, Sanjen Khola, Upper Trishuli-1, Trishuli and Devighat, along with a 220 kV substation. Twelve staff of the Upper Trishuli-3B project are reported out of contact.",
-        "An earlier estimate the same day, from the Ministry of Energy, put the loss at 431 MW. Both figures were published on 27 August, which is a fair measure of how provisional every damage number is right now.",
-        "The Department of Roads confirms the entire 42 km road from Betrawati in Nuwakot to the Rasuwagadhi border crossing has been destroyed at multiple points, including several concrete bridges. A further 16 km stretch nearer the border, recently upgraded with Chinese government financing, was also swept away.",
-        "That road is Nepal's main overland trade and pilgrimage route to Tibet, and it is also the road rescue teams need. Much of the response has had to go by helicopter instead.",
-        "Nine commercial bank branches were swept away with 26 staff unaccounted for, and the Rasuwa customs office at Timure lost contact with 15 employees.",
-        "No government or humanitarian body has yet published a figure for how many people have been displaced. UN OCHA names that as the priority information gap for the coming days."
-      ],
-      "sources": [
-        { "name": "UN OCHA / ReliefWeb", "url": "https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" },
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html" },
         { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html" }
-      ]
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html" },
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html" }
+      ],
+      "revised": true
     }
   ]
 }
