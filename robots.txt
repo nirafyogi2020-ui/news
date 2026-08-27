@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nepaldisasterupdatelive.nxtimaginelabs.com/sitemap.xml
