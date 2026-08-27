@@ -1,15 +1,15 @@
 {
-  "updated": "2026-08-27T11:45:00+05:45",
+  "updated": "2026-08-27T11:00:00+05:45",
   "posts": [
     {
       "id": "rasuwa-flood",
       "title": "Rasuwa flood: 162 dead, a second surge still possible",
       "source": "Nepal Police",
-      "time": "2026-08-27T11:30:00+05:45",
+      "time": "2026-08-27T11:00:00+05:45",
       "image": "",
       "body": [
         "The flash flood that hit Timure in Rasuwa on Wednesday morning has killed 162 people, Nepal Police said on Thursday. The water ran down the Bhote Koshi into the Trishuli and the Narayani, and bodies have been found as far south as Chitwan.",
-        "About 590 people are still missing. Most are travellers, 391 foreign and 93 Nepali. Also unaccounted for: 85 soldiers and police, and around 60 hydropower workers.",
+        "About 590 people are still missing. Most are travellers, 391 foreign and 93 Nepali. Nepal Police say 133 of the missing foreigners are Indian nationals. Also unaccounted for: 85 soldiers and police, and around 60 hydropower workers.",
         "Scientists say a second flood is still possible. The debris that blocked the river upstream, on the China side, has not fully cleared. ICIMOD says to treat the warning as live. China has moved people out of Gyirong. Nuwakot and Dhading are being watched downstream.",
         "The likely trigger is an ice and rock avalanche into the Lhende Khola on the Tibet side, which dammed the river and then broke. ICIMOD says this is not confirmed. Sensors picked up small tremors nearby, but no earthquake link is proven.",
         "Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave. Galchchi is one of the few still working, so any new warning will come with less notice.",
@@ -18,10 +18,11 @@
       ],
       "sources": [
         { "name": "Nepal Police", "url": "https://www.nepalpolice.gov.np/" },
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/26/update-rasuwa-flood-death-toll-climbs-to-72-as-dozens-remain-missing" },
+        { "name": "IANS", "url": "https://ianslive.in/nepal-flash-floods-death-toll-climbs-to-162-search-rescue-ops-intensify--20260827093710" },
         { "name": "ICIMOD", "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" },
-        { "name": "CNN", "url": "https://www.cnn.com/2026/08/26/world/live-news/nepal-flash-flooding-floods-intl" }
-      ]
+        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/26/update-rasuwa-flood-death-toll-climbs-to-72-as-dozens-remain-missing" }
+      ],
+      "revised": true
     }
   ]
 }
