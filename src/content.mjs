@@ -8,7 +8,7 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-08-27T17:00:00+05:45';
+export const TOLL_AS_OF = '2026-08-27T21:00:00+05:45';
 export const TOLL_SOURCE = 'Nepal Police bulletin';
 
 /* The missing list has its own, earlier timestamp. It is deliberately kept
@@ -34,14 +34,14 @@ export const EVENT = {
 
 /** Bodies recovered, by the district where they were found. */
 export const BODIES_BY_DISTRICT = [
-  ['Chitwan', 132],
-  ['Nawalparasi East', 82],
+  ['Chitwan', 137],
+  ['Nawalparasi East', 87],
   ['Dhading', 33],
-  ['Gorkha', 30],
+  ['Gorkha', 32],
   ['Nuwakot', 28],
-  ['Tanahun', 22],
+  ['Tanahun', 28],
   ['Rasuwa', 17],
-  ['Nawalparasi West', 15],
+  ['Nawalparasi West', 27],
 ];
 
 /** Who the 826 missing are, as Nepal Police break the list down. */
@@ -74,14 +74,14 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 359,
+  deadNepal: 389,
   deadNepalEarlier: 165,
   deadChina: 3,
   missing: 826,
   missingChina: 558,
   missingChinaForeign: 260,
   missingIndian: 133,
-  injured: 73,
+  injured: 466,
   rescued: 113,
   rescuedBreakdown: [
     ['Nepali citizens', 88],
@@ -135,9 +135,9 @@ export const DAMAGE = {
 export const BARRIER_LAKE = {
   where: 'near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border',
   volume: '2 million cubic metres',
-  asOf: '2026-08-27T09:00:00+05:45',
-  source: 'China’s Ministry of Water Resources, reported by CCTV and Global Times',
-  note: 'Both rivers are upper tributaries of the Trishuli system, so a release would run down the same corridor the 26 August flood took.',
+  asOf: '2026-08-27T21:00:00+05:45',
+  source: 'China’s Ministry of Water Resources, reported by CCTV and the Kathmandu Post',
+  note: 'Both rivers are upper tributaries of the Trishuli system, so a release would run down the same corridor the 26 August flood took. The lake is already overflowing, and China’s Ministry of Water Resources says another 3 million cubic metres of water is expected to flow in over the next three days, which it says puts the lake at high risk of breaching in that window.',
 };
 
 /** The route the water took. Coordinates and elevations as used on the map. */
@@ -195,6 +195,9 @@ export const TIMELINE = [
   ['11:44 NPT, 27 August', 'NDRRMA satellite imagery analysis finds a new lake, about 0.11 square kilometres, has formed on the Lhende Khola roughly 18 km upstream of the Rasuwagadhi border crossing. The authority says the natural dam it has created is of uncertain stability.'],
   ['17:00 NPT, 27 August', 'Nepal Police put the confirmed toll at 359 dead, spokesperson Abi Narayan Kafle told the Kathmandu Post. Bodies recovered by district: Chitwan 132, Nawalparasi East 82, Dhading 33, Gorkha 30, Nuwakot 28, Tanahun 22, Rasuwa 17, Nawalparasi West 15.'],
   ['Evening, 27 August', 'NDRRMA says 910 people remain out of contact, up from 826 that morning. Nepal Police have not published a matching revised missing count alongside the newer toll.'],
+  ['Around noon, 27 August', "Nepal's Tourism Board issues its own situation update putting travellers missing at 644, 517 of them foreign nationals, up from the 579 travellers on the earlier Nepal Police list. Police have not issued a matching revised total."],
+  ['21:00 NPT, 27 August', 'Nepal Police raise the confirmed toll to 389 dead and report 466 injured. Bodies recovered by district: Chitwan 137, Nawalparasi East 87, Dhading 33, Gorkha 32, Nuwakot 28, Tanahun 28, Rasuwa 17, Nawalparasi West 27.'],
+  ['Thursday, 27 August', "China's Ministry of Water Resources warns that a barrier lake near the Chhochen Khola and Purepu Tsangpo, close to the Nepal border, is overflowing and holds about 2 million cubic metres of water. It expects another 3 million cubic metres to flow in over the next three days, putting the lake at high risk of breaching in that window."],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */
