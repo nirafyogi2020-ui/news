@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-28T03:00:00+05:45",
+  "updated": "2026-08-28T04:00:00+05:45",
   "posts": [
     {
       "id": "rasuwa-flood",
@@ -51,6 +51,20 @@
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/flood-damages-8-schools-in-rasuwa-and-nuwakot.html" }
       ],
       "revised": true
+    },
+    {
+      "id": "hydropower-workers-out-of-contact",
+      "title": "Over 200 hydropower staff still out of contact, IPPAN says",
+      "time": "2026-08-27T19:00:00+05:45",
+      "image": "",
+      "body": [
+        "The Independent Power Producers' Association Nepal, IPPAN, says 215 staff from five hydropower projects have not been reached since Wednesday's flood. Worst hit is the under construction Upper Trishuli-1 project, where IPPAN counts 94 people out of contact, among them 8 Korean nationals working for the developer. At Rasuwagadhi, 51 staff are out of contact, though 3 reached higher ground on their own.",
+        "IPPAN says it has unconfirmed reports of an early rescue at one project site, but most workers there are still unreachable. Separately, a Nepal Army helicopter reached the nearby Upper Trishuli 3A project on Thursday to check on stranded staff, after two earlier landing attempts failed in bad weather. Energy Minister Biraj Bhakta Shrestha has ordered agencies to speed up the rescue there and get power back on."
+      ],
+      "sources": [
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/hydropower-out-of-contact.html" },
+        { "name": "The Rising Nepal", "url": "https://risingnepaldaily.com/news/85596" }
+      ]
     }
   ]
 }
