@@ -12,3 +12,9 @@ CLOUDFLARE_ACCOUNT_ID=50a5fbe4a48d72c1f8c595221ec3ac50 \
   npx wrangler pages deploy . \
     --project-name nepal-flood-relief \
     --commit-dirty=true
+
+# Tell Bing and Yandex the pages changed, rather than waiting for their own
+# re-crawl. Google does not use IndexNow; it goes by the sitemap. A failure
+# here is not a deploy failure, so it never blocks a publish.
+sleep 3
+node src/indexnow.mjs || true
