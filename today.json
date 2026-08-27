@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-28T04:00:00+05:45",
+  "updated": "2026-08-28T05:10:00+05:45",
   "posts": [
     {
       "id": "rasuwa-flood",
@@ -31,7 +31,7 @@
     {
       "id": "damage-cost",
       "title": "Damage put at Rs 200 billion, hydropower losses still being counted",
-      "time": "2026-08-27T22:00:00+05:45",
+      "time": "2026-08-27T23:30:00+05:45",
       "image": "",
       "body": [
         "Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.",
@@ -40,7 +40,7 @@
         "The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. The World Bank has separately offered up to Rs 25 billion in emergency assistance, its Nepal country director told the finance ministry. That is aid, not a damage estimate.",
         "Insurers say claims will take weeks to settle because most of the damaged sites cannot be reached by road.",
         "The Prime Minister's Disaster Relief Fund took in Rs 273.3 million in donations in its first six hours, the finance ministry says, led by a Rs 100 million gift from Gorkha Brewery. That is public donations, separate from the Rs 1 billion the government has already released for relief.",
-        "Onlinekhabar reports eight schools were damaged, seven in Rasuwa and one in Nuwakot. Four were swept away entirely. The rest, including Tribhuvan Trishul Secondary School in Bidur, are filled with mud and debris."
+        "UNICEF says at least 17,000 children have been affected across Rasuwa, Nuwakot and Dhading. It counts 18 schools destroyed and 20 more damaged in those three districts, wider than the 8 schools Onlinekhabar had reported damaged in Rasuwa and Nuwakot alone a day earlier. UNICEF says around 10,000 school-age children now need help such as temporary classrooms and replacement books to keep learning."
       ],
       "sources": [
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html" },
@@ -48,7 +48,7 @@
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html" },
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html" },
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/pms-disaster-relief-fund.html" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/flood-damages-8-schools-in-rasuwa-and-nuwakot.html" }
+        { "name": "UNICEF", "url": "https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance" }
       ],
       "revised": true
     },
@@ -64,6 +64,20 @@
       "sources": [
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/hydropower-out-of-contact.html" },
         { "name": "The Rising Nepal", "url": "https://risingnepaldaily.com/news/85596" }
+      ]
+    },
+    {
+      "id": "australia-missing-aid",
+      "title": "Australia raises its missing count to 39, pledges $5m in aid",
+      "time": "2026-08-28T02:30:00+05:45",
+      "image": "",
+      "body": [
+        "Australian Foreign Minister Penny Wong said on Friday that 39 Australians are now unaccounted for in the flood, up from the 35 that Nepal's tourism board had listed a day earlier. She said the number could still rise as officials work through the list, and warned some of those missing may not be found.",
+        "Wong also announced A$5 million in Australian aid: 2 million to the World Food Programme, 2 million to Australian NGOs through the Australian Humanitarian Partnership, and 1 million to the Emergency Action Alliance for local recovery work. Three more Australian humanitarian specialists are being sent to join the 20 staff already in Nepal."
+      ],
+      "sources": [
+        { "name": "ABC News Australia", "url": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974" },
+        { "name": "The Standard", "url": "https://www.standard.net.au/story/9339027/almost-40-australians-missing-in-nepals-flash-floods/" }
       ]
     }
   ]
