@@ -198,6 +198,7 @@ export const TIMELINE = [
   ['Around noon, 27 August', "Nepal's Tourism Board issues its own situation update putting travellers missing at 644, 517 of them foreign nationals, up from the 579 travellers on the earlier Nepal Police list. Police have not issued a matching revised total."],
   ['21:00 NPT, 27 August', 'Nepal Police raise the confirmed toll to 389 dead and report 466 injured. Bodies recovered by district: Chitwan 137, Nawalparasi East 87, Dhading 33, Gorkha 32, Nuwakot 28, Tanahun 28, Rasuwa 17, Nawalparasi West 27.'],
   ['Thursday, 27 August', "China's Ministry of Water Resources warns that a barrier lake near the Chhochen Khola and Purepu Tsangpo, close to the Nepal border, is overflowing and holds about 2 million cubic metres of water. It expects another 3 million cubic metres to flow in over the next three days, putting the lake at high risk of breaching in that window."],
+  ['Thursday evening, 27 August', 'Nepal turns down offers of search and rescue teams from India, China, the US, Britain, Japan, South Korea, Sri Lanka and Bangladesh, the Kathmandu Post reports, saying its own army and police can handle the operation and asking instead for cash through the Prime Minister’s Disaster Relief Fund. The finance ministry says the fund took in Rs 273.3 million in its first six hours.'],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */
