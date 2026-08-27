@@ -8,16 +8,16 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-08-27T17:00:00+05:45",
+  "asOf": "2026-08-27T21:00:00+05:45",
   "asOfSource": "Nepal Police bulletin",
   "stats": [
     {
       "icon": "dead",
-      "value": "359",
+      "value": "389",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepal Police confirmed 359 dead in a 5pm bulletin on 27 August, spokesperson Abi Narayan Kafle told the Kathmandu Post, up from 289 at 2:30pm and 165 that morning. Bodies found: Chitwan 132, Nawalparasi East 82, Dhading 33, Gorkha 30, Nuwakot 28, Tanahun 22, Rasuwa 17, Nawalparasi West 15. The jumps are search teams reaching areas that had been cut off, not new casualties. Three more deaths are confirmed on the China side."
+      "detail": "Nepal Police confirmed 389 dead in a 9pm bulletin on 27 August, up from 359 at 5pm, 289 at 2:30pm and 165 that morning. Bodies found: Chitwan 137, Nawalparasi East 87, Dhading 33, Gorkha 32, Nuwakot 28, Tanahun 28, Rasuwa 17, Nawalparasi West 27. The jumps are search teams reaching areas that had been cut off, not new casualties. Three more deaths are confirmed on the China side. Police also reported 466 injured in the same bulletin."
     },
     {
       "icon": "missing",
@@ -25,7 +25,7 @@
       "tone": "critical",
       "label": "listed missing in Nepal",
       "bar": 82,
-      "detail": "From the earlier Nepal Police bulletin at 8:15am on 27 August: 579 travellers (466 of them foreign nationals), 161 Rasuwa residents, 44 Nepali Army, 28 Nepal Police, 13 Armed Police Force and one Nuwakot resident. This figure is older than the death toll above, so some of these people are among the 289 since confirmed dead. Police have not published a revised missing count."
+      "detail": "From the earlier Nepal Police bulletin at 8:15am on 27 August: 579 travellers (466 of them foreign nationals), 161 Rasuwa residents, 44 Nepali Army, 28 Nepal Police, 13 Armed Police Force and one Nuwakot resident. This figure is older than the death toll above, so some of these people are among the 389 since confirmed dead. Police have not published a revised total. Nepal's tourism board separately said at noon on 27 August that 644 travellers, 517 of them foreign nationals, are missing, but has not given a new overall total."
     },
     {
       "icon": "missing",
