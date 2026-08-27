@@ -1,11 +1,11 @@
 {
-  "updated": "2026-08-28T00:55:00+05:45",
+  "updated": "2026-08-28T03:00:00+05:45",
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
     {
       "url": "/updates/2026-08-27-rasuwa-flood/",
       "title": "Toll passes 389 as China warns lake may burst within days",
-      "time": "2026-08-27T21:00:00+05:45",
+      "time": "2026-08-27T22:30:00+05:45",
       "summary": "Nepal Police put the confirmed toll at 389 dead as of a 9pm bulletin on Thursday, up from 359 at 5pm. Police also said 466 people are injured. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.",
       "sources": [
         "Nepal Police",
@@ -14,17 +14,20 @@
         "The Kathmandu Post",
         "ICIMOD",
         "Business Standard",
-        "ANI"
+        "ANI",
+        "The Kathmandu Post"
       ]
     },
     {
       "url": "/updates/2026-08-27-damage-cost/",
       "title": "Damage put at Rs 200 billion, hydropower losses still being counted",
-      "time": "2026-08-27T20:30:00+05:45",
+      "time": "2026-08-27T22:00:00+05:45",
       "summary": "Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.",
       "sources": [
         "Onlinekhabar",
         "The Kathmandu Post",
+        "Onlinekhabar",
+        "Onlinekhabar",
         "Onlinekhabar",
         "Onlinekhabar"
       ]

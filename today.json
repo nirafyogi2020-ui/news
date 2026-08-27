@@ -1,10 +1,10 @@
 {
-  "updated": "2026-08-28T00:55:00+05:45",
+  "updated": "2026-08-28T03:00:00+05:45",
   "posts": [
     {
       "id": "rasuwa-flood",
       "title": "Toll passes 389 as China warns lake may burst within days",
-      "time": "2026-08-27T21:00:00+05:45",
+      "time": "2026-08-27T22:30:00+05:45",
       "image": "",
       "body": [
         "Nepal Police put the confirmed toll at 389 dead as of a 9pm bulletin on Thursday, up from 359 at 5pm. Police also said 466 people are injured. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.",
@@ -13,7 +13,7 @@
         "China's Ministry of Water Resources says a new barrier lake near the Chhochen Khola and Purepu Tsangpo, close to the Nepal border, is already overflowing and holds about 2 million cubic metres of water. It expects another 3 million cubic metres to flow in over the next three days, putting the lake at high risk of breaching in that time. This is separate from the smaller lake NDRRMA found earlier on the Lhende river.",
         "USGS first read the shaking on Wednesday as an earthquake. It later found no earthquake took place. The signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.",
         "Nepal's Army says more than 5,000 army and police personnel are working the flood zone, from Nuwakot to Chitwan. Prime Minister Balendra Shah travelled to Bidur in Nuwakot on Thursday to see the damage.",
-        "In India, the NDRF and the Sashastra Seema Bal have rescue teams on standby in Bihar and Uttar Pradesh. The NDRF says the Gandak, which the Narayani becomes downstream, could see higher water levels.",
+        "In India, the NDRF and the Sashastra Seema Bal have rescue teams on standby in Bihar and Uttar Pradesh, and the NDRF says the Gandak, which the Narayani becomes downstream, could see higher water levels. Nepal has turned down offers of search and rescue teams from India, China, the US, Britain, Japan, South Korea, Sri Lanka and Bangladesh, the Kathmandu Post reports. The government says its own army and police can handle the operation and is asking instead for cash, through a single channel into the Prime Minister's Disaster Relief Fund.",
         "Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear."
       ],
       "sources": [
@@ -23,27 +23,32 @@
         { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/27/new-barrier-lake-in-nepal-raises-fresh-flood-threat-china-warns" },
         { "name": "ICIMOD", "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" },
         { "name": "Business Standard", "url": "https://www.business-standard.com/world-news/glacial-collapse-triggered-nepal-flash-floods-not-earthquake-usgs-126082700207_1.html" },
-        { "name": "ANI", "url": "https://aninews.in/news/national/general-news/ndrf-on-high-alert-as-nepal-flash-flood-threatens-gandak-bihar-up-deploy-rescue-teams-in-vulnerable-areas20260827033747/" }
+        { "name": "ANI", "url": "https://aninews.in/news/national/general-news/ndrf-on-high-alert-as-nepal-flash-flood-threatens-gandak-bihar-up-deploy-rescue-teams-in-vulnerable-areas20260827033747/" },
+        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/27/nepal-declines-foreign-rescue-teams-says-its-own-security-agencies-can-handle-operation" }
       ],
       "revised": true
     },
     {
       "id": "damage-cost",
       "title": "Damage put at Rs 200 billion, hydropower losses still being counted",
-      "time": "2026-08-27T20:30:00+05:45",
+      "time": "2026-08-27T22:00:00+05:45",
       "image": "",
       "body": [
         "Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.",
         "That figure does not include energy infrastructure. Energy Minister Biraj Bhakta Shrestha has ordered an immediate assessment of hydropower damage. In Rasuwa, 8 projects have been hit, 5 of them operational with a combined 236 megawatts, and 3 still under construction with a combined 342 megawatts. Nuwakot has lost access to 6 more projects, 4 operational at 123 megawatts and 2 under construction at 53 megawatts.",
         "Rasuwa, Nuwakot, Dhading and Chitwan are still being surveyed for road and building damage, so the Rs 200 billion figure is expected to rise.",
         "The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. The World Bank has separately offered up to Rs 25 billion in emergency assistance, its Nepal country director told the finance ministry. That is aid, not a damage estimate.",
-        "Insurers say claims will take weeks to settle because most of the damaged sites cannot be reached by road."
+        "Insurers say claims will take weeks to settle because most of the damaged sites cannot be reached by road.",
+        "The Prime Minister's Disaster Relief Fund took in Rs 273.3 million in donations in its first six hours, the finance ministry says, led by a Rs 100 million gift from Gorkha Brewery. That is public donations, separate from the Rs 1 billion the government has already released for relief.",
+        "Onlinekhabar reports eight schools were damaged, seven in Rasuwa and one in Nuwakot. Four were swept away entirely. The rest, including Tribhuvan Trishul Secondary School in Bidur, are filled with mud and debris."
       ],
       "sources": [
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html" },
         { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" },
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html" }
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html" },
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/pms-disaster-relief-fund.html" },
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/flood-damages-8-schools-in-rasuwa-and-nuwakot.html" }
       ],
       "revised": true
     }
