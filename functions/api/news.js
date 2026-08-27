@@ -147,12 +147,7 @@ export async function onRequestGet(context) {
   const videos = items.filter(i => i.kind === 'video').slice(0, 60);
   const officialFirst = items.filter(i => i.kind !== 'press' && i.kind !== 'video');
   const pressOnly = items.filter(i => i.kind === 'press');
-  const finalItems = officialFirst.concat(pressOnly).slice(0, 100).concat(videos);
-  finalItems.sort((a, b) => {
-    const at = a.time ? new Date(a.time).getTime() : -Infinity;
-    const bt = b.time ? new Date(b.time).getTime() : -Infinity;
-    return bt - at;
-  });
+  const finalItems = spread(officialFirst.concat(pressOnly).slice(0, 100)).concat(videos);
 
   const response = new Response(JSON.stringify({
     updated: new Date().toISOString(),
@@ -170,6 +165,28 @@ export async function onRequestGet(context) {
 
   context.waitUntil(cache.put(cacheKey, response.clone()));
   return response;
+}
+
+/**
+ * Keeps one newsroom from stacking up in the feed. A paper that publishes six
+ * stories in the same minute used to fill the whole first screen, which reads
+ * as spam rather than as coverage. This walks the time-ordered list and, at
+ * each slot, takes the newest item whose source is not the one just placed.
+ * Only the order changes; nothing is dropped and nothing is merged, so every
+ * story is still one card with its own link.
+ */
+function spread(items) {
+  const pool = items.slice();
+  const out = [];
+  let lastSource = null;
+  while (pool.length) {
+    let pick = pool.findIndex(i => i.source !== lastSource);
+    if (pick === -1) pick = 0;          // only one source left, keep going
+    const [item] = pool.splice(pick, 1);
+    out.push(item);
+    lastSource = item.source;
+  }
+  return out;
 }
 
 /* ---------- sources ---------- */
@@ -407,7 +424,7 @@ async function searchYoutube(key) {
       const s = item.snippet;
       const text = s.title + ' ' + (s.channelTitle || '');
       return {
-        title: cleanTitle(s.title),
+        title: cleanVideoTitle(s.title),
         url: 'https://www.youtube.com/watch?v=' + item.id.videoId,
         source: cleanChannel(s.channelTitle),
         time: s.publishedAt || null,
@@ -418,6 +435,32 @@ async function searchYoutube(key) {
         summary: summarize(s.description, SUMMARY_MAX)
       };
     });
+}
+
+/* YouTube titles are often a real headline followed by a wall of hashtags, or
+   nothing but hashtags. Strip the hashtag run off the end; if that leaves
+   nothing, turn the hashtags themselves into readable words so the card is
+   not a blank line. */
+function cleanVideoTitle(raw) {
+  const text = cleanTitle(raw);
+  const trimmed = text.replace(/(?:\s*#[\p{L}\p{N}_]+)+\s*$/u, '').trim();
+  if (trimmed.length >= 12) return trimmed.replace(/\s*[|\-–]\s*$/, '').trim();
+
+  const words = (text.match(/#[\p{L}\p{N}_]+/gu) || [])
+    .map(tag => tag.slice(1).replace(/[_]+/g, ' ').trim())
+    .filter(Boolean);
+  const seen = new Set();
+  const kept = [];
+  for (const word of words) {
+    const key = word.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    kept.push(word);
+    if (kept.length === 5) break;
+  }
+  const rebuilt = kept.join(', ');
+  if (!rebuilt) return text.slice(0, 90);
+  return rebuilt.charAt(0).toUpperCase() + rebuilt.slice(1);
 }
 
 /* Some channel titles come back with view counts and timestamps glued on
@@ -673,14 +716,28 @@ function tag(block, name) {
   return match[1].replace(/^<!\[CDATA\[/, '').replace(/\]\]>$/, '').trim();
 }
 
-function cleanTitle(text) {
+function decodeEntities(text) {
   return String(text || '')
-    .replace(/<[^>]+>/g, '')
-    .replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'")
-    .replace(/&apos;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-    .replace(/&nbsp;/g, ' ').replace(/&#\d+;/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#0?39;/g, "'").replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, ' ').replace(/&hellip;/g, '…')
+    .replace(/&rsquo;/g, '\u2019').replace(/&lsquo;/g, '\u2018')
+    .replace(/&ldquo;/g, '\u201c').replace(/&rdquo;/g, '\u201d')
+    .replace(/&mdash;/g, ', ').replace(/&ndash;/g, '-')
+    .replace(/&#(\d+);/g, (m, n) => {
+      const code = Number(n);
+      return code > 31 && code < 1114111 ? String.fromCodePoint(code) : ' ';
+    })
+    .replace(/&amp;/g, '&');
+}
+
+/* Decode first, then strip tags, then decode again. Some feeds double-encode,
+   so a single pass in the wrong order leaves visible markup in the card. */
+function cleanTitle(text) {
+  let out = decodeEntities(String(text || ''));
+  out = out.replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi, ' ').replace(/<[^>]+>/g, ' ');
+  out = decodeEntities(out).replace(/<[^>]+>/g, ' ');
+  return out.replace(/\s+/g, ' ').trim();
 }
 
 /**
