@@ -1,41 +1,27 @@
 {
-  "date": "2026-08-27",
-  "displayDate": "August 27, 2026",
-  "updated": "2026-08-27T11:30:00+05:45",
-  "tag": "NEPAL · RASUWA FLOOD",
-  "kicker": "Daily brief · Day 2",
-  "title": "USGS rules out earthquake as second-flood warning still stands over Rasuwa",
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Langtang_Valley%2C_Trishuli_River.JPG/1280px-Langtang_Valley%2C_Trishuli_River.JPG",
-  "imageAlt": "The Trishuli river running through the Langtang valley in Rasuwa district, Nepal",
-  "lead": "Breaking, August 27.",
-  "body": [
-    "ICIMOD, the Kathmandu-based mountain research centre, says a blockage remains lodged in the river upstream of Rasuwa, on the Nepal-China border. Qianggong Zhang, ICIMOD's head of climate and environmental risk, says authorities are treating a second flood as imminent and have kept an evacuation order in force at Jilong (Gyirong) port on the Tibetan side.",
-    "That is the warning. This is what the first wave already did.",
-    "Nepal Police headquarters and the National Disaster Risk Reduction and Management Authority put the confirmed dead at 162 as of Thursday. Bodies have been recovered across eight districts along the Bhote Koshi and Trishuli: 64 in Chitwan, 27 in Dhading, 26 in Nawalparasi East, 20 in Gorkha, 12 in Nuwakot, 9 in Tanahun, and 2 each in Nawalparasi West and Rasuwa.",
-    "Nepal's tourism ministry says about 400 tourists remain missing, roughly 340 of them foreign nationals — including 47 Americans, 34 Australians, 33 Britons and 24 Canadians, according to figures reported by the Associated Press. Nepal Police spokesperson Abi Narayan Kafle told the AP that 28 police personnel are also missing, part of a wider security-forces toll of 85 that includes 44 from the Nepali Army and 13 from the Armed Police Force. South Korea's government says nine of its citizens working at a hydropower project are unaccounted for.",
-    "The US Geological Survey says the seismic signal first reported as a magnitude-4.4 earthquake was in fact a magnitude-5.2 signature consistent with a glacial collapse, not a tectonic event. ICIMOD says an ice avalanche into the Lhende Khola, a Bhote Koshi tributary on the Tibetan side, is the suspected trigger for the collapse — but the cause is not confirmed.",
-    "Most river-monitoring stations on the Bhote Koshi and Trishuli were destroyed in the first surge, leaving authorities watching with fewer instruments than on Wednesday. ICIMOD's public advisory, current as of Thursday, still describes the upstream blockage as in place; nothing in today's reporting confirms it has cleared.",
-    "Nepal's Energy Minister, Biraj Bhakta Shrestha, says 12 hydropower plants with a combined 431.1 megawatts of capacity have been taken offline, cutting roughly 10 percent of the country's electricity generation, Khabarhub reported Wednesday evening.",
-    "Out of contact is not the same as missing. Phone, power and internet lines are down across the flooded valleys, and Nepal's tourism ministry cautions that its missing-persons list will keep changing as connectivity returns and travelers check in.",
-    "If you have family along the Bhote Koshi, the Trishuli or the Narayani, keep them off the riverbanks and away from the water's edge until local authorities lift the alert — ICIMOD's warning of a second flood has not been withdrawn."
-  ],
-  "keyFacts": [
-    { "label": "Confirmed dead", "value": "162", "note": "Nepal Police headquarters / NDRRMA, 27 Aug" },
-    { "label": "Tourists missing", "value": "~400", "note": "About 340 foreign nationals; Nepal Tourism Board, via AP" },
-    { "label": "Security personnel missing", "value": "85", "note": "44 Army, 28 Police, 13 Armed Police Force — Police spokesperson Abi Narayan Kafle" },
-    { "label": "Bodies recovered, Chitwan", "value": "64", "note": "Highest single-district count; Nepal Police headquarters" },
-    { "label": "Cause", "value": "Not an earthquake", "note": "USGS: magnitude-5.2 signal consistent with glacial collapse; avalanche trigger still suspected, per ICIMOD" },
-    { "label": "Second flood risk", "value": "Still active", "note": "ICIMOD: upstream blockage remains; Jilong port evacuation order in force" },
-    { "label": "Hydropower workers missing", "value": "9", "note": "South Korean nationals; South Korean government, via AP" },
-    { "label": "Power capacity offline", "value": "~10%", "note": "12 plants, 431.1 MW; Energy Minister Biraj Bhakta Shrestha, via Khabarhub" }
-  ],
-  "sources": [
-    { "name": "ICIMOD — press advisory on second-flood risk", "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" },
-    { "name": "HimalPress — 162 bodies recovered, district breakdown", "url": "https://en.himalpress.com/bhotekoshi-flooding-162-bodies-recovered/" },
-    { "name": "The Kathmandu Post — what we know, what remains unclear", "url": "https://kathmandupost.com/national/2026/08/26/bhotekoshi-flood-what-we-know-what-remains-unclear" },
-    { "name": "Khabarhub — hydropower and power-capacity impact", "url": "https://english.khabarhub.com/2026/26/565024/" },
-    { "name": "NPR — USGS glacial-collapse clarification", "url": "https://www.npr.org/2026/08/26/g-s1-140211/nepal-china-floods" },
-    { "name": "The Standard (AP wire) — death toll, missing nationals", "url": "https://www.standard.net.au/story/9338239/floods-kill-162-in-nepal-34-australians-among-missing/" }
-  ],
-  "disclaimer": "A plain-language summary built from public news reports on the day. In the first days after a disaster, official numbers change hour to hour and sources disagree; where they do, the lower confirmed figure is used here. Nothing on this page is an official warning. For decisions about safety or travel, follow Nepal Police, the NDRRMA and your local authorities, and check the sources linked above."
+  "updated": "2026-08-27T11:45:00+05:45",
+  "posts": [
+    {
+      "id": "rasuwa-flood",
+      "title": "Rasuwa flood: 162 dead, a second surge still possible",
+      "source": "Nepal Police",
+      "time": "2026-08-27T11:30:00+05:45",
+      "image": "",
+      "body": [
+        "The flash flood that hit Timure in Rasuwa on Wednesday morning has killed 162 people, Nepal Police said on Thursday. The water ran down the Bhote Koshi into the Trishuli and the Narayani, and bodies have been found as far south as Chitwan.",
+        "About 590 people are still missing. Most are travellers, 391 foreign and 93 Nepali. Also unaccounted for: 85 soldiers and police, and around 60 hydropower workers.",
+        "Scientists say a second flood is still possible. The debris that blocked the river upstream, on the China side, has not fully cleared. ICIMOD says to treat the warning as live. China has moved people out of Gyirong. Nuwakot and Dhading are being watched downstream.",
+        "The likely trigger is an ice and rock avalanche into the Lhende Khola on the Tibet side, which dammed the river and then broke. ICIMOD says this is not confirmed. Sensors picked up small tremors nearby, but no earthquake link is proven.",
+        "Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave. Galchchi is one of the few still working, so any new warning will come with less notice.",
+        "Out of contact does not mean dead. Phone lines, power and internet are down across the valley and coming back slowly.",
+        "If your family lives near the Bhote Koshi, the Trishuli or the Narayani, keep them off the banks until officials say it is clear."
+      ],
+      "sources": [
+        { "name": "Nepal Police", "url": "https://www.nepalpolice.gov.np/" },
+        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/26/update-rasuwa-flood-death-toll-climbs-to-72-as-dozens-remain-missing" },
+        { "name": "ICIMOD", "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" },
+        { "name": "CNN", "url": "https://www.cnn.com/2026/08/26/world/live-news/nepal-flash-flooding-floods-intl" }
+      ]
+    }
+  ]
 }

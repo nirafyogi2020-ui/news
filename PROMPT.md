@@ -1,102 +1,85 @@
-# Today's summary — how to make one
+# Today — how the story cards are made
 
-This is the recipe for the **Today** tab on the site. One briefing a day.
-Written by hand in a normal Claude chat (cheapest model that holds the
-quality — Haiku is usually enough; step up only if the draft is sloppy).
-No API, no automation. The output is a single file: `today.json` at the
-repo root. The site reads it and draws the scrollable post.
+The **Today** section (its own tab, and a copy on the home page) is a feed of
+short story cards, built the same way as the Live feed cards. It is rebuilt
+through the day by a scheduled cloud agent. Output is one file: `today.json`
+at the repo root. The site reads it and draws the cards.
 
----
+One card = one story / one incident. Not one card per source, not one giant
+daily blob. If two things are genuinely separate news, they are two cards.
 
-## Why the style on the reference posts works
+## Every run
 
-The Facebook posts we are copying (Rupesh Parajuli) read as accurate
-because of a few hard habits, not because of good writing:
+1. Read `today.json` (the current cards) and this file.
 
-1. **Every number is attributed in the same sentence.** "Nepal Police put
-   the confirmed dead at 157" — never a bare "157 dead". If no one is
-   named, it does not go in.
-2. **The warning comes first, the damage second.** Lead with what might
-   happen next (the actionable part), then a hard pivot line, then the
-   record of what already happened.
-3. **Unconfirmed things are said to be unconfirmed, in plain words.**
-   "An ice avalanche is the suspected trigger. ICIMOD says the cause is
-   not confirmed."
-4. **Definitions are spelled out where people get them wrong.** "Out of
-   contact is not the same as missing."
-5. **Short declarative sentences. No adjectives, no emotion, no drama.**
-   "The Trishuli rose nine metres at Galchchi in thirty minutes."
-6. **It ends with one concrete instruction** for the people who can act on
-   it: "If you have family along the Bhote Koshi, get them off the banks
-   tonight."
-7. **Sources are listed, not hidden.**
+2. Get the latest. Search the web (last 24h), open real news articles, and
+   pull the site's own feed at `/api/news` for context. Prefer official and
+   primary sources first (Nepal Police, Nepal Army, NDRRMA, Office of the PM,
+   ICIMOD, USGS, ReliefWeb), then Nepali newsrooms, then one global wire.
 
-Our version keeps all of that and adds: a key-facts table, real source
-links, and a standing disclaimer that numbers move and readers must check
-the originals.
+3. For each existing card:
+   - Real new information since it was written  ->  rewrite it, set `revised: true`,
+     bump `time` to now.
+   - Nothing concrete has changed  ->  leave the card exactly as it is.
 
----
+4. New incident or clearly separate story  ->  add a new card.
 
-## Steps
+5. Drop a card only when the story is clearly over and no longer useful.
 
-1. **Gather sources.** Aim for 3–6, best first:
-   - Primary / official: ICIMOD, NDRRMA, Nepal Police, Office of the PM,
-     USGS, ReliefWeb, GDACS.
-   - Nepali newsrooms: Kathmandu Post, Onlinekhabar, Setopati, Ratopati.
-   - One or two global wires for cross-check: CNN, Reuters, AP, BBC.
-   - The site's own aggregator is a shortcut:
-     `https://nepaldisasterupdatelive.nxtimaginelabs.com/api/news`
-2. **Cross-check every number.** Where sources disagree, use the **lower
-   confirmed** figure and say who confirmed it and when.
-3. **Write the body** as 6–10 short paragraphs in this order:
-   - `lead`: `"Breaking, <Month Day>."` (its own field)
-   - the warning / what may happen next, attributed
-   - the pivot line: *"That is the warning. This is what the first wave
-     already did."* (adapt wording to the day)
-   - the chronology with hard, attributed numbers
-   - who / what is still unaccounted for
-   - suspected cause, clearly flagged as unconfirmed
-   - monitoring / data gaps / uncertainty
-   - human count with the definition caveat
-   - one direct instruction for affected families
-4. **Fill `keyFacts`** — 5–9 rows, each with `label`, `value`, and an
-   optional `note` for the attribution or caveat.
-5. **Pick one image.** A real, clean, professional photo of the region —
-   not AI-generated. Public-domain / CC is safest (Wikimedia Commons
-   `Special:FilePath`, NASA, USGS). Landscape or satellite of the affected
-   valley. Put the direct image URL in `image` and a plain `imageAlt`.
-   The site draws the red bar, tag, title and source line over it — do not
-   bake text into the image.
-6. **Write the `disclaimer`** (usually the standing one is fine, tweak if
-   the day needs it).
-7. **Set `updated`** to now in Nepal time (`+05:45`).
-8. **Save `today.json`, deploy, check the Today tab.**
+6. Set the top-level `updated` to now (Nepal time, `+05:45`).
 
----
+7. Validate, deploy, commit, push. (Steps in the routine config.)
 
-## today.json fields
+## Writing rules — read these, they matter
 
-| field         | what it is |
-|---------------|-----------|
-| `date`        | ISO date, `YYYY-MM-DD` |
-| `displayDate` | e.g. `August 26, 2026` — shown top-right on the image |
-| `updated`     | ISO datetime with `+05:45` offset |
-| `tag`         | small chip on the image, e.g. `NEPAL · RASUWA FLOOD` |
-| `kicker`      | small label top-left on the image, e.g. `Daily brief · Day 1` |
-| `title`       | the headline, drawn big over the lower image |
-| `image`       | direct URL to one photo |
-| `imageAlt`    | plain description of the photo |
-| `lead`        | `"Breaking, <Month Day>."` |
-| `body`        | array of paragraph strings |
-| `keyFacts`    | array of `{ label, value, note? }` |
-| `sources`     | array of `{ name, url }` |
-| `disclaimer`  | one paragraph, shown at the foot |
+- **No em dashes. Ever.** Use a full stop or a comma. Same for the "–" dash.
+- **Short.** Each card is 4 to 8 short paragraphs. Short sentences. Plain,
+  everyday words. Write like a person telling you what happened, not like a
+  report. Cut every word that is not doing a job.
+- **Every number gets a source in the same sentence.** "Nepal Police said 162
+  dead." Never a bare number.
+- Where sources disagree, use the **lower confirmed** figure and say who
+  confirmed it.
+- Unconfirmed things are said to be unconfirmed. "ICIMOD says the cause is not
+  confirmed."
+- Spell out the things people get wrong. "Out of contact does not mean dead."
+- End the main card with one clear instruction for people who can act on it.
+- **No disclaimer paragraph.** Do not add "this is a summary, numbers change,
+  check the sources" text. It is already handled by the page.
+- **Sources: names only.** `[{ "name": "Nepal Police", "url": "..." }]`. No
+  description after the name, no "— toll update", nothing. Just the outlet
+  name and the link to the actual article.
 
-## Rules, short
+## today.json shape
 
-- No number without a named source in the same sentence.
-- Unconfirmed = say "not confirmed" or "suspected".
-- Lower confirmed figure when sources disagree.
-- Short sentences. No adjectives. No emotion.
-- End on one concrete instruction.
-- Never state something as done that was not checked against a source.
+```json
+{
+  "updated": "2026-08-27T11:45:00+05:45",
+  "posts": [
+    {
+      "id": "rasuwa-flood",
+      "title": "Short, plain headline. Not just a number.",
+      "source": "Nepal Police",
+      "time": "2026-08-27T11:30:00+05:45",
+      "image": "",
+      "body": ["short para", "short para", "..."],
+      "sources": [
+        { "name": "Nepal Police", "url": "https://..." },
+        { "name": "ICIMOD", "url": "https://..." }
+      ],
+      "revised": true
+    }
+  ]
+}
+```
+
+| field    | what it is |
+|----------|-----------|
+| `id`     | stable slug for the story, so the next run can find and update this card |
+| `title`  | the card headline, short and plain |
+| `source` | the single main source, shown by the card avatar |
+| `time`   | when this card was last meaningfully updated (Nepal time, `+05:45`) |
+| `image`  | a direct image URL from a news source **only if it loads**; otherwise `""` |
+| `body`   | array of short paragraphs |
+| `sources`| array of `{ name, url }`, real article links, names only |
+| `revised`| `true` if this run changed an existing card; omit or `false` otherwise |

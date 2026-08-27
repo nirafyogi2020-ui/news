@@ -1112,38 +1112,26 @@
     .mapteaser-go{display:none;}
   }
 
-  /* ===== Today's summary tab ===== */
-  .td-post{margin-top:22px; background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:var(--shadow); max-width:640px;}
-  .td-figure{position:relative; margin:0; aspect-ratio:4/5; background:var(--surface-2); overflow:hidden;}
-  .td-figure img{width:100%; height:100%; object-fit:cover; display:block;}
-  .td-shade{position:absolute; inset:0; background:linear-gradient(180deg, rgba(8,10,14,0.5) 0%, rgba(8,10,14,0.05) 24%, rgba(8,10,14,0) 42%, rgba(8,10,14,0.7) 80%, rgba(8,10,14,0.92) 100%);}
-  .td-topbar{position:absolute; top:0; left:0; right:0; display:flex; justify-content:space-between; align-items:center; gap:10px; padding:9px 14px; background:var(--alert); color:#fff; font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.13em; text-transform:uppercase;}
-  .td-tag{position:absolute; top:50px; left:14px; padding:5px 9px; border:1px solid rgba(255,255,255,0.5); border-radius:5px; color:#fff; font-family:var(--font-mono); font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; background:rgba(8,10,14,0.3);}
-  .td-caption{position:absolute; left:0; right:0; bottom:0; padding:22px 18px 16px;}
-  .td-caption h3{color:#fff; font-family:var(--font-display); font-weight:600; font-size:1.55rem; line-height:1.15; margin:0; text-shadow:0 1px 14px rgba(0,0,0,0.45);}
-  .td-rule{width:44px; height:3px; background:#e9b949; margin:13px 0 10px; border-radius:2px;}
-  .td-src{color:rgba(255,255,255,0.82); font-family:var(--font-mono); font-size:0.56rem; letter-spacing:0.05em; line-height:1.5;}
-  .td-disc{color:rgba(255,255,255,0.62); font-size:0.56rem; margin-top:3px; font-family:var(--font-mono); letter-spacing:0.03em;}
-  .td-body{padding:20px 20px 6px;}
-  .td-lead{font-family:var(--font-display); font-weight:600; font-size:1.05rem; margin:0 0 12px;}
-  .td-body p{font-size:0.98rem; line-height:1.62; margin:0 0 13px; color:var(--text);}
-  .td-facts{list-style:none; margin:8px 0 16px; padding:14px 16px; background:var(--surface-2); border-radius:10px; display:grid; gap:9px;}
-  .td-facts li{display:flex; justify-content:space-between; gap:14px; font-size:0.9rem; border-bottom:1px solid var(--border); padding-bottom:9px;}
-  .td-facts li:last-child{border-bottom:0; padding-bottom:0;}
-  .td-fl{color:var(--text-muted);}
-  .td-fv{font-family:var(--font-mono); font-weight:600; text-align:right; white-space:nowrap;}
-  .td-fv small{display:block; font-weight:400; color:var(--text-faint); font-size:0.7rem; white-space:normal; margin-top:2px;}
-  .td-sources{margin:0 0 18px;}
-  .td-sources b{font-family:var(--font-mono); font-size:0.66rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-faint); display:block; margin-bottom:6px;}
-  .td-sources a{display:block; font-size:0.9rem; padding:4px 0; color:var(--navy); text-decoration:none;}
-  .td-sources a:hover{text-decoration:underline;}
-  :root[data-theme="dark"] .td-sources a{color:#8fb4ff;}
-  .td-disclaimer{padding:13px 20px 18px; font-size:0.82rem; line-height:1.55; color:var(--text-muted); border-top:1px solid var(--border); background:var(--surface-2);}
-  .td-updated{font-family:var(--font-mono); font-size:0.68rem; color:var(--text-faint); margin-top:10px;}
-  @media (max-width:640px){
-    .td-post{max-width:100%;}
-    .td-caption h3{font-size:1.3rem;}
-  }
+  /* ===== Today section: a feed of story cards, same shape as the Live feed ===== */
+  .today-grid{display:flex; flex-direction:column; gap:16px; margin-top:18px; max-width:620px;}
+  .today-grid .post-card{border-radius:14px; box-shadow:var(--shadow);}
+  .today-card .post-photo{aspect-ratio:16/9;}
+  .today-card .post-body{padding:12px 16px 6px;}
+  .today-card .tc-title{font-family:var(--font-display); font-weight:600; font-size:1.22rem; line-height:1.25; margin:0 0 7px; color:var(--text);}
+  .today-card .post-summary{font-size:1.02rem; line-height:1.62;}
+  .today-card .post-summary p{margin:0 0 0.72em;}
+  .today-card .post-summary p:last-child{margin-bottom:0;}
+  .today-card .post-summary.clamped{-webkit-line-clamp:4;}
+  .today-card .tc-more{display:inline-block; margin-top:8px; font-size:0.9rem; font-weight:600; color:var(--navy); background:none; border:0; padding:0; cursor:pointer;}
+  :root[data-theme="dark"] .today-card .tc-more{color:#8fb4ff;}
+  .today-card .tc-sources{margin:12px 0 2px; font-size:0.9rem; color:var(--text-muted);}
+  .today-card .tc-sources b{font-weight:600; color:var(--text-faint); font-size:0.8rem;}
+  .today-card .tc-sources a{color:var(--navy); text-decoration:none;}
+  .today-card .tc-sources a:hover{text-decoration:underline;}
+  :root[data-theme="dark"] .today-card .tc-sources a{color:#8fb4ff;}
+  .today-card .post-who .meta .rev{color:var(--critical); font-weight:600;}
+  .today-updated{font-family:var(--font-mono); font-size:0.74rem; color:var(--text-faint); margin-top:14px;}
+  @media (max-width:640px){ .today-grid{max-width:100%;} }
 </style>
 </head>
 <body>
@@ -1313,14 +1301,14 @@
       <p class="byline"><b data-i18n="brand.name">Nepal Disaster Update</b><span data-i18n="hero.reporting">Independent volunteer briefing, built from public sources</span></p>
     </header>
 
-    <!-- ===== today's summary (same post also lives on the Today tab) ===== -->
+    <!-- ===== today: story cards, also on the Today tab ===== -->
     <section id="today-home" style="margin-top:6px;">
-      <p class="eyebrow" data-i18n="sec.today.eyebrow">Daily brief</p>
-      <h2 data-i18n="sec.today.h2">Today's summary</h2>
-      <p class="measure lede" data-i18n="sec.today.home">Where things stand today, in plain language, refreshed through the day. Open the sources before acting on anything here.</p>
-      <article class="td-post" id="td-post-home" aria-live="polite">
-        <div class="td-body"><p>Loading today&rsquo;s summary&hellip;</p></div>
-      </article>
+      <p class="eyebrow" data-i18n="sec.today.eyebrow">Today</p>
+      <h2 data-i18n="sec.today.h2">Today</h2>
+      <p class="measure lede" data-i18n="sec.today.home">Each story of the day in short, checked against the sources. Updated through the day. Tap a card to read the whole thing.</p>
+      <div class="today-grid" id="today-grid-home" aria-live="polite">
+        <p style="font-size:0.9rem; color:var(--text-faint);">Loading&hellip;</p>
+      </div>
     </section>
 
     <!-- ===== live counters ===== -->
@@ -1650,13 +1638,13 @@
 
   <!-- =================== TODAY =================== -->
   <div class="tabpanel" id="panel-today" role="tabpanel" aria-labelledby="tab-today" hidden>
-    <section id="today-summary" data-toc="1. Today's summary">
-      <p class="eyebrow" data-i18n="sec.today.eyebrow">Daily brief</p>
-      <h2 data-i18n="sec.today.h2">Today's summary</h2>
-      <p class="measure lede" data-i18n="sec.today.lede">One plain-language briefing a day, written by hand from the day's most reliable public reporting. Numbers move fast in a live disaster &mdash; always open the original sources before you act on anything here.</p>
-      <article class="td-post" id="td-post" aria-live="polite">
-        <div class="td-body"><p>Loading today&rsquo;s summary&hellip;</p></div>
-      </article>
+    <section id="today-summary">
+      <p class="eyebrow" data-i18n="sec.today.eyebrow">Today</p>
+      <h2 data-i18n="sec.today.h2">Today</h2>
+      <p class="measure lede" data-i18n="sec.today.lede">Each story of the day in short, checked against the sources. New and updated posts appear through the day. Tap a card to read the whole thing.</p>
+      <div class="today-grid" id="today-grid" aria-live="polite">
+        <p style="font-size:0.9rem; color:var(--text-faint);">Loading&hellip;</p>
+      </div>
     </section>
   </div>
 
@@ -2308,10 +2296,10 @@ var SITE = {
     ne: {
       'tab.overview': 'अहिले',
       'tab.today': 'आज',
-      'sec.today.eyebrow': 'दैनिक ब्रिफिङ',
-      'sec.today.h2': 'आजको सारांश',
-      'sec.today.lede': 'दिनको एक पटक, भरपर्दो सार्वजनिक स्रोतका आधारमा हातैले तयार पारिएको संक्षिप्त ब्रिफिङ। जीवित विपद्मा तथ्याङ्क छिटो बदलिन्छ — केही गर्नुअघि मूल स्रोत हेर्नुहोस्।',
-      'sec.today.home': 'आज अवस्था कहाँ छ, सरल भाषामा, दिनभर अद्यावधिक। केही गर्नुअघि स्रोतहरू हेर्नुहोस्।',
+      'sec.today.eyebrow': 'आज',
+      'sec.today.h2': 'आज',
+      'sec.today.lede': 'दिनका हरेक घटना छोटकरीमा, स्रोतसँग मिलाएर जाँचिएको। दिनभर नयाँ र अद्यावधिक पोस्ट थपिन्छन्। पुरा पढ्न कार्डमा ट्याप गर्नुहोस्।',
+      'sec.today.home': 'दिनका हरेक घटना छोटकरीमा, स्रोतसँग जाँचिएको। दिनभर अद्यावधिक। पुरा पढ्न कार्डमा ट्याप गर्नुहोस्।',
       'tab.feed': 'फिड',
       'tab.map': 'नक्सा',
       'tab.live': 'प्रत्यक्ष',
@@ -4567,15 +4555,14 @@ var LiveFeed = (function(){
 })();
 
 /* =========================================================================
-   Today's summary — reads /today.json and renders one scrollable post.
-   The file is written by hand each day from public reporting; nothing here
-   is generated live. Missing file just shows a quiet fallback.
+   Today — reads /today.json and renders a feed of story cards, same shape
+   as the Live feed. The file is rebuilt through the day from public
+   reporting (see PROMPT.md). Missing file just shows a quiet line.
    ========================================================================= */
 (function(){
-  var hosts = [document.getElementById('td-post-home'), document.getElementById('td-post')]
+  var grids = [document.getElementById('today-grid-home'), document.getElementById('today-grid')]
     .filter(function(el){ return el; });
-  if(!hosts.length) return;
-  var done = false;
+  if(!grids.length) return;
 
   function esc(s){
     return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
@@ -4583,73 +4570,103 @@ var LiveFeed = (function(){
     });
   }
 
+  function initials(name){
+    var w = String(name || '?').trim().split(/\s+/);
+    return ((w[0] || '?')[0] + (w[1] ? w[1][0] : '')).toUpperCase();
+  }
+
+  function timeAgo(iso){
+    var t = new Date(iso).getTime();
+    if(isNaN(t)) return '';
+    var m = Math.round((Date.now() - t) / 60000);
+    if(m < 1) return 'just now';
+    if(m < 60) return m + ' min ago';
+    var h = Math.round(m / 60);
+    if(h < 24) return h + (h === 1 ? ' hour ago' : ' hours ago');
+    var d = Math.round(h / 24);
+    return d + (d === 1 ? ' day ago' : ' days ago');
+  }
+
   function fmtUpdated(iso){
+    var d = new Date(iso);
+    if(isNaN(d.getTime())) return '';
     try{
-      var d = new Date(iso);
-      if(isNaN(d.getTime())) return '';
-      return d.toLocaleString('en-GB', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' }) + ' NPT';
-    }catch(e){ return ''; }
+      return d.toLocaleString('en-GB', { timeZone:'Asia/Kathmandu', day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' }) + ' NPT';
+    }catch(e){
+      return String(iso).slice(0, 16).replace('T', ' ') + ' NPT';
+    }
+  }
+
+  function card(post, i){
+    var uid = 'today-' + (post.id ? String(post.id).replace(/[^\w-]/g, '') : i) + '-' + i;
+    var paras = Array.isArray(post.body) ? post.body : (post.body ? [post.body] : []);
+    var bodyHtml = paras.map(function(p){ return '<p>' + esc(p) + '</p>'; }).join('');
+    var url = post.sources && post.sources[0] && post.sources[0].url ? post.sources[0].url : (post.url || '');
+
+    var srcHtml = (post.sources || []).map(function(s){
+      var n = esc(s.name || s.url || '');
+      return s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + n + '</a>' : n;
+    }).join(', ');
+
+    var rev = post.revised ? ' &middot; <span class="rev">updated</span>' : '';
+
+    return (
+      '<article class="post-card today-card" data-url="' + esc(url) + '" data-title="' + esc(post.title || '') + '">' +
+        '<div class="post-head">' +
+          '<div class="post-avatar" aria-hidden="true">' + esc(initials(post.source)) + '</div>' +
+          '<div class="post-who">' +
+            '<span class="name">' + esc(post.source || 'Update') + '</span>' +
+            '<span class="meta">' + esc(timeAgo(post.time)) + rev + '</span>' +
+          '</div>' +
+        '</div>' +
+        (post.image
+          ? '<img class="post-photo" loading="lazy" referrerpolicy="no-referrer" src="' + esc(post.image) + '" alt="" data-expand="' + uid + '" onerror="this.closest(\'.post-card\').classList.add(\'no-photo\'); this.remove();">'
+          : '') +
+        '<div class="post-body">' +
+          (post.title ? '<p class="tc-title">' + esc(post.title) + '</p>' : '') +
+          '<div class="post-summary clamped" id="' + uid + '" data-expand="' + uid + '">' + bodyHtml + '</div>' +
+          '<button class="tc-more" type="button" data-expand="' + uid + '">Read more</button>' +
+          (srcHtml ? '<div class="tc-sources"><b>Sources:</b> ' + srcHtml + '</div>' : '') +
+        '</div>' +
+        '<div class="post-foot">' +
+          '<button class="post-btn" type="button" data-share="1">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"></line></svg>Share' +
+          '</button>' +
+          (url
+            ? '<button class="post-btn" type="button" data-open="1">' +
+              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path><path d="M15 3h6v6"></path><path d="M10 14L21 3"></path></svg>Open source' +
+            '</button>'
+            : '') +
+        '</div>' +
+      '</article>'
+    );
   }
 
   function render(d){
-    var facts = (d.keyFacts || []).map(function(f){
-      return '<li><span class="td-fl">' + esc(f.label) + '</span><span class="td-fv">' + esc(f.value) +
-        (f.note ? '<small>' + esc(f.note) + '</small>' : '') + '</span></li>';
-    }).join('');
-
-    var srcLinks = (d.sources || []).map(function(s){
-      var name = esc(s.name || s.url || '');
-      return s.url
-        ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + name + ' &rsaquo;</a>'
-        : '<span>' + name + '</span>';
-    }).join('');
-
-    var srcNames = (d.sources || []).map(function(s){ return esc(s.name || s.url || ''); }).join('  ·  ');
-    var body = (d.body || []).map(function(p){ return '<p>' + esc(p) + '</p>'; }).join('');
-
-    var html =
-      '<figure class="td-figure">' +
-        (d.image ? '<img src="' + esc(d.image) + '" alt="' + esc(d.imageAlt || '') + '" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
-        '<span class="td-shade"></span>' +
-        '<div class="td-topbar"><span>' + esc(d.kicker || 'Daily brief') + '</span><span>' + esc(d.displayDate || '') + '</span></div>' +
-        (d.tag ? '<span class="td-tag">' + esc(d.tag) + '</span>' : '') +
-        '<figcaption class="td-caption">' +
-          '<h3>' + esc(d.title || '') + '</h3>' +
-          '<div class="td-rule"></div>' +
-          (srcNames ? '<div class="td-src">Sources: ' + srcNames + '</div>' : '') +
-          '<div class="td-disc">Compiled from public reports &middot; verify with the original sources</div>' +
-        '</figcaption>' +
-      '</figure>' +
-      '<div class="td-body">' +
-        (d.lead ? '<p class="td-lead">' + esc(d.lead) + '</p>' : '') +
-        body +
-        (facts ? '<ul class="td-facts">' + facts + '</ul>' : '') +
-        (srcLinks ? '<div class="td-sources"><b>Sources</b>' + srcLinks + '</div>' : '') +
-      '</div>' +
-      (d.disclaimer
-        ? '<div class="td-disclaimer">' + esc(d.disclaimer) +
-            (d.updated ? '<div class="td-updated">Updated ' + esc(fmtUpdated(d.updated)) + '</div>' : '') +
-          '</div>'
-        : '');
-
-    hosts.forEach(function(h){ h.innerHTML = html; });
+    var posts = (d && Array.isArray(d.posts)) ? d.posts : [];
+    var html = posts.length
+      ? posts.map(card).join('') +
+        (d.updated ? '<p class="today-updated">Updated ' + esc(fmtUpdated(d.updated)) + '</p>' : '')
+      : '<p style="font-size:0.92rem; color:var(--text-muted);">Nothing new to report this hour. See the <a href="#live" data-tab-link="live">Live</a> tab for the raw feed.</p>';
+    grids.forEach(function(g){ g.innerHTML = html; });
   }
 
-  function load(){
-    if(done) return;
-    done = true;
-    fetch('/today.json', { cache:'no-store' })
-      .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-      .then(render)
-      .catch(function(){
-        done = false;
-        hosts.forEach(function(h){
-          h.innerHTML = '<div class="td-body"><p>Today&rsquo;s summary is not up yet. See the <a href="#live" data-tab-link="live">Live</a> tab for the latest updates.</p></div>';
-        });
+  /* keep the "Read more / Read less" label in step with the clamp */
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.tc-more');
+    if(!btn) return;
+    var p = document.getElementById(btn.getAttribute('data-expand'));
+    if(p) btn.textContent = p.classList.contains('clamped') ? 'Read more' : 'Read less';
+  });
+
+  fetch('/today.json', { cache:'no-store' })
+    .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(render)
+    .catch(function(){
+      grids.forEach(function(g){
+        g.innerHTML = '<p style="font-size:0.92rem; color:var(--text-muted);">Today&rsquo;s posts are not up yet. See the <a href="#live" data-tab-link="live">Live</a> tab.</p>';
       });
-  }
-
-  load();
+    });
 })();
 </script>
 
