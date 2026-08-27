@@ -1,30 +1,29 @@
 {
-  "updated": "2026-08-27T20:30:00+05:45",
+  "updated": "2026-08-27T21:30:00+05:45",
   "posts": [
     {
       "id": "rasuwa-flood",
-      "title": "Death toll at 270 as Nepal watches for a second flood",
-      "time": "2026-08-27T20:30:00+05:45",
+      "title": "Death toll passes 359 as Nepal watches for a second flood",
+      "time": "2026-08-27T21:30:00+05:45",
       "image": "",
       "body": [
-        "Nepal Police said 270 bodies have been recovered as of Thursday evening. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani. Bodies have been found as far south as Chitwan.",
-        "826 people remain out of contact, the National Disaster Risk Reduction and Management Authority says. Most, 644, are tourists, 517 of them foreign nationals. Another 85 are security personnel who were on duty in the flood zone.",
+        "Nepal Police said 359 bodies have been recovered as of Thursday evening, spokesperson Abi Narayan Kafle told the Kathmandu Post. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani. Chitwan has the most dead, 132, followed by Nawalparasi East with 82 and Dhading with 33, the Kathmandu Post reports.",
+        "The National Disaster Risk Reduction and Management Authority says 910 people remain out of contact. Of those, 570 are tourists. Nepal's tourism board says 517 of the missing are foreign nationals from 33 countries, with India's 178 the highest, followed by 65 Americans and 53 Ukrainians.",
         "Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.",
-        "A second flood is still possible. Chinese state media says a barrier lake has formed upstream of Gyirong Port, on the China side, where the original landslide blocked the river. Observation posts are going up there to watch for a new burst, and rain forecast over the next three days could slow the work of clearing it.",
-        "USGS first read the shaking as a magnitude 5.2 earthquake. On Thursday it said fresh analysis of the seismic waves and satellite images found no earthquake took place. The signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.",
-        "Nepal's Army says more than 5,000 army and police personnel are now working the flood zone, from Nuwakot to Chitwan, and rescued 125 people on Thursday, including 20 foreigners. Prime Minister Balendra Shah travelled to Bidur in Nuwakot on Thursday with Infrastructure Minister Sunil Lamsal to see the damage and meet local officials.",
-        "In India, the NDRF and the Sashastra Seema Bal have put rescue teams on standby in Bihar and Uttar Pradesh. The NDRF says the Gandak, which the Narayani becomes downstream, could see higher water levels.",
+        "A second flood is still possible. Nepal's Department of Hydrology and Meteorology says a lake has formed on the Lhende river, about 18 kilometres upstream of the Rasuwagadhi border crossing, where the original collapse happened. The lake covers around 0.11 square kilometres and is still rising, the department says. China passed the warning on through Nepal's foreign ministry.",
+        "USGS first read the shaking as an earthquake. It later found no earthquake took place. The signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.",
+        "Nepal's Army says more than 5,000 army and police personnel are working the flood zone, from Nuwakot to Chitwan. Prime Minister Balendra Shah travelled to Bidur in Nuwakot on Thursday to see the damage.",
+        "In India, the NDRF and the Sashastra Seema Bal have rescue teams on standby in Bihar and Uttar Pradesh. The NDRF says the Gandak, which the Narayani becomes downstream, could see higher water levels.",
         "Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear."
       ],
       "sources": [
         { "name": "Nepal Police", "url": "https://www.nepalpolice.gov.np/" },
         { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/27/nepal-flood-death-toll-reaches-270-as-hundreds-remain-out-of-contact" },
-        { "name": "ABC News", "url": "https://www.abc.net.au/news/2026-08-27/nepal-flooding-live-updates-australians-missing/107082946" },
-        { "name": "Al Jazeera", "url": "https://www.aljazeera.com/news/2026/8/27/more-than-1300-missing-in-nepal-and-china-after-deadly-himalayan-flood" },
+        { "name": "Dawn", "url": "https://www.dawn.com/news/2025473/nepal-flood-death-toll-climbs-to-359-as-around-1000-remain-missing" },
+        { "name": "Free Press Journal", "url": "https://www.freepressjournal.in/world/nepal-flash-floods-death-toll-rises-to-359-910-missing-as-major-flood-risk-looms-from-upstream-lake-outburst" },
+        { "name": "Legit.ng", "url": "https://www.legit.ng/world/asia/1727504-nepal-flood-list-33-nations-517-tourists-missing/" },
         { "name": "ICIMOD", "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" },
         { "name": "Business Standard", "url": "https://www.business-standard.com/world-news/glacial-collapse-triggered-nepal-flash-floods-not-earthquake-usgs-126082700207_1.html" },
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/27/balendra-shah-heads-to-flood-hit-nuwakot-for-on-site-assessment" },
-        { "name": "Global Times", "url": "https://www.globaltimes.cn/page/202608/1369144.shtml" },
         { "name": "ANI", "url": "https://aninews.in/news/national/general-news/ndrf-on-high-alert-as-nepal-flash-flood-threatens-gandak-bihar-up-deploy-rescue-teams-in-vulnerable-areas20260827033747/" }
       ],
       "revised": true
