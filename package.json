@@ -1,0 +1,13 @@
+{
+  "name": "nepal-disaster-update-live",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Nepal Disaster Update Live — static site plus Cloudflare Pages Functions.",
+  "scripts": {
+    "build": "node src/build.mjs",
+    "check": "node src/check.mjs",
+    "dev": "npx wrangler pages dev . --port 8788",
+    "deploy": "./deploy.sh"
+  }
+}

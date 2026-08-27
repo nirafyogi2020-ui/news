@@ -1,0 +1,31 @@
+{
+  "slug": "2026-08-27-rasuwa-flood",
+  "id": "rasuwa-flood",
+  "title": "165 confirmed dead in Rasuwa flood, 826 still missing",
+  "time": "2026-08-27T08:15:00+05:45",
+  "body": [
+    "Nepal Police put the toll at 165 dead in its 8:15am bulletin on Thursday. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani. Bodies have been found as far south as Chitwan.",
+    "826 people are still missing. Nepal Police list 579 tourists, 161 Rasuwa residents, 44 Nepali Army, 28 Nepal Police and 13 Armed Police Force. Of the missing foreigners, police say 133 are Indian nationals.",
+    "Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.",
+    "A second flood is still possible. ICIMOD says the debris blocking the river upstream, on the China side, has not cleared. China has moved people out of Gyirong. Nuwakot and Dhading are being watched.",
+    "The likely trigger is an ice and rock avalanche into the Lhende Khola on the Tibet side, which dammed the river and then broke. ICIMOD says this is not confirmed. Sensors picked up small tremors nearby, but no earthquake link is proven.",
+    "Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave. Galchchi is one of the few still working, so a new warning would come with less notice.",
+    "Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear."
+  ],
+  "sources": [
+    {
+      "name": "Nepal Police",
+      "url": "https://www.nepalpolice.gov.np/"
+    },
+    {
+      "name": "Onlinekhabar",
+      "url": "https://english.onlinekhabar.com/rasuwa-flood-death-toll-3.html"
+    },
+    {
+      "name": "ICIMOD",
+      "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding"
+    }
+  ],
+  "revised": true,
+  "image": ""
+}
