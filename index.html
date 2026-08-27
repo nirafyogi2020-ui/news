@@ -1313,6 +1313,16 @@
       <p class="byline"><b data-i18n="brand.name">Nepal Disaster Update</b><span data-i18n="hero.reporting">Independent volunteer briefing, built from public sources</span></p>
     </header>
 
+    <!-- ===== today's summary (same post also lives on the Today tab) ===== -->
+    <section id="today-home" style="margin-top:6px;">
+      <p class="eyebrow" data-i18n="sec.today.eyebrow">Daily brief</p>
+      <h2 data-i18n="sec.today.h2">Today's summary</h2>
+      <p class="measure lede" data-i18n="sec.today.home">Where things stand today, in plain language, refreshed through the day. Open the sources before acting on anything here.</p>
+      <article class="td-post" id="td-post-home" aria-live="polite">
+        <div class="td-body"><p>Loading today&rsquo;s summary&hellip;</p></div>
+      </article>
+    </section>
+
     <!-- ===== live counters ===== -->
     <div class="numblock">
       <div class="numblock-head">
@@ -2301,6 +2311,7 @@ var SITE = {
       'sec.today.eyebrow': 'दैनिक ब्रिफिङ',
       'sec.today.h2': 'आजको सारांश',
       'sec.today.lede': 'दिनको एक पटक, भरपर्दो सार्वजनिक स्रोतका आधारमा हातैले तयार पारिएको संक्षिप्त ब्रिफिङ। जीवित विपद्मा तथ्याङ्क छिटो बदलिन्छ — केही गर्नुअघि मूल स्रोत हेर्नुहोस्।',
+      'sec.today.home': 'आज अवस्था कहाँ छ, सरल भाषामा, दिनभर अद्यावधिक। केही गर्नुअघि स्रोतहरू हेर्नुहोस्।',
       'tab.feed': 'फिड',
       'tab.map': 'नक्सा',
       'tab.live': 'प्रत्यक्ष',
@@ -4561,8 +4572,9 @@ var LiveFeed = (function(){
    is generated live. Missing file just shows a quiet fallback.
    ========================================================================= */
 (function(){
-  var host = document.getElementById('td-post');
-  if(!host) return;
+  var hosts = [document.getElementById('td-post-home'), document.getElementById('td-post')]
+    .filter(function(el){ return el; });
+  if(!hosts.length) return;
   var done = false;
 
   function esc(s){
@@ -4595,7 +4607,7 @@ var LiveFeed = (function(){
     var srcNames = (d.sources || []).map(function(s){ return esc(s.name || s.url || ''); }).join('  ·  ');
     var body = (d.body || []).map(function(p){ return '<p>' + esc(p) + '</p>'; }).join('');
 
-    host.innerHTML =
+    var html =
       '<figure class="td-figure">' +
         (d.image ? '<img src="' + esc(d.image) + '" alt="' + esc(d.imageAlt || '') + '" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
         '<span class="td-shade"></span>' +
@@ -4619,6 +4631,8 @@ var LiveFeed = (function(){
             (d.updated ? '<div class="td-updated">Updated ' + esc(fmtUpdated(d.updated)) + '</div>' : '') +
           '</div>'
         : '');
+
+    hosts.forEach(function(h){ h.innerHTML = html; });
   }
 
   function load(){
@@ -4629,16 +4643,13 @@ var LiveFeed = (function(){
       .then(render)
       .catch(function(){
         done = false;
-        host.innerHTML = '<div class="td-body"><p>Today&rsquo;s summary is not up yet. See the <a href="#live" data-tab-link="live">Live</a> tab for the latest updates.</p></div>';
+        hosts.forEach(function(h){
+          h.innerHTML = '<div class="td-body"><p>Today&rsquo;s summary is not up yet. See the <a href="#live" data-tab-link="live">Live</a> tab for the latest updates.</p></div>';
+        });
       });
   }
 
-  if(window.Tabs && typeof Tabs.onChange === 'function'){
-    Tabs.onChange(function(name){ if(name === 'today') load(); });
-    if(Tabs.current === 'today') load();
-  } else {
-    load();
-  }
+  load();
 })();
 </script>
 
