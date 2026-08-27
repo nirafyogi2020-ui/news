@@ -1,0 +1,40 @@
+{
+  "date": "2026-08-26",
+  "displayDate": "August 26, 2026",
+  "updated": "2026-08-26T21:40:00+05:45",
+  "tag": "NEPAL · RASUWA FLOOD",
+  "kicker": "Daily brief · Day 1",
+  "title": "Scientists warn Rasuwa could face a second flood",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Langtang_Valley%2C_Trishuli_River.JPG/1280px-Langtang_Valley%2C_Trishuli_River.JPG",
+  "imageAlt": "The Trishuli river running through the Langtang valley in Rasuwa district, Nepal",
+  "lead": "Breaking, August 26.",
+  "body": [
+    "Scientists say the valley that flooded on Wednesday could flood again. The debris blocking the river upstream, on the Nepal–China border, is still in place.",
+    "Qianggong Zhang, who leads climate and environmental risk at ICIMOD, the Kathmandu-based mountain research centre, says authorities expect a second surge and are treating it as imminent. China has ordered an evacuation at Jilong (Gyirong) port on its side. Nuwakot and Dhading, downstream in Nepal, are being watched overnight.",
+    "That is the warning. This is what the first wave already did.",
+    "It reached Timure, in Rasuwa, at about 9am on Wednesday, then ran down the Bhote Koshi into the Trishuli. By Wednesday evening the Office of the Prime Minister put the confirmed dead at 95, across seven districts. The Trishuli rose about nine metres at Galchchi in thirty minutes, and about seven metres at Malekhu.",
+    "Still unaccounted for: 85 security personnel — 44 from the Nepali Army, 28 from Nepal Police, 13 from the Armed Police Force — and about 60 workers from hydropower projects along the rivers. Nineteen motorable bridges and roughly 40 kilometres of road are damaged.",
+    "The suspected trigger is an ice-and-rock avalanche into the Lhende Khola on the Tibetan side, which dammed the river and then gave way. ICIMOD says this is not confirmed. Seismic stations at Jilong and Zhangmu recorded small signals around that time, but no link to the flood has been established.",
+    "Most of the river's monitoring stations were damaged or washed away in the first surge. Galchchi is one of the few still reporting. Nepal is watching for a second wave with fewer instruments than it had on Wednesday morning.",
+    "The traveller count is not settled. Nepal's authorities have a working list of 391 foreign and 93 Nepali travellers whose safety is still being checked. Out of contact is not the same as missing — phone lines, power and internet went down across the valley.",
+    "If you have family along the Bhote Koshi, the Trishuli or the Narayani, move them off the riverbanks tonight and keep them off until officials give the all-clear."
+  ],
+  "keyFacts": [
+    { "label": "Confirmed dead", "value": "95", "note": "Office of the Prime Minister, 26 Aug evening; across 7 districts" },
+    { "label": "Security personnel missing", "value": "85", "note": "44 Army, 28 Police, 13 Armed Police Force" },
+    { "label": "Hydropower workers missing", "value": "~60" },
+    { "label": "Travellers being checked", "value": "391 foreign, 93 Nepali", "note": "working list; not confirmed missing" },
+    { "label": "Trishuli rise at Galchchi", "value": "~9 m in 30 min" },
+    { "label": "Bridges damaged", "value": "19" },
+    { "label": "Road damaged", "value": "~40 km" },
+    { "label": "Second flood", "value": "Warned imminent", "note": "ICIMOD; upstream blockage still in place" }
+  ],
+  "sources": [
+    { "name": "ICIMOD media advisory", "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" },
+    { "name": "The Kathmandu Post — toll update", "url": "https://kathmandupost.com/national/2026/08/26/update-rasuwa-flood-death-toll-climbs-to-72-as-dozens-remain-missing" },
+    { "name": "CNN — live coverage", "url": "https://www.cnn.com/2026/08/26/world/live-news/nepal-flash-flooding-floods-intl" },
+    { "name": "The Watchers", "url": "https://watchers.news/2026/08/26/bhote-koshi-flash-flood-kills-31-authorities-verify-whereabouts-of-384-travelers-nepal/" },
+    { "name": "Down To Earth — what triggered it", "url": "https://www.downtoearth.org.in/climate-change/nepal-flash-flood-what-triggered-the-deadly-event-killing-over-dozens-and-sweeping-away-villages-and-bridges" }
+  ],
+  "disclaimer": "A plain-language summary built from public news reports on the day. In the first days after a disaster, official numbers change hour to hour and sources disagree; where they do, the lower confirmed figure is used here. Nothing on this page is an official warning. For decisions about safety or travel, follow Nepal Police, the NDRRMA and your local authorities, and check the sources linked above."
+}
