@@ -1,12 +1,13 @@
 {
   "slug": "2026-08-27-damage-cost",
   "id": "damage-cost",
-  "title": "Infrastructure damage put at Rs 200 billion, early figure",
-  "time": "2026-08-27T09:00:00+05:45",
+  "title": "Infrastructure damage put at Rs 200 billion, hydropower losses still being counted",
+  "time": "2026-08-27T20:30:00+05:45",
   "body": [
     "Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.",
-    "No full damage assessment exists yet. Rasuwa, Nuwakot, Dhading and Chitwan are still being surveyed, and six hydropower stations are not in that figure.",
-    "The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading.",
+    "That figure does not include energy infrastructure. Energy Minister Biraj Bhakta Shrestha has ordered an immediate assessment of hydropower damage. In Rasuwa, 8 projects have been hit, 5 of them operational with a combined 236 megawatts, and 3 still under construction with a combined 342 megawatts. Nuwakot has lost access to 6 more projects, 4 operational at 123 megawatts and 2 under construction at 53 megawatts.",
+    "Rasuwa, Nuwakot, Dhading and Chitwan are still being surveyed for road and building damage, so the Rs 200 billion figure is expected to rise.",
+    "The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. The World Bank has separately offered up to Rs 25 billion in emergency assistance, its Nepal country director told the finance ministry. That is aid, not a damage estimate.",
     "Insurers say claims will take weeks to settle because most of the damaged sites cannot be reached by road."
   ],
   "sources": [
@@ -17,8 +18,16 @@
     {
       "name": "The Kathmandu Post",
       "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa"
+    },
+    {
+      "name": "Onlinekhabar",
+      "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html"
+    },
+    {
+      "name": "Onlinekhabar",
+      "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html"
     }
   ],
-  "revised": false,
+  "revised": true,
   "image": ""
 }

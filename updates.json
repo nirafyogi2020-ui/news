@@ -1,7 +1,35 @@
 {
-  "updated": "2026-08-27T15:20:00+05:45",
+  "updated": "2026-08-27T21:30:00+05:45",
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-08-27-rasuwa-flood/",
+      "title": "Death toll passes 359 as Nepal watches for a second flood",
+      "time": "2026-08-27T21:30:00+05:45",
+      "summary": "Nepal Police said 359 bodies have been recovered as of Thursday evening, spokesperson Abi Narayan Kafle told the Kathmandu Post. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani. Chitwan has the most dead, 132, followed by Nawalparas",
+      "sources": [
+        "Nepal Police",
+        "The Kathmandu Post",
+        "Dawn",
+        "Free Press Journal",
+        "Legit.ng",
+        "ICIMOD",
+        "Business Standard",
+        "ANI"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-27-damage-cost/",
+      "title": "Infrastructure damage put at Rs 200 billion, hydropower losses still being counted",
+      "time": "2026-08-27T20:30:00+05:45",
+      "summary": "Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.",
+      "sources": [
+        "Onlinekhabar",
+        "The Kathmandu Post",
+        "Onlinekhabar",
+        "Onlinekhabar"
+      ]
+    },
     {
       "url": "/updates/2026-08-27-toll-289/",
       "title": "289 confirmed dead in the Rasuwa flood as searches reach cut-off areas",
@@ -44,27 +72,6 @@
         "UN OCHA / ReliefWeb",
         "The Kathmandu Post",
         "Onlinekhabar"
-      ]
-    },
-    {
-      "url": "/updates/2026-08-27-damage-cost/",
-      "title": "Infrastructure damage put at Rs 200 billion, early figure",
-      "time": "2026-08-27T09:00:00+05:45",
-      "summary": "Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.",
-      "sources": [
-        "Onlinekhabar",
-        "The Kathmandu Post"
-      ]
-    },
-    {
-      "url": "/updates/2026-08-27-rasuwa-flood/",
-      "title": "165 confirmed dead in Rasuwa flood, 826 still missing",
-      "time": "2026-08-27T08:15:00+05:45",
-      "summary": "Nepal Police put the toll at 165 dead in its 8:15am bulletin on Thursday. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani. Bodies have been found as far south as Chitwan.",
-      "sources": [
-        "Nepal Police",
-        "Onlinekhabar",
-        "ICIMOD"
       ]
     }
   ]
