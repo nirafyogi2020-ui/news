@@ -49,6 +49,15 @@ daily blob. If two things are genuinely separate news, they are two cards.
 - **Sources: names only.** `[{ "name": "Nepal Police", "url": "..." }]`. No
   description after the name, no "— toll update", nothing. Just the outlet
   name and the link to the actual article.
+- **No single-source badge.** Cards carry no `source` field and no avatar.
+  A story is built from several sources at once, so the card is stamped with
+  a date and a Nepal time instead of one outlet's name.
+- **Do not repeat yourself across runs.** If a paragraph already says a
+  thing, the next paragraph does not say it again in other words. Rewrite
+  the card, do not bolt sentences onto it.
+- **Money: keep damage and relief apart.** The cost of the damage and the
+  money raised or released for relief are two different numbers. Never
+  present a donation as a loss.
 
 ## today.json shape
 
@@ -59,7 +68,6 @@ daily blob. If two things are genuinely separate news, they are two cards.
     {
       "id": "rasuwa-flood",
       "title": "Short, plain headline. Not just a number.",
-      "source": "Nepal Police",
       "time": "2026-08-27T11:30:00+05:45",
       "image": "",
       "body": ["short para", "short para", "..."],
@@ -77,8 +85,7 @@ daily blob. If two things are genuinely separate news, they are two cards.
 |----------|-----------|
 | `id`     | stable slug for the story, so the next run can find and update this card |
 | `title`  | the card headline, short and plain |
-| `source` | the single main source, shown by the card avatar |
-| `time`   | when this card was last meaningfully updated (Nepal time, `+05:45`) |
+| `time`   | the time the figures in the card are from (Nepal time, `+05:45`). The card is stamped with this, e.g. "Today, 08:15 NPT" |
 | `image`  | a direct image URL from a news source **only if it loads**; otherwise `""` |
 | `body`   | array of short paragraphs |
 | `sources`| array of `{ name, url }`, real article links, names only |
