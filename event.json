@@ -1,0 +1,70 @@
+{
+  "id": "rasuwa-flood-2026",
+  "name": "Rasuwa flood",
+  "where": "Rasuwa, Nuwakot and downstream, Nepal",
+  "started": "2026-08-26T09:05:00+05:45",
+  "status": "active",
+  "headline": "Rasuwa flood, live",
+  "lede": "A flash flood came down the Bhotekoshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
+  "numbersTitle": "Where the numbers stand",
+  "numbersNote": "Rasuwa flash flood, 26 August 2026",
+  "asOf": "2026-08-27T08:15:00+05:45",
+  "asOfSource": "Nepal Police bulletin",
+  "stats": [
+    {
+      "icon": "dead",
+      "value": "165",
+      "tone": "critical",
+      "label": "confirmed dead",
+      "bar": 100,
+      "detail": "Nepal Police confirmed 165 dead in its 8:15am bulletin on 27 August. Bodies are still being recovered downstream, so this number is expected to rise. Three more deaths are confirmed on the China side."
+    },
+    {
+      "icon": "missing",
+      "value": "826",
+      "tone": "critical",
+      "label": "reported missing",
+      "bar": 82,
+      "detail": "Nepal Police list 826 people missing: 579 tourists, 161 Rasuwa residents, 44 Nepali Army, 28 Nepal Police and 13 Armed Police Force. Names are still being checked against evacuation lists, so this moves in both directions."
+    },
+    {
+      "icon": "power",
+      "value": "6",
+      "label": "power plants damaged",
+      "bar": 40,
+      "detail": "Six hydropower stations were damaged: Rasuwagadhi, Chilime, Trishuli 3A, the Trishuli 3B substation, Trishuli Hydropower Station, and Devighat Hydropower Station."
+    },
+    {
+      "icon": "people",
+      "value": "~50k",
+      "label": "people in the district hit",
+      "bar": 60,
+      "detail": "Around 50,000 people live in Rasuwa district, the area hit hardest. Most live along the same river valley the water came down."
+    },
+    {
+      "icon": "day",
+      "value": "auto:day",
+      "label": "since the flood",
+      "bar": 16,
+      "detail": "Counting from the morning of 26 August 2026, when the flood hit. Search, rescue and recovery work is still going on this many days later."
+    },
+    {
+      "icon": "money",
+      "id": "econ-loss",
+      "value": "Rs 200bn",
+      "small": true,
+      "label": "damage, early estimate",
+      "bar": 8,
+      "detail": "Physical Infrastructure Minister Sunil Lamsal put damage to roads and bridges at about Rs 200 billion on 26 August, and called it preliminary. Hydropower and private property are not in that figure."
+    },
+    {
+      "icon": "relief",
+      "id": "relief-fund",
+      "value": "Rs 1bn",
+      "small": true,
+      "label": "relief money released",
+      "bar": 12,
+      "detail": "Rs 1 billion released by the government into the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. Public donations are not counted here until an official total is published."
+    }
+  ]
+}
