@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-28T21:20:00+05:45",
+  "updated": "2026-08-28T22:05:00+05:45",
   "posts": [
     {
       "id": "container-drivers-stranded-kerung",
@@ -83,9 +83,25 @@
       ]
     },
     {
+      "id": "foreign-rescue-experts-accepted",
+      "title": "Nepal reverses itself, accepts foreign tunnel rescue and DNA experts",
+      "time": "2026-08-28T20:55:00+05:45",
+      "image": "",
+      "body": [
+        "Nepal's government has reversed an earlier decision and will let India, China, Australia and South Korea send in specialists to help with tunnel rescues and to identify bodies, the Kathmandu Post reports.",
+        "Foreign Minister Shisir Khanal said Nepal has identified three areas where it will accept outside support, though the paper names only two: rescuing people trapped inside hydropower tunnels in Rasuwa and Nuwakot, and DNA and forensic work to identify bodies. \"We need to conduct DNA tests on a large number of samples,\" Khanal said. \"Foreign experts will assist us in identifying the bodies promptly so that we can hand them over to their relatives on time.\"",
+        "A senior government official told the paper that Kathmandu had come under heavy pressure from other countries to allow at least search and rescue teams and some experts in, because their own citizens are also among the missing.",
+        "As recently as Wednesday and Thursday, Nepal said its own army and police could handle the operation alone and that it did not need outside rescue teams. That position did not hold even a full day.",
+        "This is a narrower opening, not a reversal on everyone who offered help. Nepal is still not accepting a broader international search and rescue deployment, only tunnel rescue and DNA identification experts from these four countries."
+      ],
+      "sources": [
+        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/28/diplomatic-pressure-pushes-nepal-to-seek-foreign-rescue-expertise" }
+      ]
+    },
+    {
       "id": "rasuwa-flood",
       "title": "Nepal Police raise toll to 553 in new Friday evening bulletin",
-      "time": "2026-08-28T19:00:00+05:45",
+      "time": "2026-08-28T20:55:00+05:45",
       "image": "",
       "body": [
         "Nepal Police raised the confirmed toll again, to 553 dead, in a bulletin posted on the force's own website as of 5pm Friday. That is up from the 547 the force had given minutes earlier, which itself came within minutes of Nepal's disaster authority NDRRMA's separate figure of 538. Nepal Police reported 1,473 people injured in Nepal, up from 466 the day before. China's state media separately raised the Tibet side toll to 5, from 3. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.",
@@ -94,7 +110,7 @@
         "NDRRMA repeated its missing count of 977 people in Nepal in Friday afternoon's update alongside the new death toll, ABC News reports, so the figure has not moved since Friday morning. Nepal's tourism board says 517 of the missing are foreign nationals, from 33 countries. Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.",
         "The barrier lake upstream near the Chhochen Khola and Purepu Tsangpo was reported to have breached, but Nepal's government has not confirmed a dam collapse and the two accounts have not been reconciled. Chinese state media report the lake has since grown rather than drained. See the update above for what is and is not confirmed. USGS first read the shaking on Wednesday as an earthquake, then found no earthquake took place: the signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.",
         "The Home Administration says 13,295 security personnel are working the flood zone: 7,250 from Nepal Police, 4,200 from the Nepali Army and 1,845 from the Armed Police Force, Khabarhub reports. NDRRMA's Friday evening update put the number of security personnel mobilised even higher, at about 14,829, AP reports. Prime Minister Balendra Shah travelled to Bidur in Nuwakot on Thursday to see the damage.",
-        "In India, the NDRF and the Sashastra Seema Bal have rescue teams on standby in Bihar and Uttar Pradesh, and the NDRF says the Gandak, which the Narayani becomes downstream, could see higher water levels. Nepal has turned down offers of search and rescue teams from India, China, the US, Britain, Japan, South Korea, Sri Lanka and Bangladesh, the Kathmandu Post reports. The government says its own army and police can handle the operation and is asking instead for cash, through a single channel into the Prime Minister's Disaster Relief Fund.",
+        "In India, the NDRF and the Sashastra Seema Bal have rescue teams on standby in Bihar and Uttar Pradesh, and the NDRF says the Gandak, which the Narayani becomes downstream, could see higher water levels. Nepal turned down broader offers of search and rescue teams from India, China, the US, Britain, Japan, South Korea, Sri Lanka and Bangladesh earlier in the week, the Kathmandu Post reports, saying its own army and police could handle the operation. By Friday evening it reversed course for a narrower group. See the update above for who is coming and why. Cash donations still go through a single channel into the Prime Minister's Disaster Relief Fund.",
         "Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear."
       ],
       "sources": [
@@ -200,6 +216,21 @@
       "revised": true
     },
     {
+      "id": "india-mea-320-uncontactable",
+      "title": "India's foreign ministry says 320 of its nationals still uncontactable",
+      "time": "2026-08-28T21:15:00+05:45",
+      "image": "",
+      "body": [
+        "India's Ministry of External Affairs said Friday that 320 Indian nationals remain uncontactable in the flood, and that about 100 more people of Indian origin have also not been reached, ministry spokesperson Randhir Jaiswal said, the Tribune reports. Jaiswal said the figures are still moving as officials work to reconcile several different lists of missing people.",
+        "About 400 Indian nationals stranded on the Chinese side of the border have been confirmed safe, with the Indian embassy in Beijing helping coordinate their evacuation, and 96 of them have already crossed into Nepal by land, the Tribune reports.",
+        "India has separately confirmed the rescue of 63 Indian workers from the Trishuli-1 hydropower project, and 21 Indians who reached Kathmandu from the flood zone have already gone on to Delhi.",
+        "This is India's own count of its nationals, kept by its own ministry. It is not the same figure as Nepal's missing list, and the two should not be added together."
+      ],
+      "sources": [
+        { "name": "The Tribune", "url": "https://www.tribuneindia.com/news/india/flash-floods-in-nepal-320-indians-missing-400-others-stranded-on-chinese-side-mea/" }
+      ]
+    },
+    {
       "id": "bailey-bridges",
       "title": "Nepal asks India and China to build 42 Bailey bridges in flood zone",
       "time": "2026-08-28T14:50:00+05:45",
@@ -260,17 +291,20 @@
     },
     {
       "id": "prithvi-highway-blocked",
-      "title": "Prithvi Highway still blocked, reopening targeted for Friday",
-      "time": "2026-08-28T08:00:00+05:45",
+      "title": "Prithvi Highway partly reopens, one lane at a time, in Galchhi",
+      "time": "2026-08-28T19:14:00+05:45",
       "image": "",
       "body": [
         "The Prithvi Highway, the main road between Kathmandu and Pokhara, has been blocked since Wednesday evening after Bhotekoshi floodwater dumped mud across it in Gajuri and Galchhi, in Dhading, Onlinekhabar reports.",
         "Debris still has to be cleared at three sites: Galoudi and Bahuni Bhir in Gajuri, and Mahesh Dobhan in Galchhi. Traffic police superintendent Dilli Narayan Pandey said clearing near settlements is what is causing the delay.",
-        "Authorities are aiming to reopen the highway by the end of Friday."
+        "The Galchhi stretch reopened to alternating one way traffic on Friday evening, and the Galaundi, Ghatbesi and Jarekhet stretch reopened to two way traffic, Department of Roads engineer Rajiv Manandhar told the Kathmandu Post.",
+        "A traffic police spokesperson told the paper officials could not guarantee the whole highway would be clear by the end of Friday, and warned the road could shut again if it rains."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/prithvi-highway-blocked.html" }
-      ]
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/prithvi-highway-blocked.html" },
+        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/money/2026/08/28/prithvi-highway-shutdown-puts-kathmandu-supplies-under-pressure" }
+      ],
+      "revised": true
     }
   ]
 }

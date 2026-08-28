@@ -1,19 +1,24 @@
 {
   "slug": "2026-08-28-prithvi-highway-blocked",
   "id": "prithvi-highway-blocked",
-  "title": "Prithvi Highway still blocked, reopening targeted for Friday",
-  "time": "2026-08-28T08:00:00+05:45",
+  "title": "Prithvi Highway partly reopens, one lane at a time, in Galchhi",
+  "time": "2026-08-28T19:14:00+05:45",
   "body": [
     "The Prithvi Highway, the main road between Kathmandu and Pokhara, has been blocked since Wednesday evening after Bhotekoshi floodwater dumped mud across it in Gajuri and Galchhi, in Dhading, Onlinekhabar reports.",
     "Debris still has to be cleared at three sites: Galoudi and Bahuni Bhir in Gajuri, and Mahesh Dobhan in Galchhi. Traffic police superintendent Dilli Narayan Pandey said clearing near settlements is what is causing the delay.",
-    "Authorities are aiming to reopen the highway by the end of Friday."
+    "The Galchhi stretch reopened to alternating one way traffic on Friday evening, and the Galaundi, Ghatbesi and Jarekhet stretch reopened to two way traffic, Department of Roads engineer Rajiv Manandhar told the Kathmandu Post.",
+    "A traffic police spokesperson told the paper officials could not guarantee the whole highway would be clear by the end of Friday, and warned the road could shut again if it rains."
   ],
   "sources": [
     {
       "name": "Onlinekhabar",
       "url": "https://english.onlinekhabar.com/prithvi-highway-blocked.html"
+    },
+    {
+      "name": "The Kathmandu Post",
+      "url": "https://kathmandupost.com/money/2026/08/28/prithvi-highway-shutdown-puts-kathmandu-supplies-under-pressure"
     }
   ],
-  "revised": false,
+  "revised": true,
   "image": ""
 }
