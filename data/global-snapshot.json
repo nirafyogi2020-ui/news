@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-28T21:19:46.544Z",
+  "updated": "2026-08-28T23:18:33.429Z",
   "items": [
     {
       "title": "Anticipatory Action Framework: Nigeria – Floods (28 August 2026)",
@@ -10,6 +10,17 @@
       "region": "global",
       "image": null,
       "summary": "Country: Nigeria Source: UN Office for the Coordination of Humanitarian Affairs Please refer to the attached file. Executive Summary The humanitarian sector is scaling up anticipatory action (AA), enabling proactive mobilization to get ahead of predictable climate-related shocks and disease outbreaks through robust forecasting (triggers), pre-agreed activities, and pre-arranged funding. This approach has proven effective, dignified, cost-efficient, and protective of development gains. Nigeria faces recurrent and destructive flooding. In 2025, floods affected more than 400,000 people in 25 States across Nigeria, with 232 people losing their…",
+      "authority": "primary"
+    },
+    {
+      "title": "Venezuela (Bolivarian Republic of): Earthquake Response Situation Report #26 (25 to 27 August 2026)",
+      "url": "https://reliefweb.int/report/venezuela-bolivarian-republic/venezuela-bolivarian-republic-earthquake-response-situation-report-26-25-27-august-2026",
+      "source": "ReliefWeb (UN OCHA)",
+      "time": "2026-08-28T20:19:44.000Z",
+      "kind": "official",
+      "region": "global",
+      "image": null,
+      "summary": "Country: Venezuela (Bolivarian Republic of) Source: International Organization for Migration Please refer to the attached file. Situation Report No. 26 provides an update on IOM’s response to the 24 June earthquakes in the Bolivarian Republic of Venezuela, covering the period from 25 to 27 August 2026. Highlights Between 25 and 27 August, IOM continued its multisectoral response in temporary camps and affected communities through interventions in Shelter and Camp Coordination and Camp Management (CCCM), Health, Protection, Water, Sanitation and Hygiene (WASH), information management, and Prevention of Sexual Exploitation and Abuse (PSEA).…",
       "authority": "primary"
     },
     {
@@ -24,15 +35,64 @@
       "authority": "primary"
     },
     {
-      "title": "World: UCPM and CEMS activations for wildfires: 2026 season overview - DG ECHO Daily Map | 28/08/2026",
-      "url": "https://reliefweb.int/map/world/ucpm-and-cems-activations-wildfires-2026-season-overview-dg-echo-daily-map-28082026",
-      "source": "ReliefWeb (UN OCHA)",
-      "time": "2026-08-28T17:17:24.000Z",
-      "kind": "official",
+      "title": "Number of Australians missing in Nepal’s deadly floods rises again, as Albanese deploys more personnel",
+      "url": "https://www.theguardian.com/world/2026/aug/29/australians-missing-nepal-floods-total-rises-albanese-dfat-personnel-arriving",
+      "source": "The Guardian",
+      "time": "2026-08-28T22:53:57.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://i.guim.co.uk/img/media/00bc3a6f28120010da82b2d0ba9dd72d6e740880/767_0_3833_3067/master/3833.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=6d8c6c68fcf618211c94620432dad3e0",
+      "summary": "Figure rises to 41 on Saturday morning, with four rapid response teams to arrive in Kathmandu Get our breaking news email , free app or daily news podcast The number of Australians who were reported missing in the catastrophic Nepal flooding disaster has risen to 41, as one family celebrates after an unaccounted-for woman made contact with them yesterday. It means three additional Australians were confirmed missing overnight – up from 38 who remained unaccounted for on Friday evening. Continue reading...",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "Footage of Tibet floods isn't being shown in China - and we know little about victims there",
+      "url": "https://www.bbc.co.uk/news/articles/cx2z415w2gpo?at_medium=RSS&amp;at_campaign=rss",
+      "source": "BBC News",
+      "time": "2026-08-28T22:05:41.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8d37/live/67a7cd10-a2fa-11f1-8d5b-155abe464768.jpg",
+      "summary": "Some of the most dramatic footage from the deadly flash flooding is hidden from public view in China.",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "Nepal-Tibet flash flood: number of missing people in Nepal rises to 1,924 – latest updates",
+      "url": "https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates",
+      "source": "The Guardian",
+      "time": "2026-08-28T21:53:43.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://i.guim.co.uk/img/media/354fbd9087f6426e4a815de18580298cf136cb3d/0_73_602_482/master/602.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=08ce8ebaf9062913ec86625242402e69",
+      "summary": "Nepali disaster authority confirms jump of more than 400 in total of those unaccounted for, with 584 deaths confirmed in Nepal and five in Tibet Flood rescue efforts resume Visual guide: how the deadly flooding unfolded Tell us: have you been affected by the flash floods? More now on the Nepali army’s rescue operation to save about 100 people trapped in a tunnel at a hydropower project swamped by Wednesday’s flooding . “Two helicopters have been dispatched but it is challenging because it is tough to even locate the entry points of the tunnel,” army spokesperson Raja Ram Basnet told AFP. Relief efforts are also under way to provide the…",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "Before and after images show catastrophic impact of Nepal flash floods",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/28/08-28-26-nepal-b4-and-after-sv-mp4?traffic_source=rss",
+      "source": "Al Jazeera",
+      "time": "2026-08-28T21:26:32.000Z",
+      "kind": "press",
       "region": "global",
       "image": null,
-      "summary": "Country: World Source: European Commission's Directorate-General for European Civil Protection and Humanitarian Aid Operations Please refer to the attached Map.",
-      "authority": "primary"
+      "summary": "Before-and-after satellite images reveal the scale of destruction from Nepal’s catastrophic flash floods.",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "97-year-old woman rescued after Nepali floods looked like 'a warrior'",
+      "url": "https://www.bbc.co.uk/news/videos/cj64kgrpgjdo?at_medium=RSS&amp;at_campaign=rss",
+      "source": "BBC News",
+      "time": "2026-08-28T21:17:54.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/983c/live/3900eaa0-a318-11f1-aed2-8d6da8d75094.jpg",
+      "summary": "A 97-year-old woman, Guna Maya Bohara, survived the flash floods and was rescued using an excavator.",
+      "alsoReported": [],
+      "authority": "trusted"
     },
     {
       "title": "8-year-old Nepal flood survivor reunited with mother after rescue",
@@ -47,14 +107,14 @@
       "authority": "trusted"
     },
     {
-      "title": "Nepal-Tibet flash flood: number of missing people in Nepal rises to 1,924 – latest updates",
-      "url": "https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates",
-      "source": "The Guardian",
-      "time": "2026-08-28T20:57:48.000Z",
+      "title": "What we know about deadly Nepal-Tibet floods",
+      "url": "https://www.bbc.co.uk/news/articles/cd948kn02e5o?at_medium=RSS&amp;at_campaign=rss",
+      "source": "BBC News",
+      "time": "2026-08-28T20:23:28.000Z",
       "kind": "press",
       "region": "global",
-      "image": "https://i.guim.co.uk/img/media/354fbd9087f6426e4a815de18580298cf136cb3d/0_73_602_482/master/602.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=08ce8ebaf9062913ec86625242402e69",
-      "summary": "Nepali disaster authority confirms jump of more than 400 in total of those unaccounted for, with 584 deaths confirmed in Nepal and five in Tibet Flood rescue efforts resume Visual guide: how the deadly flooding unfolded Tell us: have you been affected by the flash floods? More now on the Nepali army’s rescue operation to save about 100 people trapped in a tunnel at a hydropower project swamped by Wednesday’s flooding . “Two helicopters have been dispatched but it is challenging because it is tough to even locate the entry points of the tunnel,” army spokesperson Raja Ram Basnet told AFP. Relief efforts are also under way to provide the…",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d8e6/live/a575cfc0-a2c3-11f1-b109-879e35c24276.jpg",
+      "summary": "Hundreds have died and thousands are missing after Wednesday's flooding and landslides on the border of Nepal and Tibet.",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -67,18 +127,6 @@
       "region": "global",
       "image": null,
       "summary": "Scientists are looking into cause and possible link to climate change.",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "What we know about deadly Nepal-Tibet floods",
-      "url": "https://www.bbc.co.uk/news/articles/cd948kn02e5o?at_medium=RSS&amp;at_campaign=rss",
-      "source": "BBC News",
-      "time": "2026-08-28T20:23:28.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d8e6/live/a575cfc0-a2c3-11f1-b109-879e35c24276.jpg",
-      "summary": "Hundreds have died and thousands are missing after Wednesday's flooding and landslides on the border of Nepal and Tibet.",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -119,16 +167,15 @@
       "authority": "trusted"
     },
     {
-      "title": "🔴Nepal-Tibet floods live: Death toll passes 580, nearly 2,500 people missing",
-      "url": "https://www.france24.com/en/asia-pacific/20260828-nepal-tibet-live-china-warns-lake-formed-by-mudslide-on-nepal-border-could-breach",
-      "source": "France 24",
-      "time": "2026-08-28T17:06:15.000Z",
-      "kind": "press",
+      "title": "World: UCPM and CEMS activations for wildfires: 2026 season overview - DG ECHO Daily Map | 28/08/2026",
+      "url": "https://reliefweb.int/map/world/ucpm-and-cems-activations-wildfires-2026-season-overview-dg-echo-daily-map-28082026",
+      "source": "ReliefWeb (UN OCHA)",
+      "time": "2026-08-28T17:17:24.000Z",
+      "kind": "official",
       "region": "global",
       "image": null,
-      "summary": "",
-      "alsoReported": [],
-      "authority": "trusted"
+      "summary": "Country: World Source: European Commission's Directorate-General for European Civil Protection and Humanitarian Aid Operations Please refer to the attached Map.",
+      "authority": "primary"
     },
     {
       "title": "Folded Hands, Teary Eyes: Nepal Man, 71, Loses Home, Business Amid Floods",
@@ -139,6 +186,18 @@
       "region": "global",
       "image": "https://c.ndtvimg.com/2026-08/p00odfc_nepal-flood_625x300_28_August_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
       "summary": "Govind Prasad Dahal is one of the thousands of people who lost their homes and businesses in the Nepal flash floods.",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "🔴Nepal-Tibet floods live: Death toll passes 580, nearly 2,500 people missing",
+      "url": "https://www.france24.com/en/asia-pacific/20260828-nepal-tibet-live-china-warns-lake-formed-by-mudslide-on-nepal-border-could-breach",
+      "source": "France 24",
+      "time": "2026-08-28T17:06:15.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": null,
+      "summary": "",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -222,65 +281,6 @@
       "region": "global",
       "image": "https://s.france24.com/media/display/66f1c974-a21a-11f1-b5fb-005056bf30b7/w:1024/p:16x9/rescue-nepal.jpg",
       "summary": "Emergency services are rushing to find survivors and treat the wounded after a devastating flash flood on the border of Nepal and Tibet on Wednesday killed more than 500 people, with over a thousand still missing. But the remote and rugged terrain, as well as the risk of further flooding from upstream lakes formed by piles of debris, make their work as delicate as it is dangerous.",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "Families of 33 missing Britons rush to Nepal as fears grow of more floods",
-      "url": "https://www.theguardian.com/world/2026/aug/28/families-missing-britons-nepal-flash-floods",
-      "source": "The Guardian",
-      "time": "2026-08-28T15:44:38.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://i.guim.co.uk/img/media/b8b087079ca3e898d252c98b7dd352ece06e5f17/0_0_5000_4000/master/5000.png?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=a0db2bfd405059366376d13824d2b6ef",
-      "summary": "Desperate relatives trying to reach loved ones last seen in area where entire villages have been swept away Nepal-Tibet flash flood – latest updates Visual guide: how the deadly flooding unfolded Tell us: have you been affected by the flash floods? Families are rushing to Nepal to search for the 33 British nationals who are still missing, as fears mount over the risk of a second wave of flooding in the region. The catastrophic flash floods that hit Nepal and Tibet on Wednesday , thundering down valleys and sweeping away entire villages, have killed at least 538 people, while more than 1,500 remain missing. Continue reading...",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "Nepal: IRDR Rapid Analysis Report - Scientific Anatomy of the 26 August 2026 Bhotekoshi Flash Flood",
-      "url": "https://reliefweb.int/report/nepal/irdr-rapid-analysis-report-scientific-anatomy-26-august-2026-bhotekoshi-flash-flood",
-      "source": "ReliefWeb (UN OCHA)",
-      "time": "2026-08-28T13:24:23.000Z",
-      "kind": "official",
-      "region": "global",
-      "image": null,
-      "summary": "Country: Nepal Source: Integrated Research on Disaster Risk Please refer to the attached file. EXECUTIVE SUMMARY The 26 August 2026 Bhotekoshi flash flood appears to have been triggered by an ice, rock and soil mass failure around the Deding/Langtang region rather than intense localized rainfall. The failure likely blocked the river and formed a temporary natural dam for about 18-19 hours. The dam then breached around 8:30-8:37 a.m. on 26 August, releasing a large volume of water, ice, rock, sediment and debris. Continued inflow from the Mala River and other tributaries may have masked the upstream blockage. The steep gradient and narrow…",
-      "authority": "primary"
-    },
-    {
-      "title": "Tropical Storm Dolly downgraded to ‘open tropical wave’ as it heads to Caribbean",
-      "url": "https://www.theguardian.com/weather/2026/aug/28/tropical-storm-dolly-caribbean",
-      "source": "The Guardian",
-      "time": "2026-08-28T15:23:18.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://i.guim.co.uk/img/media/a351ae3cb184c7f81762912a2e9bce58c9b21f95/167_0_1666_1333/master/1666.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=fade6db40f7633e9e6c1dc6e97a616ba",
-      "summary": "Remnants from tropical storm could cause heavy rainfall on Leeward Islands and affect Virgin Islands, Puerto Rico and Hispaniola Remnants of Tropical Storm Dolly, which has been downgraded to an “open tropical wave”, were moving still across the Atlantic Ocean toward the Leeward Islands, and could bring heavy rainfall to parts of the Caribbean this weekend, the US National Hurricane Center (NHC) said on Friday.. Dolly, which formed on Thursday, had maximum sustained winds of near 40mph (65km/h) with higher gusts on Friday morning. Later on Friday, forecasters said that Dolly was no longer a Tropical Storm, and had “become an open tropical…",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "Nepal floods explained: The chain of events behind the disaster",
-      "url": "https://www.france24.com/en/nepal-floods-explained-the-chain-of-events-behind-the-disaster",
-      "source": "France 24",
-      "time": "2026-08-28T12:48:06.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://s.france24.com/media/display/30b8c788-a15a-11f1-b017-005056a90284/w:1024/p:16x9/AP26238334534782.jpg",
-      "summary": "A glacier broke apart. An ice and rock avalanche followed. Then came an earthquake, before a landslide triggered devastating floods that tore through kilometres of valley. This is what happened along the Nepal-China border, where rescue teams are still trying to recover survivors 48 hours after the catastrophe. FRANCE 24 breaks down the chain of events and the scientific explanations behind the disaster.",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "Chinese control of information hampers assessment of Tibet flood damage",
-      "url": "https://www.theguardian.com/world/2026/aug/28/chinese-controls-information-hamper-assessment-tibet-flood-damage",
-      "source": "The Guardian",
-      "time": "2026-08-28T14:25:44.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://i.guim.co.uk/img/media/3d9b134af42fcf5be0c903258ae03d2147807bb0/995_562_2814_2251/master/2814.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=1a8dc40e8234b995847e749f35fed3a5",
-      "summary": "Scale of devastation emerges in Nepal as reporters reach disaster area, but Chinese state media focus more on rescue efforts Nepal-Tibet flash flood – latest updates In the days since an enormous glacier in the Himalayas snapped away from a mountaintop and cascaded into the valley below, the true scale of the devastation caused by the flash floods in Nepal and Tibet is still unfolding. But the picture is emerging far more quickly in Nepal than in China, where strict controls on the flow of information from one of its most sensitive regions are hampering the public’s understanding of events. Continue reading...",
       "alsoReported": [],
       "authority": "trusted"
     }

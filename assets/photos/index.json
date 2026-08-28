@@ -166,5 +166,23 @@
     "type": "image/jpeg",
     "credit": "OnlineKhabar English News",
     "article": "https://english.onlinekhabar.com/truck-driver-missing-rasuwa-flood.html"
+  },
+  "updates-2026-08-28-india-seven-bodies-downstream": {
+    "file": "updates-2026-08-28-india-seven-bodies-downstream.jpg",
+    "type": "image/jpeg",
+    "credit": "thestandard.com.hk",
+    "article": "https://www.thestandard.com.hk/world/article/341221/India-recovers-7-bodies-swept-downstream-after-Nepal-floods"
+  },
+  "updates-2026-08-29-australia-missing-aid": {
+    "file": "updates-2026-08-29-australia-missing-aid.jpg",
+    "type": "image/jpeg",
+    "credit": "abc.net.au",
+    "article": "https://www.abc.net.au/news/2026-08-29/death-toll-rises-as-rescuers-work-through-flood-devastation/107092742"
+  },
+  "updates-2026-08-28-canada-missing-aid": {
+    "file": "updates-2026-08-28-canada-missing-aid.jpg",
+    "type": "image/jpeg",
+    "credit": "Medicine Hat News",
+    "article": "https://medicinehatnews.com/news/national-news/2026/08/28/canada-provides-5m-to-nepal-relief-efforts-as-search-for-missing-canadians-continues/"
   }
 }
