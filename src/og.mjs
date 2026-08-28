@@ -147,6 +147,10 @@ function pill(x, y, label, tone) {
  * @param {string} [o.eyebrow]  section label, e.g. "RASUWA FLOOD"
  * @param {boolean} [o.live]    show the red LIVE pill
  * @param {{value:string,label:string}[]} [o.stats] up to three figures
+ * @param {string} [o.stamp]    freshness line for the footer, e.g.
+ *                              "UPDATED 28 AUG, 5:10 AM NPT". A live story is
+ *                              shared and reshared for days, so the card has
+ *                              to say when it was last true.
  */
 export function ogCard(o = {}) {
   const W = 1200;
@@ -203,7 +207,8 @@ export function ogCard(o = {}) {
   <text x="${PAD}" y="${H - 52}" font-family="${SANS}" font-size="22" fill="${CREAM_DIM}"
     letter-spacing="0.4">nepaldisasterupdatelive.nxtimaginelabs.com</text>
   <text x="${W - PAD}" y="${H - 52}" text-anchor="end" font-family="${SANS}" font-size="22"
-    font-weight="700" letter-spacing="1.2" fill="${CREAM_DIM}">VERIFIED SOURCES ONLY</text>
+    font-weight="700" letter-spacing="1.2" fill="${o.stamp ? CREAM : CREAM_DIM}"
+    >${esc(o.stamp || 'VERIFIED SOURCES ONLY')}</text>
 </svg>`;
 }
 
@@ -349,22 +354,53 @@ export function ogPhotoThumb(o = {}) {
 /**
  * 1200x630 link preview with a real photograph. Same content as ogCard, but
  * the picture carries it and the text sits in a dark panel on the left.
+ *
+ * `stats` and `stamp` are what make this worth sharing rather than merely
+ * pretty. Somebody scrolling Facebook decides in about a second, and the two
+ * things that earn the tap are a real photograph and a number they have not
+ * seen yet, with a time on it so they can tell it is current. The stat row
+ * therefore sits over the picture, and the freshness stamp replaces the
+ * static slogan the footer used to carry.
+ *
+ * @param {object} o
+ * @param {string} [o.href]     the photograph, as a data: URI
+ * @param {string} o.title      the headline on the card
+ * @param {string} [o.eyebrow]  section label, e.g. "RASUWA FLOOD"
+ * @param {boolean} [o.live]    show the red LIVE pill
+ * @param {string} [o.credit]   the outlet the photograph came from
+ * @param {{value:string,label:string}[]} [o.stats] up to three figures
+ * @param {string} [o.stamp]    freshness line, e.g. "UPDATED 28 AUG, 5:10 AM NPT"
  */
 export function ogPhotoCard(o = {}) {
   const W = 1200;
   const H = 630;
   const PAD = 66;
+  const stats = (o.stats || []).slice(0, 3);
   const titleSize = o.title && o.title.length > 62 ? 52 : 60;
-  const lines = wrap(o.title || '', titleSize, 660, 4);
+  /* With a stat row underneath there is room for three lines of headline
+     rather than four, and the block starts a little higher. */
+  const lines = wrap(o.title || '', titleSize, 660, stats.length ? 3 : 4);
 
-  let y = 250;
+  const y = stats.length ? 236 : 250;
   const title = lines.map((l, i) => `<text x="${PAD}" y="${y + i * (titleSize + 8)}"
     font-family="${SERIF}" font-size="${titleSize}" font-weight="600" fill="#FFFFFF"${ws(l, 12)}
     >${esc(l)}</text>`).join('');
 
+  const statRow = stats.length
+    ? `<g transform="translate(${PAD},${H - 170})">` + stats.map((s, i) => `
+        <text x="${i * 268}" y="0" font-family="${SERIF}" font-size="54" font-weight="600"
+          fill="${i === 0 ? RED : '#FFFFFF'}">${esc(s.value)}</text>
+        <text x="${i * 268}" y="31" font-family="${SANS}" font-size="20"
+          letter-spacing="0.6" fill="rgba(255,255,255,0.86)">${esc(s.label)}</text>`).join('') + '</g>'
+    : '';
+
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
   <defs>
     ${scrim('pch', 'left')}
+    <linearGradient id="pcfoot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="${INK}" stop-opacity="0"/>
+      <stop offset="1" stop-color="${INK}" stop-opacity="0.92"/>
+    </linearGradient>
     <clipPath id="pcclip"><rect x="0" y="0" width="${W}" height="${H}"/></clipPath>
   </defs>
   <rect width="${W}" height="${H}" fill="${INK}"/>
@@ -373,6 +409,7 @@ export function ogPhotoCard(o = {}) {
       preserveAspectRatio="xMidYMid slice"/>
   </g>` : ''}
   <rect width="${W}" height="${H}" fill="url(#pch)"/>
+  ${stats.length ? `<rect x="0" y="${H - 300}" width="${W}" height="300" fill="url(#pcfoot)"/>` : ''}
 
   <g transform="translate(${PAD - 8},38) scale(0.58)">${mark('pc')}</g>
   <text x="${PAD + 68}" y="86" font-family="${SANS}" font-size="24" font-weight="800"
@@ -382,12 +419,16 @@ export function ogPhotoCard(o = {}) {
   ${o.live ? pill(W - PAD - 130, 58, 'Live', 'live') : ''}
 
   ${title}
+  ${statRow}
 
+  ${o.credit ? `<text x="${W - PAD}" y="${H - 116}" text-anchor="end" font-family="${SANS}"
+    font-size="17" fill="rgba(255,255,255,0.72)">Photo: ${esc(o.credit)}</text>` : ''}
   <rect x="${PAD}" y="${H - 100}" width="${W - PAD * 2}" height="1" fill="rgba(244,240,230,0.20)"/>
   <text x="${PAD}" y="${H - 56}" font-family="${SANS}" font-size="21" fill="${CREAM_DIM}"
     >nepaldisasterupdatelive.nxtimaginelabs.com</text>
-  ${o.credit ? `<text x="${W - PAD}" y="${H - 56}" text-anchor="end" font-family="${SANS}"
-    font-size="19" fill="${CREAM_DIM}">Photo: ${esc(o.credit)}</text>` : ''}
+  <text x="${W - PAD}" y="${H - 56}" text-anchor="end" font-family="${SANS}" font-size="20"
+    font-weight="700" letter-spacing="1.2" fill="${CREAM}"
+    >${esc(o.stamp || 'VERIFIED SOURCES ONLY')}</text>
 
   <rect x="0" y="${H - 8}" width="${W}" height="8" fill="${RED}"/>
 </svg>`;
