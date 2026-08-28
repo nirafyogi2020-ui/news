@@ -771,7 +771,10 @@ export function parseYoutubeAtom(xml, channel, identity) {
 }
 
 function isVideoOnTopic(video) {
-  const text = (video.title || '') + ' ' + (video.summary || '');
+  // Channel descriptions often say "Nepal disaster authority" on every
+  // upload. Use the video title only, otherwise general old safety messages
+  // quietly pose as updates about this specific flood.
+  const text = video.title || '';
   const videoHazard = ['flood', 'landslide', 'glacial lake', 'बाढी', 'पहिरो', 'हिमताल'];
   return matches(text, TOPIC_STRONG) ||
     (matches(text, videoHazard) && (matches(text, PLACE) || /नेपाल/.test(text)));
