@@ -17,6 +17,7 @@ import { fileURLToPath } from 'node:url';
 import { SITE, nptDay, nptLong, ogFor, ogStoryFor, assetVersioned } from './template.mjs';
 import * as P from './pages.mjs';
 import * as NE from './pages-ne.mjs';
+import { isDisasterWireHeadline } from '../functions/api/global.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const ARCHIVE = join(ROOT, 'data', 'updates');
@@ -103,6 +104,13 @@ const modified = [today.updated, event.asOf, ...posts.map(p => p.time)]
    falls back to the last snapshot on disk, and to an empty list before there
    has ever been one. */
 const SNAPSHOT = join(ROOT, 'data', 'global-snapshot.json');
+function safeGlobalItems(items) {
+  return (items || []).filter(item =>
+    item && item.title && item.url &&
+    (item.kind !== 'press' || isDisasterWireHeadline(item.title))
+  );
+}
+
 async function loadGlobalItems() {
   try {
     const res = await fetch('https://nepaldisasterupdatelive.nxtimaginelabs.com/api/global', {
@@ -110,7 +118,7 @@ async function loadGlobalItems() {
     });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const json = await res.json();
-    const items = (json.items || []).filter(i => i.title && i.url).slice(0, 24);
+    const items = safeGlobalItems(json.items).slice(0, 24);
     if (items.length) {
       writeFileSync(SNAPSHOT, JSON.stringify({ updated: json.updated, items }, null, 2) + '\n');
       return items;
@@ -119,7 +127,7 @@ async function loadGlobalItems() {
     console.log(`global snapshot: live fetch failed (${e.message}), using the last one`);
   }
   if (existsSync(SNAPSHOT)) {
-    try { return JSON.parse(readFileSync(SNAPSHOT, 'utf8')).items || []; } catch { return []; }
+    try { return safeGlobalItems(JSON.parse(readFileSync(SNAPSHOT, 'utf8')).items); } catch { return []; }
   }
   return [];
 }
