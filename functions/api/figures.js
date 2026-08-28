@@ -26,7 +26,9 @@
 
 import { loadPoliceNews, tollFromPolice } from './police.js';
 
-const CACHE_SECONDS = 300;
+/* Police figures can move between editorial runs. Two minutes keeps the live
+   safeguard responsive without repeatedly hammering the public police site. */
+const CACHE_SECONDS = 120;
 
 export async function onRequestGet(context) {
   const { request } = context;
