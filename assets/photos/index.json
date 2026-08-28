@@ -46,5 +46,11 @@
     "type": "image/jpeg",
     "credit": "abc.net.au",
     "article": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974"
+  },
+  "updates-2026-08-28-hydropower-workers-out-of-contact": {
+    "file": "updates-2026-08-28-hydropower-workers-out-of-contact.jpg",
+    "type": "image/jpeg",
+    "credit": "The Kathmandu Post",
+    "article": "https://kathmandupost.com/national/2026/08/27/from-army-camps-to-hospitals-families-desperately-search-for-missing-members"
   }
 }
