@@ -22,7 +22,7 @@ export const TOLL_EARLIER_AS_OF = '2026-08-28T07:00:00+05:45';
    together, but the two move apart whenever a later update raises the
    national figure without restating every district. Keeping them separate
    means the table is never quietly presented as newer than it is. */
-export const BODIES_AS_OF = '2026-08-28T07:00:00+05:45';
+export const BODIES_AS_OF = '2026-08-28T12:00:00+05:45';
 export const BODIES_SOURCE = 'Nepal Police bulletin';
 
 /* The missing list has its own, earlier timestamp. It is deliberately kept
@@ -53,14 +53,14 @@ export const EVENT = {
 
 /** Bodies recovered, by the district where they were found. */
 export const BODIES_BY_DISTRICT = [
-  ['Chitwan', 178],
-  ['Nawalparasi East', 110],
+  ['Chitwan', 186],
+  ['Nawalparasi East', 112],
   ['Gorkha', 44],
+  ['Dhading', 40],
   ['Nuwakot', 37],
-  ['Dhading', 33],
-  ['Tanahun', 28],
-  ['Nawalparasi West', 27],
-  ['Rasuwa', 12],
+  ['Tanahun', 29],
+  ['Nawalparasi West', 28],
+  ['Rasuwa', 13],
 ];
 
 /** Who the 826 on the morning list were, as Nepal Police broke it down. */
@@ -219,7 +219,9 @@ export const TIMELINE = [
   ['Thursday, 27 August', "China's Ministry of Water Resources warns that a barrier lake near the Chhochen Khola and Purepu Tsangpo, close to the Nepal border, is overflowing and holds about 2 million cubic metres of water. It expects another 3 million cubic metres to flow in over the next three days, putting the lake at high risk of breaching in that window."],
   ['Thursday evening, 27 August', 'Nepal turns down offers of search and rescue teams from India, China, the US, Britain, Japan, South Korea, Sri Lanka and Bangladesh, the Kathmandu Post reports, saying its own army and police can handle the operation and asking instead for cash through the Prime Minister’s Disaster Relief Fund. The finance ministry says the fund took in Rs 273.3 million in its first six hours.'],
   ['Early afternoon, 28 August', 'The Kathmandu Post reports the barrier lake near the Chhochen Khola and Purepu Tsangpo has breached. NDRRMA says water levels in the Bhotekoshi surged as a result, and helicopters carry out aerial reconnaissance over Rasuwa to assess the damage downstream.'],
+  ['12:00 NPT, 28 August', 'Nepal Police restate a fuller district breakdown alongside the 489 toll: Chitwan 186, Nawalparasi East 112, Gorkha 44, Dhading 40, Nuwakot 37, Tanahun 29, Nawalparasi West 28, Rasuwa 13, which adds up to 489.'],
   ['Friday afternoon, 28 August', 'Chinese state media report rescue operations in Tibet have resumed after water levels at the barrier lake dropped slightly, ABC News reports. NDRRMA separately tells ABC News that 3,253 people have now been rescued by helicopter across the flood zone. ABC News, citing Nepal Police, reports the toll again at 489, unchanged since the midday bulletin.'],
+  ['Friday evening, 28 August', "China's state media report a new glacial slip in the Himalayan border region, sending about 50,000 cubic metres of ice and debris into the barrier lake, ABC News reports. The Nepali Army says its helicopters have rescued 706 people, including 40 foreign nationals, as of 3pm, Onlinekhabar reports."],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */
