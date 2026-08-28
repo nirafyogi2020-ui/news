@@ -16,7 +16,9 @@
  */
 
 const NDRRMA = 'https://ndrrma.gov.np/api/v1';
-const CACHE_SECONDS = 900;
+/* NDRRMA can add a bulletin before the hourly written summary. Five minutes
+   gives readers a direct official link quickly without excessive polling. */
+const CACHE_SECONDS = 300;
 
 const KEYWORDS = [
   'rasuwa', 'bhotekoshi', 'bhote koshi', 'trishuli', 'timure', 'syabrubesi',

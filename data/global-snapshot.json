@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-28T10:20:37.568Z",
+  "updated": "2026-08-28T10:24:45.755Z",
   "items": [
     {
       "title": "IRDR Data Brief - Satellite Data for Flash Flood/Debris Flow in China and Nepal on 26 August 2026",
@@ -35,6 +35,18 @@
       "authority": "primary"
     },
     {
+      "title": "Nepal-Tibet flash flood: rescue operations resume after halting due to lake overflow; death toll rises to 474 – latest updates",
+      "url": "https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates",
+      "source": "The Guardian",
+      "time": "2026-08-28T10:11:01.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://i.guim.co.uk/img/media/47cb3be449fcfb79d7faf55fbfb533ec45d96956/258_0_1248_998/master/1248.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=34a0a47423e5e78a26daa2f256f8e90c",
+      "summary": "Operations were suspended amid fears of further destruction; 1,500 people still missing amid race to find survivors Flood risk forces halt to rescues in Tibet, as Nepal death toll rises to 469 Visual guide: how the deadly flooding unfolded Tell us: have you been affected by the flash floods? More now on the Nepali army’s rescue operation to save about 100 people trapped in a tunnel at a hydropower project swamped by Wednesday’s flooding . “Two helicopters have been dispatched but it is challenging because it is tough to even locate the entry points of the tunnel,” army spokesperson Raja Ram Basnet told AFP. Relief efforts are also under way…",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
       "title": "Nepal flash floods: 'Very challenging' for survivors who have lost their homes and their families",
       "url": "https://www.france24.com/en/video/20260828-nepal-flash-floods-very-challenging-for-survivors-who-have-lost-their-homes-and-their-families",
       "source": "France 24",
@@ -43,18 +55,6 @@
       "region": "global",
       "image": "https://s.france24.com/media/display/528dfd0a-a2c3-11f1-81b1-005056bf30b7/w:1024/p:16x9/EN-20260828-091712-092608-CS.jpg",
       "summary": "Alison Sargent is pleased to welcome Sunita Sharma, Head of Programs of Karuna-Shechen. While Nepal has considerable experience responding to natural disasters, the scale of the present devastation exposes a deeper challenge: Placing greater emphasis on preparedness. The immediate priorities are clear: finding those still missing and providing survivors with drinking water, food, shelter, clothing and medicine. But recovery cannot end there. Ultimately, they will need to rebuild confidence and entire communities. Given the scale of the destruction, that process could take years.",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "‘So desperately loved’: ADF member among dozens of Australians missing in Nepal floods as families pray for safe return",
-      "url": "https://www.theguardian.com/world/2026/aug/28/family-missing-australians-nepal-tibet-flash-floods",
-      "source": "The Guardian",
-      "time": "2026-08-28T09:52:36.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://i.guim.co.uk/img/media/b13331200f050e02caee7ece44264ecb6200bdfc/0_0_5000_4000/master/5000.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=3ef61799ec009188530e5023a34b401e",
-      "summary": "Relatives ‘really worried, but hopeful’ as they wait anxiously for news in the aftermath of the flash flooding disaster Follow our Australia news live blog for latest updates Get our breaking news email , free app or daily news podcast The families of an Australian defence force member and two Sydney boys who went missing with their parents in Nepal remain hopeful they will be found safe. Dozens of Australians are missing after devastating flooding on the Nepal-Tibet border. Nepal police on Friday said more than 1,500 people remained missing and 469 have been confirmed dead after massive flash floods and landslides tore through the…",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -71,14 +71,14 @@
       "authority": "trusted"
     },
     {
-      "title": "Nepal-Tibet flash flood: rescue operations resume after halting due to lake overflow; death toll rises to 474 – latest updates",
-      "url": "https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates",
+      "title": "‘So desperately loved’: ADF member among dozens of Australians missing in Nepal floods as families pray for safe return",
+      "url": "https://www.theguardian.com/world/2026/aug/28/family-missing-australians-nepal-tibet-flash-floods",
       "source": "The Guardian",
-      "time": "2026-08-28T09:50:08.000Z",
+      "time": "2026-08-28T09:52:36.000Z",
       "kind": "press",
       "region": "global",
-      "image": "https://i.guim.co.uk/img/media/47cb3be449fcfb79d7faf55fbfb533ec45d96956/258_0_1248_998/master/1248.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=34a0a47423e5e78a26daa2f256f8e90c",
-      "summary": "Operations were suspended amid fears of further destruction; 1,500 people still missing amid race to find survivors Flood risk forces halt to rescues in Tibet, as Nepal death toll rises to 469 Visual guide: how the deadly flooding unfolded Tell us: have you been affected by the flash floods? More now on the Nepali army’s rescue operation to save about 100 people trapped in a tunnel at a hydropower project swamped by Wednesday’s flooding . “Two helicopters have been dispatched but it is challenging because it is tough to even locate the entry points of the tunnel,” army spokesperson Raja Ram Basnet told AFP. Relief efforts are also under way…",
+      "image": "https://i.guim.co.uk/img/media/b13331200f050e02caee7ece44264ecb6200bdfc/0_0_5000_4000/master/5000.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=3ef61799ec009188530e5023a34b401e",
+      "summary": "Relatives ‘really worried, but hopeful’ as they wait anxiously for news in the aftermath of the flash flooding disaster Follow our Australia news live blog for latest updates Get our breaking news email , free app or daily news podcast The families of an Australian defence force member and two Sydney boys who went missing with their parents in Nepal remain hopeful they will be found safe. Dozens of Australians are missing after devastating flooding on the Nepal-Tibet border. Nepal police on Friday said more than 1,500 people remained missing and 469 have been confirmed dead after massive flash floods and landslides tore through the…",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -273,6 +273,18 @@
       "region": "global",
       "image": null,
       "summary": "Drought and extreme heat are drying up rivers and farmland across Europe.",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "Rebuilding Nepal's Infra After Floods Could Cost $5 Billion, Says Billionaire",
+      "url": "https://www.ndtv.com/world-news/nepal-floods-rebuilding-nepals-infra-after-floods-could-cost-5-billion-billionaire-binod-chaudhary-11970156#publisher=newsstand",
+      "source": "NDTV",
+      "time": "2026-08-28T06:56:58.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://c.ndtvimg.com/2026-08/smj8vv7c_nepal-bloomberg_625x300_28_August_26.jpeg",
+      "summary": "The Chaudhary Group spans 12 business verticals, from food and telecom to infrastructure and banking.",
       "alsoReported": [],
       "authority": "trusted"
     }
