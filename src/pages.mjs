@@ -1161,9 +1161,11 @@ export function relief(ctx) {
 
 <h2>Prime Minister’s Natural Disaster Relief Fund</h2>
 <p>Nepal’s own government fund for disaster rescue and rebuilding, run by the Office of the Prime Minister. It is the only channel this site recommends, because it is the only one whose accounts can be checked against an official published source.</p>
-<div class="callout callout-alert">
-  <p class="callout-title">The official donation website is down</p>
-  <p><span class="num">pmrelief.opmcm.gov.np</span> was not loading when last checked on 26 August 2026. Until it is back, the bank details and QR code below are the best available source, and there is no live official page to cross-check them against. That is stated plainly rather than hidden.</p>
+<div class="callout">
+  <p class="callout-title">Giving by card from outside Nepal</p>
+  <p>The government opened an online donation gateway on ${esc(C.RELIEF_PORTAL.opened)}: <a href="${esc(C.RELIEF_PORTAL.url)}" target="_blank" rel="noopener"><span class="num">${esc(C.RELIEF_PORTAL.host)}</span></a>. It is run by ${esc(C.RELIEF_PORTAL.operator)}. ${esc(C.RELIEF_PORTAL.methods)}. ${esc(C.RELIEF_PORTAL.currency)}</p>
+  <p>This is the one payment link on this site, and it is here because the Office of the Prime Minister published it itself: ${C.RELIEF_PORTAL.confirmedBy.map(([name, url]) => `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(name)}</a>`).join(', ')}. Anything else asking for flood money, in any message, is not vouched for here.</p>
+  <p class="faint">The older address <span class="num">pmrelief.opmcm.gov.np</span> still does not load, checked 28 August 2026.</p>
 </div>
 ${bankTable(C.RELIEF_BANKS)}
 <p class="faint">Prime Minister’s Relief Fund (general fund, not disaster-specific):</p>

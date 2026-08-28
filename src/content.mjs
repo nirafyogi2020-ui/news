@@ -270,6 +270,27 @@ export const DIRECTORIES = [
 ];
 
 /** Transcribed by hand from the Prime Minister's Office graphic, 26 Aug 2026. */
+/**
+ * The government's own online donation gateway, opened on 27 August 2026 for
+ * donors outside Nepal who have a card rather than a Nepali bank account.
+ * Run by Nepal Clearing House (which also runs connectIPS) for the Office of
+ * the Prime Minister, and linked by the Office of the Prime Minister itself,
+ * which is the only reason it is printed here: an unverified payment link on
+ * a disaster page is how people get robbed.
+ */
+export const RELIEF_PORTAL = {
+  url: 'https://pmdrf.nchl.com.np/',
+  host: 'pmdrf.nchl.com.np',
+  operator: 'Nepal Clearing House, for the Office of the Prime Minister',
+  opened: '27 August 2026',
+  methods: 'International and Nepali cards, NepalPay QR, connectIPS, mobile banking and wallets',
+  currency: 'Charged in Nepali rupees, so your bank converts at its own rate.',
+  confirmedBy: [
+    ['Office of the Prime Minister, on its own page', 'https://www.facebook.com/OPMCMNP/posts/994255970306111/'],
+    ['Republica', 'https://myrepublica.nagariknetwork.com/news/govt-launches-new-portal-to-accept-disaster-relief-donations-from-abroad-84-26.html'],
+  ],
+};
+
 export const RELIEF_BANKS = [
   ['Himalayan Bank (USD account)', ['01905631210046']],
   ['Standard Chartered Bank Nepal', ['01013243801', '02013243801']],
