@@ -65,12 +65,18 @@ const TOPIC_STRONG = [
   'रसुवा', 'भोटेकोशी', 'भोटे कोशी', 'त्रिशूली', 'त्रिशुली', 'तिमुरे',
   'स्याफ्रुबेसी', 'हिमताल'
 ];
-const TOPIC_GENERIC = [
-  'flood', 'nuwakot', 'avalanche', 'landslide', 'inundat', 'swept', 'missing',
+/* A hazard word is enough on its own for a Nepali newsroom: a flood or a
+   landslide story there is this story or one like it. */
+const TOPIC_HAZARD = [
+  'flood', 'nuwakot', 'avalanche', 'landslide', 'inundat', 'swept',
   'rescue', 'disaster', 'relief', 'evacuat', 'hydropower',
-  'बाढी', 'न्वाकोट', 'नुवाकोट', 'पहिरो', 'बेपत्ता', 'उद्धार', 'विपद्', 'राहत',
-  'मृत्यु', 'शव', 'घाइते'
+  'बाढी', 'न्वाकोट', 'नुवाकोट', 'पहिरो', 'उद्धार', 'विपद्', 'राहत'
 ];
+/* A casualty word is not. Every newsroom prints "died" and "missing" all day
+   about traffic and crime, and those were landing in a flood feed. It counts
+   only next to a place or a hazard. */
+const TOPIC_CASUALTY = ['missing', 'बेपत्ता', 'मृत्यु', 'शव', 'घाइते'];
+const TOPIC_GENERIC = TOPIC_HAZARD.concat(TOPIC_CASUALTY);
 const TOPIC = TOPIC_STRONG.concat(TOPIC_GENERIC);
 
 /** GDACS carries the whole world; these words mark the entries we want. */
@@ -104,6 +110,10 @@ export async function onRequestGet(context) {
     fetchNagarik().catch(track(errors, 'nagarik')),
     fetchAnnapurna().catch(track(errors, 'annapurna')),
     fetchKhabarhub().catch(track(errors, 'khabarhub')),
+    fetchHimalayanTimes().catch(track(errors, 'himalayantimes')),
+    fetchRisingNepal().catch(track(errors, 'risingnepal')),
+    fetchNepalMinute().catch(track(errors, 'nepalminute')),
+    fetchOnlinekhabarNepali().catch(track(errors, 'onlinekhabar-ne')),
     fetchAlJazeera().catch(track(errors, 'aljazeera')),
     fetchBbcAsia().catch(track(errors, 'bbc')),
     fetchGuardianNepal().catch(track(errors, 'guardian')),
@@ -131,13 +141,11 @@ export async function onRequestGet(context) {
     }
   }
 
-  items.sort((a, b) => {
-    const at = a.time ? new Date(a.time).getTime() : -Infinity;
-    const bt = b.time ? new Date(b.time).getTime() : -Infinity;
-    return bt - at;
-  });
+  items.sort(byTimeDesc);
 
   verify(items);
+  items = cluster(items);
+  tagAuthority(items);
 
   // Official/primary sources (governments, UN bodies) are few in number and
   // are worth guaranteeing a spot even if their timestamp is a few hours
@@ -147,9 +155,24 @@ export async function onRequestGet(context) {
   /* The Watch tab is a grid people scroll, so it gets the whole de-duplicated
      result rather than the first screenful. */
   const videos = items.filter(i => i.kind === 'video').slice(0, 150);
-  const officialFirst = items.filter(i => i.kind !== 'press' && i.kind !== 'video');
-  const pressOnly = items.filter(i => i.kind === 'press');
-  const finalItems = spread(officialFirst.concat(pressOnly).slice(0, 100)).concat(videos);
+  const primary = items.filter(i => i.kind !== 'press' && i.kind !== 'video');
+  const press = items.filter(i => i.kind === 'press');
+
+  /* Only a handful of primary-source items are pinned above the press. Pinning
+     every one of them put five UN documents at the top of the feed and pushed
+     the newsrooms below the fold, which read as one source repeating itself.
+     Nepal Police first, because the toll is their figure and everyone else is
+     quoting it. */
+  const pinned = capPerSource(primary.slice().sort(byPinRank), 1).slice(0, 3);
+  const rest = primary.filter(i => pinned.indexOf(i) === -1)
+    .concat(press)
+    .sort(byTimeDesc);
+
+  const finalItems = pinned
+    .concat(spread(rest).slice(0, 100 - pinned.length))
+    .concat(videos);
+
+  await backfillImages(finalItems, 14);
 
   const response = new Response(JSON.stringify({
     updated: new Date().toISOString(),
@@ -167,6 +190,194 @@ export async function onRequestGet(context) {
 
   context.waitUntil(cache.put(cacheKey, response.clone()));
   return response;
+}
+
+/** Newest first. Items with no usable timestamp sort last rather than posing
+ *  as new. */
+function byTimeDesc(a, b) {
+  const at = a.time ? new Date(a.time).getTime() : -Infinity;
+  const bt = b.time ? new Date(b.time).getTime() : -Infinity;
+  return bt - at;
+}
+
+/* Who published it, and how much weight that carries.
+   - 'primary'  the body the figure actually comes from
+   - 'trusted'  an established newsroom with an editor and a masthead
+   - anything else gets no mark at all, rather than a mark that means nothing. */
+const PRIMARY_SOURCES = [
+  'Nepal Police', 'Nepal Army', 'NDRRMA', 'ReliefWeb (UN OCHA)',
+  'GDACS (UN / EC)', 'USGS', 'ICIMOD'
+];
+const TRUSTED_SOURCES = [
+  'Kathmandu Post', 'Onlinekhabar', 'Setopati', 'Nagarik News', 'Annapurna Post',
+  'Nepalnews', 'Ratopati', 'Khabarhub', 'The Himalayan Times', 'The Rising Nepal',
+  'Nepal Minute', 'Onlinekhabar (Nepali)', 'Al Jazeera',
+  'BBC News', 'The Guardian', 'NDTV', 'France 24', 'Reuters', 'Associated Press',
+  'AFP'
+];
+
+/** Order the pinned block: the body that issued the figure first, then the
+ *  other primary sources, newest first inside each step. */
+function byPinRank(a, b) {
+  const rank = item => {
+    if (item.source === 'Nepal Police') return 0;
+    if (PRIMARY_SOURCES.indexOf(item.source) !== -1) return 1;
+    return 2;
+  };
+  return rank(a) - rank(b) || byTimeDesc(a, b);
+}
+
+function tagAuthority(items) {
+  for (const item of items) {
+    item.authority = PRIMARY_SOURCES.indexOf(item.source) !== -1 ? 'primary'
+      : TRUSTED_SOURCES.indexOf(item.source) !== -1 ? 'trusted'
+      : 'other';
+  }
+}
+
+/** At most `max` items from any one source. Used on the pinned block so a
+ *  single agency's document dump cannot own the top of the feed. */
+function capPerSource(items, max) {
+  const count = {};
+  const out = [];
+  for (const item of items) {
+    const n = (count[item.source] || 0) + 1;
+    count[item.source] = n;
+    if (n <= max) out.push(item);
+  }
+  return out;
+}
+
+/* Numbers are what make two flood stories the same story. "469" in a Nepali
+   headline is written ४६९, so both are folded to the same digits first. */
+function keyNumbers(title) {
+  const latin = String(title || '').replace(/[०-९]/g, d => String('०१२३४५६७८९'.indexOf(d)));
+  return new Set((latin.match(/\d{2,}/g) || []).filter(n => n.length >= 2));
+}
+
+/** Is the headline written in Devanagari? Used to keep the Nepali and English
+ *  versions of one story as two cards, one for each set of readers. */
+function devanagari(text) {
+  return /[\u0900-\u097F]/.test(String(text || ''));
+}
+
+/** Names this event specifically, in either script. */
+function onSameEvent(title) {
+  return matches(String(title || '').toLowerCase(), TOPIC_STRONG);
+}
+
+function sharedCount(a, b) {
+  let n = 0;
+  for (const v of a) if (b.has(v)) n++;
+  return n;
+}
+
+/**
+ * Folds the same story, reported by several newsrooms, into one card.
+ *
+ * Ten outlets carrying "death toll reaches 469" is one piece of news, not ten,
+ * and printing it ten times made the feed look like a single source repeating
+ * itself. The survivor is the version with a photograph, from the most
+ * authoritative outlet, newest; the others become `alsoReported`, which is a
+ * better trust signal than ten near-identical cards anyway.
+ *
+ * Only press items are folded. A police bulletin and a newspaper's write-up of
+ * it are different things and both stay.
+ */
+function cluster(items) {
+  const words = items.map(item => significantWords(item.title));
+  const numbers = items.map(item => keyNumbers(item.title));
+  const used = new Array(items.length).fill(false);
+  const out = [];
+
+  const sameStory = (i, j) => {
+    const ti = items[i].time ? new Date(items[i].time).getTime() : null;
+    const tj = items[j].time ? new Date(items[j].time).getTime() : null;
+    if (ti && tj && Math.abs(ti - tj) > 12 * 3600 * 1000) return false;
+    const overlap = jaccard(words[i], words[j]);
+    if (overlap >= 0.42) return true;
+    if (!sharedCount(numbers[i], numbers[j])) return false;
+    if (overlap >= 0.15) return true;
+    // Six Nepali headlines all carrying "४६९" are the same bulletin written six
+    // ways, and word overlap barely fires across short Devanagari words. The
+    // shared figure plus the same place name is enough. Only within one
+    // script: the English write-up of a Nepali story is not a duplicate of it,
+    // it is the version most readers here can read.
+    return devanagari(items[i].title) === devanagari(items[j].title) &&
+      onSameEvent(items[i].title) && onSameEvent(items[j].title);
+  };
+
+  for (let i = 0; i < items.length; i++) {
+    if (used[i]) continue;
+    used[i] = true;
+    if (items[i].kind !== 'press') { out.push(items[i]); continue; }
+
+    const group = [items[i]];
+    for (let j = i + 1; j < items.length; j++) {
+      if (used[j] || items[j].kind !== 'press') continue;
+      if (!group.some(member => sameStory(items.indexOf(member), j))) continue;
+      used[j] = true;
+      group.push(items[j]);
+    }
+
+    const score = item => (item.image ? 4 : 0) +
+      (PRIMARY_SOURCES.indexOf(item.source) !== -1 ? 3 : 0) +
+      (TRUSTED_SOURCES.indexOf(item.source) !== -1 ? 2 : 0) +
+      ((item.summary || '').length > 200 ? 1 : 0);
+
+    const best = group.slice().sort((a, b) => score(b) - score(a) || byTimeDesc(a, b))[0];
+    const others = [];
+    for (const member of group) {
+      if (member === best) continue;
+      if (member.source === best.source) continue;
+      if (others.some(o => o.name === member.source)) continue;
+      others.push({ name: member.source, url: member.url });
+    }
+    best.alsoReported = others;
+    if (others.length) {
+      best.verified = true;
+      best.corroboratedBy = others.map(o => o.name);
+    }
+    out.push(best);
+  }
+  return out;
+}
+
+/**
+ * A card with two lines of text and no picture looks like a stub. Feeds that
+ * publish no image still have one on the article page, so for the first few
+ * cards, and only those, the article's own link-preview image is read and
+ * used. Anything slow, missing or not an image is skipped: no placeholder and
+ * no guessed picture.
+ */
+async function backfillImages(items, limit) {
+  const targets = items
+    .filter(item => item.kind === 'press' && !item.image && item.url)
+    .slice(0, limit);
+  if (!targets.length) return;
+
+  await Promise.all(targets.map(async item => {
+    try {
+      const res = await fetch(item.url, {
+        headers: {
+          'accept': 'text/html',
+          'user-agent': 'nepaldisasterupdatelive.nxtimaginelabs.com (hello@nxtimaginelabs.com)'
+        },
+        signal: AbortSignal.timeout(3500)
+      });
+      if (!res.ok) return;
+      const html = (await res.text()).slice(0, 120000);
+      const found =
+        html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i) ||
+        html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i) ||
+        html.match(/<meta[^>]+name=["']twitter:image["'][^>]+content=["']([^"']+)["']/i);
+      if (!found) return;
+      const url = decodeEntities(found[1]).trim();
+      if (/^https?:\/\//i.test(url)) item.image = url;
+    } catch (e) {
+      /* an image is a nice-to-have; the card still works without one */
+    }
+  }));
 }
 
 /**
@@ -197,8 +408,11 @@ function spread(items) {
 async function fetchReliefWeb() {
   const xml = await getText('https://reliefweb.int/updates/rss.xml?advanced-search=%28C170%29');
   // The RSS view ignores the country filter, so narrow it here instead.
+  // A regional bulletin that merely mentions Nepal in its body ("Asia and the
+  // Pacific: snapshot of El Nino") is not Nepal news, and it was crowding out
+  // the real updates, so the country has to be in the headline itself.
   return parseRss(xml)
-    .filter(item => matches(item.title + ' ' + item.description, PLACE))
+    .filter(item => matches(item.title, PLACE))
     .slice(0, 10)
     .map(item => ({
     title: cleanTitle(item.title),
@@ -287,6 +501,28 @@ async function fetchAnnapurna() {
 async function fetchKhabarhub() {
   const xml = await getText('https://www.khabarhub.com/feed');
   return onTopic(parseRss(xml), 'Khabarhub', 'nepal');
+}
+
+async function fetchHimalayanTimes() {
+  const xml = await getText('https://thehimalayantimes.com/rssFeed/11');
+  return onTopic(parseRss(xml), 'The Himalayan Times', 'nepal');
+}
+
+async function fetchRisingNepal() {
+  const xml = await getText('https://risingnepaldaily.com/rss');
+  return onTopic(parseRss(xml), 'The Rising Nepal', 'nepal');
+}
+
+async function fetchNepalMinute() {
+  const xml = await getText('https://www.nepalminute.com/feed');
+  return onTopic(parseRss(xml), 'Nepal Minute', 'nepal');
+}
+
+/* Onlinekhabar's Nepali edition. Its English site is a different newsroom
+   output with a different story list, so both are worth reading. */
+async function fetchOnlinekhabarNepali() {
+  const xml = await getText('https://www.onlinekhabar.com/feed');
+  return onTopic(parseRss(xml), 'Onlinekhabar (Nepali)', 'nepal');
 }
 
 async function fetchAlJazeera() {
@@ -524,7 +760,8 @@ function onTopic(items, source, region, opts) {
       if (strict) return matches(item.title, TOPIC_STRONG) ||
         (matches(item.title, TOPIC_GENERIC) && matches(item.title, ['nepal']));
       if (matches(text, TOPIC_STRONG)) return true;
-      return matches(text, TOPIC_GENERIC);
+      if (matches(text, TOPIC_HAZARD)) return true;
+      return matches(text, TOPIC_CASUALTY) && matches(text, PLACE);
     })
     .slice(0, 8)
     .map(item => ({

@@ -374,6 +374,54 @@ try {
       `article pages would show different numbers.`
     );
   }
+  /* And the story cards must not still be printing a toll the police have
+     overtaken. This is the failure the site owner actually saw: event.json and
+     every article page said 469, while the lead card on the Today tab was
+     still headlined 389 from the night before, because a run moved the
+     counters and left the words alone. Both checks above passed on it.
+
+     Only toll wording is read: "toll at N", "N dead", "N bodies recovered".
+     A card may still quote the older figure where it says so, as in "up from
+     389", which is how a rising toll is honestly written. */
+  const src = readFileSync(join(ROOT, 'src', 'content.mjs'), 'utf8');
+  const num = (name) => {
+    const m = src.match(new RegExp(name + ':\\s*(\\d+)'));
+    return m ? m[1] : null;
+  };
+  const current = [num('deadNepal'), num('deadChina')].filter(Boolean);
+  const TOLL_PATTERNS = [
+    /toll(?:\s+\w+){0,3}?\s+(?:at|of|to|passes|passed|tops|topped|hits|hit|reaches|reached)\s+([\d,]+)/gi,
+    /([\d,]+)\s+(?:confirmed\s+)?dead\b/gi,
+    /([\d,]+)\s+bodies\s+(?:have\s+been\s+)?(?:recovered|found|retrieved)/gi,
+    /(?:recovered|found)\s+([\d,]+)\s+bodies\b/gi
+  ];
+
+  /* "up from 389" is how a rising toll is honestly written, so the clause that
+     explicitly marks a number as the old one is cut out before the check. What
+     is left has to be current. */
+  const dropHistory = (text) =>
+    text.replace(/\b(?:up\s+from|from|was|had\s+been|earlier|previously)\s+[\d,]+/gi, ' ');
+
+  for (const post of td.posts || []) {
+    const parts = [post.title || ''].concat(post.body || []);
+    const sentences = [];
+    for (const part of parts) for (const one of part.split(/(?<=[.!?])\s+/)) sentences.push(one);
+    for (const sentence of sentences.map(dropHistory)) {
+      for (const pattern of TOLL_PATTERNS) {
+        pattern.lastIndex = 0;
+        let hit;
+        while ((hit = pattern.exec(sentence))) {
+          const found = hit[1].replace(/,/g, '');
+          if (current.includes(found)) continue;
+          errors.push(
+            `today.json card "${post.id}" still prints a toll of ${found}: ` +
+            `"${hit[0].trim()}". src/content.mjs says ${current[0]} dead in Nepal. ` +
+            `Rewrite the card, or say plainly that ${found} was the earlier figure.`
+          );
+        }
+      }
+    }
+  }
 } catch (e) {
   errors.push(`counter freshness check could not run: ${e.message}`);
 }

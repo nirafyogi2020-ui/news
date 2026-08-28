@@ -81,6 +81,9 @@ export async function loadPoliceNews() {
       kind: 'official',
       region: 'nepal',
       image: null,
+      // The listing carries a date and no clock time, so the card must print
+      // the date. "12 hours ago" off a made-up noon would be a false precision.
+      dateOnly: true,
       summary: cleanText(summary).slice(0, 220)
     });
   }
@@ -97,8 +100,17 @@ export async function loadPoliceNews() {
  */
 function bsDateToIso(bsDate) {
   const latin = String(bsDate || '').replace(/[०-९]/g, d => '०१२३४५६७८९'.indexOf(d));
-  if (latin.trim() === '2083-05-10') return '2026-08-26T12:00:00+05:45';
-  return null;
+  const parts = latin.trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!parts) return null;
+  const [, year, month, day] = parts;
+  // Days inside one BS month run consecutively in the Gregorian calendar too,
+  // so one confirmed anchor date fixes the whole month with no calendar
+  // library: 2083-05-10 BS is 26 Aug 2026 (NDRRMA's own dated situation
+  // report), which puts 2083-05-01 on 17 Aug 2026. Any other month returns
+  // null and the item shows with no timestamp rather than a wrong one.
+  if (year !== '2083' || month !== '05') return null;
+  const date = new Date(Date.UTC(2026, 7, 16 + Number(day)));
+  return date.toISOString().slice(0, 10) + 'T12:00:00+05:45';
 }
 
 function matches(text, words) {

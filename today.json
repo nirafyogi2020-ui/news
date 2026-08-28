@@ -1,14 +1,14 @@
 {
-  "updated": "2026-08-28T08:00:00+05:45",
+  "updated": "2026-08-28T08:40:00+05:45",
   "posts": [
     {
       "id": "rasuwa-flood",
-      "title": "Toll passes 389 as China warns lake may burst within days",
-      "time": "2026-08-27T22:30:00+05:45",
+      "title": "Police put the toll at 469 as China warns lake may burst",
+      "time": "2026-08-28T08:40:00+05:45",
       "image": "",
       "body": [
-        "Nepal Police put the confirmed toll at 389 dead as of a 9pm bulletin on Thursday, up from 359 at 5pm. Police also said 466 people are injured. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.",
-        "Chitwan has the most dead, 137, followed by Nawalparasi East with 87, Dhading with 33 and Gorkha with 32, Nepal Police figures reported by Review Nepal show. Health facilities in Chitwan can hold only around 50 bodies, which is slowing the process of identifying and releasing them to families.",
+        "Nepal Police put the confirmed toll at 469 dead as of 7am on Friday, up from 389 in Thursday evening's bulletin. Police said on Thursday that 466 people were injured. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.",
+        "Chitwan has the most dead, 178, followed by Nawalparasi East with 110, Gorkha with 44, Nuwakot with 37, Dhading with 33, Tanahun with 28, Nawalparasi West with 27 and Rasuwa with 12, Nepal Police said in its Friday morning bulletin. Health facilities in Chitwan can hold only around 50 bodies, which is slowing the process of identifying and releasing them to families.",
         "Nepal's tourism board says 644 travellers, 517 of them foreign nationals, were reported missing in a situation update issued at noon on Thursday, up from an earlier police count of 579. India has the most missing at 178, followed by 65 Americans and 53 Ukrainians, the tourism board says. Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.",
         "China's Ministry of Water Resources says a new barrier lake near the Chhochen Khola and Purepu Tsangpo, close to the Nepal border, is already overflowing and holds about 2 million cubic metres of water. It expects another 3 million cubic metres to flow in over the next three days, putting the lake at high risk of breaching in that time. This is separate from the smaller lake NDRRMA found earlier on the Lhende river.",
         "USGS first read the shaking on Wednesday as an earthquake. It later found no earthquake took place. The signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.",
@@ -17,14 +17,38 @@
         "Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear."
       ],
       "sources": [
-        { "name": "Nepal Police", "url": "https://www.nepalpolice.gov.np/" },
-        { "name": "Review Nepal", "url": "https://www.reviewnepal.com/rasuwa-flood-389-bodies-recovered-as-families-await-news-of-loved-ones/" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/644-people-missing.html" },
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/27/new-barrier-lake-in-nepal-raises-fresh-flood-threat-china-warns" },
-        { "name": "ICIMOD", "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" },
-        { "name": "Business Standard", "url": "https://www.business-standard.com/world-news/glacial-collapse-triggered-nepal-flash-floods-not-earthquake-usgs-126082700207_1.html" },
-        { "name": "ANI", "url": "https://aninews.in/news/national/general-news/ndrf-on-high-alert-as-nepal-flash-flood-threatens-gandak-bihar-up-deploy-rescue-teams-in-vulnerable-areas20260827033747/" },
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/27/nepal-declines-foreign-rescue-teams-says-its-own-security-agencies-can-handle-operation" }
+        {
+          "name": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10256/"
+        },
+        {
+          "name": "Review Nepal",
+          "url": "https://www.reviewnepal.com/rasuwa-flood-389-bodies-recovered-as-families-await-news-of-loved-ones/"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/644-people-missing.html"
+        },
+        {
+          "name": "The Kathmandu Post",
+          "url": "https://kathmandupost.com/national/2026/08/27/new-barrier-lake-in-nepal-raises-fresh-flood-threat-china-warns"
+        },
+        {
+          "name": "ICIMOD",
+          "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding"
+        },
+        {
+          "name": "Business Standard",
+          "url": "https://www.business-standard.com/world-news/glacial-collapse-triggered-nepal-flash-floods-not-earthquake-usgs-126082700207_1.html"
+        },
+        {
+          "name": "ANI",
+          "url": "https://aninews.in/news/national/general-news/ndrf-on-high-alert-as-nepal-flash-flood-threatens-gandak-bihar-up-deploy-rescue-teams-in-vulnerable-areas20260827033747/"
+        },
+        {
+          "name": "The Kathmandu Post",
+          "url": "https://kathmandupost.com/national/2026/08/27/nepal-declines-foreign-rescue-teams-says-its-own-security-agencies-can-handle-operation"
+        }
       ],
       "revised": true
     },
@@ -43,12 +67,30 @@
         "UNICEF says at least 17,000 children have been affected across Rasuwa, Nuwakot and Dhading. It counts 18 schools destroyed and 20 more damaged in those three districts, wider than the 8 schools Onlinekhabar had reported damaged in Rasuwa and Nuwakot alone a day earlier. UNICEF says around 10,000 school-age children now need help such as temporary classrooms and replacement books to keep learning."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html" },
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/pms-disaster-relief-fund.html" },
-        { "name": "UNICEF", "url": "https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance" }
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html"
+        },
+        {
+          "name": "The Kathmandu Post",
+          "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/pms-disaster-relief-fund.html"
+        },
+        {
+          "name": "UNICEF",
+          "url": "https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance"
+        }
       ],
       "revised": true
     },
@@ -65,11 +107,26 @@
         "The Independent Power Producers' Association Nepal, IPPAN, says 215 staff from five hydropower projects in total have not been reached since Wednesday's flood. Worst hit is Upper Trishuli-1 itself, with 94 people out of contact by IPPAN's count, a narrower figure than the more than 350 the army says it has now brought out of that project's tunnel. At Rasuwagadhi, 51 staff are out of contact, though 3 reached higher ground on their own."
       ],
       "sources": [
-        { "name": "Bloomberg", "url": "https://www.bloomberg.com/news/articles/2026-08-28/nepal-rescuers-race-to-save-people-trapped-in-hydropower-tunnel" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/hydropower-out-of-contact.html" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/nepali-army-rescue-operations.html" },
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/27/from-army-camps-to-hospitals-families-desperately-search-for-missing-members" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/more-than-25-workers-trapped-in-langtang-hydropower-tunnel.html" }
+        {
+          "name": "Bloomberg",
+          "url": "https://www.bloomberg.com/news/articles/2026-08-28/nepal-rescuers-race-to-save-people-trapped-in-hydropower-tunnel"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/hydropower-out-of-contact.html"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/nepali-army-rescue-operations.html"
+        },
+        {
+          "name": "The Kathmandu Post",
+          "url": "https://kathmandupost.com/national/2026/08/27/from-army-camps-to-hospitals-families-desperately-search-for-missing-members"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/more-than-25-workers-trapped-in-langtang-hydropower-tunnel.html"
+        }
       ],
       "revised": true
     },
@@ -83,8 +140,14 @@
         "Wong also announced A$5 million in Australian aid: 2 million to the World Food Programme, 2 million to Australian NGOs through the Australian Humanitarian Partnership, and 1 million to the Emergency Action Alliance for local recovery work. Three more Australian humanitarian specialists are being sent to join the 20 staff already in Nepal."
       ],
       "sources": [
-        { "name": "ABC News Australia", "url": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974" },
-        { "name": "The Standard", "url": "https://www.standard.net.au/story/9339027/almost-40-australians-missing-in-nepals-flash-floods/" }
+        {
+          "name": "ABC News Australia",
+          "url": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974"
+        },
+        {
+          "name": "The Standard",
+          "url": "https://www.standard.net.au/story/9339027/almost-40-australians-missing-in-nepals-flash-floods/"
+        }
       ]
     }
   ]

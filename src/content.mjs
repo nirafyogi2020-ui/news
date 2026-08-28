@@ -47,14 +47,14 @@ export const EVENT = {
 
 /** Bodies recovered, by the district where they were found. */
 export const BODIES_BY_DISTRICT = [
-  ['Chitwan', 137],
-  ['Nawalparasi East', 87],
+  ['Chitwan', 178],
+  ['Nawalparasi East', 110],
+  ['Gorkha', 44],
+  ['Nuwakot', 37],
   ['Dhading', 33],
-  ['Gorkha', 32],
-  ['Nuwakot', 28],
   ['Tanahun', 28],
-  ['Rasuwa', 17],
   ['Nawalparasi West', 27],
+  ['Rasuwa', 12],
 ];
 
 /** Who the 826 on the morning list were, as Nepal Police broke it down. */
