@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-28T17:00:00+05:45",
+  "updated": "2026-08-28T18:20:00+05:45",
   "posts": [
     {
       "id": "cabinet-relief-package",
@@ -25,7 +25,7 @@
         "Nepal Police issued an alert on Friday saying Chinese authorities reported that the barrier lake near the Chhochen Khola and the Purepu Tsangpo, just across the border from Rasuwa, had burst. Rasuwa's Chief District Officer said a circular went out telling people along the riverbanks to stay safe, and the Nepali Army suspended rescue operations along the border for one and a half hours as a precaution, Onlinekhabar reports. Chinese authorities separately pulled their own rescue teams back a kilometre from the site.",
         "The Kathmandu Post reported early Friday afternoon that the lake had breached, and NDRRMA flew aerial reconnaissance over Rasuwa to check the impact downstream. Rescue operations in Tibet later resumed after water levels at the lake dropped slightly, Chinese state media said, ABC News reports. China's state media then reported on Friday evening that a new glacial slip had sent about 50,000 cubic metres of ice and debris into the same lake, ABC News reports.",
         "But Nepal's government has not confirmed that a dam or the lake itself collapsed. Government spokesperson and Education Minister Sasmit Pokharel said Friday that Nepal had only received word that glaciers had broken and sent water mixed with debris over the top, not that a dam had failed, and that China had indicated there was no immediate major threat. The Kathmandu Post says the two accounts, a reported breach and the government's more cautious version, have not been reconciled.",
-        "The lake's volume has also kept rising rather than falling. China's Ministry of Water Resources put it at about 2 million cubic metres on Thursday morning; by Friday evening it had grown to about 2.5 million cubic metres, ABC News reports, with more water still forecast to flow in over the weekend.",
+        "The lake's volume has also kept rising rather than falling. China's Ministry of Water Resources put it at about 2 million cubic metres on Thursday morning; by Friday evening it had grown to about 2.5 million cubic metres, ABC News reports. China had earlier warned that about 3 million more cubic metres of water was expected to flow into the lake over three days, with peak flow expected around 1 September, ABC News reports.",
         "NDRRMA said separately on Friday that sediment laden water is rising again in the Bhotekoshi, two days after the first flood hit the same river. Spokesperson Shanti Mahat urged people living along the Bhotekoshi, and rescue and relief workers in the area, to stay on high alert and move to safer ground immediately if they see any sign of danger, Onlinekhabar reports.",
         "This is a new and separate risk on top of the flood that has already killed hundreds. Whichever account turns out to be right, if you live or work along the Bhote Koshi in Rasuwa, move away from the riverbank now and wait for officials to say it is clear."
       ],
@@ -39,14 +39,41 @@
       "revised": true
     },
     {
-      "id": "rasuwa-flood",
-      "title": "Nepal Police raise toll to 547, injured count rises to 1,473",
-      "time": "2026-08-28T16:23:00+05:45",
+      "id": "red-cross-93000-affected",
+      "title": "Red Cross says at least 93,000 people affected by the flood",
+      "time": "2026-08-28T18:15:00+05:45",
       "image": "",
       "body": [
-        "Nepal Police raised the confirmed toll to 547 dead in a Friday evening bulletin, ABC News reports, coming within minutes of Nepal's disaster authority, NDRRMA, putting the figure at 538. Nepal Police also reported 1,473 people injured in Nepal, up from 466 the day before. China's state media separately raised the Tibet side toll to 5, from 3. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.",
+        "David Fisher, head of delegation for the International Federation of Red Cross and Red Crescent Societies in Nepal, said Friday that at least 93,000 people have been affected by the flood and are in great need, the Jerusalem Post reports.",
+        "It is the broadest estimate yet of how many people the flood has touched, wider than the confirmed death, missing and rescued counts on this page, and it has not been confirmed by the Nepali government."
+      ],
+      "sources": [
+        { "name": "The Jerusalem Post", "url": "https://www.jpost.com/environment-and-climate-change/article-906895" },
+        { "name": "ABC News Australia", "url": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974" }
+      ]
+    },
+    {
+      "id": "meta-tiktok-misinformation",
+      "title": "Government asks Meta and TikTok to remove flood misinformation and scam QR codes",
+      "time": "2026-08-28T17:30:00+05:45",
+      "image": "",
+      "body": [
+        "Nepal's government has asked Meta and TikTok to remove graphic flood content, AI-generated videos and scam donation QR codes that have been circulating since the disaster, the Kathmandu Post reports.",
+        "Give only through the channels listed on this page, or the government's own portal at pmdrf.nchl.com.np. A donation QR code shared on social media is not verified unless it leads there."
+      ],
+      "sources": [
+        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/28/government-asks-meta-tiktok-to-remove-graphic-flood-content-misinformation" }
+      ]
+    },
+    {
+      "id": "rasuwa-flood",
+      "title": "Nepal Police raise toll to 553 in new Friday evening bulletin",
+      "time": "2026-08-28T17:00:00+05:45",
+      "image": "",
+      "body": [
+        "Nepal Police raised the confirmed toll again, to 553 dead, in a bulletin posted on the force's own website as of 5pm Friday. That is up from the 547 the force had given minutes earlier, which itself came within minutes of Nepal's disaster authority NDRRMA's separate figure of 538. Nepal Police reported 1,473 people injured in Nepal, up from 466 the day before. China's state media separately raised the Tibet side toll to 5, from 3. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.",
         "Rescue counts vary by agency and by day. Police said 1,545 people caught in the flood had been rescued as of the 7am bulletin, and NDRRMA told ABC News on Friday afternoon that 3,253 people have now been rescued by helicopter across the flood zone, a still broader tally that has not been named or broken down. NDRRMA's own earlier, named list stands at 113. The Nepali Army said on Friday its helicopters had rescued 706 people from Timure, Syabrubesi and Mailung by 3pm, up from 449 at 12:20pm, including 40 foreign nationals: 29 Indian, 4 German, 4 Chinese, 1 Omani and 2 South Korean, Onlinekhabar reports. Nepal Tourism Board said 117 stranded tourists have now been rescued from the Bhotekoshi area, 85 of them Indian, 16 Chinese, 9 South Korean, 2 American and 2 Italian, with 3 not yet identified by nationality, Onlinekhabar reports. Twenty eight police personnel remain out of contact.",
-        "Friday's midday bulletin restated a fuller district breakdown, adding up to the earlier 489 total: Chitwan 186, Nawalparasi East 112, Gorkha 44, Dhading 40, Nuwakot 37, Tanahun 29, Nawalparasi West 28 and Rasuwa 13, Nepal Police said. No bulletin has yet broken the new 547 total down by district. Health facilities in Chitwan, which has the most bodies, can hold only around 50 at a time, which is slowing identification and release to families.",
+        "The 5pm bulletin also gave a new district breakdown, adding up to the 553 total: Chitwan 222, Nawalparasi East 134, Gorkha 47, Dhading 40, Nuwakot 38, Tanahun 31, Nawalparasi West 28 and Rasuwa 13, Nepal Police said. Chitwan and Nawalparasi East, both downstream on the Narayani, again took the largest increases. Health facilities in Chitwan, which has the most bodies, can hold only around 50 at a time, which is slowing identification and release to families.",
         "NDRRMA repeated its missing count of 977 people in Nepal in Friday afternoon's update alongside the new death toll, ABC News reports, so the figure has not moved since Friday morning. Nepal's tourism board says 517 of the missing are foreign nationals, from 33 countries. Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.",
         "The barrier lake upstream near the Chhochen Khola and Purepu Tsangpo was reported to have breached, but Nepal's government has not confirmed a dam collapse and the two accounts have not been reconciled. Chinese state media report the lake has since grown rather than drained. See the update above for what is and is not confirmed. USGS first read the shaking on Wednesday as an earthquake, then found no earthquake took place: the signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.",
         "The Home Administration says 13,295 security personnel are working the flood zone: 7,250 from Nepal Police, 4,200 from the Nepali Army and 1,845 from the Armed Police Force, Khabarhub reports. Prime Minister Balendra Shah travelled to Bidur in Nuwakot on Thursday to see the damage.",
@@ -54,7 +81,7 @@
         "Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear."
       ],
       "sources": [
-        { "name": "Nepal Police", "url": "https://www.nepalpolice.gov.np/" },
+        { "name": "Nepal Police", "url": "https://www.nepalpolice.gov.np/news/10267/" },
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-flood-death-tol.html" },
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/people-rescued-rasuwa-flood-2.html" },
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/489-bodies-recovered.html" },
@@ -78,7 +105,7 @@
       "body": [
         "NDRRMA said on Friday morning that 977 people are listed out of contact in Nepal, up from 910 the evening before. NDRRMA put the foreign national count at 517, the same as the previous update, IANS reports. NDRRMA repeated the same 977 figure in its Friday afternoon update, so the count has not moved since morning, ABC News reports.",
         "Separately, Province Police said 116 people from Madhesh Province remain out of contact, 10 fewer than earlier in the day after some reached their families, spokesperson SSP Prabhu Prasad Dhakal told Onlinekhabar.",
-        "The missing count has not changed Nepal Police's confirmed death toll, which reached 547 in a Friday evening bulletin.",
+        "The missing count has not changed Nepal Police's confirmed death toll, which reached 553 in a bulletin as of 5pm Friday.",
         "Out of contact does not mean dead. Phone lines, power and internet are still down across large parts of the flood zone, and officials are still working through the lists as contact is slowly restored.",
         "If you are trying to find someone in the flood zone, call the nearest District Police Office or 100, and register the same details with the local ward office."
       ],
@@ -92,16 +119,16 @@
     },
     {
       "id": "damage-cost",
-      "title": "Damage put at Rs 200 billion, hydropower losses still being counted",
-      "time": "2026-08-27T23:30:00+05:45",
+      "title": "Damage put at Rs 200 billion, relief fund donations pass Rs 4 billion",
+      "time": "2026-08-28T18:00:00+05:45",
       "image": "",
       "body": [
+        "The Prime Minister's Disaster Relief Fund's balance has reached Rs 4.091 billion, the finance ministry said in a Friday update reported by Onlinekhabar, up from Rs 2.172 billion before the latest round of deposits, which added Rs 1.918 billion between noon Wednesday and midnight Thursday. The fund had taken in Rs 273.3 million in its first six hours, led by a Rs 100 million gift from Gorkha Brewery. That is public donations, separate from the Rs 1 billion the government has already released for relief.",
         "Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.",
         "That figure does not include energy infrastructure. Energy Minister Biraj Bhakta Shrestha has ordered an immediate assessment of hydropower damage. In Rasuwa, 8 projects have been hit, 5 of them operational with a combined 236 megawatts, and 3 still under construction with a combined 342 megawatts. Nuwakot has lost access to 6 more projects, 4 operational at 123 megawatts and 2 under construction at 53 megawatts.",
         "Rasuwa, Nuwakot, Dhading and Chitwan are still being surveyed for road and building damage, so the Rs 200 billion figure is expected to rise.",
         "The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. The World Bank has separately offered up to Rs 25 billion in emergency assistance, its Nepal country director told the finance ministry. That is aid, not a damage estimate.",
         "Insurers say claims will take weeks to settle because most of the damaged sites cannot be reached by road.",
-        "The Prime Minister's Disaster Relief Fund took in Rs 273.3 million in donations in its first six hours, the finance ministry says, led by a Rs 100 million gift from Gorkha Brewery. That is public donations, separate from the Rs 1 billion the government has already released for relief.",
         "UNICEF says at least 17,000 children have been affected across Rasuwa, Nuwakot and Dhading. It counts 18 schools destroyed and 20 more damaged in those three districts, wider than the 8 schools Onlinekhabar had reported damaged in Rasuwa and Nuwakot alone a day earlier. UNICEF says around 10,000 school-age children now need help such as temporary classrooms and replacement books to keep learning."
       ],
       "sources": [
@@ -110,6 +137,7 @@
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html" },
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html" },
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/pms-disaster-relief-fund.html" },
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/pm-disaster-relief-fund.html" },
         { "name": "UNICEF", "url": "https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance" }
       ],
       "revised": true

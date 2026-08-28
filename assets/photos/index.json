@@ -100,5 +100,23 @@
     "type": "image/jpeg",
     "credit": "OnlineKhabar English News",
     "article": "https://english.onlinekhabar.com/nepal-asks-india-china-to-build-42-bailey-bridges-in-flood-hit-areas.html"
+  },
+  "updates-2026-08-28-red-cross-93000-affected": {
+    "file": "updates-2026-08-28-red-cross-93000-affected.jpg",
+    "type": "image/jpeg",
+    "credit": "The Jerusalem Post",
+    "article": "https://www.jpost.com/environment-and-climate-change/article-906895"
+  },
+  "updates-2026-08-28-damage-cost": {
+    "file": "updates-2026-08-28-damage-cost.jpg",
+    "type": "image/jpeg",
+    "credit": "The Kathmandu Post",
+    "article": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa"
+  },
+  "updates-2026-08-28-meta-tiktok-misinformation": {
+    "file": "updates-2026-08-28-meta-tiktok-misinformation.jpg",
+    "type": "image/jpeg",
+    "credit": "The Kathmandu Post",
+    "article": "https://kathmandupost.com/national/2026/08/28/government-asks-meta-tiktok-to-remove-graphic-flood-content-misinformation"
   }
 }

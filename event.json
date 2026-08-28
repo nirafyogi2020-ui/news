@@ -8,16 +8,16 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-08-28T16:23:00+05:45",
-  "asOfSource": "Nepal Police, reported by ABC News",
+  "asOf": "2026-08-28T17:00:00+05:45",
+  "asOfSource": "Nepal Police bulletin",
   "stats": [
     {
       "icon": "dead",
-      "value": "547",
+      "value": "553",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepal Police raised the toll to 547 in a Friday evening bulletin, reported by ABC News, coming within minutes of Nepal's disaster authority, NDRRMA, putting the figure at 538. Nepal Police also reported 1,473 people injured in Nepal, up from 466 the day before. Earlier steps: 489 at midday Friday, 469 at 7am the same day and 389 the previous evening. The last full district breakdown, from Friday's midday bulletin, summed to 489: Chitwan 186, Nawalparasi East 112, Gorkha 44, Dhading 40, Nuwakot 37, Tanahun 29, Nawalparasi West 28, Rasuwa 13; no bulletin since has restated district figures against the new total. Sources differ on whether 547 counts deaths on the China side, where state media separately raised their own toll to 5 on Friday, so they are not added here."
+      "detail": "Nepal Police raised the toll to 553 in a bulletin posted on its own website as of 5pm Friday, up from 547 minutes earlier (which itself came within minutes of NDRRMA's separate figure of 538). Nepal Police reported 1,473 people injured in Nepal, up from 466 the day before. Earlier steps: 489 at midday Friday, 469 at 7am the same day and 389 the previous evening. The new district breakdown sums to 553: Chitwan 222, Nawalparasi East 134, Gorkha 47, Dhading 40, Nuwakot 38, Tanahun 31, Nawalparasi West 28, Rasuwa 13. Sources differ on whether this counts deaths on the China side, where state media separately raised their own toll to 5 on Friday, so they are not added here."
     },
     {
       "icon": "missing",
