@@ -8,16 +8,16 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-08-28T13:50:00+05:45",
+  "asOf": "2026-08-28T16:23:00+05:45",
   "asOfSource": "Nepal Police, reported by ABC News",
   "stats": [
     {
       "icon": "dead",
-      "value": "489",
+      "value": "547",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepal Police put the toll at 489 in a bulletin as of noon on 28 August, reported by Onlinekhabar. ABC News, citing police, reported the same 489 figure again in a Friday afternoon update, so the toll has held since midday. Of those 489, 393 have not yet been identified, Nepal Police said, reported by Onlinekhabar. Earlier steps: 469 at 7am the same day, 389 the previous evening, 359 at 5pm and 289 at 2:30pm. The last full district breakdown, from the 7am bulletin, was Chitwan 178, Nawalparasi East 110, Gorkha 44, Nuwakot 37, Dhading 33, Tanahun 28, Nawalparasi West 27, Rasuwa 12; no bulletin since has restated district figures. Sources differ on whether 489 counts the three deaths on the China side, so they are not added here. Police reported 466 injured on 27 August. A midday bulletin on 28 August restated a fuller district breakdown, adding up to 489: Chitwan 186, Nawalparasi East 112, Gorkha 44, Dhading 40, Nuwakot 37, Tanahun 29, Nawalparasi West 28, Rasuwa 13."
+      "detail": "Nepal Police raised the toll to 547 in a Friday evening bulletin, reported by ABC News, coming within minutes of Nepal's disaster authority, NDRRMA, putting the figure at 538. Nepal Police also reported 1,473 people injured in Nepal, up from 466 the day before. Earlier steps: 489 at midday Friday, 469 at 7am the same day and 389 the previous evening. The last full district breakdown, from Friday's midday bulletin, summed to 489: Chitwan 186, Nawalparasi East 112, Gorkha 44, Dhading 40, Nuwakot 37, Tanahun 29, Nawalparasi West 28, Rasuwa 13; no bulletin since has restated district figures against the new total. Sources differ on whether 547 counts deaths on the China side, where state media separately raised their own toll to 5 on Friday, so they are not added here."
     },
     {
       "icon": "missing",
