@@ -940,6 +940,15 @@
   .shell{max-width:1240px; margin:0 auto; padding:0 20px;}
   .layout{display:grid; grid-template-columns:200px minmax(0,1fr); gap:56px; align-items:start;}
   .layout.no-toc{grid-template-columns:minmax(0,1fr); gap:0;}
+  /* On a wide desktop, turn the unused right side into a useful briefing
+     rail. It deliberately disappears before the story column gets cramped. */
+  @media (min-width:1240px){
+    .shell.layout.has-home-rail{max-width:1440px;}
+    .layout.has-home-rail{grid-template-columns:200px minmax(0,1fr) 320px; gap:44px;}
+    .layout.has-home-rail.no-toc{grid-template-columns:minmax(0,1fr) 320px;}
+    .layout.has-home-rail .rail-card.is-pinned{top:calc(var(--head-h) + 16px);}
+  }
+  @media (max-width:1239px){ .layout.has-home-rail > .rail{display:none;} }
   @media (max-width:1080px){ .layout{grid-template-columns:1fr; gap:0;} }
 
   nav.toc{position:sticky; top:80px; padding:28px 0 40px; font-size:0.86rem;}
@@ -947,6 +956,16 @@
   nav.toc a{display:block; color:var(--text-muted); text-decoration:none; padding:6px 0 6px 16px; border-left:2px solid transparent; margin-left:-1px;}
   nav.toc a:hover{color:var(--text);}
   nav.toc a.active{color:var(--text); border-left-color:var(--text); font-weight:600;}
+  .toc-status{margin-top:22px; border-top:1px solid var(--border); padding-top:14px;}
+  .toc-status .ts-live{display:flex; align-items:center; gap:7px; font-family:var(--font-mono); font-size:0.66rem; letter-spacing:0.13em; text-transform:uppercase; color:var(--critical); font-weight:600;}
+  .toc-status .ts-live i{width:7px; height:7px; border-radius:50%; background:var(--critical); animation:pulse 2s ease-in-out infinite;}
+  .toc-status dl{margin:12px 0 0; font-size:0.78rem;}
+  .toc-status dt{font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.09em; text-transform:uppercase; color:var(--text-faint);}
+  .toc-status dd{margin:2px 0 11px; color:var(--text); font-weight:600;}
+  .toc-langs{margin-top:6px; display:flex; flex-direction:column; gap:5px;}
+  .toc-langs a{font-size:0.8rem; color:var(--text-muted); text-decoration:none;}
+  .toc-langs a:hover{color:var(--critical);}
+  .eyebrow::before{content:""; display:inline-block; width:16px; height:2px; margin-right:9px; vertical-align:middle; background:var(--critical);}
   /* On phones the primary nav is the bottom bar. A second sticky chip rail on
      top of it just ate screen and made the page feel cluttered, so it is gone. */
   @media (max-width:1080px){
@@ -2093,10 +2112,23 @@
   </div>
 </div>
 
-<div class="shell layout">
+<div class="shell layout has-home-rail">
 
   <nav class="toc" aria-label="Section navigation" id="toc">
     <ol id="toc-list"></ol>
+    <div class="toc-status">
+      <p class="ts-live"><i aria-hidden="true"></i>Live coverage</p>
+      <dl>
+        <dt>Day</dt><dd id="ts-day">Day 3</dd>
+        <dt>Last updated</dt><dd id="ts-updated">28 August 2026, 2:30 pm NPT</dd>
+        <dt>Reporting</dt><dd>Public sources, checked</dd>
+      </dl>
+      <div class="toc-langs">
+        <a href="/ne/" hreflang="ne" lang="ne">नेपालीमा</a>
+        <a href="/global/">World coverage</a>
+        <a href="/sources/">Sources and method</a>
+      </div>
+    </div>
   </nav>
 
   <main id="main">
@@ -2734,6 +2766,8 @@
         <p class="attrib" id="map-attrib"></p>
       </div>
 
+      <div class="panel">
+        <div class="panel-head"><h3>Why here, and why so fast</h3><p class="panel-sub">Three things about this valley that decided how bad it got</p></div>
       <div class="grid-2">
         <div class="card">
           <h3>Why this valley floods hard</h3>
@@ -2749,6 +2783,10 @@
         </div>
       </div>
 
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Every stop on the water's path</h3><p class="panel-sub">Highest first, with what was hit at each one</p></div>
       <div class="table-scroll">
         <table class="data-table">
           <thead><tr><th>Place</th><th>Elevation</th><th>What happened</th></tr></thead>
@@ -2761,6 +2799,7 @@
             <tr><td>Devighat</td><td class="num-cell">~460 m</td><td>Furthest downstream site hit. Hydropower station damaged.</td></tr>
           </tbody>
         </table>
+      </div>
       </div>
       <div class="deeplinks">
         <a class="deeplink" href="/nepal-flood/rasuwa/map/">Every point on the flood path, with coordinates</a>
@@ -3034,6 +3073,47 @@
   </div>
 
   </main>
+
+  <aside class="rail" id="rail" aria-label="Live summary">
+    <section class="rail-card is-pinned" aria-labelledby="rail-fig-h">
+      <p class="rail-head" id="rail-fig-h"><span class="rail-tick" aria-hidden="true"></span>Where it stands</p>
+      <div id="rail-figures"><!--ssr:railfig--><div class="rail-fig"><span class="rf-n critical">489</span><span class="rf-l">confirmed dead</span></div><div class="rail-fig"><span class="rf-n critical">977</span><span class="rf-l">listed missing in Nepal</span></div><div class="rail-fig"><span class="rf-n">113</span><span class="rf-l">rescued so far</span></div><p class="rail-note">Nepal Police, reported by ABC News, 28 August 2026, 1:50 pm NPT. <a href="#numbers-title">Every figure, and where it came from</a></p><!--/ssr:railfig--></div>
+    </section>
+
+    <section class="rail-card" aria-labelledby="rail-latest-h">
+      <p class="rail-head" id="rail-latest-h"><span class="rail-dot" aria-hidden="true"></span>Latest<span class="rail-when" id="rail-latest-when">28 August 2026, 2:30 pm NPT</span></p>
+      <ol class="rail-list" id="rail-latest"><!--ssr:raillatest--><li><time datetime="2026-08-28T14:30:00+05:45">28 August 2026, 2:30 pm NPT</time><a href="/updates/2026-08-28-rasuwa-flood/">Toll holds at 489, but 393 of the bodies are still unidentified</a></li><li><time datetime="2026-08-28T14:00:00+05:45">28 August 2026, 2:00 pm NPT</time><a href="/updates/2026-08-28-cabinet-relief-package/">Cabinet orders relief package, ministers to give a month's pay</a></li><li><time datetime="2026-08-28T13:15:00+05:45">28 August 2026, 1:15 pm NPT</time><a href="/updates/2026-08-28-barrier-lake-burst/">Barrier lake breach confirmed, Tibet rescue work resumes</a></li><li><time datetime="2026-08-28T11:30:00+05:45">28 August 2026, 11:30 am NPT</time><a href="/updates/2026-08-28-missing-977/">Nepal's missing count rises to 977, NDRRMA says</a></li><li><time datetime="2026-08-28T08:00:00+05:45">28 August 2026, 8:00 am NPT</time><a href="/updates/2026-08-28-hydropower-workers-out-of-contact/">Army pulls 350 from Upper Trishuli tunnel, more still inside</a></li><!--/ssr:raillatest--></ol>
+    </section>
+
+    <section class="rail-card" aria-labelledby="rail-src-h">
+      <p class="rail-head" id="rail-src-h"><span class="rail-tick" aria-hidden="true"></span>Where this comes from</p>
+      <ul class="rail-src">
+        <li><span class="vtick" aria-hidden="true">✓</span><b>Nepal Police</b><span class="rs-kind">Official</span></li>
+        <li><span class="vtick" aria-hidden="true">✓</span><b>NDRRMA</b><span class="rs-kind">Official</span></li>
+        <li><span class="vtick" aria-hidden="true">✓</span><b>UN OCHA</b><span class="rs-kind">Alerts</span></li>
+        <li><span class="vtick" aria-hidden="true">✓</span><b>Kathmandu Post</b><span class="rs-kind">Newsroom</span></li>
+        <li><span class="vtick" aria-hidden="true">✓</span><b>Onlinekhabar</b><span class="rs-kind">Newsroom</span></li>
+      </ul>
+      <p class="rail-note"><a href="/sources/">Every source on this site, and how each one is checked</a></p>
+    </section>
+
+    <section class="rail-card" aria-labelledby="rail-help-h">
+      <p class="rail-head" id="rail-help-h"><span class="rail-tick" aria-hidden="true"></span>If you need help</p>
+      <div class="rail-body">
+        <p class="rail-lede">Nepal Police is 100 from any phone, 112 from a mobile. Donations go through the government’s own card gateway.</p>
+        <a class="rail-btn is-alert" href="tel:100">Call 100 · Nepal Police</a>
+        <a class="rail-btn" href="https://pmdrf.nchl.com.np/" rel="noopener nofollow" target="_blank">Give to the relief fund</a>
+      </div>
+    </section>
+
+    <section class="rail-card" aria-labelledby="rail-world-h">
+      <p class="rail-head" id="rail-world-h"><span class="rail-tick" aria-hidden="true"></span>Elsewhere today</p>
+      <div class="rail-body">
+        <p class="rail-lede">Floods, quakes and storms outside Nepal, from official alerts and named newsrooms.</p>
+        <a class="rail-btn" href="/global/">Open the world page</a>
+      </div>
+    </section>
+  </aside>
 </div>
 
 <button class="to-top" id="to-top" type="button" aria-label="Back to top">
