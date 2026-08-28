@@ -1,14 +1,14 @@
 {
   "slug": "2026-08-28-rasuwa-flood",
   "id": "rasuwa-flood",
-  "title": "Toll holds at 489, NDRRMA says 3,253 now rescued by helicopter",
-  "time": "2026-08-28T13:50:00+05:45",
+  "title": "Toll holds at 489, but 393 of the bodies are still unidentified",
+  "time": "2026-08-28T14:30:00+05:45",
   "body": [
-    "Nepal Police put the confirmed toll at 489 dead as of a midday bulletin on Friday, up from 469 at 7am and 389 at 9pm Thursday. ABC News, citing police, reported the same 489 figure again in a Friday afternoon update, so the toll has held since midday. Rescue counts vary by agency: police said 1,545 people caught in the flood had been rescued as of the 7am bulletin, and NDRRMA told ABC News on Friday afternoon that 3,253 people have now been rescued by helicopter across the flood zone, a still broader tally that has not been named or broken down. NDRRMA's own earlier, named list stands at 113. Twenty eight police personnel remain out of contact. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.",
+    "Nepal Police put the confirmed toll at 489 dead as of a midday bulletin on Friday, up from 469 at 7am and 389 at 9pm Thursday. ABC News, citing police, reported the same 489 figure again in a Friday afternoon update, so the toll has held since midday. Of those 489 bodies, 393 have not yet been identified, Nepal Police said, Onlinekhabar reports. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.",
+    "Rescue counts vary by agency and by day. Police said 1,545 people caught in the flood had been rescued as of the 7am bulletin, and NDRRMA told ABC News on Friday afternoon that 3,253 people have now been rescued by helicopter across the flood zone, a still broader tally that has not been named or broken down. NDRRMA's own earlier, named list stands at 113. The Nepali Army separately said it had airlifted 449 people to safety on Friday alone, as of 12:20pm, including 13 Indian and 4 German nationals, Onlinekhabar reports. Nepal Tourism Board said 117 stranded tourists have now been rescued from the Bhotekoshi area, 85 of them Indian, 16 Chinese, 9 South Korean, 2 American and 2 Italian, with 3 not yet identified by nationality, Onlinekhabar reports. Twenty eight police personnel remain out of contact.",
     "Friday's midday bulletin did not repeat a district breakdown. The last full count, from the 7am bulletin, was Chitwan 178, Nawalparasi East 110, Gorkha 44, Nuwakot 37, Dhading 33, Tanahun 28, Nawalparasi West 27 and Rasuwa 12, adding up to that morning's total of 469. Health facilities in Chitwan, which has the most bodies, can hold only around 50 at a time, which is slowing identification and release to families.",
     "NDRRMA's 6:20pm update on Thursday listed 910 people out of contact in Nepal, up from 826 that morning, 570 of them tourists. Nepal's tourism board says 517 of the missing are foreign nationals, from 33 countries. Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.",
-    "The barrier lake upstream that China's Ministry of Water Resources had been watching near the Chhochen Khola and Purepu Tsangpo has now burst. See the update above on the rescue pause and the new NDRRMA warning for the Bhotekoshi.",
-    "USGS first read the shaking on Wednesday as an earthquake. It later found no earthquake took place. The signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.",
+    "The barrier lake upstream that China's Ministry of Water Resources had been watching near the Chhochen Khola and Purepu Tsangpo has now burst. See the update above on the rescue pause and the new NDRRMA warning for the Bhotekoshi. USGS first read the shaking on Wednesday as an earthquake, then found no earthquake took place: the signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.",
     "Nepal's Army says more than 5,000 army and police personnel are working the flood zone, from Nuwakot to Chitwan. Prime Minister Balendra Shah travelled to Bidur in Nuwakot on Thursday to see the damage.",
     "In India, the NDRF and the Sashastra Seema Bal have rescue teams on standby in Bihar and Uttar Pradesh, and the NDRF says the Gandak, which the Narayani becomes downstream, could see higher water levels. Nepal has turned down offers of search and rescue teams from India, China, the US, Britain, Japan, South Korea, Sri Lanka and Bangladesh, the Kathmandu Post reports. The government says its own army and police can handle the operation and is asking instead for cash, through a single channel into the Prime Minister's Disaster Relief Fund.",
     "Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear."
@@ -25,6 +25,18 @@
     {
       "name": "Onlinekhabar",
       "url": "https://english.onlinekhabar.com/people-rescued-rasuwa-flood-2.html"
+    },
+    {
+      "name": "Onlinekhabar",
+      "url": "https://english.onlinekhabar.com/489-bodies-recovered.html"
+    },
+    {
+      "name": "Onlinekhabar",
+      "url": "https://english.onlinekhabar.com/449-rescued-by-helicopter.html"
+    },
+    {
+      "name": "Onlinekhabar",
+      "url": "https://english.onlinekhabar.com/tourists-rescue-floods.html"
     },
     {
       "name": "ABC News Australia",
