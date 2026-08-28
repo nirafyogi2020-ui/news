@@ -8,14 +8,14 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-08-28T13:50:00+05:45';
+export const TOLL_AS_OF = '2026-08-28T16:23:00+05:45';
 export const TOLL_SOURCE = 'Nepal Police, reported by ABC News';
 
 /* When the bulletin one step before TOLL_AS_OF was published. Used only for
    the "how the toll has moved" table, so that row's timestamp always matches
    TOLL.deadNepalEarlier instead of drifting out of date as later runs move
    both TOLL_AS_OF and deadNepalEarlier forward. */
-export const TOLL_EARLIER_AS_OF = '2026-08-28T07:00:00+05:45';
+export const TOLL_EARLIER_AS_OF = '2026-08-28T13:50:00+05:45';
 
 /* The district breakdown carries its own clock. It happens to match the toll
    right now, because the 28 August 7am police bulletin published both
@@ -93,14 +93,14 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 489,
-  deadNepalEarlier: 469,
-  deadChina: 3,
+  deadNepal: 547,
+  deadNepalEarlier: 489,
+  deadChina: 5,
   missing: 977,
   missingChina: 558,
   missingChinaForeign: 260,
   missingIndian: 133,
-  injured: 466,
+  injured: 1473,
   rescued: 113,
   rescuedBreakdown: [
     ['Nepali citizens', 88],
@@ -128,7 +128,7 @@ export const DAMAGE = {
     ['Chilime Hydropower', 'Rasuwa', 'Damaged. One of the country’s better-known community-shareholder projects.'],
     ['Sanjen Khola Hydropower', 'Rasuwa', 'Damaged, on a Bhote Koshi tributary.'],
     ['Upper Trishuli-1', 'Rasuwa / Nuwakot', 'Damaged. One of the largest projects on the corridor.'],
-    ['Upper Trishuli-3B substation', 'Nuwakot', '220 kV substation damaged, which affects evacuation of power from the whole corridor. Twelve project staff were reported out of contact.'],
+    ['Upper Trishuli-3B substation', 'Nuwakot', '220 kV substation damaged, which affects evacuation of power from the whole corridor. Twelve project staff were reported out of contact. The Ministry of Energy said Friday the project camp area is now completely buried under landslide debris, and rescue there is continuing.'],
     ['Trishuli Hydropower Station', 'Nuwakot', 'Damaged. One of Nepal’s oldest operating stations.'],
     ['Devighat Hydropower Station', 'Nuwakot', 'Damaged. The furthest downstream site where damage has been reported.'],
   ],
@@ -222,6 +222,12 @@ export const TIMELINE = [
   ['12:00 NPT, 28 August', 'Nepal Police restate a fuller district breakdown alongside the 489 toll: Chitwan 186, Nawalparasi East 112, Gorkha 44, Dhading 40, Nuwakot 37, Tanahun 29, Nawalparasi West 28, Rasuwa 13, which adds up to 489.'],
   ['Friday afternoon, 28 August', 'Chinese state media report rescue operations in Tibet have resumed after water levels at the barrier lake dropped slightly, ABC News reports. NDRRMA separately tells ABC News that 3,253 people have now been rescued by helicopter across the flood zone. ABC News, citing Nepal Police, reports the toll again at 489, unchanged since the midday bulletin.'],
   ['Friday evening, 28 August', "China's state media report a new glacial slip in the Himalayan border region, sending about 50,000 cubic metres of ice and debris into the barrier lake, ABC News reports. The Nepali Army says its helicopters have rescued 706 people, including 40 foreign nationals, as of 3pm, Onlinekhabar reports."],
+  ['15:52 NPT, 28 August', 'The Kathmandu Post reports that Nepal’s government has not confirmed a dam or lake collapse on the China side. Government spokesperson and Education Minister Sasmit Pokharel says Nepal has only received word that glaciers broke and sent water mixed with debris over the top, not that a dam failed, and that China has indicated there is no immediate major threat. The two accounts, a reported breach and the government’s more cautious version, have not been reconciled.'],
+  ['16:06 NPT, 28 August', "NDRRMA raises the confirmed toll to 538 and repeats its missing count of 977, unchanged, ABC News reports."],
+  ['16:23 NPT, 28 August', 'Nepal Police raise the confirmed toll further, to 547, and report 1,473 people injured in Nepal, up from 466 a day earlier, ABC News reports. The higher police figure comes within minutes of NDRRMA’s 538.'],
+  ['Friday, 28 August', "China's state media raise the Tibet side death toll to 5, from 3, ABC News reports. The missing count on the China side holds at 558."],
+  ['Friday afternoon, 28 August', 'The Ministry of Energy, Water Resources and Irrigation says the camp area of the Upper Trishuli-3B hydropower project in Nuwakot has been completely buried under landslide debris. It says rescuing people there is the top priority and that rescue equipment has been flown in, Onlinekhabar reports.'],
+  ['Friday evening, 28 August', "ABC News reports the barrier lake has grown rather than drained: China's Ministry of Water Resources put it at about 2 million cubic metres on Thursday morning, and by Friday evening it had grown to about 2.5 million cubic metres, with more water still forecast to flow in over the weekend."],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */
