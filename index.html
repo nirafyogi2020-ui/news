@@ -1158,6 +1158,7 @@
   .video-info{min-width:0; flex:1;}
   .video-title{font-size:0.94rem; font-weight:600; line-height:1.35; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
   .video-sub{font-size:0.8rem; color:var(--text-faint); margin-top:3px;}
+  .video-freshness{display:flex; align-items:center; width:fit-content; max-width:100%; margin:10px 0 0; padding:8px 10px; border:1px solid var(--border); border-left:3px solid var(--critical); border-radius:8px; background:var(--surface-2); font-family:var(--font-mono); font-size:0.72rem; line-height:1.45; color:var(--text-muted);}
   .video-actions{margin-top:6px;}
   .video-actions .post-btn{padding:6px 8px; font-size:0.78rem;}
   /* On a phone a stack of full-width 16:9 cards is enormous and you can only
@@ -2683,6 +2684,7 @@
         <span class="livedot" aria-hidden="true"></span>
         <span class="feed-status" id="video-status">Loading&hellip;</span>
       </div>
+      <p class="video-freshness" id="video-freshness" aria-live="polite" hidden></p>
       <div class="seg" id="video-region-seg" role="group" aria-label="Filter videos by source" style="margin-top:14px; max-width:420px;">
         <button type="button" data-vregion="all" aria-pressed="true">All sources</button>
         <button type="button" data-vregion="nepal" aria-pressed="false">Nepali sources</button>
@@ -4410,9 +4412,13 @@ var PostCards = (function(){
     '<path d="M12 1.6l2.5 2.1 3.2-.4 1 3.1 2.9 1.5-1.1 3.1 1.1 3.1-2.9 1.5-1 3.1-3.2-.4L12 22.4l-2.5-2.1-3.2.4-1-3.1L2.4 16l1.1-3.1L2.4 9.8l2.9-1.5 1-3.1 3.2.4z"></path>' +
     '<path d="M10.6 15.6l-3-3 1.2-1.2 1.8 1.8 4.4-4.4 1.2 1.2z" fill="#fff"></path></svg>';
 
+  function sourceMark(item){
+    return (item.authority === 'primary' || item.authority === 'trusted') ? CHECK : '';
+  }
+
   function card(item, index){
     var summary = item.summary || item.title;
-    var verifiedMark = (item.authority === 'primary' || item.authority === 'trusted') ? CHECK : '';
+    var verifiedMark = sourceMark(item);
     var also = item.alsoReported || [];
     var corrob = also.length
       ? 'Also reported by ' + also.slice(0, 3).map(function(o){ return o.name; }).join(', ') +
@@ -4584,7 +4590,7 @@ var PostCards = (function(){
     }
   });
 
-  return { render: render, timeAgo: timeAgo };
+  return { render: render, timeAgo: timeAgo, sourceMark: sourceMark };
 })();
 
 var LiveFeed = (function(){
@@ -4604,7 +4610,10 @@ var LiveFeed = (function(){
   var videoGrid = document.getElementById('video-grid');
   var videoStatus = document.getElementById('video-status');
   var videoEmpty = document.getElementById('video-empty');
+  var videoFreshness = document.getElementById('video-freshness');
   var latestVideos = [];
+  var videoFeedMeta = null;
+  var videoFeedCheckedAt = null;
   var vregionFilter = 'all';
   var videoFailed = false;
   Array.prototype.slice.call(document.querySelectorAll('[data-vregion]')).forEach(function(b){
@@ -4618,6 +4627,24 @@ var LiveFeed = (function(){
   function initials(name){
     var w = String(name || '?').trim().split(/\s+/);
     return ((w[0] || '?')[0] + (w[1] ? w[1][0] : '')).toUpperCase();
+  }
+
+  function renderVideoFreshness(){
+    if(!videoFreshness) return;
+    if(!latestVideos.length){
+      videoFreshness.hidden = true;
+      return;
+    }
+    var meta = videoFeedMeta || {};
+    var newest = meta.newestAt || (newestByTime(latestVideos) || {}).time;
+    var checked = meta.searchedAt || videoFeedCheckedAt;
+    var label = meta.searchedAt ? 'YouTube searched ' : 'Watch feed checked ';
+    var parts = [];
+    if(checked) parts.push(label + nptClock(checked));
+    if(newest) parts.push('newest clip ' + PostCards.timeAgo(newest));
+    if(meta.showingBackup) parts.push('showing last good list');
+    videoFreshness.textContent = parts.join(' · ') || 'Video time is not available yet';
+    videoFreshness.hidden = false;
   }
 
   function renderVideos(all){
@@ -4648,6 +4675,8 @@ var LiveFeed = (function(){
 
   function videoCardHtml(it){
       var vid = (String(it.url).match(/[?&]v=([\w-]{6,15})/) || [])[1] || '';
+      var source = escapeHtml(it.source || 'YouTube');
+      var verifiedMark = PostCards.sourceMark(it);
       return '<article class="video-card" data-yt="' + vid + '" data-url="' + it.url + '" data-title="' + String(window.tidyVideoTitle(it.title)).replace(/"/g,'&quot;') + '">' +
         '<div class="video-thumb">' +
           (it.image ? '<img loading="lazy" referrerpolicy="no-referrer" src="' + it.image + '" alt="" onerror="this.style.display=\'none\'">' : '') +
@@ -4659,7 +4688,7 @@ var LiveFeed = (function(){
             : initials(it.source)) + '</div>' +
           '<div class="video-info">' +
             '<div class="video-title">' + String(window.tidyVideoTitle(it.title)).replace(/</g,'&lt;') + '</div>' +
-            '<div class="video-sub">' + String(it.source || 'YouTube').replace(/</g,'&lt;') + ' · ' + PostCards.timeAgo(it.time) + '</div>' +
+            '<div class="video-sub">' + source + verifiedMark + ' · ' + PostCards.timeAgo(it.time) + '</div>' +
             '<div class="video-actions"><button class="post-btn" type="button" data-share="1">' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"></line></svg>Share</button></div>' +
           '</div>' +
@@ -4790,13 +4819,15 @@ var LiveFeed = (function(){
     });
   }
 
-  function nptClock(){
+  function nptClock(iso){
+    var date = iso ? new Date(iso) : new Date();
+    if(isNaN(date.getTime())) return '';
     try{
-      return new Date().toLocaleTimeString('en-GB', {
+      return date.toLocaleTimeString('en-GB', {
         timeZone:'Asia/Kathmandu', hour:'2-digit', minute:'2-digit'
       }) + ' NPT';
     }catch(e){
-      return new Date().toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
+      return date.toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
     }
   }
 
@@ -4867,6 +4898,8 @@ var LiveFeed = (function(){
         // Tells the empty state whether YouTube failed (quota, outage) or is
         // simply not configured, so it stops blaming a missing API key.
         videoFailed = (data.errors || []).some(function(e){ return String(e).indexOf('youtube') === 0; });
+        videoFeedMeta = data.videoFeed || null;
+        videoFeedCheckedAt = data.updated || new Date().toISOString();
 
         PostCards.render(feedEl, editorial, 18);
         renderModalRows(modalEl, editorial, 4);
@@ -4875,6 +4908,7 @@ var LiveFeed = (function(){
         PostCards.render(officialMediaEl, editorial.filter(function(i){ return i.image; }), 12);
         PostCards.render(document.getElementById('overview-updates'), editorial, 3);
         renderVideos(videos);
+        renderVideoFreshness();
         renderOverviewVideos(videos);
         renderFeedTab();
 
@@ -4913,6 +4947,8 @@ var LiveFeed = (function(){
         if(feedTabGrid) feedTabGrid.innerHTML = message;
         if(statusEl) statusEl.textContent = 'Offline';
         if(feedTabStatus) feedTabStatus.textContent = 'Offline';
+        if(videoStatus) videoStatus.textContent = 'Video feed unavailable';
+        if(videoFreshness) videoFreshness.hidden = true;
         /* On the Now tab an empty skeleton would just sit there spinning, so the
            previews say what happened and step out of the way. */
         var ovU = document.getElementById('overview-updates');
@@ -4937,6 +4973,7 @@ var LiveFeed = (function(){
     var t = agoText(Date.now() - lastCheck);
     if(feedTabStatus) feedTabStatus.textContent = t;
     if(statusEl) statusEl.textContent = t;
+    renderVideoFreshness();
     var g = document.getElementById('glance-updated');
     if(g) g.textContent = t;
     var h = document.getElementById('hero-updated');
