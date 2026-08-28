@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-29T01:45:00+05:45",
+  "updated": "2026-08-29T02:06:00+05:45",
   "posts": [
     {
       "id": "eu-aid-2m",
@@ -13,6 +13,52 @@
       ],
       "sources": [
         { "name": "The Rising Nepal", "url": "https://risingnepaldaily.com/news/85719" }
+      ]
+    },
+    {
+      "id": "trishuli-flood-alert-fresh-warning",
+      "title": "Nepal issues fresh flood alert for the Trishuli riverbank down to Muglin",
+      "time": "2026-08-28T22:30:00+05:45",
+      "image": "",
+      "body": [
+        "Nepal's Flood Forecasting Division, under NDRRMA, issued a fresh high alert Friday night for communities along the Trishuli River as far as Muglin, after Chinese officials told the District Police Office in Rasuwa that water levels in the Bhote Koshi had spiked again, Nepal News reports. The Prime Minister's Office joined the warning.",
+        "Authorities urged riverbank residents, and rescue and relief workers in the area, to stay on high alert and move to safer ground immediately if conditions change. It is not confirmed whether this is linked to the barrier lake upstream that China's embassy called critical on Friday night.",
+        "If you live or work along the Trishuli down to Muglin, move away from the riverbank now and wait for officials to say it is clear."
+      ],
+      "sources": [
+        { "name": "Nepal News", "url": "https://english.nepalnews.com/s/nation/high-alert-issued-for-trishuli-river-basin-following-fresh-flash-flood-surge-in-bhote-koshi/" },
+        { "name": "ABC News Australia", "url": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974" }
+      ]
+    },
+    {
+      "id": "schools-swept-students-unaccounted",
+      "title": "Two schools swept up in the flood, hundreds of students still being traced",
+      "time": "2026-08-28T21:00:00+05:45",
+      "image": "",
+      "body": [
+        "More than 370 students were at Uttargaya Public School in Bidur Municipality, Nuwakot, when the flood hit on Wednesday morning. Vice principal Pawan Sharma told Onlinekhabar the school has only been able to contact around 40 percent of them so far, and that 25 to 30 percent have been handed over to their parents.",
+        "Sharma said the school no longer has records for the rest and is still trying to reach their families. Out of contact does not mean dead. Phone and internet lines are still down across much of the district.",
+        "At Tribhuvan Trishuli Secondary School in Nuwakot, principal Rajendra Dawadi and a group of 40 to 50 students and staff who fled to high ground were rescued on Friday, three days after the flood, Onlinekhabar reports. Dawadi said around 15 more students who also fled to higher ground are still waiting to be rescued, and two school employees remain out of contact.",
+        "Families looking for a student should go through the District Police Office or the local ward office, the same channels this page lists for anyone missing in the flood."
+      ],
+      "sources": [
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/flood-nuwakot-school.html" },
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/tribhuvan-trishuli-school-flood.html" }
+      ]
+    },
+    {
+      "id": "container-trucks-workers-unaccounted",
+      "title": "Trucking group says over 1,000 drivers, helpers and traders unaccounted for near the border",
+      "time": "2026-08-28T19:00:00+05:45",
+      "image": "",
+      "body": [
+        "More than 400 container trucks are missing along the Rasuwagadhi-Kerung and Trishuli corridor, and the people who worked with them, drivers, helpers, labourers and traders, could number more than 1,000 out of contact, Arjun Bahadur Sapkota, president of the Nepal Truck Container Transportation Service, told Onlinekhabar.",
+        "This is the transport association's own count, not a figure from Nepal Police or NDRRMA, and it has not been confirmed by the government.",
+        "Sapkota said about 175 of the association's 966 registered trucks had gone toward Kerung just before the flood. He said customs delays at the Dhunche checkpoint had left 70 to 80 trucks parked along the highway for three or four days before they were swept away, and that 30 to 40 more were lost in Betrawati, Nuwakot.",
+        "Out of contact does not mean dead. Transport operators are asking the government to widen search and rescue to cover the drivers and workers along the route."
+      ],
+      "sources": [
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/truck-driver-missing-rasuwa-flood.html" }
       ]
     },
     {
@@ -274,20 +320,22 @@
     },
     {
       "id": "rasuwa-isolation",
-      "title": "Rasuwa still cut off, thousands sheltering with almost nothing",
-      "time": "2026-08-28T08:00:00+05:45",
+      "title": "Rasuwa reconnected by a light-vehicle road, but still short of almost everything",
+      "time": "2026-08-28T17:30:00+05:45",
       "image": "",
       "body": [
-        "Rasuwa remains cut off from the rest of Nepal two days after the flood, with roads, power and phone lines still down in the worst hit areas, Onlinekhabar reports.",
-        "About 3,500 people are sheltering in Uttargaya rural municipality alone, including students, displaced families, elderly people, pregnant women and people who need oxygen, local officials told Onlinekhabar.",
+        "Rasuwa was reconnected to the road network on Friday, when an alternative route reopened for small, four-wheeled vehicles between Kathmandu and Dhunche, via Tokha, Gadkhar Bridge, Narja, Lachyang, Saramthali and Kalikasthan, the Ministry of Physical Infrastructure and Transport said, Onlinekhabar reports. The flood had cut the district off after sweeping away 13 bridges inside Rasuwa and two more on the Nuwakot-Rasuwa border, destroying about 40 kilometres of road in total.",
+        "Conditions on the ground are still severe. About 3,500 people are sheltering in Uttargaya rural municipality alone, including students, displaced families, elderly people, pregnant women and people who need oxygen, local officials told Onlinekhabar.",
         "Uttargaya chair Madhav Aryal said the municipality now has two ambulances and one vehicle left. \"The minimum responsibility that the state should fulfil has not been met,\" he said. Gosainkunda chair Kaisang Nurpu Tamang described what supplies remain there in two words: \"Nothing, nothing.\"",
         "Around 150 people who fled a hydropower project are stranded across a river with no way to reach food, and 36 students are separated from their families in Nuwakot because access routes are damaged, Onlinekhabar reports.",
         "Local officials in Uttargaya believe as many as 750 people from the municipality may still be missing. That figure is their own estimate and has not been confirmed by police or NDRRMA.",
-        "People trying to get aid into Rasuwa should coordinate through the district disaster relief committee or the army rather than travelling in on their own. Most access roads into the district are still down."
+        "People trying to get aid into Rasuwa should coordinate through the district disaster relief committee or the army rather than travelling in on their own. The new route takes light vehicles only, and conditions can still change."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-cut-off-flood-shortage.html" }
-      ]
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-cut-off-flood-shortage.html" },
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-reconnected-road-network.html" }
+      ],
+      "revised": true
     },
     {
       "id": "universities-suspend-exams",
@@ -305,33 +353,37 @@
     },
     {
       "id": "chitwan-morgue-storage",
-      "title": "Chitwan turns a Bharatpur warehouse into temporary body storage",
-      "time": "2026-08-28T09:57:00+05:45",
+      "title": "Bharatpur Hospital runs out of freezer space as bodies near 200",
+      "time": "2026-08-28T20:00:00+05:45",
       "image": "",
       "body": [
-        "Chitwan Chief District Officer Ganesh Aryal said hospital morgues in the district can together hold only 30 to 50 bodies at a time, short of what the flood has brought them, the Kathmandu Post reports.",
-        "Bharatpur Metropolitan City is converting an unused building of the Industrial Enterprise Development Institute, on Vidhyut Road in Bharatpur-10, into temporary storage with room for about 250 bodies. Local business groups are supplying dry ice to slow decomposition while identification continues.",
+        "Chitwan's hospitals are struggling to keep up with the bodies the flood has brought them. Bharatpur Hospital's freezers hold only 24 bodies, and most of that space was already taken by unclaimed bodies before the flood, chief medical superintendent Dr Bishwabandhu Bagale told Onlinekhabar. By Thursday evening 137 bodies had reached the hospital, and staff expected the total to reach around 200 by Friday evening.",
+        "Bodies that do not fit in the freezers have been kept in corridors and outside areas covered with tarpaulins, and some have started to decompose in the heat, Bagale said. Four forensic teams, reinforced by staff from Bheri Hospital, hospitals in the Lumbini region and Nepal Medical College, are working around the clock on post-mortems, fingerprints and photographs to identify the dead.",
+        "Identified bodies are being moved to a temporary, air-conditioned body management centre the government is setting up in a building near the Chitwan Industrial Association, on Vidhyut Road in Bharatpur. About 58 bodies had been processed and moved there by Friday afternoon, Onlinekhabar reports. Local business groups are supplying dry ice to slow decomposition while identification continues.",
         "Chitwan has recorded more bodies than any other district in this flood, most of them carried down the Trishuli and Narayani from Rasuwa, Nuwakot and Dhading.",
         "Families looking for someone should go through the District Police Office or the local ward office rather than to hospitals directly, since those are the lists that get updated centrally."
       ],
       "sources": [
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/28/nepal-struggles-to-store-and-identify-bodies-carried-downstream-by-devastating-flood" }
-      ]
+        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/28/nepal-struggles-to-store-and-identify-bodies-carried-downstream-by-devastating-flood" },
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/flood-bodies-overwhelm-hospital.html" }
+      ],
+      "revised": true
     },
     {
       "id": "prithvi-highway-blocked",
-      "title": "Prithvi Highway partly reopens, one lane at a time, in Galchhi",
-      "time": "2026-08-28T19:14:00+05:45",
+      "title": "Prithvi Highway fully reopens after two days blocked by flood debris",
+      "time": "2026-08-28T21:00:00+05:45",
       "image": "",
       "body": [
-        "The Prithvi Highway, the main road between Kathmandu and Pokhara, has been blocked since Wednesday evening after Bhotekoshi floodwater dumped mud across it in Gajuri and Galchhi, in Dhading, Onlinekhabar reports.",
-        "Debris still has to be cleared at three sites: Galoudi and Bahuni Bhir in Gajuri, and Mahesh Dobhan in Galchhi. Traffic police superintendent Dilli Narayan Pandey said clearing near settlements is what is causing the delay.",
+        "The Prithvi Highway, the main road between Kathmandu and Pokhara, had been blocked since Wednesday evening after Bhotekoshi floodwater dumped mud across it in Gajuri and Galchhi, in Dhading, Onlinekhabar reports.",
         "The Galchhi stretch reopened to alternating one way traffic on Friday evening, and the Galaundi, Ghatbesi and Jarekhet stretch reopened to two way traffic, Department of Roads engineer Rajiv Manandhar told the Kathmandu Post.",
-        "A traffic police spokesperson told the paper officials could not guarantee the whole highway would be clear by the end of Friday, and warned the road could shut again if it rains."
+        "The whole highway reopened later on Friday evening once crews cleared the remaining mud and debris, the Kathmandu Valley Traffic Office said, Nepal News reports. Vehicles that had been stranded on the highway for days were being guided to safe locations overnight, and long distance public buses out of Kathmandu Valley were due to resume regular service from Saturday morning.",
+        "Officials have previously warned the road could shut again if heavy rain returns to the area."
       ],
       "sources": [
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/prithvi-highway-blocked.html" },
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/money/2026/08/28/prithvi-highway-shutdown-puts-kathmandu-supplies-under-pressure" }
+        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/money/2026/08/28/prithvi-highway-shutdown-puts-kathmandu-supplies-under-pressure" },
+        { "name": "Nepal News", "url": "https://english.nepalnews.com/s/nation/prithvi-highway-reopens-following-flood-disruption/" }
       ],
       "revised": true
     }
