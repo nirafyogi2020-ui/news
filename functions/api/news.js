@@ -18,8 +18,9 @@
  *              own site's news list, read directly — no Facebook, no API key)
  *   Global     Al Jazeera, BBC Asia, The Guardian (Nepal desk), NDTV World,
  *              France 24, Bing News aggregation
- *   Video      YouTube search (real videos, free API key, no app-review wait —
- *              set YOUTUBE_API_KEY as a Cloudflare secret to turn this on)
+ *   Video      Direct feeds from named official YouTube channels. Search results
+ *              are never used as Watch cards: an unrelated re-upload must not
+ *              acquire a blue check merely because it mentioned this event.
  *
  * Fluff filter: diplomatic "expresses deep sorrow / offers condolences"
  * statements are dropped outright — they carry no rescue/casualty/damage
@@ -38,13 +39,22 @@
 import { loadPoliceNews } from './police.js';
 
 const CACHE_SECONDS = 60;
-/* Videos get their own, far longer cache clock; see fetchYoutube. */
-const YT_FRESH_SECONDS = 5400;    // 90 minutes
+/* Direct channel feeds are cheap to read, so Watch can check them often. */
+const YT_FRESH_SECONDS = 120;     // 2 minutes
 const YT_BACKUP_SECONDS = 86400;  // 24 hours
+const YT_CHANNEL_SECONDS = 30 * 24 * 60 * 60; // Handles rarely change.
 /** Card summaries: keep the full text each feed publishes, cleaned to plain
  *  text, capped only to keep one card from running very long. */
 const SUMMARY_MAX = 650;
 const NEPAL_BOX = { minlat: 26.3, maxlat: 30.5, minlon: 80.0, maxlon: 88.3 };
+
+/* These are channels whose ownership was checked directly. Add a channel only
+   after checking its official site or verified YouTube identity. A short,
+   accurate Watch list is better than a large list of anonymous re-uploads. */
+const YT_TRUSTED_CHANNELS = [
+  { handle: '@NepalPoliceHQ', source: 'Nepal Police', region: 'nepal' },
+  { handle: '@NDRRMA', source: 'NDRRMA', region: 'nepal' }
+];
 
 /** Only keep press items that are actually about this event or its hazards.
  *  Nepali-script sources publish in Devanagari, so the real keywords they'd
@@ -124,10 +134,9 @@ export async function onRequestGet(context) {
     fetchYoutube(env, request, context).catch(track(errors, 'youtube'))
   ]);
 
-  // The YouTube result carries its own search timestamp. Keep the items in the
-  // normal feed pipeline, but retain that timestamp so the Watch tab can say
-  // whether a clip is old because YouTube has not published, not because this
-  // site stopped checking.
+  // The YouTube result carries its own check timestamp. Keep its items in the
+  // normal feed pipeline so Watch can show whether a clip is old because its
+  // publisher has not posted, not because this site stopped checking.
   const youtubeIndex = groups.length - 1;
   const youtubeFeed = normalizeYoutubeFeed(groups[youtubeIndex]);
   groups[youtubeIndex] = youtubeFeed.items;
@@ -188,11 +197,15 @@ export async function onRequestGet(context) {
     updated,
     items: finalItems,
     videoFeed: {
-      provider: 'YouTube',
-      searchedAt: youtubeFeed.searchedAt,
+      provider: 'YouTube verified channels',
+      checkedAt: youtubeFeed.checkedAt,
       newestAt: newestVideo && newestVideo.time ? newestVideo.time : null,
       count: videos.length,
-      showingBackup: youtubeFeed.showingBackup
+      showingBackup: youtubeFeed.showingBackup,
+      configured: youtubeFeed.configured,
+      unavailable: youtubeFeed.unavailable,
+      mode: 'verified-channels',
+      channels: youtubeFeed.channels
     },
     economicLoss: findEconomicLoss(finalItems),
     reliefFund: findReliefFund(finalItems),
@@ -584,64 +597,85 @@ async function fetchBingNews() {
 }
 
 /**
- * YouTube Data API v3 search, free with a self-serve API key (no app review,
- * unlike Facebook's Page Public Content Access). Off entirely — no request,
- * no error — until YOUTUBE_API_KEY is set as a Cloudflare secret; it isn't
- * a source anyone has to wait on approval for, so absence just means "not
- * configured yet," not "broken."
+ * Resolve each official YouTube handle once, then read its public Atom feed.
+ * A handle lookup costs one small API unit; the feed itself does not consume
+ * search quota. This replaces five broad searches whose random re-uploads
+ * were making Watch stale and unreliable.
  */
 async function fetchYoutube(env, request, context) {
   const key = env && env.YOUTUBE_API_KEY;
-  if (!key) return normalizeYoutubeFeed([]);
+  if (!key) return normalizeYoutubeFeed({
+    items: [],
+    checkedAt: new Date().toISOString(),
+    configured: false,
+    channels: YT_TRUSTED_CHANNELS.map(channel => channel.source)
+  });
 
-  /* The YouTube search endpoint costs 100 quota units a call and the free
-     daily allowance is 10,000, so a search on every 2-minute news refresh
-     would burn the whole day's quota in about three hours and then return
-     HTTP 429 for the rest of the day — which is exactly what happened.
-     Videos are cached on their own, much longer clock, and a 24-hour backup
-     copy is kept so a quota blip never empties the Watch tab. */
   const cache = caches.default;
   const base = request.url;
-  const freshKey  = new Request(new URL('/__cache/youtube-fresh', base).toString());
-  const backupKey = new Request(new URL('/__cache/youtube-backup', base).toString());
+  const freshKey  = new Request(new URL('/__cache/youtube-trusted-v1-fresh', base).toString());
+  const backupKey = new Request(new URL('/__cache/youtube-trusted-v1-backup', base).toString());
 
   const hit = await cache.match(freshKey);
   if (hit) return normalizeYoutubeFeed(await hit.json());
 
   try {
-    const videos = await searchYoutube(key);
+    const videos = await fetchTrustedYoutube(key, request, context);
     const result = {
       items: videos,
-      searchedAt: new Date().toISOString(),
-      showingBackup: false
+      checkedAt: new Date().toISOString(),
+      showingBackup: false,
+      configured: true,
+      unavailable: false,
+      channels: YT_TRUSTED_CHANNELS.map(channel => channel.source)
     };
+    context.waitUntil(cache.put(freshKey, cachedJson(result, YT_FRESH_SECONDS)));
     if (videos.length) {
-      context.waitUntil(cache.put(freshKey, cachedJson(result, YT_FRESH_SECONDS)));
       context.waitUntil(cache.put(backupKey, cachedJson(result, YT_BACKUP_SECONDS)));
     }
     return result;
   } catch (err) {
-    // Quota exhausted or YouTube down: show yesterday's list rather than
-    // an empty tab with a misleading "no API key" message.
+    // Show the last good verified list rather than unrelated search results.
     const old = await cache.match(backupKey);
-    if (old) return { ...normalizeYoutubeFeed(await old.json()), showingBackup: true };
-    throw err;
+    if (old) return { ...normalizeYoutubeFeed(await old.json()), showingBackup: true, unavailable: true };
+    return normalizeYoutubeFeed({
+      items: [],
+      checkedAt: new Date().toISOString(),
+      configured: true,
+      unavailable: true,
+      channels: YT_TRUSTED_CHANNELS.map(channel => channel.source)
+    });
   }
 }
 
-/* Old cache entries were bare arrays. Accept them until their short-lived
-   cache expires, then replace them naturally with the timestamped shape. */
 function normalizeYoutubeFeed(value) {
   if (Array.isArray(value)) {
-    return { items: value, searchedAt: null, showingBackup: false };
+    return {
+      items: value,
+      checkedAt: null,
+      showingBackup: false,
+      configured: true,
+      unavailable: false,
+      channels: []
+    };
   }
   if (!value || !Array.isArray(value.items)) {
-    return { items: [], searchedAt: null, showingBackup: false };
+    return {
+      items: [],
+      checkedAt: null,
+      showingBackup: false,
+      configured: true,
+      unavailable: false,
+      channels: []
+    };
   }
   return {
     items: value.items,
-    searchedAt: value.searchedAt || null,
-    showingBackup: Boolean(value.showingBackup)
+    checkedAt: value.checkedAt || value.searchedAt || null,
+    showingBackup: Boolean(value.showingBackup),
+    configured: value.configured !== false,
+    unavailable: Boolean(value.unavailable),
+    channels: Array.isArray(value.channels) ? value.channels : []
   };
 }
 
@@ -654,70 +688,93 @@ function cachedJson(data, seconds) {
   });
 }
 
-/* Three searches instead of one. A single phrase only ever returned about
-   twenty clips, most of them the same re-uploads, so the Watch tab looked
-   empty. These three cover the place names, the rescue coverage and the
-   Nepali-language reporting, and the results are merged and de-duplicated
-   by video id. Each search costs 100 quota units, so the fresh cache runs
-   on an hour rather than half an hour: 24 refreshes x 301 units is about
-   7,200 of the 10,000 free units a day. */
-/* Five searches, not three. Three returned about sixty clips and the tab ran
-   out well before a reader did. Each search costs 100 quota units and the free
-   allowance is 10,000 a day, so the fresh cache runs on 90 minutes: 16
-   refreshes x 501 units is about 8,000 units, inside the allowance with room
-   for the odd cold start. */
-const YT_QUERIES = [
-  'Rasuwa Bhotekoshi Trishuli flood Nepal',
-  'Nepal flash flood Rasuwa rescue news',
-  'रसुवा बाढी नेपाल',
-  'Nepal flood latest news today',
-  'नेपाल बाढी पहिरो समाचार'
-];
-
-async function searchYoutube(key) {
-  let lastError = '';
-  const results = await Promise.all(YT_QUERIES.map(async q => {
-    const url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video' +
-      `&order=date&maxResults=50&q=${encodeURIComponent(q)}&key=${key}`;
-    try {
-      const json = JSON.parse(await getText(url));
-      return (json.items || []).filter(item => item.id && item.id.videoId && item.snippet);
-    } catch (err) {
-      lastError = err.message;   // one dud query must not empty the whole tab
-      return [];
-    }
+async function fetchTrustedYoutube(key, request, context) {
+  const settled = await Promise.allSettled(YT_TRUSTED_CHANNELS.map(async channel => {
+    const identity = await resolveYoutubeChannel(channel, key, request, context);
+    const xml = await getText('https://www.youtube.com/feeds/videos.xml?channel_id=' +
+      encodeURIComponent(identity.id));
+    return parseYoutubeAtom(xml, channel, identity);
   }));
 
-  const seen = new Set();
-  const found = [];
-  for (const item of results.flat()) {
-    if (seen.has(item.id.videoId)) continue;
-    seen.add(item.id.videoId);
-    found.push(item);
+  const videos = settled
+    .filter(result => result.status === 'fulfilled')
+    .flatMap(result => result.value)
+    .filter(isVideoOnTopic);
+  if (!settled.some(result => result.status === 'fulfilled')) {
+    const reasons = settled
+      .filter(result => result.status === 'rejected')
+      .map(result => result.reason && result.reason.message)
+      .filter(Boolean);
+    throw new Error('verified YouTube feeds returned no matching videos' +
+      (reasons.length ? ': ' + reasons.join('; ').slice(0, 160) : ''));
   }
-  if (!found.length) throw new Error('youtube returned nothing' + (lastError ? ': ' + lastError : ''));
-  found.sort((a, b) => new Date(b.snippet.publishedAt || 0) - new Date(a.snippet.publishedAt || 0));
 
-  // One extra call gets the channel logos for every channel in the result.
-  // The full-screen player shows the uploader's own picture rather than
-  // initials in a grey circle; this costs 1 quota unit for the whole batch.
-  const avatars = await channelAvatars(found, key);
+  const seen = new Set();
+  return videos.filter(video => {
+    const id = String(video.url || '').match(/[?&]v=([\w-]{6,15})/);
+    if (!id || seen.has(id[1])) return false;
+    seen.add(id[1]);
+    return true;
+  }).sort(byTimeDesc);
+}
 
-  return found.map(item => {
-      const s = item.snippet;
-      const text = s.title + ' ' + (s.channelTitle || '');
-      return {
-        title: cleanVideoTitle(s.title),
-        url: 'https://www.youtube.com/watch?v=' + item.id.videoId,
-        source: cleanChannel(s.channelTitle),
-        time: s.publishedAt || null,
-        kind: 'video',
-        region: /[ऀ-ॿ]/.test(text) ? 'nepal' : 'global',
-        image: 'https://i.ytimg.com/vi/' + item.id.videoId + '/hqdefault.jpg',
-        avatar: avatars[s.channelId] || null,
-        summary: summarize(s.description, SUMMARY_MAX)
-      };
+async function resolveYoutubeChannel(channel, key, request, context) {
+  const cache = caches.default;
+  const base = request.url;
+  const cacheName = channel.handle.replace(/[^\w-]+/g, '').toLowerCase();
+  const cacheKey = new Request(new URL('/__cache/youtube-channel-' + cacheName + '-v1', base).toString());
+  const hit = await cache.match(cacheKey);
+  if (hit) return hit.json();
+
+  const url = 'https://www.googleapis.com/youtube/v3/channels?part=id,snippet&forHandle=' +
+    encodeURIComponent(channel.handle) + '&key=' + encodeURIComponent(key);
+  const json = JSON.parse(await getText(url));
+  const found = json.items && json.items[0];
+  if (!found || !found.id) throw new Error('channel handle not found: ' + channel.handle);
+
+  const thumbnails = found.snippet && found.snippet.thumbnails;
+  const picture = thumbnails && (thumbnails.default || thumbnails.medium || thumbnails.high);
+  const identity = { id: found.id, avatar: picture && picture.url ? picture.url : null };
+  const saved = cache.put(cacheKey, cachedJson(identity, YT_CHANNEL_SECONDS));
+  if (context && typeof context.waitUntil === 'function') context.waitUntil(saved);
+  else await saved;
+  return identity;
+}
+
+/** YouTube publishes the same Atom format for its direct channel feeds and
+ * webhook notifications. Keep parsing here small and explicit rather than
+ * treating it as a normal newsroom RSS feed. */
+export function parseYoutubeAtom(xml, channel, identity) {
+  const entries = String(xml || '').split(/<entry[\s>]/i).slice(1);
+  const out = [];
+  for (const entry of entries) {
+    const videoId = cleanTitle(tag(entry, 'yt:videoId')) ||
+      cleanTitle(tag(entry, 'id')).replace(/^yt:video:/i, '');
+    if (!/^[\w-]{6,15}$/.test(videoId)) continue;
+    const title = cleanVideoTitle(tag(entry, 'title'));
+    if (!title) continue;
+    const published = tag(entry, 'published') || tag(entry, 'updated');
+    out.push({
+      title,
+      url: 'https://www.youtube.com/watch?v=' + videoId,
+      source: channel.source,
+      time: toIso(published),
+      kind: 'video',
+      region: channel.region,
+      image: 'https://i.ytimg.com/vi/' + videoId + '/hqdefault.jpg',
+      avatar: identity && identity.avatar ? identity.avatar : null,
+      summary: summarize(tag(entry, 'media:description'), SUMMARY_MAX),
+      sourceVerified: true
     });
+  }
+  return out;
+}
+
+function isVideoOnTopic(video) {
+  const text = (video.title || '') + ' ' + (video.summary || '');
+  const videoHazard = ['flood', 'landslide', 'glacial lake', 'बाढी', 'पहिरो', 'हिमताल'];
+  return matches(text, TOPIC_STRONG) ||
+    (matches(text, videoHazard) && (matches(text, PLACE) || /नेपाल/.test(text)));
 }
 
 /* YouTube titles are often a real headline followed by a wall of hashtags, or
@@ -744,41 +801,6 @@ function cleanVideoTitle(raw) {
   const rebuilt = kept.join(', ');
   if (!rebuilt) return text.slice(0, 90);
   return rebuilt.charAt(0).toUpperCase() + rebuilt.slice(1);
-}
-
-/* Some channel titles come back with view counts and timestamps glued on
-   ("Rimal Vlogs \u2022 3.1M views \u2022 2 hours ago"). Keep the name only. */
-function cleanChannel(name) {
-  return String(name || 'YouTube')
-    .split(/\s*[\u2022|]\s*/)[0]
-    .replace(/\s+/g, ' ')
-    .trim()
-    .slice(0, 46) || 'YouTube';
-}
-
-/* Channel pictures, keyed by channel id. Never fatal: if the call fails the
-   player falls back to the uploader's initials. */
-async function channelAvatars(items, key) {
-  const ids = [];
-  items.forEach(item => {
-    const id = item.snippet.channelId;
-    if (id && ids.indexOf(id) === -1) ids.push(id);
-  });
-  if (!ids.length) return {};
-  try {
-    const url = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&id=' +
-      ids.slice(0, 50).join(',') + '&key=' + key;
-    const json = JSON.parse(await getText(url));
-    const out = {};
-    (json.items || []).forEach(ch => {
-      const t = ch.snippet && ch.snippet.thumbnails;
-      const pic = t && (t.default || t.medium || t.high);
-      if (pic && pic.url) out[ch.id] = pic.url;
-    });
-    return out;
-  } catch (err) {
-    return {};
-  }
 }
 
 /* ---------- helpers ---------- */
@@ -917,7 +939,8 @@ function verify(items) {
   const words = items.map(item => significantWords(item.title));
   for (const item of items) {
     item.corroboratedBy = [];
-    item.verified = item.kind === 'official' || item.kind === 'alert' || item.kind === 'quake';
+    item.verified = Boolean(item.sourceVerified) || item.kind === 'official' ||
+      item.kind === 'alert' || item.kind === 'quake';
   }
   for (let i = 0; i < items.length; i++) {
     if (items[i].kind !== 'press') continue;
