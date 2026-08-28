@@ -38,6 +38,15 @@ const pathOf = (file) => {
 
 const pages = files.map(f => ({ path: pathOf(f), file: f, html: readFileSync(f, 'utf8') }));
 const known = new Set(pages.map(p => p.path));
+
+/* A half-finished Git merge can otherwise render as raw text on a live page.
+   Fail before deployment, rather than trusting a reviewer to spot it. */
+for (const p of pages) {
+  if (/^(?:<<<<<<<|=======|>>>>>>>)/m.test(p.html)) {
+    errors.push(`${p.path}: contains unresolved Git merge-conflict text`);
+  }
+}
+
 /* Files served directly rather than as a page. */
 for (const extra of ['/feed.xml', '/sitemap.xml', '/robots.txt', '/favicon.svg',
   '/favicon.ico', '/apple-touch-icon.png', '/favicon-96x96.png', '/icon-192.png',

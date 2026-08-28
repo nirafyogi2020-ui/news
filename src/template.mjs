@@ -275,6 +275,8 @@ function breadcrumbNode(crumbs, url) {
  * @param {string} [o.modified]  ISO date the page's information last changed.
  * @param {string} [o.statusPill] 'live' | 'archive' | null
  * @param {string} [o.updatedNote] Human "as of" line under the headline.
+ * @param {string} [o.rail]      Right-rail HTML. Present means the page renders
+ *                               as two columns on a wide screen instead of one.
  * @param {string} [o.head]      Extra tags for <head>.
  * @param {string} [o.tail]      Extra markup before </body>.
  * @param {string} [o.ogImage]
@@ -424,8 +426,9 @@ else if((t==='system'||!t)&&window.matchMedia&&matchMedia('(prefers-color-scheme
   </div>
 </header>
 
-<div class="shell">
+<div class="shell${o.rail ? ' has-rail' : ''}">
 ${crumbHtml}
+<div class="${o.rail ? 'page-layout' : 'page-plain'}">
 <main id="main">
 <article>
 <header class="pagehead">
@@ -437,6 +440,8 @@ ${o.updatedNote ? `<p class="byline">${o.updatedNote}</p>` : ''}
 ${o.body}
 </article>
 </main>
+${o.rail ? `<aside class="rail" aria-label="${esc(t.railLabel || 'Live summary')}">${o.rail}</aside>` : ''}
+</div>
 </div>
 
 <footer>

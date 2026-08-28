@@ -1,22 +1,34 @@
-# The hourly update procedure
+# The automated update procedure
 
 This is the canonical procedure for keeping
-nepaldisasterupdatelive.nxtimaginelabs.com current. Two scheduled agents run
-it:
+nepaldisasterupdatelive.nxtimaginelabs.com current. Every approved publisher,
+scheduled or manual, reads this one neutral file. No public configuration or
+public filename needs to identify the tool that ran it.
 
-- **the hourly routine**, at :10 past every hour, which is the normal one; and
-- **the standby routine**, at :45 past every hour, which does nothing unless
-  the hourly one failed to land.
+There is only one **active automatic publisher** at a time:
 
-Both read this file. Keeping the procedure here rather than only inside a
-routine's prompt means the two agents cannot drift apart, and a change to how
-the site is edited is made once, in a file that is reviewed and committed like
-any other.
+- **the hourly publisher**, at :10 past every hour, does the normal update; and
+- **the standby publisher**, at :45 past every hour, does nothing unless the
+  hourly publisher failed to land.
+
+Another approved workspace can remain available for manual work, review and
+recovery. It must not become a second automatic publisher until the first one
+is paused. This prevents two clean-looking runs from publishing different
+versions of the same page over each other.
+
+Keeping the procedure here rather than only inside a routine prompt means every
+publisher uses the same facts, checks and publishing rules. A change to how the
+site is edited is made once, reviewed and committed like any other site change.
 
 Accuracy comes first. A wrong number or a wrong name on a live disaster page is
 a serious failure. When unsure, leave it out or say it is unconfirmed. Being
 cheap matters too: most hours there is little new, and a run that correctly
 changes nothing is a good run.
+
+The Workers already handle fast source and figure reads between editorial runs.
+Do not increase the editorial frequency to chase a changing toll. The hourly
+publisher updates the clean Today card and the static pages only when a real
+bulletin warrants it.
 
 ## Step 1. Read first
 
@@ -212,6 +224,15 @@ If the fast-forward is refused, you have local edits on top of an older commit.
 Do not force anything. Merge normally (`git merge origin/main`), keep the other
 side's version of any file you did not edit yourself, and say in your report
 that you had to merge.
+
+**Immediately before publishing, repeat the fetch and fast-forward.** If
+`origin/main` moved while you were researching or building, stop and merge it
+before continuing. Do not use a force push, do not deploy an older checkout and
+do not treat a successful build as permission to overwrite a newer live site.
+
+If another automatic publisher is active, do not publish. Report the clash and
+leave the newer publisher's work intact. A manual recovery run may take over
+only after the active automatic publisher is paused.
 
 Then, from the repo root, run:
 

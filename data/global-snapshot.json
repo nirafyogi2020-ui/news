@@ -1,6 +1,28 @@
 {
-  "updated": "2026-08-28T09:20:43.174Z",
+  "updated": "2026-08-28T09:27:18.581Z",
   "items": [
+    {
+      "title": "WFP Colombia Earthquake and Wildfires Response, 26 August 2026",
+      "url": "https://reliefweb.int/report/colombia/wfp-colombia-earthquake-and-wildfires-response-26-august-2026",
+      "source": "ReliefWeb (UN OCHA)",
+      "time": "2026-08-28T09:26:41.000Z",
+      "kind": "official",
+      "region": "global",
+      "image": null,
+      "summary": "Country: Colombia Source: World Food Programme Please refer to the attached file.",
+      "authority": "primary"
+    },
+    {
+      "title": "Nepal Catastrophic Flash Flood Rasuwa-Trishuli, Nepal (26 August 2026)",
+      "url": "https://reliefweb.int/report/nepal/nepal-catastrophic-flash-flood-rasuwa-trishuli-nepal-26-august-2026",
+      "source": "ReliefWeb (UN OCHA)",
+      "time": "2026-08-28T09:08:51.000Z",
+      "kind": "official",
+      "region": "global",
+      "image": null,
+      "summary": "Country: Nepal Source: Pacific Disaster Center Please refer to the attached file. Snapshot of Key Concerns Severity: A glacial collapse on the Tibet side of the border of Nepal sent a catastrophic surge down the Lhende Khola into the Bhote Koshi River. The collapse was large enough to register seismically with USGS and trigger a massive flood downstream in Rasuwa, Nuwakot, Dhading, and Chitwan districts. Timing: Morning of August 26, 2026, floodwaters traveled down the Trishuli River as far as Mugling before beginning to recede. Damage spans the corridor from Timure through Syabrubesi, Betrawati, and Trishuli Bazaar. Key Concerns: Impacted…",
+      "authority": "primary"
+    },
     {
       "title": "Nepal Flood Response Situation Report #1 | 27 August 2026",
       "url": "https://reliefweb.int/report/nepal/nepal-flood-response-situation-report-1-27-august-2026",
@@ -13,26 +35,16 @@
       "authority": "primary"
     },
     {
-      "title": "Orange flood alert in Nepal",
-      "url": "https://www.gdacs.org/report.aspx?eventtype=FL&amp;eventid=1104124",
-      "source": "GDACS (UN / EC)",
-      "time": "2026-08-28T06:29:07.000Z",
-      "kind": "alert",
+      "title": "Nepal flood disaster reconstructed minute by minute",
+      "url": "https://www.france24.com/en/nepal-flood-disaster-reconstructed-minute-by-minute",
+      "source": "France 24",
+      "time": "2026-08-28T09:22:57.000Z",
+      "kind": "press",
       "region": "global",
-      "image": "https://www.gdacs.org/contentdata/resources/imgtemp/gdacs/fl/dfo2026_1104124.png",
-      "summary": "On 26/08/2026, a flood started in Nepal, lasting until 28/08/2026 (last update). The flood caused 527 deaths and 0 displaced .",
-      "authority": "primary"
-    },
-    {
-      "title": "Orange earthquake (Magnitude 5M, Depth:10km) in China 28/08/2026 05:13 UTC, 15.8 million in 100km.",
-      "url": "https://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1562260",
-      "source": "GDACS (UN / EC)",
-      "time": "2026-08-28T05:32:14.000Z",
-      "kind": "alert",
-      "region": "global",
-      "image": "https://www.gdacs.org/contentdata/resources/imgtemp/gdacs/eq/eq1729706_1.png",
-      "summary": "On 8/28/2026 5:13:35 AM, an earthquake occurred in China potentially affecting 15.8 million in 100km. The earthquake had Magnitude 5M, Depth:10km.",
-      "authority": "primary"
+      "image": "https://s.france24.com/media/display/f6cd2bda-a2bd-11f1-9da3-005056a97e36/w:1024/p:16x9/EN-20260828-090346-090618-CS.jpg",
+      "summary": "New satellite imagery and video analysis show the deadly Nepal floods began when part of a glacier near the Chinese border collapsed, triggering a debris flow that raced downstream at up to 150 km/h and devastated communities over more than 80 kilometres. Scientists are still piecing together the exact sequence of events, while authorities warn the disaster may not be over as a newly formed lake upstream has started to overflow.",
+      "alsoReported": [],
+      "authority": "trusted"
     },
     {
       "title": "Nepal-Tibet flash flood: rescue operations resume after halting over lake overflow; death toll rises to 469 – latest updates",
@@ -47,14 +59,14 @@
       "authority": "trusted"
     },
     {
-      "title": "Countries step up aid for Nepal flood disaster",
-      "url": "https://www.france24.com/en/countries-step-up-aid-for-nepal-flood-disaster",
+      "title": "In Tibet and Nepal, 'the most pressing fear is that the death toll could rise'",
+      "url": "https://www.france24.com/en/in-tibet-and-nepal-the-most-pressing-fear-is-that-the-death-toll-could-rise",
       "source": "France 24",
-      "time": "2026-08-28T09:00:30.000Z",
+      "time": "2026-08-28T09:16:45.000Z",
       "kind": "press",
       "region": "global",
-      "image": "https://s.france24.com/media/display/6e40d538-a2bc-11f1-b7fd-005056a90284/w:1024/p:16x9/EN-20260828-100305-100443-CS.jpg",
-      "summary": "Countries including South Korea, India, China, the UK and the EU are ramping up rescue efforts and humanitarian aid after the devastating Nepal-China floods, with hundreds of foreign nationals still missing. Relief operations remain difficult in the Himalayan terrain, while authorities warn that a lake formed by the disaster could burst and trigger a second wave of flooding.",
+      "image": "https://s.france24.com/media/display/02f59162-a242-11f1-a302-005056bfb2b6/w:1024/p:16x9/2026-08-27T120902Z-886945342-RC207NAPVBUI-RTRMADP-3-NEPAL-FLOODS.jpg",
+      "summary": "At least 472 people have been killed and more than 1,500 remain missing after devastating flash floods hit the Himalayan border between Nepal and China, where over 3,250 people have already been evacuated by helicopter. As rescuers race to find survivors, one of the biggest fears is that the death toll will continue to rise, with authorities also warning that an overflowing lake upstream could trigger more flooding. FRANCE 24's Navodita Kumari has the latest.",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -172,16 +184,15 @@
       "authority": "trusted"
     },
     {
-      "title": "Record drought grips Europe as rivers and crops dry up",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/28/record-drought-grips-europe-as-rivers-and-crops-dry-up?traffic_source=rss",
-      "source": "Al Jazeera",
-      "time": "2026-08-28T05:43:34.000Z",
-      "kind": "press",
+      "title": "Orange flood alert in Nepal",
+      "url": "https://www.gdacs.org/report.aspx?eventtype=FL&amp;eventid=1104124",
+      "source": "GDACS (UN / EC)",
+      "time": "2026-08-28T06:29:07.000Z",
+      "kind": "alert",
       "region": "global",
-      "image": null,
-      "summary": "Drought and extreme heat are drying up rivers and farmland across Europe.",
-      "alsoReported": [],
-      "authority": "trusted"
+      "image": "https://www.gdacs.org/contentdata/resources/imgtemp/gdacs/fl/dfo2026_1104124.png",
+      "summary": "On 26/08/2026, a flood started in Nepal, lasting until 28/08/2026 (last update). The flood caused 527 deaths and 0 displaced .",
+      "authority": "primary"
     },
     {
       "title": "Nepal Flash Floods LIVE: Nepal, China Pause Rescue Ops Amid Renewed Flood Threat, Death Count At 472",
@@ -196,14 +207,14 @@
       "authority": "trusted"
     },
     {
-      "title": "Algeria residents mourn neighbours lost in wildfire aftermath",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/28/algeria-residents-mourn-neighbours-lost-in-wildfire-aftermath?traffic_source=rss",
+      "title": "Record drought grips Europe as rivers and crops dry up",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/28/record-drought-grips-europe-as-rivers-and-crops-dry-up?traffic_source=rss",
       "source": "Al Jazeera",
-      "time": "2026-08-28T05:18:33.000Z",
+      "time": "2026-08-28T05:43:34.000Z",
       "kind": "press",
       "region": "global",
       "image": null,
-      "summary": "Residents of Algeria’s northeastern Jijel province are inspecting the aftermath of wildfires.",
+      "summary": "Drought and extreme heat are drying up rivers and farmland across Europe.",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -220,16 +231,15 @@
       "authority": "trusted"
     },
     {
-      "title": "Race to get aid into Nepal and Tibet amid warnings flood lake could burst",
-      "url": "https://www.theguardian.com/world/2026/aug/27/nepal-tibet-flash-floods-aid",
-      "source": "The Guardian",
-      "time": "2026-08-28T04:48:52.000Z",
-      "kind": "press",
+      "title": "Orange earthquake (Magnitude 5M, Depth:10km) in China 28/08/2026 05:13 UTC, 15.8 million in 100km.",
+      "url": "https://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1562260",
+      "source": "GDACS (UN / EC)",
+      "time": "2026-08-28T05:32:14.000Z",
+      "kind": "alert",
       "region": "global",
-      "image": "https://i.guim.co.uk/img/media/32eff8366660a1231524b1bf5253219340a13275/1079_0_4115_3292/master/4115.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=1c90886200211e304d607b0db836f47b",
-      "summary": "Flash floods have killed at least 469 people while homes and infrastructure have been swept away Nepal-Tibet flash flood – latest updates What caused the flash flood in Nepal and Tibet? The international community was scrambling to get aid into flood-stricken parts of Nepal and Tibet on Thursday as authorities warned that a lake ⁠formed at the ⁠site ⁠where the ​deadly torrents occurred ⁠was rising and ⁠at risk ​of ‌bursting. The catastrophic flash floods that hit Nepal and Tibet on Wednesday, thundering down valleys and obliterating entire villages, killed at least 469 people and left more than 1,300 missing. Continue reading...",
-      "alsoReported": [],
-      "authority": "trusted"
+      "image": "https://www.gdacs.org/contentdata/resources/imgtemp/gdacs/eq/eq1729706_1.png",
+      "summary": "On 8/28/2026 5:13:35 AM, an earthquake occurred in China potentially affecting 15.8 million in 100km. The earthquake had Magnitude 5M, Depth:10km.",
+      "authority": "primary"
     },
     {
       "title": "'Head To Safety': Dam Breached In Tibet Amid Nepal Flood Devastation",
@@ -244,14 +254,14 @@
       "authority": "trusted"
     },
     {
-      "title": "Nepal’s mudslide wiped out areas of eastern China, army helps search",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/28/nepals-mudslide-wiped-out-areas-of-eastern-china-army-helps-search?traffic_source=rss",
+      "title": "Algeria residents mourn neighbours lost in wildfire aftermath",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/28/algeria-residents-mourn-neighbours-lost-in-wildfire-aftermath?traffic_source=rss",
       "source": "Al Jazeera",
-      "time": "2026-08-28T04:20:27.000Z",
+      "time": "2026-08-28T05:18:33.000Z",
       "kind": "press",
       "region": "global",
       "image": null,
-      "summary": "China has dispatched hundreds of military personnel to the border town of Gyirong in Tibet, after a deadly mudslide.",
+      "summary": "Residents of Algeria’s northeastern Jijel province are inspecting the aftermath of wildfires.",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -268,32 +278,15 @@
       "authority": "trusted"
     },
     {
-      "title": "'The flood took everything': Nepal survivors describe horror of loved ones being swept away",
-      "url": "https://www.bbc.co.uk/news/articles/cd08z840p8lo?at_medium=RSS&amp;at_campaign=rss",
-      "source": "BBC News",
-      "time": "2026-08-28T03:23:21.000Z",
+      "title": "Race to get aid into Nepal and Tibet amid warnings flood lake could burst",
+      "url": "https://www.theguardian.com/world/2026/aug/27/nepal-tibet-flash-floods-aid",
+      "source": "The Guardian",
+      "time": "2026-08-28T04:48:52.000Z",
       "kind": "press",
       "region": "global",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7c53/live/5e79d6c0-a1e2-11f1-aed2-8d6da8d75094.jpg",
-      "summary": "One woman says her father, mother, sister and sister's children were carried away before her eyes.",
+      "image": "https://i.guim.co.uk/img/media/32eff8366660a1231524b1bf5253219340a13275/1079_0_4115_3292/master/4115.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=1c90886200211e304d607b0db836f47b",
+      "summary": "Flash floods have killed at least 469 people while homes and infrastructure have been swept away Nepal-Tibet flash flood – latest updates What caused the flash flood in Nepal and Tibet? The international community was scrambling to get aid into flood-stricken parts of Nepal and Tibet on Thursday as authorities warned that a lake ⁠formed at the ⁠site ⁠where the ​deadly torrents occurred ⁠was rising and ⁠at risk ​of ‌bursting. The catastrophic flash floods that hit Nepal and Tibet on Wednesday, thundering down valleys and obliterating entire villages, killed at least 469 people and left more than 1,300 missing. Continue reading...",
       "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "China Halts Rescue Ops At Tibet Disaster Epicentre Over High Flood Risk",
-      "url": "https://www.ndtv.com/world-news/china-halts-rescue-at-tibet-disaster-epicentre-over-high-flood-risk-11969883#publisher=newsstand",
-      "source": "NDTV",
-      "time": "2026-08-28T05:47:20.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://c.ndtvimg.com/2026-08/4vh2eq24_china-tibet-nepal-flood-_625x300_27_August_26.jpeg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
-      "summary": "A lake formed by immense piles of debris after a mudslide hit the China-Nepal border has begun overflowing towards the area that rescue teams were headed to, state broadcaster CCTV said.",
-      "alsoReported": [
-        {
-          "name": "France 24",
-          "url": "https://www.france24.com/en/asia-pacific/20260828-nepal-tibet-live-china-warns-lake-formed-by-mudslide-on-nepal-border-could-breach"
-        }
-      ],
       "authority": "trusted"
     }
   ]
