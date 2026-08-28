@@ -124,6 +124,14 @@ export async function onRequestGet(context) {
     fetchYoutube(env, request, context).catch(track(errors, 'youtube'))
   ]);
 
+  // The YouTube result carries its own search timestamp. Keep the items in the
+  // normal feed pipeline, but retain that timestamp so the Watch tab can say
+  // whether a clip is old because YouTube has not published, not because this
+  // site stopped checking.
+  const youtubeIndex = groups.length - 1;
+  const youtubeFeed = normalizeYoutubeFeed(groups[youtubeIndex]);
+  groups[youtubeIndex] = youtubeFeed.items;
+
   const seen = new Set();
   let items = [];
 
@@ -155,6 +163,7 @@ export async function onRequestGet(context) {
   /* The Watch tab is a grid people scroll, so it gets the whole de-duplicated
      result rather than the first screenful. */
   const videos = items.filter(i => i.kind === 'video').slice(0, 150);
+  const newestVideo = videos.slice().sort(byTimeDesc)[0] || null;
   const primary = items.filter(i => i.kind !== 'press' && i.kind !== 'video');
   const press = items.filter(i => i.kind === 'press');
 
@@ -174,9 +183,17 @@ export async function onRequestGet(context) {
 
   await backfillImages(finalItems, 14);
 
+  const updated = new Date().toISOString();
   const response = new Response(JSON.stringify({
-    updated: new Date().toISOString(),
+    updated,
     items: finalItems,
+    videoFeed: {
+      provider: 'YouTube',
+      searchedAt: youtubeFeed.searchedAt,
+      newestAt: newestVideo && newestVideo.time ? newestVideo.time : null,
+      count: videos.length,
+      showingBackup: youtubeFeed.showingBackup
+    },
     economicLoss: findEconomicLoss(finalItems),
     reliefFund: findReliefFund(finalItems),
     errors
@@ -211,7 +228,7 @@ const PRIMARY_SOURCES = [
 const TRUSTED_SOURCES = [
   'Kathmandu Post', 'Onlinekhabar', 'Setopati', 'Nagarik News', 'Annapurna Post',
   'Nepalnews', 'Ratopati', 'Khabarhub', 'The Himalayan Times', 'The Rising Nepal',
-  'Nepal Minute', 'Onlinekhabar (Nepali)', 'Al Jazeera',
+  'Nepal Minute', 'Onlinekhabar (Nepali)', 'Nepal Television', 'Al Jazeera',
   'BBC News', 'The Guardian', 'NDTV', 'France 24', 'Reuters', 'Associated Press',
   'AFP'
 ];
@@ -575,7 +592,7 @@ async function fetchBingNews() {
  */
 async function fetchYoutube(env, request, context) {
   const key = env && env.YOUTUBE_API_KEY;
-  if (!key) return [];
+  if (!key) return normalizeYoutubeFeed([]);
 
   /* The YouTube search endpoint costs 100 quota units a call and the free
      daily allowance is 10,000, so a search on every 2-minute news refresh
@@ -589,22 +606,43 @@ async function fetchYoutube(env, request, context) {
   const backupKey = new Request(new URL('/__cache/youtube-backup', base).toString());
 
   const hit = await cache.match(freshKey);
-  if (hit) return hit.json();
+  if (hit) return normalizeYoutubeFeed(await hit.json());
 
   try {
     const videos = await searchYoutube(key);
+    const result = {
+      items: videos,
+      searchedAt: new Date().toISOString(),
+      showingBackup: false
+    };
     if (videos.length) {
-      context.waitUntil(cache.put(freshKey, cachedJson(videos, YT_FRESH_SECONDS)));
-      context.waitUntil(cache.put(backupKey, cachedJson(videos, YT_BACKUP_SECONDS)));
+      context.waitUntil(cache.put(freshKey, cachedJson(result, YT_FRESH_SECONDS)));
+      context.waitUntil(cache.put(backupKey, cachedJson(result, YT_BACKUP_SECONDS)));
     }
-    return videos;
+    return result;
   } catch (err) {
     // Quota exhausted or YouTube down: show yesterday's list rather than
     // an empty tab with a misleading "no API key" message.
     const old = await cache.match(backupKey);
-    if (old) return old.json();
+    if (old) return { ...normalizeYoutubeFeed(await old.json()), showingBackup: true };
     throw err;
   }
+}
+
+/* Old cache entries were bare arrays. Accept them until their short-lived
+   cache expires, then replace them naturally with the timestamped shape. */
+function normalizeYoutubeFeed(value) {
+  if (Array.isArray(value)) {
+    return { items: value, searchedAt: null, showingBackup: false };
+  }
+  if (!value || !Array.isArray(value.items)) {
+    return { items: [], searchedAt: null, showingBackup: false };
+  }
+  return {
+    items: value.items,
+    searchedAt: value.searchedAt || null,
+    showingBackup: Boolean(value.showingBackup)
+  };
 }
 
 function cachedJson(data, seconds) {
