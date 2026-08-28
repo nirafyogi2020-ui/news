@@ -82,5 +82,11 @@
     "type": "image/jpeg",
     "credit": "abc.net.au",
     "article": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974"
+  },
+  "updates-2026-08-28-missing-977": {
+    "file": "updates-2026-08-28-missing-977.jpg",
+    "type": "image/jpeg",
+    "credit": "IANS News",
+    "article": "https://ianslive.in/nepal-flood-death-toll-reaches-469-as-977-remain-out-of-contact--20260828110902"
   }
 }

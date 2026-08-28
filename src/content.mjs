@@ -8,8 +8,8 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-08-28T12:00:00+05:45';
-export const TOLL_SOURCE = 'Nepal Police, reported by Onlinekhabar';
+export const TOLL_AS_OF = '2026-08-28T13:50:00+05:45';
+export const TOLL_SOURCE = 'Nepal Police, reported by ABC News';
 
 /* When the bulletin one step before TOLL_AS_OF was published. Used only for
    the "how the toll has moved" table, so that row's timestamp always matches
@@ -154,9 +154,9 @@ export const DAMAGE = {
 export const BARRIER_LAKE = {
   where: 'near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border',
   volume: '2 million cubic metres',
-  asOf: '2026-08-28T11:45:00+05:45',
-  source: 'Nepal Police and Chinese authorities, reported by Onlinekhabar and ABC News',
-  note: 'The Nepali Army suspended rescue operations along the border for one and a half hours as a precaution while Chinese teams pulled back a kilometre from the site. NDRRMA separately reported sediment laden water rising again in the Bhotekoshi the same day and told people along the river, and rescue and relief workers, to move to higher ground at the first sign of danger. Both rivers are upper tributaries of the Trishuli system, so the water is running down the same corridor the 26 August flood took.',
+  asOf: '2026-08-28T13:15:00+05:45',
+  source: 'Nepal Police and Chinese authorities, reported by Onlinekhabar, The Kathmandu Post and ABC News',
+  note: 'The Nepali Army suspended rescue operations along the border for one and a half hours as a precaution while Chinese teams pulled back a kilometre from the site. The Kathmandu Post reported early Friday afternoon that the lake had breached; NDRRMA said water levels in the Bhotekoshi surged as a result, and helicopters carried out aerial reconnaissance over Rasuwa to check the impact downstream. Chinese state media said Friday afternoon that rescue operations in Tibet had resumed after water levels at the lake dropped slightly, ABC News reports. Both rivers are upper tributaries of the Trishuli system, so the water is running down the same corridor the 26 August flood took.',
 };
 
 /** The route the water took. Coordinates and elevations as used on the map. */
@@ -218,6 +218,8 @@ export const TIMELINE = [
   ['21:00 NPT, 27 August', 'Nepal Police raise the confirmed toll to 389 dead and report 466 injured. Bodies recovered by district: Chitwan 137, Nawalparasi East 87, Dhading 33, Gorkha 32, Nuwakot 28, Tanahun 28, Rasuwa 17, Nawalparasi West 27.'],
   ['Thursday, 27 August', "China's Ministry of Water Resources warns that a barrier lake near the Chhochen Khola and Purepu Tsangpo, close to the Nepal border, is overflowing and holds about 2 million cubic metres of water. It expects another 3 million cubic metres to flow in over the next three days, putting the lake at high risk of breaching in that window."],
   ['Thursday evening, 27 August', 'Nepal turns down offers of search and rescue teams from India, China, the US, Britain, Japan, South Korea, Sri Lanka and Bangladesh, the Kathmandu Post reports, saying its own army and police can handle the operation and asking instead for cash through the Prime Minister’s Disaster Relief Fund. The finance ministry says the fund took in Rs 273.3 million in its first six hours.'],
+  ['Early afternoon, 28 August', 'The Kathmandu Post reports the barrier lake near the Chhochen Khola and Purepu Tsangpo has breached. NDRRMA says water levels in the Bhotekoshi surged as a result, and helicopters carry out aerial reconnaissance over Rasuwa to assess the damage downstream.'],
+  ['Friday afternoon, 28 August', 'Chinese state media report rescue operations in Tibet have resumed after water levels at the barrier lake dropped slightly, ABC News reports. NDRRMA separately tells ABC News that 3,253 people have now been rescued by helicopter across the flood zone. ABC News, citing Nepal Police, reports the toll again at 489, unchanged since the midday bulletin.'],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */

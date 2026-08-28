@@ -1,11 +1,13 @@
 {
   "slug": "2026-08-28-barrier-lake-burst",
   "id": "barrier-lake-burst",
-  "title": "Barrier lake bursts on Tibet side, rescue paused near border",
-  "time": "2026-08-28T11:45:00+05:45",
+  "title": "Barrier lake breach confirmed, Tibet rescue work resumes",
+  "time": "2026-08-28T13:15:00+05:45",
   "body": [
     "Nepal Police issued an alert on Friday saying Chinese authorities reported that the barrier lake near the Chhochen Khola and the Purepu Tsangpo, just across the border from Rasuwa, has burst. Rasuwa's Chief District Officer said a circular has gone out telling people along the riverbanks to stay safe, Onlinekhabar reports.",
     "The Nepali Army suspended rescue operations along the border for one and a half hours as a precaution. Chinese authorities separately halted their own rescue work in Gyirong county and pulled teams back a kilometre from the site, citing the risk of a second wave, ABC News reports.",
+    "The Kathmandu Post reported early Friday afternoon that the lake has now breached. NDRRMA said water levels in the Bhotekoshi surged as a result, and helicopters carried out aerial reconnaissance over Rasuwa to check the impact downstream.",
+    "Chinese state media said Friday afternoon that rescue operations in Tibet have resumed, after water levels at the lake dropped slightly, ABC News reports.",
     "NDRRMA said separately on Friday that sediment laden water is rising again in the Bhotekoshi, two days after the first flood hit the same river. Spokesperson Shanti Mahat urged people living along the Bhotekoshi, and rescue and relief workers in the area, to stay on high alert and move to safer ground immediately if they see any sign of danger, Onlinekhabar reports.",
     "This is a new and separate risk on top of the flood that has already killed hundreds. If you live or are working along the Bhote Koshi in Rasuwa, move away from the riverbank now and wait for officials to say it is clear."
   ],
@@ -19,10 +21,14 @@
       "url": "https://english.onlinekhabar.com/new-flood-risk-sediment.html"
     },
     {
+      "name": "The Kathmandu Post",
+      "url": "https://kathmandupost.com/national/2026/08/28/barrier-lake-near-china-border-breaches-raising-fresh-flood-threat-in-nepal"
+    },
+    {
       "name": "ABC News Australia",
       "url": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974"
     }
   ],
-  "revised": false,
+  "revised": true,
   "image": ""
 }
