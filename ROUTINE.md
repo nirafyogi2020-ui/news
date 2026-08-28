@@ -32,6 +32,39 @@ event's death toll, missing count, rescue, cause, damage cost, any second-flood
 or aftershock warning, and any new disaster in Nepal. Open 4 to 8 real
 articles.
 
+**Search engines lag this story by hours. Do not rely on them for the toll.**
+A police bulletin reaches Facebook first, a Nepali newsroom within the hour, a
+wire soon after, and the search index hours later. A search for the toll will
+happily hand back yesterday's number with today's date on it. On 28 August the
+search results still said 289 and 392 while the police figure was already 469.
+
+So fetch these pages **directly by URL** every run, before searching, because
+they are live blogs that are edited in place rather than republished:
+
+- `https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974`
+  (rolling, timestamped entries, quotes Nepali police figures as they land)
+- `https://english.onlinekhabar.com/` and `https://kathmandupost.com/national`
+  (Nepali newsrooms, front pages, follow the newest flood headline)
+- `https://www.aljazeera.com/news/liveblog/` for the current flood live blog
+- `https://nepaldisasterupdatelive.nxtimaginelabs.com/api/police`, which already
+  scrapes nepalpolice.gov.np
+
+Ask for the newest timestamped entries **quoted verbatim**, not summarised. A
+summariser will flatten "Nepal only" and "Nepal plus Tibet" into one number,
+and those are different figures. Then use search to corroborate what you found,
+not to discover it.
+
+When a figure is ambiguous about scope, say so on the page rather than picking
+a reading. "Sources differ on whether this includes the China side" is honest
+and costs nothing. A confidently wrong total is what does damage.
+
+Facebook is not available to this site as a source. Reading another
+organisation's Page through the Graph API needs Page Public Content Access,
+which means Meta App Review and business verification, and scraping it with
+somebody's personal login breaks Facebook's terms and risks that account. The
+live blogs above carry the same police figures within the hour, which is why
+they are the fallback.
+
 Source order: official and primary first (Nepal Police, Nepal Army, NDRRMA,
 Office of the Prime Minister, Ministry of Home Affairs, Nepal Electricity
 Authority, Department of Roads, ICIMOD, USGS, UN OCHA / ReliefWeb, GDACS), then
@@ -42,6 +75,20 @@ If nothing has genuinely changed since the last run, skip to step 7 and stop.
 Do not reword existing text to look busy.
 
 ## Step 3. The counters
+
+**The audit now enforces this step, so skipping it stops the deploy.** If the
+newest story in `today.json` is more than six hours newer than `event.json`'s
+`asOf`, `./deploy.sh` fails with "the figures are Nh older than the newest
+story", and it fails again if `event.json` and `src/content.mjs` disagree about
+the toll. Fix the figures. Never widen the limit to get past it: the limit is
+the only thing standing between the site and a page that looks freshly updated
+while showing yesterday's death toll, which is exactly what happened on 28
+August, when the story feed said 8:00 am and the headline number was eighty
+short and every other check passed.
+
+If the figures genuinely have not moved, that is fine and normal. Move `asOf`
+to the bulletin that most recently confirmed them and say so in the detail
+text.
 
 The big figures under the hero come from `event.json`, and the same figures on
 about twenty article pages come from `src/content.mjs`. They do not update
