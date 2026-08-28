@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-29T03:05:00+05:45",
+  "updated": "2026-08-29T05:02:00+05:45",
   "posts": [
     {
       "id": "india-seven-bodies-downstream",
@@ -194,7 +194,7 @@
       "time": "2026-08-28T20:55:00+05:45",
       "image": "",
       "body": [
-        "Nepal Police raised the confirmed toll again, to 553 dead, in a bulletin posted on the force's own website as of 5pm Friday. That is up from the 547 the force had given minutes earlier, which itself came within minutes of Nepal's disaster authority NDRRMA's separate figure of 538. Nepal Police reported 1,473 people injured in Nepal, up from 466 the day before. China's state media separately raised the Tibet side toll to 5, from 3. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.",
+        "Nepal Police raised the confirmed toll again, to 553 dead, in a bulletin posted on the force's own website as of 5pm Friday. That is up from the 547 the force had given minutes earlier, which itself came within minutes of Nepal's disaster authority NDRRMA's separate figure of 538. Nepal Police reported 1,473 people injured in Nepal, up from 466 the day before. China's state media separately put Tibet-side deaths at 5 on Friday, then Xinhua raised the figure to 7 by Saturday morning; Xinhua also put the missing count on the China side at 554, down slightly from the 558 given a day earlier. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.",
         "Rescue counts vary by agency and by day. Police said 1,545 people caught in the flood had been rescued as of the 7am bulletin, and NDRRMA told ABC News on Friday afternoon that 3,253 people had been rescued by helicopter across the flood zone, a broader tally that has not been named or broken down; NDRRMA's Friday evening update put that same tally at about 3,742, AP reports. NDRRMA's own earlier, named list stands at 113. The Nepali Army said on Friday its helicopters had rescued 706 people from Timure, Syabrubesi and Mailung by 3pm, up from 449 at 12:20pm, including 40 foreign nationals: 29 Indian, 4 German, 4 Chinese, 1 Omani and 2 South Korean, Onlinekhabar reports. Nepal Tourism Board said 117 stranded tourists have now been rescued from the Bhotekoshi area, 85 of them Indian, 16 Chinese, 9 South Korean, 2 American and 2 Italian, with 3 not yet identified by nationality, Onlinekhabar reports. Twenty eight police personnel remain out of contact.",
         "The 5pm bulletin also gave a new district breakdown, adding up to the 553 total: Chitwan 222, Nawalparasi East 134, Gorkha 47, Dhading 40, Nuwakot 38, Tanahun 31, Nawalparasi West 28 and Rasuwa 13, Nepal Police said. Chitwan and Nawalparasi East, both downstream on the Narayani, again took the largest increases. Health facilities in Chitwan, which has the most bodies, can hold only around 50 at a time, which is slowing identification and release to families.",
         "NDRRMA repeated its missing count of 977 people in Nepal in Friday afternoon's update alongside the new death toll, ABC News reports, so the figure has not moved since Friday morning. Nepal's tourism board says 517 of the missing are foreign nationals, from 33 countries. Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.",
@@ -292,18 +292,34 @@
     },
     {
       "id": "australia-missing-aid",
-      "title": "Australia's missing count eases to 38 as one hiker makes contact",
-      "time": "2026-08-28T15:10:00+05:45",
+      "title": "Australia's missing count rises to 41 after Friday evening dip to 38",
+      "time": "2026-08-29T03:20:00+05:45",
       "image": "",
       "body": [
-        "Australian Foreign Minister Penny Wong said on Friday that 39 Australians were unaccounted for in the flood, up from the 35 that Nepal's tourism board had listed a day earlier. Australia's Department of Foreign Affairs and Trade said on Friday evening that count has since eased to 38, after one of them, 26 year old Cara Severino, made contact with her family from Gosainkunda, saying she was walking toward Kathmandu with other hikers after being stranded at Kyanjin Gompa, ABC News reports. DFAT said the number could still move as officials work through the list.",
+        "Australia's Department of Foreign Affairs and Trade put the number of Australians unaccounted for in the flood at 41 by Saturday morning, ABC News reports, its highest count yet. DFAT said the number could still move as officials work through the list. Most of the missing Australians were on separate pilgrimages and tour groups heading for Mount Kailash.",
+        "The count has moved several times this week. Foreign Minister Penny Wong said Friday morning that 39 were unaccounted for, up from the 35 that Nepal's tourism board had listed a day earlier. DFAT said Friday evening that the count had eased to 38, after one of them, 26 year old Cara Severino, made contact with her family from Gosainkunda, saying she was walking toward Kathmandu with other hikers after being stranded at Kyanjin Gompa. It then rose again to 41 by Saturday.",
         "Wong also announced A$5 million in Australian aid: 2 million to the World Food Programme, 2 million to Australian NGOs through the Australian Humanitarian Partnership, and 1 million to the Emergency Action Alliance for local recovery work. Three more Australian humanitarian specialists are being sent to join the 20 staff already in Nepal."
       ],
       "sources": [
-        { "name": "ABC News Australia", "url": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974" },
+        { "name": "ABC News Australia", "url": "https://www.abc.net.au/news/2026-08-29/death-toll-rises-as-rescuers-work-through-flood-devastation/107092742" },
         { "name": "The Standard", "url": "https://www.standard.net.au/story/9339027/almost-40-australians-missing-in-nepals-flash-floods/" }
       ],
       "revised": true
+    },
+    {
+      "id": "canada-missing-aid",
+      "title": "Canada pledges $5 million as 32 Canadians remain unaccounted for",
+      "time": "2026-08-28T21:00:00+05:45",
+      "image": "",
+      "body": [
+        "Canada's Foreign Affairs Minister Anita Anand said at a Friday briefing that 32 Canadians and permanent residents remain unaccounted for in the flood, up from 30 named a day earlier, the Canadian Press reports. Anand said the figures are likely to keep changing as officials work through the lists. No Canadians are among those confirmed dead, and none were among the 121 foreign nationals the Nepal Tourism Board said Friday had been rescued.",
+        "Global Affairs Canada has sent five consular officials to Kathmandu to support Canadians and work with local officials, and Anand said more could be deployed if needed. Secretary of State for International Development Randeep Sarai announced Canada is providing $5 million in humanitarian assistance, to be channelled through organisations such as the Red Cross. Global Affairs Canada says about 858 Canadians are registered as being in Nepal and 18 in the Tibet Autonomous Region.",
+        "Out of contact does not mean dead. Canadians with concerns about a family member in the flood zone should contact Global Affairs Canada's emergency watch and response centre."
+      ],
+      "sources": [
+        { "name": "Medicine Hat News", "url": "https://medicinehatnews.com/news/national-news/2026/08/28/canada-provides-5m-to-nepal-relief-efforts-as-search-for-missing-canadians-continues/" },
+        { "name": "Abbotsford News", "url": "https://abbynews.com/2026/08/28/32-canadians-permanent-residents-unaccounted-for-in-nepal-floods/" }
+      ]
     },
     {
       "id": "india-mea-320-uncontactable",

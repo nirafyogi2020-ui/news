@@ -95,9 +95,9 @@ export const OUT_OF_CONTACT = [
 export const TOLL = {
   deadNepal: 553,
   deadNepalEarlier: 547,
-  deadChina: 5,
+  deadChina: 7,
   missing: 1924,
-  missingChina: 558,
+  missingChina: 554,
   missingChinaForeign: 260,
   missingIndian: 133,
   injured: 1473,
