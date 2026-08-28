@@ -1,11 +1,12 @@
 {
   "slug": "2026-08-28-chitwan-morgue-storage",
   "id": "chitwan-morgue-storage",
-  "title": "Chitwan turns a Bharatpur warehouse into temporary body storage",
-  "time": "2026-08-28T09:57:00+05:45",
+  "title": "Bharatpur Hospital runs out of freezer space as bodies near 200",
+  "time": "2026-08-28T20:00:00+05:45",
   "body": [
-    "Chitwan Chief District Officer Ganesh Aryal said hospital morgues in the district can together hold only 30 to 50 bodies at a time, short of what the flood has brought them, the Kathmandu Post reports.",
-    "Bharatpur Metropolitan City is converting an unused building of the Industrial Enterprise Development Institute, on Vidhyut Road in Bharatpur-10, into temporary storage with room for about 250 bodies. Local business groups are supplying dry ice to slow decomposition while identification continues.",
+    "Chitwan's hospitals are struggling to keep up with the bodies the flood has brought them. Bharatpur Hospital's freezers hold only 24 bodies, and most of that space was already taken by unclaimed bodies before the flood, chief medical superintendent Dr Bishwabandhu Bagale told Onlinekhabar. By Thursday evening 137 bodies had reached the hospital, and staff expected the total to reach around 200 by Friday evening.",
+    "Bodies that do not fit in the freezers have been kept in corridors and outside areas covered with tarpaulins, and some have started to decompose in the heat, Bagale said. Four forensic teams, reinforced by staff from Bheri Hospital, hospitals in the Lumbini region and Nepal Medical College, are working around the clock on post-mortems, fingerprints and photographs to identify the dead.",
+    "Identified bodies are being moved to a temporary, air-conditioned body management centre the government is setting up in a building near the Chitwan Industrial Association, on Vidhyut Road in Bharatpur. About 58 bodies had been processed and moved there by Friday afternoon, Onlinekhabar reports. Local business groups are supplying dry ice to slow decomposition while identification continues.",
     "Chitwan has recorded more bodies than any other district in this flood, most of them carried down the Trishuli and Narayani from Rasuwa, Nuwakot and Dhading.",
     "Families looking for someone should go through the District Police Office or the local ward office rather than to hospitals directly, since those are the lists that get updated centrally."
   ],
@@ -13,8 +14,12 @@
     {
       "name": "The Kathmandu Post",
       "url": "https://kathmandupost.com/national/2026/08/28/nepal-struggles-to-store-and-identify-bodies-carried-downstream-by-devastating-flood"
+    },
+    {
+      "name": "Onlinekhabar",
+      "url": "https://english.onlinekhabar.com/flood-bodies-overwhelm-hospital.html"
     }
   ],
-  "revised": false,
+  "revised": true,
   "image": ""
 }

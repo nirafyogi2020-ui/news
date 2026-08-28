@@ -1,22 +1,26 @@
 {
   "slug": "2026-08-28-rasuwa-isolation",
   "id": "rasuwa-isolation",
-  "title": "Rasuwa still cut off, thousands sheltering with almost nothing",
-  "time": "2026-08-28T08:00:00+05:45",
+  "title": "Rasuwa reconnected by a light-vehicle road, but still short of almost everything",
+  "time": "2026-08-28T17:30:00+05:45",
   "body": [
-    "Rasuwa remains cut off from the rest of Nepal two days after the flood, with roads, power and phone lines still down in the worst hit areas, Onlinekhabar reports.",
-    "About 3,500 people are sheltering in Uttargaya rural municipality alone, including students, displaced families, elderly people, pregnant women and people who need oxygen, local officials told Onlinekhabar.",
+    "Rasuwa was reconnected to the road network on Friday, when an alternative route reopened for small, four-wheeled vehicles between Kathmandu and Dhunche, via Tokha, Gadkhar Bridge, Narja, Lachyang, Saramthali and Kalikasthan, the Ministry of Physical Infrastructure and Transport said, Onlinekhabar reports. The flood had cut the district off after sweeping away 13 bridges inside Rasuwa and two more on the Nuwakot-Rasuwa border, destroying about 40 kilometres of road in total.",
+    "Conditions on the ground are still severe. About 3,500 people are sheltering in Uttargaya rural municipality alone, including students, displaced families, elderly people, pregnant women and people who need oxygen, local officials told Onlinekhabar.",
     "Uttargaya chair Madhav Aryal said the municipality now has two ambulances and one vehicle left. \"The minimum responsibility that the state should fulfil has not been met,\" he said. Gosainkunda chair Kaisang Nurpu Tamang described what supplies remain there in two words: \"Nothing, nothing.\"",
     "Around 150 people who fled a hydropower project are stranded across a river with no way to reach food, and 36 students are separated from their families in Nuwakot because access routes are damaged, Onlinekhabar reports.",
     "Local officials in Uttargaya believe as many as 750 people from the municipality may still be missing. That figure is their own estimate and has not been confirmed by police or NDRRMA.",
-    "People trying to get aid into Rasuwa should coordinate through the district disaster relief committee or the army rather than travelling in on their own. Most access roads into the district are still down."
+    "People trying to get aid into Rasuwa should coordinate through the district disaster relief committee or the army rather than travelling in on their own. The new route takes light vehicles only, and conditions can still change."
   ],
   "sources": [
     {
       "name": "Onlinekhabar",
       "url": "https://english.onlinekhabar.com/rasuwa-cut-off-flood-shortage.html"
+    },
+    {
+      "name": "Onlinekhabar",
+      "url": "https://english.onlinekhabar.com/rasuwa-reconnected-road-network.html"
     }
   ],
-  "revised": false,
+  "revised": true,
   "image": ""
 }
