@@ -741,7 +741,15 @@
   /* Two identical runs side by side, the pair translated by exactly half its
      own width. When the first run has walked off the left edge the second is
      sitting where the first started, so the loop has no seam in it. */
-  .sb-track{display:flex; flex:1; min-width:0; align-items:center; overflow:hidden;}
+  /* The track fades out at its own right edge, not the strip's. .sb-fade is
+     anchored to the strip, so on a wide window it sat 300px away, inside the
+     "Checked ..." column, and the scrolling text ran straight into that text
+     with no gap: "910 listed missing in NChecked 09:49 PM". Masking the track
+     puts the fade where the text actually stops, at any window width, and it
+     keeps working on mobile where the time column is hidden. */
+  .sb-track{display:flex; flex:1; min-width:0; align-items:center; overflow:hidden;
+    -webkit-mask-image:linear-gradient(to right, #000 calc(100% - 76px), transparent);
+    mask-image:linear-gradient(to right, #000 calc(100% - 76px), transparent);}
   .sb-run{
     display:flex; align-items:center; gap:0; flex:none; white-space:nowrap;
     animation:sbscroll 46s linear infinite;
@@ -759,7 +767,7 @@
   .sb-call:hover{background:rgba(255,255,255,0.16); text-decoration:none;}
   .sb-fade{position:absolute; right:0; top:0; bottom:0; width:96px; pointer-events:none;
     background:linear-gradient(to right, rgba(181,39,31,0), #b5271f 62%);}
-  .sb-time{display:flex; align-items:center; padding:9px 20px 9px 0; z-index:2;
+  .sb-time{display:flex; align-items:center; padding:9px 20px 9px 18px; z-index:2;
     color:rgba(255,255,255,0.82); flex-shrink:0;}
   @media (max-width:820px){
     .sb-time{display:none;}
