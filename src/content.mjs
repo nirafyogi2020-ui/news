@@ -229,7 +229,9 @@ export const TIMELINE = [
   ['Friday afternoon, 28 August', 'The Ministry of Energy, Water Resources and Irrigation says the camp area of the Upper Trishuli-3B hydropower project in Nuwakot has been completely buried under landslide debris. It says rescuing people there is the top priority and that rescue equipment has been flown in, Onlinekhabar reports.'],
   ['Friday evening, 28 August', "ABC News reports the barrier lake has grown rather than drained: China's Ministry of Water Resources put it at about 2 million cubic metres on Thursday morning, and by Friday evening it had grown to about 2.5 million cubic metres, with more water still forecast to flow in over the weekend."],
   ['17:00 NPT, 28 August', 'Nepal Police raise the confirmed toll to 553 in a Friday evening bulletin posted on the force’s own website, with a district breakdown that sums to the new total: Chitwan 222, Nawalparasi East 134, Gorkha 47, Dhading 40, Nuwakot 38, Tanahun 31, Nawalparasi West 28, Rasuwa 13.'],
+  ['19:14 NPT, 28 August', 'The Prithvi Highway partly reopens: the Galchhi stretch to alternating one way traffic and the Galaundi-Ghatbesi-Jarekhet stretch to two way traffic, the Kathmandu Post reports. Officials say they cannot guarantee the whole highway will be clear by the end of Friday.'],
   ['Friday evening, 28 August', 'David Fisher, head of delegation for the International Federation of Red Cross and Red Crescent Societies in Nepal, says at least 93,000 people have been affected by the flood and are in great need.'],
+  ['20:55 NPT, 28 August', 'In a reversal, Nepal says it will let India, China, Australia and South Korea send in tunnel rescue and DNA identification experts, the Kathmandu Post reports. Nepal had said as recently as Wednesday and Thursday that its own army and police could handle the operation without outside rescue teams.'],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */

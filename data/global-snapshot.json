@@ -1,6 +1,17 @@
 {
-  "updated": "2026-08-28T15:34:13.925Z",
+  "updated": "2026-08-28T16:21:18.555Z",
   "items": [
+    {
+      "title": "Nepal: Rasuwa Flood Flash Update #3",
+      "url": "https://reliefweb.int/report/nepal/nepal-rasuwa-flood-flash-update-3",
+      "source": "ReliefWeb (UN OCHA)",
+      "time": "2026-08-28T15:07:17.000Z",
+      "kind": "official",
+      "region": "global",
+      "image": null,
+      "summary": "Country: Nepal Source: United Nations Please refer to the attached Infographic. HIGHLIGHTS Flash floods swept down the Trishuli River corridor into Rasuwa, Nuwakot, Dhading and Gorkha districts on 26 August, damaging homes, roads, schools, health posts and farmland. Families are sheltering at five known displacement sites in Nuwakot district. The whereabouts of people displaced in other districts are still being confirmed. Damaged roads and landslides continue to block humanitarian access, delaying assessments and slowing relief to some of the worst hit communities. Health, nutrition, protection, shelter and WASH partners are scaling up…",
+      "authority": "primary"
+    },
     {
       "title": "Nepal: IRDR Rapid Analysis Report - Scientific Anatomy of the 26 August 2026 Bhotekoshi Flash Flood",
       "url": "https://reliefweb.int/report/nepal/irdr-rapid-analysis-report-scientific-anatomy-26-august-2026-bhotekoshi-flash-flood",
@@ -24,25 +35,74 @@
       "authority": "primary"
     },
     {
-      "title": "WVI Nepal Declares Category I National Response to Flash Floods in Rasuwa and Nuwakot",
-      "url": "https://reliefweb.int/report/nepal/wvi-nepal-declares-category-i-national-response-flash-floods-rasuwa-and-nuwakot",
-      "source": "ReliefWeb (UN OCHA)",
-      "time": "2026-08-28T12:08:19.000Z",
-      "kind": "official",
-      "region": "global",
-      "image": null,
-      "summary": "Country: Nepal Source: World Vision A major flash flood entered Nepal through the Bhote Koshi River at around 9:00 AM on 26 August, causing significant damage in Rasuwa and Nuwakot districts. The worst-affected areas include Timure, Rasuwagadhi, and Syabrubesi, where homes, markets, roads, and hydropower infrastructure were destroyed. Rescue and relief operations are underway, and authorities have issued alerts for communities along the Trishuli River. World Vision Nepal is closely monitoring the evolving situation and coordinating with government authorities, local partners, and humanitarian actors to assess the needs of affected…",
-      "authority": "primary"
-    },
-    {
-      "title": "Tropical Storm Dolly speeding across Atlantic toward the Caribbean",
-      "url": "https://www.theguardian.com/weather/2026/aug/28/tropical-storm-dolly-caribbean",
+      "title": "Nepal-Tibet flash flood: number of missing people in Nepal rises to 1,924 – latest updates",
+      "url": "https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates",
       "source": "The Guardian",
-      "time": "2026-08-28T15:23:18.000Z",
+      "time": "2026-08-28T16:11:01.000Z",
       "kind": "press",
       "region": "global",
-      "image": "https://i.guim.co.uk/img/media/a351ae3cb184c7f81762912a2e9bce58c9b21f95/167_0_1666_1333/master/1666.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=fade6db40f7633e9e6c1dc6e97a616ba",
-      "summary": "Weather system is forecast to approach the Leeward Islands this weekend and may produce flash flooding Tropical Storm Dolly is moving quickly across the Atlantic Ocean toward the Leeward Islands and is expected to bring significant rainfall to parts of the Caribbean this weekend, the National Hurricane Center (NHC) said on Friday morning. Dolly, which formed on Thursday, had maximum sustained winds of near 40mph (65km/h) with higher gusts as of Friday. Continue reading...",
+      "image": "https://i.guim.co.uk/img/media/354fbd9087f6426e4a815de18580298cf136cb3d/0_73_602_482/master/602.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=08ce8ebaf9062913ec86625242402e69",
+      "summary": "Nepali disaster authority confirms jump of more than 400 in total of those unaccounted for, with 579 deaths confirmed in Nepal and five in Tibet Flood rescue efforts resume Visual guide: how the deadly flooding unfolded Tell us: have you been affected by the flash floods? More now on the Nepali army’s rescue operation to save about 100 people trapped in a tunnel at a hydropower project swamped by Wednesday’s flooding . “Two helicopters have been dispatched but it is challenging because it is tough to even locate the entry points of the tunnel,” army spokesperson Raja Ram Basnet told AFP. Relief efforts are also under way to provide the…",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "Nepal Flash Floods LIVE: 584 Dead, 2,400 Missing As Nepal Intensifies Rescue Operations",
+      "url": "https://www.ndtv.com/world-news/nepal-flash-floods-live-updates-nepal-hit-by-massive-flash-floods-multiple-casualties-feared-rescue-ops-on-11960633#publisher=newsstand",
+      "source": "NDTV",
+      "time": "2026-08-28T16:00:57.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://c.ndtvimg.com/2026-08/2erh1o7s_nepal-floods_625x300_26_August_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
+      "summary": "Nepal Flash Floods Live Updates: The deluge of ice and mud caused huge pools of water to form, with one of these formations bursting on Friday in Tibet in a new threat to emergency workers scouring the region for survivors.",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "What we know about deadly Nepal-Tibet floods",
+      "url": "https://www.bbc.co.uk/news/articles/cd948kn02e5o?at_medium=RSS&amp;at_campaign=rss",
+      "source": "BBC News",
+      "time": "2026-08-28T15:58:02.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d8e6/live/a575cfc0-a2c3-11f1-b109-879e35c24276.jpg",
+      "summary": "Hundreds have died and thousands are missing after Wednesday's flooding and landslides on the border of Nepal and Tibet.",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "At least 93,000 ‘in great need’ after Nepal-Tibet flash floods, says Red Cross",
+      "url": "https://www.theguardian.com/world/2026/aug/28/nepal-tibet-flash-floods-red-cross-rescuers-death-toll",
+      "source": "The Guardian",
+      "time": "2026-08-28T15:55:41.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://i.guim.co.uk/img/media/801126947c8d8ca4588da62c64e532997fb1a82b/842_378_2721_2176/master/2721.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=2c7938ed9867377e259a29c685f3bfd2",
+      "summary": "Federation says it fears death toll of more than 540 will continue to rise as rescuers reach cut-off areas Nepal-Tibet flash flood – latest updates Visual guide: how the deadly flooding unfolded Tell us: have you been affected by the flash floods? The Red Cross has said at least 93,000 people may have been affected by Wednesday’s flash floods on the Nepal-Tibet border, which have killed more than 540 people, left another 1,900 missing, and triggered a huge rescue operation that is being hampered by fears of new flooding. The International Federation of Red Cross and Red Crescent Societies (IFRC), the world’s largest humanitarian network,…",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "Nepal Floods Took Away His Home, Business. At 71, He Is Left With Just Debt",
+      "url": "https://www.ndtv.com/world-news/nepal-flash-floods-took-away-his-home-business-at-71-he-is-left-with-just-debt-11972365#publisher=newsstand",
+      "source": "NDTV",
+      "time": "2026-08-28T15:55:41.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://c.ndtvimg.com/2026-08/p00odfc_nepal-flood_625x300_28_August_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
+      "summary": "Govind Prasad Dahal is one of the thousands of people who lost their homes and businesses in the Nepal flash floods.",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "How Nepali diaspora is responding to flood disaster and how Australians can help in relief effort",
+      "url": "https://www.theguardian.com/world/2026/aug/28/how-to-help-nepal-community-flood-disaster-relief-funding-australia",
+      "source": "The Guardian",
+      "time": "2026-08-28T15:50:05.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://i.guim.co.uk/img/media/5e75fb450694ed8aeaaa4cacc84a53f6089fc403/395_0_4164_3333/master/4164.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=cc46234b21858acd2104f62fdca90847",
+      "summary": "Nepali and Tibetan communities plan vigils and work to raise funds for recovery in ‘devastating’ time Get our breaking news email , free app or daily news podcast Australia’s Nepali community plan to host vigils to remember the victims of the Nepal-Tibet flood disaster to coincide with a day of mourning, as the number of people killed continues to rise. As Australia’s Nepali diaspora wait for the full scale of the disaster to become clear, community members are desperately waiting to hear from missing relatives and friends. Nepali authorities said on Friday that the death toll had risen to 579, with the number missing rising sharply to more…",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -59,62 +119,38 @@
       "authority": "trusted"
     },
     {
-      "title": "At least 93,000 ‘in great need’ after Nepal-Tibet flash floods, says Red Cross",
-      "url": "https://www.theguardian.com/world/2026/aug/28/nepal-tibet-flash-floods-red-cross-rescuers-death-toll",
-      "source": "The Guardian",
-      "time": "2026-08-28T15:22:07.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://i.guim.co.uk/img/media/801126947c8d8ca4588da62c64e532997fb1a82b/842_378_2721_2176/master/2721.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=2c7938ed9867377e259a29c685f3bfd2",
-      "summary": "Federation says it fears death toll of more than 540 will continue to rise as rescuers reach cut-off areas Nepal-Tibet flash flood – latest updates Visual guide: how the deadly flooding unfolded Tell us: have you been affected by the flash floods? The Red Cross has said at least 93,000 people may have been affected by Wednesday’s flash floods on the Nepal-Tibet border, which have killed more than 540 people, left another 1,900 missing, and triggered a huge rescue operation that is being hampered by fears of new flooding. The International Federation of Red Cross and Red Crescent Societies (IFRC), the world’s largest humanitarian network,…",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "What we know about deadly Nepal-Tibet floods",
-      "url": "https://www.bbc.co.uk/news/articles/cd948kn02e5o?at_medium=RSS&amp;at_campaign=rss",
-      "source": "BBC News",
-      "time": "2026-08-28T14:17:43.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/d8e6/live/a575cfc0-a2c3-11f1-b109-879e35c24276.jpg",
-      "summary": "Hundreds have died or are missing in Wednesday's flooding and landslides on the border of Nepal and Tibet.",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "Nepal-Tibet flash flood: EU pledges €2m in aid as fears rise for missing amid rescue effort – latest updates",
-      "url": "https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates",
-      "source": "The Guardian",
-      "time": "2026-08-28T15:20:00.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://i.guim.co.uk/img/media/354fbd9087f6426e4a815de18580298cf136cb3d/0_73_602_482/master/602.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=08ce8ebaf9062913ec86625242402e69",
-      "summary": "Nepal has confirmed 579 deaths, while five people have been confirmed dead in Tibet, with more than 1,500 missing Flood rescue efforts resume Visual guide: how the deadly flooding unfolded Tell us: have you been affected by the flash floods? More now on the Nepali army’s rescue operation to save about 100 people trapped in a tunnel at a hydropower project swamped by Wednesday’s flooding . “Two helicopters have been dispatched but it is challenging because it is tough to even locate the entry points of the tunnel,” army spokesperson Raja Ram Basnet told AFP. Relief efforts are also under way to provide the rescued people what they need. The…",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "Nepal Flash Floods LIVE: 400 Indian Pilgrims In China Contactable, 96 Cross Over To Nepal Safely",
-      "url": "https://www.ndtv.com/world-news/nepal-flash-floods-live-updates-nepal-hit-by-massive-flash-floods-multiple-casualties-feared-rescue-ops-on-11960633#publisher=newsstand",
-      "source": "NDTV",
-      "time": "2026-08-28T14:16:47.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://c.ndtvimg.com/2026-08/2erh1o7s_nepal-floods_625x300_26_August_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
-      "summary": "Nepal Flash Floods Live Updates: The deluge of ice and mud caused huge pools of water to form, with one of these formations bursting on Friday in Tibet in a new threat to emergency workers scouring the region for survivors.",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
       "title": "Families of 33 missing Britons rush to Nepal as fears grow of more floods",
       "url": "https://www.theguardian.com/world/2026/aug/28/families-missing-britons-nepal-flash-floods",
       "source": "The Guardian",
-      "time": "2026-08-28T15:07:23.000Z",
+      "time": "2026-08-28T15:44:38.000Z",
       "kind": "press",
       "region": "global",
       "image": "https://i.guim.co.uk/img/media/b8b087079ca3e898d252c98b7dd352ece06e5f17/0_0_5000_4000/master/5000.png?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=a0db2bfd405059366376d13824d2b6ef",
       "summary": "Desperate relatives trying to reach loved ones last seen in area where entire villages have been swept away Nepal-Tibet flash flood – latest updates Visual guide: how the deadly flooding unfolded Tell us: have you been affected by the flash floods? Families are rushing to Nepal to search for the 33 British nationals who are still missing, as fears mount over the risk of a second wave of flooding in the region. The catastrophic flash floods that hit Nepal and Tibet on Wednesday , thundering down valleys and sweeping away entire villages, have killed at least 538 people, while more than 1,500 remain missing. Continue reading...",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "579 Killed In Nepal Floods, 85 Indians Rescued, Hundreds Remain Missing",
+      "url": "https://www.ndtv.com/world-news/538-killed-in-nepal-flash-floods-85-indians-rescued-11970902#publisher=newsstand",
+      "source": "NDTV",
+      "time": "2026-08-28T14:44:49.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://c.ndtvimg.com/2026-08/vkvdu474_nepal-floods-afp_625x300_26_August_26.jpg",
+      "summary": "Over 14,000 security personnel have been mobilised for search and rescue operations and about 3,742 people have been rescued.",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "Tropical Storm Dolly speeding across Atlantic toward the Caribbean",
+      "url": "https://www.theguardian.com/weather/2026/aug/28/tropical-storm-dolly-caribbean",
+      "source": "The Guardian",
+      "time": "2026-08-28T15:23:18.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://i.guim.co.uk/img/media/a351ae3cb184c7f81762912a2e9bce58c9b21f95/167_0_1666_1333/master/1666.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=fade6db40f7633e9e6c1dc6e97a616ba",
+      "summary": "Weather system is forecast to approach the Leeward Islands this weekend and may produce flash flooding Tropical Storm Dolly is moving quickly across the Atlantic Ocean toward the Leeward Islands and is expected to bring significant rainfall to parts of the Caribbean this weekend, the National Hurricane Center (NHC) said on Friday morning. Dolly, which formed on Thursday, had maximum sustained winds of near 40mph (65km/h) with higher gusts as of Friday. Continue reading...",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -203,14 +239,14 @@
       "authority": "trusted"
     },
     {
-      "title": "EU further extends support to Serbia as wildfires intensify",
-      "url": "https://reliefweb.int/report/serbia/eu-further-extends-support-serbia-wildfires-intensify",
+      "title": "WVI Nepal Declares Category I National Response to Flash Floods in Rasuwa and Nuwakot",
+      "url": "https://reliefweb.int/report/nepal/wvi-nepal-declares-category-i-national-response-flash-floods-rasuwa-and-nuwakot",
       "source": "ReliefWeb (UN OCHA)",
-      "time": "2026-08-28T12:03:08.000Z",
+      "time": "2026-08-28T12:08:19.000Z",
       "kind": "official",
       "region": "global",
       "image": null,
-      "summary": "Country: Serbia Source: European Commission's Directorate-General for European Civil Protection and Humanitarian Aid Operations EU firefighting support to Serbia has been extended until 5 September, with 4 helicopters from the rescEU strategic reserve in Czechia, Romania and Slovakia and a ground firefighting team from Romania remaining deployed, as wildfires continue and strong winds are forecast in affected areas. The severe wildfires affecting the Deliblato Sands Special Nature Reserve and other areas have burned around 13,920 hectares, according to Copernicus data as of 26 August. The scale and persistence of the emergency continue to…",
+      "summary": "Country: Nepal Source: World Vision A major flash flood entered Nepal through the Bhote Koshi River at around 9:00 AM on 26 August, causing significant damage in Rasuwa and Nuwakot districts. The worst-affected areas include Timure, Rasuwagadhi, and Syabrubesi, where homes, markets, roads, and hydropower infrastructure were destroyed. Rescue and relief operations are underway, and authorities have issued alerts for communities along the Trishuli River. World Vision Nepal is closely monitoring the evolving situation and coordinating with government authorities, local partners, and humanitarian actors to assess the needs of affected…",
       "authority": "primary"
     },
     {
@@ -226,14 +262,14 @@
       "authority": "trusted"
     },
     {
-      "title": "The EU allocates €2 million in humanitarian aid to support victims of flash flood in Nepal",
-      "url": "https://reliefweb.int/report/nepal/eu-allocates-eur2-million-humanitarian-aid-support-victims-flash-flood-nepal",
+      "title": "EU further extends support to Serbia as wildfires intensify",
+      "url": "https://reliefweb.int/report/serbia/eu-further-extends-support-serbia-wildfires-intensify",
       "source": "ReliefWeb (UN OCHA)",
-      "time": "2026-08-28T12:03:06.000Z",
+      "time": "2026-08-28T12:03:08.000Z",
       "kind": "official",
       "region": "global",
       "image": null,
-      "summary": "Country: Nepal Source: European Commission's Directorate-General for European Civil Protection and Humanitarian Aid Operations In response to the massive flash flood that has caused over 300 deaths in Nepal, the European Union has allocated €2 million in humanitarian aid to support affected communities. This emergency funding will help address immediate needs including as food, healthcare, clean water and sanitation. EU-funded partners are already providing help on the ground. This assistance comes in addition to the almost €3 million in humanitarian aid allocated at the start of the year for Nepal for disaster preparedness. EU-funded…",
+      "summary": "Country: Serbia Source: European Commission's Directorate-General for European Civil Protection and Humanitarian Aid Operations EU firefighting support to Serbia has been extended until 5 September, with 4 helicopters from the rescEU strategic reserve in Czechia, Romania and Slovakia and a ground firefighting team from Romania remaining deployed, as wildfires continue and strong winds are forecast in affected areas. The severe wildfires affecting the Deliblato Sands Special Nature Reserve and other areas have burned around 13,920 hectares, according to Copernicus data as of 26 August. The scale and persistence of the emergency continue to…",
       "authority": "primary"
     },
     {
@@ -245,42 +281,6 @@
       "region": "global",
       "image": null,
       "summary": "A lake formed after floods and mudslides on the China-Nepal border burst its banks on Friday, halting rescue operations.",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "India Working With Nepal Army To Find Missing Tourists After Floods: Envoy",
-      "url": "https://www.ndtv.com/india-news/india-working-with-nepal-army-to-find-missing-tourists-after-floods-envoy-11970762#publisher=newsstand",
-      "source": "NDTV",
-      "time": "2026-08-28T11:07:18.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://c.ndtvimg.com/2026-08/v9jthlss_nepal-floods_625x300_28_August_26.jpeg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
-      "summary": "Naveen Srivastava, the Indian ambassador to Nepal, said that 63 Indians working on the Trishuli 1 power project had been rescued on Thursday.",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "Why Nepal faces another flood threat from a new lake on China border",
-      "url": "https://www.aljazeera.com/news/2026/8/28/is-nepal-facing-another-devastating-flood-from-a-new-lake?traffic_source=rss",
-      "source": "Al Jazeera",
-      "time": "2026-08-28T11:02:10.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": null,
-      "summary": "Glacier collapse in Nepal triggered flash floods, mudslides and a barrier lake where a landslide dammed the river.",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "547 Killed In Nepal Floods, 85 Indians Rescued, Hundreds Remain Missing",
-      "url": "https://www.ndtv.com/world-news/538-killed-in-nepal-flash-floods-85-indians-rescued-11970902#publisher=newsstand",
-      "source": "NDTV",
-      "time": "2026-08-28T11:05:48.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://c.ndtvimg.com/2026-08/vkvdu474_nepal-floods-afp_625x300_26_August_26.jpg",
-      "summary": "Over 14,000 security personnel have been mobilised for search and rescue operations and about 3,742 people have been rescued.",
       "alsoReported": [],
       "authority": "trusted"
     }
