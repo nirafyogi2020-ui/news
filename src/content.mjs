@@ -8,8 +8,8 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-08-27T21:00:00+05:45';
-export const TOLL_SOURCE = 'Nepal Police bulletin';
+export const TOLL_AS_OF = '2026-08-28T08:40:00+05:45';
+export const TOLL_SOURCE = 'Nepal Police, reported by ABC News live coverage';
 
 /* The district breakdown carries its own clock. It happens to match the toll
    right now, because the 5pm police bulletin published both together, but the
@@ -87,8 +87,8 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 389,
-  deadNepalEarlier: 289,
+  deadNepal: 469,
+  deadNepalEarlier: 389,
   deadChina: 3,
   missing: 910,
   missingChina: 558,

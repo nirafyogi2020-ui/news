@@ -324,6 +324,60 @@ for (const f of ['event.json', 'today.json', 'src/content.mjs']) {
   if (m) errors.push(`${f}: looks like a secret in a committed file`);
 }
 
+/* -- the counters must not go stale behind the story feed ------------------- */
+/* The failure this catches, which happened on 28 August: a run researched the
+   news properly, found a new toll, wrote the story cards, and never touched
+   event.json or src/content.mjs. today.json said 8:00 am, the headline number
+   was still the one from 9:00 pm the night before, and every other check
+   passed. The site looked freshly updated while showing a toll eighty short.
+
+   Nothing catches that except comparing the two clocks, because each file is
+   internally consistent. So: if the newest story is much newer than the
+   figures under the hero, the run skipped step 3 and the build stops.
+
+   This is a real gate rather than a warning. A stale toll on a disaster page
+   is the worst thing this site can publish, and a warning scrolls past. */
+const COUNTER_LAG_MAX_H = 6;
+try {
+  const ev = JSON.parse(readFileSync(join(ROOT, 'event.json'), 'utf8'));
+  const td = JSON.parse(readFileSync(join(ROOT, 'today.json'), 'utf8'));
+  const newestStory = (td.posts || [])
+    .map(p => new Date(p.time).getTime())
+    .filter(t => isFinite(t))
+    .sort((a, b) => b - a)[0];
+  const asOf = new Date(ev.asOf).getTime();
+
+  if (!isFinite(asOf)) {
+    errors.push(`event.json: asOf "${ev.asOf}" does not parse`);
+  } else if (isFinite(newestStory)) {
+    const lagH = (newestStory - asOf) / 3600000;
+    if (lagH > COUNTER_LAG_MAX_H) {
+      errors.push(
+        `the figures are ${Math.round(lagH)}h older than the newest story. ` +
+        `event.json asOf is ${ev.asOf} but the newest today.json post is dated ` +
+        `${new Date(newestStory).toISOString()}. Re-check the toll and the missing ` +
+        `count against the newest bulletin and update event.json AND src/content.mjs, ` +
+        `or, if the figures genuinely have not moved, set asOf to the bulletin that ` +
+        `most recently confirmed them. Do not just raise the limit.`
+      );
+    }
+  }
+
+  /* And the two files that hold the toll must agree with each other. */
+  const evToll = (ev.stats || []).find(s => s.label === 'confirmed dead');
+  const srcToll = readFileSync(join(ROOT, 'src', 'content.mjs'), 'utf8')
+    .match(/deadNepal:\s*(\d+)/);
+  if (evToll && srcToll && String(evToll.value).replace(/\D/g, '') !== srcToll[1]) {
+    errors.push(
+      `the toll disagrees between files: event.json says ${evToll.value}, ` +
+      `src/content.mjs deadNepal says ${srcToll[1]}. The hero counter and the ` +
+      `article pages would show different numbers.`
+    );
+  }
+} catch (e) {
+  errors.push(`counter freshness check could not run: ${e.message}`);
+}
+
 /* -- report ----------------------------------------------------------------- */
 console.log(`checked ${pages.length} pages, ${locs.length} sitemap urls`);
 if (warnings.length) {
