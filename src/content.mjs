@@ -8,21 +8,21 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-08-28T16:23:00+05:45';
-export const TOLL_SOURCE = 'Nepal Police, reported by ABC News';
+export const TOLL_AS_OF = '2026-08-28T17:00:00+05:45';
+export const TOLL_SOURCE = 'Nepal Police bulletin';
 
 /* When the bulletin one step before TOLL_AS_OF was published. Used only for
    the "how the toll has moved" table, so that row's timestamp always matches
    TOLL.deadNepalEarlier instead of drifting out of date as later runs move
    both TOLL_AS_OF and deadNepalEarlier forward. */
-export const TOLL_EARLIER_AS_OF = '2026-08-28T13:50:00+05:45';
+export const TOLL_EARLIER_AS_OF = '2026-08-28T16:23:00+05:45';
 
 /* The district breakdown carries its own clock. It happens to match the toll
-   right now, because the 28 August 7am police bulletin published both
+   right now, because the 28 August 5pm police bulletin published both
    together, but the two move apart whenever a later update raises the
    national figure without restating every district. Keeping them separate
    means the table is never quietly presented as newer than it is. */
-export const BODIES_AS_OF = '2026-08-28T12:00:00+05:45';
+export const BODIES_AS_OF = '2026-08-28T17:00:00+05:45';
 export const BODIES_SOURCE = 'Nepal Police bulletin';
 
 /* The missing list has its own, earlier timestamp. It is deliberately kept
@@ -53,12 +53,12 @@ export const EVENT = {
 
 /** Bodies recovered, by the district where they were found. */
 export const BODIES_BY_DISTRICT = [
-  ['Chitwan', 186],
-  ['Nawalparasi East', 112],
-  ['Gorkha', 44],
+  ['Chitwan', 222],
+  ['Nawalparasi East', 134],
+  ['Gorkha', 47],
   ['Dhading', 40],
-  ['Nuwakot', 37],
-  ['Tanahun', 29],
+  ['Nuwakot', 38],
+  ['Tanahun', 31],
   ['Nawalparasi West', 28],
   ['Rasuwa', 13],
 ];
@@ -93,8 +93,8 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 547,
-  deadNepalEarlier: 489,
+  deadNepal: 553,
+  deadNepalEarlier: 547,
   deadChina: 5,
   missing: 977,
   missingChina: 558,
@@ -153,10 +153,10 @@ export const DAMAGE = {
     reported a new barrier lake forming upstream, inside Tibet. */
 export const BARRIER_LAKE = {
   where: 'near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border',
-  volume: '2 million cubic metres',
-  asOf: '2026-08-28T13:15:00+05:45',
-  source: 'Nepal Police and Chinese authorities, reported by Onlinekhabar, The Kathmandu Post and ABC News',
-  note: 'The Nepali Army suspended rescue operations along the border for one and a half hours as a precaution while Chinese teams pulled back a kilometre from the site. The Kathmandu Post reported early Friday afternoon that the lake had breached; NDRRMA said water levels in the Bhotekoshi surged as a result, and helicopters carried out aerial reconnaissance over Rasuwa to check the impact downstream. Chinese state media said Friday afternoon that rescue operations in Tibet had resumed after water levels at the lake dropped slightly, ABC News reports. Both rivers are upper tributaries of the Trishuli system, so the water is running down the same corridor the 26 August flood took.',
+  volume: '2.5 million cubic metres',
+  asOf: '2026-08-28T18:15:00+05:45',
+  source: 'Chinese authorities, reported by ABC News',
+  note: 'The Nepali Army suspended rescue operations along the border for one and a half hours as a precaution while Chinese teams pulled back a kilometre from the site. The Kathmandu Post reported early Friday afternoon that the lake had breached; NDRRMA said water levels in the Bhotekoshi surged as a result, and helicopters carried out aerial reconnaissance over Rasuwa to check the impact downstream. Chinese state media said Friday afternoon that rescue operations in Tibet had resumed after water levels at the lake dropped slightly, then reported a new glacial slip sent about 50,000 cubic metres of ice and debris into the same lake on Friday evening, ABC News reports. The lake grew from about 2 million cubic metres on Thursday morning to about 2.5 million cubic metres by Friday evening. China had earlier warned that some 3 million more cubic metres of water was expected to flow in over three days, with peak flow expected around 1 September, ABC News reports. Both rivers are upper tributaries of the Trishuli system, so the water is running down the same corridor the 26 August flood took.',
 };
 
 /** The route the water took. Coordinates and elevations as used on the map. */
@@ -228,6 +228,8 @@ export const TIMELINE = [
   ['Friday, 28 August', "China's state media raise the Tibet side death toll to 5, from 3, ABC News reports. The missing count on the China side holds at 558."],
   ['Friday afternoon, 28 August', 'The Ministry of Energy, Water Resources and Irrigation says the camp area of the Upper Trishuli-3B hydropower project in Nuwakot has been completely buried under landslide debris. It says rescuing people there is the top priority and that rescue equipment has been flown in, Onlinekhabar reports.'],
   ['Friday evening, 28 August', "ABC News reports the barrier lake has grown rather than drained: China's Ministry of Water Resources put it at about 2 million cubic metres on Thursday morning, and by Friday evening it had grown to about 2.5 million cubic metres, with more water still forecast to flow in over the weekend."],
+  ['17:00 NPT, 28 August', 'Nepal Police raise the confirmed toll to 553 in a Friday evening bulletin posted on the force’s own website, with a district breakdown that sums to the new total: Chitwan 222, Nawalparasi East 134, Gorkha 47, Dhading 40, Nuwakot 38, Tanahun 31, Nawalparasi West 28, Rasuwa 13.'],
+  ['Friday evening, 28 August', 'David Fisher, head of delegation for the International Federation of Red Cross and Red Crescent Societies in Nepal, says at least 93,000 people have been affected by the flood and are in great need.'],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */
