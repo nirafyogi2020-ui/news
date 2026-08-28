@@ -134,7 +134,25 @@ the previous version of that card instead of guessing.
 
 ## Step 6. Build, check and publish
 
-From the repo root run:
+**First, pick up anything that was pushed while you were working.** The sandbox
+clones once, at the start of the run, and a run can take ten minutes or more.
+If somebody pushed a fix in that window, publishing your clone would put the
+old file back on the live site, and the run would report success while quietly
+undoing their work. This has actually happened: a fix to the home page was
+republished stale eight minutes after it went live.
+
+The clone also starts on a detached HEAD, so get onto the branch first:
+
+    git checkout main 2>/dev/null || true
+    git fetch origin main
+    git merge --ff-only origin/main
+
+If the fast-forward is refused, you have local edits on top of an older commit.
+Do not force anything. Merge normally (`git merge origin/main`), keep the other
+side's version of any file you did not edit yourself, and say in your report
+that you had to merge.
+
+Then, from the repo root, run:
 
     ./deploy.sh
 
