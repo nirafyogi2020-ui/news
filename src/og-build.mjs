@@ -110,23 +110,30 @@ const HEAD_STATS = [
 ];
 
 /* ---------------------------------------------------------------------------
-   Home and story.
-   ------------------------------------------------------------------------- */
-card('home', {
-  eyebrow: event.name || 'Nepal',
-  title: event.headline || 'Nepal disaster update',
-  sub: 'Live figures, the map, the helplines and the official relief fund. Every number is sourced.',
-  live: event.status === 'active',
-  stats: HEAD_STATS,
-});
+   The freshness stamp.
 
-story('home-story', {
-  eyebrow: event.name || 'Nepal',
-  title: event.headline || 'Nepal disaster update',
-  sub: 'Live figures, the map, the helplines and the official relief fund.',
-  live: event.status === 'active',
-  stats: HEAD_STATS,
-});
+   A live story gets reshared for days, and a card with no time on it looks the
+   same on day one as on day five. This is the newest real bulletin behind the
+   figures on the card, never the time the build ran, which is the same rule
+   the pages' dateModified follows. Nepal time, because that is where the
+   bulletins are issued.
+   ------------------------------------------------------------------------- */
+function stampFrom(label, ...isoTimes) {
+  const newest = isoTimes
+    .filter(Boolean)
+    .map(t => new Date(t))
+    .filter(d => !Number.isNaN(d.getTime()))
+    .sort((a, b) => b - a)[0];
+  if (!newest) return '';
+  const npt = new Date(newest.getTime() + (5 * 60 + 45) * 60 * 1000);
+  const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
+                  'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+  const h24 = npt.getUTCHours();
+  const h = h24 % 12 === 0 ? 12 : h24 % 12;
+  const m = String(npt.getUTCMinutes()).padStart(2, '0');
+  return `${label} ${npt.getUTCDate()} ${MONTHS[npt.getUTCMonth()]}, `
+    + `${h}:${m} ${h24 < 12 ? 'AM' : 'PM'} NPT`;
+}
 
 /* ---------------------------------------------------------------------------
    One per page. The page title is written for a search result, which is
@@ -151,6 +158,77 @@ const posts = existsSync(archiveDir)
   : [];
 
 const ctx = { posts, event, today, modified: event.asOf, buildDay: '' };
+
+const STAMP = stampFrom('UPDATED', event.asOf, posts[0] && posts[0].time, today && today.updated);
+
+/* ---------------------------------------------------------------------------
+   Home and story. This is the card almost every share shows, because the bare
+   domain is what people paste, so it gets the most work: a real photograph
+   from one of the briefings, the three live figures, and the time the figures
+   were last true.
+
+   The photograph is a news photograph credited to the outlet that took it. If
+   no briefing has one yet the drawn card stands in, which is the same rule the
+   briefing cards follow. This site does not illustrate a disaster with a
+   picture it made up.
+   ------------------------------------------------------------------------- */
+/* The lead picture is chosen, not taken in publication order. Two things
+   decide it and neither can be worked out from the file:
+
+   1. Newest is not best. The newest briefing is often a small development
+      story whose picture is a press conference or a map. The card wants the
+      event itself.
+   2. Most news photographs carry a burnt-in outlet logo. Where that logo sits
+      matters, because our own masthead sits in the top-left corner and a
+      broadcaster's bug landing there makes the card look like a screenshot of
+      somebody else's website. A watermark low in the frame is cropped away by
+      the 1200x630 slice; one in a top corner is not.
+
+   So this is an editor's pick, by briefing slug, most wanted first, and it
+   falls back to the newest briefing with any picture at all. Revisit it when
+   the lead story changes. Every option here is still a real, credited news
+   photograph. */
+const HOME_PHOTO_ORDER = [
+  /* ICIMOD's picture of the wrecked riverside town. It shows what happened,
+     which the meeting rooms and satellite maps in the other briefings do not,
+     and its wire watermark falls outside the 1200x630 crop. */
+  'updates-2026-08-27-cause-usgs',
+  'updates-2026-08-27-rasuwa-flood',
+  'updates-2026-08-27-damage-cost',
+];
+const homeShot =
+  HOME_PHOTO_ORDER.map(slug => loadPhoto(slug, PHOTOS)).find(Boolean)
+  || posts.map(p => loadPhoto(ogSlug(p.url), PHOTOS)).find(Boolean);
+const homeSub = 'Live figures, the map, the helplines and the official relief fund. Every number is sourced.';
+
+if (homeShot) {
+  photoCard('home', {
+    eyebrow: event.name || 'Nepal',
+    title: event.headline || 'Nepal disaster update',
+    live: event.status === 'active',
+    stats: HEAD_STATS,
+    stamp: STAMP,
+    href: photoDataUri(homeShot, PHOTOS),
+    credit: homeShot.credit,
+  });
+} else {
+  card('home', {
+    eyebrow: event.name || 'Nepal',
+    title: event.headline || 'Nepal disaster update',
+    sub: homeSub,
+    live: event.status === 'active',
+    stats: HEAD_STATS,
+    stamp: STAMP,
+  });
+}
+
+story('home-story', {
+  eyebrow: event.name || 'Nepal',
+  title: event.headline || 'Nepal disaster update',
+  sub: 'Live figures, the map, the helplines and the official relief fund.',
+  live: event.status === 'active',
+  stats: HEAD_STATS,
+});
 
 const pages = [
   P.nepalFloodHub(ctx), P.rasuwaEvent(ctx), P.liveUpdates(ctx), P.casualties(ctx),
@@ -178,6 +256,9 @@ for (const pg of pages) {
     sub: pg.description,
     live: isEvent && event.status === 'active',
     stats: isEvent ? (ne ? HEAD_STATS_NE : HEAD_STATS.slice(0, 2)) : [],
+    /* Only the pages that actually carry live figures claim to be current.
+       The about, sources and contact pages keep the standing footer. */
+    stamp: isEvent ? STAMP : '',
   });
 }
 
@@ -200,7 +281,15 @@ for (const p of posts) {
   /* Same layout with or without the photograph. With no usable source
      picture the card is simply typographic: this site does not draw its own
      illustration of a news event. */
-  const shot = { eyebrow: 'Briefing', title: p.title, href, credit: photo ? photo.credit : '' };
+  /* A briefing's stamp is that briefing's own bulletin time, not the site's
+     newest. Reshared next week it should still say when it was written. */
+  const shot = {
+    eyebrow: 'Briefing',
+    title: p.title,
+    href,
+    credit: photo ? photo.credit : '',
+    stamp: stampFrom('PUBLISHED', p.time),
+  };
   photoCard(slug, shot);
   photoThumb(`${slug}-thumb`, shot);
 
