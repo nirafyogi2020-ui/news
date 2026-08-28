@@ -8,8 +8,8 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-08-28T17:00:00+05:45",
-  "asOfSource": "Nepal Police bulletin",
+  "asOf": "2026-08-28T19:00:00+05:45",
+  "asOfSource": "Nepal Police and NDRRMA bulletins",
   "stats": [
     {
       "icon": "dead",
@@ -21,11 +21,11 @@
     },
     {
       "icon": "missing",
-      "value": "977",
+      "value": "1,924",
       "tone": "critical",
       "label": "listed missing in Nepal",
-      "bar": 98,
-      "detail": "NDRRMA put the figure at 977 people out of contact in a Friday morning update, up from 910 the evening before, 517 of them foreign nationals, reported by IANS. This figure is NDRRMA's, not the police's. Out of contact does not mean dead: phone lines, power and internet are still down across the valley."
+      "bar": 99,
+      "detail": "NDRRMA said in a Friday evening Search, Rescue and Relief update that 1,924 people are now listed out of contact in Nepal, nearly double the 977 it had given that same afternoon, up from 910 the evening before that. NDRRMA said the rise came from adding more local residents to the list, not a new wave of people going missing. The count of foreign nationals held at 517, unchanged. This figure is NDRRMA's, not the police's. Out of contact does not mean dead: phone lines, power and internet are still down across the valley."
     },
     {
       "icon": "missing",
@@ -39,7 +39,7 @@
       "value": "113",
       "label": "rescued so far",
       "bar": 30,
-      "detail": "NDRRMA reports 113 people rescued from Timure, Dhunche, Syabrubesi, Uttargaya and Bidur: 88 Nepali citizens, 11 Indian, 8 Chinese, 4 Korean and 2 American. The authority has published their names. Nepal Police separately reported 1,545 people rescued in total as of its 7am bulletin on 28 August, reported by Onlinekhabar. NDRRMA itself told ABC News on Friday afternoon that 3,253 people have now been rescued by helicopter across the flood zone, a still broader tally that has not been named or broken down. The Nepali Army said its helicopters had rescued 706 people by 3pm Friday, up from 449 at 12:20pm, including 40 foreign nationals (29 Indian, 4 German, 4 Chinese, 1 Omani and 2 South Korean), reported by Onlinekhabar. Nepal Tourism Board separately said 117 stranded tourists have been rescued from the Bhotekoshi area, reported by Onlinekhabar."
+      "detail": "NDRRMA reports 113 people rescued from Timure, Dhunche, Syabrubesi, Uttargaya and Bidur: 88 Nepali citizens, 11 Indian, 8 Chinese, 4 Korean and 2 American. The authority has published their names. Nepal Police separately reported 1,545 people rescued in total as of its 7am bulletin on 28 August, reported by Onlinekhabar. NDRRMA itself told ABC News on Friday afternoon that 3,253 people had been rescued by helicopter across the flood zone, and its Friday evening update put that broader tally at about 3,742, a figure that has not been named or broken down. The Nepali Army said its helicopters had rescued 706 people by 3pm Friday, up from 449 at 12:20pm, including 40 foreign nationals (29 Indian, 4 German, 4 Chinese, 1 Omani and 2 South Korean), reported by Onlinekhabar. Nepal Tourism Board separately said 117 stranded tourists have been rescued from the Bhotekoshi area, reported by Onlinekhabar."
     },
     {
       "icon": "power",
