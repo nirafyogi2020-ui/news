@@ -39,13 +39,20 @@ const HAZARD = [
 ];
 
 /** Words that mean the piece is about politics or money rather than an event. */
-const NOT_AN_EVENT = /\b(stocks?|shares?|markets?|election campaign|box office|transfer window|premier league|film|movie|album)\b/i;
+const NOT_AN_EVENT = /\b(stocks?|shares?|markets?|election campaign|box office|transfer window|premier league|film|movie|album|faces? (?:an )?(?:inquiry|investigation)|inquiry (?:into|over)|diverted (?:wildfire |disaster )?(?:resources?|funds?)|misused (?:wildfire |disaster )?(?:resources?|funds?))\b/i;
 
 const PRIMARY_SOURCES = ['ReliefWeb (UN OCHA)', 'GDACS (UN / EC)', 'USGS'];
 const TRUSTED_SOURCES = [
   'Al Jazeera', 'BBC News', 'The Guardian', 'France 24', 'NDTV',
   'Reuters', 'Associated Press', 'AFP'
 ];
+
+/** A headline must describe the event itself, not an investigation that happens
+ * to use a disaster word. This keeps policy stories out of the live feed. */
+export function isDisasterWireHeadline(title) {
+  const text = String(title || '').toLowerCase();
+  return !NOT_AN_EVENT.test(text) && HAZARD.some(word => text.includes(word));
+}
 
 export async function onRequestGet(context) {
   const { request } = context;
@@ -198,11 +205,7 @@ async function fetchBigQuakes() {
 async function fetchWire(url, source) {
   const xml = await getText(url);
   return parseRss(xml)
-    .filter(item => {
-      const title = String(item.title || '').toLowerCase();
-      if (NOT_AN_EVENT.test(title)) return false;
-      return HAZARD.some(word => title.includes(word));
-    })
+    .filter(item => isDisasterWireHeadline(item.title))
     .slice(0, 10)
     .map(item => ({
       title: cleanTitle(item.title),
