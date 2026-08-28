@@ -5,7 +5,7 @@
 
 import {
   SITE, SITE_NAME, CONTACT_EMAIL, page, esc, related, faqBlock, stripTags,
-  nptLong, nptDay,
+  nptLong, nptDay, ogFor,
 } from './template.mjs';
 import * as C from './content.mjs';
 
@@ -51,6 +51,8 @@ function table(head, rows, caption) {
 
 const AS_OF_TOLL = nptLong(C.TOLL_AS_OF);
 const AS_OF_MISSING = nptLong(C.MISSING_AS_OF);
+const AS_OF_BODIES = nptLong(C.BODIES_AS_OF);
+const AS_OF_MISSING_BREAKDOWN = nptLong(C.MISSING_BREAKDOWN_AS_OF);
 const AS_OF_SITREP = nptLong(C.SITREP_AS_OF);
 
 const bylineLive = (modified) =>
@@ -72,8 +74,8 @@ const EMERGENCY_STRIP = `<div class="callout callout-alert">
 
 function numbersGrid() {
   return `<div class="numgrid">
-    <div class="statbox"><span class="n crit">${C.TOLL.deadNepal}</span><span class="l">confirmed dead in Nepal</span><span class="src">Nepal Police, ${esc(AS_OF_TOLL)}</span></div>
-    <div class="statbox"><span class="n crit">${C.TOLL.missing}</span><span class="l">listed missing in Nepal</span><span class="src">Nepal Police, ${esc(AS_OF_MISSING)}</span></div>
+    <div class="statbox"><span class="n crit">${C.TOLL.deadNepal}</span><span class="l">confirmed dead in Nepal</span><span class="src">${esc(C.TOLL_SOURCE)}, ${esc(AS_OF_TOLL)}</span></div>
+    <div class="statbox"><span class="n crit">${C.TOLL.missing}</span><span class="l">listed missing in Nepal</span><span class="src">${esc(C.MISSING_SOURCE)}, ${esc(AS_OF_MISSING)}</span></div>
     <div class="statbox"><span class="n">${C.TOLL.missingChina}</span><span class="l">missing on the China side</span><span class="src">CCTV, Gyirong Port</span></div>
     <div class="statbox"><span class="n">${C.TOLL.injured}</span><span class="l">injured</span><span class="src">NDRRMA and Nepal Police</span></div>
     <div class="statbox"><span class="n">${C.TOLL.rescued}</span><span class="l">rescued so far</span><span class="src">NDRRMA, 27 Aug</span></div>
@@ -81,7 +83,7 @@ function numbersGrid() {
     <div class="statbox"><span class="n sm">${esc(C.DAMAGE.costEstimate)}</span><span class="l">road and bridge damage, preliminary</span><span class="src">Minister Sunil Lamsal, 26 Aug</span></div>
     <div class="statbox"><span class="n sm">${esc(C.DAMAGE.reliefReleased)}</span><span class="l">relief money released</span><span class="src">Government of Nepal</span></div>
   </div>
-  <p class="updated-line"><strong>Read the two headline numbers against their own clocks.</strong> The death toll is from the Nepal Police bulletin of ${esc(AS_OF_TOLL)}. The missing figure is from the earlier police bulletin of ${esc(AS_OF_MISSING)}. The newest bulletin gives a death toll and no missing count, so some of the ${C.TOLL.missing} have since been confirmed among the dead. Damage and rescue figures come from the ${esc(C.SITREP_SHORT)}. Every count here is provisional and moves in both directions.</p>`;
+  <p class="updated-line"><strong>Read every number against its own clock.</strong> The death toll and the missing count are from the ${esc(C.TOLL_SOURCE)} of ${esc(AS_OF_TOLL)}. The district breakdown further down is from the earlier ${esc(C.BODIES_SOURCE)} of ${esc(AS_OF_BODIES)} and adds to less than the total above, because the later update raised the national figure without republishing every district. Damage and rescue figures come from the ${esc(C.SITREP_SHORT)}. Every count here is provisional and moves in both directions.</p>`;
 }
 
 const SECOND_FLOOD_WARNING = `<div class="callout callout-alert">
@@ -130,6 +132,8 @@ ${SECOND_FLOOD_WARNING}
   <li><a href="/nepal-flood/rasuwa/"><b>Rasuwa flood 2026: the full briefing</b><span>Event overview</span></a></li>
   <li><a href="/nepal-flood/rasuwa/live-updates/"><b>Live updates</b><span>Newest first</span></a></li>
   <li><a href="/nepal-flood/rasuwa/casualties/"><b>Casualties: ${C.TOLL.deadNepal} dead, district by district</b><span>Death toll</span></a></li>
+  <li><a href="/nepal-flood/rasuwa/foreign-nationals/"><b>Foreign nationals missing, and who families should call</b><span>For families abroad</span></a></li>
+  <li><a href="/nepal-flood/rasuwa/hydropower/"><b>Hydropower damage: ${C.DAMAGE.hydropowerProjects} projects, ${C.DAMAGE.hydropowerMW} MW</b><span>Energy</span></a></li>
   <li><a href="/nepal-flood/rasuwa/missing-persons/"><b>Missing persons: ${C.TOLL.missing} listed, and how to report one</b><span>Missing</span></a></li>
   <li><a href="/nepal-flood/rasuwa/timeline/"><b>Timeline, hour by hour</b><span>Chronology</span></a></li>
   <li><a href="/nepal-flood/rasuwa/cause/"><b>What caused the flood</b><span>GLOF, avalanche or quake</span></a></li>
@@ -261,12 +265,13 @@ ${C.CAUSES.filter(c => c.rank !== 'Ruled out').map(c => `<li><strong>${esc(c.tit
 
 <h2>Damage</h2>
 <p>The Nepal Electricity Authority reports <strong>${C.DAMAGE.hydropowerProjects} hydropower projects damaged</strong> along the corridor, with a combined capacity of about <strong>${C.DAMAGE.hydropowerMW} MW</strong>: ${C.DAMAGE.hydropowerOperational} operating plants (${C.DAMAGE.hydropowerOperationalMW} MW) and ${C.DAMAGE.hydropowerUnderConstruction} under construction (${C.DAMAGE.hydropowerUnderConstructionMW} MW). The Department of Roads confirms the entire <strong>${C.DAMAGE.roadDestroyedKm} km road from Betrawati to the Rasuwagadhi crossing</strong> was destroyed at multiple points, including several concrete bridges, cutting Nepal’s main overland trade and pilgrimage route to Tibet.</p>
+<p><a href="/nepal-flood/rasuwa/hydropower/">The hydropower damage in detail</a>, project by project, and what it means for supply.</p>
 <p>Physical Infrastructure Minister Sunil Lamsal put road and bridge damage alone at about <strong>${esc(C.DAMAGE.costEstimate)}</strong> on 26 August, and called the figure preliminary. Hydropower and private property are not in it.</p>
 <p><a href="/nepal-flood/rasuwa/damage/">See the full damage assessment</a>, project by project.</p>
 
 <h2>Who is missing, and what that number means</h2>
 <p>Nepal Police listed <strong>${C.TOLL.missing} people missing</strong> in their ${esc(AS_OF_MISSING)} bulletin. That figure is a contact list, not a casualty list: phone lines, power and internet are down across the valley and are coming back slowly, so being out of contact does not mean dead. It is also older than the death toll above, so some of these ${C.TOLL.missing} are among the ${C.TOLL.deadNepal} since confirmed dead. Nepal Police have not published a revised missing figure alongside the newer toll.</p>
-${table(['Group', 'Listed missing'], C.MISSING_BREAKDOWN.map(([k, v]) => [esc(k), v]), `Nepal Police breakdown, ${esc(AS_OF_MISSING)}.`)}
+${table(['Group', 'Listed missing'], C.MISSING_BREAKDOWN.map(([k, v]) => [esc(k), v]), `Nepal Police breakdown of the ${C.MISSING_BREAKDOWN_TOTAL} on the list at ${esc(AS_OF_MISSING_BREAKDOWN)}. The current total of ${C.TOLL.missing} is later and has not been broken down.`)}
 <p>Most of the missing foreign travellers were moving toward the Kailash Mansarovar pilgrimage route through Tibet. Chinese state media separately report ${C.TOLL.missingChina} people missing around Gyirong Port on the Tibet side, ${C.TOLL.missingChinaForeign} of them foreign nationals.</p>
 <p><a href="/nepal-flood/rasuwa/missing-persons/">How to report someone missing</a>, including the cross-border and foreign-national routes.</p>
 
@@ -331,6 +336,9 @@ ${faq.html}
           '@id': `${SITE}${path}#event`,
           name: '2026 Rasuwa flash flood',
           alternateName: 'Bhote Koshi-Trishuli flash flood',
+          /* Recommended by Google for an Event; without it the item is valid
+             but reported as incomplete. */
+          image: [`${SITE}/og-image.png`],
           startDate: '2026-08-26T09:00:00+05:45',
           eventStatus: 'https://schema.org/EventScheduled',
           eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
@@ -384,7 +392,7 @@ ${numbersGrid()}
 <p>The flood started in Rasuwa, but the river carried people a long way downstream. Most bodies have been recovered in <strong>Chitwan</strong>, six districts below the source. A district in the table below is where a body was <em>found</em>, not where the person was from.</p>
 ${table(['District', 'Bodies recovered'], C.BODIES_BY_DISTRICT.map(([d, n]) => [esc(d), n]).concat([
     ['<strong>Total, Nepal</strong>', `<strong class="num">${totalListed}</strong>`],
-  ]), `${esc(C.TOLL_SOURCE)}, ${esc(AS_OF_TOLL)}.`)}
+  ]), `${esc(C.BODIES_SOURCE)}, ${esc(AS_OF_BODIES)}. This is the last complete district breakdown; the national total above is later and higher.`)}
 <p>The Armed Police Force reported <strong>${C.TOLL.narayaniRecovered} bodies recovered from the Narayani river alone</strong> by Thursday afternoon. That is more than the entire national toll stood at 24 hours earlier. Chitwan’s mortuary has filled, and an identification centre is being set up.</p>
 <p>A further <strong>${C.TOLL.deadChina} deaths</strong> are confirmed on the Chinese side, near Gyirong (Kyirong) county just over the border from Rasuwagadhi, where the dry port and customs area were hit. That brings the confirmed total across both countries to <strong>${C.TOLL.deadNepal + C.TOLL.deadChina}</strong>.</p>
 
@@ -472,7 +480,7 @@ export function missingPersons(ctx) {
 
 <h2>Who is on the missing list</h2>
 <p>Nepal Police listed <strong>${C.TOLL.missing} people</strong> missing in Nepal in their bulletin of ${esc(AS_OF_MISSING)}.</p>
-${table(['Group', 'Listed missing'], C.MISSING_BREAKDOWN.map(([k, v]) => [esc(k), v]).concat([['<strong>Total</strong>', `<strong class="num">${C.TOLL.missing}</strong>`]]), `Nepal Police, ${esc(AS_OF_MISSING)}.`)}
+${table(['Group', 'Listed missing'], C.MISSING_BREAKDOWN.map(([k, v]) => [esc(k), v]).concat([['<strong>Total on that list</strong>', `<strong class="num">${C.MISSING_BREAKDOWN_TOTAL}</strong>`]]), `Nepal Police, ${esc(AS_OF_MISSING_BREAKDOWN)}. The list has since been restated at ${C.TOLL.missing} by ${esc(C.MISSING_SOURCE)} without a new breakdown.`)}
 
 <h3>Where the missing travellers were from</h3>
 <p>Of the 579 travellers on the list, 466 are foreign nationals and 113 are Nepali. Most of the foreign travellers were moving toward the <strong>Kailash Mansarovar pilgrimage route</strong> through Tibet, which runs through the Rasuwagadhi crossing.</p>
@@ -1007,6 +1015,15 @@ ${SECOND_FLOOD_WARNING}
           datePublished: '2026-08-26T12:00:00+05:45',
           dateModified: ctx.modified,
           coverageStartTime: '2026-08-26T09:00:00+05:45',
+          /* Live coverage has to declare an end time, and while it is still
+             running that time has to be in the future or the page reads to a
+             crawler as coverage that already finished. It is set three days
+             past the newest bulletin and moves with it; when the bulletins
+             stop, it stops, and the coverage correctly closes itself. */
+          coverageEndTime: new Date(new Date(ctx.modified).getTime() + 3 * 86400 * 1000).toISOString(),
+          /* The one-paragraph "what is this event" a reader needs when an
+             update reaches them on its own. */
+          backstory: (ctx.event && ctx.event.lede) || 'A flash flood came down the Bhote Koshi from Tibet into Rasuwa district, Nepal, on 26 August 2026.',
           author: ORG,
           publisher: ORG,
           mainEntityOfPage: { '@id': `${SITE}${path}#webpage` },
@@ -1231,7 +1248,8 @@ ${C.HAZARDS.map(h => `
   <div class="card"><h3>Warning signs</h3><p>${esc(h.signs)}</p></div>
   <div class="card"><h3>What to do</h3><p>${esc(h.todo)}</p></div>
   <div class="card"><h3>Nepal’s exposure</h3><p>${esc(h.exposure)}</p></div>
-</div>`).join('\n')}
+</div>
+<p><a class="more-link" href="/nepal-disasters/${h.slug}/">${esc(h.name)}: the full page, with the warning signs in order and the common questions answered &rsaquo;</a></p>`).join('\n')}
 
 <h2>If you live near a mountain river</h2>
 <div class="checklist">
@@ -1367,7 +1385,12 @@ ${sources}
 
   const first = stripTags(post.body[0] || post.title);
   const d = first.length > 165 ? first.slice(0, 162).replace(/\s+\S*$/, '') + '…' : first;
-  const t = post.title.length > 46 ? post.title : `${post.title} | ${SITE_NAME}`;
+  /* Google cuts a title around 60 to 70 characters and the audit refuses
+     anything over 75, so a long briefing headline is trimmed at a word
+     boundary rather than being published and failing the deploy. */
+  const t = post.title.length > 46
+    ? (post.title.length > 75 ? post.title.slice(0, 74).replace(/\s+\S*$/, '') + '\u2026' : post.title)
+    : `${post.title} | ${SITE_NAME}`;
   return {
     path, title: t, description: d, lastmod: nptDay(post.time), priority: '0.7', changefreq: 'weekly',
     html: page({
@@ -1394,7 +1417,7 @@ ${sources}
         author: ORG,
         publisher: ORG,
         mainEntityOfPage: { '@id': `${SITE}${path}#webpage` },
-        image: [`${SITE}/og-image.png`],
+        image: [ogFor(path)],
         about: EVENT_ABOUT,
         ...(post.sources && post.sources.length
           ? { citation: post.sources.map(s => ({ '@type': 'CreativeWork', name: s.name, url: s.url })) }
@@ -1605,4 +1628,218 @@ ${EMERGENCY_STRIP}
     body,
     head: '<meta name="robots" content="noindex, follow">',
   }).replace('<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">', '');
+}
+
+/* -- 18. Hazard detail pages, /nepal-disasters/<slug>/ -----------------------
+   The hub at /nepal-disasters/ carries one paragraph per hazard and links
+   here. Each hazard then gets a page of its own, because "what do I do in a
+   landslide" and "what do I do in an earthquake" are different questions asked
+   by different people, and one page answering five of them serves none of them
+   properly. The long copy lives in content.mjs so the hub cannot repeat it.
+   ------------------------------------------------------------------------- */
+export function hazardPage(hazard, ctx) {
+  const d = C.HAZARD_PAGES[hazard.slug];
+  const path = `/nepal-disasters/${hazard.slug}/`;
+  const faq = faqBlock(d.faq.map(([q, a]) => ({ q, a: `<p>${esc(a)}</p>` })));
+  const siblings = C.HAZARDS.filter(h => h.slug !== hazard.slug);
+
+  const body = `
+${d.long.map(p => `<p class="measure">${esc(p)}</p>`).join('\n')}
+
+<h2>Warning signs</h2>
+<div class="checklist">
+${d.signsLong.map((s, i) => `<div class="check-row"><span class="mark">${String(i + 1).padStart(2, '0')}</span><p>${esc(s)}</p></div>`).join('\n')}
+</div>
+
+<h2>What to do</h2>
+<div class="checklist">
+${d.todoLong.map((s, i) => `<div class="check-row"><span class="mark">${String(i + 1).padStart(2, '0')}</span><p>${esc(s)}</p></div>`).join('\n')}
+</div>
+
+<h2>Where Nepal stands</h2>
+<p class="measure">${esc(hazard.exposure)}</p>
+
+<h2>Common questions</h2>
+${faq.html}
+
+<h2>Emergency numbers</h2>
+<p class="measure">Police <a href="tel:100">100</a>. Ambulance <a href="tel:102">102</a>. Nepal's disaster hotline <a href="tel:1149">1149</a>. The <a href="/nepal-flood/emergency-numbers/">full list, including district control rooms and embassies</a>, is worth saving before you need it.</p>
+
+<h2>The other four hazards</h2>
+<ul class="linklist">
+${siblings.map(h => `  <li><a href="/nepal-disasters/${h.slug}/"><b>${esc(h.name)}</b><span>${esc(h.summary.split('.')[0])}</span></a></li>`).join('\n')}
+</ul>
+`;
+
+  return {
+    path, title: d.title, description: d.description,
+    lastmod: ctx.buildDay, priority: '0.7', changefreq: 'monthly',
+    html: page({
+      path, title: d.title, description: d.description,
+      h1: d.h1,
+      lede: d.lede,
+      crumbs: [{ label: 'Home', href: '/' }, { label: 'Nepal disaster guide', href: '/nepal-disasters/' }, { label: hazard.name }],
+      published: '2026-08-27T12:00:00+05:45',
+      modified: ctx.modified,
+      updatedNote: `<b>${esc(SITE_NAME)}</b><span>Evergreen reference, not tied to one event</span><span>Reviewed ${esc(nptLong(ctx.modified, false))}</span>`,
+      body: body + related('Related', [
+        { href: '/nepal-disasters/', title: 'All five hazards', text: 'The short version of each, in one place.', verb: 'the guide' },
+        { href: '/nepal-flood/rasuwa/', title: 'The flood happening now', text: 'A live example of what this page describes.', verb: 'the coverage' },
+        { href: '/nepal-flood/emergency-numbers/', title: 'Emergency numbers', text: 'Police, ambulance, disaster hotline, district control rooms.', verb: 'the numbers' },
+      ]),
+      schema: [
+        articleNode({ path, headline: d.h1, description: d.description, published: '2026-08-27T12:00:00+05:45', modified: ctx.modified }),
+        faq.node,
+      ],
+    }),
+  };
+}
+
+export function hazardPages(ctx) {
+  return C.HAZARDS.map(h => hazardPage(h, ctx));
+}
+
+/* -- 19. /nepal-flood/rasuwa/hydropower/ -------------------------------------
+   The energy damage is its own story with its own audience: people asking
+   whether the lights are going out, and people who own shares in these
+   projects. It was a section on the damage page and kept getting lost there.
+   ------------------------------------------------------------------------- */
+export function hydropower(ctx) {
+  const path = '/nepal-flood/rasuwa/hydropower/';
+  const faq = faqBlock([
+    { q: 'How many hydropower projects were damaged in the Rasuwa flood?',
+      a: `<p>The Nepal Electricity Authority reports ${C.DAMAGE.hydropowerProjects} projects damaged, with a combined capacity of about ${C.DAMAGE.hydropowerMW} MW: ${C.DAMAGE.hydropowerOperational} operating plants totalling ${C.DAMAGE.hydropowerOperationalMW} MW and ${C.DAMAGE.hydropowerUnderConstruction} under construction totalling ${C.DAMAGE.hydropowerUnderConstructionMW} MW.</p>` },
+    { q: 'Will there be load shedding in Nepal because of this?',
+      a: '<p>The Nepal Electricity Authority has not announced scheduled load shedding as a result. Losing this much capacity at once puts real strain on supply, and a damaged 220 kV substation limits how much of the remaining generation on that corridor can be evacuated even where the plant itself survived. Watch the authority’s own notices rather than social media for this.</p>' },
+    { q: 'Why do so many of Nepal’s hydropower plants sit in the flood path?',
+      a: '<p>Run-of-river schemes need a steep river, and a steep river in Nepal means a narrow valley. The powerhouse, the headworks and the access road all end up beside the water because there is nowhere else to put them. That is efficient in normal years and catastrophic in this kind of event.</p>' },
+    { q: 'Are the figures final?',
+      a: `<p>No. An earlier estimate the same day, from the Ministry of Energy, put the loss at ${C.DAMAGE.hydropowerEarlierEstimateMW} MW. Both figures were published on 27 August 2026, which is a fair measure of how provisional every damage number is at this stage.</p>` },
+  ]);
+
+  const body = `
+<div class="callout">
+  <p class="callout-title">The short version</p>
+  <p>${C.DAMAGE.hydropowerProjects} projects hit. About ${C.DAMAGE.hydropowerMW} MW of capacity affected. The transmission substation that moves power off this corridor is damaged too, so the loss is larger than the sum of the plants.</p>
+</div>
+
+<h2>What was damaged</h2>
+<p class="measure">The Nepal Electricity Authority reports ${C.DAMAGE.hydropowerProjects} hydropower projects damaged along the Bhote Koshi and Trishuli corridor, with a combined capacity of about ${C.DAMAGE.hydropowerMW} MW. Of those, ${C.DAMAGE.hydropowerOperational} were operating and generating, totalling ${C.DAMAGE.hydropowerOperationalMW} MW, and ${C.DAMAGE.hydropowerUnderConstruction} were still under construction, totalling ${C.DAMAGE.hydropowerUnderConstructionMW} MW.</p>
+
+${table(['Project', 'District', 'What happened'], C.DAMAGE.hydropower.map(([n, dist, note]) => [esc(n), esc(dist), esc(note)]),
+  `Nepal Electricity Authority, reported through the ${esc(C.SITREP_SHORT)}. Named projects only; the full count is ${C.DAMAGE.hydropowerProjects}.`)}
+
+<h2>The substation matters more than it sounds</h2>
+<p class="measure">A damaged 220 kV substation is not one plant going offline. It is the road the electricity uses. Generation on that corridor that survived the flood may still not reach the grid until the substation is back, which is why the useful figure is the corridor total rather than any single plant.</p>
+
+<h2>Why the plants were where the water went</h2>
+<p class="measure">Almost all of these are run-of-river schemes. They need fall, which means a steep valley, and in a steep valley the powerhouse, the intake, the penstock and the access road all sit beside the river because there is no other flat ground. The same geography that makes the power cheap put every part of it in the path of the flood.</p>
+
+<h2>What this does to the wider picture</h2>
+<p class="measure">Nepal exports power to India in the wet season and imports in the dry season. Losing capacity in August, at the top of the wet season, hits the exporting half of that arrangement first. The rebuild timeline for a washed-out headworks in a valley whose access road no longer exists is measured in years, not months: the ${C.DAMAGE.roadDestroyedKm} km road from Betrawati to the border was destroyed at multiple points, and everything has to reach the site by that road eventually.</p>
+
+<h2>Common questions</h2>
+${faq.html}
+`;
+
+  const t = 'Rasuwa Flood Hydropower Damage: 14 Projects and 748 MW Affected';
+  const d = `The Nepal Electricity Authority reports ${C.DAMAGE.hydropowerProjects} hydropower projects damaged by the Rasuwa flood, about ${C.DAMAGE.hydropowerMW} MW in total, along with a 220 kV substation. Which projects, and what it means for supply.`;
+  return {
+    path, title: t, description: d, lastmod: ctx.buildDay, priority: '0.7', changefreq: 'daily',
+    html: page({
+      path, title: t, description: d,
+      h1: 'Hydropower damage from the Rasuwa flood',
+      lede: `${C.DAMAGE.hydropowerProjects} projects on the Bhote Koshi and Trishuli corridor were damaged, with about ${C.DAMAGE.hydropowerMW} MW of capacity affected. Here is the list and what it means.`,
+      crumbs: [{ label: 'Home', href: '/' }, { label: 'Nepal floods', href: '/nepal-flood/' }, { label: 'Rasuwa flood', href: '/nepal-flood/rasuwa/' }, { label: 'Hydropower' }],
+      published: '2026-08-27T10:00:00+05:45',
+      modified: ctx.modified,
+      statusPill: 'live',
+      updatedNote: `<b>${esc(SITE_NAME)}</b><span>Source: ${esc(C.SITREP_SHORT)}</span><span>Figures are provisional</span>`,
+      body: body + related('Related', [
+        { href: '/nepal-flood/rasuwa/damage/', title: 'All the damage', text: 'Roads, bridges, banks, the border crossing and the cost estimate.', verb: 'the damage page' },
+        { href: '/nepal-flood/rasuwa/', title: 'Full event briefing', text: 'Everything confirmed about the Rasuwa flood in one page.', verb: 'the briefing' },
+        { href: '/nepal-flood/rasuwa/map/', title: 'The map', text: 'Where each of these sites is on the river.', verb: 'the map' },
+      ]),
+      schema: [
+        articleNode({ path, type: 'NewsArticle', headline: 'Hydropower damage from the Rasuwa flood', description: d, published: '2026-08-27T10:00:00+05:45', modified: ctx.modified }),
+        faq.node,
+      ],
+    }),
+  };
+}
+
+/* -- 20. /nepal-flood/rasuwa/foreign-nationals/ ------------------------------
+   Most of the people on the missing list are not Nepali, and their families
+   are searching in other countries, in other languages, for something that
+   tells them who to call. Nothing on this site was written for them.
+   ------------------------------------------------------------------------- */
+export function foreignNationals(ctx) {
+  const path = '/nepal-flood/rasuwa/foreign-nationals/';
+  const faq = faqBlock([
+    { q: 'How many foreign nationals are missing in the Rasuwa flood?',
+      a: `<p>Nepal Police listed ${C.TOLL.missingChinaForeign ? '' : ''}466 foreign nationals among the travellers on its morning list of ${C.MISSING_BREAKDOWN_TOTAL}. Chinese state media separately report ${C.TOLL.missingChinaForeign} foreign nationals among the ${C.TOLL.missingChina} missing on the Tibet side of the border. The two counts may overlap, because a traveller crossing at Rasuwagadhi could be recorded by either country.</p>` },
+    { q: 'My relative was trekking in Langtang or crossing to Tibet. Who do I call?',
+      a: '<p>Your own country’s embassy or consulate for Nepal first, because they can query the Nepali authorities on your behalf and they will already be doing it for other families. Then the trekking agency or tour operator, who hold the permit records. The <a href="/nepal-flood/emergency-numbers/">emergency numbers page</a> lists the embassy contacts and the police channels.</p>' },
+    { q: 'What does "out of contact" mean here?',
+      a: '<p>It means nobody has been able to reach that person. Mobile networks, power and internet are down across the affected valley and are being restored slowly. People have been coming back into contact for days after the flood. Out of contact is not a casualty figure and must not be read as one.</p>' },
+    { q: 'Is there an official list of names?',
+      a: '<p>NDRRMA has published the names of people rescued. There is no published official list of the missing, and this site does not republish names from social media. Report a missing person through the police channels on the <a href="/nepal-flood/rasuwa/missing-persons/">missing persons page</a> rather than to us.</p>' },
+  ]);
+
+  const body = `
+<div class="callout callout-alert">
+  <p class="callout-title">If you are looking for someone</p>
+  <p>Contact your country's embassy for Nepal first, then the tour or trekking operator who holds the permit. Report the person through the official channels on the <a href="/nepal-flood/rasuwa/missing-persons/">missing persons page</a>. Do not rely on lists circulating on social media, which have been wrong in both directions.</p>
+</div>
+
+<h2>Why so many of the missing are not Nepali</h2>
+<p class="measure">The flood came down the Bhote Koshi at Timure and Rasuwagadhi, which is Nepal's main overland crossing to Tibet and the road to the Langtang trekking region. On any given morning that road carries traders, pilgrims, tour groups and trekkers from a long list of countries. The people on it were not residents of the valley, which is why so many of them are counted as travellers rather than as residents of Rasuwa.</p>
+
+<h2>What the two countries have published</h2>
+<p class="measure">The morning Nepal Police bulletin of ${esc(AS_OF_MISSING_BREAKDOWN)} broke its list of ${C.MISSING_BREAKDOWN_TOTAL} into groups, of which travellers were by far the largest at 579, and said 466 of those travellers were foreign nationals. Chinese state media report ${C.TOLL.missingChina} people missing around Gyirong Port on the Tibet side, ${C.TOLL.missingChinaForeign} of them foreign nationals. Nepal has since restated its own total at ${C.TOLL.missing} without republishing the breakdown.</p>
+<p class="measure">Adding the two national figures together gives a number over thirteen hundred, and that is the figure most international coverage has used. It should be read with care: the two countries may be counting some of the same people, since a traveller who crossed the border that morning could appear on either side's list.</p>
+
+<h2>Among the rescued</h2>
+${table(['Nationality', 'Rescued'], C.TOLL.rescuedBreakdown.map(([k, v]) => [esc(k), v]).concat([
+    ['<strong>Total</strong>', `<strong class="num">${C.TOLL.rescued}</strong>`],
+  ]), `NDRRMA, which has published the names of those rescued.`)}
+
+<h2>Embassies and consular help</h2>
+<p class="measure">A consular section is the right first call for a family outside Nepal. They can ask the Nepali authorities questions that an individual cannot, they are already in contact with the police and NDRRMA about this event, and they can help with documents if someone has lost everything. Contact details for the missions in Kathmandu are on the <a href="/nepal-flood/emergency-numbers/">emergency numbers page</a>.</p>
+
+<h2>What not to do</h2>
+<div class="checklist">
+  <div class="check-row"><span class="mark">01</span><p>Do not treat a name on a social media list as confirmation of anything, in either direction. Several of those lists have named people who were later found safe.</p></div>
+  <div class="check-row"><span class="mark">02</span><p>Do not send money to anyone who contacts you claiming they can find a specific person. Disasters attract this.</p></div>
+  <div class="check-row"><span class="mark">03</span><p>Do not travel to the affected valley to search. The road is destroyed, the helicopters are needed for rescue, and one more person in the valley is one more person to account for.</p></div>
+</div>
+
+<h2>Common questions</h2>
+${faq.html}
+`;
+
+  const t = 'Rasuwa Flood: Foreign Nationals Missing, and Who Families Should Call';
+  const d = 'Most of the people missing in the 2026 Rasuwa flood were travellers, and hundreds are foreign nationals. What Nepal and China each published, and the right first call for a family abroad.';
+  return {
+    path, title: t, description: d, lastmod: ctx.buildDay, priority: '0.8', changefreq: 'daily',
+    html: page({
+      path, title: t, description: d,
+      h1: 'Foreign nationals missing in the Rasuwa flood',
+      lede: 'Hundreds of the people unaccounted for were travellers crossing the border or trekking. This page is for the families searching from outside Nepal.',
+      crumbs: [{ label: 'Home', href: '/' }, { label: 'Nepal floods', href: '/nepal-flood/' }, { label: 'Rasuwa flood', href: '/nepal-flood/rasuwa/' }, { label: 'Foreign nationals' }],
+      published: '2026-08-27T10:00:00+05:45',
+      modified: ctx.modified,
+      statusPill: 'live',
+      updatedNote: `<b>${esc(SITE_NAME)}</b><span>Figures from Nepal Police, NDRRMA and Chinese state media</span><span>Provisional and moving</span>`,
+      body: body + related('Related', [
+        { href: '/nepal-flood/rasuwa/missing-persons/', title: 'Reporting a missing person', text: 'The official channels, and what information they need from you.', verb: 'the process' },
+        { href: '/nepal-flood/emergency-numbers/', title: 'Emergency and embassy numbers', text: 'Police, disaster hotline, district control rooms and consular contacts.', verb: 'the numbers' },
+        { href: '/nepal-flood/rasuwa/casualties/', title: 'Confirmed figures', text: 'The toll, the district breakdown and what each number actually counts.', verb: 'the figures' },
+      ]),
+      schema: [
+        articleNode({ path, type: 'NewsArticle', headline: 'Foreign nationals missing in the Rasuwa flood', description: d, published: '2026-08-27T10:00:00+05:45', modified: ctx.modified }),
+        faq.node,
+      ],
+    }),
+  };
 }

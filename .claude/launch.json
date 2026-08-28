@@ -3,12 +3,16 @@
   "configurations": [
     {
       "name": "dev",
-      "runtimeExecutable": "npm",
+      "runtimeExecutable": "npx",
       "runtimeArgs": [
-        "run",
-        "dev"
+        "wrangler",
+        "pages",
+        "dev",
+        ".",
+        "--port",
+        "8788"
       ],
-      "port": 3000
+      "port": 8788
     }
   ]
 }

@@ -37,9 +37,9 @@
 
 import { loadPoliceNews } from './police.js';
 
-const CACHE_SECONDS = 120;
+const CACHE_SECONDS = 60;
 /* Videos get their own, far longer cache clock; see fetchYoutube. */
-const YT_FRESH_SECONDS = 10800;   // 3 hours
+const YT_FRESH_SECONDS = 5400;    // 90 minutes
 const YT_BACKUP_SECONDS = 86400;  // 24 hours
 /** Card summaries: keep the full text each feed publishes, cleaned to plain
  *  text, capped only to keep one card from running very long. */
@@ -144,7 +144,9 @@ export async function onRequestGet(context) {
   // older than the newest press wire — a straight chronological cap would
   // otherwise let a wave of fresh wire stories quietly bury the one Nepal
   // Police update for the day.
-  const videos = items.filter(i => i.kind === 'video').slice(0, 60);
+  /* The Watch tab is a grid people scroll, so it gets the whole de-duplicated
+     result rather than the first screenful. */
+  const videos = items.filter(i => i.kind === 'video').slice(0, 150);
   const officialFirst = items.filter(i => i.kind !== 'press' && i.kind !== 'video');
   const pressOnly = items.filter(i => i.kind === 'press');
   const finalItems = spread(officialFirst.concat(pressOnly).slice(0, 100)).concat(videos);
@@ -385,10 +387,17 @@ function cachedJson(data, seconds) {
    by video id. Each search costs 100 quota units, so the fresh cache runs
    on an hour rather than half an hour: 24 refreshes x 301 units is about
    7,200 of the 10,000 free units a day. */
+/* Five searches, not three. Three returned about sixty clips and the tab ran
+   out well before a reader did. Each search costs 100 quota units and the free
+   allowance is 10,000 a day, so the fresh cache runs on 90 minutes: 16
+   refreshes x 501 units is about 8,000 units, inside the allowance with room
+   for the odd cold start. */
 const YT_QUERIES = [
   'Rasuwa Bhotekoshi Trishuli flood Nepal',
   'Nepal flash flood Rasuwa rescue news',
-  'रसुवा बाढी नेपाल'
+  'रसुवा बाढी नेपाल',
+  'Nepal flood latest news today',
+  'नेपाल बाढी पहिरो समाचार'
 ];
 
 async function searchYoutube(key) {

@@ -21,11 +21,11 @@
     },
     {
       "icon": "missing",
-      "value": "826",
+      "value": "910",
       "tone": "critical",
       "label": "listed missing in Nepal",
-      "bar": 82,
-      "detail": "From the earlier Nepal Police bulletin at 8:15am on 27 August: 579 travellers (466 of them foreign nationals), 161 Rasuwa residents, 44 Nepali Army, 28 Nepal Police, 13 Armed Police Force and one Nuwakot resident. This figure is older than the death toll above, so some of these people are among the 389 since confirmed dead. Police have not published a revised total. Nepal's tourism board separately said at noon on 27 August that 644 travellers, 517 of them foreign nationals, are missing, but has not given a new overall total."
+      "bar": 91,
+      "detail": "NDRRMA lists 910 people out of contact in its 6:20pm update on 27 August, up from 826 that morning, 570 of them tourists. Nepal's tourism board says 517 of the missing are foreign nationals from 33 countries. This figure is newer than the police toll above and is NDRRMA's, not the police's. Out of contact does not mean dead: phone lines, power and internet are down across the valley."
     },
     {
       "icon": "missing",

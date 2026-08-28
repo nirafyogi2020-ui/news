@@ -30,6 +30,12 @@ fix what it names and run it again.
 | Casualty, damage and cause figures used across all the article pages | `src/content.mjs` |
 | Nepali page wording | `src/content-ne.mjs` and `src/pages-ne.mjs` |
 
+**A new figure goes in all three of the first three files, in the same run.**
+`today.json` alone is not enough. The counters under the hero come from
+`event.json`, and the same figures on about twenty article pages come from
+`src/content.mjs`. Updating only the cards is what left the site showing 289
+dead at the top of the page and 359 further down.
+
 `src/content.mjs` is the one that matters most. `TOLL`, `BODIES_BY_DISTRICT`,
 `DAMAGE`, `TIMELINE` and `CAUSES` there feed roughly twenty pages in two
 languages at once. Change the number there and it changes everywhere, together
@@ -79,6 +85,59 @@ daily blob. If two things are genuinely separate news, they are two cards.
 
 7. Validate, then run `./deploy.sh` (generator + audit + publish), then
    commit and push. Never deploy with wrangler directly.
+
+## Staying first in search — what every run must also do
+
+A breaking disaster query is ranked partly on freshness. Google looks for the
+page that changed most recently and has live coverage markup on it. Everything
+below is what keeps that true. Most of it is automatic, but two steps are not,
+and they are the two that matter.
+
+**1. Bump `event.json` whenever an official figure changes.** The home page
+title, the meta description, the share card and the hero figures are all
+generated from `event.json`. If Nepal Police publish a new toll and you update
+only `today.json`, the search result still shows yesterday's number and loses
+the click to whoever printed the new one. Update `stats`, `asOf` and
+`asOfSource` in the same run, then rebuild.
+
+**2. Publish a micro-update when a figure moves, even with no full story.**
+A card does not have to be a long piece. Two or three sentences with a named
+source and a time is a legitimate update, and it is what keeps the live ticker
+and the news sitemap moving between the bigger briefings. Examples of things
+worth a micro-update on their own: a new police bulletin, a road or highway
+reopening, a hydropower plant back online, a barrier-lake warning lifted, a
+confirmed rescue count, a relief fund total.
+
+**Never manufacture freshness.** Do not re-timestamp a card that has not
+changed, do not write a card that says nothing new, and do not move `asOf`
+forward without a bulletin behind it. `dateModified` across the whole site is
+computed from the newest real bulletin time, never from the time the build ran,
+and that is deliberate. A site caught inflating timestamps loses the ranking it
+was trying to buy, and it also stops being honest, which is the actual point.
+
+**What happens on its own, so you do not have to do it.** `./deploy.sh` runs
+the generator, and the generator writes:
+
+- the live ticker at the top of the home page, newest first, one bold
+  timestamp per line, in plain HTML that works with JavaScript off;
+- `LiveBlogPosting` structured data on the home page and on
+  `/nepal-flood/rasuwa/live-updates/`, listing each briefing as a timestamped
+  `liveBlogUpdate`, with a `coverageEndTime` three days ahead of the newest
+  bulletin so the coverage reads as still running;
+- `news-sitemap.xml`, the Google News sitemap, holding only what was published
+  in the last 48 hours, plus `sitemap-index.xml` covering both sitemaps;
+- `og:updated_time`, `article:modified_time` and `news_keywords`;
+- the home page title and description, written from `event.json`.
+
+Then `src/check.mjs` blocks the deploy if the ticker rendered empty, if the
+live coverage markup is missing or its `coverageEndTime` has fallen into the
+past, if the news sitemap is empty or malformed, or if the page's freshness
+tags disagree with its structured data. After the upload, `src/indexnow.mjs`
+tells Bing and Yandex the URLs changed. Google has no such ping and goes by the
+sitemap, which is why the sitemaps are kept correct rather than merely present.
+
+**If the audit fails, fix it. Do not deploy around it.** It is the only thing
+standing between a bad build and the live site.
 
 ## Writing rules — read these, they matter
 
@@ -217,3 +276,58 @@ source reports a larger one. Everything else is exactly what you write.
   event's pages should keep their URLs with `statusPill: 'archive'` rather than
   being deleted. Old coverage stays useful; it just must not present itself as
   live.
+
+
+---
+
+# The share pictures
+
+Every page has its own link preview card at `/assets/og/<slug>.png`, plus a
+vertical `-story.png` for Instagram and Facebook stories, and every briefing
+also has a `-thumb.png` tile that its story card shows in the grid. They are
+drawn by `src/og-build.mjs` from `src/og.mjs`, which `./deploy.sh` runs before
+the page build.
+
+**A briefing's picture is a real photograph, never a drawing.** `src/photo.mjs`
+walks the articles that briefing cites, reads the picture each newsroom chose
+for its own link preview, downloads the first usable one, and caches it in
+`assets/photos/` with the outlet's name. `src/og.mjs` then sets the headline
+over it with a border and prints "Photo: <outlet>" in the corner. This site
+does not draw its own illustration of a news event. Where no source yields a
+usable photograph the card is simply typographic.
+
+That makes the source list do double duty: a briefing whose sources are real
+articles from newsrooms that publish photographs gets a photograph, and one
+built from bare homepages and PDFs does not.
+
+The section and home cards carry the current death toll and missing count,
+read from `src/content.mjs`, so they redraw themselves when the figures move.
+The URL carries the file's modification time as `?v=`, because Facebook and
+WhatsApp cache a preview against its URL and would otherwise keep showing
+yesterday's number.
+
+Rasterising uses `@resvg/resvg-js`, an optional dependency, handed the font
+files in `assets/fonts` so a card drawn on the hourly agent's machine looks
+the same as one drawn on a laptop. If the install is ever missing, the build
+still writes the SVGs, leaves the committed PNGs alone, and the pages fall
+back to `/og-image.png`. It never fails a deploy.
+
+These are other newsrooms' photographs. The credit on the picture and the link
+to the article are not optional; if an outlet asks for a picture to come down,
+delete the file from `assets/photos/` and its entry in
+`assets/photos/index.json`, and the next build falls back to the typographic
+card on its own.
+
+---
+
+# Adding a page
+
+More real pages is the whole SEO strategy: a page per question people
+actually ask, each one linked from somewhere. To add one, write the function
+in `src/pages.mjs`, add it to the `pages` array in `src/build.mjs` **and** to
+the list in `src/og-build.mjs`, and link to it from at least one existing
+page. A page nothing links to is an orphan and will not be indexed properly,
+however good it is.
+
+Two rules the audit enforces and that are easy to trip: a `<title>` must be
+75 characters or fewer, and a meta description must be between 70 and 200.

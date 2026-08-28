@@ -4,7 +4,11 @@
 # video from YouTube, and a mistake in that list breaks the map or the player
 # during an emergency. Everything below is safe to apply unconditionally.
 
+# HTML is revalidated at the edge every minute. Article pages were seen being
+# served from cache with an Age of seven hours, which on a live disaster site
+# means a reader gets a casualty figure that has moved twice since.
 /*
+  Cache-Control: public, max-age=60, stale-while-revalidate=600
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN

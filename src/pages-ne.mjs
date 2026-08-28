@@ -29,6 +29,10 @@ function neTime(iso) {
 
 const TOLL_NE = neTime(C.TOLL_AS_OF);
 const MISSING_NE = neTime(C.MISSING_AS_OF);
+/* The two tables below are the last full breakdowns, which are older than the
+   headline totals. They carry their own time so they cannot read as current. */
+const BODIES_NE = neTime(C.BODIES_AS_OF);
+const MISSING_BREAKDOWN_NE = neTime(C.MISSING_BREAKDOWN_AS_OF);
 
 function table(head, rows, caption) {
   return `<div class="table-scroll"><table>${caption ? `<caption>${caption}</caption>` : ''}<thead><tr>${
@@ -115,12 +119,12 @@ ${LAKE_WARNING}
 <p>पहिलो दुई दिनमा सङ्ख्या बारम्बार बढ्यो, किनभने खोजी टोली सम्पर्कविहीन भएका ठाउँमा पुग्दै गए। बुधबार साँझ प्रधानमन्त्री कार्यालयले ९५ र प्राधिकरणले ७२ भनेको थियो; बिहीबार बिहान ${ne(C.TOLL.deadNepalEarlier)} पुग्यो, र ${esc(TOLL_NE)} मा <strong>${ne(C.TOLL.deadNepal)}</strong>। यही कारण यहाँको हरेक सङ्ख्या अस्थायी हो।</p>
 
 <h3>कुन जिल्लामा कति शव फेला परे</h3>
-${table(['जिल्ला', 'शव फेला परेको'], C.BODIES_BY_DISTRICT.map(([d, n]) => [esc(NE_DISTRICTS[d] || d), `<span class="num">${ne(n)}</span>`]).concat([['<strong>जम्मा</strong>', `<strong class="num">${ne(C.TOLL.deadNepal)}</strong>`]]), `नेपाल प्रहरी, ${esc(TOLL_NE)}। तालिकामा भएको जिल्ला शव फेला परेको ठाउँ हो, मृतकको स्थायी ठेगाना होइन।`)}
+${table(['जिल्ला', 'शव फेला परेको'], C.BODIES_BY_DISTRICT.map(([d, n]) => [esc(NE_DISTRICTS[d] || d), `<span class="num">${ne(n)}</span>`]).concat([['<strong>यो सूचीको जम्मा</strong>', `<strong class="num">${ne(C.BODIES_BY_DISTRICT.reduce((a, [, n]) => a + n, 0))}</strong>`]]), `नेपाल प्रहरी, ${esc(BODIES_NE)}। यो अन्तिम पूरा जिल्लागत विवरण हो; माथिको कुल सङ्ख्या यसपछिको हो। तालिकामा भएको जिल्ला शव फेला परेको ठाउँ हो, मृतकको स्थायी ठेगाना होइन।`)}
 <p>चीनतर्फ ग्याइरोङ नजिक थप <strong>${ne(C.TOLL.deadChina)} जना</strong>को मृत्यु पुष्टि भएको छ।</p>
 
 <h2>बेपत्ता</h2>
 <p>नेपाल प्रहरीको ${esc(MISSING_NE)} को बुलेटिनमा <strong>${ne(C.TOLL.missing)} जना</strong> बेपत्ता सूचीमा छन्।</p>
-${table(['समूह', 'बेपत्ता सूचीमा'], C.MISSING_BREAKDOWN.map(([k, n]) => [esc(NE_MISSING_GROUPS[k] || k), `<span class="num">${ne(n)}</span>`]), `नेपाल प्रहरी, ${esc(MISSING_NE)}।`)}
+${table(['समूह', 'बेपत्ता सूचीमा'], C.MISSING_BREAKDOWN.map(([k, n]) => [esc(NE_MISSING_GROUPS[k] || k), `<span class="num">${ne(n)}</span>`]), `नेपाल प्रहरी, ${esc(MISSING_BREAKDOWN_NE)}। त्यस बेला सूचीमा ${ne(C.MISSING_BREAKDOWN_TOTAL)} जना थिए।`)}
 <p>बेपत्ता विदेशी यात्रुहरूमध्ये धेरैजसो तिब्बत हुँदै कैलाश मानसरोवर जाने बाटोमा थिए। भारतका कम्तीमा ${ne(C.TOLL.missingIndian)}, मलेसियाका ५५, अमेरिकाका ४७, अष्ट्रेलियाका ३४, बेलायतका ३३ र क्यानडाका २४ नागरिक सूचीमा छन्।</p>
 <p>चिनियाँ सञ्चारमाध्यमका अनुसार तिब्बततर्फ ग्याइरोङ बन्दरगाह वरिपरि थप <strong>${ne(C.TOLL.missingChina)} जना</strong> बेपत्ता छन्, जसमध्ये ${ne(C.TOLL.missingChinaForeign)} विदेशी नागरिक हुन्।</p>
 <div class="callout">
@@ -300,7 +304,7 @@ export function neMissing(ctx) {
 
 <h2>बेपत्ता सूचीमा को छन्</h2>
 <p>नेपाल प्रहरीको ${esc(MISSING_NE)} को बुलेटिनमा नेपालभित्र <strong>${ne(C.TOLL.missing)} जना</strong> बेपत्ता सूचीमा छन्।</p>
-${table(['समूह', 'बेपत्ता सूचीमा'], C.MISSING_BREAKDOWN.map(([k, n]) => [esc(NE_MISSING_GROUPS[k] || k), `<span class="num">${ne(n)}</span>`]).concat([['<strong>जम्मा</strong>', `<strong class="num">${ne(C.TOLL.missing)}</strong>`]]), `नेपाल प्रहरी, ${esc(MISSING_NE)}।`)}
+${table(['समूह', 'बेपत्ता सूचीमा'], C.MISSING_BREAKDOWN.map(([k, n]) => [esc(NE_MISSING_GROUPS[k] || k), `<span class="num">${ne(n)}</span>`]).concat([['<strong>त्यो सूचीको जम्मा</strong>', `<strong class="num">${ne(C.MISSING_BREAKDOWN_TOTAL)}</strong>`]]), `नेपाल प्रहरी, ${esc(MISSING_BREAKDOWN_NE)}। पछि यो सङ्ख्या ${ne(C.TOLL.missing)} पुगेको छ, तर नयाँ विवरण आएको छैन।`)}
 <p>बेपत्ता ५७९ यात्रुमध्ये ४६६ विदेशी र ११३ नेपाली नागरिक हुन्। विदेशी यात्रुहरूमध्ये धेरैजसो तिब्बत हुँदै <strong>कैलाश मानसरोवर</strong> जाने बाटोमा थिए, जुन रसुवागढी नाका हुँदै जान्छ। भारतका कम्तीमा ${ne(C.TOLL.missingIndian)}, मलेसियाका ५५, अमेरिकाका ४७, अष्ट्रेलियाका ३४, बेलायतका ३३ र क्यानडाका २४ नागरिक सूचीमा छन्।</p>
 <p>यसबाहेक ६० जलविद्युत् आयोजनाका कामदार, २६ बैंक कर्मचारी र तिमुरेको भन्सार कार्यालयका १५ कर्मचारी छुट्टै सम्पर्कविहीन भनिएका छन्। तिनलाई माथिको जम्मामा नजोड्नुहोस्।</p>
 <p>चिनियाँ सञ्चारमाध्यमका अनुसार तिब्बततर्फ ग्याइरोङ बन्दरगाह वरिपरि थप <strong>${ne(C.TOLL.missingChina)} जना</strong> बेपत्ता छन्, जसमध्ये ${ne(C.TOLL.missingChinaForeign)} विदेशी नागरिक हुन्।</p>

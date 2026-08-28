@@ -43,7 +43,7 @@ for (const extra of ['/feed.xml', '/sitemap.xml', '/robots.txt', '/favicon.svg',
   '/favicon.ico', '/apple-touch-icon.png', '/favicon-96x96.png', '/icon-192.png',
   '/icon-512.png', '/logo.png', '/site.webmanifest',
   '/og-image.png', '/qr-pmo-nepal.png', '/today.json', '/event.json', '/updates.json',
-  '/assets/site.css']) {
+  '/assets/site.css', '/news-sitemap.xml', '/sitemap-index.xml']) {
   known.add(extra);
 }
 
@@ -83,10 +83,10 @@ for (const p of pages) {
   }
 
   /* JSON-LD must parse. Invalid JSON-LD is silently ignored by Google. */
-  const blocks = p.html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g) || [];
+  const blocks = p.html.match(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g) || [];
   if (!blocks.length) warnings.push(`${p.path}: no structured data`);
   for (const b of blocks) {
-    const json = b.replace(/^<script type="application\/ld\+json">/, '').replace(/<\/script>$/, '');
+    const json = b.replace(/^<script type="application\/ld\+json"[^>]*>/, '').replace(/<\/script>$/, '');
     try {
       const parsed = JSON.parse(json);
       const nodes = parsed['@graph'] || [parsed];
@@ -194,6 +194,122 @@ const robotsTxt = readFileSync(join(ROOT, 'robots.txt'), 'utf8');
 if (!robotsTxt.includes(`Sitemap: ${SITE}/sitemap.xml`)) errors.push('robots.txt does not reference the sitemap');
 for (const bad of ['Disallow: /\n', 'Disallow: /assets', 'Disallow: /*.js', 'Disallow: /*.css']) {
   if (robotsTxt.includes(bad)) errors.push(`robots.txt blocks something it must not: ${bad.trim()}`);
+}
+
+
+/* -- live coverage ----------------------------------------------------------
+   The front page is the URL that ranks for this event, and it earns that place
+   by being live. Three things have to hold or it quietly stops reading as live
+   coverage to a crawler, with nothing on the page looking wrong:
+
+   - a LiveBlogPosting is present at all,
+   - it carries at least one timestamped update,
+   - its coverageEndTime is still in the future.
+
+   The third is the one that fails on its own: coverage that ended yesterday is
+   coverage Google stops treating as breaking. */
+function liveBlogNodes(html) {
+  const out = [];
+  for (const b of html.match(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g) || []) {
+    const json = b.replace(/^<script type="application\/ld\+json"[^>]*>/, '').replace(/<\/script>$/, '');
+    let parsed; try { parsed = JSON.parse(json); } catch { continue; }
+    for (const n of (parsed['@graph'] || [parsed])) {
+      if (n && n['@type'] === 'LiveBlogPosting') out.push(n);
+    }
+  }
+  return out;
+}
+
+const LIVE_PAGES = ['/', '/nepal-flood/rasuwa/live-updates/'];
+for (const path of LIVE_PAGES) {
+  const page = pages.find(p => p.path === path);
+  if (!page) { errors.push(`${path}: expected to exist and does not`); continue; }
+  const nodes = liveBlogNodes(page.html);
+  if (!nodes.length) { errors.push(`${path}: no LiveBlogPosting — it will not be read as live coverage`); continue; }
+  for (const n of nodes) {
+    const updates = n.liveBlogUpdate || [];
+    if (!updates.length) errors.push(`${path}: LiveBlogPosting carries no liveBlogUpdate entries`);
+    if (!n.coverageStartTime) errors.push(`${path}: LiveBlogPosting has no coverageStartTime`);
+    if (!n.coverageEndTime) errors.push(`${path}: LiveBlogPosting has no coverageEndTime`);
+    else if (new Date(n.coverageEndTime) <= new Date()) {
+      errors.push(`${path}: coverageEndTime ${n.coverageEndTime} is in the past, so the coverage reads as finished`);
+    }
+    if (!n.backstory) warnings.push(`${path}: LiveBlogPosting has no backstory`);
+    for (const u of updates) {
+      if (!u.datePublished) errors.push(`${path}: a liveBlogUpdate has no datePublished`);
+      if (!u.headline) errors.push(`${path}: a liveBlogUpdate has no headline`);
+    }
+    /* Updates out of order are not an error to a parser, but they are the
+       signal a live blog is being rebuilt wrongly. */
+    const times = updates.map(u => new Date(u.datePublished).getTime());
+    for (let i = 1; i < times.length; i++) {
+      if (times[i] > times[i - 1]) { warnings.push(`${path}: liveBlogUpdate entries are not newest-first`); break; }
+    }
+  }
+}
+
+/* The front page's own freshness tags have to agree with its structured data.
+   Two different "last updated" times on one page is worse than one. */
+const home = pages.find(p => p.path === '/');
+if (home) {
+  const ogUpdated = pick(home.html, /<meta property="og:updated_time" content="([^"]*)"/);
+  const nodeMod = (liveBlogNodes(home.html)[0] || {}).dateModified;
+  if (!ogUpdated) warnings.push('/: no og:updated_time');
+  else if (nodeMod && new Date(ogUpdated).getTime() !== new Date(nodeMod).getTime()) {
+    errors.push(`/: og:updated_time (${ogUpdated}) disagrees with the live coverage dateModified (${nodeMod})`);
+  }
+  const kw = pick(home.html, /<meta name="news_keywords" content="([^"]*)"/);
+  if (!kw) warnings.push('/: no news_keywords');
+
+  /* The title is the whole of the click decision on a breaking query. Google
+     cuts it around 65 characters, so anything longer loses its own tail. */
+  const t = pick(home.html, /<title>([\s\S]*?)<\/title>/i) || '';
+  if (t.length > 65) warnings.push(`/: <title> is ${t.length} chars and will be truncated in search results`);
+  if (!/\d/.test(t)) warnings.push('/: <title> carries no figure, which loses the click to a headline that has one');
+
+  /* A live ticker that stopped rendering is invisible: the page still looks
+     fine and has simply stopped being timestamped. */
+  const ticker = home.html.match(/<!--ssr:ticker-->([\s\S]*?)<!--\/ssr:ticker-->/);
+  if (!ticker || !/<time datetime=/.test(ticker[1])) {
+    errors.push('/: the live ticker rendered empty, so the page carries no visible timestamps');
+  }
+}
+
+/* -- news sitemap -----------------------------------------------------------
+   Google News reads this one and only accepts articles from the last two days.
+   A stale entry is not a small mistake here: a news sitemap full of old dates
+   is a reason to stop trusting the whole file. */
+const NEWS_MAX_AGE_H = 48;
+const newsFile = join(ROOT, 'news-sitemap.xml');
+if (!existsSync(newsFile)) {
+  errors.push('news-sitemap.xml is missing, so nothing is being offered to Google News');
+} else {
+  const news = readFileSync(newsFile, 'utf8');
+  const entries = [...news.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m => m[1]);
+  if (!entries.length) errors.push('news-sitemap.xml has no entries');
+  if (entries.length > 1000) errors.push(`news-sitemap.xml has ${entries.length} entries, over Google's 1000 limit`);
+  for (const e of entries) {
+    const loc = (e.match(/<loc>([^<]+)<\/loc>/) || [])[1];
+    const date = (e.match(/<news:publication_date>([^<]+)<\/news:publication_date>/) || [])[1];
+    const title = (e.match(/<news:title>([^<]+)<\/news:title>/) || [])[1];
+    if (!loc) { errors.push('news-sitemap.xml: entry with no <loc>'); continue; }
+    if (!title) errors.push(`news-sitemap.xml: ${loc} has no <news:title>`);
+    if (!/<news:name>/.test(e) || !/<news:language>/.test(e)) {
+      errors.push(`news-sitemap.xml: ${loc} is missing the publication name or language`);
+    }
+    if (!date) { errors.push(`news-sitemap.xml: ${loc} has no publication date`); continue; }
+    const ageH = (Date.now() - new Date(date).getTime()) / 3600000;
+    if (!isFinite(ageH)) errors.push(`news-sitemap.xml: ${loc} has an unparseable date ${date}`);
+    else if (ageH > NEWS_MAX_AGE_H) {
+      warnings.push(`news-sitemap.xml: ${loc} is ${Math.round(ageH)}h old and should have aged out`);
+    }
+    const path = loc.startsWith(SITE) ? loc.slice(SITE.length) : null;
+    if (!path) errors.push(`news-sitemap.xml: URL on wrong host: ${loc}`);
+    else if (!known.has(path)) errors.push(`news-sitemap.xml lists ${path} but no file exists for it`);
+  }
+}
+if (!robotsTxt.includes(`Sitemap: ${SITE}/news-sitemap.xml`)) {
+  errors.push('robots.txt does not reference the news sitemap');
 }
 
 /* -- secrets ---------------------------------------------------------------- */

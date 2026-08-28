@@ -10,5 +10,8 @@
     "dev": "npx wrangler pages dev . --port 8788",
     "deploy": "./deploy.sh",
     "ping": "node src/indexnow.mjs"
+  },
+  "optionalDependencies": {
+    "@resvg/resvg-js": "^2.6.2"
   }
 }

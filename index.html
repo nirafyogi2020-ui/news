@@ -3,35 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Nepal Disaster Update Live: Rasuwa Flood 2026 Toll, Map &amp; Helplines</title>
-<meta name="description" content="Live Nepal disaster dashboard: the August 2026 Rasuwa flash flood. Confirmed toll, interactive map of the Bhote Koshi and Trishuli valley, what caused it, emergency helplines and the official relief fund.">
-<meta name="news_keywords" content="Nepal flood, Rasuwa flood, Bhote Koshi, Trishuli, Nuwakot, glacial lake outburst flood">
+<title>Nepal Flood Live: 389 dead, 910 missing in Rasuwa, 27 Aug</title>
+<meta name="description" content="Nepal Police bulletin: 389 confirmed dead and 910 listed missing after the Rasuwa flood. Toll by district, rescue and helpline numbers, an interactive map of the valley, and the official relief fund. Updated 27 August 2026, 9:00 pm NPT.">
+<meta name="news_keywords" content="Rasuwa flood, Rasuwa flood live, Nepal flood, Nepal flood live updates, Nepal flood death toll">
 <link rel="canonical" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/">
 <link rel="alternate" hreflang="en" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/">
 <link rel="alternate" hreflang="x-default" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<!-- The phone paints its address bar and status bar with this. Without it a
+     reader in dark mode gets a white bar above a near-black page, which is the
+     first thing that makes a site look like it was not built for the device. -->
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<!-- Google picks the site icon shown beside a search result from these, and
+     wants at least 48x48. A 32px .ico on its own gets replaced by a grey
+     globe on some result pages, which costs a click for no reason. -->
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nepal Disaster Update Live: Rasuwa Flood 2026">
-<meta property="og:description" content="Live briefing on the August 2026 Rasuwa flash flood: timeline, interactive satellite maps, cause investigation, emergency numbers, and the verified official relief fund.">
+<meta property="og:title" content="Nepal Flood Live: 389 dead, 910 missing in Rasuwa, 27 Aug">
+<meta property="og:description" content="Nepal Police bulletin: 389 confirmed dead and 910 listed missing after the Rasuwa flood. Toll by district, rescue and helpline numbers, an interactive map of the valley, and the official relief fund. Updated 27 August 2026, 9:00 pm NPT.">
 <meta property="og:url" content="https://nepaldisasterupdatelive.nxtimaginelabs.com/">
 <meta property="og:site_name" content="Nepal Disaster Update Live">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://nepaldisasterupdatelive.nxtimaginelabs.com/og-image.png">
+<meta property="og:image" content="https://nepaldisasterupdatelive.nxtimaginelabs.com/assets/og/home.png?v=1787871770">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Rasuwa Flood, Nepal: live updates, maps, helplines and the official relief fund">
+<meta property="og:image:alt" content="Rasuwa flood, live: live figures, map, helplines and the official relief fund">
+
+<meta property="og:updated_time" content="2026-08-28T05:10:00+05:45">
+<meta property="article:published_time" content="2026-08-26T12:00:00+05:45">
+<meta property="article:modified_time" content="2026-08-28T05:10:00+05:45">
 
 <!-- Twitter -->
+<meta name="ndu:story-image" content="https://nepaldisasterupdatelive.nxtimaginelabs.com/assets/og/home-story.png?v=1787871773">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Nepal Disaster Update Live: Rasuwa Flood 2026">
-<meta name="twitter:description" content="Live briefing on the August 2026 Rasuwa flash flood: timeline, interactive maps, cause, emergency numbers, and the verified official relief fund.">
-<meta name="twitter:image" content="https://nepaldisasterupdatelive.nxtimaginelabs.com/og-image.png">
+<meta name="twitter:title" content="Nepal Flood Live: 389 dead, 910 missing in Rasuwa, 27 Aug">
+<meta name="twitter:description" content="Nepal Police bulletin: 389 confirmed dead and 910 listed missing after the Rasuwa flood. Toll by district, rescue and helpline numbers, an interactive map of the valley, and the official relief fund. Updated 27 August 2026, 9:00 pm NPT.">
+<meta name="twitter:image" content="https://nepaldisasterupdatelive.nxtimaginelabs.com/assets/og/home.png?v=1787871770">
 <link rel="alternate" type="application/rss+xml" title="Nepal Disaster Update, live feed" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/feed.xml">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,6 +59,163 @@
      and WebSite identity as the rest of the site. dateModified is rewritten
      by src/build.mjs from the newest real bulletin time, never from the
      time the build happened. -->
+<!-- Live-coverage structured data. Written by src/build.mjs from the update
+     archive on every build: this is what tells Google the page is streaming
+     live coverage rather than sitting still. -->
+<!--ssr:liveblog--><script type="application/ld+json" id="liveblog-schema">{
+ "@context": "https://schema.org",
+ "@type": "LiveBlogPosting",
+ "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#liveblog",
+ "headline": "Nepal Flood Live: 389 dead, 910 missing in Rasuwa, 27 Aug",
+ "description": "Nepal Police bulletin: 389 confirmed dead and 910 listed missing after the Rasuwa flood. Toll by district, rescue and helpline numbers, an interactive map of the valley, and the official relief fund. Updated 27 August 2026, 9:00 pm NPT.",
+ "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/",
+ "inLanguage": "en",
+ "isAccessibleForFree": true,
+ "datePublished": "2026-08-26T12:00:00+05:45",
+ "dateModified": "2026-08-28T05:10:00+05:45",
+ "coverageStartTime": "2026-08-26T09:00:00+05:45",
+ "coverageEndTime": "2026-08-30T23:25:00.000Z",
+ "backstory": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
+ "image": [
+  "https://nepaldisasterupdatelive.nxtimaginelabs.com/assets/og/home.png?v=1787871770"
+ ],
+ "author": {
+  "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+ },
+ "publisher": {
+  "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+ },
+ "mainEntityOfPage": {
+  "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#webpage"
+ },
+ "about": [
+  {
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#event"
+  }
+ ],
+ "liveBlogUpdate": [
+  {
+   "@type": "BlogPosting",
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-28-australia-missing-aid/#post",
+   "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-28-australia-missing-aid/",
+   "headline": "Australia raises its missing count to 39, pledges $5m in aid",
+   "datePublished": "2026-08-28T02:30:00+05:45",
+   "dateModified": "2026-08-28T02:30:00+05:45",
+   "articleBody": "Australian Foreign Minister Penny Wong said on Friday that 39 Australians are now unaccounted for in the flood, up from the 35 that Nepal's tourism board had listed a day earlier. She said the number could still rise as officials work through the list, and warned some of those missing may not be found. Wong also announced A$5 million in Australian aid: 2 million to the World Food Programme, 2 million to Australian NGOs through the Australian Humanitarian Partnership, and 1 million to the Emergency Action Alliance for local recovery work. Three more Australian humanitarian specialists are being",
+   "author": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   },
+   "publisher": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   }
+  },
+  {
+   "@type": "BlogPosting",
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-27-damage-cost/#post",
+   "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-27-damage-cost/",
+   "headline": "Damage put at Rs 200 billion, hydropower losses still being counted",
+   "datePublished": "2026-08-27T23:30:00+05:45",
+   "dateModified": "2026-08-27T23:30:00+05:45",
+   "articleBody": "Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information. That figure does not include energy infrastructure. Energy Minister Biraj Bhakta Shrestha has ordered an immediate assessment of hydropower damage. In Rasuwa, 8 projects have been hit, 5 of them operational with a combined 236 megawatts, and 3 still under construction with a combined 342 megawatts. Nuwakot has lost access to 6 more projects, 4 operational at 123 megawatts and 2 under construction at 53 megawatts. Rasuwa, Nuwakot, Dhading and Chitwan are",
+   "author": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   },
+   "publisher": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   }
+  },
+  {
+   "@type": "BlogPosting",
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-27-rasuwa-flood/#post",
+   "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-27-rasuwa-flood/",
+   "headline": "Toll passes 389 as China warns lake may burst within days",
+   "datePublished": "2026-08-27T22:30:00+05:45",
+   "dateModified": "2026-08-27T22:30:00+05:45",
+   "articleBody": "Nepal Police put the confirmed toll at 389 dead as of a 9pm bulletin on Thursday, up from 359 at 5pm. Police also said 466 people are injured. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani. Chitwan has the most dead, 137, followed by Nawalparasi East with 87, Dhading with 33 and Gorkha with 32, Nepal Police figures reported by Review Nepal show. Health facilities in Chitwan can hold only around 50 bodies, which is slowing the process of identifying and releasing them to families. Nepal's tourism board says 644 travellers, 51",
+   "author": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   },
+   "publisher": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   }
+  },
+  {
+   "@type": "BlogPosting",
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-27-hydropower-workers-out-of-contact/#post",
+   "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-27-hydropower-workers-out-of-contact/",
+   "headline": "Over 200 hydropower staff still out of contact, IPPAN says",
+   "datePublished": "2026-08-27T19:00:00+05:45",
+   "dateModified": "2026-08-27T19:00:00+05:45",
+   "articleBody": "The Independent Power Producers' Association Nepal, IPPAN, says 215 staff from five hydropower projects have not been reached since Wednesday's flood. Worst hit is the under construction Upper Trishuli-1 project, where IPPAN counts 94 people out of contact, among them 8 Korean nationals working for the developer. At Rasuwagadhi, 51 staff are out of contact, though 3 reached higher ground on their own. IPPAN says it has unconfirmed reports of an early rescue at one project site, but most workers there are still unreachable. Separately, a Nepal Army helicopter reached the nearby Upper Trishuli 3",
+   "author": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   },
+   "publisher": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   }
+  },
+  {
+   "@type": "BlogPosting",
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-27-toll-289/#post",
+   "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-27-toll-289/",
+   "headline": "289 confirmed dead in the Rasuwa flood as searches reach cut-off areas",
+   "datePublished": "2026-08-27T14:30:00+05:45",
+   "dateModified": "2026-08-27T14:30:00+05:45",
+   "articleBody": "Nepal Police put the confirmed toll at 289 in their 2:30pm bulletin on Thursday. It was 270 at 1:30pm and 165 that morning. The jumps are search teams reaching settlements that had been cut off since Wednesday, not new casualties happening. Bodies have been recovered in eight districts: Chitwan 108, Nawalparasi East 74, Dhading 27, Gorkha 20, Rasuwa 17, Tanahun 16, Nawalparasi West 15 and Nuwakot 12. A district here is where a body was found, not where the person was from. The Armed Police Force says 121 of those were recovered from the Narayani river alone by Thursday afternoon. Chitwan's mor",
+   "author": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   },
+   "publisher": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   }
+  },
+  {
+   "@type": "BlogPosting",
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-27-barrier-lake/#post",
+   "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-27-barrier-lake/",
+   "headline": "China reports a new lake forming upstream and warns it could break",
+   "datePublished": "2026-08-27T11:00:00+05:45",
+   "dateModified": "2026-08-27T11:00:00+05:45",
+   "articleBody": "China's Ministry of Water Resources says a barrier lake, meaning a river blocked by debris into an artificial lake, has formed near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border. CCTV reports around 2 million cubic metres of water had collected behind it by Thursday morning. Chinese state media warn it could break. Both rivers are upper tributaries of the Trishuli system. A release would run down the same corridor the 26 August flood took, through Rasuwa and Nuwakot. Most river gauges on the Bhote Koshi and Trishuli were destroyed in the fi",
+   "author": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   },
+   "publisher": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   }
+  },
+  {
+   "@type": "BlogPosting",
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-27-cause-usgs/#post",
+   "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-27-cause-usgs/",
+   "headline": "USGS: the tremor was a glacial collapse, not an earthquake",
+   "datePublished": "2026-08-27T10:00:00+05:45",
+   "dateModified": "2026-08-27T10:00:00+05:45",
+   "articleBody": "The US Geological Survey first logged a magnitude 4.4 earthquake at 08:37 on Wednesday, minutes before the river rose. It has now revised that analysis. Its conclusion is that the signal was a magnitude 5.2 glacial collapse rather than a tectonic earthquake, based on nearby seismic stations, long-period seismic waves and satellite imagery. In other words the tremor was not a separate trigger. It was the collapse itself being recorded. Nepal's Department of Hydrology and Meteorology and independent glaciologists, working from satellite imagery shared by Chinese counterparts through ICIMOD, put ",
+   "author": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   },
+   "publisher": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   }
+  },
+  {
+   "@type": "BlogPosting",
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-27-damage-infra/#post",
+   "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-27-damage-infra/",
+   "headline": "14 hydropower projects hit and the whole border road destroyed",
+   "datePublished": "2026-08-27T09:30:00+05:45",
+   "dateModified": "2026-08-27T09:30:00+05:45",
+   "articleBody": "The Nepal Electricity Authority reports 14 hydropower projects damaged with a combined capacity of about 748 megawatts: nine operating plants totalling 354 MW and five under construction totalling 394 MW. Named projects include Rasuwagadhi, Chilime, Sanjen Khola, Upper Trishuli-1, Trishuli and Devighat, along with a 220 kV substation. Twelve staff of the Upper Trishuli-3B project are reported out of contact. An earlier estimate the same day, from the Ministry of Energy, put the loss at 431 MW. Both figures were published on 27 August, which is a fair measure of how provisional every damage num",
+   "author": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   },
+   "publisher": {
+    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization"
+   }
+  }
+ ]
+}</script><!--/ssr:liveblog-->
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -124,9 +296,7 @@
    },
    "about": [
     {
-     "@type": "Event",
-     "name": "2026 Rasuwa flash flood",
-     "startDate": "2026-08-26"
+     "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#event"
     },
     {
      "@type": "Place",
@@ -165,6 +335,7 @@
    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#event",
    "name": "2026 Rasuwa flash flood",
    "alternateName": "Bhote Koshi–Trishuli flash flood",
+   "image": ["https://nepaldisasterupdatelive.nxtimaginelabs.com/og-image.png"],
    "startDate": "2026-08-26T09:00:00+05:45",
    "eventStatus": "https://schema.org/EventScheduled",
    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
@@ -352,24 +523,13 @@
     transition:transform .28s cubic-bezier(.2,.85,.3,1), box-shadow .28s, border-color .28s;
   }
   :root[data-theme="dark"] .brand-mark{box-shadow:0 1px 2px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06);}
-  /* a slow halo, the same signal as the LIVE dot, tied to the mark itself */
-  .brand-mark::after{
-    content:""; position:absolute; inset:-3px; border-radius:17px; pointer-events:none;
-    border:1.5px solid var(--critical); opacity:0; animation:markhalo 3.6s ease-out infinite;
-  }
-  @keyframes markhalo{
-    0%{opacity:.34; transform:scale(.93);}
-    62%,100%{opacity:0; transform:scale(1.1);}
-  }
-  .brand-mark .flag{width:24px; height:29px;}
+  .brand-mark .mark{width:27px; height:27px;}
   .brand:hover .brand-mark{transform:translateY(-1.5px); border-color:color-mix(in srgb, var(--crimson) 40%, var(--border));
     box-shadow:0 8px 20px -10px color-mix(in srgb, var(--crimson) 60%, transparent), inset 0 1px 0 rgba(255,255,255,.55);}
-  .brand:hover .flag .cloth{animation-duration:1.9s;}
   .brand-text{display:flex; flex-direction:column; gap:4px; line-height:1;}
   .brand-name{font-family:var(--font-display); font-weight:600; font-size:1.19rem; letter-spacing:-0.022em;}
   .brand-live{display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--critical); font-weight:500;}
   .brand-live i{width:6px; height:6px; border-radius:50%; background:var(--critical); animation:pulse 2s ease-in-out infinite; box-shadow:0 0 0 3px color-mix(in srgb, var(--critical) 18%, transparent);}
-  @media (prefers-reduced-motion: reduce){ .brand-mark::after{animation:none; opacity:0;} }
 
   /* primary tabs, desktop */
   .tabbar{display:flex; gap:4px; margin-left:auto;}
@@ -411,7 +571,7 @@
   @media (max-width:560px){
     .brand{gap:10px;}
     .brand-mark{width:40px; height:40px; border-radius:12px;}
-    .brand-mark .flag{width:21px; height:26px;}
+    .brand-mark .mark{width:24px; height:24px;}
     .brand-name{font-size:1.04rem;}
     .sitehead-inner{padding:0 12px; gap:8px;}
     .head-tools{gap:6px;}
@@ -424,7 +584,7 @@
     .brand-name{font-size:0.98rem;}
     .brand-live{font-size:0.54rem; letter-spacing:0.11em;}
     .brand-mark{width:37px; height:37px; border-radius:11px;}
-    .brand-mark .flag{width:19px; height:23px;}
+    .brand-mark .mark{width:22px; height:22px;}
     .icon-btn{width:34px; height:34px;}
     .lang-btn{width:34px;}
   }
@@ -556,21 +716,55 @@
 
   /* ===== status bar: breaking-news strip, never flips with theme ===== */
   .statusbar{
-    background:#b5271f; color:#fff; width:100%;
-    font-family:var(--font-mono); font-size:0.74rem; text-align:left;
-    padding:9px 20px; display:flex; gap:6px 14px; flex-wrap:wrap;
-    align-items:center; justify-content:center; border:none; cursor:pointer;
+    background:#b5271f; color:#fff; width:100%; position:relative;
+    font-family:var(--font-mono); font-size:0.74rem;
+    display:flex; align-items:stretch; overflow:hidden; border:none;
   }
-  .statusbar:hover{background:#9e211a;}
-  .statusbar b{font-weight:700; letter-spacing:0.04em;}
+  .sb-label{
+    display:flex; align-items:center; gap:7px; flex-shrink:0; z-index:2;
+    background:#9e211a; color:#fff; border:none; cursor:pointer;
+    font-family:inherit; font-size:inherit; letter-spacing:0.1em;
+    padding:9px 14px 9px 20px;
+  }
+  .sb-label:hover{background:#88190f;}
+  .sb-label b{font-weight:700;}
   .statusbar .dot{width:6px; height:6px; border-radius:50%; background:#fff; display:inline-block; animation:pulse 2s ease-in-out infinite; flex-shrink:0;}
-  .statusbar .go{border:1px solid rgba(255,255,255,0.55); border-radius:20px; padding:2px 9px;}
   @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:0.3;}}
-  @media (max-width:700px){
-    .statusbar{padding:8px 14px; gap:4px 10px; font-size:0.68rem; flex-wrap:nowrap; justify-content:flex-start;}
-    .statusbar > span:nth-of-type(2){flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-    #statusbar-time{display:none;}
-    .statusbar .go{flex-shrink:0;}
+
+  /* Two identical runs side by side, the pair translated by exactly half its
+     own width. When the first run has walked off the left edge the second is
+     sitting where the first started, so the loop has no seam in it. */
+  .sb-track{display:flex; flex:1; min-width:0; align-items:center; overflow:hidden;}
+  .sb-run{
+    display:flex; align-items:center; gap:0; flex:none; white-space:nowrap;
+    animation:sbscroll 46s linear infinite;
+  }
+  @keyframes sbscroll{from{transform:translateX(0);} to{transform:translateX(-100%);}}
+  .statusbar:hover .sb-run{animation-play-state:paused;}
+  .sb-item{display:inline-flex; align-items:center; padding:9px 0; color:#fff; text-decoration:none;}
+  .sb-item:hover{text-decoration:underline; text-underline-offset:3px;}
+  .sb-item b{font-weight:700;}
+  .sb-sep{padding:0 16px; opacity:0.5;}
+  .sb-call{
+    border:1px solid rgba(255,255,255,0.6); border-radius:20px; padding:2px 10px;
+    font-weight:700; letter-spacing:0.06em;
+  }
+  .sb-call:hover{background:rgba(255,255,255,0.16); text-decoration:none;}
+  .sb-fade{position:absolute; right:0; top:0; bottom:0; width:96px; pointer-events:none;
+    background:linear-gradient(to right, rgba(181,39,31,0), #b5271f 62%);}
+  .sb-time{display:flex; align-items:center; padding:9px 20px 9px 0; z-index:2;
+    color:rgba(255,255,255,0.82); flex-shrink:0;}
+  @media (max-width:820px){
+    .sb-time{display:none;}
+    .sb-fade{width:40px;}
+    .sb-label{padding:8px 12px 8px 14px; font-size:0.68rem;}
+    .statusbar{font-size:0.68rem;}
+  }
+  /* Movement is decoration here. Everything the strip says is also on the page,
+     so with reduced motion it simply stops and shows the first few items. */
+  @media (prefers-reduced-motion: reduce){
+    .sb-run{animation:none;}
+    #statusbar-run2{display:none;}
   }
 
   /* ===== major news modal ===== */
@@ -1060,7 +1254,10 @@
   .post-who .meta{font-size:0.72rem; color:var(--text-faint);}
   /* While a photo is still coming down the wire the element shows a moving
      placeholder rather than a flat grey block. The image paints over it. */
-  .post-photo{width:100%; aspect-ratio:16/9; object-fit:cover; cursor:pointer; display:block;
+  /* height:auto matters. The <img> carries width and height attributes so the
+     browser can reserve the right space before the file arrives, and without
+     this the attribute height wins over aspect-ratio and the picture squashes. */
+  .post-photo{width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; cursor:pointer; display:block;
     background:linear-gradient(100deg, var(--surface-2) 32%, color-mix(in srgb, var(--surface-2) 52%, var(--surface)) 50%, var(--surface-2) 68%);
     background-size:220% 100%; animation:shimmer 1.4s linear infinite;}
   .post-photo.is-loaded{animation:none; background:var(--surface-2);}
@@ -1086,6 +1283,11 @@
   .share-menu{position:absolute; bottom:calc(100% + 6px); left:8px; z-index:80; background:var(--surface); border:1px solid var(--border-strong); border-radius:10px; box-shadow:var(--shadow-lg); padding:5px; min-width:160px; display:flex; flex-direction:column;}
   .share-menu a, .share-menu button{display:block; width:100%; text-align:left; background:none; border:none; font-family:var(--font-body); font-size:0.85rem; color:var(--text); text-decoration:none; padding:9px 11px; border-radius:7px; cursor:pointer;}
   .share-menu a:hover, .share-menu button:hover{background:var(--surface-2);}
+  /* Rows carry the network's own mark. A share sheet of plain words reads as
+     an afterthought; people look for the logo they already know. */
+  .share-menu .sm-item{display:flex; align-items:center; gap:10px; white-space:nowrap;}
+  .share-menu .sm-item svg{width:17px; height:17px; flex:none; opacity:0.85;}
+  .share-menu .sm-item:hover svg{opacity:1;}
 
   /* ===== emergency ===== */
   .call-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1px; border-radius:12px; overflow:hidden; margin-top:20px;}
@@ -1227,15 +1429,27 @@
 
   /* ================= OVERVIEW: value-first landing ================= */
   .hero{padding:26px 0 6px;}
-  .hero-chips{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:14px;}
-  .chip-live, .chip-meta{
-    display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono);
-    font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:500;
-    border-radius:20px; padding:4px 11px; border:1px solid var(--border);
-    background:var(--surface); color:var(--text-muted);
+  /* A dateline, not a row of coloured pills. Three outlined capsules under a
+     headline read as tags on a blog post; every newsroom sets this as one thin
+     line of type with a live dot in front of it. */
+  .hero-chips{
+    display:flex; flex-wrap:wrap; align-items:center; gap:0 10px; margin-bottom:16px;
+    font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--text-faint);
   }
-  .chip-live{background:var(--alert); border-color:var(--alert); color:#fff;}
-  .chip-live i{width:5px; height:5px; border-radius:50%; background:#fff; animation:pulse 2s ease-in-out infinite;}
+  .chip-live, .chip-meta{display:inline-flex; align-items:center; gap:7px;}
+  .chip-live{color:var(--critical); font-weight:700;}
+  .chip-live i{
+    width:7px; height:7px; border-radius:50%; background:var(--critical);
+    box-shadow:0 0 0 3px color-mix(in srgb, var(--critical) 16%, transparent);
+    animation:pulse 2s ease-in-out infinite;
+  }
+  /* Hairline rules between the parts, drawn rather than typed, so they line up
+     with the cap height instead of sitting on the baseline like a full stop. */
+  .chip-meta::before{
+    content:""; width:1px; height:11px; margin-right:3px;
+    background:var(--border-strong); display:inline-block;
+  }
   .hero h1{font-size:clamp(2.1rem, 1.5rem + 2.6vw, 3.4rem);}
   .hero .lede{max-width:52ch; margin-top:12px; font-size:1.12rem;}
   .hero-actions{display:flex; flex-wrap:wrap; gap:9px; margin:20px 0 0;}
@@ -1361,19 +1575,66 @@
   }
 
   /* ===== Today section: a feed of story cards, same shape as the Live feed ===== */
+  /* The above-the-fold figure strip. Deliberately plain: three numbers, their
+     labels, and where they came from. It reads before the page has finished
+     loading because it is in the served HTML, not fetched. */
+  .hero-figures{margin:18px 0 4px;}
+  .hero-figures:empty{display:none;}
+  .hf-row{display:flex; flex-wrap:wrap; gap:10px;}
+  .hf-stat{
+    flex:1 1 106px; min-width:106px; padding:12px 14px;
+    border:1px solid var(--border); border-radius:12px;
+    background:var(--surface); text-align:left;
+  }
+  .hf-stat .hf-n{display:block; font-size:1.9rem; line-height:1.05; font-weight:700; letter-spacing:-0.02em;}
+  .hf-stat .hf-n.critical{color:var(--danger, #b3261e);}
+  .hf-stat .hf-l{display:block; margin-top:4px; font-size:0.82rem; line-height:1.25; color:var(--text-muted);}
+  .hf-note{margin:9px 0 0; font-size:0.8rem; color:var(--text-muted);}
+  .hf-note a{color:inherit; text-decoration:underline; text-underline-offset:2px;}
+  @media (max-width:380px){ .hf-stat .hf-n{font-size:1.6rem;} }
+
   .today-grid{display:grid; grid-template-columns:1fr; align-items:start; gap:16px; margin-top:18px; max-width:640px;}
   /* On a wide screen the day's stories run in two columns instead of leaving
      half the window empty. The newest story keeps the full width. */
   @media (min-width:1000px){
     .today-grid{grid-template-columns:1fr 1fr; gap:18px; max-width:1000px;}
-    .today-grid > .post-card:first-child{grid-column:1 / -1;}
-    .today-grid > .post-card:first-child .tc-title{font-size:1.5rem;}
+    /* The lead story runs the full width and reads sideways: picture on the
+       left, headline and standfirst on the right. Stacked, its picture alone
+       was over 500px tall on a laptop and pushed every other story off the
+       screen. */
+    .today-grid > .post-card:first-child{
+      grid-column:1 / -1;
+      display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+      grid-template-rows:auto 1fr auto;
+    }
+    .today-grid > .post-card:first-child .tc-media{grid-column:1; grid-row:1 / -1;}
+    .today-grid > .post-card:first-child .tc-media .post-photo{
+      height:100%; aspect-ratio:auto; min-height:280px;
+    }
+    .today-grid > .post-card:first-child .post-body{grid-column:2; grid-row:1 / 3; padding-top:18px;}
+    .today-grid > .post-card:first-child .post-foot{grid-column:2; grid-row:3;}
+    .today-grid > .post-card:first-child .tc-title{font-size:1.62rem;}
+    .today-grid > .post-card:first-child .post-summary.clamped{-webkit-line-clamp:6;}
     .today-grid > p{grid-column:1 / -1;}
   }
   .today-grid .post-card{border-radius:14px; box-shadow:var(--shadow);}
   .today-card .post-photo{aspect-ratio:16/9;}
   .today-card .post-body{padding:12px 16px 6px;}
   .today-card .tc-title{font-family:var(--font-display); font-weight:600; font-size:1.22rem; line-height:1.25; margin:0 0 7px; color:var(--text);}
+  /* The headline and the picture open the story. Nothing on these cards used
+     to be clickable except one small button in the footer, which is why
+     almost nobody was clicking through to the briefings. */
+  .today-card .tc-title a{color:inherit; text-decoration:none;}
+  .today-card .tc-title a:hover{text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1.5px;}
+  .today-card .post-photo-link{display:block; overflow:hidden;}
+  .today-card .post-photo-link .post-photo{cursor:pointer; transition:transform .5s cubic-bezier(.2,.8,.3,1);}
+  .today-card:hover .post-photo-link .post-photo{transform:scale(1.03);}
+  .today-grid .post-card{transition:box-shadow .22s, transform .22s, border-color .22s;}
+  .today-grid .post-card:hover{box-shadow:var(--shadow-lg); border-color:var(--border-strong);}
+  @media (prefers-reduced-motion: reduce){
+    .today-card .post-photo-link .post-photo, .today-grid .post-card{transition:none;}
+    .today-card:hover .post-photo-link .post-photo{transform:none;}
+  }
   .today-card .post-summary{font-size:1.02rem; line-height:1.62;}
   .today-card .post-summary p{margin:0 0 0.72em;}
   .today-card .post-summary p:last-child{margin-bottom:0;}
@@ -1385,10 +1646,33 @@
   .today-card .tc-sources a{color:var(--navy); text-decoration:none;}
   .today-card .tc-sources a:hover{text-decoration:underline;}
   :root[data-theme="dark"] .today-card .tc-sources a{color:#8fb4ff;}
+  /* The timestamp sits on the picture, along its bottom edge, not in a band of
+     empty white above it. On a card with no picture it falls back to a normal
+     line above the headline. */
+  .today-card .tc-media{position:relative; display:block; overflow:hidden;}
+  .today-card .tc-media .tc-stamp{
+    position:absolute; left:0; right:0; bottom:0; z-index:2; margin:0;
+    padding:26px 14px 9px; pointer-events:none;
+    display:flex; align-items:center; gap:8px;
+    font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:rgba(255,255,255,0.92);
+    background:linear-gradient(to top, rgba(8,10,14,0.78), rgba(8,10,14,0));
+    text-shadow:0 1px 3px rgba(0,0,0,0.6);
+  }
   .today-card .tc-stamp{margin:0; padding:14px 16px 0; font-family:var(--font-mono); font-size:0.72rem;
     letter-spacing:0.04em; text-transform:uppercase; color:var(--text-faint);}
   .today-card .tc-stamp .rev{color:var(--critical); font-weight:700;}
-  .today-card .post-body{padding-top:8px;}
+  /* On the picture the plain red loses contrast against a dark photograph, so
+     the "updated" mark becomes a small solid tag instead. */
+  .today-card .tc-media .tc-stamp .rev{
+    color:#fff; background:var(--alert); font-weight:700; letter-spacing:0.08em;
+    padding:2px 7px; border-radius:999px; font-size:0.62rem; text-shadow:none;
+  }
+  .today-card .tc-media .tc-stamp .rev.earlier{background:rgba(255,255,255,0.22); color:#fff;}
+  /* An archived briefing pulled in to fill the grid is not breaking news, so
+     it does not get the red stamp that means "this changed just now". */
+  .today-card .tc-stamp .rev.earlier{color:var(--text-faint); font-weight:600;}
+  .today-card .post-body{padding-top:12px;}
   .today-updated{font-family:var(--font-mono); font-size:0.74rem; color:var(--text-faint); margin-top:14px;}
   @media (max-width:640px){ .today-grid{max-width:100%;} }
 
@@ -1411,6 +1695,27 @@
   .sitemap-nav ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:6px 18px;}
   .sitemap-nav a{font-size:0.88rem; color:var(--text-muted); text-decoration:none;}
   .sitemap-nav a:hover{color:var(--critical); text-decoration:underline;}
+  /* ---- live ticker -------------------------------------------------------
+     A reverse-chronological strip of the newest timestamped lines, directly
+     under the hero. It is the first thing both a reader and a crawler meet,
+     and it is plain server-rendered HTML so it counts even with JavaScript
+     off. The timestamps are bold and machine-readable <time> elements. */
+  .ticker{margin:18px 0 0; border:1px solid var(--border); border-radius:14px; background:var(--surface); overflow:hidden;}
+  .ticker-head{display:flex; align-items:center; gap:9px; flex-wrap:wrap; padding:11px 14px; border-bottom:1px solid var(--border);}
+  .ticker-head h2{font-size:0.95rem; margin:0; letter-spacing:-0.01em;}
+  .ticker-head .tk-dot{width:8px; height:8px; border-radius:50%; background:var(--critical); box-shadow:0 0 0 0 rgba(229,72,77,0.55); animation:tkpulse 1.9s infinite;}
+  @keyframes tkpulse{70%{box-shadow:0 0 0 8px rgba(229,72,77,0);}100%{box-shadow:0 0 0 0 rgba(229,72,77,0);}}
+  .ticker-head .tk-when{font-family:var(--font-mono); font-size:0.72rem; color:var(--text-faint); margin-left:auto;}
+  .ticker ol{list-style:none; margin:0; padding:0;}
+  .ticker li{padding:11px 14px; border-bottom:1px solid var(--border);}
+  .ticker li:last-child{border-bottom:0;}
+  .ticker time{display:block; font-family:var(--font-mono); font-size:0.72rem; font-weight:700; color:var(--critical); letter-spacing:0.02em;}
+  .ticker a{display:block; margin-top:3px; font-size:0.95rem; font-weight:600; line-height:1.35; color:var(--text); text-decoration:none;}
+  .ticker a:hover{text-decoration:underline;}
+  .ticker .tk-ago{color:var(--text-faint); font-weight:600;}
+  .ticker p.tk-sum{margin:4px 0 0; font-size:0.85rem; color:var(--text-muted); line-height:1.45;}
+  .ticker .tk-foot{padding:10px 14px; font-size:0.8rem;}
+  @media (prefers-reduced-motion: reduce){.ticker-head .tk-dot{animation:none;}}
 </style>
 </head>
 <body>
@@ -1472,12 +1777,28 @@
       </g>
     </g>
   </symbol>
+  <!-- House mark. Two ridges, a snow cap, the brand red and blue. The national
+       flag used to sit here, which is what every other Nepal page uses, so the
+       site had no mark of its own to be recognised by. -->
+  <symbol id="ndu-mark" viewBox="0 0 120 120">
+    <clipPath id="ndumL"><polygon points="60,16 52,46 58,72 50,104 8,104"/></clipPath>
+    <clipPath id="ndumR"><polygon points="60,16 112,104 50,104 58,72 52,46"/></clipPath>
+    <polygon points="60,16 52,46 58,72 50,104 8,104" fill="#B7343F"/>
+    <g clip-path="url(#ndumL)" stroke="#8A2530" stroke-width="1.5" fill="none" opacity="0.55">
+      <path d="M30,60 L55,52"/><path d="M24,72 L56,64"/><path d="M18,84 L53,80"/><path d="M13,96 L51,94"/>
+    </g>
+    <polygon points="60,16 112,104 50,104 58,72 52,46" fill="#2A5EA3"/>
+    <g clip-path="url(#ndumR)" stroke="#1D4A82" stroke-width="1.5" fill="none" opacity="0.5">
+      <path d="M65,52 L95,58"/><path d="M60,64 L100,70"/><path d="M56,78 L104,82"/><path d="M52,92 L108,94"/>
+    </g>
+    <polygon points="60,16 52,30 68,30" fill="#F4F0E6"/>
+  </symbol>
 </svg>
 
 <header class="sitehead">
   <div class="sitehead-inner">
     <a href="#overview" class="brand" data-tab-link="overview" aria-label="Nepal Disaster Update, home">
-      <span class="brand-mark"><svg class="flag" aria-hidden="true"><use href="#np-flag"></use></svg></span>
+      <span class="brand-mark"><svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><use href="#ndu-mark"></use></svg></span>
       <span class="brand-text">
         <span class="brand-name" data-i18n="brand.name">Nepal Disaster Update</span>
         <span class="brand-live"><i aria-hidden="true"></i><span data-i18n="brand.liveTag">Live coverage</span></span>
@@ -1584,18 +1905,27 @@
     </div>
 
 
-<button class="statusbar" id="statusbar" type="button">
-  <span class="dot" aria-hidden="true"></span>
-  <span><b data-i18n="status.label">MAJOR NEWS UPDATE</b> <span data-i18n="status.text">Active emergency in Rasuwa, Nepal</span></span>
-  <span id="statusbar-time">Checking for the latest&hellip;</span>
-  <span class="go" aria-hidden="true">Read &rsaquo;</span>
-</button>
+<!-- Breaking strip. The label is pinned, the facts scroll past it: what is
+     happening, the figures as they stand, and the numbers to call. A wall of
+     static text in a red band is something people learn to look past. -->
+<div class="statusbar" id="statusbar" role="region" aria-label="Breaking news">
+  <button class="sb-label" id="statusbar-open" type="button">
+    <span class="dot" aria-hidden="true"></span>
+    <b data-i18n="status.label">LIVE</b>
+  </button>
+  <div class="sb-track" id="statusbar-track" aria-live="off">
+    <div class="sb-run" id="statusbar-run"></div>
+    <div class="sb-run" id="statusbar-run2" aria-hidden="true"></div>
+  </div>
+  <span class="sb-fade" aria-hidden="true"></span>
+  <span id="statusbar-time" class="sb-time">Checking&hellip;</span>
+</div>
 
 <!-- ===== major news modal ===== -->
 <div class="modal-backdrop" id="news-modal" hidden role="dialog" aria-modal="true" aria-labelledby="news-modal-title">
   <div class="modal">
     <div class="modal-head">
-      <svg class="flag" style="width:22px;height:27px" aria-hidden="true"><use href="#np-flag"></use></svg>
+      <svg class="mark" viewBox="0 0 120 120" style="width:26px;height:26px" aria-hidden="true"><use href="#ndu-mark"></use></svg>
       <div>
         <p class="eyebrow" style="margin:0 0 2px;">Major news update</p>
         <h2 id="news-modal-title">Rasuwa flash flood, Nepal</h2>
@@ -1603,7 +1933,7 @@
       <button class="modal-close" id="news-modal-close" type="button" aria-label="Close">&times;</button>
     </div>
     <div class="modal-body">
-      <p style="margin-top:14px;">A flash flood came down the Bhote Koshi from the Tibet side on the morning of 26 August 2026. Nepal Police confirm 289 dead. China has reported a new lake forming upstream and warns it could break, so stay off the riverbanks.</p>
+      <p style="margin-top:14px;" id="news-modal-lede"><!--ssr:modal-lede-->A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call. Nepal Police bulletin: 389 confirmed dead, as of 27 August 2026, 9:00 pm NPT.<!--/ssr:modal-lede--></p>
       <div id="modal-feed"><div class="skeleton" style="width:80%"></div><div class="skeleton" style="width:65%"></div><div class="skeleton" style="width:72%"></div></div>
     </div>
     <div class="modal-foot">
@@ -1629,11 +1959,16 @@
     <header class="hero">
       <div class="hero-chips">
         <span class="chip-live"><i aria-hidden="true"></i>Live</span>
-        <span class="chip-meta" id="hero-day">Day 1</span>
+        <span class="chip-meta" id="hero-day">Day 2</span>
         <span class="chip-meta" id="hero-updated">Updating&hellip;</span>
       </div>
       <h1 data-i18n="hero.h1">Rasuwa flood, live</h1>
       <p class="lede" data-i18n="hero.lede">A flash flood came down the Bhotekoshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.</p>
+      <!-- The headline figures, server-rendered from event.json by src/build.mjs.
+           A reader who arrives from a search for the death toll used to have to
+           scroll past the whole briefing grid to find it. It is the reason they
+           came, so it goes above the fold, and it links to the full table. -->
+      <div class="hero-figures" id="hero-figures"><!--ssr:herofig--><div class="hf-row"><div class="hf-stat"><span class="hf-n critical">389</span><span class="hf-l">confirmed dead</span></div><div class="hf-stat"><span class="hf-n critical">910</span><span class="hf-l">listed missing in Nepal</span></div><div class="hf-stat"><span class="hf-n">113</span><span class="hf-l">rescued so far</span></div></div><p class="hf-note">Nepal Police bulletin, 27 August 2026, 9:00 pm NPT. <a href="#numbers-title">Every figure and where it came from</a></p><!--/ssr:herofig--></div>
       <div class="hero-actions">
         <button class="btn btn-primary" type="button" data-goto-tab="live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="2.4"/><path d="M7.8 7.8a5.9 5.9 0 0 0 0 8.4M16.2 16.2a5.9 5.9 0 0 0 0-8.4"/></svg><span data-i18n="hero.cta.live">Latest updates</span></button>
         <button class="btn" type="button" data-goto-tab="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3.6 3.6 6.1v14.3L9 17.9l6 2.5 5.4-2.5V3.6L15 6.1z"/></svg><span data-i18n="hero.cta.map">See the map</span></button>
@@ -1643,13 +1978,64 @@
       <p style="margin-top:-6px;"><a class="deeplink" href="/ne/" hreflang="ne" lang="ne">नेपालीमा पढ्नुहोस्</a></p>
     </header>
 
+    <!-- ===== live ticker =====
+         Written by src/build.mjs from the same archive the briefings come
+         from. Newest first, one bold timestamp per line. Do not hand-edit:
+         the markers are rewritten on every build. -->
+    <section class="ticker" id="live-ticker" aria-label="Latest updates, newest first"><!--ssr:ticker--><div class="ticker-head"><span class="tk-dot" aria-hidden="true"></span><h2>Latest updates</h2><span class="tk-when">Updated 28 August 2026, 5:10 am NPT</span></div><ol><li><time datetime="2026-08-28T02:30:00+05:45">28 August 2026, 2:30 am NPT</time><a href="/updates/2026-08-28-australia-missing-aid/">Australia raises its missing count to 39, pledges $5m in aid</a><p class="tk-sum">Australian Foreign Minister Penny Wong said on Friday that 39 Australians are now unaccounted for in the flood, up from the 35 that Nepal's tourism board…</p></li><li><time datetime="2026-08-27T23:30:00+05:45">27 August 2026, 11:30 pm NPT</time><a href="/updates/2026-08-27-damage-cost/">Damage put at Rs 200 billion, hydropower losses still being counted</a><p class="tk-sum">Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.</p></li><li><time datetime="2026-08-27T22:30:00+05:45">27 August 2026, 10:30 pm NPT</time><a href="/updates/2026-08-27-rasuwa-flood/">Toll passes 389 as China warns lake may burst within days</a><p class="tk-sum">Nepal Police put the confirmed toll at 389 dead as of a 9pm bulletin on Thursday, up from 359 at 5pm. Police also said 466 people are injured. The flood…</p></li><li><time datetime="2026-08-27T19:00:00+05:45">27 August 2026, 7:00 pm NPT</time><a href="/updates/2026-08-27-hydropower-workers-out-of-contact/">Over 200 hydropower staff still out of contact, IPPAN says</a><p class="tk-sum">The Independent Power Producers' Association Nepal, IPPAN, says 215 staff from five hydropower projects have not been reached since Wednesday's flood.…</p></li><li><time datetime="2026-08-27T14:30:00+05:45">27 August 2026, 2:30 pm NPT</time><a href="/updates/2026-08-27-toll-289/">289 confirmed dead in the Rasuwa flood as searches reach cut-off areas</a><p class="tk-sum">Nepal Police put the confirmed toll at 289 in their 2:30pm bulletin on Thursday. It was 270 at 1:30pm and 165 that morning. The jumps are search teams…</p></li></ol><p class="tk-foot"><a class="deeplink" href="/nepal-flood/rasuwa/live-updates/">Every update, newest first</a></p><!--/ssr:ticker--></section>
+    <script>
+    /* Relative times on the ticker. The absolute Nepal time stays in the
+       markup, because that is what a crawler and a reader with JavaScript off
+       should see, and because "9:30 pm NPT" is the checkable fact. This adds
+       "2 h ago" beside it for a reader deciding whether the page is current.
+       It never replaces the stamp, only appends to it. */
+    (function () {
+      var box = document.getElementById('live-ticker');
+      if (!box) return;
+      function ago(t) {
+        var m = Math.round((Date.now() - new Date(t).getTime()) / 60000);
+        if (!isFinite(m) || m < 0) return '';
+        if (m < 1) return 'just now';
+        if (m < 60) return m + ' min ago';
+        if (m < 1440) return Math.round(m / 60) + ' h ago';
+        return Math.round(m / 1440) + ' d ago';
+      }
+      function paint() {
+        var stamps = box.querySelectorAll('time[datetime]');
+        for (var i = 0; i < stamps.length; i++) {
+          var rel = ago(stamps[i].getAttribute('datetime'));
+          if (!rel) continue;
+          var tag = stamps[i].querySelector('.tk-ago');
+          if (!tag) {
+            tag = document.createElement('span');
+            tag.className = 'tk-ago';
+            stamps[i].appendChild(tag);
+          }
+          tag.textContent = ' \u00b7 ' + rel;
+        }
+      }
+      paint();
+      setInterval(paint, 60000);
+    })();
+    </script>
+
+
     <!-- ===== today: story cards, also on the Today tab ===== -->
     <section id="today-home" style="margin-top:6px;">
       <p class="eyebrow" data-i18n="sec.today.eyebrow">Today</p>
       <h2 data-i18n="sec.today.h2">Story of the day</h2>
       <p class="measure lede" data-i18n="sec.today.home">Each story of the day, short and checked. Tap a card to read it all.</p>
+      <!-- Picture versions, written by src/build.mjs. A briefing tile starts as a
+           drawn placeholder and is replaced by a real news photograph under the same
+           filename, so the client renderer needs the same ?v= stamp the server-rendered
+           markup uses or a returning reader keeps seeing the placeholder. -->
+      <script id="og-versions" type="application/json"><!--ssr:ogv-->{"updates-2026-08-28-australia-missing-aid-thumb.png":"/assets/og/updates-2026-08-28-australia-missing-aid-thumb.png?v=1787874595","updates-2026-08-28-australia-missing-aid-story.png":"/assets/og/updates-2026-08-28-australia-missing-aid-story.png?v=1787874595","updates-2026-08-27-damage-cost-thumb.png":"/assets/og/updates-2026-08-27-damage-cost-thumb.png?v=1787858530","updates-2026-08-27-damage-cost-story.png":"/assets/og/updates-2026-08-27-damage-cost-story.png?v=1787858533","updates-2026-08-27-rasuwa-flood-thumb.png":"/assets/og/updates-2026-08-27-rasuwa-flood-thumb.png?v=1787871823","updates-2026-08-27-rasuwa-flood-story.png":"/assets/og/updates-2026-08-27-rasuwa-flood-story.png?v=1787871825","updates-2026-08-27-hydropower-workers-out-of-contact-thumb.png":"/assets/og/updates-2026-08-27-hydropower-workers-out-of-contact-thumb.png?v=1787871838","updates-2026-08-27-hydropower-workers-out-of-contact-story.png":"/assets/og/updates-2026-08-27-hydropower-workers-out-of-contact-story.png?v=1787871838","updates-2026-08-27-toll-289-thumb.png":"/assets/og/updates-2026-08-27-toll-289-thumb.png?v=1787856980","updates-2026-08-27-toll-289-story.png":"/assets/og/updates-2026-08-27-toll-289-story.png?v=1787856984","updates-2026-08-27-barrier-lake-thumb.png":"/assets/og/updates-2026-08-27-barrier-lake-thumb.png?v=1787856997","updates-2026-08-27-barrier-lake-story.png":"/assets/og/updates-2026-08-27-barrier-lake-story.png?v=1787857005","updates-2026-08-27-cause-usgs-thumb.png":"/assets/og/updates-2026-08-27-cause-usgs-thumb.png?v=1787857017","updates-2026-08-27-cause-usgs-story.png":"/assets/og/updates-2026-08-27-cause-usgs-story.png?v=1787857018","updates-2026-08-27-damage-infra-thumb.png":"/assets/og/updates-2026-08-27-damage-infra-thumb.png?v=1787857025","updates-2026-08-27-damage-infra-story.png":"/assets/og/updates-2026-08-27-damage-infra-story.png?v=1787857027"}<!--/ssr:ogv--></script>
       <div class="today-grid" id="today-grid-home" aria-live="polite" data-ssr="1">
-        <!--ssr:today--><article class="post-card today-card" data-title="Australia raises its missing count to 39, pledges $5m in aid"><p class="tc-stamp">28 August 2026, 2:30 am NPT</p><div class="post-body"><p class="tc-title">Australia raises its missing count to 39, pledges $5m in aid</p><div class="post-summary clamped" id="ssr-2026-08-28-australia-missing-aid-0" data-expand="ssr-2026-08-28-australia-missing-aid-0"><p>Australian Foreign Minister Penny Wong said on Friday that 39 Australians are now unaccounted for in the flood, up from the 35 that Nepal's tourism board had listed a day earlier. She said the number could still rise as officials work through the list, and warned some of those missing may not be found.</p><p>Wong also announced A$5 million in Australian aid: 2 million to the World Food Programme, 2 million to Australian NGOs through the Australian Humanitarian Partnership, and 1 million to the Emergency Action Alliance for local recovery work. Three more Australian humanitarian specialists are being sent to join the 20 staff already in Nepal.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-28-australia-missing-aid-0">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974" target="_blank" rel="noopener nofollow">ABC News Australia</a>, <a href="https://www.standard.net.au/story/9339027/almost-40-australians-missing-in-nepals-flash-floods/" target="_blank" rel="noopener nofollow">The Standard</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-28-australia-missing-aid/">Full briefing</a></div></article><article class="post-card today-card" data-title="Damage put at Rs 200 billion, hydropower losses still being counted"><p class="tc-stamp">27 August 2026, 11:30 pm NPT <span class="rev">updated</span></p><div class="post-body"><p class="tc-title">Damage put at Rs 200 billion, hydropower losses still being counted</p><div class="post-summary clamped" id="ssr-2026-08-27-damage-cost-1" data-expand="ssr-2026-08-27-damage-cost-1"><p>Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.</p><p>That figure does not include energy infrastructure. Energy Minister Biraj Bhakta Shrestha has ordered an immediate assessment of hydropower damage. In Rasuwa, 8 projects have been hit, 5 of them operational with a combined 236 megawatts, and 3 still under construction with a combined 342 megawatts. Nuwakot has lost access to 6 more projects, 4 operational at 123 megawatts and 2 under construction at 53 megawatts.</p><p>Rasuwa, Nuwakot, Dhading and Chitwan are still being surveyed for road and building damage, so the Rs 200 billion figure is expected to rise.</p><p>The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. The World Bank has separately offered up to Rs 25 billion in emergency assistance, its Nepal country director told the finance ministry. That is aid, not a damage estimate.</p><p>Insurers say claims will take weeks to settle because most of the damaged sites cannot be reached by road.</p><p>The Prime Minister's Disaster Relief Fund took in Rs 273.3 million in donations in its first six hours, the finance ministry says, led by a Rs 100 million gift from Gorkha Brewery. That is public donations, separate from the Rs 1 billion the government has already released for relief.</p><p>UNICEF says at least 17,000 children have been affected across Rasuwa, Nuwakot and Dhading. It counts 18 schools destroyed and 20 more damaged in those three districts, wider than the 8 schools Onlinekhabar had reported damaged in Rasuwa and Nuwakot alone a day earlier. UNICEF says around 10,000 school-age children now need help such as temporary classrooms and replacement books to keep learning.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-damage-cost-1">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/rasuwa-floods-damage.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" target="_blank" rel="noopener nofollow">The Kathmandu Post</a>, <a href="https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://english.onlinekhabar.com/pms-disaster-relief-fund.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance" target="_blank" rel="noopener nofollow">UNICEF</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-damage-cost/">Full briefing</a></div></article><article class="post-card today-card" data-title="Toll passes 389 as China warns lake may burst within days"><p class="tc-stamp">27 August 2026, 10:30 pm NPT <span class="rev">updated</span></p><div class="post-body"><p class="tc-title">Toll passes 389 as China warns lake may burst within days</p><div class="post-summary clamped" id="ssr-2026-08-27-rasuwa-flood-2" data-expand="ssr-2026-08-27-rasuwa-flood-2"><p>Nepal Police put the confirmed toll at 389 dead as of a 9pm bulletin on Thursday, up from 359 at 5pm. Police also said 466 people are injured. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.</p><p>Chitwan has the most dead, 137, followed by Nawalparasi East with 87, Dhading with 33 and Gorkha with 32, Nepal Police figures reported by Review Nepal show. Health facilities in Chitwan can hold only around 50 bodies, which is slowing the process of identifying and releasing them to families.</p><p>Nepal's tourism board says 644 travellers, 517 of them foreign nationals, were reported missing in a situation update issued at noon on Thursday, up from an earlier police count of 579. India has the most missing at 178, followed by 65 Americans and 53 Ukrainians, the tourism board says. Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.</p><p>China's Ministry of Water Resources says a new barrier lake near the Chhochen Khola and Purepu Tsangpo, close to the Nepal border, is already overflowing and holds about 2 million cubic metres of water. It expects another 3 million cubic metres to flow in over the next three days, putting the lake at high risk of breaching in that time. This is separate from the smaller lake NDRRMA found earlier on the Lhende river.</p><p>USGS first read the shaking on Wednesday as an earthquake. It later found no earthquake took place. The signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.</p><p>Nepal's Army says more than 5,000 army and police personnel are working the flood zone, from Nuwakot to Chitwan. Prime Minister Balendra Shah travelled to Bidur in Nuwakot on Thursday to see the damage.</p><p>In India, the NDRF and the Sashastra Seema Bal have rescue teams on standby in Bihar and Uttar Pradesh, and the NDRF says the Gandak, which the Narayani becomes downstream, could see higher water levels. Nepal has turned down offers of search and rescue teams from India, China, the US, Britain, Japan, South Korea, Sri Lanka and Bangladesh, the Kathmandu Post reports. The government says its own army and police can handle the operation and is asking instead for cash, through a single channel into the Prime Minister's Disaster Relief Fund.</p><p>Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-rasuwa-flood-2">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://www.nepalpolice.gov.np/" target="_blank" rel="noopener nofollow">Nepal Police</a>, <a href="https://www.reviewnepal.com/rasuwa-flood-389-bodies-recovered-as-families-await-news-of-loved-ones/" target="_blank" rel="noopener nofollow">Review Nepal</a>, <a href="https://english.onlinekhabar.com/644-people-missing.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://kathmandupost.com/national/2026/08/27/new-barrier-lake-in-nepal-raises-fresh-flood-threat-china-warns" target="_blank" rel="noopener nofollow">The Kathmandu Post</a>, <a href="https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" target="_blank" rel="noopener nofollow">ICIMOD</a>, <a href="https://www.business-standard.com/world-news/glacial-collapse-triggered-nepal-flash-floods-not-earthquake-usgs-126082700207_1.html" target="_blank" rel="noopener nofollow">Business Standard</a>, <a href="https://aninews.in/news/national/general-news/ndrf-on-high-alert-as-nepal-flash-flood-threatens-gandak-bihar-up-deploy-rescue-teams-in-vulnerable-areas20260827033747/" target="_blank" rel="noopener nofollow">ANI</a>, <a href="https://kathmandupost.com/national/2026/08/27/nepal-declines-foreign-rescue-teams-says-its-own-security-agencies-can-handle-operation" target="_blank" rel="noopener nofollow">The Kathmandu Post</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-rasuwa-flood/">Full briefing</a></div></article><article class="post-card today-card" data-title="Over 200 hydropower staff still out of contact, IPPAN says"><p class="tc-stamp">27 August 2026, 7:00 pm NPT</p><div class="post-body"><p class="tc-title">Over 200 hydropower staff still out of contact, IPPAN says</p><div class="post-summary clamped" id="ssr-2026-08-27-hydropower-workers-out-of-contact-3" data-expand="ssr-2026-08-27-hydropower-workers-out-of-contact-3"><p>The Independent Power Producers' Association Nepal, IPPAN, says 215 staff from five hydropower projects have not been reached since Wednesday's flood. Worst hit is the under construction Upper Trishuli-1 project, where IPPAN counts 94 people out of contact, among them 8 Korean nationals working for the developer. At Rasuwagadhi, 51 staff are out of contact, though 3 reached higher ground on their own.</p><p>IPPAN says it has unconfirmed reports of an early rescue at one project site, but most workers there are still unreachable. Separately, a Nepal Army helicopter reached the nearby Upper Trishuli 3A project on Thursday to check on stranded staff, after two earlier landing attempts failed in bad weather. Energy Minister Biraj Bhakta Shrestha has ordered agencies to speed up the rescue there and get power back on.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-hydropower-workers-out-of-contact-3">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/hydropower-out-of-contact.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://risingnepaldaily.com/news/85596" target="_blank" rel="noopener nofollow">The Rising Nepal</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-hydropower-workers-out-of-contact/">Full briefing</a></div></article><article class="post-card today-card" data-title="289 confirmed dead in the Rasuwa flood as searches reach cut-off areas"><p class="tc-stamp">27 August 2026, 2:30 pm NPT <span class="rev">updated</span></p><div class="post-body"><p class="tc-title">289 confirmed dead in the Rasuwa flood as searches reach cut-off areas</p><div class="post-summary clamped" id="ssr-2026-08-27-toll-289-4" data-expand="ssr-2026-08-27-toll-289-4"><p>Nepal Police put the confirmed toll at 289 in their 2:30pm bulletin on Thursday. It was 270 at 1:30pm and 165 that morning. The jumps are search teams reaching settlements that had been cut off since Wednesday, not new casualties happening.</p><p>Bodies have been recovered in eight districts: Chitwan 108, Nawalparasi East 74, Dhading 27, Gorkha 20, Rasuwa 17, Tanahun 16, Nawalparasi West 15 and Nuwakot 12. A district here is where a body was found, not where the person was from.</p><p>The Armed Police Force says 121 of those were recovered from the Narayani river alone by Thursday afternoon. Chitwan's mortuary has filled and an identification centre is being set up.</p><p>826 people were listed missing in the police bulletin at 8:15am. That figure is older than the toll above, so some of those people are among the 289 now confirmed dead. Police have not published a revised missing count, and this site will not estimate one.</p><p>NDRRMA reports 113 people rescued from Timure, Dhunche, Syabrubesi, Uttargaya and Bidur: 88 Nepali citizens, 11 Indian, 8 Chinese, 4 Korean and 2 American. It has published their names.</p><p>73 people are recorded as injured. Tribhuvan University Teaching Hospital said on Thursday morning it was treating 31 patients from Rasuwa, Nuwakot, Gorkha and Dhading, several in intensive care, and that one had died.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-toll-289-4">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://nepalpolice.gov.np/news/10252/" target="_blank" rel="noopener nofollow">Nepal Police</a>, <a href="https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" target="_blank" rel="noopener nofollow">UN OCHA / ReliefWeb</a>, <a href="https://english.nepalnews.com/s/nation/121-bodies-recovered-from-narayani-river-following-bhote-koshi-flash-flood/" target="_blank" rel="noopener nofollow">Nepalnews</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-toll-289/">Full briefing</a></div></article><article class="post-card today-card" data-title="China reports a new lake forming upstream and warns it could break"><p class="tc-stamp">27 August 2026, 11:00 am NPT</p><div class="post-body"><p class="tc-title">China reports a new lake forming upstream and warns it could break</p><div class="post-summary clamped" id="ssr-2026-08-27-barrier-lake-5" data-expand="ssr-2026-08-27-barrier-lake-5"><p>China's Ministry of Water Resources says a barrier lake, meaning a river blocked by debris into an artificial lake, has formed near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border.</p><p>CCTV reports around 2 million cubic metres of water had collected behind it by Thursday morning. Chinese state media warn it could break.</p><p>Both rivers are upper tributaries of the Trishuli system. A release would run down the same corridor the 26 August flood took, through Rasuwa and Nuwakot.</p><p>Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave, so a warning would come with less notice than normal.</p><p>Downstream in India, authorities in Bihar have opened the Valmikinagar Barrage on the Gandak, the same river that is called the Narayani inside Nepal, as a precaution, and prepared to move 10,000 to 12,000 people.</p><p>Stay off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-barrier-lake-5">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/lake-nepal-border-china-dam-break.html" target="_blank" rel="noopener nofollow">Onlinekhabar (Global Times)</a>, <a href="https://khabarhub.com/2026/27/1016273/" target="_blank" rel="noopener nofollow">Khabarhub</a>, <a href="https://www.setopati.com/politics/396925" target="_blank" rel="noopener nofollow">Setopati</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-barrier-lake/">Full briefing</a></div></article><p class="today-updated">Updated 28 August 2026, 5:10 am NPT</p><!--/ssr:today-->
+<<<<<<< HEAD
+        <!--ssr:today--><article class="post-card today-card" data-title="Australia raises its missing count to 39, pledges $5m in aid" data-permalink="/updates/2026-08-28-australia-missing-aid/" data-story="/assets/og/updates-2026-08-28-australia-missing-aid-story.png?v=1787874595"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-28-australia-missing-aid/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-28-australia-missing-aid-thumb.png?v=1787874595" alt=""></a><p class="tc-stamp">28 August 2026, 2:30 am NPT</p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-28-australia-missing-aid/">Australia raises its missing count to 39, pledges $5m in aid</a></p><div class="post-summary clamped" id="ssr-2026-08-28-australia-missing-aid-0" data-expand="ssr-2026-08-28-australia-missing-aid-0"><p>Australian Foreign Minister Penny Wong said on Friday that 39 Australians are now unaccounted for in the flood, up from the 35 that Nepal's tourism board had listed a day earlier. She said the number could still rise as officials work through the list, and warned some of those missing may not be found.</p><p>Wong also announced A$5 million in Australian aid: 2 million to the World Food Programme, 2 million to Australian NGOs through the Australian Humanitarian Partnership, and 1 million to the Emergency Action Alliance for local recovery work. Three more Australian humanitarian specialists are being sent to join the 20 staff already in Nepal.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-28-australia-missing-aid-0">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974" target="_blank" rel="noopener nofollow">ABC News Australia</a>, <a href="https://www.standard.net.au/story/9339027/almost-40-australians-missing-in-nepals-flash-floods/" target="_blank" rel="noopener nofollow">The Standard</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-28-australia-missing-aid/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="Damage put at Rs 200 billion, hydropower losses still being counted" data-permalink="/updates/2026-08-27-damage-cost/" data-story="/assets/og/updates-2026-08-27-damage-cost-story.png?v=1787858533"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-damage-cost/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-damage-cost-thumb.png?v=1787858530" alt=""></a><p class="tc-stamp">27 August 2026, 11:30 pm NPT <span class="rev">updated</span></p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-damage-cost/">Damage put at Rs 200 billion, hydropower losses still being counted</a></p><div class="post-summary clamped" id="ssr-2026-08-27-damage-cost-1" data-expand="ssr-2026-08-27-damage-cost-1"><p>Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.</p><p>That figure does not include energy infrastructure. Energy Minister Biraj Bhakta Shrestha has ordered an immediate assessment of hydropower damage. In Rasuwa, 8 projects have been hit, 5 of them operational with a combined 236 megawatts, and 3 still under construction with a combined 342 megawatts. Nuwakot has lost access to 6 more projects, 4 operational at 123 megawatts and 2 under construction at 53 megawatts.</p><p>Rasuwa, Nuwakot, Dhading and Chitwan are still being surveyed for road and building damage, so the Rs 200 billion figure is expected to rise.</p><p>The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. The World Bank has separately offered up to Rs 25 billion in emergency assistance, its Nepal country director told the finance ministry. That is aid, not a damage estimate.</p><p>Insurers say claims will take weeks to settle because most of the damaged sites cannot be reached by road.</p><p>The Prime Minister's Disaster Relief Fund took in Rs 273.3 million in donations in its first six hours, the finance ministry says, led by a Rs 100 million gift from Gorkha Brewery. That is public donations, separate from the Rs 1 billion the government has already released for relief.</p><p>UNICEF says at least 17,000 children have been affected across Rasuwa, Nuwakot and Dhading. It counts 18 schools destroyed and 20 more damaged in those three districts, wider than the 8 schools Onlinekhabar had reported damaged in Rasuwa and Nuwakot alone a day earlier. UNICEF says around 10,000 school-age children now need help such as temporary classrooms and replacement books to keep learning.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-damage-cost-1">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/rasuwa-floods-damage.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" target="_blank" rel="noopener nofollow">The Kathmandu Post</a>, <a href="https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://english.onlinekhabar.com/pms-disaster-relief-fund.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance" target="_blank" rel="noopener nofollow">UNICEF</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-damage-cost/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="Toll passes 389 as China warns lake may burst within days" data-permalink="/updates/2026-08-27-rasuwa-flood/" data-story="/assets/og/updates-2026-08-27-rasuwa-flood-story.png?v=1787871825"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-rasuwa-flood/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-rasuwa-flood-thumb.png?v=1787871823" alt=""></a><p class="tc-stamp">27 August 2026, 10:30 pm NPT <span class="rev">updated</span></p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-rasuwa-flood/">Toll passes 389 as China warns lake may burst within days</a></p><div class="post-summary clamped" id="ssr-2026-08-27-rasuwa-flood-2" data-expand="ssr-2026-08-27-rasuwa-flood-2"><p>Nepal Police put the confirmed toll at 389 dead as of a 9pm bulletin on Thursday, up from 359 at 5pm. Police also said 466 people are injured. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.</p><p>Chitwan has the most dead, 137, followed by Nawalparasi East with 87, Dhading with 33 and Gorkha with 32, Nepal Police figures reported by Review Nepal show. Health facilities in Chitwan can hold only around 50 bodies, which is slowing the process of identifying and releasing them to families.</p><p>Nepal's tourism board says 644 travellers, 517 of them foreign nationals, were reported missing in a situation update issued at noon on Thursday, up from an earlier police count of 579. India has the most missing at 178, followed by 65 Americans and 53 Ukrainians, the tourism board says. Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.</p><p>China's Ministry of Water Resources says a new barrier lake near the Chhochen Khola and Purepu Tsangpo, close to the Nepal border, is already overflowing and holds about 2 million cubic metres of water. It expects another 3 million cubic metres to flow in over the next three days, putting the lake at high risk of breaching in that time. This is separate from the smaller lake NDRRMA found earlier on the Lhende river.</p><p>USGS first read the shaking on Wednesday as an earthquake. It later found no earthquake took place. The signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.</p><p>Nepal's Army says more than 5,000 army and police personnel are working the flood zone, from Nuwakot to Chitwan. Prime Minister Balendra Shah travelled to Bidur in Nuwakot on Thursday to see the damage.</p><p>In India, the NDRF and the Sashastra Seema Bal have rescue teams on standby in Bihar and Uttar Pradesh, and the NDRF says the Gandak, which the Narayani becomes downstream, could see higher water levels. Nepal has turned down offers of search and rescue teams from India, China, the US, Britain, Japan, South Korea, Sri Lanka and Bangladesh, the Kathmandu Post reports. The government says its own army and police can handle the operation and is asking instead for cash, through a single channel into the Prime Minister's Disaster Relief Fund.</p><p>Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-rasuwa-flood-2">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://www.nepalpolice.gov.np/" target="_blank" rel="noopener nofollow">Nepal Police</a>, <a href="https://www.reviewnepal.com/rasuwa-flood-389-bodies-recovered-as-families-await-news-of-loved-ones/" target="_blank" rel="noopener nofollow">Review Nepal</a>, <a href="https://english.onlinekhabar.com/644-people-missing.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://kathmandupost.com/national/2026/08/27/new-barrier-lake-in-nepal-raises-fresh-flood-threat-china-warns" target="_blank" rel="noopener nofollow">The Kathmandu Post</a>, <a href="https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" target="_blank" rel="noopener nofollow">ICIMOD</a>, <a href="https://www.business-standard.com/world-news/glacial-collapse-triggered-nepal-flash-floods-not-earthquake-usgs-126082700207_1.html" target="_blank" rel="noopener nofollow">Business Standard</a>, <a href="https://aninews.in/news/national/general-news/ndrf-on-high-alert-as-nepal-flash-flood-threatens-gandak-bihar-up-deploy-rescue-teams-in-vulnerable-areas20260827033747/" target="_blank" rel="noopener nofollow">ANI</a>, <a href="https://kathmandupost.com/national/2026/08/27/nepal-declines-foreign-rescue-teams-says-its-own-security-agencies-can-handle-operation" target="_blank" rel="noopener nofollow">The Kathmandu Post</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-rasuwa-flood/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="Over 200 hydropower staff still out of contact, IPPAN says" data-permalink="/updates/2026-08-27-hydropower-workers-out-of-contact/" data-story="/assets/og/updates-2026-08-27-hydropower-workers-out-of-contact-story.png?v=1787871838"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-hydropower-workers-out-of-contact/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-hydropower-workers-out-of-contact-thumb.png?v=1787871838" alt=""></a><p class="tc-stamp">27 August 2026, 7:00 pm NPT</p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-hydropower-workers-out-of-contact/">Over 200 hydropower staff still out of contact, IPPAN says</a></p><div class="post-summary clamped" id="ssr-2026-08-27-hydropower-workers-out-of-contact-3" data-expand="ssr-2026-08-27-hydropower-workers-out-of-contact-3"><p>The Independent Power Producers' Association Nepal, IPPAN, says 215 staff from five hydropower projects have not been reached since Wednesday's flood. Worst hit is the under construction Upper Trishuli-1 project, where IPPAN counts 94 people out of contact, among them 8 Korean nationals working for the developer. At Rasuwagadhi, 51 staff are out of contact, though 3 reached higher ground on their own.</p><p>IPPAN says it has unconfirmed reports of an early rescue at one project site, but most workers there are still unreachable. Separately, a Nepal Army helicopter reached the nearby Upper Trishuli 3A project on Thursday to check on stranded staff, after two earlier landing attempts failed in bad weather. Energy Minister Biraj Bhakta Shrestha has ordered agencies to speed up the rescue there and get power back on.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-hydropower-workers-out-of-contact-3">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/hydropower-out-of-contact.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://risingnepaldaily.com/news/85596" target="_blank" rel="noopener nofollow">The Rising Nepal</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-hydropower-workers-out-of-contact/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="289 confirmed dead in the Rasuwa flood as searches reach cut-off areas" data-permalink="/updates/2026-08-27-toll-289/" data-story="/assets/og/updates-2026-08-27-toll-289-story.png?v=1787856984"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-toll-289/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-toll-289-thumb.png?v=1787856980" alt=""></a><p class="tc-stamp">27 August 2026, 2:30 pm NPT <span class="rev">updated</span></p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-toll-289/">289 confirmed dead in the Rasuwa flood as searches reach cut-off areas</a></p><div class="post-summary clamped" id="ssr-2026-08-27-toll-289-4" data-expand="ssr-2026-08-27-toll-289-4"><p>Nepal Police put the confirmed toll at 289 in their 2:30pm bulletin on Thursday. It was 270 at 1:30pm and 165 that morning. The jumps are search teams reaching settlements that had been cut off since Wednesday, not new casualties happening.</p><p>Bodies have been recovered in eight districts: Chitwan 108, Nawalparasi East 74, Dhading 27, Gorkha 20, Rasuwa 17, Tanahun 16, Nawalparasi West 15 and Nuwakot 12. A district here is where a body was found, not where the person was from.</p><p>The Armed Police Force says 121 of those were recovered from the Narayani river alone by Thursday afternoon. Chitwan's mortuary has filled and an identification centre is being set up.</p><p>826 people were listed missing in the police bulletin at 8:15am. That figure is older than the toll above, so some of those people are among the 289 now confirmed dead. Police have not published a revised missing count, and this site will not estimate one.</p><p>NDRRMA reports 113 people rescued from Timure, Dhunche, Syabrubesi, Uttargaya and Bidur: 88 Nepali citizens, 11 Indian, 8 Chinese, 4 Korean and 2 American. It has published their names.</p><p>73 people are recorded as injured. Tribhuvan University Teaching Hospital said on Thursday morning it was treating 31 patients from Rasuwa, Nuwakot, Gorkha and Dhading, several in intensive care, and that one had died.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-toll-289-4">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://nepalpolice.gov.np/news/10252/" target="_blank" rel="noopener nofollow">Nepal Police</a>, <a href="https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" target="_blank" rel="noopener nofollow">UN OCHA / ReliefWeb</a>, <a href="https://english.nepalnews.com/s/nation/121-bodies-recovered-from-narayani-river-following-bhote-koshi-flash-flood/" target="_blank" rel="noopener nofollow">Nepalnews</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-toll-289/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="China reports a new lake forming upstream and warns it could break" data-permalink="/updates/2026-08-27-barrier-lake/" data-story="/assets/og/updates-2026-08-27-barrier-lake-story.png?v=1787857005"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-barrier-lake/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-barrier-lake-thumb.png?v=1787856997" alt=""></a><p class="tc-stamp">27 August 2026, 11:00 am NPT</p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-barrier-lake/">China reports a new lake forming upstream and warns it could break</a></p><div class="post-summary clamped" id="ssr-2026-08-27-barrier-lake-5" data-expand="ssr-2026-08-27-barrier-lake-5"><p>China's Ministry of Water Resources says a barrier lake, meaning a river blocked by debris into an artificial lake, has formed near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border.</p><p>CCTV reports around 2 million cubic metres of water had collected behind it by Thursday morning. Chinese state media warn it could break.</p><p>Both rivers are upper tributaries of the Trishuli system. A release would run down the same corridor the 26 August flood took, through Rasuwa and Nuwakot.</p><p>Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave, so a warning would come with less notice than normal.</p><p>Downstream in India, authorities in Bihar have opened the Valmikinagar Barrage on the Gandak, the same river that is called the Narayani inside Nepal, as a precaution, and prepared to move 10,000 to 12,000 people.</p><p>Stay off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-barrier-lake-5">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/lake-nepal-border-china-dam-break.html" target="_blank" rel="noopener nofollow">Onlinekhabar (Global Times)</a>, <a href="https://khabarhub.com/2026/27/1016273/" target="_blank" rel="noopener nofollow">Khabarhub</a>, <a href="https://www.setopati.com/politics/396925" target="_blank" rel="noopener nofollow">Setopati</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-barrier-lake/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><p class="today-updated">Updated 28 August 2026, 5:10 am NPT</p><!--/ssr:today-->
+=======
+        <!--ssr:today--><article class="post-card today-card" data-title="Australia raises its missing count to 39, pledges $5m in aid" data-permalink="/updates/2026-08-28-australia-missing-aid/" data-story="/assets/og/updates-2026-08-28-australia-missing-aid-story.png?v=1787874595"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-28-australia-missing-aid/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-28-australia-missing-aid-thumb.png?v=1787874595" alt=""></a><p class="tc-stamp">28 August 2026, 2:30 am NPT</p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-28-australia-missing-aid/">Australia raises its missing count to 39, pledges $5m in aid</a></p><div class="post-summary clamped" id="ssr-2026-08-28-australia-missing-aid-0" data-expand="ssr-2026-08-28-australia-missing-aid-0"><p>Australian Foreign Minister Penny Wong said on Friday that 39 Australians are now unaccounted for in the flood, up from the 35 that Nepal's tourism board had listed a day earlier. She said the number could still rise as officials work through the list, and warned some of those missing may not be found.</p><p>Wong also announced A$5 million in Australian aid: 2 million to the World Food Programme, 2 million to Australian NGOs through the Australian Humanitarian Partnership, and 1 million to the Emergency Action Alliance for local recovery work. Three more Australian humanitarian specialists are being sent to join the 20 staff already in Nepal.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-28-australia-missing-aid-0">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974" target="_blank" rel="noopener nofollow">ABC News Australia</a>, <a href="https://www.standard.net.au/story/9339027/almost-40-australians-missing-in-nepals-flash-floods/" target="_blank" rel="noopener nofollow">The Standard</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-28-australia-missing-aid/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="Damage put at Rs 200 billion, hydropower losses still being counted" data-permalink="/updates/2026-08-27-damage-cost/" data-story="/assets/og/updates-2026-08-27-damage-cost-story.png?v=1787858533"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-damage-cost/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-damage-cost-thumb.png?v=1787858530" alt=""></a><p class="tc-stamp">27 August 2026, 11:30 pm NPT <span class="rev">updated</span></p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-damage-cost/">Damage put at Rs 200 billion, hydropower losses still being counted</a></p><div class="post-summary clamped" id="ssr-2026-08-27-damage-cost-1" data-expand="ssr-2026-08-27-damage-cost-1"><p>Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.</p><p>That figure does not include energy infrastructure. Energy Minister Biraj Bhakta Shrestha has ordered an immediate assessment of hydropower damage. In Rasuwa, 8 projects have been hit, 5 of them operational with a combined 236 megawatts, and 3 still under construction with a combined 342 megawatts. Nuwakot has lost access to 6 more projects, 4 operational at 123 megawatts and 2 under construction at 53 megawatts.</p><p>Rasuwa, Nuwakot, Dhading and Chitwan are still being surveyed for road and building damage, so the Rs 200 billion figure is expected to rise.</p><p>The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. The World Bank has separately offered up to Rs 25 billion in emergency assistance, its Nepal country director told the finance ministry. That is aid, not a damage estimate.</p><p>Insurers say claims will take weeks to settle because most of the damaged sites cannot be reached by road.</p><p>The Prime Minister's Disaster Relief Fund took in Rs 273.3 million in donations in its first six hours, the finance ministry says, led by a Rs 100 million gift from Gorkha Brewery. That is public donations, separate from the Rs 1 billion the government has already released for relief.</p><p>UNICEF says at least 17,000 children have been affected across Rasuwa, Nuwakot and Dhading. It counts 18 schools destroyed and 20 more damaged in those three districts, wider than the 8 schools Onlinekhabar had reported damaged in Rasuwa and Nuwakot alone a day earlier. UNICEF says around 10,000 school-age children now need help such as temporary classrooms and replacement books to keep learning.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-damage-cost-1">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/rasuwa-floods-damage.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" target="_blank" rel="noopener nofollow">The Kathmandu Post</a>, <a href="https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://english.onlinekhabar.com/pms-disaster-relief-fund.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance" target="_blank" rel="noopener nofollow">UNICEF</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-damage-cost/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="Toll passes 389 as China warns lake may burst within days" data-permalink="/updates/2026-08-27-rasuwa-flood/" data-story="/assets/og/updates-2026-08-27-rasuwa-flood-story.png?v=1787871825"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-rasuwa-flood/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-rasuwa-flood-thumb.png?v=1787871823" alt=""></a><p class="tc-stamp">27 August 2026, 10:30 pm NPT <span class="rev">updated</span></p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-rasuwa-flood/">Toll passes 389 as China warns lake may burst within days</a></p><div class="post-summary clamped" id="ssr-2026-08-27-rasuwa-flood-2" data-expand="ssr-2026-08-27-rasuwa-flood-2"><p>Nepal Police put the confirmed toll at 389 dead as of a 9pm bulletin on Thursday, up from 359 at 5pm. Police also said 466 people are injured. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.</p><p>Chitwan has the most dead, 137, followed by Nawalparasi East with 87, Dhading with 33 and Gorkha with 32, Nepal Police figures reported by Review Nepal show. Health facilities in Chitwan can hold only around 50 bodies, which is slowing the process of identifying and releasing them to families.</p><p>Nepal's tourism board says 644 travellers, 517 of them foreign nationals, were reported missing in a situation update issued at noon on Thursday, up from an earlier police count of 579. India has the most missing at 178, followed by 65 Americans and 53 Ukrainians, the tourism board says. Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.</p><p>China's Ministry of Water Resources says a new barrier lake near the Chhochen Khola and Purepu Tsangpo, close to the Nepal border, is already overflowing and holds about 2 million cubic metres of water. It expects another 3 million cubic metres to flow in over the next three days, putting the lake at high risk of breaching in that time. This is separate from the smaller lake NDRRMA found earlier on the Lhende river.</p><p>USGS first read the shaking on Wednesday as an earthquake. It later found no earthquake took place. The signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.</p><p>Nepal's Army says more than 5,000 army and police personnel are working the flood zone, from Nuwakot to Chitwan. Prime Minister Balendra Shah travelled to Bidur in Nuwakot on Thursday to see the damage.</p><p>In India, the NDRF and the Sashastra Seema Bal have rescue teams on standby in Bihar and Uttar Pradesh, and the NDRF says the Gandak, which the Narayani becomes downstream, could see higher water levels. Nepal has turned down offers of search and rescue teams from India, China, the US, Britain, Japan, South Korea, Sri Lanka and Bangladesh, the Kathmandu Post reports. The government says its own army and police can handle the operation and is asking instead for cash, through a single channel into the Prime Minister's Disaster Relief Fund.</p><p>Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-rasuwa-flood-2">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://www.nepalpolice.gov.np/" target="_blank" rel="noopener nofollow">Nepal Police</a>, <a href="https://www.reviewnepal.com/rasuwa-flood-389-bodies-recovered-as-families-await-news-of-loved-ones/" target="_blank" rel="noopener nofollow">Review Nepal</a>, <a href="https://english.onlinekhabar.com/644-people-missing.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://kathmandupost.com/national/2026/08/27/new-barrier-lake-in-nepal-raises-fresh-flood-threat-china-warns" target="_blank" rel="noopener nofollow">The Kathmandu Post</a>, <a href="https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" target="_blank" rel="noopener nofollow">ICIMOD</a>, <a href="https://www.business-standard.com/world-news/glacial-collapse-triggered-nepal-flash-floods-not-earthquake-usgs-126082700207_1.html" target="_blank" rel="noopener nofollow">Business Standard</a>, <a href="https://aninews.in/news/national/general-news/ndrf-on-high-alert-as-nepal-flash-flood-threatens-gandak-bihar-up-deploy-rescue-teams-in-vulnerable-areas20260827033747/" target="_blank" rel="noopener nofollow">ANI</a>, <a href="https://kathmandupost.com/national/2026/08/27/nepal-declines-foreign-rescue-teams-says-its-own-security-agencies-can-handle-operation" target="_blank" rel="noopener nofollow">The Kathmandu Post</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-rasuwa-flood/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="Over 200 hydropower staff still out of contact, IPPAN says" data-permalink="/updates/2026-08-27-hydropower-workers-out-of-contact/" data-story="/assets/og/updates-2026-08-27-hydropower-workers-out-of-contact-story.png?v=1787871838"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-hydropower-workers-out-of-contact/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-hydropower-workers-out-of-contact-thumb.png?v=1787871838" alt=""></a><p class="tc-stamp">27 August 2026, 7:00 pm NPT</p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-hydropower-workers-out-of-contact/">Over 200 hydropower staff still out of contact, IPPAN says</a></p><div class="post-summary clamped" id="ssr-2026-08-27-hydropower-workers-out-of-contact-3" data-expand="ssr-2026-08-27-hydropower-workers-out-of-contact-3"><p>The Independent Power Producers' Association Nepal, IPPAN, says 215 staff from five hydropower projects have not been reached since Wednesday's flood. Worst hit is the under construction Upper Trishuli-1 project, where IPPAN counts 94 people out of contact, among them 8 Korean nationals working for the developer. At Rasuwagadhi, 51 staff are out of contact, though 3 reached higher ground on their own.</p><p>IPPAN says it has unconfirmed reports of an early rescue at one project site, but most workers there are still unreachable. Separately, a Nepal Army helicopter reached the nearby Upper Trishuli 3A project on Thursday to check on stranded staff, after two earlier landing attempts failed in bad weather. Energy Minister Biraj Bhakta Shrestha has ordered agencies to speed up the rescue there and get power back on.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-hydropower-workers-out-of-contact-3">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/hydropower-out-of-contact.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://risingnepaldaily.com/news/85596" target="_blank" rel="noopener nofollow">The Rising Nepal</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-hydropower-workers-out-of-contact/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="289 confirmed dead in the Rasuwa flood as searches reach cut-off areas" data-permalink="/updates/2026-08-27-toll-289/" data-story="/assets/og/updates-2026-08-27-toll-289-story.png?v=1787856984"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-toll-289/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-toll-289-thumb.png?v=1787856980" alt=""></a><p class="tc-stamp">27 August 2026, 2:30 pm NPT <span class="rev">updated</span></p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-toll-289/">289 confirmed dead in the Rasuwa flood as searches reach cut-off areas</a></p><div class="post-summary clamped" id="ssr-2026-08-27-toll-289-4" data-expand="ssr-2026-08-27-toll-289-4"><p>Nepal Police put the confirmed toll at 289 in their 2:30pm bulletin on Thursday. It was 270 at 1:30pm and 165 that morning. The jumps are search teams reaching settlements that had been cut off since Wednesday, not new casualties happening.</p><p>Bodies have been recovered in eight districts: Chitwan 108, Nawalparasi East 74, Dhading 27, Gorkha 20, Rasuwa 17, Tanahun 16, Nawalparasi West 15 and Nuwakot 12. A district here is where a body was found, not where the person was from.</p><p>The Armed Police Force says 121 of those were recovered from the Narayani river alone by Thursday afternoon. Chitwan's mortuary has filled and an identification centre is being set up.</p><p>826 people were listed missing in the police bulletin at 8:15am. That figure is older than the toll above, so some of those people are among the 289 now confirmed dead. Police have not published a revised missing count, and this site will not estimate one.</p><p>NDRRMA reports 113 people rescued from Timure, Dhunche, Syabrubesi, Uttargaya and Bidur: 88 Nepali citizens, 11 Indian, 8 Chinese, 4 Korean and 2 American. It has published their names.</p><p>73 people are recorded as injured. Tribhuvan University Teaching Hospital said on Thursday morning it was treating 31 patients from Rasuwa, Nuwakot, Gorkha and Dhading, several in intensive care, and that one had died.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-toll-289-4">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://nepalpolice.gov.np/news/10252/" target="_blank" rel="noopener nofollow">Nepal Police</a>, <a href="https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" target="_blank" rel="noopener nofollow">UN OCHA / ReliefWeb</a>, <a href="https://english.nepalnews.com/s/nation/121-bodies-recovered-from-narayani-river-following-bhote-koshi-flash-flood/" target="_blank" rel="noopener nofollow">Nepalnews</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-toll-289/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="China reports a new lake forming upstream and warns it could break" data-permalink="/updates/2026-08-27-barrier-lake/" data-story="/assets/og/updates-2026-08-27-barrier-lake-story.png?v=1787857005"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-barrier-lake/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-barrier-lake-thumb.png?v=1787856997" alt=""></a><p class="tc-stamp">27 August 2026, 11:00 am NPT</p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-barrier-lake/">China reports a new lake forming upstream and warns it could break</a></p><div class="post-summary clamped" id="ssr-2026-08-27-barrier-lake-5" data-expand="ssr-2026-08-27-barrier-lake-5"><p>China's Ministry of Water Resources says a barrier lake, meaning a river blocked by debris into an artificial lake, has formed near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border.</p><p>CCTV reports around 2 million cubic metres of water had collected behind it by Thursday morning. Chinese state media warn it could break.</p><p>Both rivers are upper tributaries of the Trishuli system. A release would run down the same corridor the 26 August flood took, through Rasuwa and Nuwakot.</p><p>Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave, so a warning would come with less notice than normal.</p><p>Downstream in India, authorities in Bihar have opened the Valmikinagar Barrage on the Gandak, the same river that is called the Narayani inside Nepal, as a precaution, and prepared to move 10,000 to 12,000 people.</p><p>Stay off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-barrier-lake-5">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/lake-nepal-border-china-dam-break.html" target="_blank" rel="noopener nofollow">Onlinekhabar (Global Times)</a>, <a href="https://khabarhub.com/2026/27/1016273/" target="_blank" rel="noopener nofollow">Khabarhub</a>, <a href="https://www.setopati.com/politics/396925" target="_blank" rel="noopener nofollow">Setopati</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-barrier-lake/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><p class="today-updated">Updated 28 August 2026, 5:10 am NPT</p><!--/ssr:today-->
+>>>>>>> origin/main
       </div>
       <p><a class="deeplink" href="/updates/">Read every briefing in the archive</a></p>
     </section>
@@ -1662,50 +2048,8 @@
         <h2 class="block-title" id="numbers-title">Where the numbers stand</h2>
         <span class="block-note"><span class="livedot" aria-hidden="true"></span><span id="glance-updated">checking&hellip;</span></span>
       </div>
-      <p class="numblock-sub" id="numbers-sub">Rasuwa flash flood, 26 August 2026</p>
-      <div class="numgrid" id="numgrid">
-        <button class="stat" data-detail="Nepal Police confirmed 289 dead in their 2:30pm bulletin on 27 August, up from 270 an hour earlier and 165 that morning. Bodies found: Chitwan 108, Nawalparasi East 74, Dhading 27, Gorkha 20, Rasuwa 17, Tanahun 16, Nawalparasi West 15, Nuwakot 12. Three more deaths are confirmed on the China side.">
-          <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-9C1 8.5 3 4.5 7 4.5c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6 4 4.5 7.5-1 2-3 4-5 5.5"></path><path d="M4.5 12.5h4l1.5-3 2.5 6 1.5-3h5"></path></svg></span>
-          <span class="n critical">289</span>
-          <span class="l" data-i18n="glance.dead">confirmed dead</span>
-          <span class="bar"><i style="width:100%"></i></span>
-        </button>
-        <button class="stat" data-detail="From the earlier Nepal Police bulletin at 8:15am on 27 August: 579 travellers (466 of them foreign nationals), 161 Rasuwa residents, 44 Nepali Army, 28 Nepal Police, 13 Armed Police Force and one Nuwakot resident. This figure is older than the death toll, so some of these people are among the 289 since confirmed dead. Police have not published a revised missing count.">
-          <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path><path d="M10.5 7.5v3l2 1.5"></path></svg></span>
-          <span class="n critical">826</span>
-          <span class="l" data-i18n="glance.missing">listed missing in Nepal</span>
-          <span class="bar"><i style="width:82%"></i></span>
-        </button>
-        <button class="stat" data-detail="The Nepal Electricity Authority reports 14 hydropower projects damaged, about 748 MW in total: 9 operating plants (354 MW) and 5 under construction (394 MW). Named ones include Rasuwagadhi, Chilime, Sanjen Khola, Upper Trishuli-1, Trishuli and Devighat, plus a 220 kV substation.">
-          <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l5 3V11l5 3V8l8 4v9z"></path><path d="M3 21h18"></path><path d="M13 8V4l3-1v4"></path></svg></span>
-          <span class="n">14</span>
-          <span class="l" data-i18n="glance.power">hydropower projects damaged</span>
-          <span class="bar"><i style="width:40%"></i></span>
-        </button>
-        <button class="stat" data-detail="Around 50,000 people live in Rasuwa district, the area hit hardest. Most live along the same river valley the water came down.">
-          <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"></circle><path d="M3.5 19v-1c0-2.8 2.5-4.5 5.5-4.5s5.5 1.7 5.5 4.5v1"></path><path d="M16 5.5a3 3 0 0 1 0 5.8"></path><path d="M17.5 13.2c2 .6 3.5 2 3.5 4.3V19"></path></svg></span>
-          <span class="n">~50k</span>
-          <span class="l" data-i18n="glance.pop">people in the district hit</span>
-          <span class="bar"><i style="width:60%"></i></span>
-        </button>
-        <button class="stat" data-detail="Counting from the morning of 26 August 2026, when the flood hit. Search, rescue and recovery work is still going on this many days later.">
-          <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2.5"></rect><path d="M3.5 10h17"></path><path d="M8 3v4M16 3v4"></path></svg></span>
-          <span class="n" id="day-counter">Day 1</span>
-          <span class="l" data-i18n="glance.day">since the flood</span>
-          <span class="bar"><i style="width:16%"></i></span>
-        </button>
-        <button class="stat" id="econ-loss-stat" data-detail="Physical Infrastructure Minister Sunil Lamsal put damage to roads and bridges at about Rs 200 billion on 26 August, and called it preliminary. Hydropower and private property are not in that figure. This updates itself when a bigger or firmer damage figure is reported.">
-          <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"></path><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg></span>
-          <span class="n small" id="econ-loss-value">Rs 200bn</span>
-          <span class="l" data-i18n="glance.econLoss">damage, early estimate</span>
-          <span class="bar"><i style="width:8%"></i></span>
-        </button>
-        <button class="stat" id="relief-fund-stat" data-detail="Money confirmed released or pledged for relief so far: Rs 1 billion released by the government into the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. Donations from the public are not counted here until an official total is published.">
-          <span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4-7-9a7 7 0 0 1 14 0c0 5-7 9-7 9z" opacity="0"></path><rect x="2.5" y="6" width="19" height="12" rx="2.5"></rect><circle cx="12" cy="12" r="2.6"></circle><path d="M6 9.5v5M18 9.5v5"></path></svg></span>
-          <span class="n small" id="relief-fund-value">Rs 1bn</span>
-          <span class="l" data-i18n="glance.relief">relief money released</span>
-          <span class="bar"><i style="width:12%"></i></span>
-        </button>
+      <p class="numblock-sub" id="numbers-sub">Rasuwa flash flood, 26 August 2026 · as of 27 August 2026, 9:00 pm NPT · Nepal Police bulletin</p>
+      <div class="numgrid" id="numgrid"><!--ssr:numgrid--><button class="stat" data-detail="Nepal Police confirmed 389 dead in a 9pm bulletin on 27 August, up from 359 at 5pm, 289 at 2:30pm and 165 that morning. Bodies found: Chitwan 137, Nawalparasi East 87, Dhading 33, Gorkha 32, Nuwakot 28, Tanahun 28, Rasuwa 17, Nawalparasi West 27. The jumps are search teams reaching areas that had been cut off, not new casualties. Three more deaths are confirmed on the China side. Police also reported 466 injured in the same bulletin."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-9C1 8.5 3 4.5 7 4.5c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6 4 4.5 7.5-1 2-3 4-5 5.5"></path><path d="M4.5 12.5h4l1.5-3 2.5 6 1.5-3h5"></path></svg></span><span class="n critical">389</span><span class="l">confirmed dead</span><span class="bar"><i style="width:100%"></i></span></button><button class="stat" data-detail="NDRRMA lists 910 people out of contact in its 6:20pm update on 27 August, up from 826 that morning, 570 of them tourists. Nepal's tourism board says 517 of the missing are foreign nationals from 33 countries. This figure is newer than the police toll above and is NDRRMA's, not the police's. Out of contact does not mean dead: phone lines, power and internet are down across the valley."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path><path d="M10.5 7.5v3l2 1.5"></path></svg></span><span class="n critical">910</span><span class="l">listed missing in Nepal</span><span class="bar"><i style="width:91%"></i></span></button><button class="stat" data-detail="Chinese state media report 558 people missing around Gyirong Port in Xizang (Tibet), 260 of them foreign nationals. Combined with Nepal's list that is more than 1,300 people unaccounted for, although the two countries' counts of foreign nationals may overlap."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path><path d="M10.5 7.5v3l2 1.5"></path></svg></span><span class="n">558</span><span class="l">missing on the China side</span><span class="bar"><i style="width:56%"></i></span></button><button class="stat" data-detail="NDRRMA reports 113 people rescued from Timure, Dhunche, Syabrubesi, Uttargaya and Bidur: 88 Nepali citizens, 11 Indian, 8 Chinese, 4 Korean and 2 American. The authority has published their names."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"></circle><path d="M3.5 19v-1c0-2.8 2.5-4.5 5.5-4.5s5.5 1.7 5.5 4.5v1"></path><path d="M16 5.5a3 3 0 0 1 0 5.8"></path><path d="M17.5 13.2c2 .6 3.5 2 3.5 4.3V19"></path></svg></span><span class="n">113</span><span class="l">rescued so far</span><span class="bar"><i style="width:30%"></i></span></button><button class="stat" data-detail="The Nepal Electricity Authority reports 14 projects damaged with a combined capacity of about 748 MW: 9 operating plants (354 MW) and 5 under construction (394 MW). Named ones include Rasuwagadhi, Chilime, Sanjen Khola, Upper Trishuli-1, Trishuli and Devighat, plus a 220 kV substation. An earlier same-day Ministry of Energy estimate said 431 MW."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l5 3V11l5 3V8l8 4v9z"></path><path d="M3 21h18"></path><path d="M13 8V4l3-1v4"></path></svg></span><span class="n">14</span><span class="l">hydropower projects damaged</span><span class="bar"><i style="width:60%"></i></span></button><button class="stat" data-detail="Counting from the morning of 26 August 2026, when the flood hit. Search, rescue and recovery work is still going on this many days later."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2.5"></rect><path d="M3.5 10h17"></path><path d="M8 3v4M16 3v4"></path></svg></span><span class="n">Day 2</span><span class="l">since the flood</span><span class="bar"><i style="width:16%"></i></span></button><button class="stat" id="econ-loss-stat" data-detail="Physical Infrastructure Minister Sunil Lamsal put damage to roads and bridges at about Rs 200 billion on 26 August, and called it preliminary. Hydropower and private property are not in that figure. The whole 42 km road from Betrawati to the Rasuwagadhi border crossing was destroyed at multiple points."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"></path><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg></span><span class="n small" id="econ-loss-value">Rs 200bn</span><span class="l">damage, early estimate</span><span class="bar"><i style="width:8%"></i></span></button><button class="stat" id="relief-fund-stat" data-detail="Rs 1 billion released by the government into the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. Public donations are not counted here until an official total is published."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2.5"></rect><circle cx="12" cy="12" r="2.6"></circle><path d="M6 9.5v5M18 9.5v5"></path></svg></span><span class="n small" id="relief-fund-value">Rs 1bn</span><span class="l">relief money released</span><span class="bar"><i style="width:12%"></i></span></button><!--/ssr:numgrid-->
       </div>
       <p class="detail" id="stat-detail">Tap any number to see where it comes from. Early counts move. Where sources disagree, the lower confirmed figure is shown.</p>
     </div>
@@ -2012,7 +2356,11 @@
       <h2 data-i18n="sec.today.h2">Story of the day</h2>
       <p class="measure lede" data-i18n="sec.today.lede">Each story of the day, short and checked. New stories appear through the day. Tap a card to read it all.</p>
       <div class="today-grid" id="today-grid" aria-live="polite" data-ssr="1">
-        <!--ssr:today--><article class="post-card today-card" data-title="Australia raises its missing count to 39, pledges $5m in aid"><p class="tc-stamp">28 August 2026, 2:30 am NPT</p><div class="post-body"><p class="tc-title">Australia raises its missing count to 39, pledges $5m in aid</p><div class="post-summary clamped" id="ssr-2026-08-28-australia-missing-aid-0" data-expand="ssr-2026-08-28-australia-missing-aid-0"><p>Australian Foreign Minister Penny Wong said on Friday that 39 Australians are now unaccounted for in the flood, up from the 35 that Nepal's tourism board had listed a day earlier. She said the number could still rise as officials work through the list, and warned some of those missing may not be found.</p><p>Wong also announced A$5 million in Australian aid: 2 million to the World Food Programme, 2 million to Australian NGOs through the Australian Humanitarian Partnership, and 1 million to the Emergency Action Alliance for local recovery work. Three more Australian humanitarian specialists are being sent to join the 20 staff already in Nepal.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-28-australia-missing-aid-0">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974" target="_blank" rel="noopener nofollow">ABC News Australia</a>, <a href="https://www.standard.net.au/story/9339027/almost-40-australians-missing-in-nepals-flash-floods/" target="_blank" rel="noopener nofollow">The Standard</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-28-australia-missing-aid/">Full briefing</a></div></article><article class="post-card today-card" data-title="Damage put at Rs 200 billion, hydropower losses still being counted"><p class="tc-stamp">27 August 2026, 11:30 pm NPT <span class="rev">updated</span></p><div class="post-body"><p class="tc-title">Damage put at Rs 200 billion, hydropower losses still being counted</p><div class="post-summary clamped" id="ssr-2026-08-27-damage-cost-1" data-expand="ssr-2026-08-27-damage-cost-1"><p>Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.</p><p>That figure does not include energy infrastructure. Energy Minister Biraj Bhakta Shrestha has ordered an immediate assessment of hydropower damage. In Rasuwa, 8 projects have been hit, 5 of them operational with a combined 236 megawatts, and 3 still under construction with a combined 342 megawatts. Nuwakot has lost access to 6 more projects, 4 operational at 123 megawatts and 2 under construction at 53 megawatts.</p><p>Rasuwa, Nuwakot, Dhading and Chitwan are still being surveyed for road and building damage, so the Rs 200 billion figure is expected to rise.</p><p>The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. The World Bank has separately offered up to Rs 25 billion in emergency assistance, its Nepal country director told the finance ministry. That is aid, not a damage estimate.</p><p>Insurers say claims will take weeks to settle because most of the damaged sites cannot be reached by road.</p><p>The Prime Minister's Disaster Relief Fund took in Rs 273.3 million in donations in its first six hours, the finance ministry says, led by a Rs 100 million gift from Gorkha Brewery. That is public donations, separate from the Rs 1 billion the government has already released for relief.</p><p>UNICEF says at least 17,000 children have been affected across Rasuwa, Nuwakot and Dhading. It counts 18 schools destroyed and 20 more damaged in those three districts, wider than the 8 schools Onlinekhabar had reported damaged in Rasuwa and Nuwakot alone a day earlier. UNICEF says around 10,000 school-age children now need help such as temporary classrooms and replacement books to keep learning.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-damage-cost-1">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/rasuwa-floods-damage.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" target="_blank" rel="noopener nofollow">The Kathmandu Post</a>, <a href="https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://english.onlinekhabar.com/pms-disaster-relief-fund.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance" target="_blank" rel="noopener nofollow">UNICEF</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-damage-cost/">Full briefing</a></div></article><article class="post-card today-card" data-title="Toll passes 389 as China warns lake may burst within days"><p class="tc-stamp">27 August 2026, 10:30 pm NPT <span class="rev">updated</span></p><div class="post-body"><p class="tc-title">Toll passes 389 as China warns lake may burst within days</p><div class="post-summary clamped" id="ssr-2026-08-27-rasuwa-flood-2" data-expand="ssr-2026-08-27-rasuwa-flood-2"><p>Nepal Police put the confirmed toll at 389 dead as of a 9pm bulletin on Thursday, up from 359 at 5pm. Police also said 466 people are injured. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.</p><p>Chitwan has the most dead, 137, followed by Nawalparasi East with 87, Dhading with 33 and Gorkha with 32, Nepal Police figures reported by Review Nepal show. Health facilities in Chitwan can hold only around 50 bodies, which is slowing the process of identifying and releasing them to families.</p><p>Nepal's tourism board says 644 travellers, 517 of them foreign nationals, were reported missing in a situation update issued at noon on Thursday, up from an earlier police count of 579. India has the most missing at 178, followed by 65 Americans and 53 Ukrainians, the tourism board says. Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.</p><p>China's Ministry of Water Resources says a new barrier lake near the Chhochen Khola and Purepu Tsangpo, close to the Nepal border, is already overflowing and holds about 2 million cubic metres of water. It expects another 3 million cubic metres to flow in over the next three days, putting the lake at high risk of breaching in that time. This is separate from the smaller lake NDRRMA found earlier on the Lhende river.</p><p>USGS first read the shaking on Wednesday as an earthquake. It later found no earthquake took place. The signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.</p><p>Nepal's Army says more than 5,000 army and police personnel are working the flood zone, from Nuwakot to Chitwan. Prime Minister Balendra Shah travelled to Bidur in Nuwakot on Thursday to see the damage.</p><p>In India, the NDRF and the Sashastra Seema Bal have rescue teams on standby in Bihar and Uttar Pradesh, and the NDRF says the Gandak, which the Narayani becomes downstream, could see higher water levels. Nepal has turned down offers of search and rescue teams from India, China, the US, Britain, Japan, South Korea, Sri Lanka and Bangladesh, the Kathmandu Post reports. The government says its own army and police can handle the operation and is asking instead for cash, through a single channel into the Prime Minister's Disaster Relief Fund.</p><p>Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-rasuwa-flood-2">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://www.nepalpolice.gov.np/" target="_blank" rel="noopener nofollow">Nepal Police</a>, <a href="https://www.reviewnepal.com/rasuwa-flood-389-bodies-recovered-as-families-await-news-of-loved-ones/" target="_blank" rel="noopener nofollow">Review Nepal</a>, <a href="https://english.onlinekhabar.com/644-people-missing.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://kathmandupost.com/national/2026/08/27/new-barrier-lake-in-nepal-raises-fresh-flood-threat-china-warns" target="_blank" rel="noopener nofollow">The Kathmandu Post</a>, <a href="https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" target="_blank" rel="noopener nofollow">ICIMOD</a>, <a href="https://www.business-standard.com/world-news/glacial-collapse-triggered-nepal-flash-floods-not-earthquake-usgs-126082700207_1.html" target="_blank" rel="noopener nofollow">Business Standard</a>, <a href="https://aninews.in/news/national/general-news/ndrf-on-high-alert-as-nepal-flash-flood-threatens-gandak-bihar-up-deploy-rescue-teams-in-vulnerable-areas20260827033747/" target="_blank" rel="noopener nofollow">ANI</a>, <a href="https://kathmandupost.com/national/2026/08/27/nepal-declines-foreign-rescue-teams-says-its-own-security-agencies-can-handle-operation" target="_blank" rel="noopener nofollow">The Kathmandu Post</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-rasuwa-flood/">Full briefing</a></div></article><article class="post-card today-card" data-title="Over 200 hydropower staff still out of contact, IPPAN says"><p class="tc-stamp">27 August 2026, 7:00 pm NPT</p><div class="post-body"><p class="tc-title">Over 200 hydropower staff still out of contact, IPPAN says</p><div class="post-summary clamped" id="ssr-2026-08-27-hydropower-workers-out-of-contact-3" data-expand="ssr-2026-08-27-hydropower-workers-out-of-contact-3"><p>The Independent Power Producers' Association Nepal, IPPAN, says 215 staff from five hydropower projects have not been reached since Wednesday's flood. Worst hit is the under construction Upper Trishuli-1 project, where IPPAN counts 94 people out of contact, among them 8 Korean nationals working for the developer. At Rasuwagadhi, 51 staff are out of contact, though 3 reached higher ground on their own.</p><p>IPPAN says it has unconfirmed reports of an early rescue at one project site, but most workers there are still unreachable. Separately, a Nepal Army helicopter reached the nearby Upper Trishuli 3A project on Thursday to check on stranded staff, after two earlier landing attempts failed in bad weather. Energy Minister Biraj Bhakta Shrestha has ordered agencies to speed up the rescue there and get power back on.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-hydropower-workers-out-of-contact-3">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/hydropower-out-of-contact.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://risingnepaldaily.com/news/85596" target="_blank" rel="noopener nofollow">The Rising Nepal</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-hydropower-workers-out-of-contact/">Full briefing</a></div></article><article class="post-card today-card" data-title="289 confirmed dead in the Rasuwa flood as searches reach cut-off areas"><p class="tc-stamp">27 August 2026, 2:30 pm NPT <span class="rev">updated</span></p><div class="post-body"><p class="tc-title">289 confirmed dead in the Rasuwa flood as searches reach cut-off areas</p><div class="post-summary clamped" id="ssr-2026-08-27-toll-289-4" data-expand="ssr-2026-08-27-toll-289-4"><p>Nepal Police put the confirmed toll at 289 in their 2:30pm bulletin on Thursday. It was 270 at 1:30pm and 165 that morning. The jumps are search teams reaching settlements that had been cut off since Wednesday, not new casualties happening.</p><p>Bodies have been recovered in eight districts: Chitwan 108, Nawalparasi East 74, Dhading 27, Gorkha 20, Rasuwa 17, Tanahun 16, Nawalparasi West 15 and Nuwakot 12. A district here is where a body was found, not where the person was from.</p><p>The Armed Police Force says 121 of those were recovered from the Narayani river alone by Thursday afternoon. Chitwan's mortuary has filled and an identification centre is being set up.</p><p>826 people were listed missing in the police bulletin at 8:15am. That figure is older than the toll above, so some of those people are among the 289 now confirmed dead. Police have not published a revised missing count, and this site will not estimate one.</p><p>NDRRMA reports 113 people rescued from Timure, Dhunche, Syabrubesi, Uttargaya and Bidur: 88 Nepali citizens, 11 Indian, 8 Chinese, 4 Korean and 2 American. It has published their names.</p><p>73 people are recorded as injured. Tribhuvan University Teaching Hospital said on Thursday morning it was treating 31 patients from Rasuwa, Nuwakot, Gorkha and Dhading, several in intensive care, and that one had died.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-toll-289-4">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://nepalpolice.gov.np/news/10252/" target="_blank" rel="noopener nofollow">Nepal Police</a>, <a href="https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" target="_blank" rel="noopener nofollow">UN OCHA / ReliefWeb</a>, <a href="https://english.nepalnews.com/s/nation/121-bodies-recovered-from-narayani-river-following-bhote-koshi-flash-flood/" target="_blank" rel="noopener nofollow">Nepalnews</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-toll-289/">Full briefing</a></div></article><article class="post-card today-card" data-title="China reports a new lake forming upstream and warns it could break"><p class="tc-stamp">27 August 2026, 11:00 am NPT</p><div class="post-body"><p class="tc-title">China reports a new lake forming upstream and warns it could break</p><div class="post-summary clamped" id="ssr-2026-08-27-barrier-lake-5" data-expand="ssr-2026-08-27-barrier-lake-5"><p>China's Ministry of Water Resources says a barrier lake, meaning a river blocked by debris into an artificial lake, has formed near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border.</p><p>CCTV reports around 2 million cubic metres of water had collected behind it by Thursday morning. Chinese state media warn it could break.</p><p>Both rivers are upper tributaries of the Trishuli system. A release would run down the same corridor the 26 August flood took, through Rasuwa and Nuwakot.</p><p>Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave, so a warning would come with less notice than normal.</p><p>Downstream in India, authorities in Bihar have opened the Valmikinagar Barrage on the Gandak, the same river that is called the Narayani inside Nepal, as a precaution, and prepared to move 10,000 to 12,000 people.</p><p>Stay off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-barrier-lake-5">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/lake-nepal-border-china-dam-break.html" target="_blank" rel="noopener nofollow">Onlinekhabar (Global Times)</a>, <a href="https://khabarhub.com/2026/27/1016273/" target="_blank" rel="noopener nofollow">Khabarhub</a>, <a href="https://www.setopati.com/politics/396925" target="_blank" rel="noopener nofollow">Setopati</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-barrier-lake/">Full briefing</a></div></article><p class="today-updated">Updated 28 August 2026, 5:10 am NPT</p><!--/ssr:today-->
+<<<<<<< HEAD
+        <!--ssr:today--><article class="post-card today-card" data-title="Australia raises its missing count to 39, pledges $5m in aid" data-permalink="/updates/2026-08-28-australia-missing-aid/" data-story="/assets/og/updates-2026-08-28-australia-missing-aid-story.png?v=1787874595"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-28-australia-missing-aid/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-28-australia-missing-aid-thumb.png?v=1787874595" alt=""></a><p class="tc-stamp">28 August 2026, 2:30 am NPT</p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-28-australia-missing-aid/">Australia raises its missing count to 39, pledges $5m in aid</a></p><div class="post-summary clamped" id="ssr-2026-08-28-australia-missing-aid-0" data-expand="ssr-2026-08-28-australia-missing-aid-0"><p>Australian Foreign Minister Penny Wong said on Friday that 39 Australians are now unaccounted for in the flood, up from the 35 that Nepal's tourism board had listed a day earlier. She said the number could still rise as officials work through the list, and warned some of those missing may not be found.</p><p>Wong also announced A$5 million in Australian aid: 2 million to the World Food Programme, 2 million to Australian NGOs through the Australian Humanitarian Partnership, and 1 million to the Emergency Action Alliance for local recovery work. Three more Australian humanitarian specialists are being sent to join the 20 staff already in Nepal.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-28-australia-missing-aid-0">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974" target="_blank" rel="noopener nofollow">ABC News Australia</a>, <a href="https://www.standard.net.au/story/9339027/almost-40-australians-missing-in-nepals-flash-floods/" target="_blank" rel="noopener nofollow">The Standard</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-28-australia-missing-aid/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="Damage put at Rs 200 billion, hydropower losses still being counted" data-permalink="/updates/2026-08-27-damage-cost/" data-story="/assets/og/updates-2026-08-27-damage-cost-story.png?v=1787858533"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-damage-cost/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-damage-cost-thumb.png?v=1787858530" alt=""></a><p class="tc-stamp">27 August 2026, 11:30 pm NPT <span class="rev">updated</span></p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-damage-cost/">Damage put at Rs 200 billion, hydropower losses still being counted</a></p><div class="post-summary clamped" id="ssr-2026-08-27-damage-cost-1" data-expand="ssr-2026-08-27-damage-cost-1"><p>Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.</p><p>That figure does not include energy infrastructure. Energy Minister Biraj Bhakta Shrestha has ordered an immediate assessment of hydropower damage. In Rasuwa, 8 projects have been hit, 5 of them operational with a combined 236 megawatts, and 3 still under construction with a combined 342 megawatts. Nuwakot has lost access to 6 more projects, 4 operational at 123 megawatts and 2 under construction at 53 megawatts.</p><p>Rasuwa, Nuwakot, Dhading and Chitwan are still being surveyed for road and building damage, so the Rs 200 billion figure is expected to rise.</p><p>The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. The World Bank has separately offered up to Rs 25 billion in emergency assistance, its Nepal country director told the finance ministry. That is aid, not a damage estimate.</p><p>Insurers say claims will take weeks to settle because most of the damaged sites cannot be reached by road.</p><p>The Prime Minister's Disaster Relief Fund took in Rs 273.3 million in donations in its first six hours, the finance ministry says, led by a Rs 100 million gift from Gorkha Brewery. That is public donations, separate from the Rs 1 billion the government has already released for relief.</p><p>UNICEF says at least 17,000 children have been affected across Rasuwa, Nuwakot and Dhading. It counts 18 schools destroyed and 20 more damaged in those three districts, wider than the 8 schools Onlinekhabar had reported damaged in Rasuwa and Nuwakot alone a day earlier. UNICEF says around 10,000 school-age children now need help such as temporary classrooms and replacement books to keep learning.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-damage-cost-1">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/rasuwa-floods-damage.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" target="_blank" rel="noopener nofollow">The Kathmandu Post</a>, <a href="https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://english.onlinekhabar.com/pms-disaster-relief-fund.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance" target="_blank" rel="noopener nofollow">UNICEF</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-damage-cost/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="Toll passes 389 as China warns lake may burst within days" data-permalink="/updates/2026-08-27-rasuwa-flood/" data-story="/assets/og/updates-2026-08-27-rasuwa-flood-story.png?v=1787871825"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-rasuwa-flood/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-rasuwa-flood-thumb.png?v=1787871823" alt=""></a><p class="tc-stamp">27 August 2026, 10:30 pm NPT <span class="rev">updated</span></p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-rasuwa-flood/">Toll passes 389 as China warns lake may burst within days</a></p><div class="post-summary clamped" id="ssr-2026-08-27-rasuwa-flood-2" data-expand="ssr-2026-08-27-rasuwa-flood-2"><p>Nepal Police put the confirmed toll at 389 dead as of a 9pm bulletin on Thursday, up from 359 at 5pm. Police also said 466 people are injured. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.</p><p>Chitwan has the most dead, 137, followed by Nawalparasi East with 87, Dhading with 33 and Gorkha with 32, Nepal Police figures reported by Review Nepal show. Health facilities in Chitwan can hold only around 50 bodies, which is slowing the process of identifying and releasing them to families.</p><p>Nepal's tourism board says 644 travellers, 517 of them foreign nationals, were reported missing in a situation update issued at noon on Thursday, up from an earlier police count of 579. India has the most missing at 178, followed by 65 Americans and 53 Ukrainians, the tourism board says. Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.</p><p>China's Ministry of Water Resources says a new barrier lake near the Chhochen Khola and Purepu Tsangpo, close to the Nepal border, is already overflowing and holds about 2 million cubic metres of water. It expects another 3 million cubic metres to flow in over the next three days, putting the lake at high risk of breaching in that time. This is separate from the smaller lake NDRRMA found earlier on the Lhende river.</p><p>USGS first read the shaking on Wednesday as an earthquake. It later found no earthquake took place. The signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.</p><p>Nepal's Army says more than 5,000 army and police personnel are working the flood zone, from Nuwakot to Chitwan. Prime Minister Balendra Shah travelled to Bidur in Nuwakot on Thursday to see the damage.</p><p>In India, the NDRF and the Sashastra Seema Bal have rescue teams on standby in Bihar and Uttar Pradesh, and the NDRF says the Gandak, which the Narayani becomes downstream, could see higher water levels. Nepal has turned down offers of search and rescue teams from India, China, the US, Britain, Japan, South Korea, Sri Lanka and Bangladesh, the Kathmandu Post reports. The government says its own army and police can handle the operation and is asking instead for cash, through a single channel into the Prime Minister's Disaster Relief Fund.</p><p>Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-rasuwa-flood-2">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://www.nepalpolice.gov.np/" target="_blank" rel="noopener nofollow">Nepal Police</a>, <a href="https://www.reviewnepal.com/rasuwa-flood-389-bodies-recovered-as-families-await-news-of-loved-ones/" target="_blank" rel="noopener nofollow">Review Nepal</a>, <a href="https://english.onlinekhabar.com/644-people-missing.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://kathmandupost.com/national/2026/08/27/new-barrier-lake-in-nepal-raises-fresh-flood-threat-china-warns" target="_blank" rel="noopener nofollow">The Kathmandu Post</a>, <a href="https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" target="_blank" rel="noopener nofollow">ICIMOD</a>, <a href="https://www.business-standard.com/world-news/glacial-collapse-triggered-nepal-flash-floods-not-earthquake-usgs-126082700207_1.html" target="_blank" rel="noopener nofollow">Business Standard</a>, <a href="https://aninews.in/news/national/general-news/ndrf-on-high-alert-as-nepal-flash-flood-threatens-gandak-bihar-up-deploy-rescue-teams-in-vulnerable-areas20260827033747/" target="_blank" rel="noopener nofollow">ANI</a>, <a href="https://kathmandupost.com/national/2026/08/27/nepal-declines-foreign-rescue-teams-says-its-own-security-agencies-can-handle-operation" target="_blank" rel="noopener nofollow">The Kathmandu Post</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-rasuwa-flood/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="Over 200 hydropower staff still out of contact, IPPAN says" data-permalink="/updates/2026-08-27-hydropower-workers-out-of-contact/" data-story="/assets/og/updates-2026-08-27-hydropower-workers-out-of-contact-story.png?v=1787871838"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-hydropower-workers-out-of-contact/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-hydropower-workers-out-of-contact-thumb.png?v=1787871838" alt=""></a><p class="tc-stamp">27 August 2026, 7:00 pm NPT</p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-hydropower-workers-out-of-contact/">Over 200 hydropower staff still out of contact, IPPAN says</a></p><div class="post-summary clamped" id="ssr-2026-08-27-hydropower-workers-out-of-contact-3" data-expand="ssr-2026-08-27-hydropower-workers-out-of-contact-3"><p>The Independent Power Producers' Association Nepal, IPPAN, says 215 staff from five hydropower projects have not been reached since Wednesday's flood. Worst hit is the under construction Upper Trishuli-1 project, where IPPAN counts 94 people out of contact, among them 8 Korean nationals working for the developer. At Rasuwagadhi, 51 staff are out of contact, though 3 reached higher ground on their own.</p><p>IPPAN says it has unconfirmed reports of an early rescue at one project site, but most workers there are still unreachable. Separately, a Nepal Army helicopter reached the nearby Upper Trishuli 3A project on Thursday to check on stranded staff, after two earlier landing attempts failed in bad weather. Energy Minister Biraj Bhakta Shrestha has ordered agencies to speed up the rescue there and get power back on.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-hydropower-workers-out-of-contact-3">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/hydropower-out-of-contact.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://risingnepaldaily.com/news/85596" target="_blank" rel="noopener nofollow">The Rising Nepal</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-hydropower-workers-out-of-contact/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="289 confirmed dead in the Rasuwa flood as searches reach cut-off areas" data-permalink="/updates/2026-08-27-toll-289/" data-story="/assets/og/updates-2026-08-27-toll-289-story.png?v=1787856984"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-toll-289/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-toll-289-thumb.png?v=1787856980" alt=""></a><p class="tc-stamp">27 August 2026, 2:30 pm NPT <span class="rev">updated</span></p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-toll-289/">289 confirmed dead in the Rasuwa flood as searches reach cut-off areas</a></p><div class="post-summary clamped" id="ssr-2026-08-27-toll-289-4" data-expand="ssr-2026-08-27-toll-289-4"><p>Nepal Police put the confirmed toll at 289 in their 2:30pm bulletin on Thursday. It was 270 at 1:30pm and 165 that morning. The jumps are search teams reaching settlements that had been cut off since Wednesday, not new casualties happening.</p><p>Bodies have been recovered in eight districts: Chitwan 108, Nawalparasi East 74, Dhading 27, Gorkha 20, Rasuwa 17, Tanahun 16, Nawalparasi West 15 and Nuwakot 12. A district here is where a body was found, not where the person was from.</p><p>The Armed Police Force says 121 of those were recovered from the Narayani river alone by Thursday afternoon. Chitwan's mortuary has filled and an identification centre is being set up.</p><p>826 people were listed missing in the police bulletin at 8:15am. That figure is older than the toll above, so some of those people are among the 289 now confirmed dead. Police have not published a revised missing count, and this site will not estimate one.</p><p>NDRRMA reports 113 people rescued from Timure, Dhunche, Syabrubesi, Uttargaya and Bidur: 88 Nepali citizens, 11 Indian, 8 Chinese, 4 Korean and 2 American. It has published their names.</p><p>73 people are recorded as injured. Tribhuvan University Teaching Hospital said on Thursday morning it was treating 31 patients from Rasuwa, Nuwakot, Gorkha and Dhading, several in intensive care, and that one had died.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-toll-289-4">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://nepalpolice.gov.np/news/10252/" target="_blank" rel="noopener nofollow">Nepal Police</a>, <a href="https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" target="_blank" rel="noopener nofollow">UN OCHA / ReliefWeb</a>, <a href="https://english.nepalnews.com/s/nation/121-bodies-recovered-from-narayani-river-following-bhote-koshi-flash-flood/" target="_blank" rel="noopener nofollow">Nepalnews</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-toll-289/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="China reports a new lake forming upstream and warns it could break" data-permalink="/updates/2026-08-27-barrier-lake/" data-story="/assets/og/updates-2026-08-27-barrier-lake-story.png?v=1787857005"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-barrier-lake/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-barrier-lake-thumb.png?v=1787856997" alt=""></a><p class="tc-stamp">27 August 2026, 11:00 am NPT</p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-barrier-lake/">China reports a new lake forming upstream and warns it could break</a></p><div class="post-summary clamped" id="ssr-2026-08-27-barrier-lake-5" data-expand="ssr-2026-08-27-barrier-lake-5"><p>China's Ministry of Water Resources says a barrier lake, meaning a river blocked by debris into an artificial lake, has formed near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border.</p><p>CCTV reports around 2 million cubic metres of water had collected behind it by Thursday morning. Chinese state media warn it could break.</p><p>Both rivers are upper tributaries of the Trishuli system. A release would run down the same corridor the 26 August flood took, through Rasuwa and Nuwakot.</p><p>Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave, so a warning would come with less notice than normal.</p><p>Downstream in India, authorities in Bihar have opened the Valmikinagar Barrage on the Gandak, the same river that is called the Narayani inside Nepal, as a precaution, and prepared to move 10,000 to 12,000 people.</p><p>Stay off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-barrier-lake-5">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/lake-nepal-border-china-dam-break.html" target="_blank" rel="noopener nofollow">Onlinekhabar (Global Times)</a>, <a href="https://khabarhub.com/2026/27/1016273/" target="_blank" rel="noopener nofollow">Khabarhub</a>, <a href="https://www.setopati.com/politics/396925" target="_blank" rel="noopener nofollow">Setopati</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-barrier-lake/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><p class="today-updated">Updated 28 August 2026, 5:10 am NPT</p><!--/ssr:today-->
+=======
+        <!--ssr:today--><article class="post-card today-card" data-title="Australia raises its missing count to 39, pledges $5m in aid" data-permalink="/updates/2026-08-28-australia-missing-aid/" data-story="/assets/og/updates-2026-08-28-australia-missing-aid-story.png?v=1787874595"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-28-australia-missing-aid/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-28-australia-missing-aid-thumb.png?v=1787874595" alt=""></a><p class="tc-stamp">28 August 2026, 2:30 am NPT</p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-28-australia-missing-aid/">Australia raises its missing count to 39, pledges $5m in aid</a></p><div class="post-summary clamped" id="ssr-2026-08-28-australia-missing-aid-0" data-expand="ssr-2026-08-28-australia-missing-aid-0"><p>Australian Foreign Minister Penny Wong said on Friday that 39 Australians are now unaccounted for in the flood, up from the 35 that Nepal's tourism board had listed a day earlier. She said the number could still rise as officials work through the list, and warned some of those missing may not be found.</p><p>Wong also announced A$5 million in Australian aid: 2 million to the World Food Programme, 2 million to Australian NGOs through the Australian Humanitarian Partnership, and 1 million to the Emergency Action Alliance for local recovery work. Three more Australian humanitarian specialists are being sent to join the 20 staff already in Nepal.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-28-australia-missing-aid-0">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974" target="_blank" rel="noopener nofollow">ABC News Australia</a>, <a href="https://www.standard.net.au/story/9339027/almost-40-australians-missing-in-nepals-flash-floods/" target="_blank" rel="noopener nofollow">The Standard</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-28-australia-missing-aid/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="Damage put at Rs 200 billion, hydropower losses still being counted" data-permalink="/updates/2026-08-27-damage-cost/" data-story="/assets/og/updates-2026-08-27-damage-cost-story.png?v=1787858533"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-damage-cost/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-damage-cost-thumb.png?v=1787858530" alt=""></a><p class="tc-stamp">27 August 2026, 11:30 pm NPT <span class="rev">updated</span></p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-damage-cost/">Damage put at Rs 200 billion, hydropower losses still being counted</a></p><div class="post-summary clamped" id="ssr-2026-08-27-damage-cost-1" data-expand="ssr-2026-08-27-damage-cost-1"><p>Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.</p><p>That figure does not include energy infrastructure. Energy Minister Biraj Bhakta Shrestha has ordered an immediate assessment of hydropower damage. In Rasuwa, 8 projects have been hit, 5 of them operational with a combined 236 megawatts, and 3 still under construction with a combined 342 megawatts. Nuwakot has lost access to 6 more projects, 4 operational at 123 megawatts and 2 under construction at 53 megawatts.</p><p>Rasuwa, Nuwakot, Dhading and Chitwan are still being surveyed for road and building damage, so the Rs 200 billion figure is expected to rise.</p><p>The government has released Rs 1 billion to the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. The World Bank has separately offered up to Rs 25 billion in emergency assistance, its Nepal country director told the finance ministry. That is aid, not a damage estimate.</p><p>Insurers say claims will take weeks to settle because most of the damaged sites cannot be reached by road.</p><p>The Prime Minister's Disaster Relief Fund took in Rs 273.3 million in donations in its first six hours, the finance ministry says, led by a Rs 100 million gift from Gorkha Brewery. That is public donations, separate from the Rs 1 billion the government has already released for relief.</p><p>UNICEF says at least 17,000 children have been affected across Rasuwa, Nuwakot and Dhading. It counts 18 schools destroyed and 20 more damaged in those three districts, wider than the 8 schools Onlinekhabar had reported damaged in Rasuwa and Nuwakot alone a day earlier. UNICEF says around 10,000 school-age children now need help such as temporary classrooms and replacement books to keep learning.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-damage-cost-1">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/rasuwa-floods-damage.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" target="_blank" rel="noopener nofollow">The Kathmandu Post</a>, <a href="https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://english.onlinekhabar.com/pms-disaster-relief-fund.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance" target="_blank" rel="noopener nofollow">UNICEF</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-damage-cost/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="Toll passes 389 as China warns lake may burst within days" data-permalink="/updates/2026-08-27-rasuwa-flood/" data-story="/assets/og/updates-2026-08-27-rasuwa-flood-story.png?v=1787871825"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-rasuwa-flood/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-rasuwa-flood-thumb.png?v=1787871823" alt=""></a><p class="tc-stamp">27 August 2026, 10:30 pm NPT <span class="rev">updated</span></p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-rasuwa-flood/">Toll passes 389 as China warns lake may burst within days</a></p><div class="post-summary clamped" id="ssr-2026-08-27-rasuwa-flood-2" data-expand="ssr-2026-08-27-rasuwa-flood-2"><p>Nepal Police put the confirmed toll at 389 dead as of a 9pm bulletin on Thursday, up from 359 at 5pm. Police also said 466 people are injured. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.</p><p>Chitwan has the most dead, 137, followed by Nawalparasi East with 87, Dhading with 33 and Gorkha with 32, Nepal Police figures reported by Review Nepal show. Health facilities in Chitwan can hold only around 50 bodies, which is slowing the process of identifying and releasing them to families.</p><p>Nepal's tourism board says 644 travellers, 517 of them foreign nationals, were reported missing in a situation update issued at noon on Thursday, up from an earlier police count of 579. India has the most missing at 178, followed by 65 Americans and 53 Ukrainians, the tourism board says. Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.</p><p>China's Ministry of Water Resources says a new barrier lake near the Chhochen Khola and Purepu Tsangpo, close to the Nepal border, is already overflowing and holds about 2 million cubic metres of water. It expects another 3 million cubic metres to flow in over the next three days, putting the lake at high risk of breaching in that time. This is separate from the smaller lake NDRRMA found earlier on the Lhende river.</p><p>USGS first read the shaking on Wednesday as an earthquake. It later found no earthquake took place. The signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.</p><p>Nepal's Army says more than 5,000 army and police personnel are working the flood zone, from Nuwakot to Chitwan. Prime Minister Balendra Shah travelled to Bidur in Nuwakot on Thursday to see the damage.</p><p>In India, the NDRF and the Sashastra Seema Bal have rescue teams on standby in Bihar and Uttar Pradesh, and the NDRF says the Gandak, which the Narayani becomes downstream, could see higher water levels. Nepal has turned down offers of search and rescue teams from India, China, the US, Britain, Japan, South Korea, Sri Lanka and Bangladesh, the Kathmandu Post reports. The government says its own army and police can handle the operation and is asking instead for cash, through a single channel into the Prime Minister's Disaster Relief Fund.</p><p>Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-rasuwa-flood-2">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://www.nepalpolice.gov.np/" target="_blank" rel="noopener nofollow">Nepal Police</a>, <a href="https://www.reviewnepal.com/rasuwa-flood-389-bodies-recovered-as-families-await-news-of-loved-ones/" target="_blank" rel="noopener nofollow">Review Nepal</a>, <a href="https://english.onlinekhabar.com/644-people-missing.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://kathmandupost.com/national/2026/08/27/new-barrier-lake-in-nepal-raises-fresh-flood-threat-china-warns" target="_blank" rel="noopener nofollow">The Kathmandu Post</a>, <a href="https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding" target="_blank" rel="noopener nofollow">ICIMOD</a>, <a href="https://www.business-standard.com/world-news/glacial-collapse-triggered-nepal-flash-floods-not-earthquake-usgs-126082700207_1.html" target="_blank" rel="noopener nofollow">Business Standard</a>, <a href="https://aninews.in/news/national/general-news/ndrf-on-high-alert-as-nepal-flash-flood-threatens-gandak-bihar-up-deploy-rescue-teams-in-vulnerable-areas20260827033747/" target="_blank" rel="noopener nofollow">ANI</a>, <a href="https://kathmandupost.com/national/2026/08/27/nepal-declines-foreign-rescue-teams-says-its-own-security-agencies-can-handle-operation" target="_blank" rel="noopener nofollow">The Kathmandu Post</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-rasuwa-flood/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="Over 200 hydropower staff still out of contact, IPPAN says" data-permalink="/updates/2026-08-27-hydropower-workers-out-of-contact/" data-story="/assets/og/updates-2026-08-27-hydropower-workers-out-of-contact-story.png?v=1787871838"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-hydropower-workers-out-of-contact/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-hydropower-workers-out-of-contact-thumb.png?v=1787871838" alt=""></a><p class="tc-stamp">27 August 2026, 7:00 pm NPT</p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-hydropower-workers-out-of-contact/">Over 200 hydropower staff still out of contact, IPPAN says</a></p><div class="post-summary clamped" id="ssr-2026-08-27-hydropower-workers-out-of-contact-3" data-expand="ssr-2026-08-27-hydropower-workers-out-of-contact-3"><p>The Independent Power Producers' Association Nepal, IPPAN, says 215 staff from five hydropower projects have not been reached since Wednesday's flood. Worst hit is the under construction Upper Trishuli-1 project, where IPPAN counts 94 people out of contact, among them 8 Korean nationals working for the developer. At Rasuwagadhi, 51 staff are out of contact, though 3 reached higher ground on their own.</p><p>IPPAN says it has unconfirmed reports of an early rescue at one project site, but most workers there are still unreachable. Separately, a Nepal Army helicopter reached the nearby Upper Trishuli 3A project on Thursday to check on stranded staff, after two earlier landing attempts failed in bad weather. Energy Minister Biraj Bhakta Shrestha has ordered agencies to speed up the rescue there and get power back on.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-hydropower-workers-out-of-contact-3">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/hydropower-out-of-contact.html" target="_blank" rel="noopener nofollow">Onlinekhabar</a>, <a href="https://risingnepaldaily.com/news/85596" target="_blank" rel="noopener nofollow">The Rising Nepal</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-hydropower-workers-out-of-contact/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="289 confirmed dead in the Rasuwa flood as searches reach cut-off areas" data-permalink="/updates/2026-08-27-toll-289/" data-story="/assets/og/updates-2026-08-27-toll-289-story.png?v=1787856984"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-toll-289/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-toll-289-thumb.png?v=1787856980" alt=""></a><p class="tc-stamp">27 August 2026, 2:30 pm NPT <span class="rev">updated</span></p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-toll-289/">289 confirmed dead in the Rasuwa flood as searches reach cut-off areas</a></p><div class="post-summary clamped" id="ssr-2026-08-27-toll-289-4" data-expand="ssr-2026-08-27-toll-289-4"><p>Nepal Police put the confirmed toll at 289 in their 2:30pm bulletin on Thursday. It was 270 at 1:30pm and 165 that morning. The jumps are search teams reaching settlements that had been cut off since Wednesday, not new casualties happening.</p><p>Bodies have been recovered in eight districts: Chitwan 108, Nawalparasi East 74, Dhading 27, Gorkha 20, Rasuwa 17, Tanahun 16, Nawalparasi West 15 and Nuwakot 12. A district here is where a body was found, not where the person was from.</p><p>The Armed Police Force says 121 of those were recovered from the Narayani river alone by Thursday afternoon. Chitwan's mortuary has filled and an identification centre is being set up.</p><p>826 people were listed missing in the police bulletin at 8:15am. That figure is older than the toll above, so some of those people are among the 289 now confirmed dead. Police have not published a revised missing count, and this site will not estimate one.</p><p>NDRRMA reports 113 people rescued from Timure, Dhunche, Syabrubesi, Uttargaya and Bidur: 88 Nepali citizens, 11 Indian, 8 Chinese, 4 Korean and 2 American. It has published their names.</p><p>73 people are recorded as injured. Tribhuvan University Teaching Hospital said on Thursday morning it was treating 31 patients from Rasuwa, Nuwakot, Gorkha and Dhading, several in intensive care, and that one had died.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-toll-289-4">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://nepalpolice.gov.np/news/10252/" target="_blank" rel="noopener nofollow">Nepal Police</a>, <a href="https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" target="_blank" rel="noopener nofollow">UN OCHA / ReliefWeb</a>, <a href="https://english.nepalnews.com/s/nation/121-bodies-recovered-from-narayani-river-following-bhote-koshi-flash-flood/" target="_blank" rel="noopener nofollow">Nepalnews</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-toll-289/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><article class="post-card today-card" data-title="China reports a new lake forming upstream and warns it could break" data-permalink="/updates/2026-08-27-barrier-lake/" data-story="/assets/og/updates-2026-08-27-barrier-lake-story.png?v=1787857005"><div class="tc-media"><a class="post-photo-link" href="/updates/2026-08-27-barrier-lake/" tabindex="-1" aria-hidden="true"><img class="post-photo" loading="lazy" decoding="async" width="800" height="450" src="/assets/og/updates-2026-08-27-barrier-lake-thumb.png?v=1787856997" alt=""></a><p class="tc-stamp">27 August 2026, 11:00 am NPT</p></div><div class="post-body"><p class="tc-title"><a href="/updates/2026-08-27-barrier-lake/">China reports a new lake forming upstream and warns it could break</a></p><div class="post-summary clamped" id="ssr-2026-08-27-barrier-lake-5" data-expand="ssr-2026-08-27-barrier-lake-5"><p>China's Ministry of Water Resources says a barrier lake, meaning a river blocked by debris into an artificial lake, has formed near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border.</p><p>CCTV reports around 2 million cubic metres of water had collected behind it by Thursday morning. Chinese state media warn it could break.</p><p>Both rivers are upper tributaries of the Trishuli system. A release would run down the same corridor the 26 August flood took, through Rasuwa and Nuwakot.</p><p>Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave, so a warning would come with less notice than normal.</p><p>Downstream in India, authorities in Bihar have opened the Valmikinagar Barrage on the Gandak, the same river that is called the Narayani inside Nepal, as a precaution, and prepared to move 10,000 to 12,000 people.</p><p>Stay off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</p></div><button class="tc-more" type="button" data-expand="ssr-2026-08-27-barrier-lake-5">Read more</button><div class="tc-sources"><b>Sources:</b> <a href="https://english.onlinekhabar.com/lake-nepal-border-china-dam-break.html" target="_blank" rel="noopener nofollow">Onlinekhabar (Global Times)</a>, <a href="https://khabarhub.com/2026/27/1016273/" target="_blank" rel="noopener nofollow">Khabarhub</a>, <a href="https://www.setopati.com/politics/396925" target="_blank" rel="noopener nofollow">Setopati</a></div></div><div class="post-foot"><a class="post-btn" href="/updates/2026-08-27-barrier-lake/">Full briefing</a><button class="post-btn" type="button" data-share="1">Share</button></div></article><p class="today-updated">Updated 28 August 2026, 5:10 am NPT</p><!--/ssr:today-->
+>>>>>>> origin/main
       </div>
       <p><a class="deeplink" href="/updates/">Read every briefing in the archive</a></p>
     </section>
@@ -2626,14 +2974,24 @@ var SITE = {
   var root = document.documentElement;
   var media = window.matchMedia('(prefers-color-scheme: dark)');
   var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-theme-choice]'));
-  var choice = 'light';
+  /* Follow the device unless the reader has said otherwise. Defaulting to
+     light meant a phone in dark mode got a white page, which is the first
+     thing that makes a site feel like it was not built for the device. */
+  var choice = 'system';
 
-  try { choice = localStorage.getItem('theme-choice') || 'light'; } catch(e){}
+  try { choice = localStorage.getItem('theme-choice') || 'system'; } catch(e){}
 
   function apply(){
     var dark = choice === 'dark' || (choice === 'system' && media.matches);
     if(dark){ root.setAttribute('data-theme','dark'); }
     else { root.removeAttribute('data-theme'); }
+    /* The two theme-color tags in the head are matched on the system setting,
+       so they are wrong the moment a reader overrides it. Point the browser
+       chrome at whichever one is actually in force. */
+    var bars = document.querySelectorAll('meta[name="theme-color"]');
+    for(var i = 0; i < bars.length; i++){
+      bars[i].setAttribute('content', dark ? '#0d0d0d' : '#f9f9f7');
+    }
     buttons.forEach(function(b){
       b.setAttribute('aria-pressed', String(b.getAttribute('data-theme-choice') === choice));
     });
@@ -3862,6 +4220,10 @@ var PostCards = (function(){
      Update"). */
   var SHARE_URL = location.origin + location.pathname;
 
+  /* The picture Instagram and Facebook stories pull. It is drawn at build
+     time with the current figures on it. */
+  var STORY_IMG = (document.querySelector('meta[name="ndu:story-image"]') || {}).content || '';
+
   function closeShareMenus(){
     document.querySelectorAll('.share-menu').forEach(function(m){ m.remove(); });
   }
@@ -3869,36 +4231,56 @@ var PostCards = (function(){
     if(!e.target.closest('.share-menu') && !e.target.closest('[data-share]')) closeShareMenus();
   });
 
-  function openShareSheet(btn, title){
+  var SHARE_ICON = {
+    facebook: '<path d="M14 8.5h2.2V5.6h-2.4c-2.5 0-3.9 1.4-3.9 3.9v1.6H8v3h1.9V21h3.2v-6.9h2.3l.4-3h-2.7V9.9c0-1 .3-1.4.9-1.4z"/>',
+    whatsapp: '<path d="M12 3a9 9 0 00-7.7 13.6L3 21l4.5-1.2A9 9 0 1012 3zm5.2 12.7c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.6-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l2 1c.2.1.4.2.4.3.1.2.1.7-.1 1.2z"/>',
+    x: '<path d="M17.5 3h3l-6.6 7.5L21.7 21h-6l-4.7-6.1L5.6 21H2.5l7-8L2.3 3h6.2l4.2 5.6zm-1.1 16h1.7L7.7 4.7H5.9z"/>',
+    telegram: '<path d="M21.2 4.3 2.9 11.4c-1 .4-1 1.8.1 2.1l4.5 1.4 1.7 5.3c.3.9 1.4 1.1 2 .4l2.5-2.6 4.5 3.3c.7.5 1.7.1 1.9-.7l3-14.2c.2-.9-.7-1.6-1.9-1.1zM8.9 14.2l8.6-5.3-6.9 6.4-.3 3.3z"/>',
+    link: '<path d="M10.6 13.4a4 4 0 015.7 0l.7.7a4 4 0 01-5.7 5.7l-1.4-1.4M13.4 10.6a4 4 0 00-5.7 0l-.7.7a4 4 0 005.7 5.7l1.4-1.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+    story: '<path d="M7 3h10a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2zm5 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zm0 2a3.5 3.5 0 110 7 3.5 3.5 0 010-7z"/>'
+  };
+
+  function shareRow(key, label, href, attrs){
+    return '<a class="sm-item" href="' + href + '" target="_blank" rel="noopener"' + (attrs || '') + '>' +
+      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' + SHARE_ICON[key] + '</svg>' +
+      '<span>' + label + '</span></a>';
+  }
+
+  /* Share the page the card actually has, not whatever page the reader is
+     standing on. Every briefing has its own URL with its own preview card, so
+     a shared link shows that headline instead of the site's front page. */
+  function openShareSheet(btn, title, url, storyImg){
+    var shareUrl = url || SHARE_URL;
     var text = title || document.title;
     if(navigator.share){
-      navigator.share({ title: document.title, text: text, url: SHARE_URL }).catch(function(){});
+      navigator.share({ title: text, text: text, url: shareUrl }).catch(function(){});
       return;
     }
     closeShareMenus();
-    var u = encodeURIComponent(SHARE_URL);
+    var u = encodeURIComponent(shareUrl);
     var t = encodeURIComponent(text);
-    var links = [
-      ['Facebook', 'https://www.facebook.com/sharer/sharer.php?u=' + u],
-      ['WhatsApp', 'https://wa.me/?text=' + t + '%20' + u],
-      ['X / Twitter', 'https://twitter.com/intent/tweet?text=' + t + '&url=' + u],
-      ['Telegram', 'https://t.me/share/url?url=' + u + '&text=' + t],
-      ['Email', 'mailto:?subject=' + t + '&body=' + u]
-    ];
+    var story = storyImg || STORY_IMG;
+    var html =
+      shareRow('facebook', 'Facebook', 'https://www.facebook.com/sharer/sharer.php?u=' + u) +
+      shareRow('whatsapp', 'WhatsApp', 'https://wa.me/?text=' + t + '%20' + u) +
+      shareRow('x', 'X', 'https://twitter.com/intent/tweet?text=' + t + '&url=' + u) +
+      shareRow('telegram', 'Telegram', 'https://t.me/share/url?url=' + u + '&text=' + t) +
+      (story ? shareRow('story', 'Story image', story, ' download') : '') +
+      '<button class="sm-item" type="button" data-copy-link>' +
+        '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' + SHARE_ICON.link + '</svg>' +
+        '<span>Copy link</span></button>';
     var menu = document.createElement('div');
     menu.className = 'share-menu';
-    menu.innerHTML = links.map(function(l){
-      return '<a href="' + l[1] + '" target="_blank" rel="noopener">' + l[0] + '</a>';
-    }).join('') + '<button type="button" data-copy-link>Copy link</button>';
+    menu.innerHTML = html;
     menu.addEventListener('click', function(ev){
       var copy = ev.target.closest('[data-copy-link]');
       if(copy && navigator.clipboard){
-        navigator.clipboard.writeText(SHARE_URL);
-        copy.textContent = 'Link copied';
+        navigator.clipboard.writeText(shareUrl);
+        copy.querySelector('span').textContent = 'Link copied';
         setTimeout(closeShareMenus, 1200);
-      } else { setTimeout(closeShareMenus, 50); }
+      } else if(!ev.target.closest('a')) { setTimeout(closeShareMenus, 50); }
     });
-    var foot = btn.closest('.post-foot') || btn.parentNode;
+    var foot = btn.closest('.post-foot') || btn.closest('.video-actions') || btn.parentNode;
     foot.style.position = 'relative';
     foot.appendChild(menu);
   }
@@ -3928,7 +4310,13 @@ var PostCards = (function(){
     if(shareBtn){
       var host = shareBtn.closest('.post-card, .video-card');
       var shareTitle = host ? host.getAttribute('data-title') : document.title;
-      openShareSheet(shareBtn, shareTitle);
+      var perma = host ? host.getAttribute('data-permalink') : '';
+      openShareSheet(
+        shareBtn,
+        shareTitle,
+        perma ? location.origin + perma : SHARE_URL,
+        host ? host.getAttribute('data-story') : ''
+      );
       e.stopPropagation();
       return;
     }
@@ -4235,7 +4623,10 @@ var LiveFeed = (function(){
   }, 5000);
 
   load();
-  setInterval(load, 90 * 1000);
+  /* The live feed is the part of this site that is supposed to be live, so it
+     refreshes on the minute. The API caches for 60 seconds behind it, so this
+     costs one origin fetch a minute no matter how many people are reading. */
+  setInterval(load, 60 * 1000);
   document.addEventListener('visibilitychange', function(){ if(!document.hidden) load(); });
   var refresh = document.getElementById('feed-refresh');
   if(refresh) refresh.addEventListener('click', load);
@@ -4323,7 +4714,7 @@ var LiveFeed = (function(){
 
   document.getElementById('news-modal-close').addEventListener('click', close);
   document.getElementById('news-modal-dismiss').addEventListener('click', close);
-  document.getElementById('statusbar').addEventListener('click', open);
+  document.getElementById('statusbar-open').addEventListener('click', open);
   document.getElementById('reopen-news').addEventListener('click', function(){
     if(window.closeHeaderPopovers) window.closeHeaderPopovers();
     open();
@@ -4346,9 +4737,14 @@ var LiveFeed = (function(){
   });
   paintToggle();
 
+  /* Not on a phone. A pop-up covering the page on arrival from a mobile
+     search result is exactly what Google demotes as an intrusive interstitial,
+     and it stands between a reader and the numbers at the worst moment. The
+     status bar above it stays tappable, so nothing is lost. */
+  var narrow = window.matchMedia && matchMedia('(max-width: 900px)').matches;
   var seen = false;
   try { seen = localStorage.getItem(STORAGE_SEEN) === '1'; } catch(e){}
-  if(!seen && enabled()) setTimeout(open, 900);
+  if(!seen && !narrow && enabled()) setTimeout(open, 1400);
 })();
 
 /* =========================================================================
@@ -5316,6 +5712,107 @@ var LiveFeed = (function(){
 })();
 
 /* =========================================================================
+   Breaking strip.
+
+   The red band used to carry one fixed sentence, so after a reader's second
+   visit it was furniture. It now scrolls the things that actually change:
+   what the event is, the figures as they stand, the newest briefing, and the
+   numbers to call. Built from event.json so it can never disagree with the
+   counters directly below it.
+   ========================================================================= */
+(function(){
+  var run = document.getElementById('statusbar-run');
+  var run2 = document.getElementById('statusbar-run2');
+  if(!run) return;
+
+  function esc(v){
+    return String(v == null ? '' : v).replace(/[&<>"']/g, function(c){
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+    });
+  }
+
+  var CALLS = [
+    ['Police', '100'],
+    ['Ambulance', '102'],
+    ['Disaster hotline', '1149'],
+  ];
+
+  function items(event, newest){
+    var out = [];
+    if(event && event.name){
+      var lede = String(event.lede || '').split('. ')[0];
+      out.push('<a class="sb-item" href="#overview" data-tab-link="overview">' +
+        '<b>' + esc(String(event.name).toUpperCase()) + '</b>' +
+        (lede ? '&nbsp;&nbsp;' + esc(lede) : '') + '</a>');
+    }
+    (event && event.stats ? event.stats : []).slice(0, 5).forEach(function(st){
+      if(!st || !st.value || st.value === 'auto:day') return;
+      out.push('<a class="sb-item" href="#overview" data-tab-link="overview">' +
+        '<b>' + esc(st.value) + '</b>&nbsp;' + esc(st.label || '') + '</a>');
+    });
+    if(newest && newest.title && newest.url){
+      out.push('<a class="sb-item" href="' + esc(newest.url) + '"><b>LATEST</b>&nbsp;&nbsp;' +
+        esc(newest.title) + '</a>');
+    }
+    CALLS.forEach(function(c){
+      out.push('<a class="sb-item sb-call" href="tel:' + c[1] + '">' +
+        esc(c[0]) + ' ' + c[1] + '</a>');
+    });
+    return out;
+  }
+
+  function paint(event, newest){
+    var list = items(event, newest);
+    if(!list.length) return;
+    var html = list.join('<span class="sb-sep" aria-hidden="true">&#9670;</span>') +
+      '<span class="sb-sep" aria-hidden="true">&#9670;</span>';
+    run.innerHTML = html;
+    if(run2) run2.innerHTML = html;
+
+    /* One full pass at a readable speed rather than a fixed duration, so a
+       long strip does not fly past and a short one does not crawl. */
+    var width = run.scrollWidth;
+    if(width){
+      var seconds = Math.max(24, Math.min(90, Math.round(width / 55)));
+      run.style.animationDuration = seconds + 's';
+      if(run2) run2.style.animationDuration = seconds + 's';
+    }
+  }
+
+  var currentEvent = null;
+  var currentNewest = null;
+
+  window.addEventListener('event-loaded', function(e){
+    currentEvent = e.detail;
+    paint(currentEvent, currentNewest);
+  });
+
+  /* The event may already have loaded before this module was parsed, in which
+     case the event above has been and gone. Reading the file again costs
+     nothing, since the counters have just put it in the browser's cache. */
+  fetch('/event.json', { cache:'force-cache' })
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(ev){
+      if(ev && ev.stats && !currentEvent){ currentEvent = ev; paint(currentEvent, currentNewest); }
+    })
+    .catch(function(){});
+
+  fetch('/updates.json', { cache:'no-store' })
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(a){
+      if(a && a.updates && a.updates.length){
+        currentNewest = a.updates[0];
+        paint(currentEvent, currentNewest);
+      }
+    })
+    .catch(function(){});
+
+  /* Something in the strip before either fetch lands, so it is never an empty
+     red band on a slow connection. */
+  paint(null, null);
+})();
+
+/* =========================================================================
    Today — reads /today.json and renders a feed of story cards, same shape
    as the Live feed. The file is rebuilt through the day from public
    reporting (see PROMPT.md). Missing file just shows a quiet line.
@@ -5359,8 +5856,11 @@ var LiveFeed = (function(){
     return (same ? 'Today' : fmtUpdated(iso).split(',')[0]) + ', ' + t + ' NPT';
   }
 
-  /* Same slug rule as src/build.mjs: the Nepal-time day, then the post id. */
+  /* Same slug rule as src/build.mjs: the Nepal-time day, then the post id.
+     An archived briefing already knows its own URL and passes it straight
+     through. */
   function permalink(post){
+    if(post && post.permalink) return post.permalink;
     if(!post || !post.time) return '';
     var d = new Date(post.time);
     if(isNaN(d.getTime())) return '';
@@ -5368,6 +5868,31 @@ var LiveFeed = (function(){
     var day = npt.getFullYear() + '-' + String(npt.getMonth() + 1).padStart(2, '0') + '-' + String(npt.getDate()).padStart(2, '0');
     var slug = String(post.id || post.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70);
     return slug ? '/updates/' + day + '-' + slug + '/' : '';
+  }
+
+  /* The versioned URL for a share picture, or '' when the build did not draw
+     one. Without the version a reader who loaded the page while a briefing
+     still had its drawn placeholder keeps being served that placeholder after
+     a real photograph replaces it, because the filename never changes and the
+     pictures carry a four hour cache. */
+  var OG_VERSIONS = (function(){
+    try {
+      var el = document.getElementById('og-versions');
+      /* The build rewrites this block between HTML comment markers, and inside
+         a script element those markers are part of the text rather than
+         comments, so they have to come off before this is JSON. */
+      var raw = el.textContent.replace(/<!--[\s\S]*?-->/g, '').trim();
+      return JSON.parse(raw) || {};
+    }
+    catch(e){ return {}; }
+  })();
+  /* Falls back to the unversioned path when the build did not list this
+     briefing, so a card that is merely missing a version still shows its
+     picture. A picture that does not exist at all is handled by the img's own
+     onerror, which drops it rather than leaving a broken frame. */
+  function ogAsset(name){
+    if(!name) return '';
+    return OG_VERSIONS[name] || ('/assets/og/' + name);
   }
 
   function card(post, i){
@@ -5381,23 +5906,51 @@ var LiveFeed = (function(){
       return s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + n + '</a>' : n;
     }).join(', ');
 
-    var rev = post.revised ? ' <span class="rev">updated</span>' : '';
+    var rev = post.revised ? ' <span class="rev">updated</span>' : (post.earlier ? ' <span class="rev earlier">earlier</span>' : '');
+
+    /* Every briefing has its own page and its own share pictures, drawn at
+       build time. Hanging them on the card means the share sheet can offer
+       the right link and the right story image without another request. */
+    var perma = permalink(post);
+    var ogSlug = perma ? perma.replace(/^\/|\/$/g, '').replace(/\//g, '-') : '';
+
+    var stampHtml = '<p class="tc-stamp">' + esc(stamp(post.time)) + rev + '</p>';
 
     return (
-      '<article class="post-card today-card" data-url="' + esc(url) + '" data-title="' + esc(post.title || '') + '">' +
-        '<p class="tc-stamp">' + esc(stamp(post.time)) + rev + '</p>' +
-        (post.image
-          ? '<img class="post-photo" loading="lazy" referrerpolicy="no-referrer" src="' + esc(post.image) + '" alt="" data-expand="' + uid + '" onerror="this.closest(\'.post-card\').classList.add(\'no-photo\'); this.remove();">'
-          : '') +
+      '<article class="post-card today-card" data-url="' + esc(url) + '" data-title="' + esc(post.title || '') + '"' +
+        (perma ? ' data-permalink="' + esc(perma) + '"' : '') +
+        (ogSlug && ogAsset(ogSlug + '-story.png')
+          ? ' data-story="' + esc(ogAsset(ogSlug + '-story.png')) + '"' : '') + '>' +
+        /* A news photo if the briefing has one that loads, otherwise the tile
+           drawn for this briefing at build time. A card with no picture at
+           all is the one thing that made this grid look unfinished. */
+        (function(){
+          var img = post.image || ogAsset(ogSlug + '-thumb.png');
+          if(!img) return stampHtml;
+          var tag = '<img class="post-photo" loading="lazy" decoding="async" referrerpolicy="no-referrer" ' +
+            'src="' + esc(img) + '" alt="" width="800" height="450"' + (perma ? '' : ' data-expand="' + uid + '"') + ' ' +
+            'onerror="this.closest(\'.post-card\').classList.add(\'no-photo\'); this.remove();">';
+          /* A picture that goes to the story is what a reader expects from a
+             news card, and the old one only toggled the text clamp. The stamp
+             rides on the picture rather than sitting in white space above it. */
+          return '<div class="tc-media">' +
+            (perma ? '<a class="post-photo-link" href="' + esc(perma) + '" tabindex="-1" aria-hidden="true">' + tag + '</a>' : tag) +
+            stampHtml +
+          '</div>';
+        })() +
         '<div class="post-body">' +
-          (post.title ? '<p class="tc-title">' + esc(post.title) + '</p>' : '') +
+          (post.title
+            ? '<p class="tc-title">' + (perma
+                ? '<a href="' + esc(perma) + '">' + esc(post.title) + '</a>'
+                : esc(post.title)) + '</p>'
+            : '') +
           '<div class="post-summary clamped" id="' + uid + '" data-expand="' + uid + '">' + bodyHtml + '</div>' +
           '<button class="tc-more" type="button" data-expand="' + uid + '">Read more</button>' +
           (srcHtml ? '<div class="tc-sources"><b>Sources:</b> ' + srcHtml + '</div>' : '') +
         '</div>' +
         '<div class="post-foot">' +
-          (permalink(post)
-            ? '<a class="post-btn" href="' + esc(permalink(post)) + '">' +
+          (perma
+            ? '<a class="post-btn" href="' + esc(perma) + '">' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h16M4 19h10"></path></svg>Full briefing' +
             '</a>'
             : '') +
@@ -5431,9 +5984,36 @@ var LiveFeed = (function(){
     if(p) btn.textContent = p.classList.contains('clamped') ? 'Read more' : 'Read less';
   });
 
+  /* today.json holds only what is still live. When the day's newer briefings
+     have replaced the older ones it can be down to two cards, and a two-card
+     grid on a news front page looks like a site that has stopped. The archive
+     at /updates.json fills the rest, marked as earlier briefings, which also
+     puts a link to every one of those pages on the front page. */
+  function fill(d){
+    var posts = (d && Array.isArray(d.posts)) ? d.posts : [];
+    if(posts.length >= 5) { render(d); return; }
+    var have = {};
+    posts.forEach(function(p){ var u = permalink(p); if(u) have[u] = 1; });
+    fetch('/updates.json', { cache:'no-store' })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(a){
+        var extra = ((a && a.updates) || [])
+          .filter(function(u){ return u.url && !have[u.url]; })
+          .slice(0, 6 - posts.length)
+          .map(function(u){
+            return {
+              id: u.url, permalink: u.url, title: u.title, time: u.time,
+              body: [u.summary], sources: [], earlier: true
+            };
+          });
+        render({ updated: d && d.updated, posts: posts.concat(extra) });
+      })
+      .catch(function(){ render(d); });
+  }
+
   fetch('/today.json', { cache:'no-store' })
     .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .then(render)
+    .then(fill)
     .catch(function(){
       /* The briefings are already in the HTML this page was served with, so a
          failed refresh must not wipe them. Only an empty grid gets the notice. */

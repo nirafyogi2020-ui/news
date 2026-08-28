@@ -2,3 +2,33 @@
 node_modules/
 .DS_Store
 *.log
+
+# ---------------------------------------------------------------------------
+# Generated output. Everything below is written by src/build.mjs and
+# src/og-build.mjs from event.json, today.json, data/updates/ and src/.
+#
+# It used to be committed, and that was the reason a push from a home
+# connection took twenty minutes and sometimes timed out: every build rewrites
+# every share picture and every article page, so each commit added a fresh copy
+# of about twenty megabytes of PNGs. The cloud routine deploys by cloning this
+# repo and running ./deploy.sh, which regenerates all of it anyway, so none of
+# it needs to travel over the wire.
+#
+# Sources that must stay tracked: src/, index.html, event.json, today.json,
+# data/updates/, PROMPT.md, deploy.sh, functions/, _headers, _redirects and
+# the root icons.
+# ---------------------------------------------------------------------------
+assets/og/
+sitemap.xml
+sitemap-index.xml
+news-sitemap.xml
+robots.txt
+updates.json
+/404.html
+/about/
+/contact/
+/sources/
+/updates/
+/ne/
+/nepal-flood/
+/nepal-disasters/
