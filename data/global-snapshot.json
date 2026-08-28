@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-28T09:36:34.962Z",
+  "updated": "2026-08-28T09:42:06.399Z",
   "items": [
     {
       "title": "WFP Colombia Earthquake and Wildfires Response, 26 August 2026",
@@ -35,6 +35,18 @@
       "authority": "primary"
     },
     {
+      "title": "Nepal-Tibet flash flood: rescue operations resume after halting over lake overflow; death toll rises to 469 – latest updates",
+      "url": "https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates",
+      "source": "The Guardian",
+      "time": "2026-08-28T09:32:41.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://i.guim.co.uk/img/media/47cb3be449fcfb79d7faf55fbfb533ec45d96956/258_0_1248_998/master/1248.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=34a0a47423e5e78a26daa2f256f8e90c",
+      "summary": "Operations were suspended amid fears of further destruction; 1,500 people still missing amid race to find survivors Flood risk forces halt to rescues in Tibet, as Nepal death toll rises to 469 Visual guide: how the deadly flooding unfolded Tell us: have you been affected by the flash floods? More now on the Nepali army’s rescue operation to save about 100 people trapped in a tunnel at a hydropower project swamped by Wednesday’s flooding . “Two helicopters have been dispatched but it is challenging because it is tough to even locate the entry points of the tunnel,” army spokesperson Raja Ram Basnet told AFP. Relief efforts are also under way…",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
       "title": "Nepal flood disaster reconstructed minute by minute",
       "url": "https://www.france24.com/en/nepal-flood-disaster-reconstructed-minute-by-minute",
       "source": "France 24",
@@ -47,14 +59,14 @@
       "authority": "trusted"
     },
     {
-      "title": "Nepal-Tibet flash flood: rescue operations resume after halting over lake overflow; death toll rises to 469 – latest updates",
-      "url": "https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates",
+      "title": "‘So desperately loved’: ADF member among dozens of Australians missing in Nepal floods as families pray for safe return",
+      "url": "https://www.theguardian.com/world/2026/aug/28/family-missing-australians-nepal-tibet-flash-floods",
       "source": "The Guardian",
-      "time": "2026-08-28T09:14:38.000Z",
+      "time": "2026-08-28T09:30:51.000Z",
       "kind": "press",
       "region": "global",
-      "image": "https://i.guim.co.uk/img/media/47cb3be449fcfb79d7faf55fbfb533ec45d96956/258_0_1248_998/master/1248.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=34a0a47423e5e78a26daa2f256f8e90c",
-      "summary": "Operations were suspended amid fears of further destruction; 1,500 people still missing amid race to find survivors Flood risk forces halt to rescues in Tibet, as Nepal death toll rises to 469 Visual guide: how the deadly flooding unfolded Tell us: have you been affected by the flash floods? More now on the Nepali army’s rescue operation to save about 100 people trapped in a tunnel at a hydropower project swamped by Wednesday’s flooding . “Two helicopters have been dispatched but it is challenging because it is tough to even locate the entry points of the tunnel,” army spokesperson Raja Ram Basnet told AFP. Relief efforts are also under way…",
+      "image": "https://i.guim.co.uk/img/media/b13331200f050e02caee7ece44264ecb6200bdfc/0_0_5000_4000/master/5000.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=3ef61799ec009188530e5023a34b401e",
+      "summary": "Relatives ‘really worried, but hopeful’ as they wait anxiously for news in the aftermath of the flash flooding disaster Follow our Australia news live blog for latest updates Get our breaking news email , free app or daily news podcast The families of an Australian defence force member and two Sydney boys who went missing with their parents in Nepal remain hopeful they will be found safe. Dozens of Australians are missing after devastating flooding on the Nepal-Tibet border. Nepal police on Friday said more than 1,500 people remained missing and 469 have been confirmed dead after massive flash floods and landslides tore through the…",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -71,34 +83,10 @@
       "authority": "trusted"
     },
     {
-      "title": "‘So desperately loved’: ADF member among dozens of Australians missing in Nepal floods as families pray for safe return",
-      "url": "https://www.theguardian.com/world/2026/aug/28/family-missing-australians-nepal-tibet-flash-floods",
-      "source": "The Guardian",
-      "time": "2026-08-28T08:44:36.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://i.guim.co.uk/img/media/b13331200f050e02caee7ece44264ecb6200bdfc/0_0_5000_4000/master/5000.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=3ef61799ec009188530e5023a34b401e",
-      "summary": "Relatives ‘really worried, but hopeful’ as they wait anxiously for news in the aftermath of the flash flooding disaster Follow our Australia news live blog for latest updates Get our breaking news email , free app or daily news podcast The families of an Australian defence force member and two Sydney boys who went missing with their parents in Nepal remain hopeful they will be found safe. Dozens of Australians are missing after devastating flooding on the Nepal-Tibet border. Nepal police on Friday said more than 1,500 people remained missing and 469 have been confirmed dead after massive flash floods and landslides tore through the…",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "'High risk' of lake breaching and causing second flood, warns China",
-      "url": "https://www.bbc.co.uk/news/articles/ckg8l2x8wr8o?at_medium=RSS&amp;at_campaign=rss",
-      "source": "BBC News",
-      "time": "2026-08-28T08:10:21.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/52e4/live/e6ac0c40-a2a3-11f1-ab20-f9f4f61e8913.jpg",
-      "summary": "Authorities say a lake formed after a recent landslide near the Nepal-Tibet border may breach in the coming days.",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
       "title": "Overflowing lake halts rescue efforts as Nepal-Tibet flood death toll hits 469",
       "url": "https://www.theguardian.com/world/2026/aug/28/flash-flood-risk-halt-rescue-tibet-nepal-death-toll-china-lake-burst",
       "source": "The Guardian",
-      "time": "2026-08-28T08:22:12.000Z",
+      "time": "2026-08-28T09:25:01.000Z",
       "kind": "press",
       "region": "global",
       "image": "https://i.guim.co.uk/img/media/3d9b134af42fcf5be0c903258ae03d2147807bb0/988_0_3450_2760/master/3450.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=5f7a67a3dee11f85dd4dcb367e02d1da",
@@ -112,14 +100,14 @@
       "authority": "trusted"
     },
     {
-      "title": "Nearly 470 killed in Nepal floods: What we know about rescue efforts",
-      "url": "https://www.aljazeera.com/news/2026/8/28/nearly-470-killed-in-nepal-floods-what-we-know-about-rescue-efforts?traffic_source=rss",
-      "source": "Al Jazeera",
-      "time": "2026-08-28T07:51:06.000Z",
+      "title": "'High risk' of lake breaching and causing second flood, warns China",
+      "url": "https://www.bbc.co.uk/news/articles/ckg8l2x8wr8o?at_medium=RSS&amp;at_campaign=rss",
+      "source": "BBC News",
+      "time": "2026-08-28T08:10:21.000Z",
       "kind": "press",
       "region": "global",
-      "image": null,
-      "summary": "The devastating Bhotekoshi flood struck the mountainous Nepal-Tibet border region on Wednesday morning.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/52e4/live/e6ac0c40-a2a3-11f1-ab20-f9f4f61e8913.jpg",
+      "summary": "Authorities say a lake formed after a recent landslide near the Nepal-Tibet border may breach in the coming days.",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -136,14 +124,14 @@
       "authority": "trusted"
     },
     {
-      "title": "5 Months Before Nepal Disaster, Two Reports Indicated What Lay Ahead",
-      "url": "https://www.ndtv.com/world-news/5-months-before-nepal-disaster-two-reports-indicated-what-lay-ahead-11970238#publisher=newsstand",
-      "source": "NDTV",
-      "time": "2026-08-28T07:45:55.000Z",
+      "title": "Nearly 470 killed in Nepal floods: What we know about rescue efforts",
+      "url": "https://www.aljazeera.com/news/2026/8/28/nearly-470-killed-in-nepal-floods-what-we-know-about-rescue-efforts?traffic_source=rss",
+      "source": "Al Jazeera",
+      "time": "2026-08-28T07:51:06.000Z",
       "kind": "press",
       "region": "global",
-      "image": "https://c.ndtvimg.com/2026-08/07d2eg3o_nepal_625x300_28_August_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
-      "summary": "In March 2026, the International Centre for Integrated Mountain Development (ICIMOD) in two reports said up to 27 metres of glacial ice thickness had been lost since 1975",
+      "image": null,
+      "summary": "The devastating Bhotekoshi flood struck the mountainous Nepal-Tibet border region on Wednesday morning.",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -156,6 +144,18 @@
       "region": "global",
       "image": "https://i.guim.co.uk/img/media/9a89e86e7d7da68296914377d6f8aa2a75c8f102/386_0_2500_2000/master/2500.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=630bb5c19e372a9a81a03b79fbaaabcf",
       "summary": "Flash flooding and mudslides in Ishikawa and Toyama prefectures, while convective storms hit western Europe After an “unprecedented” deluge in Chiba in mid-August, Japan has experienced further extreme rainfall in recent days. Moisture from the Sea of Japan brought relentless heavy rain to the prefectures of Ishikawa and Toyama on Thursday. In Himi, Toyama, 361.5mm of rain fell in 24 hours, equivalent to half the average annual rainfall in London and Paris. Several rivers burst their banks, triggering flash floods and mudslides, felling and damaging buildings. Continue reading...",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "5 Months Before Nepal Disaster, Two Reports Indicated What Lay Ahead",
+      "url": "https://www.ndtv.com/world-news/5-months-before-nepal-disaster-two-reports-indicated-what-lay-ahead-11970238#publisher=newsstand",
+      "source": "NDTV",
+      "time": "2026-08-28T07:45:55.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://c.ndtvimg.com/2026-08/07d2eg3o_nepal_625x300_28_August_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
+      "summary": "In March 2026, the International Centre for Integrated Mountain Development (ICIMOD) in two reports said up to 27 metres of glacial ice thickness had been lost since 1975",
       "alsoReported": [],
       "authority": "trusted"
     },

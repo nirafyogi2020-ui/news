@@ -4790,6 +4790,21 @@ var LiveFeed = (function(){
     });
   }
 
+  function nptClock(){
+    try{
+      return new Date().toLocaleTimeString('en-GB', {
+        timeZone:'Asia/Kathmandu', hour:'2-digit', minute:'2-digit'
+      }) + ' NPT';
+    }catch(e){
+      return new Date().toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
+    }
+  }
+
+  function newestByTime(items){
+    return (items || []).filter(function(item){ return item && item.time && !isNaN(new Date(item.time).getTime()); })
+      .sort(function(a, b){ return new Date(b.time).getTime() - new Date(a.time).getTime(); })[0] || null;
+  }
+
   function renderModalRows(el, items, limit){
     if(!el) return;
     if(!items.length){
@@ -4872,9 +4887,9 @@ var LiveFeed = (function(){
         var mediaBadge = document.getElementById('media-badge');
         if(mediaBadge && videos.length){ mediaBadge.hidden = false; mediaBadge.textContent = videos.length; }
 
-        var now = new Date().toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
-        if(statusEl) statusEl.textContent = 'Checked ' + now;
-        if(feedTabStatus) feedTabStatus.textContent = 'Checked ' + now;
+        var now = nptClock();
+        if(statusEl) statusEl.textContent = 'Feed checked ' + now;
+        if(feedTabStatus) feedTabStatus.textContent = 'Feed checked ' + now;
 
         /* The statusbar always shows two real numbers: when THIS SITE last checked
            (always fresh, since we just fetched), and how old the newest item actually
@@ -4883,10 +4898,10 @@ var LiveFeed = (function(){
            like a contradiction. */
         var stamp = document.getElementById('statusbar-time');
         if(stamp){
-          var newest = latest[0];
+          var newest = newestByTime(latest);
           stamp.textContent = newest && newest.time
-            ? 'Checked ' + now + ' · newest report ' + PostCards.timeAgo(newest.time)
-            : 'Checked ' + now + ' · no automatic reports yet';
+            ? 'Feed checked ' + now + ' · latest source ' + PostCards.timeAgo(newest.time)
+            : 'Feed checked ' + now + ' · no automatic reports yet';
         }
       })
       .catch(function(err){
@@ -4911,11 +4926,11 @@ var LiveFeed = (function(){
      between fetches. */
   function agoText(ms){
     var s = Math.round(ms / 1000);
-    if(s < 5) return 'updating now';
-    if(s < 60) return 'updated ' + s + 's ago';
+    if(s < 5) return 'Feed checked now';
+    if(s < 60) return 'Feed checked ' + s + 's ago';
     var m = Math.round(s / 60);
-    if(m < 60) return 'updated ' + m + ' min ago';
-    return 'updated ' + Math.round(m / 60) + 'h ago';
+    if(m < 60) return 'Feed checked ' + m + ' min ago';
+    return 'Feed checked ' + Math.round(m / 60) + 'h ago';
   }
   setInterval(function(){
     if(!lastCheck) return;
@@ -5931,6 +5946,7 @@ var LiveFeed = (function(){
 (function(){
   var grid = document.getElementById('numgrid');
   if(!grid) return;
+  var latestLiveToll = null;
 
   var ICONS = {
     dead:    '<path d="M12 21s-7-4.35-9.5-9C1 8.5 3 4.5 7 4.5c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6 4 4.5 7.5-1 2-3 4-5 5.5"></path><path d="M4.5 12.5h4l1.5-3 2.5 6 1.5-3h5"></path>',
@@ -6027,17 +6043,33 @@ var LiveFeed = (function(){
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(data){
         if(!data || !data.ahead || !data.live) return;
+        var live = data.live;
+        var dead = String(live.dead);
+        if(latestLiveToll === dead) return;
+        latestLiveToll = dead;
         var tileEl = grid.querySelector('.stat[data-label="confirmed dead"]');
-        if(!tileEl) return;
-        var value = tileEl.querySelector('.n');
-        if(value) value.textContent = String(data.live.dead);
-        var when = data.live.statedTime ? ' at ' + data.live.statedTime : '';
-        tileEl.setAttribute('data-detail',
-          'Nepal Police bulletin' + when + ': ' + data.live.dead + ' confirmed dead. ' +
-          'Read from the bulletin itself, which is newer than the figure this page was built with.');
+        var when = live.statedTime ? ' at ' + live.statedTime : '';
+        if(tileEl){
+          var value = tileEl.querySelector('.n');
+          if(value) value.textContent = dead;
+          tileEl.setAttribute('data-detail',
+            'Nepal Police bulletin' + when + ': ' + dead + ' confirmed dead. ' +
+            'Read from the bulletin itself, which is newer than the figure this page was built with.');
+        }
+        document.querySelectorAll('#hero-figures .hf-stat:first-child .hf-n, #rail-figures .rail-fig:first-child .rf-n')
+          .forEach(function(el){ el.textContent = dead; });
         var sub = document.getElementById('numbers-sub');
-        if(sub) sub.textContent = sub.textContent +
-          ' · Nepal Police now say ' + data.live.dead + (when ? ' (bulletin' + when + ')' : '');
+        if(sub){
+          var note = document.getElementById('live-police-toll-note');
+          if(!note){
+            note = document.createElement('span');
+            note.id = 'live-police-toll-note';
+            sub.appendChild(note);
+          }
+          note.textContent = ' · Live police bulletin: ' + dead + (when ? ' (' + live.statedTime + ')' : '');
+        }
+        window.__liveToll = live;
+        window.dispatchEvent(new CustomEvent('live-toll', { detail: live }));
       })
       .catch(function(){ /* the edited figure stands */ });
   }
@@ -6046,6 +6078,8 @@ var LiveFeed = (function(){
     .then(function(r){ return r.ok ? r.json() : null; })
     .then(function(event){ apply(event); applyLiveToll(); })
     .catch(function(){ /* fallback markup stays */ });
+  setInterval(applyLiveToll, 5 * 60 * 1000);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) applyLiveToll(); });
 })();
 
 /* =========================================================================
@@ -6119,8 +6153,24 @@ var LiveFeed = (function(){
   var currentEvent = null;
   var currentNewest = null;
 
+  function withLiveToll(event, live){
+    if(!event || !live || !Array.isArray(event.stats)) return event;
+    var next = Object.assign({}, event);
+    next.stats = event.stats.map(function(stat){
+      return stat && (stat.icon === 'dead' || stat.label === 'confirmed dead')
+        ? Object.assign({}, stat, { value: String(live.dead) })
+        : stat;
+    });
+    return next;
+  }
+
   window.addEventListener('event-loaded', function(e){
-    currentEvent = e.detail;
+    currentEvent = withLiveToll(e.detail, window.__liveToll);
+    paint(currentEvent, currentNewest);
+  });
+
+  window.addEventListener('live-toll', function(e){
+    currentEvent = withLiveToll(currentEvent, e.detail);
     paint(currentEvent, currentNewest);
   });
 
@@ -6130,7 +6180,7 @@ var LiveFeed = (function(){
   fetch('/event.json', { cache:'force-cache' })
     .then(function(r){ return r.ok ? r.json() : null; })
     .then(function(ev){
-      if(ev && ev.stats && !currentEvent){ currentEvent = ev; paint(currentEvent, currentNewest); }
+      if(ev && ev.stats && !currentEvent){ currentEvent = withLiveToll(ev, window.__liveToll); paint(currentEvent, currentNewest); }
     })
     .catch(function(){});
 
