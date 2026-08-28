@@ -588,6 +588,66 @@ index = index.replace(
 );
 
 /* ---------------------------------------------------------------------------
+   The standing right rail.
+
+   Desktop only in the layout, but rendered on the server all the same: it is
+   the toll and the newest headlines, and both belong in the HTML a crawler
+   reads. Everything here is derived from the same event.json and the same
+   archive as the hero and the ticker, so the rail cannot quietly disagree
+   with the page beside it.
+   ------------------------------------------------------------------------- */
+function railFigures() {
+  const wanted = ['dead', 'missing', 'people'];
+  const picked = [];
+  for (const icon of wanted) {
+    const st = (event.stats || []).find(x => x.icon === icon && !picked.includes(x));
+    if (st) picked.push(st);
+  }
+  if (!picked.length) return '';
+  const rows = picked.map(st =>
+    '<div class="rail-fig">'
+    + `<span class="rf-n${st.tone === 'critical' ? ' critical' : ''}">${escHtml(st.value)}</span>`
+    + `<span class="rf-l">${escHtml(st.label)}</span>`
+    + '</div>'
+  ).join('');
+  const note = `<p class="rail-note">${escHtml(event.asOfSource || 'Latest bulletin')}, `
+    + `${escHtml(nptLong(event.asOf))}. <a href="#numbers-title">Every figure, and where it came from</a></p>`;
+  return rows + note;
+}
+index = index.replace(
+  /<!--ssr:railfig-->[\s\S]*?<!--\/ssr:railfig-->/,
+  () => `<!--ssr:railfig-->${railFigures()}<!--/ssr:railfig-->`
+);
+
+function railLatest(list) {
+  return list.map(p =>
+    `<li><time datetime="${escAttr(p.time)}">${escHtml(nptLong(p.time))}</time>`
+    + `<a href="${escAttr(p.url)}">${escHtml(p.title)}</a></li>`
+  ).join('');
+}
+index = index.replace(
+  /<!--ssr:raillatest-->[\s\S]*?<!--\/ssr:raillatest-->/,
+  () => `<!--ssr:raillatest-->${railLatest(posts.slice(0, 5))}<!--/ssr:raillatest-->`
+);
+index = index.replace(
+  /(<span class="rail-when" id="rail-latest-when">)[\s\S]*?(<\/span>)/,
+  (_m, a, b) => a + escHtml(nptLong(modified)) + b
+);
+
+/* The standing state in the left rail, under the contents list. */
+{
+  const d = daysSince(event.started);
+  index = index.replace(
+    /(<dd id="ts-day">)[\s\S]*?(<\/dd>)/,
+    (_m, a, b) => a + `Day ${d || 1}` + b
+  );
+  index = index.replace(
+    /(<dd id="ts-updated">)[\s\S]*?(<\/dd>)/,
+    (_m, a, b) => a + escHtml(nptLong(modified)) + b
+  );
+}
+
+/* ---------------------------------------------------------------------------
    LiveBlogPosting on the front page.
 
    The front page is the URL people actually land on for this event, and until

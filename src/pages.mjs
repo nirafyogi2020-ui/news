@@ -56,6 +56,91 @@ const AS_OF_BODIES = nptLong(C.BODIES_AS_OF);
 const AS_OF_MISSING_BREAKDOWN = nptLong(C.MISSING_BREAKDOWN_AS_OF);
 const AS_OF_SITREP = nptLong(C.SITREP_AS_OF);
 
+/* ---------------------------------------------------------------------------
+   The standing rail.
+
+   The generated pages were a single column of prose with the rest of a laptop
+   screen empty beside it, and a reader who landed on one from a search had no
+   sight of the toll, of anything newer, or of a helpline without scrolling to
+   the foot. This is the same rail the dashboard carries, built from the same
+   event.json and the same archive, so the two cannot disagree.
+
+   `opts.lead` swaps the top card for a page whose own subject is not Nepal
+   (the world page), where the Nepal figures are context rather than the point.
+   ------------------------------------------------------------------------- */
+const VTICK = '<svg class="vtick" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'
+  + '<path d="M12 1.8 14.6 4l3-.2.9 2.9 2.5 1.6-1.1 2.8 1.1 2.8-2.5 1.6-.9 2.9-3-.2L12 22.2 9.4 20l-3 .2-.9-2.9L3 15.7l1.1-2.8L3 10.1l2.5-1.6.9-2.9 3 .2zm-1 13.4 5.2-5.2-1.5-1.5-3.7 3.7-1.8-1.8-1.5 1.5z"/></svg>';
+
+const RAIL_SOURCES = [
+  ['Nepal Police', 'Official'],
+  ['NDRRMA', 'Official'],
+  ['UN OCHA', 'Alerts'],
+  ['Kathmandu Post', 'Newsroom'],
+  ['Onlinekhabar', 'Newsroom'],
+];
+
+export function liveRail(ctx, opts = {}) {
+  const event = ctx.event || {};
+  const wanted = ['dead', 'missing', 'people'];
+  const picked = [];
+  for (const icon of wanted) {
+    const st = (event.stats || []).find(x => x.icon === icon && !picked.includes(x));
+    if (st) picked.push(st);
+  }
+  const figures = picked.map(st =>
+    `<div class="rail-fig"><span class="rf-n${st.tone === 'critical' ? ' critical' : ''}">${esc(st.value)}</span>`
+    + `<span class="rf-l">${esc(st.label)}</span></div>`
+  ).join('');
+
+  const figCard = figures ? `
+<section class="rail-card is-pinned">
+  <p class="rail-head"><span class="rail-tick" aria-hidden="true"></span>${esc(opts.figTitle || 'Where it stands')}</p>
+  ${figures}
+  <p class="rail-note">${esc(event.asOfSource || 'Latest bulletin')}, ${esc(nptLong(event.asOf))}. <a href="/nepal-flood/rasuwa/casualties/">Every figure, and where it came from</a></p>
+</section>` : '';
+
+  const latest = (ctx.posts || []).slice(0, 5).map(p =>
+    `<li><time datetime="${esc(p.time)}">${esc(nptLong(p.time))}</time>`
+    + `<a href="${esc(p.url)}">${esc(p.title)}</a></li>`
+  ).join('');
+
+  const latestCard = latest ? `
+<section class="rail-card">
+  <p class="rail-head"><span class="rail-dot" aria-hidden="true"></span>Latest<span class="rail-when">${esc(nptLong(ctx.modified))}</span></p>
+  <ol class="rail-list">${latest}</ol>
+  <p class="rail-note"><a href="/nepal-flood/rasuwa/live-updates/">Every update, newest first</a></p>
+</section>` : '';
+
+  const sourceCard = `
+<section class="rail-card">
+  <p class="rail-head"><span class="rail-tick" aria-hidden="true"></span>Where this comes from</p>
+  <ul class="rail-src">${RAIL_SOURCES.map(([name, kind]) =>
+    `<li>${VTICK}<b>${esc(name)}</b><span class="rs-kind">${esc(kind)}</span></li>`).join('')}</ul>
+  <p class="rail-note"><a href="/sources/">Every source on this site, and how each one is checked</a></p>
+</section>`;
+
+  const helpCard = `
+<section class="rail-card">
+  <p class="rail-head"><span class="rail-tick" aria-hidden="true"></span>If you need help</p>
+  <div class="rail-body">
+    <p class="rail-lede">Nepal Police is 100 from any phone, 112 from a mobile. Donations to the government fund go through its own card gateway.</p>
+    <a class="rail-btn is-alert" href="tel:100">Call 100, Nepal Police</a>
+    <a class="rail-btn" href="/nepal-flood/relief/">How to give, and what to avoid</a>
+  </div>
+</section>`;
+
+  const elsewhereCard = opts.hideWorld ? '' : `
+<section class="rail-card">
+  <p class="rail-head"><span class="rail-tick" aria-hidden="true"></span>Elsewhere today</p>
+  <div class="rail-body">
+    <p class="rail-lede">Floods, quakes and storms outside Nepal, from UN alerts and named international newsrooms.</p>
+    <a class="rail-btn" href="/global/">Open the world page</a>
+  </div>
+</section>`;
+
+  return [opts.lead || '', figCard, latestCard, sourceCard, helpCard, elsewhereCard].join('\n');
+}
+
 const bylineLive = (modified) =>
   `<b>${esc(SITE_NAME)}</b><span>Compiled from official bulletins and named newsrooms</span><span>Last checked ${esc(nptLong(modified))}</span>`;
 
@@ -173,6 +258,7 @@ ${faq.html}
     priority: '0.9',
     changefreq: 'daily',
     html: page({
+      rail: liveRail(ctx),
       path,
       title: 'Nepal Floods: Live Updates, Affected Districts and Emergency Help',
       description: `Nepal flood update: ${C.TOLL.deadNepal} confirmed dead in the 26 August 2026 Rasuwa flash flood, with hundreds missing. Affected districts, why Nepali rivers rise so fast, and the emergency numbers to call.`,
@@ -293,6 +379,7 @@ ${faq.html}
     priority: '1.0',
     changefreq: 'hourly',
     html: page({
+      rail: liveRail(ctx),
       path,
       title: `Rasuwa Flood 2026: ${C.TOLL.deadNepal} Dead | Latest Updates, Map and Cause`,
       ogTitle: `Rasuwa Flood 2026: ${C.TOLL.deadNepal} dead, ${C.TOLL.missing} missing`,
@@ -440,6 +527,7 @@ ${table(['When', 'Reported dead', 'Source'], [
   return {
     path, title: t, description: d, lastmod: ctx.modified, priority: '0.9', changefreq: 'daily',
     html: page({
+      rail: liveRail(ctx),
       path, title: t, description: d,
       ogTitle: `Rasuwa flood death toll: ${C.TOLL.deadNepal} confirmed dead`,
       h1: 'Rasuwa flood: confirmed dead, injured and rescued',
@@ -540,6 +628,7 @@ ${C.MISSING_STEPS.map((s, i) => `<div class="check-row"><span class="mark">${Str
     path, title: t, description: d, lastmod: ctx.modified, priority: '0.8', changefreq: 'daily',
     alternates: [{ hreflang: 'en', path: '/nepal-flood/rasuwa/missing-persons/' }, { hreflang: 'ne', path: '/ne/bepatta/' }],
     html: page({
+      rail: liveRail(ctx),
       path, title: t, description: d,
       ogTitle: `Rasuwa flood: ${C.TOLL.missing} listed missing, and how to report someone`,
       alternates: [
@@ -600,6 +689,7 @@ ${table(['Strand', 'What is happening'], C.RESPONSE.map(([k, v]) => [`<strong>${
   return {
     path, title: t, description: d, lastmod: ctx.modified, priority: '0.8', changefreq: 'daily',
     html: page({
+      rail: liveRail(ctx),
       path, title: t, description: d,
       h1: 'Rasuwa flood: timeline',
       lede: 'What happened and when, from the seismic signal recorded minutes before the river rose to the most recent bulletin, including how the death toll moved through the first two days.',
@@ -691,6 +781,7 @@ ${faq.html}
   return {
     path, title: t, description: d, lastmod: ctx.modified, priority: '0.8', changefreq: 'weekly',
     html: page({
+      rail: liveRail(ctx),
       path, title: t, description: d,
       h1: 'What caused the Rasuwa flood',
       lede: 'Local rainfall is ruled out, and the US Geological Survey has reassessed the tremor recorded minutes earlier as a glacial collapse rather than an earthquake. Here is what the evidence supports, how strongly, and why the answer changes what people downstream should do.',
@@ -771,6 +862,7 @@ ${table(['Recipient', 'Amount'], C.DAMAGE.reliefBreakdown.map(([k, v]) => [esc(k
   return {
     path, title: t, description: d, lastmod: ctx.modified, priority: '0.8', changefreq: 'daily',
     html: page({
+      rail: liveRail(ctx),
       path, title: t, description: d,
       ogTitle: 'Rasuwa flood damage: hydropower, bridges and the cost so far',
       h1: 'Rasuwa flood: damage assessment',
@@ -888,6 +980,7 @@ ${table(['District', 'Province', 'Role in this event'], [
   return {
     path, title: t, description: d, lastmod: ctx.modified, priority: '0.8', changefreq: 'weekly',
     html: page({
+      rail: liveRail(ctx),
       path, title: t, description: d,
       h1: 'Map of the Rasuwa flood path',
       lede: 'From the suspected break-off point inside Tibet, 4,500 metres down to Nuwakot. Every point with coordinates, as a table first and a map second.',
@@ -992,6 +1085,7 @@ ${SECOND_FLOOD_WARNING}
   return {
     path, title: t, description: d, lastmod: ctx.modified, priority: '0.9', changefreq: 'hourly',
     html: page({
+      rail: liveRail(ctx),
       path, title: t, description: d,
       h1: 'Rasuwa flood: live updates',
       lede: 'Everything as it comes in. Hand-written briefings at the top, the raw newswire below, and the source named on every line.',
@@ -1119,6 +1213,7 @@ ${faq.html}
     path, title: t, description: d, lastmod: ctx.buildDay, priority: '0.9', changefreq: 'monthly',
     alternates: [{ hreflang: 'en', path: '/nepal-flood/emergency-numbers/' }, { hreflang: 'ne', path: '/ne/aapatkalin-number/' }],
     html: page({
+      rail: liveRail(ctx),
       path, title: t, description: d,
       h1: 'Nepal emergency numbers',
       lede: 'Tap any number to dial it. These are national numbers and work from any phone in Nepal. They do not change between disasters. Save them now.',
@@ -1212,6 +1307,7 @@ ${table(['Recipient', 'Amount'], C.DAMAGE.reliefBreakdown.map(([k, v]) => [esc(k
     path, title: t, description: d, lastmod: ctx.buildDay, priority: '0.8', changefreq: 'weekly',
     alternates: [{ hreflang: 'en', path: '/nepal-flood/relief/' }, { hreflang: 'ne', path: '/ne/rahat/' }],
     html: page({
+      rail: liveRail(ctx),
       path, title: t, description: d,
       h1: 'Nepal flood relief: how to help',
       lede: 'Every link here goes to the Government of Nepal’s own fund. This site never handles money, and says openly which details it could not cross-check.',
@@ -1286,6 +1382,7 @@ ${C.RIVER_SAFETY.map((s, i) => `<div class="check-row"><span class="mark">${Stri
   return {
     path, title: t, description: d, lastmod: ctx.buildDay, priority: '0.8', changefreq: 'monthly',
     html: page({
+      rail: liveRail(ctx),
       path, title: t, description: d,
       h1: 'Nepal’s natural disasters, explained simply',
       lede: 'Five hazards, the warning signs for each, and what to do. Written for someone reading it before an emergency, and usable during one.',
@@ -1329,6 +1426,7 @@ ${posts.map(p => `<li><a class="postcard" href="${esc(p.url)}">
   return {
     path, title: t, description: d, lastmod: ctx.modified, priority: '0.7', changefreq: 'daily',
     html: page({
+      rail: liveRail(ctx),
       path, title: t, description: d,
       h1: 'Update archive',
       lede: 'Every briefing published here, newest first.',
@@ -1397,6 +1495,7 @@ ${sources}
   return {
     path, title: t, description: d, lastmod: nptDay(post.time), priority: '0.7', changefreq: 'weekly',
     html: page({
+      rail: liveRail(ctx),
       path, title: t, ogTitle: post.title, description: d,
       h1: esc(post.title),
       crumbs: [{ label: 'Home', href: '/' }, { label: 'Update archive', href: '/updates/' }, { label: post.title }],
@@ -1449,12 +1548,27 @@ export function globalNews(ctx) {
   const path = '/global/';
   const items = (ctx.globalItems || []).slice(0, 24);
 
+  /* Feed titles arrive with the dashes their own newsroom used. The house
+     style on this site is no em or en dash in visible text, so they are
+     normalised on the way in rather than left to fail the audit. Nothing
+     else about a headline is touched. */
+  const plain = (v) => String(v == null ? '' : v).replace(/[\u2013\u2014]/g, '-');
+
+  /* An item from a UN alerting body or a national newsroom carries a tick;
+     an aggregator does not. The reader can see which is which without having
+     to know the names. */
+  const OFFICIAL = /reliefweb|gdacs|ocha|usgs|who|unicef|wfp|ifrc|red cross/i;
+  const badge = (src) => OFFICIAL.test(src || '')
+    ? `<span class="src-badge">${VTICK}${esc(plain(src))} &middot; UN or official</span>`
+    : `<span class="src-badge">${esc(plain(src))}</span>`;
+
   const snapshot = items.length ? `
 <ul class="postlist">
 ${items.map(i => `<li><a class="postcard" href="${esc(i.url)}" target="_blank" rel="noopener">
-  <time datetime="${esc(i.time || '')}">${esc(i.time ? nptLong(i.time) : '')} · ${esc(i.source || '')}</time>
-  <h3>${esc(i.title)}</h3>
-  ${i.summary ? `<p>${esc(String(i.summary).slice(0, 220))}${String(i.summary).length > 220 ? '…' : ''}</p>` : ''}
+  <time datetime="${esc(i.time || '')}">${esc(i.time ? nptLong(i.time) : '')}</time>
+  <h3>${esc(plain(i.title))}</h3>
+  ${i.summary ? `<p>${esc(plain(String(i.summary).slice(0, 220)))}${String(i.summary).length > 220 ? '…' : ''}</p>` : ''}
+  ${badge(i.source)}
 </a></li>`).join('\n')}
 </ul>
 <p class="faint">Snapshot taken when this page was last built. The <a href="/#live">Live tab on the home page</a> refreshes the same feed while you read it, and lets you switch between Nepal and the world.</p>
@@ -1466,10 +1580,17 @@ ${items.map(i => `<li><a class="postcard" href="${esc(i.url)}" target="_blank" r
 <h2>What is happening now</h2>
 ${snapshot}
 
-<h2>How to read these alerts</h2>
+<div class="panel">
+  <div class="panel-head">
+    <h2>How to read these alerts</h2>
+    <p class="panel-sub">What each source is for, and where each one stops</p>
+  </div>
+  <div class="panel-body">
 <p><strong>GDACS</strong> is the UN and European Commission's global disaster alert system. It colour-codes every event by the humanitarian impact it expects: green for little, orange for significant, red for severe. Only orange and red are carried here, because green alerts fire many times a day and would bury everything else.</p>
 <p><strong>USGS</strong> publishes every earthquake it detects. Magnitude 5.5 and above is the cut-off here. Magnitude is not damage: a magnitude 6 under a city can kill thousands, and the same quake far offshore can pass unnoticed. Depth and where people live decide that.</p>
 <p><strong>ReliefWeb</strong> is UN OCHA's clearing house for humanitarian reporting. Its situation reports are slower than a newsroom and far more careful, which makes it the place to check a figure a headline gave you.</p>
+  </div>
+</div>
 
 <h2>Why this sits next to the Nepal coverage</h2>
 <p>The hazards are the same hazards. A glacial lake outburst above Rasuwa and one in the Andes fail for the same reason, and the flood safety rules on <a href="/nepal-disasters/">the hazard guide</a> hold anywhere. Nepal is where this site watches closely; this page is where it keeps an eye on everywhere else.</p>
@@ -1482,6 +1603,7 @@ ${snapshot}
     path, title: t, description: d, lastmod: ctx.buildDay, priority: '0.7', changefreq: 'hourly',
     html: page({
       path, title: t, description: d,
+      rail: liveRail(ctx, { figTitle: 'Nepal, where it stands', hideWorld: true }),
       h1: 'World disasters, live',
       lede: 'What is happening elsewhere, from the UN alerting bodies and named newsrooms. The same sourcing rules as the Nepal coverage.',
       crumbs: [{ label: 'Home', href: '/' }, { label: 'World' }],
@@ -1748,6 +1870,7 @@ ${siblings.map(h => `  <li><a href="/nepal-disasters/${h.slug}/"><b>${esc(h.name
     path, title: d.title, description: d.description,
     lastmod: ctx.buildDay, priority: '0.7', changefreq: 'monthly',
     html: page({
+      rail: liveRail(ctx),
       path, title: d.title, description: d.description,
       h1: d.h1,
       lede: d.lede,
@@ -1820,6 +1943,7 @@ ${faq.html}
   return {
     path, title: t, description: d, lastmod: ctx.buildDay, priority: '0.7', changefreq: 'daily',
     html: page({
+      rail: liveRail(ctx),
       path, title: t, description: d,
       h1: 'Hydropower damage from the Rasuwa flood',
       lede: `${C.DAMAGE.hydropowerProjects} projects on the Bhote Koshi and Trishuli corridor were damaged, with about ${C.DAMAGE.hydropowerMW} MW of capacity affected. Here is the list and what it means.`,
@@ -1896,6 +2020,7 @@ ${faq.html}
   return {
     path, title: t, description: d, lastmod: ctx.buildDay, priority: '0.8', changefreq: 'daily',
     html: page({
+      rail: liveRail(ctx),
       path, title: t, description: d,
       h1: 'Foreign nationals missing in the Rasuwa flood',
       lede: 'Hundreds of the people unaccounted for were travellers crossing the border or trekking. This page is for the families searching from outside Nepal.',
