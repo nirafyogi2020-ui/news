@@ -5273,7 +5273,9 @@ var LiveFeed = (function(){
     if(name !== 'live' || started) return;
     started = true;
     load();
-    setInterval(load, 10 * 60 * 1000);
+    // The government endpoint itself is cached for five minutes. Match that
+    // clock so a visitor sees a new official incident as soon as this site can.
+    setInterval(load, 5 * 60 * 1000);
   }
   Tabs.onChange(maybeLoad);
   maybeLoad(Tabs.current);
