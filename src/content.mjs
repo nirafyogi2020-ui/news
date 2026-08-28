@@ -8,8 +8,14 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-08-28T08:40:00+05:45';
-export const TOLL_SOURCE = 'Nepal Police, reported by ABC News live coverage';
+export const TOLL_AS_OF = '2026-08-28T12:00:00+05:45';
+export const TOLL_SOURCE = 'Nepal Police, reported by Onlinekhabar';
+
+/* When the bulletin one step before TOLL_AS_OF was published. Used only for
+   the "how the toll has moved" table, so that row's timestamp always matches
+   TOLL.deadNepalEarlier instead of drifting out of date as later runs move
+   both TOLL_AS_OF and deadNepalEarlier forward. */
+export const TOLL_EARLIER_AS_OF = '2026-08-28T07:00:00+05:45';
 
 /* The district breakdown carries its own clock. It happens to match the toll
    right now, because the 28 August 7am police bulletin published both
@@ -87,8 +93,8 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 469,
-  deadNepalEarlier: 389,
+  deadNepal: 489,
+  deadNepalEarlier: 469,
   deadChina: 3,
   missing: 910,
   missingChina: 558,
@@ -148,9 +154,9 @@ export const DAMAGE = {
 export const BARRIER_LAKE = {
   where: 'near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border',
   volume: '2 million cubic metres',
-  asOf: '2026-08-27T21:00:00+05:45',
-  source: 'China’s Ministry of Water Resources, reported by CCTV and the Kathmandu Post',
-  note: 'Both rivers are upper tributaries of the Trishuli system, so a release would run down the same corridor the 26 August flood took. The lake is already overflowing, and China’s Ministry of Water Resources says another 3 million cubic metres of water is expected to flow in over the next three days, which it says puts the lake at high risk of breaching in that window.',
+  asOf: '2026-08-28T11:45:00+05:45',
+  source: 'Nepal Police and Chinese authorities, reported by Onlinekhabar and ABC News',
+  note: 'The Nepali Army suspended rescue operations along the border for one and a half hours as a precaution while Chinese teams pulled back a kilometre from the site. NDRRMA separately reported sediment laden water rising again in the Bhotekoshi the same day and told people along the river, and rescue and relief workers, to move to higher ground at the first sign of danger. Both rivers are upper tributaries of the Trishuli system, so the water is running down the same corridor the 26 August flood took.',
 };
 
 /** The route the water took. Coordinates and elevations as used on the map. */
