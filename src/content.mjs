@@ -232,6 +232,7 @@ export const TIMELINE = [
   ['19:14 NPT, 28 August', 'The Prithvi Highway partly reopens: the Galchhi stretch to alternating one way traffic and the Galaundi-Ghatbesi-Jarekhet stretch to two way traffic, the Kathmandu Post reports. Officials say they cannot guarantee the whole highway will be clear by the end of Friday.'],
   ['Friday evening, 28 August', 'David Fisher, head of delegation for the International Federation of Red Cross and Red Crescent Societies in Nepal, says at least 93,000 people have been affected by the flood and are in great need.'],
   ['20:55 NPT, 28 August', 'In a reversal, Nepal says it will let India, China, Australia and South Korea send in tunnel rescue and DNA identification experts, the Kathmandu Post reports. Nepal had said as recently as Wednesday and Thursday that its own army and police could handle the operation without outside rescue teams.'],
+  ['Friday, 28 August', 'Water resources researcher Santosh Nepal tells Onlinekhabar that satellite images suggest a huge ice and rock fall off Langtang Lirung, not a glacial lake bursting, may have generated the flood directly by melting snow and ice on impact. He says it is too early to be sure and compares the mechanism to the 2021 Chamoli disaster in Uttarakhand.'],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */
@@ -249,6 +250,11 @@ export const CAUSES = [
     rank: 'Leading explanation',
     title: 'An ice-and-rock avalanche dammed the Lhende Khola, and the dam then burst',
     text: 'Nepal’s Department of Hydrology and Meteorology and independent glaciologists, working from satellite imagery shared by Chinese counterparts through ICIMOD, put forward a preliminary hypothesis: an ice-and-rock avalanche blocked the Lhende Khola, a Bhote Koshi tributary on the Nepal-China border, roughly 20 km upstream of the Miteri Bridge. That formed a temporary debris-dammed lake, which then burst. This is described as preliminary, and no government has confirmed it.',
+  },
+  {
+    rank: 'Newly proposed',
+    title: 'An ice and rock fall off Langtang Lirung may have generated the flood directly, without a lake bursting',
+    text: 'Santosh Nepal, a water resources and climate change researcher, told Onlinekhabar on Friday that satellite images point to a large mass of ice, snow and rock falling from about 5,000 to 5,500 metres on Langtang Lirung’s northern slope and dropping nearly 2,000 metres into the Lhende Khola. He said the impact’s energy may have rapidly melted snow and ice, sending a sudden surge of water downstream without a lake first forming and bursting. He compared the mechanism to Uttarakhand’s 2021 Chamoli disaster, and said it is too early to conclude what happened without more satellite data and a field investigation. This is one researcher’s preliminary reading, not a government or ICIMOD finding.',
   },
   {
     rank: 'Reassessed',
