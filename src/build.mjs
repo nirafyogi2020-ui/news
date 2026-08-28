@@ -97,7 +97,35 @@ const modified = [today.updated, event.asOf, ...posts.map(p => p.time)]
   .sort()
   .pop();
 
-const ctx = { posts, event, today, modified, buildDay: nptDay(modified) };
+/* The world feed, fetched once per build so /global/ carries real text for a
+   crawler and for a reader with JavaScript off. The live version refreshes in
+   the browser. A build must never fail because a news feed is slow, so this
+   falls back to the last snapshot on disk, and to an empty list before there
+   has ever been one. */
+const SNAPSHOT = join(ROOT, 'data', 'global-snapshot.json');
+async function loadGlobalItems() {
+  try {
+    const res = await fetch('https://nepaldisasterupdatelive.nxtimaginelabs.com/api/global', {
+      signal: AbortSignal.timeout(12000)
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const json = await res.json();
+    const items = (json.items || []).filter(i => i.title && i.url).slice(0, 24);
+    if (items.length) {
+      writeFileSync(SNAPSHOT, JSON.stringify({ updated: json.updated, items }, null, 2) + '\n');
+      return items;
+    }
+  } catch (e) {
+    console.log(`global snapshot: live fetch failed (${e.message}), using the last one`);
+  }
+  if (existsSync(SNAPSHOT)) {
+    try { return JSON.parse(readFileSync(SNAPSHOT, 'utf8')).items || []; } catch { return []; }
+  }
+  return [];
+}
+const globalItems = await loadGlobalItems();
+
+const ctx = { posts, event, today, modified, buildDay: nptDay(modified), globalItems };
 
 const pages = [
   P.nepalFloodHub(ctx),
@@ -116,6 +144,7 @@ const pages = [
   P.hydropower(ctx),
   P.foreignNationals(ctx),
   P.updateIndex(ctx),
+  P.globalNews(ctx),
   P.about(ctx),
   P.sources(ctx),
   P.contact(ctx),

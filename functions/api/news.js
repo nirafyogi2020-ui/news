@@ -194,7 +194,7 @@ export async function onRequestGet(context) {
 
 /** Newest first. Items with no usable timestamp sort last rather than posing
  *  as new. */
-function byTimeDesc(a, b) {
+export function byTimeDesc(a, b) {
   const at = a.time ? new Date(a.time).getTime() : -Infinity;
   const bt = b.time ? new Date(b.time).getTime() : -Infinity;
   return bt - at;
@@ -250,7 +250,7 @@ function capPerSource(items, max) {
 
 /* Numbers are what make two flood stories the same story. "469" in a Nepali
    headline is written ४६९, so both are folded to the same digits first. */
-function keyNumbers(title) {
+export function keyNumbers(title) {
   const latin = String(title || '').replace(/[०-९]/g, d => String('०१२३४५६७८९'.indexOf(d)));
   return new Set((latin.match(/\d{2,}/g) || []).filter(n => n.length >= 2));
 }
@@ -266,7 +266,7 @@ function onSameEvent(title) {
   return matches(String(title || '').toLowerCase(), TOPIC_STRONG);
 }
 
-function sharedCount(a, b) {
+export function sharedCount(a, b) {
   let n = 0;
   for (const v of a) if (b.has(v)) n++;
   return n;
@@ -388,7 +388,7 @@ async function backfillImages(items, limit) {
  * Only the order changes; nothing is dropped and nothing is merged, so every
  * story is still one card with its own link.
  */
-function spread(items) {
+export function spread(items) {
   const pool = items.slice();
   const out = [];
   let lastSource = null;
@@ -851,7 +851,7 @@ function findReliefFund(items) {
   return scanMoney(items, MONEY_NEAR_RELIEF, DAMAGE_WORD);
 }
 
-function significantWords(title) {
+export function significantWords(title) {
   return new Set(
     String(title || '').toLowerCase()
       .replace(/[^\p{L}\p{N}\s]/gu, ' ')
@@ -860,7 +860,7 @@ function significantWords(title) {
   );
 }
 
-function jaccard(a, b) {
+export function jaccard(a, b) {
   if (!a.size || !b.size) return 0;
   let shared = 0;
   for (const w of a) if (b.has(w)) shared++;
@@ -903,7 +903,7 @@ function matches(text, words) {
   return words.some(word => lower.includes(word));
 }
 
-async function getText(url) {
+export async function getText(url) {
   const res = await fetch(url, {
     headers: {
       'accept': 'application/rss+xml, application/xml, application/json;q=0.9, */*;q=0.8',
@@ -914,7 +914,7 @@ async function getText(url) {
   return res.text();
 }
 
-function parseRss(xml) {
+export function parseRss(xml) {
   const items = [];
   const blocks = xml.split(/<item[\s>]/i).slice(1);
 
@@ -938,7 +938,7 @@ function parseRss(xml) {
 /** Pull a real photo out of whatever the feed carries: media tags, an enclosure, or an
  *  <img> inside the article body. Newsrooms that don't include one get no image, not a
  *  guessed one. */
-function extractImage(block) {
+export function extractImage(block) {
   let match = block.match(/<media:(?:thumbnail|content)[^>]*\surl=["']([^"']+)["']/i);
   if (match) return match[1];
   match = block.match(/<enclosure[^>]*\surl=["']([^"']+)["'][^>]*\stype=["']image\/[^"']*["']/i)
@@ -950,7 +950,7 @@ function extractImage(block) {
 }
 
 /** Short, plain-text summary for a card, not the raw HTML/CDATA the feed carries. */
-function summarize(text, max) {
+export function summarize(text, max) {
   const clean = cleanTitle(text || '');
   if (clean.length <= max) return clean;
   return clean.slice(0, max).replace(/\s+\S*$/, '') + '…';
@@ -979,7 +979,7 @@ function decodeEntities(text) {
 
 /* Decode first, then strip tags, then decode again. Some feeds double-encode,
    so a single pass in the wrong order leaves visible markup in the card. */
-function cleanTitle(text) {
+export function cleanTitle(text) {
   let out = decodeEntities(String(text || ''));
   out = out.replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi, ' ').replace(/<[^>]+>/g, ' ');
   out = decodeEntities(out).replace(/<[^>]+>/g, ' ');
@@ -991,7 +991,7 @@ function cleanTitle(text) {
  * does put the date in the article URL, so fall back to that. An item with no
  * recoverable date returns null and sorts last rather than posing as new.
  */
-function toIso(value, url) {
+export function toIso(value, url) {
   if (value) {
     const date = new Date(value);
     if (!isNaN(date)) return date.toISOString();

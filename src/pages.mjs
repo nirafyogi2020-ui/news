@@ -1431,6 +1431,76 @@ ${sources}
 
 /* -- 14. /about/, /sources/, /contact/ -------------------------------------- */
 
+/* ---------------------------------------------------------------------------
+   The world tab.
+
+   Readers who come for one disaster ask the same question next: what else is
+   happening. Until now the answer was to leave the site. This is that page,
+   and it is deliberately the same shape as the Nepal coverage: primary
+   sources first, every item linked to whoever published it, nothing rewritten
+   here.
+
+   The list below is a snapshot taken when the site was last built, so the page
+   carries real text for a reader with JavaScript off and for a crawler. The
+   Live tab on the home page refreshes the same feed continuously.
+   ------------------------------------------------------------------------- */
+export function globalNews(ctx) {
+  const path = '/global/';
+  const items = (ctx.globalItems || []).slice(0, 24);
+
+  const snapshot = items.length ? `
+<ul class="postlist">
+${items.map(i => `<li><a class="postcard" href="${esc(i.url)}" target="_blank" rel="noopener">
+  <time datetime="${esc(i.time || '')}">${esc(i.time ? nptLong(i.time) : '')} · ${esc(i.source || '')}</time>
+  <h3>${esc(i.title)}</h3>
+  ${i.summary ? `<p>${esc(String(i.summary).slice(0, 220))}${String(i.summary).length > 220 ? '…' : ''}</p>` : ''}
+</a></li>`).join('\n')}
+</ul>
+<p class="faint">Snapshot taken when this page was last built. The <a href="/#live">Live tab on the home page</a> refreshes the same feed while you read it, and lets you switch between Nepal and the world.</p>
+` : `<p class="faint">The world feed is loading from its sources. Open <a href="/#live">the Live tab</a> for the continuously refreshed version.</p>`;
+
+  const body = `
+<p class="measure">Earthquakes, floods, cyclones, wildfires and the humanitarian response to them, collected from the same kind of sources this site uses for Nepal: UN alerting bodies first, then named international newsrooms. Every headline links to whoever published it. Nothing is rewritten here and no figure on this page is this site's own.</p>
+
+<h2>What is happening now</h2>
+${snapshot}
+
+<h2>How to read these alerts</h2>
+<p><strong>GDACS</strong> is the UN and European Commission's global disaster alert system. It colour-codes every event by the humanitarian impact it expects: green for little, orange for significant, red for severe. Only orange and red are carried here, because green alerts fire many times a day and would bury everything else.</p>
+<p><strong>USGS</strong> publishes every earthquake it detects. Magnitude 5.5 and above is the cut-off here. Magnitude is not damage: a magnitude 6 under a city can kill thousands, and the same quake far offshore can pass unnoticed. Depth and where people live decide that.</p>
+<p><strong>ReliefWeb</strong> is UN OCHA's clearing house for humanitarian reporting. Its situation reports are slower than a newsroom and far more careful, which makes it the place to check a figure a headline gave you.</p>
+
+<h2>Why this sits next to the Nepal coverage</h2>
+<p>The hazards are the same hazards. A glacial lake outburst above Rasuwa and one in the Andes fail for the same reason, and the flood safety rules on <a href="/nepal-disasters/">the hazard guide</a> hold anywhere. Nepal is where this site watches closely; this page is where it keeps an eye on everywhere else.</p>
+<p>Following an event in Nepal? Start with <a href="/nepal-flood/rasuwa/">the current briefing</a>, the <a href="/nepal-flood/emergency-numbers/">emergency numbers</a> or <a href="/nepal-flood/relief/">the official relief fund</a>.</p>
+`;
+
+  const t = 'World Disasters, Live: UN Alerts, Earthquakes and Floods';
+  const d = 'Live disaster news from around the world: UN GDACS alerts, USGS earthquakes and ReliefWeb reporting, alongside named international newsrooms. Updated continuously.';
+  return {
+    path, title: t, description: d, lastmod: ctx.buildDay, priority: '0.7', changefreq: 'hourly',
+    html: page({
+      path, title: t, description: d,
+      h1: 'World disasters, live',
+      lede: 'What is happening elsewhere, from the UN alerting bodies and named newsrooms. The same sourcing rules as the Nepal coverage.',
+      crumbs: [{ label: 'Home', href: '/' }, { label: 'World' }],
+      published: '2026-08-28T09:00:00+05:45',
+      modified: ctx.modified,
+      body: body + related('Related', [
+        { href: '/nepal-disasters/', title: 'Hazard guide', text: 'What each hazard does and what to do in it.', verb: 'the guide' },
+        { href: '/nepal-flood/rasuwa/', title: 'Nepal: current event', text: 'The Rasuwa flood briefing.', verb: 'the briefing' },
+        { href: '/sources/', title: 'Sources', text: 'Every feed and agency this site reads.', verb: 'the list' },
+      ]),
+      schema: [{
+        '@type': 'CollectionPage',
+        '@id': `${SITE}${path}#collection`,
+        name: t,
+        description: d,
+      }],
+    }),
+  };
+}
+
 export function about(ctx) {
   const path = '/about/';
   const body = `
