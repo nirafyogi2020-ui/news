@@ -508,7 +508,7 @@ index = index.replace(
 const homeCard = ogFor('/');
 const homeStory = ogStoryFor('/');
 index = index.replace(
-  /(<meta (?:property="og:image"|name="twitter:image") content=")[^"]*(")/g,
+  /(<meta (?:property="og:image"|property="og:image:secure_url"|name="twitter:image") content=")[^"]*(")/g,
   (_m, a, b) => a + homeCard + b
 );
 index = index.replace(

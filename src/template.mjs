@@ -378,6 +378,13 @@ ${alt}
 <meta property="og:site_name" content="${esc(SITE_NAME)}">
 <meta property="og:locale" content="${lang === 'ne' ? 'ne_NP' : 'en_US'}">
 <meta property="og:image" content="${esc(ogImage)}">
+<!-- secure_url and type are what the older scrapers read. WhatsApp in
+     particular will skip a picture it cannot type-check, and a link pasted
+     into a family group chat with no picture is the one that does not get
+     opened. Everything here is served over https anyway, so the two tags
+     cost nothing and remove a whole class of blank preview. -->
+<meta property="og:image:secure_url" content="${esc(ogImage)}">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="${esc(o.ogImageAlt || SITE_NAME)}">
@@ -387,6 +394,7 @@ ${o.modified ? `<meta property="article:modified_time" content="${esc(o.modified
 <meta name="twitter:title" content="${esc(o.ogTitle || o.title)}">
 <meta name="twitter:description" content="${esc(o.description)}">
 <meta name="twitter:image" content="${esc(ogImage)}">
+<meta name="twitter:image:alt" content="${esc(o.ogImageAlt || SITE_NAME)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
