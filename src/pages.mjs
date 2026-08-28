@@ -50,6 +50,7 @@ function table(head, rows, caption) {
 }
 
 const AS_OF_TOLL = nptLong(C.TOLL_AS_OF);
+const AS_OF_TOLL_EARLIER = nptLong(C.TOLL_EARLIER_AS_OF);
 const AS_OF_MISSING = nptLong(C.MISSING_AS_OF);
 const AS_OF_BODIES = nptLong(C.BODIES_AS_OF);
 const AS_OF_MISSING_BREAKDOWN = nptLong(C.MISSING_BREAKDOWN_AS_OF);
@@ -87,11 +88,11 @@ function numbersGrid() {
 }
 
 const SECOND_FLOOD_WARNING = `<div class="callout callout-alert">
-  <p class="callout-title">A second flood is still possible: a new lake has formed upstream</p>
-  <p>China’s Ministry of Water Resources reports that a <strong>barrier lake</strong>, a river blocked by debris into an artificial lake, has formed ${esc(C.BARRIER_LAKE.where)}. Chinese state media put the volume behind it at around <strong>${esc(C.BARRIER_LAKE.volume)}</strong> by the morning of 27 August, and warn it could break.</p>
+  <p class="callout-title">A second flood is happening: the barrier lake upstream has burst</p>
+  <p>Nepal Police say Chinese authorities have reported that the <strong>barrier lake</strong>, formed by debris blocking a river, ${esc(C.BARRIER_LAKE.where)} has burst. Chinese state media had put the volume behind it at around <strong>${esc(C.BARRIER_LAKE.volume)}</strong> and warned it was at risk of breaching.</p>
   <p>${esc(C.BARRIER_LAKE.note)} Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave, so a warning would come with less notice than normal.</p>
   <p><strong>Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</strong> Downstream in India, authorities in Bihar have opened the Valmikinagar Barrage on the Gandak as a precaution and prepared to move 10,000 to 12,000 people.</p>
-  <p class="faint" style="margin-bottom:0;">Source: ${esc(C.BARRIER_LAKE.source)}, reported 27 August 2026.</p>
+  <p class="faint" style="margin-bottom:0;">Source: ${esc(C.BARRIER_LAKE.source)}, ${esc(nptLong(C.BARRIER_LAKE.asOf))}.</p>
 </div>`;
 
 /* -- 1. /nepal-flood/ ------------------------------------------------------- */
@@ -409,10 +410,10 @@ ${table(['When', 'Reported dead', 'Source'], [
     ['Wednesday evening, 26 Aug', 72, 'NDRRMA'],
     ['Wednesday evening, 26 Aug', 95, 'Prime Minister’s Office'],
     ['Late Wednesday, 26 Aug', '~160', 'NDRRMA and Nepal Police, 157 bodies recovered'],
-    ['Thursday morning, 27 Aug', C.TOLL.deadNepalEarlier, 'NDRRMA and Nepal Police'],
     ['13:30 Thursday, 27 Aug', 270, 'Nepal Police'],
     ['14:30 Thursday, 27 Aug', 289, 'Nepal Police'],
-    ['<strong>17:00 Thursday, 27 Aug</strong>', `<strong class="num">${C.TOLL.deadNepal}</strong>`, '<strong>Nepal Police</strong>'],
+    [esc(AS_OF_TOLL_EARLIER), C.TOLL.deadNepalEarlier, 'Nepal Police'],
+    [`<strong>${esc(AS_OF_TOLL)}</strong>`, `<strong class="num">${C.TOLL.deadNepal}</strong>`, '<strong>Nepal Police</strong>'],
   ], 'Compiled from Nepal Police bulletins and the UN OCHA situation overview of 27 August.')}
 <p>Three separate things move these figures, and they move at different speeds:</p>
 <ul>
