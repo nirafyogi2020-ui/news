@@ -12,11 +12,11 @@ export const TOLL_AS_OF = '2026-08-28T08:40:00+05:45';
 export const TOLL_SOURCE = 'Nepal Police, reported by ABC News live coverage';
 
 /* The district breakdown carries its own clock. It happens to match the toll
-   right now, because the 5pm police bulletin published both together, but the
-   two move apart whenever a later update raises the national figure without
-   restating every district. Keeping them separate means the table is never
-   quietly presented as newer than it is. */
-export const BODIES_AS_OF = '2026-08-27T17:00:00+05:45';
+   right now, because the 28 August 7am police bulletin published both
+   together, but the two move apart whenever a later update raises the
+   national figure without restating every district. Keeping them separate
+   means the table is never quietly presented as newer than it is. */
+export const BODIES_AS_OF = '2026-08-28T07:00:00+05:45';
 export const BODIES_SOURCE = 'Nepal Police bulletin';
 
 /* The missing list has its own, earlier timestamp. It is deliberately kept
@@ -47,14 +47,14 @@ export const EVENT = {
 
 /** Bodies recovered, by the district where they were found. */
 export const BODIES_BY_DISTRICT = [
-  ['Chitwan', 137],
-  ['Nawalparasi East', 87],
+  ['Chitwan', 178],
+  ['Nawalparasi East', 110],
+  ['Gorkha', 44],
+  ['Nuwakot', 37],
   ['Dhading', 33],
-  ['Gorkha', 32],
-  ['Nuwakot', 28],
   ['Tanahun', 28],
-  ['Rasuwa', 17],
   ['Nawalparasi West', 27],
+  ['Rasuwa', 12],
 ];
 
 /** Who the 826 on the morning list were, as Nepal Police broke it down. */
