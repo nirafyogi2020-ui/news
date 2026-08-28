@@ -5,6 +5,10 @@
    data stay identical across the site and cannot drift page to page.
    ========================================================================= */
 
+import { existsSync, statSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 export const SITE = 'https://nepaldisasterupdatelive.nxtimaginelabs.com';
 export const SITE_NAME = 'Nepal Disaster Update Live';
 export const PUBLISHER = 'Nepal Disaster Update Live';
@@ -14,6 +18,80 @@ export function esc(s) {
   return String(s == null ? '' : s)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+/* ---------------------------------------------------------------------------
+   Social preview pictures.
+
+   Every page can have its own share card at /assets/og/<slug>.png, drawn by
+   src/og-build.mjs. The card is only used when the file is actually there, so
+   a build on a machine with no rasteriser still publishes a working picture
+   rather than a broken link preview.
+   ------------------------------------------------------------------------- */
+const OG_ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', 'assets', 'og');
+
+/** "/nepal-flood/rasuwa/map/" -> "nepal-flood-rasuwa-map"; "/" -> "home" */
+export function ogSlug(path) {
+  const s = String(path || '/').replace(/^\/+|\/+$/g, '').replace(/\//g, '-');
+  return s || 'home';
+}
+
+/* Facebook, WhatsApp and X cache a preview picture against its URL and will
+   happily keep showing a card with yesterday's death toll on it. The file's
+   own modification time is appended so a redrawn card is a new URL to them. */
+function ogVersion(file) {
+  try { return String(Math.floor(statSync(file).mtimeMs / 1000)); } catch { return ''; }
+}
+
+export function ogFor(path) {
+  const slug = ogSlug(path);
+  const file = join(OG_ROOT, `${slug}.png`);
+  if (!existsSync(file)) return `${SITE}/og-image.png`;
+  return `${SITE}/assets/og/${slug}.png?v=${ogVersion(file)}`;
+}
+
+/** The vertical card, for people sharing a page to an Instagram story. */
+export function ogStoryFor(path) {
+  for (const slug of [`${ogSlug(path)}-story`, 'home-story']) {
+    const file = join(OG_ROOT, `${slug}.png`);
+    if (existsSync(file)) return `${SITE}/assets/og/${slug}.png?v=${ogVersion(file)}`;
+  }
+  return null;
+}
+
+/**
+ * A site-relative picture under /assets/og/, with a version on it.
+ *
+ * The card thumbnails on the briefing tiles start life as a drawn placeholder
+ * and are replaced by a real news photograph as soon as one is found in the
+ * briefing's own sources. That replacement reuses the filename, and the
+ * pictures are served with a four hour cache and a day of
+ * stale-while-revalidate, so without a version a reader who visited before the
+ * photograph landed keeps being shown the placeholder for up to a day.
+ *
+ * Returns an empty string when the file is not there, so the caller can leave
+ * the picture out rather than point at a 404.
+ */
+export function assetVersioned(name) {
+  const file = join(OG_ROOT, name);
+  if (!existsSync(file)) return '';
+  return `/assets/og/${name}?v=${ogVersion(file)}`;
+}
+
+/**
+ * A site-relative asset URL carrying the file's modification time.
+ *
+ * The stylesheet has no content hash in its name and is served with an hour of
+ * cache plus a day of stale-while-revalidate, so without this a design change
+ * reaches a returning reader up to a day late, or not at all while they still
+ * hold a cached copy. That is the same failure the ?v= on the share pictures
+ * exists to prevent.
+ */
+const ROOT_DIR = join(dirname(fileURLToPath(import.meta.url)), '..');
+export function siteAsset(path) {
+  const file = join(ROOT_DIR, path.replace(/^\//, ''));
+  const v = ogVersion(file);
+  return v ? `${path}?v=${v}` : path;
 }
 
 /* Nepal keeps a +05:45 offset year round, so a fixed offset is exact here. */
@@ -107,6 +185,9 @@ const FOOTER_NAV = [
   { href: '/', label: 'Live dashboard' },
   { href: '/nepal-flood/', label: 'Nepal floods' },
   { href: '/nepal-flood/rasuwa/', label: 'Rasuwa flood 2026' },
+  { href: '/nepal-flood/rasuwa/foreign-nationals/', label: 'Foreign nationals missing' },
+  { href: '/nepal-flood/rasuwa/hydropower/', label: 'Hydropower damage' },
+  { href: '/nepal-disasters/glof/', label: 'What a GLOF is' },
   { href: '/nepal-flood/rasuwa/live-updates/', label: 'Live updates' },
   { href: '/nepal-flood/rasuwa/casualties/', label: 'Casualties' },
   { href: '/nepal-flood/rasuwa/missing-persons/', label: 'Missing persons' },
@@ -201,7 +282,8 @@ function breadcrumbNode(crumbs, url) {
  */
 export function page(o) {
   const url = SITE + o.path;
-  const ogImage = o.ogImage || `${SITE}/og-image.png`;
+  const ogImage = o.ogImage || ogFor(o.path);
+  const ogStoryImage = ogStoryFor(o.path);
   const lang = o.lang === 'ne' ? 'ne' : 'en';
   const t = CHROME[lang];
   const nav = lang === 'ne' ? NAV_NE : NAV;
@@ -262,6 +344,28 @@ export function page(o) {
 <link rel="canonical" href="${url}">
 ${alt}
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<!-- The phone paints its address bar with this, so a dark-mode reader does not
+     get a white bar above a near-black page. -->
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
+<!-- The dashboard's theme switch writes the reader's choice to localStorage.
+     These pages honour it before first paint, so following a link off the
+     dashboard does not flash the other theme. With no stored choice nothing is
+     set and the stylesheet's prefers-color-scheme rule decides. -->
+<script>
+(function(){
+  try{
+    var c = localStorage.getItem('theme-choice');
+    if(c === 'dark' || c === 'light'){
+      document.documentElement.setAttribute('data-theme', c);
+      var bars = document.querySelectorAll('meta[name="theme-color"]');
+      for(var i = 0; i < bars.length; i++){
+        bars[i].setAttribute('content', c === 'dark' ? '#0d0d0d' : '#f9f9f7');
+      }
+    }
+  }catch(e){}
+})();
+</script>
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -286,7 +390,7 @@ ${o.modified ? `<meta property="article:modified_time" content="${esc(o.modified
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="${siteAsset('/assets/site.css')}">
 ${o.head || ''}
 <script>
 /* Theme is chosen on the dashboard and stored locally; honour it here too so

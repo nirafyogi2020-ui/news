@@ -18,12 +18,31 @@
   --font-body:'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 }
+/* The dark palette is defined twice on purpose.
+
+   [data-theme="dark"] is the reader's explicit choice, carried over from the
+   dashboard's theme switch by the inline script in src/template.mjs.
+
+   The media query is the default for everybody who has never touched that
+   switch, which is nearly everyone arriving from a search result. Without it
+   these pages stayed white on a phone in dark mode while the dashboard went
+   dark, so the two halves of the site did not look like one publication. It is
+   skipped when the reader has explicitly asked for light. */
 :root[data-theme="dark"]{
   --bg:#0d0d0d; --surface:#1a1a19; --surface-2:#161615;
   --text:#ffffff; --text-muted:#c3c2b7; --text-faint:#898781;
   --border:#2c2c2a; --border-strong:#383835;
   --critical:#e0685f;
   --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.4);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d0d0d; --surface:#1a1a19; --surface-2:#161615;
+    --text:#ffffff; --text-muted:#c3c2b7; --text-faint:#898781;
+    --border:#2c2c2a; --border-strong:#383835;
+    --critical:#e0685f;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.4);
+  }
 }
 
 *{box-sizing:border-box;}

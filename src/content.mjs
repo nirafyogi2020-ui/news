@@ -11,11 +11,24 @@
 export const TOLL_AS_OF = '2026-08-27T21:00:00+05:45';
 export const TOLL_SOURCE = 'Nepal Police bulletin';
 
+/* The district breakdown carries its own clock. It happens to match the toll
+   right now, because the 5pm police bulletin published both together, but the
+   two move apart whenever a later update raises the national figure without
+   restating every district. Keeping them separate means the table is never
+   quietly presented as newer than it is. */
+export const BODIES_AS_OF = '2026-08-27T17:00:00+05:45';
+export const BODIES_SOURCE = 'Nepal Police bulletin';
+
 /* The missing list has its own, earlier timestamp. It is deliberately kept
    separate: the newest police bulletin gives a death toll and no missing
    figure, so quoting both against one time would be wrong. */
-export const MISSING_AS_OF = '2026-08-27T08:15:00+05:45';
-export const MISSING_SOURCE = 'Nepal Police bulletin';
+export const MISSING_AS_OF = '2026-08-27T18:20:00+05:45';
+export const MISSING_SOURCE = 'NDRRMA Rasuwa Bhotekoshi flood update';
+
+/* Who those people are was last broken down in the morning police bulletin,
+   when the list stood at 826. The groups below still describe that list. */
+export const MISSING_BREAKDOWN_AS_OF = '2026-08-27T08:15:00+05:45';
+export const MISSING_BREAKDOWN_TOTAL = 826;
 
 export const SITREP_AS_OF = '2026-08-27T15:00:00+05:45';
 export const SITREP_SOURCE = 'UN OCHA ReliefWeb rapid situation overview, drawing on NDRRMA, Nepal Police, the Department of Roads and the Nepal Electricity Authority';
@@ -44,7 +57,7 @@ export const BODIES_BY_DISTRICT = [
   ['Nawalparasi West', 27],
 ];
 
-/** Who the 826 missing are, as Nepal Police break the list down. */
+/** Who the 826 on the morning list were, as Nepal Police broke it down. */
 export const MISSING_BREAKDOWN = [
   ['Travellers (466 foreign nationals, 113 Nepalis)', 579],
   ['Rasuwa residents', 161],
@@ -75,9 +88,9 @@ export const OUT_OF_CONTACT = [
 
 export const TOLL = {
   deadNepal: 389,
-  deadNepalEarlier: 165,
+  deadNepalEarlier: 289,
   deadChina: 3,
-  missing: 826,
+  missing: 910,
   missingChina: 558,
   missingChinaForeign: 260,
   missingIndian: 133,
@@ -397,3 +410,182 @@ export const SOURCE_GROUPS = [
     ],
   },
 ];
+
+/* ---------------------------------------------------------------------------
+   Hazard detail pages.
+
+   /nepal-disasters/ is the hub and keeps the short version of each hazard.
+   Each hazard also has its own page, and the long copy lives here so the hub
+   and the page cannot say the same thing twice. Duplicated text across two
+   URLs helps nobody: the reader gets no more, and a search engine has to pick
+   one of them anyway.
+   ------------------------------------------------------------------------- */
+export const HAZARD_PAGES = {
+  glof: {
+    title: 'Glacial Lake Outburst Flood (GLOF) in Nepal: What It Is and What to Do',
+    description: 'What a glacial lake outburst flood is, why Nepal gets them, the warning signs that come minutes before the water, and what to do when the river rises on a dry day.',
+    h1: 'Glacial lake outburst floods in Nepal',
+    lede: 'The hazard behind the 2026 Rasuwa flood. A lake that nobody lives near empties in an afternoon and kills people fifty kilometres downstream.',
+    long: [
+      'A glacier melts. The meltwater collects behind the loose rock and dead ice the glacier left when it retreated. That rubble is not a dam. Nobody built it and nothing holds it together but friction, and it sits at the top of a valley with a river running out of the bottom of it.',
+      'Sooner or later something disturbs it. An ice avalanche falls into the lake and pushes a wave over the rim. A rock slope collapses and blocks the river instead, ponds a new lake in hours, and then that gives way. Warm weeks melt the ice core out of the rubble and the wall slumps. In every version the ending is the same: the whole lake leaves at once.',
+      'What comes down the valley is not water. It is water carrying boulders, gravel, trees and everything the flood has already destroyed, moving fast enough to take out a concrete bridge. That is why a glacial flood can be far more destructive than a monsoon flood carrying the same volume of water.',
+      'Nepal is unusually exposed to this. Its rivers start in ice, its valleys are steep, and its settlements, roads, border crossings and hydropower plants are all built along the river because in that terrain there is nowhere else flat. More than twenty glacial lakes inside Nepal are classified as potentially dangerous. Many more sit across the border in Tibet, on rivers that flow into Nepal, where Nepal has no gauges and no sirens and depends on Chinese authorities passing a warning on.',
+      'The warning time is the whole problem. From a lake bursting to the water arriving can be under an hour. In the 2026 Rasuwa flood most of the river gauges that existed downstream were destroyed by the first wave, so any second surge would arrive with even less notice than the first.',
+    ],
+    signsLong: [
+      'The river rises fast on a day with no rain where you are. Rain upstream, or none at all, does not matter; the water is coming from ice.',
+      'The river suddenly drops or stops. That means something upstream is holding it back, and whatever is holding it back will fail.',
+      'A roar or a rumble from upstream that keeps growing. People who have survived one describe it as sounding like a jet, not like water.',
+      'The water turns grey, brown or black and starts carrying wood and rubbish.',
+    ],
+    todoLong: [
+      'Go uphill, straight away, and keep going past where you think is far enough. Height beats distance.',
+      'Do not go along the road. Roads follow rivers, which is exactly where the water goes.',
+      'Do not go back for belongings, animals or a vehicle. The first wave is rarely the biggest.',
+      'Do not stand on a bridge to watch. Bridges are the first thing to go.',
+      'Once you are high and safe, stay there until officials say it is over, not until the river looks calm.',
+    ],
+    faq: [
+      ['Is a glacial lake outburst flood caused by an earthquake?',
+       'Usually not. Shaking can trigger the rock or ice fall that starts one, and a seismic station will record the collapse itself, which is why these events are sometimes first reported as earthquakes and corrected later. That is exactly what happened in Rasuwa in August 2026, where the US Geological Survey first logged an earthquake and then reassessed the signal as a glacial collapse.'],
+      ['How much warning is there?',
+       'Sometimes an hour, often less. Where the lake is across an international border there may be none at all until the river itself tells you.'],
+      ['Are they getting more common?',
+       'Yes. Himalayan ice is melting faster than it is replaced, so there are more lakes, they are bigger, and the rubble holding them back is weaker. ICIMOD, the regional research centre for the Hindu Kush Himalaya, describes cascading glacial hazards as increasing at an unprecedented pace.'],
+      ['Can they be predicted?',
+       'Individual lakes can be monitored by satellite and some have sensors and sirens. Predicting the day one bursts is not currently possible. Lowering a dangerous lake by draining part of it has been done in Nepal, at Tsho Rolpa, and it is slow and expensive.'],
+    ],
+  },
+  earthquake: {
+    title: 'Earthquakes in Nepal: Why They Happen and What to Do in the First Minute',
+    description: 'Why Nepal has large earthquakes, what to do during the shaking, what to do in the hours after it stops, and which risks come next: aftershocks, landslides and damaged buildings.',
+    h1: 'Earthquakes in Nepal',
+    lede: 'The Indian plate is pushing under Asia and the Himalaya is what that collision looks like. The shaking is the strain being released.',
+    long: [
+      'India moves north into Asia at roughly two centimetres a year. The rock does not slide smoothly. It locks, strain builds for decades or centuries, and then a section releases in seconds. That release is an earthquake, and the mountains above it exist because this has been going on for tens of millions of years.',
+      'The 2015 Gorkha earthquake killed nearly nine thousand people and destroyed or damaged hundreds of thousands of buildings. Seismologists are clear that it did not release all the accumulated strain along the Himalayan front, and that western Nepal in particular has not had a great earthquake in a very long time.',
+      'Most people are not killed by the ground moving. They are killed by what the ground moving brings down: unreinforced masonry walls, heavy roofs on weak columns, parapets, water tanks and the outsides of buildings falling into the street people have just run into.',
+      'The hours after a large quake carry their own hazards. Aftershocks continue for weeks and can bring down buildings that survived the main shock. Slopes loosened by the shaking fail in the next rain, sometimes months later. Rivers get blocked by landslides and then break through.',
+    ],
+    signsLong: [
+      'There is no reliable warning before an earthquake. Treat any shaking as the real thing from the first second rather than waiting to see if it grows.',
+      'Some people feel or hear a low rumble a second or two before the strong shaking. That is not enough time to leave a building. It is enough time to get under something.',
+    ],
+    todoLong: [
+      'Drop, cover and hold on. Get under a sturdy table or against an interior wall, away from windows and away from anything heavy that can fall on you.',
+      'Do not run outside during the shaking. The street next to a building is one of the more dangerous places to be.',
+      'If you are in bed, stay there and protect your head with a pillow, unless there is something heavy directly above you.',
+      'If you are outdoors, get into an open space away from buildings, walls and power lines and stay there.',
+      'After it stops: check for injuries, turn off gas if you smell it, expect aftershocks, and stay out of damaged buildings even if they look standing.',
+      'Avoid steep slopes and riverbanks for days afterwards. Shaking loosens both.',
+    ],
+    faq: [
+      ['Is it safe to go back into my house after an earthquake?',
+       'Not until someone competent has looked at it. Cracks through structural walls, a leaning frame, or a floor that has dropped at one end all mean stay out. Aftershocks finish off buildings that the first shock only weakened.'],
+      ['How long do aftershocks last?',
+       'Weeks to months after a large earthquake, getting less frequent but not stopping neatly. A large aftershock is possible days later.'],
+      ['Does a small earthquake release pressure and prevent a big one?',
+       'No. The energy scale is such that it would take an enormous number of small earthquakes to release the strain of one large one.'],
+    ],
+  },
+  landslide: {
+    title: 'Landslides in Nepal: Warning Signs, What to Do, and Why Roads Make It Worse',
+    description: 'Landslides and debris flows kill more people in Nepal in a normal year than any single large disaster. The warning signs, what to do at night in heavy rain, and why cut roads fail first.',
+    h1: 'Landslides and debris flows in Nepal',
+    lede: 'The hazard that kills quietly, a few houses at a time, usually at night, usually in the monsoon, and almost always with no warning at all.',
+    long: [
+      'Nepal loses people to landslides every monsoon. They rarely make international news because each one takes a household or a hamlet rather than a town, but added together across a season they are one of the country’s largest causes of disaster deaths.',
+      'The mechanism is simple. Rain soaks into a steep slope. Water fills the spaces between soil particles, the friction holding the slope up drops, and a slab of hillside moves. On a slope with a stream in it the moving mass turns into a debris flow, which behaves like wet concrete travelling at the speed of a car and destroys anything in the channel.',
+      'Road building has made this worse across much of the hills. A road cut into a steep slope leaves a vertical face with nothing supporting it, and the spoil is usually pushed over the downhill side onto the slope below. Both the cut and the spoil fail in the first heavy monsoon. Many landslides in Nepal now start at a road.',
+      'Most landslide deaths happen between midnight and dawn, when it has been raining for hours and everyone is asleep indoors on a slope. That is why the practical advice is about where you sleep, not about what you do when you see one coming.',
+    ],
+    signsLong: [
+      'New cracks in the ground, in a yard, or in the walls of a house, especially cracks that widen over days.',
+      'Doors and windows that suddenly stick, or a floor that has started to slope.',
+      'Trees, poles or fence posts leaning downhill when they did not before.',
+      'Water appearing where it never has, or a spring going dry.',
+      'A rumbling that grows louder. If you hear that, you have seconds.',
+    ],
+    todoLong: [
+      'Move sideways off the path of the slope, across the hill, not straight downhill. You cannot outrun a debris flow going down its own channel.',
+      'If you are indoors on a slope at night during prolonged heavy rain, sleep on the uphill side of the house, or move the household to a neighbour on flatter ground.',
+      'Do not shelter in a gully, a stream bed or below a fresh road cut.',
+      'After a landslide, do not walk onto the debris to look or to help until it has been assessed. Slides usually come in more than one movement.',
+      'If a landslide has blocked a river, get downstream residents warned. A blocked river forms a lake and that lake will break.',
+    ],
+    faq: [
+      ['When are landslides most likely?',
+       'During and immediately after prolonged heavy rain, so mostly June to September, and disproportionately at night.'],
+      ['Is a slope that has already slipped safer now?',
+       'No. Ground that has moved once has lost strength and often moves again in the same season.'],
+      ['What is a debris flow?',
+       'A landslide that has picked up enough water to flow rather than slide. It travels much further and much faster than a dry slide and follows stream channels, which is why building in a gully mouth is dangerous even well away from the hill.'],
+    ],
+  },
+  'monsoon-flood': {
+    title: 'Monsoon Floods in Nepal: The Rivers, the Season and What to Do',
+    description: 'Nepal’s monsoon runs June to September and brings most of the year’s rain. How hill floods and Tarai floods differ, which basins flood most years, and the rules that keep people alive.',
+    h1: 'Monsoon river floods in Nepal',
+    lede: 'The predictable disaster. It happens every year, in roughly the same places, and still kills people who drove into it.',
+    long: [
+      'Between June and September Nepal gets around eighty per cent of its annual rainfall. Rivers that are shallow and clear in April run brown, wide and fast, and they do it every year.',
+      'Two different floods share the name. In the hills, rain falls on steep ground and reaches the river in hours, so a hill river rises fast, does its damage and drops again within a day. In the Tarai plains the same water arrives slowly, spreads out over a wide flat landscape, and can sit on farmland and in villages for days. Preparing for one is not preparing for the other.',
+      'The basins that flood most years are the Koshi, the Karnali, the Narayani, the Bagmati and the West Rapti. Embankments, barrages and road embankments on both sides of the border change where the water goes rather than removing it, which is why a village that never used to flood sometimes starts to.',
+      'Nepal does publish live river levels. The BIPAD portal run by the National Disaster Risk Reduction and Management Authority carries gauge readings and warning levels, and the Department of Hydrology and Meteorology issues forecasts and bulletins. Both are worth knowing about before the water is at the door.',
+    ],
+    signsLong: [
+      'Rain that has continued for many hours rather than heavy rain for a short time.',
+      'The river browning and rising, and carrying wood.',
+      'A gauge reading crossing its warning level on the BIPAD portal for your river.',
+      'Water backing up in drains and coming up rather than going down.',
+    ],
+    todoLong: [
+      'Never walk or drive into moving water. Thirty centimetres will float most cars. Fifteen will take an adult off their feet. Turn around.',
+      'Move to higher ground early rather than well, and take documents, medicine, a phone charger and drinking water.',
+      'Assume flood water is contaminated. Sewage, fuel and animal waste are in it.',
+      'Keep out of flooded buildings until the power is confirmed off.',
+      'After the water drops, boil or treat drinking water until the supply is declared safe.',
+    ],
+    faq: [
+      ['When is Nepal’s monsoon?',
+       'Roughly mid-June to late September, with the heaviest and most damaging rain usually in July and August.'],
+      ['Where can I see live river levels in Nepal?',
+       'The BIPAD portal at bipad.gov.np carries gauge readings and warning levels, and the Department of Hydrology and Meteorology at dhm.gov.np publishes forecasts and flood bulletins.'],
+      ['Is a monsoon flood the same as a glacial lake outburst flood?',
+       'No. A monsoon flood builds over hours or days from rain you can see. A glacial flood arrives without rain and much faster, and carries far more rock and debris. The safe response to both is the same: get high, early.'],
+    ],
+  },
+  'fire-lightning-cold': {
+    title: 'Lightning, Fire and Cold Waves in Nepal: The Steady Killers',
+    description: 'Lightning kills around a hundred people a year in Nepal, village fires spread through dense housing in the dry season, and Tarai cold waves kill the poorest. What to do about each.',
+    h1: 'Lightning, fire and cold waves',
+    lede: 'Three hazards that kill steadily rather than all at once, which is exactly why they get less attention and less preparation than they deserve.',
+    long: [
+      'Nepal loses roughly a hundred people a year to lightning, which over a decade is comparable to a major single disaster. Deaths cluster in the pre-monsoon and early monsoon months and fall heavily on people working outdoors: farmers in open fields, herders, and children walking home.',
+      'Fire is a dry-season hazard. Traditional village housing is built close together with timber and thatch, cooking is done with fire, and water pressure for firefighting is often nothing at all. A single house fire in a dense lane becomes a village fire within minutes, and the fire service, where there is one, may be an hour away on a bad road.',
+      'Cold waves hit the Tarai each winter. Dense fog holds temperatures down for days at a time and the deaths fall on people without heating, adequate housing or warm clothing: the very old, the very young, and anyone sleeping outside.',
+      'None of the three produces a single event large enough to command a national response, and each is largely preventable with cheap measures taken in advance.',
+    ],
+    signsLong: [
+      'Lightning: count the seconds between the flash and the thunder. Under thirty seconds means the storm is close enough to strike where you are standing.',
+      'Lightning: hair standing on end, or a buzzing from metal objects, means a strike is imminent. Crouch low, feet together, immediately.',
+      'Fire: in dense housing, smell smoke and act rather than investigate.',
+    ],
+    todoLong: [
+      'Lightning: get inside a building or a hard-topped vehicle. Stay there for thirty minutes after the last thunder, not thirty seconds.',
+      'Lightning: do not shelter under a lone tree, in an open field, on a ridge, or beside metal fencing or machinery.',
+      'Fire: know two ways out of a village lane rather than one, and keep the second one clear.',
+      'Fire: cooking fires and stoves are the common start. Do not leave them unattended and keep fuel away from them.',
+      'Cold: a cold wave kills through prolonged exposure, so check on elderly neighbours and anyone sleeping outdoors rather than assuming they are coping.',
+    ],
+    faq: [
+      ['How many people does lightning kill in Nepal?',
+       'Around a hundred a year, with the deaths concentrated among people working outdoors in the pre-monsoon and monsoon months.'],
+      ['Is it safe to use a mobile phone in a thunderstorm?',
+       'Indoors, yes. Outdoors the phone is not the danger, being outdoors is. Get inside.'],
+      ['What counts as a cold wave in the Tarai?',
+       'A run of days where dense fog keeps daytime temperatures unusually low. It is the duration rather than any single very cold night that causes the deaths.'],
+    ],
+  },
+};
