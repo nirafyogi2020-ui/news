@@ -1,30 +1,34 @@
 {
-  "updated": "2026-08-28T13:10:00+05:45",
+  "updated": "2026-08-28T14:00:00+05:45",
   "posts": [
     {
       "id": "barrier-lake-burst",
-      "title": "Barrier lake bursts on Tibet side, rescue paused near border",
-      "time": "2026-08-28T11:45:00+05:45",
+      "title": "Barrier lake breach confirmed, Tibet rescue work resumes",
+      "time": "2026-08-28T13:15:00+05:45",
       "image": "",
       "body": [
         "Nepal Police issued an alert on Friday saying Chinese authorities reported that the barrier lake near the Chhochen Khola and the Purepu Tsangpo, just across the border from Rasuwa, has burst. Rasuwa's Chief District Officer said a circular has gone out telling people along the riverbanks to stay safe, Onlinekhabar reports.",
         "The Nepali Army suspended rescue operations along the border for one and a half hours as a precaution. Chinese authorities separately halted their own rescue work in Gyirong county and pulled teams back a kilometre from the site, citing the risk of a second wave, ABC News reports.",
+        "The Kathmandu Post reported early Friday afternoon that the lake has now breached. NDRRMA said water levels in the Bhotekoshi surged as a result, and helicopters carried out aerial reconnaissance over Rasuwa to check the impact downstream.",
+        "Chinese state media said Friday afternoon that rescue operations in Tibet have resumed, after water levels at the lake dropped slightly, ABC News reports.",
         "NDRRMA said separately on Friday that sediment laden water is rising again in the Bhotekoshi, two days after the first flood hit the same river. Spokesperson Shanti Mahat urged people living along the Bhotekoshi, and rescue and relief workers in the area, to stay on high alert and move to safer ground immediately if they see any sign of danger, Onlinekhabar reports.",
         "This is a new and separate risk on top of the flood that has already killed hundreds. If you live or are working along the Bhote Koshi in Rasuwa, move away from the riverbank now and wait for officials to say it is clear."
       ],
       "sources": [
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/police-alert-notice.html" },
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/new-flood-risk-sediment.html" },
+        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/28/barrier-lake-near-china-border-breaches-raising-fresh-flood-threat-in-nepal" },
         { "name": "ABC News Australia", "url": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974" }
-      ]
+      ],
+      "revised": true
     },
     {
       "id": "rasuwa-flood",
-      "title": "Toll rises to 489 as police report 1,545 rescued",
-      "time": "2026-08-28T12:00:00+05:45",
+      "title": "Toll holds at 489, NDRRMA says 3,253 now rescued by helicopter",
+      "time": "2026-08-28T13:50:00+05:45",
       "image": "",
       "body": [
-        "Nepal Police put the confirmed toll at 489 dead as of a midday bulletin on Friday, up from 469 at 7am and 389 at 9pm Thursday. Police also said 1,545 people caught in the flood have now been rescued, a much broader tally than NDRRMA's earlier, named count of 113. Twenty eight police personnel remain out of contact. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.",
+        "Nepal Police put the confirmed toll at 489 dead as of a midday bulletin on Friday, up from 469 at 7am and 389 at 9pm Thursday. ABC News, citing police, reported the same 489 figure again in a Friday afternoon update, so the toll has held since midday. Rescue counts vary by agency: police said 1,545 people caught in the flood had been rescued as of the 7am bulletin, and NDRRMA told ABC News on Friday afternoon that 3,253 people have now been rescued by helicopter across the flood zone, a still broader tally that has not been named or broken down. NDRRMA's own earlier, named list stands at 113. Twenty eight police personnel remain out of contact. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.",
         "Friday's midday bulletin did not repeat a district breakdown. The last full count, from the 7am bulletin, was Chitwan 178, Nawalparasi East 110, Gorkha 44, Nuwakot 37, Dhading 33, Tanahun 28, Nawalparasi West 27 and Rasuwa 12, adding up to that morning's total of 469. Health facilities in Chitwan, which has the most bodies, can hold only around 50 at a time, which is slowing identification and release to families.",
         "NDRRMA's 6:20pm update on Thursday listed 910 people out of contact in Nepal, up from 826 that morning, 570 of them tourists. Nepal's tourism board says 517 of the missing are foreign nationals, from 33 countries. Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.",
         "The barrier lake upstream that China's Ministry of Water Resources had been watching near the Chhochen Khola and Purepu Tsangpo has now burst. See the update above on the rescue pause and the new NDRRMA warning for the Bhotekoshi.",
