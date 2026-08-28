@@ -12,11 +12,11 @@ export const TOLL_AS_OF = '2026-08-28T08:40:00+05:45';
 export const TOLL_SOURCE = 'Nepal Police, reported by ABC News live coverage';
 
 /* The district breakdown carries its own clock. It happens to match the toll
-   right now, because the 5pm police bulletin published both together, but the
-   two move apart whenever a later update raises the national figure without
-   restating every district. Keeping them separate means the table is never
-   quietly presented as newer than it is. */
-export const BODIES_AS_OF = '2026-08-27T17:00:00+05:45';
+   right now, because the 28 August 7am police bulletin published both
+   together, but the two move apart whenever a later update raises the
+   national figure without restating every district. Keeping them separate
+   means the table is never quietly presented as newer than it is. */
+export const BODIES_AS_OF = '2026-08-28T07:00:00+05:45';
 export const BODIES_SOURCE = 'Nepal Police bulletin';
 
 /* The missing list has its own, earlier timestamp. It is deliberately kept
