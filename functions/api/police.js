@@ -113,6 +113,67 @@ function bsDateToIso(bsDate) {
   return date.toISOString().slice(0, 10) + 'T12:00:00+05:45';
 }
 
+/* ---------- reading a figure out of a bulletin ---------- */
+
+/** Devanagari digits to ASCII. */
+function latinDigits(text) {
+  return String(text || '').replace(/[०-९]/g, d => String('०१२३४५६७८९'.indexOf(d)));
+}
+
+/**
+ * Nepali bulletins write large numbers in words as well as digits: "४ सय ६९"
+ * is 469, "१५ सय ४५" is 1545, and "१ हजार २ सय" is 1200. A plain digit run is
+ * also common. This reads both, and returns null on anything it does not
+ * recognise rather than a half-parsed number.
+ */
+export function nepaliNumber(text) {
+  const t = latinDigits(text).replace(/,/g, '');
+  let m = t.match(/(\d+)\s*हजार\s*(?:(\d+)\s*सय)?\s*(\d+)?/);
+  if (m) {
+    return Number(m[1]) * 1000 + (m[2] ? Number(m[2]) * 100 : 0) + (m[3] ? Number(m[3]) : 0);
+  }
+  m = t.match(/(\d+)\s*सय\s*(\d+)?/);
+  if (m) return Number(m[1]) * 100 + (m[2] ? Number(m[2]) : 0);
+  m = t.match(/(\d+)/);
+  return m ? Number(m[1]) : null;
+}
+
+/**
+ * The confirmed death toll, read from the police bulletin itself.
+ *
+ * The counters on the site are edited by hand once an hour, and a toll that
+ * moves at 07:00 should not wait for that. This reads the number out of the
+ * sentence that states it, and only that sentence: "... सम्म ४ सय ६९ जनाको
+ * मृत्यु भएको छ". No sentence in that shape means no figure, not a guess.
+ */
+export function tollFromPolice(items) {
+  const found = [];
+  for (const item of items) {
+    const text = (item.title || '') + ' । ' + (item.summary || '');
+    for (const sentence of text.split(/।|\.\s/)) {
+      if (!/मृत्यु|शव/.test(sentence)) continue;
+      const before = sentence.split(/जनाको|जनाक|शव/)[0];
+      if (!before || before === sentence) continue;
+      const value = nepaliNumber(before);
+      if (!value || value < 10 || value > 100000) continue;
+      found.push({
+        dead: value,
+        source: 'Nepal Police',
+        url: item.url,
+        // The bulletin usually states the hour it counts up to.
+        statedTime: (latinDigits(sentence).match(/(\d{1,2})\s*:\s*(\d{2})/) || [null])[0] || null,
+        date: item.time || null,
+        sentence: sentence.trim().slice(0, 220)
+      });
+    }
+    // The headline and the body of one bulletin carry the same figure; the
+    // body is the one that says which hour it counts up to, so it wins.
+    const best = found.find(f => f.statedTime) || found[0];
+    if (best) return best;
+  }
+  return null;
+}
+
 function matches(text, words) {
   const lower = (text || '').toLowerCase();
   return words.some(word => lower.includes(word.toLowerCase()));
