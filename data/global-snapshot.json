@@ -1,6 +1,17 @@
 {
-  "updated": "2026-08-28T12:44:14.869Z",
+  "updated": "2026-08-28T13:31:53.579Z",
   "items": [
+    {
+      "title": "Nepal: IRDR Rapid Analysis Report - Scientific Anatomy of the 26 August 2026 Bhotekoshi Flash Flood",
+      "url": "https://reliefweb.int/report/nepal/irdr-rapid-analysis-report-scientific-anatomy-26-august-2026-bhotekoshi-flash-flood",
+      "source": "ReliefWeb (UN OCHA)",
+      "time": "2026-08-28T13:24:23.000Z",
+      "kind": "official",
+      "region": "global",
+      "image": null,
+      "summary": "Country: Nepal Source: Integrated Research on Disaster Risk Please refer to the attached file. EXECUTIVE SUMMARY The 26 August 2026 Bhotekoshi flash flood appears to have been triggered by an ice, rock and soil mass failure around the Deding/Langtang region rather than intense localized rainfall. The failure likely blocked the river and formed a temporary natural dam for about 18-19 hours. The dam then breached around 8:30-8:37 a.m. on 26 August, releasing a large volume of water, ice, rock, sediment and debris. Continued inflow from the Mala River and other tributaries may have masked the upstream blockage. The steep gradient and narrow…",
+      "authority": "primary"
+    },
     {
       "title": "Nepal Floods: School children reunited with families after being stranded – Save the Children",
       "url": "https://reliefweb.int/report/nepal/nepal-floods-school-children-reunited-families-after-being-stranded-save-children",
@@ -24,15 +35,40 @@
       "authority": "primary"
     },
     {
-      "title": "IRDR Data Brief - Satellite Data for Flash Flood/Debris Flow in China and Nepal on 26 August 2026",
-      "url": "https://reliefweb.int/report/nepal/irdr-data-brief-satellite-data-flash-flooddebris-flow-china-and-nepal-26-august-2026",
-      "source": "ReliefWeb (UN OCHA)",
-      "time": "2026-08-28T10:02:26.000Z",
-      "kind": "official",
+      "title": "Nepal-Tibet flash flood: death toll rises above 540 as rescue operations resume – latest updates",
+      "url": "https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates",
+      "source": "The Guardian",
+      "time": "2026-08-28T12:55:37.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://i.guim.co.uk/img/media/354fbd9087f6426e4a815de18580298cf136cb3d/0_73_602_482/master/602.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=08ce8ebaf9062913ec86625242402e69",
+      "summary": "More than 1,500 people are missing, including hundreds of foreign nationals and tourists, amid race to find survivors Flood risk forces halt to rescues in Tibet, as Nepal death toll rises to 469 Visual guide: how the deadly flooding unfolded Tell us: have you been affected by the flash floods? More now on the Nepali army’s rescue operation to save about 100 people trapped in a tunnel at a hydropower project swamped by Wednesday’s flooding . “Two helicopters have been dispatched but it is challenging because it is tough to even locate the entry points of the tunnel,” army spokesperson Raja Ram Basnet told AFP. Relief efforts are also under…",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "Nepal floods explained: The chain of events behind the disaster",
+      "url": "https://www.france24.com/en/nepal-floods-explained-the-chain-of-events-behind-the-disaster",
+      "source": "France 24",
+      "time": "2026-08-28T12:48:06.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://s.france24.com/media/display/30b8c788-a15a-11f1-b017-005056a90284/w:1024/p:16x9/AP26238334534782.jpg",
+      "summary": "A glacier broke apart. An ice and rock avalanche followed. Then came an earthquake, before a landslide triggered devastating floods that tore through kilometres of valley. This is what happened along the Nepal-China border, where rescue teams are still trying to recover survivors 48 hours after the catastrophe. FRANCE 24 breaks down the chain of events and the scientific explanations behind the disaster.",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "Nepal-Tibet flood: Families of missing people endure agonising wait",
+      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/28/nepal-tibet-flood-families-of-missing-people-endure-agonising-wait?traffic_source=rss",
+      "source": "Al Jazeera",
+      "time": "2026-08-28T12:33:51.000Z",
+      "kind": "press",
       "region": "global",
       "image": null,
-      "summary": "Countries: Nepal, China Source: Integrated Research on Disaster Risk Please refer to the attached file. Overview On 26 August 2026, a catastrophic flash flood and debris flow event struck the Nepal-China border region, triggered by an ice-rock avalanche that temporarily dammed the Lhende/Bhotekoshi River system before breaching and unleashing a massive surge of water, mud, and debris. In immediate response to this disaster, two major Chinese scientific data centers, which are IRDR’s partners, activated emergency protocols and rapidly mobilized satellite and scientific datasets to support emergency response, damage assessment, and relief…",
-      "authority": "primary"
+      "summary": "Families are waiting for news of their loved ones as rescue teams race to reach survivors of the Nepal-Tibet flash flood",
+      "alsoReported": [],
+      "authority": "trusted"
     },
     {
       "title": "Nepal flood survivors rescued from hydropower tunnel",
@@ -83,14 +119,14 @@
       "authority": "trusted"
     },
     {
-      "title": "'Ran for our lives': Tales of survival from Nepal-China disaster",
-      "url": "https://www.france24.com/en/live-news/20260828-ran-for-our-lives-tales-of-survival-from-nepal-china-disaster",
+      "title": "'Ran for our lives': Flood survivors recount terrifying escape from Nepal-Tibet disaster",
+      "url": "https://www.france24.com/en/asia-pacific/20260828-ran-for-our-lives-flood-survivors-recount-terrifying-escape-from-nepal-tibet-disaster",
       "source": "France 24",
       "time": "2026-08-28T11:55:15.000Z",
       "kind": "press",
       "region": "global",
       "image": "https://s.france24.com/media/display/c4877f86-a2a4-11f1-8c93-005056bf30b7/w:1024/p:16x9/a445c491a2511f5d6e49b86a241ebbb831600f74.jpg",
-      "summary": "Some survivors of the deadly floods on the Nepal-China border ran for their lives, others narrowly missed disaster, but all were eyewitnesses to a major calamity and its aftermath.",
+      "summary": "Survivors of the catastrophic flash floods in Nepal and Tibet, some still missing friends and family members, shared harrowing accounts of their escape from raging floodwaters that brought devastation to the Himalayan border region, leaving more than 550 people dead and some 1,500 missing.",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -215,6 +251,17 @@
       "authority": "trusted"
     },
     {
+      "title": "IRDR Data Brief - Satellite Data for Flash Flood/Debris Flow in China and Nepal on 26 August 2026",
+      "url": "https://reliefweb.int/report/nepal/irdr-data-brief-satellite-data-flash-flooddebris-flow-china-and-nepal-26-august-2026",
+      "source": "ReliefWeb (UN OCHA)",
+      "time": "2026-08-28T10:02:26.000Z",
+      "kind": "official",
+      "region": "global",
+      "image": null,
+      "summary": "Countries: Nepal, China Source: Integrated Research on Disaster Risk Please refer to the attached file. Overview On 26 August 2026, a catastrophic flash flood and debris flow event struck the Nepal-China border region, triggered by an ice-rock avalanche that temporarily dammed the Lhende/Bhotekoshi River system before breaching and unleashing a massive surge of water, mud, and debris. In immediate response to this disaster, two major Chinese scientific data centers, which are IRDR’s partners, activated emergency protocols and rapidly mobilized satellite and scientific datasets to support emergency response, damage assessment, and relief…",
+      "authority": "primary"
+    },
+    {
       "title": "‘So desperately loved’: ADF member among dozens of Australians missing in Nepal floods as families pray for safe return",
       "url": "https://www.theguardian.com/world/2026/aug/28/family-missing-australians-nepal-tibet-flash-floods",
       "source": "The Guardian",
@@ -235,52 +282,6 @@
       "region": "global",
       "image": "https://s.france24.com/media/display/528dfd0a-a2c3-11f1-81b1-005056bf30b7/w:1024/p:16x9/EN-20260828-091712-092608-CS.jpg",
       "summary": "Alison Sargent is pleased to welcome Sunita Sharma, Head of Programs of Karuna-Shechen. While Nepal has considerable experience responding to natural disasters, the scale of the present devastation exposes a deeper challenge: Placing greater emphasis on preparedness. The immediate priorities are clear: finding those still missing and providing survivors with drinking water, food, shelter, clothing and medicine. But recovery cannot end there. Ultimately, they will need to rebuild confidence and entire communities. Given the scale of the destruction, that process could take years.",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "Nepal Landslides & Flash Floods: Situation Report #1 (August 27, 2026)",
-      "url": "https://reliefweb.int/report/nepal/nepal-landslides-flash-floods-situation-report-1-august-27-2026",
-      "source": "ReliefWeb (UN OCHA)",
-      "time": "2026-08-28T09:46:23.000Z",
-      "kind": "official",
-      "region": "global",
-      "image": null,
-      "summary": "Country: Nepal Source: Project HOPE Please refer to the attached file. Project HOPE's Emergency Response Team is in Nepal, mobilizing a response to devastating landslides and flash floods caused by a massive glacier avalanche. Situational Context On the morning of August 26, 2026, a glacier avalanche near the border between Nepal and China sent tons of rock, mud, and ice into nearby rivers. This disaster triggered massive floods, powerful landslides, and registered a force equal to a 5.2-magnitude earthquake, according to the U.S. Geological Survey. As a result, entire villages have been wiped out and there have been significant impacts to…",
-      "authority": "primary"
-    },
-    {
-      "title": "Blocked roads and devastation as BBC drives to site of Nepal floods",
-      "url": "https://www.bbc.co.uk/news/videos/cn0j19wn4deo?at_medium=RSS&amp;at_campaign=rss",
-      "source": "BBC News",
-      "time": "2026-08-28T09:34:57.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/dfda/live/a0505e20-a2c3-11f1-a291-b542ee92de7c.jpg",
-      "summary": "South Asia correspondent Azadeh Moshiri reports as she travels from Kathmandu to Trishuli, passing ambulances and hearses on the way.",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "WFP Colombia Earthquake and Wildfires Response, 26 August 2026",
-      "url": "https://reliefweb.int/report/colombia/wfp-colombia-earthquake-and-wildfires-response-26-august-2026",
-      "source": "ReliefWeb (UN OCHA)",
-      "time": "2026-08-28T09:26:41.000Z",
-      "kind": "official",
-      "region": "global",
-      "image": null,
-      "summary": "Country: Colombia Source: World Food Programme Please refer to the attached file.",
-      "authority": "primary"
-    },
-    {
-      "title": "Nepal flood disaster reconstructed minute by minute",
-      "url": "https://www.france24.com/en/nepal-flood-disaster-reconstructed-minute-by-minute",
-      "source": "France 24",
-      "time": "2026-08-28T09:22:57.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://s.france24.com/media/display/f6cd2bda-a2bd-11f1-9da3-005056a97e36/w:1024/p:16x9/EN-20260828-090346-090618-CS.jpg",
-      "summary": "New satellite imagery and video analysis show the deadly Nepal floods began when part of a glacier near the Chinese border collapsed, triggering a debris flow that raced downstream at up to 150 km/h and devastated communities over more than 80 kilometres. Scientists are still piecing together the exact sequence of events, while authorities warn the disaster may not be over as a newly formed lake upstream has started to overflow.",
       "alsoReported": [],
       "authority": "trusted"
     }
