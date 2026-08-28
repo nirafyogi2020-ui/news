@@ -28,8 +28,8 @@ export const BODIES_SOURCE = 'Nepal Police bulletin';
 /* The missing list has its own, earlier timestamp. It is deliberately kept
    separate: the newest police bulletin gives a death toll and no missing
    figure, so quoting both against one time would be wrong. */
-export const MISSING_AS_OF = '2026-08-27T18:20:00+05:45';
-export const MISSING_SOURCE = 'NDRRMA Rasuwa Bhotekoshi flood update';
+export const MISSING_AS_OF = '2026-08-28T11:30:00+05:45';
+export const MISSING_SOURCE = 'NDRRMA update, reported by IANS';
 
 /* Who those people are was last broken down in the morning police bulletin,
    when the list stood at 826. The groups below still describe that list. */
@@ -96,7 +96,7 @@ export const TOLL = {
   deadNepal: 489,
   deadNepalEarlier: 469,
   deadChina: 3,
-  missing: 910,
+  missing: 977,
   missingChina: 558,
   missingChinaForeign: 260,
   missingIndian: 133,
