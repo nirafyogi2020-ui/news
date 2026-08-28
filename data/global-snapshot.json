@@ -1,6 +1,17 @@
 {
-  "updated": "2026-08-28T09:42:06.399Z",
+  "updated": "2026-08-28T09:57:20.959Z",
   "items": [
+    {
+      "title": "Nepal Landslides & Flash Floods: Situation Report #1 (August 27, 2026)",
+      "url": "https://reliefweb.int/report/nepal/nepal-landslides-flash-floods-situation-report-1-august-27-2026",
+      "source": "ReliefWeb (UN OCHA)",
+      "time": "2026-08-28T09:46:23.000Z",
+      "kind": "official",
+      "region": "global",
+      "image": null,
+      "summary": "Country: Nepal Source: Project HOPE Please refer to the attached file. Project HOPE's Emergency Response Team is in Nepal, mobilizing a response to devastating landslides and flash floods caused by a massive glacier avalanche. Situational Context On the morning of August 26, 2026, a glacier avalanche near the border between Nepal and China sent tons of rock, mud, and ice into nearby rivers. This disaster triggered massive floods, powerful landslides, and registered a force equal to a 5.2-magnitude earthquake, according to the U.S. Geological Survey. As a result, entire villages have been wiped out and there have been significant impacts to…",
+      "authority": "primary"
+    },
     {
       "title": "WFP Colombia Earthquake and Wildfires Response, 26 August 2026",
       "url": "https://reliefweb.int/report/colombia/wfp-colombia-earthquake-and-wildfires-response-26-august-2026",
@@ -24,15 +35,45 @@
       "authority": "primary"
     },
     {
-      "title": "Nepal Flood Response Situation Report #1 | 27 August 2026",
-      "url": "https://reliefweb.int/report/nepal/nepal-flood-response-situation-report-1-27-august-2026",
-      "source": "ReliefWeb (UN OCHA)",
-      "time": "2026-08-28T07:33:07.000Z",
-      "kind": "official",
+      "title": "Nepal flash floods: 'Very challenging' for survivors who have lost their homes and their families",
+      "url": "https://www.france24.com/en/video/20260828-nepal-flash-floods-very-challenging-for-survivors-who-have-lost-their-homes-and-their-families",
+      "source": "France 24",
+      "time": "2026-08-28T09:50:55.000Z",
+      "kind": "press",
       "region": "global",
-      "image": null,
-      "summary": "Country: Nepal Source: International Organization for Migration Please refer to the attached file. Situation Overview On the morning of 26 August 2026, a sudden and powerful flash flood swept through the Bhote Koshi and Trishuli river systems in central Nepal, affecting settlements across Rasuwa, Nuwakot and Dhading districts, including the Rasuwagadhi border crossing area. Officials suspect that the flooding may have been triggered by an upstream ice or rock avalanche, or by a glacial lake outburst, rather than by local rainfall. The exact cause remains under investigation. At least 165 people have been confirmed dead, while search and…",
-      "authority": "primary"
+      "image": "https://s.france24.com/media/display/528dfd0a-a2c3-11f1-81b1-005056bf30b7/w:1024/p:16x9/EN-20260828-091712-092608-CS.jpg",
+      "summary": "Alison Sargent is pleased to welcome Sunita Sharma, Head of Programs of Karuna-Shechen. While Nepal has considerable experience responding to natural disasters, the scale of the present devastation exposes a deeper challenge: Placing greater emphasis on preparedness. The immediate priorities are clear: finding those still missing and providing survivors with drinking water, food, shelter, clothing and medicine. But recovery cannot end there. Ultimately, they will need to rebuild confidence and entire communities. Given the scale of the destruction, that process could take years.",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "Overflowing lake halts rescue efforts as Nepal-Tibet flood death toll hits 474",
+      "url": "https://www.theguardian.com/world/2026/aug/28/flash-flood-risk-halt-rescue-tibet-nepal-death-toll-china-lake-burst",
+      "source": "The Guardian",
+      "time": "2026-08-28T09:40:22.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://i.guim.co.uk/img/media/3d9b134af42fcf5be0c903258ae03d2147807bb0/988_0_3450_2760/master/3450.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=5f7a67a3dee11f85dd4dcb367e02d1da",
+      "summary": "Risk of lake bursting forces rescue teams to withdraw as residents rush up hills to escape possible river surge Nepal-Tibet flash flood – latest updates Visual guide: how the deadly flooding unfolded Tell us: have you been affected by the flash floods? Rescuers searching for survivors of Wednesday’s deadly flash floods on the Nepal-Tibet border have been forced to pull back after a debris dam overflowed, increasing the risk of fresh flooding. Residents in Nepal’s Rasuwa district, on the border with Tibet, were seen rushing up hillsides ⁠on Friday to escape a possible surge in the river, ⁠according to witnesses. Authorities in Nepal had…",
+      "alsoReported": [
+        {
+          "name": "Al Jazeera",
+          "url": "https://www.aljazeera.com/news/2026/8/28/death-toll-from-nepal-tibet-flood-passes-470-as-barrier-lake-threatens?traffic_source=rss"
+        }
+      ],
+      "authority": "trusted"
+    },
+    {
+      "title": "Nepal Flash Floods LIVE: Nepal, China Pause Rescue Ops Amid Renewed Flood Threat, Death Count At 472",
+      "url": "https://www.ndtv.com/world-news/nepal-flash-floods-live-updates-nepal-hit-by-massive-flash-floods-multiple-casualties-feared-rescue-ops-on-11960633#publisher=newsstand",
+      "source": "NDTV",
+      "time": "2026-08-28T09:28:28.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://c.ndtvimg.com/2026-08/2erh1o7s_nepal-floods_625x300_26_August_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
+      "summary": "Nepal Flash Floods Live Updates: The deluge of ice and mud caused huge pools of water to form, with one of these formations bursting on Friday in Tibet in a new threat to emergency workers scouring the region for survivors.",
+      "alsoReported": [],
+      "authority": "trusted"
     },
     {
       "title": "Nepal-Tibet flash flood: rescue operations resume after halting over lake overflow; death toll rises to 469 – latest updates",
@@ -83,31 +124,14 @@
       "authority": "trusted"
     },
     {
-      "title": "Overflowing lake halts rescue efforts as Nepal-Tibet flood death toll hits 469",
-      "url": "https://www.theguardian.com/world/2026/aug/28/flash-flood-risk-halt-rescue-tibet-nepal-death-toll-china-lake-burst",
-      "source": "The Guardian",
-      "time": "2026-08-28T09:25:01.000Z",
+      "title": "5 Months Before Nepal Disaster, Two Reports Indicated What Lay Ahead",
+      "url": "https://www.ndtv.com/world-news/5-months-before-nepal-disaster-two-reports-indicated-what-lay-ahead-11970238#publisher=newsstand",
+      "source": "NDTV",
+      "time": "2026-08-28T08:56:49.000Z",
       "kind": "press",
       "region": "global",
-      "image": "https://i.guim.co.uk/img/media/3d9b134af42fcf5be0c903258ae03d2147807bb0/988_0_3450_2760/master/3450.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=5f7a67a3dee11f85dd4dcb367e02d1da",
-      "summary": "Risk of lake bursting forces rescue teams to withdraw as residents rush up hills to escape possible river surge Nepal-Tibet flash flood – latest updates Visual guide: how the deadly flooding unfolded Tell us: have you been affected by the flash floods? Rescuers searching for survivors of Wednesday’s deadly flash floods on the Nepal-Tibet border have been forced to pull back after a debris dam overflowed, increasing the risk of fresh flooding. Residents in Nepal’s Rasuwa district, on the border with Tibet, were seen rushing up hillsides ⁠on Friday to escape a possible surge in the river, ⁠according to witnesses. Authorities in Nepal had…",
-      "alsoReported": [
-        {
-          "name": "Al Jazeera",
-          "url": "https://www.aljazeera.com/news/2026/8/28/death-toll-from-nepal-tibet-flood-passes-470-as-barrier-lake-threatens?traffic_source=rss"
-        }
-      ],
-      "authority": "trusted"
-    },
-    {
-      "title": "'High risk' of lake breaching and causing second flood, warns China",
-      "url": "https://www.bbc.co.uk/news/articles/ckg8l2x8wr8o?at_medium=RSS&amp;at_campaign=rss",
-      "source": "BBC News",
-      "time": "2026-08-28T08:10:21.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/52e4/live/e6ac0c40-a2a3-11f1-ab20-f9f4f61e8913.jpg",
-      "summary": "Authorities say a lake formed after a recent landslide near the Nepal-Tibet border may breach in the coming days.",
+      "image": "https://c.ndtvimg.com/2026-08/07d2eg3o_nepal_625x300_28_August_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
+      "summary": "In March 2026, the International Centre for Integrated Mountain Development (ICIMOD) in two reports said up to 27 metres of glacial ice thickness had been lost since 1975",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -124,14 +148,14 @@
       "authority": "trusted"
     },
     {
-      "title": "Nearly 470 killed in Nepal floods: What we know about rescue efforts",
-      "url": "https://www.aljazeera.com/news/2026/8/28/nearly-470-killed-in-nepal-floods-what-we-know-about-rescue-efforts?traffic_source=rss",
-      "source": "Al Jazeera",
-      "time": "2026-08-28T07:51:06.000Z",
+      "title": "'High risk' of lake breaching and causing second flood, warns China",
+      "url": "https://www.bbc.co.uk/news/articles/ckg8l2x8wr8o?at_medium=RSS&amp;at_campaign=rss",
+      "source": "BBC News",
+      "time": "2026-08-28T08:10:21.000Z",
       "kind": "press",
       "region": "global",
-      "image": null,
-      "summary": "The devastating Bhotekoshi flood struck the mountainous Nepal-Tibet border region on Wednesday morning.",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/52e4/live/e6ac0c40-a2a3-11f1-ab20-f9f4f61e8913.jpg",
+      "summary": "Authorities say a lake formed after a recent landslide near the Nepal-Tibet border may breach in the coming days.",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -148,14 +172,14 @@
       "authority": "trusted"
     },
     {
-      "title": "5 Months Before Nepal Disaster, Two Reports Indicated What Lay Ahead",
-      "url": "https://www.ndtv.com/world-news/5-months-before-nepal-disaster-two-reports-indicated-what-lay-ahead-11970238#publisher=newsstand",
-      "source": "NDTV",
-      "time": "2026-08-28T07:45:55.000Z",
+      "title": "Nearly 470 killed in Nepal floods: What we know about rescue efforts",
+      "url": "https://www.aljazeera.com/news/2026/8/28/nearly-470-killed-in-nepal-floods-what-we-know-about-rescue-efforts?traffic_source=rss",
+      "source": "Al Jazeera",
+      "time": "2026-08-28T07:51:06.000Z",
       "kind": "press",
       "region": "global",
-      "image": "https://c.ndtvimg.com/2026-08/07d2eg3o_nepal_625x300_28_August_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
-      "summary": "In March 2026, the International Centre for Integrated Mountain Development (ICIMOD) in two reports said up to 27 metres of glacial ice thickness had been lost since 1975",
+      "image": null,
+      "summary": "The devastating Bhotekoshi flood struck the mountainous Nepal-Tibet border region on Wednesday morning.",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -184,6 +208,29 @@
       "authority": "trusted"
     },
     {
+      "title": "Nepal Flood Response Situation Report #1 | 27 August 2026",
+      "url": "https://reliefweb.int/report/nepal/nepal-flood-response-situation-report-1-27-august-2026",
+      "source": "ReliefWeb (UN OCHA)",
+      "time": "2026-08-28T07:33:07.000Z",
+      "kind": "official",
+      "region": "global",
+      "image": null,
+      "summary": "Country: Nepal Source: International Organization for Migration Please refer to the attached file. Situation Overview On the morning of 26 August 2026, a sudden and powerful flash flood swept through the Bhote Koshi and Trishuli river systems in central Nepal, affecting settlements across Rasuwa, Nuwakot and Dhading districts, including the Rasuwagadhi border crossing area. Officials suspect that the flooding may have been triggered by an upstream ice or rock avalanche, or by a glacial lake outburst, rather than by local rainfall. The exact cause remains under investigation. At least 165 people have been confirmed dead, while search and…",
+      "authority": "primary"
+    },
+    {
+      "title": "'We Don't Need Help': Nepal Declines Foreign Flood Rescue Offers",
+      "url": "https://www.ndtv.com/world-news/we-dont-need-help-nepal-declines-foreign-flood-rescue-offers-11970244#publisher=newsstand",
+      "source": "NDTV",
+      "time": "2026-08-28T07:19:48.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://c.ndtvimg.com/2026-08/ple2laf_nepal-rescue-op_625x300_28_August_26.jpeg",
+      "summary": "South Korea's foreign ministry said Nepal had indicated it was not yet planning to accept foreign rescue teams.",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
       "title": "Orange flood alert in Nepal",
       "url": "https://www.gdacs.org/report.aspx?eventtype=FL&amp;eventid=1104124",
       "source": "GDACS (UN / EC)",
@@ -195,14 +242,14 @@
       "authority": "primary"
     },
     {
-      "title": "Nepal Flash Floods LIVE: Nepal, China Pause Rescue Ops Amid Renewed Flood Threat, Death Count At 472",
-      "url": "https://www.ndtv.com/world-news/nepal-flash-floods-live-updates-nepal-hit-by-massive-flash-floods-multiple-casualties-feared-rescue-ops-on-11960633#publisher=newsstand",
+      "title": "'Head To Safety': Dam Breached In Tibet Amid Nepal Flood Devastation",
+      "url": "https://www.ndtv.com/world-news/nepal-flash-floods-head-to-safety-dam-breached-in-tibet-amid-nepal-flood-devastation-11969994#publisher=newsstand",
       "source": "NDTV",
-      "time": "2026-08-28T07:39:48.000Z",
+      "time": "2026-08-28T07:07:49.000Z",
       "kind": "press",
       "region": "global",
-      "image": "https://c.ndtvimg.com/2026-08/2erh1o7s_nepal-floods_625x300_26_August_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
-      "summary": "Nepal Flash Floods Live Updates: Sudden flash floods in Nepal's Rasuwa district cause destruction and trigger rescue efforts",
+      "image": "https://c.ndtvimg.com/2026-08/9mp81tag_nepal-floods-_625x300_28_August_26.jpeg",
+      "summary": "China has also paused rescue operations, citing the high risk of renewed flooding in Tibet, where hundreds remain missing two days after a deadly mudslide, state media said.",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -219,14 +266,14 @@
       "authority": "trusted"
     },
     {
-      "title": "'We Don't Need Help': Nepal Declines Foreign Flood Rescue Offers",
-      "url": "https://www.ndtv.com/world-news/we-dont-need-help-nepal-declines-foreign-flood-rescue-offers-11970244#publisher=newsstand",
+      "title": "Rebuilding Nepal's Infra After Floods Could Cost $5 Billion, Says Billionaire",
+      "url": "https://www.ndtv.com/world-news/nepal-floods-rebuilding-nepals-infra-after-floods-could-cost-5-billion-billionaire-binod-chaudhary-11970156#publisher=newsstand",
       "source": "NDTV",
-      "time": "2026-08-28T07:19:48.000Z",
+      "time": "2026-08-28T06:56:58.000Z",
       "kind": "press",
       "region": "global",
-      "image": "https://c.ndtvimg.com/2026-08/ple2laf_nepal-rescue-op_625x300_28_August_26.jpeg",
-      "summary": "South Korea's foreign ministry said Nepal had indicated it was not yet planning to accept foreign rescue teams.",
+      "image": "https://c.ndtvimg.com/2026-08/smj8vv7c_nepal-bloomberg_625x300_28_August_26.jpeg",
+      "summary": "The Chaudhary Group spans 12 business verticals, from food and telecom to infrastructure and banking.",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -240,54 +287,6 @@
       "image": "https://www.gdacs.org/contentdata/resources/imgtemp/gdacs/eq/eq1729706_1.png",
       "summary": "On 8/28/2026 5:13:35 AM, an earthquake occurred in China potentially affecting 15.8 million in 100km. The earthquake had Magnitude 5M, Depth:10km.",
       "authority": "primary"
-    },
-    {
-      "title": "'Head To Safety': Dam Breached In Tibet Amid Nepal Flood Devastation",
-      "url": "https://www.ndtv.com/world-news/nepal-flash-floods-head-to-safety-dam-breached-in-tibet-amid-nepal-flood-devastation-11969994#publisher=newsstand",
-      "source": "NDTV",
-      "time": "2026-08-28T07:07:49.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://c.ndtvimg.com/2026-08/9mp81tag_nepal-floods-_625x300_28_August_26.jpeg",
-      "summary": "China has also paused rescue operations, citing the high risk of renewed flooding in Tibet, where hundreds remain missing two days after a deadly mudslide, state media said.",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "Algeria residents mourn neighbours lost in wildfire aftermath",
-      "url": "https://www.aljazeera.com/video/newsfeed/2026/8/28/algeria-residents-mourn-neighbours-lost-in-wildfire-aftermath?traffic_source=rss",
-      "source": "Al Jazeera",
-      "time": "2026-08-28T05:18:33.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": null,
-      "summary": "Residents of Algeria’s northeastern Jijel province are inspecting the aftermath of wildfires.",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "Rebuilding Nepal's Infra After Floods Could Cost $5 Billion, Says Billionaire",
-      "url": "https://www.ndtv.com/world-news/nepal-floods-rebuilding-nepals-infra-after-floods-could-cost-5-billion-billionaire-binod-chaudhary-11970156#publisher=newsstand",
-      "source": "NDTV",
-      "time": "2026-08-28T06:56:58.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://c.ndtvimg.com/2026-08/smj8vv7c_nepal-bloomberg_625x300_28_August_26.jpeg",
-      "summary": "The Chaudhary Group spans 12 business verticals, from food and telecom to infrastructure and banking.",
-      "alsoReported": [],
-      "authority": "trusted"
-    },
-    {
-      "title": "Race to get aid into Nepal and Tibet amid warnings flood lake could burst",
-      "url": "https://www.theguardian.com/world/2026/aug/27/nepal-tibet-flash-floods-aid",
-      "source": "The Guardian",
-      "time": "2026-08-28T04:48:52.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://i.guim.co.uk/img/media/32eff8366660a1231524b1bf5253219340a13275/1079_0_4115_3292/master/4115.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=1c90886200211e304d607b0db836f47b",
-      "summary": "Flash floods have killed at least 469 people while homes and infrastructure have been swept away Nepal-Tibet flash flood – latest updates What caused the flash flood in Nepal and Tibet? The international community was scrambling to get aid into flood-stricken parts of Nepal and Tibet on Thursday as authorities warned that a lake ⁠formed at the ⁠site ⁠where the ​deadly torrents occurred ⁠was rising and ⁠at risk ​of ‌bursting. The catastrophic flash floods that hit Nepal and Tibet on Wednesday, thundering down valleys and obliterating entire villages, killed at least 469 people and left more than 1,300 missing. Continue reading...",
-      "alsoReported": [],
-      "authority": "trusted"
     }
   ]
 }
