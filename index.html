@@ -4715,18 +4715,18 @@ var LiveFeed = (function(){
 
   function renderVideoFreshness(){
     if(!videoFreshness) return;
-    if(!latestVideos.length){
+    var meta = videoFeedMeta || {};
+    if(!latestVideos.length && !meta.checkedAt && !videoFeedCheckedAt){
       videoFreshness.hidden = true;
       return;
     }
-    var meta = videoFeedMeta || {};
     var newest = meta.newestAt || (newestByTime(latestVideos) || {}).time;
-    var checked = meta.searchedAt || videoFeedCheckedAt;
-    var label = meta.searchedAt ? 'YouTube searched ' : 'Watch feed checked ';
+    var checked = meta.checkedAt || meta.searchedAt || videoFeedCheckedAt;
+    var label = meta.mode === 'verified-channels' ? 'Verified sources checked ' : 'Watch feed checked ';
     var parts = [];
     if(checked) parts.push(label + nptClock(checked));
     if(newest) parts.push('newest clip ' + PostCards.timeAgo(newest));
-    if(meta.showingBackup) parts.push('showing last good list');
+    if(meta.showingBackup) parts.push('showing last good verified list');
     videoFreshness.textContent = parts.join(' · ') || 'Video time is not available yet';
     videoFreshness.hidden = false;
   }
@@ -4741,10 +4741,12 @@ var LiveFeed = (function(){
       if(videoEmpty){
         videoEmpty.hidden = false;
         videoEmpty.textContent = videoFailed
-          ? 'YouTube is not answering right now — usually its daily free limit for the day. The list comes back by itself; the videos are also kept for 24 hours, so this should be rare.'
-          : 'No videos yet. This turns on once a YouTube API key is set for the site (YOUTUBE_API_KEY).';
+          ? 'Verified video sources cannot be reached right now. We will not show random clips; this checks again by itself.'
+          : (videoFeedMeta && videoFeedMeta.configured === false
+            ? 'Verified video sources are being connected. We will not show random clips.'
+            : 'No recent disaster video from a verified source yet. We will not show random clips.');
       }
-      if(videoStatus) videoStatus.textContent = 'No videos';
+      if(videoStatus) videoStatus.textContent = 'No verified video';
       return;
     }
     if(videoEmpty) videoEmpty.hidden = true;
@@ -4981,8 +4983,9 @@ var LiveFeed = (function(){
         var videos = latest.filter(function(i){ return i.kind === 'video'; });
         // Tells the empty state whether YouTube failed (quota, outage) or is
         // simply not configured, so it stops blaming a missing API key.
-        videoFailed = (data.errors || []).some(function(e){ return String(e).indexOf('youtube') === 0; });
         videoFeedMeta = data.videoFeed || null;
+        videoFailed = Boolean(videoFeedMeta && videoFeedMeta.unavailable) ||
+          (data.errors || []).some(function(e){ return String(e).indexOf('youtube') === 0; });
         videoFeedCheckedAt = data.updated || new Date().toISOString();
 
         PostCards.render(feedEl, editorial, 18);
