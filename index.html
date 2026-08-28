@@ -615,16 +615,23 @@
 
   /* primary tabs, desktop */
   .tabbar{display:flex; gap:4px; margin-left:auto;}
-  .tabbar button{
+  .tabbar button,
+  .tabbar a.tab-link{text-decoration:none;}
+  .tabbar button,
+  .tabbar a.tab-link{
     position:relative; display:inline-flex; align-items:center; gap:7px;
     font-family:var(--font-body); font-size:0.88rem; font-weight:500; white-space:nowrap;
     background:none; border:1px solid transparent; padding:8px 13px; border-radius:10px;
     color:var(--text-muted); cursor:pointer; transition:background .14s, color .14s;
   }
   .tabbar .tab-ico{width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; opacity:.75;}
-  .tabbar button:hover{color:var(--text); background:var(--surface-2);}
+  .tabbar button:hover,
+  .tabbar a.tab-link:hover{color:var(--text); background:var(--surface-2);}
   .tabbar button[aria-selected="true"]{color:var(--text); background:var(--surface-2); border-color:var(--border); font-weight:600;}
   .tabbar button[aria-selected="true"] .tab-ico{opacity:1; color:var(--critical);}
+  .feed-scope-note{font-size:0.8rem; color:var(--text-faint); margin:10px 0 0; max-width:60ch;}
+  .feed-scope-note[hidden]{display:none;}
+  #feed-region-seg[hidden]{display:none;}
   .portal-note{border:1px solid var(--border); border-left:3px solid var(--ok, #16a34a); border-radius:12px; padding:12px 14px; margin-bottom:16px; background:var(--surface-2);}
   .portal-note strong{display:block; font-size:0.9rem; margin-bottom:6px;}
   .portal-note p{margin:0 0 6px; font-size:0.86rem; line-height:1.55;}
@@ -1918,6 +1925,9 @@
       <button role="tab" id="tab-help" aria-label="Help, emergency numbers and donations" aria-controls="panel-help" aria-selected="false" data-tab="help">
         <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.4s-7.1-4.2-7.1-9.9A4.55 4.55 0 0 1 12 7.2a4.55 4.55 0 0 1 7.1 3.3c0 5.7-7.1 9.9-7.1 9.9z"/></svg>
         <span data-i18n="tab.help">Help</span></button>
+      <a class="tab-link" href="/global/" aria-label="World disasters, on its own page">
+        <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.2 9.5h17.6M3.2 14.5h17.6"/><path d="M12 3a16 16 0 0 1 0 18a16 16 0 0 1 0-18z"/></svg>
+        <span>World</span></a>
     </nav>
 
     <div class="head-tools">
@@ -2471,6 +2481,11 @@
         <span class="livedot" aria-hidden="true"></span>
         <span class="feed-status" id="feedtab-status">Loading&hellip;</span>
       </div>
+      <div class="seg" id="feed-scope-seg" role="group" aria-label="Nepal or world news" style="margin-top:14px; max-width:300px;">
+        <button type="button" data-scope-choice="nepal" aria-pressed="true">Nepal</button>
+        <button type="button" data-scope-choice="global" aria-pressed="false">World</button>
+      </div>
+      <p class="feed-scope-note" id="feed-scope-note" hidden>Disasters elsewhere in the world, from UN alerts and international newsrooms. <a href="/global/">The world page</a> has the full list and how to read the alerts.</p>
       <div class="seg" id="feed-region-seg" role="group" aria-label="Filter by source" style="margin-top:14px; max-width:420px;">
         <button type="button" data-region-choice="all" aria-pressed="true">All sources</button>
         <button type="button" data-region-choice="nepal" aria-pressed="false">Nepali sources</button>
@@ -4583,8 +4598,24 @@ var LiveFeed = (function(){
     box.innerHTML = items.map(videoCardHtml).join('');
   }
 
+  /* The Live tab covers two things: this event, and everything else. The world
+     feed is a separate endpoint with the same card shape, fetched only when a
+     reader actually asks for it, so nobody pays for it who does not want it. */
+  var feedScope = 'nepal';
+  var worldItems = null;
+  var worldLoading = false;
+
   function renderFeedTab(){
     if(!feedTabGrid) return;
+    if(feedScope === 'global'){
+      if(worldItems === null){
+        if(!worldLoading) loadWorld();
+        return;
+      }
+      PostCards.render(feedTabGrid, worldItems.filter(function(i){ return i.kind !== 'video'; }), 60);
+      if(feedTabStatus) feedTabStatus.textContent = worldItems.length + ' world updates';
+      return;
+    }
     // Videos live on their own tab, quakes on the Live tab.
     var base = latest.filter(function(i){ return i.kind !== 'video' && i.kind !== 'quake'; });
     var items = regionFilter === 'all' ? base : base.filter(function(i){
@@ -4593,6 +4624,40 @@ var LiveFeed = (function(){
     });
     PostCards.render(feedTabGrid, items, 60);
   }
+
+  function loadWorld(){
+    worldLoading = true;
+    if(feedTabStatus) feedTabStatus.textContent = 'Loading world updates…';
+    fetch('/api/global', { cache:'no-store' })
+      .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)); })
+      .then(function(data){
+        worldItems = (data.items || []);
+        worldLoading = false;
+        if(feedScope === 'global') renderFeedTab();
+      })
+      .catch(function(){
+        worldLoading = false;
+        if(feedScope !== 'global') return;
+        if(feedTabStatus) feedTabStatus.textContent = 'World feed unavailable';
+        if(feedTabGrid) feedTabGrid.innerHTML =
+          '<p style="font-size:0.88rem; color:var(--text-faint);">The world feed did not load. ' +
+          '<a href="/global/">The world page</a> has the last snapshot.</p>';
+      });
+  }
+
+  Array.prototype.slice.call(document.querySelectorAll('[data-scope-choice]')).forEach(function(b){
+    b.addEventListener('click', function(){
+      feedScope = b.getAttribute('data-scope-choice');
+      document.querySelectorAll('[data-scope-choice]').forEach(function(c){
+        c.setAttribute('aria-pressed', String(c === b));
+      });
+      var seg = document.getElementById('feed-region-seg');
+      if(seg) seg.hidden = feedScope === 'global';
+      var note = document.getElementById('feed-scope-note');
+      if(note) note.hidden = feedScope !== 'global';
+      renderFeedTab();
+    });
+  });
 
   regionButtons.forEach(function(b){
     b.addEventListener('click', function(){

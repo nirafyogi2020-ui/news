@@ -320,6 +320,19 @@ card on its own.
 
 ---
 
+# The world feed
+
+`/api/global` is the same kind of feed for disasters anywhere: ReliefWeb, GDACS
+orange and red alerts, USGS magnitude 5.5 and above, and the international
+wires, all filtered to headlines that name a hazard. It draws the `/global/`
+page and the World switch on the Live tab.
+
+`/global/` carries a snapshot taken at build time, cached in
+`data/global-snapshot.json` so a slow feed can never fail a build. Nothing
+about it is hand-edited, and it is not part of the hourly editorial routine.
+
+---
+
 # Adding a page
 
 More real pages is the whole SEO strategy: a page per question people

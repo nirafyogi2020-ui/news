@@ -113,6 +113,20 @@ one further down.
 - Where sources disagree, use the lower confirmed figure and name who confirmed
   it.
 
+### The counters now correct themselves between runs
+
+`/api/figures` reads the death toll straight out of the Nepal Police bulletin
+and the home page raises its hero counter to that figure on its own, naming the
+bulletin hour. It only ever raises a figure, never lowers one, and it does not
+touch `event.json`, `src/content.mjs`, the page title or the share card. So the
+run still has to do step 3 properly: the live read buys the site an hour of
+honesty, it does not replace the edit.
+
+The audit also fails the deploy when a story card still prints a toll the
+police have overtaken, for example a card headlined "toll passes 389" while
+`src/content.mjs` says 469. Rewrite the card. Writing "up from 389" is fine and
+is the honest way to show a rising toll.
+
 ## Step 4. The story cards
 
 `today.json` is a feed of story cards, one card per story.
