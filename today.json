@@ -1,6 +1,20 @@
 {
-  "updated": "2026-08-29T10:00:00+05:45",
+  "updated": "2026-08-29T13:53:00+05:45",
   "posts": [
+    {
+      "id": "power-restoration-nuwakot",
+      "title": "Ministry says power is back in five Nuwakot areas as repairs continue",
+      "time": "2026-08-29T13:53:00+05:45",
+      "image": "",
+      "body": [
+        "The Ministry of Energy, Water Resources and Irrigation says electricity has been restored in Kharanitar, Samundratar, Chaugada, Likhu and Panchkanya in Nuwakot by pulling lines from Sindhupalchok, Nepal News reports.",
+        "The ministry also says power is back in Gajuri, Malekhu and Muglin, and that the 33 kV line from Dhadingbesi to Ratomate is operating. It says it is working to restore supply across Nuwakot by 3pm Saturday.",
+        "Do not approach damaged power lines or try to reconnect a building yourself. Report hazards to local authorities or Nepal Electricity Authority staff."
+      ],
+      "sources": [
+        { "name": "Nepal News", "url": "https://english.nepalnews.com/s/business/electricity-restoration-efforts-intensified-in-flood-affected-areas/" }
+      ]
+    },
     {
       "id": "pm-shah-4451-rescued",
       "title": "NDRRMA says 4,451 rescued, with 15,224 security personnel deployed",
