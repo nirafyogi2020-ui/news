@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-29T02:18:22.534Z",
+  "updated": "2026-08-29T03:19:35.979Z",
   "items": [
     {
       "title": "Anticipatory Action Framework: Nigeria – Floods (28 August 2026)",
@@ -38,7 +38,7 @@
       "title": "Nepal-Tibet flash flood: number of missing rises to 2,478; bodies recovered down rivers in India – latest updates",
       "url": "https://www.theguardian.com/world/live/2026/aug/28/nepal-tibet-flash-floods-hundreds-dead-missing-day-three-live-updates",
       "source": "The Guardian",
-      "time": "2026-08-29T02:02:14.000Z",
+      "time": "2026-08-29T03:04:15.000Z",
       "kind": "press",
       "region": "global",
       "image": "https://i.guim.co.uk/img/media/354fbd9087f6426e4a815de18580298cf136cb3d/0_73_602_482/master/602.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=08ce8ebaf9062913ec86625242402e69",
@@ -47,14 +47,14 @@
       "authority": "trusted"
     },
     {
-      "title": "Footage of Tibet floods isn't being shown in China - and we know little about victims there",
-      "url": "https://www.bbc.co.uk/news/articles/cx2z415w2gpo?at_medium=RSS&amp;at_campaign=rss",
-      "source": "BBC News",
-      "time": "2026-08-28T22:05:41.000Z",
+      "title": "Nepal Flash Flood LIVE Updates: 3rd Flight With Assistance From India Reaches Kathmandu",
+      "url": "https://www.ndtv.com/world-news/nepal-flash-flood-2026-live-updates-death-count-rescue-operation-latest-news-rasuwa-nuwakot-bhote-koshi-11973405#publisher=newsstand",
+      "source": "NDTV",
+      "time": "2026-08-29T02:52:17.000Z",
       "kind": "press",
       "region": "global",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8d37/live/67a7cd10-a2fa-11f1-8d5b-155abe464768.jpg",
-      "summary": "Some of the most dramatic footage from the deadly flash flooding is hidden from public view in China.",
+      "image": "https://c.ndtvimg.com/2026-08/ec2cnoi_nepal-flood_625x300_29_August_26.jpeg",
+      "summary": "Nepal Flash Flood Death Count LIVE News Updates: At least 579 bodies have so far been found, with more than 2,000 still unaccounted for.",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -67,6 +67,18 @@
       "region": "global",
       "image": "https://i.guim.co.uk/img/media/00bc3a6f28120010da82b2d0ba9dd72d6e740880/767_0_3833_3067/master/3833.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=6d8c6c68fcf618211c94620432dad3e0",
       "summary": "There are now 41 Australians missing, and four rapid response team members are expected to arrive in Kathmandu At least 93,000 ‘in great need’ after Nepal-Tibet flash floods How the deadly Nepal and Tibet flash flood unfolded – a visual guide Get our breaking news email , free app or daily news podcast The number of Australians who were reported missing in the catastrophic Nepal flooding disaster has risen to 41, as one family celebrates after an unaccounted-for woman made contact with them yesterday. It means three additional Australians were confirmed missing overnight – up from 38 who remained unaccounted for on Friday evening. Continue…",
+      "alsoReported": [],
+      "authority": "trusted"
+    },
+    {
+      "title": "Footage of Tibet floods isn't being shown in China - and we know little about victims there",
+      "url": "https://www.bbc.co.uk/news/articles/cx2z415w2gpo?at_medium=RSS&amp;at_campaign=rss",
+      "source": "BBC News",
+      "time": "2026-08-28T22:05:41.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8d37/live/67a7cd10-a2fa-11f1-8d5b-155abe464768.jpg",
+      "summary": "Some of the most dramatic footage from the deadly flash flooding is hidden from public view in China.",
       "alsoReported": [],
       "authority": "trusted"
     },
@@ -270,18 +282,6 @@
       "image": null,
       "summary": "Country: Nepal Source: Integrated Research on Disaster Risk Please refer to the attached file. EXECUTIVE SUMMARY The 26 August 2026 Bhotekoshi flash flood appears to have been triggered by an ice, rock and soil mass failure around the Deding/Langtang region rather than intense localized rainfall. The failure likely blocked the river and formed a temporary natural dam for about 18-19 hours. The dam then breached around 8:30-8:37 a.m. on 26 August, releasing a large volume of water, ice, rock, sediment and debris. Continued inflow from the Mala River and other tributaries may have masked the upstream blockage. The steep gradient and narrow…",
       "authority": "primary"
-    },
-    {
-      "title": "Tropical Storm Dolly downgraded to ‘open tropical wave’ as it heads to Caribbean",
-      "url": "https://www.theguardian.com/weather/2026/aug/28/tropical-storm-dolly-caribbean",
-      "source": "The Guardian",
-      "time": "2026-08-28T15:23:18.000Z",
-      "kind": "press",
-      "region": "global",
-      "image": "https://i.guim.co.uk/img/media/a351ae3cb184c7f81762912a2e9bce58c9b21f95/167_0_1666_1333/master/1666.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=fade6db40f7633e9e6c1dc6e97a616ba",
-      "summary": "Remnants from tropical storm could cause heavy rainfall on Leeward Islands and affect Virgin Islands, Puerto Rico and Hispaniola Remnants of Tropical Storm Dolly, which has been downgraded to an “open tropical wave”, were moving still across the Atlantic Ocean toward the Leeward Islands, and could bring heavy rainfall to parts of the Caribbean this weekend, the US National Hurricane Center (NHC) said on Friday.. Dolly, which formed on Thursday, had maximum sustained winds of near 40mph (65km/h) with higher gusts on Friday morning. Later on Friday, forecasters said that Dolly was no longer a Tropical Storm, and had “become an open tropical…",
-      "alsoReported": [],
-      "authority": "trusted"
     }
   ]
 }

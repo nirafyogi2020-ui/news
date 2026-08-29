@@ -1,6 +1,21 @@
 {
-  "updated": "2026-08-29T07:50:00+05:45",
+  "updated": "2026-08-29T09:03:00+05:45",
   "posts": [
+    {
+      "id": "pm-shah-4451-rescued",
+      "title": "PM Shah says 4,451 rescued so far, 15,431 security personnel now in the flood zone",
+      "time": "2026-08-28T20:30:00+05:45",
+      "image": "",
+      "body": [
+        "Prime Minister Balendra Shah said in a Facebook post Friday evening that Nepal has rescued 4,451 people so far in the flood response, Khabarhub reports. That includes people brought out by helicopter and from flooded hydropower tunnels. Nepali Army and private sector helicopters have flown 99 shuttle sorties into Dhunche, Trishuli, Timure and Syabrubesi, and 129 foreign nationals have been rescued and identified.",
+        "Shah put the total security personnel now working the flood zone at 15,431: 6,755 from the Nepali Army, 4,473 from Nepal Police and 4,203 from the Armed Police Force, Khabarhub and the Tribune report, citing ANI. That is higher than the 13,295 the Home Administration gave in its own Friday evening tally, and the two counts have not been reconciled.",
+        "Rescue and mobilisation totals vary by agency and keep moving. This is the Prime Minister's own figure, separate from Nepal Police's and NDRRMA's counts elsewhere on this page."
+      ],
+      "sources": [
+        { "name": "Khabarhub", "url": "https://english.khabarhub.com/2026/28/565414/" },
+        { "name": "The Tribune", "url": "https://www.tribuneindia.com/news/world/over-4400-rescued15000-security-personnel-deployed-as-nepal-mobilises-massive-flood-relief-op-pm-balen-shah/" }
+      ]
+    },
     {
       "id": "foreign-journalist-rules",
       "title": "Nepal tells foreign journalists covering the flood to get formal clearance",
@@ -310,8 +325,8 @@
     },
     {
       "id": "hydropower-workers-out-of-contact",
-      "title": "Landslide buries Upper Trishuli-3B camp, army still working Trishuli-1 tunnel",
-      "time": "2026-08-28T17:00:00+05:45",
+      "title": "NDRRMA says 933 hydropower workers are among Nepal's missing",
+      "time": "2026-08-28T19:00:00+05:45",
       "image": "",
       "body": [
         "The Nepali Army has pulled more than 350 workers and local villagers out of a flooded access tunnel at the under construction Upper Trishuli-1 hydropower project, rescuers rappelling from a hovering helicopter to reach the entrance, Bloomberg reports, citing Nepal's Prime Minister's Office. More than 100 people were still believed trapped inside as of Thursday, and the operation is continuing.",
@@ -319,7 +334,8 @@
         "At Trishuli 3A in Mailung, where 35 workers were reported cut off on Wednesday with the tunnel gate blocked, the army airlifted three people out on Thursday, Onlinekhabar reports. It has not said how many remain inside.",
         "At the Langtang Hydropower project, more than 25 workers have been out of contact in a tunnel since Wednesday. Bijay Mohan Bhattarai, the company's managing director and a secretary of IPPAN, said government agencies need to step up rescue efforts there, and that all available helicopters had already been sent elsewhere, Onlinekhabar reports.",
         "The Ministry of Energy, Water Resources and Irrigation said Friday that a fresh landslide has completely buried the camp area of the Upper Trishuli-3B project in Nuwakot. It said rescuing people there is the top priority and that rescue equipment has been flown in, Onlinekhabar reports. It did not say how many people were on site.",
-        "The Independent Power Producers' Association Nepal, IPPAN, says 215 staff from five hydropower projects in total have not been reached since Wednesday's flood. Worst hit is Upper Trishuli-1 itself, with 94 people out of contact by IPPAN's count, a narrower figure than the more than 350 the army says it has now brought out of that project's tunnel. At Rasuwagadhi, 51 staff are out of contact, though 3 reached higher ground on their own."
+        "The Independent Power Producers' Association Nepal, IPPAN, says 215 staff from five hydropower projects in total have not been reached since Wednesday's flood. Worst hit is Upper Trishuli-1 itself, with 94 people out of contact by IPPAN's count, a narrower figure than the more than 350 the army says it has now brought out of that project's tunnel. At Rasuwagadhi, 51 staff are out of contact, though 3 reached higher ground on their own.",
+        "Nepal's disaster authority NDRRMA said in its Friday evening update that 933 hydropower workers are among the 1,924 people it now lists as missing in Nepal, the Associated Press reports. That is a far bigger number than IPPAN's own count above, and NDRRMA has not broken its total down by project."
       ],
       "sources": [
         { "name": "Bloomberg", "url": "https://www.bloomberg.com/news/articles/2026-08-28/nepal-rescuers-race-to-save-people-trapped-in-hydropower-tunnel" },
@@ -327,7 +343,8 @@
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/nepali-army-rescue-operations.html" },
         { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/27/from-army-camps-to-hospitals-families-desperately-search-for-missing-members" },
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/more-than-25-workers-trapped-in-langtang-hydropower-tunnel.html" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/landslide-upper-trishuli-3-b.html" }
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/landslide-upper-trishuli-3-b.html" },
+        { "name": "Euronews", "url": "https://www.euronews.com/2026/08/28/number-of-missing-in-nepal-floods-passes-2400-as-unicef-says-17000-children-need-aid" }
       ],
       "revised": true
     },
