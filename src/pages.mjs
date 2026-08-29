@@ -129,16 +129,7 @@ export function liveRail(ctx, opts = {}) {
   </div>
 </section>`;
 
-  const elsewhereCard = opts.hideWorld ? '' : `
-<section class="rail-card">
-  <p class="rail-head"><span class="rail-tick" aria-hidden="true"></span>Elsewhere today</p>
-  <div class="rail-body">
-    <p class="rail-lede">Floods, quakes and storms outside Nepal, from UN alerts and named international newsrooms.</p>
-    <a class="rail-btn" href="/global/">Open the world page</a>
-  </div>
-</section>`;
-
-  return [opts.lead || '', figCard, latestCard, sourceCard, helpCard, elsewhereCard].join('\n');
+  return [opts.lead || '', figCard, latestCard, sourceCard, helpCard].join('\n');
 }
 
 const bylineLive = (modified) =>

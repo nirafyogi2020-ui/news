@@ -130,7 +130,6 @@ const NAV = [
   { href: '/nepal-flood/rasuwa/', label: 'Rasuwa flood' },
   { href: '/nepal-flood/rasuwa/live-updates/', label: 'Live updates' },
   { href: '/nepal-flood/rasuwa/map/', label: 'Map' },
-  { href: '/global/', label: 'World' },
   { href: '/nepal-flood/emergency-numbers/', label: 'Emergency numbers' },
   { href: '/nepal-flood/relief/', label: 'Donate' },
 ];

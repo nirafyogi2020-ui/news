@@ -235,7 +235,7 @@ const pages = [
   P.missingPersons(ctx), P.timeline(ctx), P.cause(ctx), P.damage(ctx), P.mapPage(ctx),
   P.emergencyNumbers(ctx), P.relief(ctx), P.hazardGuide(ctx), P.updateIndex(ctx),
   P.hydropower(ctx), P.foreignNationals(ctx), ...P.hazardPages(ctx),
-  P.globalNews(ctx), P.about(ctx), P.sources(ctx), P.contact(ctx),
+  P.about(ctx), P.sources(ctx), P.contact(ctx),
   NE.neEvent(ctx), NE.neEmergency(ctx), NE.neMissing(ctx), NE.neRelief(ctx),
 ];
 
