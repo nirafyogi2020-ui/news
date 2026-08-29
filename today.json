@@ -1,6 +1,32 @@
 {
-  "updated": "2026-08-29T05:02:00+05:45",
+  "updated": "2026-08-29T06:55:00+05:45",
   "posts": [
+    {
+      "id": "apf-4800-personnel",
+      "title": "Armed Police Force says it has now sent over 4,800 personnel to the flood zone",
+      "time": "2026-08-29T06:41:00+05:45",
+      "image": "",
+      "body": [
+        "The Armed Police Force said Saturday morning it has now mobilised more than 4,800 personnel for search and rescue, with base camps set up across Rasuwa, Nuwakot, Dhading, Tanahu, Gorkha, Chitwan and both Nawalparasi districts, Onlinekhabar reports.",
+        "That is well above the 1,845 Armed Police Force personnel the Home Administration named in Friday evening's tally of all security forces working the flood. It is not clear whether the two counts are measuring the same thing, and neither the Armed Police Force nor the Home Ministry has explained the gap."
+      ],
+      "sources": [
+        { "name": "Onlinekhabar", "url": "https://www.onlinekhabar.com/2026/08/2006169/bhotekoshi-flood-armed-forces-increase-manpower-for-search-and-rescue-4800-more-mobilized" }
+      ]
+    },
+    {
+      "id": "mobile-service-restored",
+      "title": "Nepal Telecom restores mobile service at 80 of 120 flood-hit sites",
+      "time": "2026-08-29T06:22:00+05:45",
+      "image": "",
+      "body": [
+        "Nepal Telecom said Saturday it has restored mobile service at 80 of the 120 towers and sites knocked out by the flood in Rasuwa, Nuwakot and Dhading, The Rising Nepal reports. Technicians were flown in by helicopter to reach some of the most remote sites, including towers in Gosainkunda, Suryagadhi and Bidur municipalities. Service in Dhunche, the Rasuwa district headquarters, came back on Thursday.",
+        "Phone lines being down is the main reason families cannot reach relatives in the flood zone. If you are trying to find someone, keep trying the same number rather than assuming coverage in their area is still out."
+      ],
+      "sources": [
+        { "name": "The Rising Nepal", "url": "https://risingnepaldaily.com/news/85723" }
+      ]
+    },
     {
       "id": "india-seven-bodies-downstream",
       "title": "Seven bodies believed to be flood victims recovered downstream in India",
@@ -244,11 +270,11 @@
     },
     {
       "id": "damage-cost",
-      "title": "Damage put at Rs 200 billion, relief fund donations pass Rs 4 billion",
-      "time": "2026-08-28T18:00:00+05:45",
+      "title": "Damage put at Rs 200 billion, ADB approves $5m emergency grant",
+      "time": "2026-08-29T05:56:00+05:45",
       "image": "",
       "body": [
-        "The Prime Minister's Disaster Relief Fund's balance has reached Rs 4.091 billion, the finance ministry said in a Friday update reported by Onlinekhabar, up from Rs 2.172 billion before the latest round of deposits, which added Rs 1.918 billion between noon Wednesday and midnight Thursday. The fund had taken in Rs 273.3 million in its first six hours, led by a Rs 100 million gift from Gorkha Brewery. That is public donations, separate from the Rs 1 billion the government has already released for relief.",
+        "The Asian Development Bank has approved a US$5 million, about Rs 750 million, emergency grant for the flood response, the finance ministry said in an update reported by The Rising Nepal on Saturday. The Prime Minister's Disaster Relief Fund's balance has separately reached Rs 4.091 billion, up from Rs 2.172 billion before the latest round of deposits, which added Rs 1.918 billion between noon Wednesday and midnight Thursday. The fund had taken in Rs 273.3 million in its first six hours, led by a Rs 100 million gift from Gorkha Brewery. That is public donations, separate from the Rs 1 billion the government has already released for relief.",
         "Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.",
         "That figure does not include energy infrastructure. Energy Minister Biraj Bhakta Shrestha has ordered an immediate assessment of hydropower damage. In Rasuwa, 8 projects have been hit, 5 of them operational with a combined 236 megawatts, and 3 still under construction with a combined 342 megawatts. Nuwakot has lost access to 6 more projects, 4 operational at 123 megawatts and 2 under construction at 53 megawatts.",
         "Rasuwa, Nuwakot, Dhading and Chitwan are still being surveyed for road and building damage, so the Rs 200 billion figure is expected to rise.",
@@ -263,6 +289,7 @@
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html" },
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/pms-disaster-relief-fund.html" },
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/pm-disaster-relief-fund.html" },
+        { "name": "The Rising Nepal", "url": "https://risingnepaldaily.com/news/85720" },
         { "name": "UNICEF", "url": "https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance" }
       ],
       "revised": true
