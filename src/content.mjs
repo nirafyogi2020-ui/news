@@ -8,21 +8,21 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-08-28T17:00:00+05:45';
+export const TOLL_AS_OF = '2026-08-29T06:00:00+05:45';
 export const TOLL_SOURCE = 'Nepal Police bulletin';
 
 /* When the bulletin one step before TOLL_AS_OF was published. Used only for
    the "how the toll has moved" table, so that row's timestamp always matches
    TOLL.deadNepalEarlier instead of drifting out of date as later runs move
    both TOLL_AS_OF and deadNepalEarlier forward. */
-export const TOLL_EARLIER_AS_OF = '2026-08-28T16:23:00+05:45';
+export const TOLL_EARLIER_AS_OF = '2026-08-28T17:00:00+05:45';
 
 /* The district breakdown carries its own clock. It happens to match the toll
-   right now, because the 28 August 5pm police bulletin published both
-   together, but the two move apart whenever a later update raises the
-   national figure without restating every district. Keeping them separate
-   means the table is never quietly presented as newer than it is. */
-export const BODIES_AS_OF = '2026-08-28T17:00:00+05:45';
+   right now, because the 29 August bulletin published both together, but the
+   two move apart whenever a later update raises the national figure without
+   restating every district. Keeping them separate means the table is never
+   quietly presented as newer than it is. */
+export const BODIES_AS_OF = '2026-08-29T06:00:00+05:45';
 export const BODIES_SOURCE = 'Nepal Police bulletin';
 
 /* The missing list has its own, earlier timestamp. It is deliberately kept
@@ -53,13 +53,13 @@ export const EVENT = {
 
 /** Bodies recovered, by the district where they were found. */
 export const BODIES_BY_DISTRICT = [
-  ['Chitwan', 222],
-  ['Nawalparasi East', 134],
-  ['Gorkha', 47],
-  ['Dhading', 40],
-  ['Nuwakot', 38],
+  ['Chitwan', 233],
+  ['Nawalparasi East', 158],
+  ['Gorkha', 48],
+  ['Nawalparasi West', 47],
+  ['Dhading', 45],
+  ['Nuwakot', 41],
   ['Tanahun', 31],
-  ['Nawalparasi West', 28],
   ['Rasuwa', 13],
 ];
 
@@ -93,8 +93,8 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 553,
-  deadNepalEarlier: 547,
+  deadNepal: 616,
+  deadNepalEarlier: 553,
   deadChina: 7,
   missing: 1924,
   missingChina: 554,
@@ -233,6 +233,7 @@ export const TIMELINE = [
   ['Friday evening, 28 August', 'David Fisher, head of delegation for the International Federation of Red Cross and Red Crescent Societies in Nepal, says at least 93,000 people have been affected by the flood and are in great need.'],
   ['20:55 NPT, 28 August', 'In a reversal, Nepal says it will let India, China, Australia and South Korea send in tunnel rescue and DNA identification experts, the Kathmandu Post reports. Nepal had said as recently as Wednesday and Thursday that its own army and police could handle the operation without outside rescue teams.'],
   ['Friday, 28 August', 'Water resources researcher Santosh Nepal tells Onlinekhabar that satellite images suggest a huge ice and rock fall off Langtang Lirung, not a glacial lake bursting, may have generated the flood directly by melting snow and ice on impact. He says it is too early to be sure and compares the mechanism to the 2021 Chamoli disaster in Uttarakhand.'],
+  ['06:00 NPT, 29 August', 'Nepal Police raise the confirmed toll to 616 bodies found, in a bulletin posted on the force’s own website, up from 553 in Friday’s 5pm bulletin. The new district breakdown: Chitwan 233, Nawalparasi East 158, Gorkha 48, Nawalparasi West 47, Dhading 45, Nuwakot 41, Tanahun 31, Rasuwa 13.'],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */
