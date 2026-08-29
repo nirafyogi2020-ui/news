@@ -1553,32 +1553,136 @@ export function globalNews(ctx) {
      normalised on the way in rather than left to fail the audit. Nothing
      else about a headline is touched. */
   const plain = (v) => String(v == null ? '' : v).replace(/[\u2013\u2014]/g, '-');
+  const safeHref = (v) => /^https:\/\//i.test(String(v || '')) ? String(v) : '#';
+  const location = (country) => ({
+    nepal: 'Nepal', brazil: 'Brazil', 'united-states': 'United States', global: 'World'
+  }[country] || 'World');
 
   /* An item from a UN alerting body or a national newsroom carries a tick;
      an aggregator does not. The reader can see which is which without having
      to know the names. */
-  const OFFICIAL = /reliefweb|gdacs|ocha|usgs|who|unicef|wfp|ifrc|red cross/i;
-  const badge = (src) => OFFICIAL.test(src || '')
-    ? `<span class="src-badge">${VTICK}${esc(plain(src))} &middot; UN or official</span>`
-    : `<span class="src-badge">${esc(plain(src))}</span>`;
+  const OFFICIAL = /reliefweb|gdacs|ocha|usgs|weather service|who|unicef|wfp|ifrc|red cross/i;
+  const badge = (src, country) => OFFICIAL.test(src || '')
+    ? `<span class="src-badge">${VTICK}${esc(location(country))} &middot; ${esc(plain(src))}</span>`
+    : `<span class="src-badge">${esc(location(country))} &middot; ${esc(plain(src))}</span>`;
 
   const snapshot = items.length ? `
-<ul class="postlist">
-${items.map(i => `<li><a class="postcard" href="${esc(i.url)}" target="_blank" rel="noopener">
+<ul class="postlist" id="world-snapshot">
+${items.map(i => `<li><a class="postcard" href="${esc(safeHref(i.url))}" target="_blank" rel="noopener">
   <time datetime="${esc(i.time || '')}">${esc(i.time ? nptLong(i.time) : '')}</time>
   <h3>${esc(plain(i.title))}</h3>
-  ${i.summary ? `<p>${esc(plain(String(i.summary).slice(0, 220)))}${String(i.summary).length > 220 ? '…' : ''}</p>` : ''}
-  ${badge(i.source)}
+${i.summary ? `  <p>${esc(plain(String(i.summary).slice(0, 220)))}${String(i.summary).length > 220 ? '…' : ''}</p>` : ''}
+  ${badge(i.source, i.country)}
 </a></li>`).join('\n')}
 </ul>
-<p class="faint">Snapshot taken when this page was last built. The <a href="/#live">Live tab on the home page</a> refreshes the same feed while you read it, and lets you switch between Nepal and the world.</p>
+<p class="faint" id="world-snapshot-note">Snapshot taken when this page was last built. A live version appears here when available.</p>
 ` : `<p class="faint">The world feed is loading from its sources. Open <a href="/#live">the Live tab</a> for the continuously refreshed version.</p>`;
 
   const body = `
 <p class="measure">Earthquakes, floods, cyclones, wildfires and the humanitarian response to them, collected from the same kind of sources this site uses for Nepal: UN alerting bodies first, then named international newsrooms. Every headline links to whoever published it. Nothing is rewritten here and no figure on this page is this site's own.</p>
 
 <h2>What is happening now</h2>
+<div id="world-live-controls" hidden>
+  <div class="seg location-seg" role="group" aria-label="Filter world updates by location" style="margin:14px 0; max-width:560px;">
+    <button type="button" data-world-country="all" aria-pressed="true">All locations</button>
+    <button type="button" data-world-country="nepal" aria-pressed="false">Nepal</button>
+    <button type="button" data-world-country="brazil" aria-pressed="false">Brazil</button>
+    <button type="button" data-world-country="united-states" aria-pressed="false">United States</button>
+  </div>
+</div>
+<p class="faint" id="world-refresh-status" aria-live="polite">Checking live sources...</p>
+<ul class="postlist" id="world-live-list" hidden></ul>
 ${snapshot}
+<script>
+(function(){
+  var controls = document.getElementById('world-live-controls');
+  var list = document.getElementById('world-live-list');
+  var status = document.getElementById('world-refresh-status');
+  var snapshot = document.getElementById('world-snapshot');
+  var snapshotNote = document.getElementById('world-snapshot-note');
+  var country = 'all';
+  var items = [];
+  var countryName = { nepal: 'Nepal', brazil: 'Brazil', 'united-states': 'United States', global: 'World' };
+
+  function safeUrl(value){
+    try {
+      var url = new URL(String(value || ''));
+      return url.protocol === 'https:' ? url.href : null;
+    } catch (_) { return null; }
+  }
+
+  function displayTime(value){
+    var time = new Date(value || '');
+    if (isNaN(time.getTime())) return '';
+    return time.toLocaleString('en-US', {
+      timeZone: 'Asia/Kathmandu', month: 'short', day: 'numeric',
+      hour: 'numeric', minute: '2-digit', hour12: true
+    }) + ' NPT';
+  }
+
+  function card(item){
+    var href = safeUrl(item.url);
+    if (!href) return null;
+    var li = document.createElement('li');
+    var link = document.createElement('a');
+    link.className = 'postcard';
+    link.href = href;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    var time = displayTime(item.time);
+    if (time) {
+      var stamp = document.createElement('time');
+      stamp.dateTime = String(item.time || '');
+      stamp.textContent = time;
+      link.appendChild(stamp);
+    }
+    var title = document.createElement('h3');
+    title.textContent = String(item.title || 'Update');
+    link.appendChild(title);
+    if (item.summary) {
+      var summary = document.createElement('p');
+      summary.textContent = String(item.summary).slice(0, 220);
+      link.appendChild(summary);
+    }
+    var source = document.createElement('span');
+    source.className = 'src-badge';
+    source.textContent = (countryName[item.country] || 'World') + ' · ' + String(item.source || 'Source');
+    link.appendChild(source);
+    li.appendChild(link);
+    return li;
+  }
+
+  function render(){
+    var visible = country === 'all' ? items : items.filter(function(item){ return item.country === country; });
+    while (list.firstChild) list.removeChild(list.firstChild);
+    visible.slice(0, 60).forEach(function(item){ var row = card(item); if (row) list.appendChild(row); });
+    status.textContent = visible.length + (country === 'all' ? ' live updates' : ' ' + (countryName[country] || country) + ' updates');
+  }
+
+  controls.addEventListener('click', function(event){
+    var button = event.target.closest('[data-world-country]');
+    if (!button) return;
+    country = button.getAttribute('data-world-country');
+    controls.querySelectorAll('[data-world-country]').forEach(function(item){ item.setAttribute('aria-pressed', String(item === button)); });
+    render();
+  });
+
+  fetch('/api/global', { cache: 'no-store' })
+    .then(function(response){ return response.ok ? response.json() : Promise.reject(new Error('HTTP ' + response.status)); })
+    .then(function(data){
+      items = Array.isArray(data.items) ? data.items : [];
+      if (!items.length) throw new Error('No live world updates');
+      controls.hidden = false;
+      list.hidden = false;
+      if (snapshot) snapshot.hidden = true;
+      if (snapshotNote) snapshotNote.hidden = true;
+      render();
+    })
+    .catch(function(){
+      status.textContent = 'Live refresh is unavailable. Showing the last built snapshot.';
+    });
+})();
+</script>
 
 <div class="panel">
   <div class="panel-head">
@@ -1605,7 +1709,7 @@ ${snapshot}
       path, title: t, description: d,
       rail: liveRail(ctx, { figTitle: 'Nepal, where it stands', hideWorld: true }),
       h1: 'World disasters, live',
-      lede: 'What is happening elsewhere, from the UN alerting bodies and named newsrooms. The same sourcing rules as the Nepal coverage.',
+      lede: 'What is happening elsewhere, with separate live views for Nepal, Brazil and the United States. The same sourcing rules as the Nepal coverage.',
       crumbs: [{ label: 'Home', href: '/' }, { label: 'World' }],
       published: '2026-08-28T09:00:00+05:45',
       modified: ctx.modified,

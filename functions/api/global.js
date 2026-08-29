@@ -23,7 +23,7 @@
 
 import {
   getText, parseRss, cleanTitle, summarize, toIso,
-  spread, byTimeDesc, significantWords, jaccard
+  spread, byTimeDesc, significantWords, jaccard, safeHttpsUrl
 } from './news.js';
 
 const CACHE_SECONDS = 300;
@@ -41,11 +41,20 @@ const HAZARD = [
 /** Words that mean the piece is about politics or money rather than an event. */
 const NOT_AN_EVENT = /\b(stocks?|shares?|markets?|election campaign|box office|transfer window|premier league|film|movie|album|faces? (?:an )?(?:inquiry|investigation)|inquiry (?:into|over)|diverted (?:wildfire |disaster )?(?:resources?|funds?)|misused (?:wildfire |disaster )?(?:resources?|funds?))\b/i;
 
-const PRIMARY_SOURCES = ['ReliefWeb (UN OCHA)', 'GDACS (UN / EC)', 'USGS'];
+const PRIMARY_SOURCES = [
+  'ReliefWeb (UN OCHA)', 'GDACS (UN / EC)', 'USGS', 'U.S. National Weather Service'
+];
 const TRUSTED_SOURCES = [
   'Al Jazeera', 'BBC News', 'The Guardian', 'France 24', 'NDTV',
-  'Reuters', 'Associated Press', 'AFP'
+  'Reuters', 'Associated Press', 'AFP', 'Agência Brasil'
 ];
+
+const BRAZIL_HAZARD = [
+  'enchente', 'inundação', 'alagamento', 'deslizamento', 'tempestade',
+  'ciclone', 'seca', 'queimada', 'incêndio', 'terremoto', 'desastre',
+  'chuva forte', 'chuvas intensas'
+];
+const US_ALERT_HAZARD = /flood|hurricane|tornado|tsunami|wildfire|fire weather|landslide|winter storm|blizzard|ice storm|severe thunderstorm|extreme heat|extreme cold/i;
 
 /** A headline must describe the event itself, not an investigation that happens
  * to use a disaster word. This keeps policy stories out of the live feed. */
@@ -71,26 +80,30 @@ export async function onRequestGet(context) {
     fetchWire('https://feeds.bbci.co.uk/news/world/rss.xml', 'BBC News').catch(track(errors, 'bbc')),
     fetchWire('https://www.theguardian.com/world/rss', 'The Guardian').catch(track(errors, 'guardian')),
     fetchWire('https://www.france24.com/en/rss', 'France 24').catch(track(errors, 'france24')),
-    fetchWire('https://feeds.feedburner.com/ndtvnews-world-news', 'NDTV').catch(track(errors, 'ndtv'))
+    fetchWire('https://feeds.feedburner.com/ndtvnews-world-news', 'NDTV').catch(track(errors, 'ndtv')),
+    fetchNepalLocal(request).catch(track(errors, 'nepal')),
+    fetchBrazilLocal().catch(track(errors, 'brazil')),
+    fetchUnitedStatesAlerts().catch(track(errors, 'united-states'))
   ]);
 
   const seen = new Set();
   let items = [];
   for (const group of groups) {
     for (const item of group) {
-      if (!item.title || !item.url) continue;
-      const key = item.title.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim().slice(0, 70);
+      const safeItem = sanitizeWorldItem(item);
+      if (!safeItem || !safeItem.title || !safeItem.url) continue;
+      const key = safeItem.title.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim().slice(0, 70);
       if (seen.has(key)) continue;
       seen.add(key);
-      items.push(item);
+      items.push(safeItem);
     }
   }
 
   items.sort(byTimeDesc);
   items = fold(items);
   for (const item of items) {
-    item.authority = PRIMARY_SOURCES.indexOf(item.source) !== -1 ? 'primary'
-      : TRUSTED_SOURCES.indexOf(item.source) !== -1 ? 'trusted' : 'other';
+    item.authority = item.authority || (PRIMARY_SOURCES.indexOf(item.source) !== -1 ? 'primary'
+      : TRUSTED_SOURCES.indexOf(item.source) !== -1 ? 'trusted' : 'other');
   }
 
   const primary = items.filter(i => i.kind !== 'press').slice(0, 3);
@@ -217,6 +230,94 @@ async function fetchWire(url, source) {
       image: item.image,
       summary: summarize(item.contentFull || item.description, 650)
     }));
+}
+
+/** Nepal is included as its own live location, using the existing source-checked
+ * feed rather than fetching its publishers again. */
+async function fetchNepalLocal(request) {
+  const url = new URL('/api/news', request.url);
+  const res = await fetch(url, {
+    signal: AbortSignal.timeout(12000),
+    headers: { accept: 'application/json' }
+  });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  const data = await res.json();
+  return (Array.isArray(data.items) ? data.items : [])
+    // The World page's Nepal view is for local and official coverage. Foreign
+    // wire headlines remain in World, where competing cross-border totals are
+    // not presented as Nepal's local confirmed figure.
+    .filter(item => item && item.kind !== 'video' &&
+      (item.region === 'nepal' || item.authority === 'primary'))
+    .slice(0, 30)
+    .map(item => ({ ...item, country: 'nepal' }));
+}
+
+/** Brazil's public broadcaster is a named, national source. Filter its broad
+ * feed locally so ordinary politics and sport do not appear as a disaster. */
+async function fetchBrazilLocal() {
+  const xml = await getText('https://agenciabrasil.ebc.com.br/rss/ultimasnoticias/feed.xml');
+  return parseRss(xml)
+    .filter(item => isBrazilDisasterHeadline(item.title))
+    .slice(0, 12)
+    .map(item => ({
+      title: cleanTitle(item.title),
+      url: item.link,
+      source: 'Agência Brasil',
+      time: toIso(item.pubDate, item.link),
+      kind: 'press',
+      region: 'global',
+      country: 'brazil',
+      image: item.image,
+      summary: summarize(item.contentFull || item.description, 650)
+    }));
+}
+
+function isBrazilDisasterHeadline(title) {
+  const text = String(title || '').toLowerCase();
+  return BRAZIL_HAZARD.some(word => text.includes(word));
+}
+
+/** The National Weather Service publishes structured, active U.S. alerts.
+ * These are primary alerts, not news reporting, so no number is rewritten. */
+async function fetchUnitedStatesAlerts() {
+  const json = JSON.parse(await getText(
+    'https://api.weather.gov/alerts/active?status=actual&message_type=alert&severity=Severe'
+  ));
+  return (json.features || [])
+    .map(feature => {
+      const props = feature && feature.properties ? feature.properties : {};
+      const event = cleanTitle(props.event || '');
+      if (!US_ALERT_HAZARD.test(event)) return null;
+      const area = cleanTitle(props.areaDesc || 'United States');
+      const title = cleanTitle(props.headline || (event + ': ' + area));
+      return {
+        title,
+        // `web` is often the NWS home page on HTTP. The per-alert API URL is
+        // HTTPS, specific to this alert, and preserves the site's safe-link rule.
+        url: feature.id || props.web,
+        source: 'U.S. National Weather Service',
+        time: toIso(props.sent || props.effective || props.onset),
+        kind: 'alert',
+        region: 'global',
+        country: 'united-states',
+        image: null,
+        summary: summarize(props.description || props.instruction, 650)
+      };
+    })
+    .filter(Boolean)
+    .slice(0, 30);
+}
+
+function sanitizeWorldItem(item) {
+  if (!item || typeof item !== 'object') return null;
+  const url = safeHttpsUrl(item.url);
+  if (!url) return null;
+  return {
+    ...item,
+    url,
+    image: safeHttpsUrl(item.image),
+    country: item.country || 'global'
+  };
 }
 
 function track(errors, name) {
