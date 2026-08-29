@@ -9,9 +9,9 @@
  * some publishers that answer a home connection refuse datacentre traffic,
  * so anything unreachable from here was dropped rather than left to fail.
  *
- * Sources, in order of trust — region tags let the Feed tab filter to
- * "Nepali sources" or "Global sources" (official/alert/quake items always
- * show regardless of that filter, since they're primary sources, not press):
+ * Sources, in order of trust — the Feed tab offers all sources or Nepali
+ * sources. Official, alert and quake items always show in both views because
+ * they are primary sources, not press:
  *   Official   ReliefWeb (UN OCHA), GDACS (UN/EC), USGS
  *   Nepal      Kathmandu Post, Onlinekhabar, Ratopati, Nepalnews, Setopati,
  *              Nagarik News, Annapurna Post, Khabarhub, Nepal Police (their
@@ -40,7 +40,7 @@ import { loadPoliceNews } from './police.js';
 
 const CACHE_SECONDS = 60;
 /* The verified Watch list is cheap to read, so it can check often. */
-const YT_FRESH_SECONDS = 120;     // 2 minutes
+const YT_FRESH_SECONDS = 60;      // 1 minute
 const YT_BACKUP_SECONDS = 86400;  // 24 hours
 const YT_CHANNEL_SECONDS = 30 * 24 * 60 * 60; // Channel metadata rarely changes.
 /** Card summaries: keep the full text each feed publishes, cleaned to plain
@@ -183,31 +183,17 @@ export async function onRequestGet(context) {
   items = cluster(items);
   tagAuthority(items);
 
-  // Official/primary sources (governments, UN bodies) are few in number and
-  // are worth guaranteeing a spot even if their timestamp is a few hours
-  // older than the newest press wire — a straight chronological cap would
-  // otherwise let a wave of fresh wire stories quietly bury the one Nepal
-  // Police update for the day.
   /* The Watch tab is a grid people scroll, so it gets the whole de-duplicated
-     result rather than the first screenful. */
+     result rather than the first screenful. Every returned item stays in
+     strict newest-first order; source priority must never put an older item
+     above a newer one. */
   const videos = items.filter(i => i.kind === 'video').slice(0, 150);
   const newestVideo = videos.slice().sort(byTimeDesc)[0] || null;
-  const primary = items.filter(i => i.kind !== 'press' && i.kind !== 'video');
-  const press = items.filter(i => i.kind === 'press');
-
-  /* Only a handful of primary-source items are pinned above the press. Pinning
-     every one of them put five UN documents at the top of the feed and pushed
-     the newsrooms below the fold, which read as one source repeating itself.
-     Nepal Police first, because the toll is their figure and everyone else is
-     quoting it. */
-  const pinned = capPerSource(primary.slice().sort(byPinRank), 1).slice(0, 3);
-  const rest = primary.filter(i => pinned.indexOf(i) === -1)
-    .concat(press)
-    .sort(byTimeDesc);
-
-  const finalItems = pinned
-    .concat(spread(rest).slice(0, 100 - pinned.length))
-    .concat(videos);
+  const liveItems = items
+    .filter(i => i.kind !== 'video')
+    .sort(byTimeDesc)
+    .slice(0, 100);
+  const finalItems = liveItems.concat(videos).sort(byTimeDesc);
 
   await backfillImages(finalItems, 14);
 

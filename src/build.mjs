@@ -157,9 +157,7 @@ async function loadGlobalItems() {
   }
   return [];
 }
-const globalItems = await loadGlobalItems();
-
-const ctx = { posts, event, today, modified, buildDay: nptDay(modified), globalItems };
+const ctx = { posts, event, today, modified, buildDay: nptDay(modified) };
 
 const pages = [
   P.nepalFloodHub(ctx),
@@ -178,7 +176,6 @@ const pages = [
   P.hydropower(ctx),
   P.foreignNationals(ctx),
   P.updateIndex(ctx),
-  P.globalNews(ctx),
   P.about(ctx),
   P.sources(ctx),
   P.contact(ctx),
@@ -209,7 +206,7 @@ for (const pg of pages) {
 
 /* -- write ------------------------------------------------------------------ */
 /* Remove generated directories first so a deleted page cannot linger. */
-for (const dir of ['nepal-flood', 'nepal-disasters', 'updates', 'about', 'sources', 'contact', 'ne']) {
+for (const dir of ['nepal-flood', 'nepal-disasters', 'updates', 'about', 'sources', 'contact', 'global', 'ne']) {
   rmSync(join(ROOT, dir), { recursive: true, force: true });
 }
 
