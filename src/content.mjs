@@ -8,28 +8,26 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-08-29T06:00:00+05:45';
-export const TOLL_SOURCE = 'Nepal Police bulletin';
+export const TOLL_AS_OF = '2026-08-29T10:00:00+05:45';
+export const TOLL_SOURCE = 'NDRRMA 10am situation update';
 
 /* When the bulletin one step before TOLL_AS_OF was published. Used only for
    the "how the toll has moved" table, so that row's timestamp always matches
    TOLL.deadNepalEarlier instead of drifting out of date as later runs move
    both TOLL_AS_OF and deadNepalEarlier forward. */
-export const TOLL_EARLIER_AS_OF = '2026-08-28T17:00:00+05:45';
+export const TOLL_EARLIER_AS_OF = '2026-08-29T06:00:00+05:45';
 
-/* The district breakdown carries its own clock. It happens to match the toll
-   right now, because the 29 August bulletin published both together, but the
-   two move apart whenever a later update raises the national figure without
-   restating every district. Keeping them separate means the table is never
-   quietly presented as newer than it is. */
+/* The district breakdown carries its own clock. It is older than the national
+   toll because the 10am NDRRMA update raised that total without a new district
+   split. Keeping them separate means the table is never quietly presented as
+   newer than it is. */
 export const BODIES_AS_OF = '2026-08-29T06:00:00+05:45';
 export const BODIES_SOURCE = 'Nepal Police bulletin';
 
-/* The missing list has its own, earlier timestamp. It is deliberately kept
-   separate: the newest police bulletin gives a death toll and no missing
-   figure, so quoting both against one time would be wrong. */
-export const MISSING_AS_OF = '2026-08-28T19:00:00+05:45';
-export const MISSING_SOURCE = 'NDRRMA Search, Rescue and Relief update';
+/* NDRRMA's 10am update reports the current missing total. Its detailed group
+   breakdown is older and remains separately timestamped below. */
+export const MISSING_AS_OF = '2026-08-29T10:00:00+05:45';
+export const MISSING_SOURCE = 'NDRRMA 10am Search, Rescue and Relief situation update';
 
 /* Who those people are was last broken down in the morning police bulletin,
    when the list stood at 826. The groups below still describe that list. */
@@ -93,15 +91,15 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 616,
-  deadNepalEarlier: 553,
+  deadNepal: 626,
+  deadNepalEarlier: 616,
   deadChina: 7,
-  missing: 1924,
+  missing: 2426,
   missingChina: 554,
   missingChinaForeign: 260,
   missingIndian: 133,
-  injured: 1473,
-  rescued: 113,
+  injured: 101,
+  rescued: 4451,
   rescuedBreakdown: [
     ['Nepali citizens', 88],
     ['Indian citizens', 11],
