@@ -29,8 +29,8 @@ function neTime(iso) {
 
 const TOLL_NE = neTime(C.TOLL_AS_OF);
 const MISSING_NE = neTime(C.MISSING_AS_OF);
-/* The two tables below are the last full breakdowns, which are older than the
-   headline totals. They carry their own time so they cannot read as current. */
+/* The tables below carry their own bulletin times so they cannot drift from
+   the headline totals. */
 const BODIES_NE = neTime(C.BODIES_AS_OF);
 const MISSING_BREAKDOWN_NE = neTime(C.MISSING_BREAKDOWN_AS_OF);
 
@@ -62,16 +62,16 @@ const LAKE_WARNING = `<div class="callout callout-alert">
 
 function numbersNe() {
   return `<div class="numgrid">
-    <div class="statbox"><span class="n crit">${ne(C.TOLL.deadNepal)}</span><span class="l">नेपालमा मृत्यु पुष्टि</span><span class="src">NDRRMA, ${esc(TOLL_NE)}</span></div>
+    <div class="statbox"><span class="n crit">${ne(C.TOLL.deadNepal)}</span><span class="l">नेपालमा मृत्यु पुष्टि</span><span class="src">नेपाल प्रहरी, ${esc(TOLL_NE)}</span></div>
     <div class="statbox"><span class="n crit">${ne(C.TOLL.missing)}</span><span class="l">नेपालमा बेपत्ता सूचीमा</span><span class="src">NDRRMA, ${esc(MISSING_NE)}</span></div>
     <div class="statbox"><span class="n">${ne(C.TOLL.missingChina)}</span><span class="l">चीनतर्फ बेपत्ता</span><span class="src">सीसीटीभी, ग्याइरोङ बन्दरगाह</span></div>
     <div class="statbox"><span class="n">${ne(C.TOLL.injured)}</span><span class="l">घाइते</span><span class="src">प्राधिकरण र नेपाल प्रहरी</span></div>
-    <div class="statbox"><span class="n">${ne(C.TOLL.rescued)}</span><span class="l">उद्धार गरिएका</span><span class="src">NDRRMA, २७ अगस्ट</span></div>
+    <div class="statbox"><span class="n">${ne(C.TOLL.rescued)}</span><span class="l">उद्धार गरिएका</span><span class="src">NDRRMA, ${esc(MISSING_NE)}</span></div>
     <div class="statbox"><span class="n">${ne(C.DAMAGE.hydropowerProjects)}</span><span class="l">जलविद्युत् आयोजना क्षतिग्रस्त, करिब ${ne(C.DAMAGE.hydropowerMW)} मेगावाट</span><span class="src">नेपाल विद्युत् प्राधिकरण</span></div>
     <div class="statbox"><span class="n sm">रु २०० अर्ब</span><span class="l">सडक र पुल क्षति, प्रारम्भिक अनुमान</span><span class="src">मन्त्री सुनिल लामसाल, २६ अगस्ट</span></div>
     <div class="statbox"><span class="n sm">रु १ अर्ब</span><span class="l">राहत कोषमा निकासा</span><span class="src">नेपाल सरकार</span></div>
   </div>
-  <p class="updated-line"><strong>दुई मुख्य सङ्ख्या एउटै घडीसँग पढ्नुहोस्।</strong> NDRRMA को ${esc(TOLL_NE)} को अपडेटमा मृत्यु सङ्ख्या ${ne(C.TOLL.deadNepal)} र सम्पर्कविहीन सङ्ख्या ${ne(C.TOLL.missing)} छ। सम्पर्कविहीन हुनु मृत्यु पुष्टि हुनु होइन। समूहगत विवरण पुरानो छ।</p>`;
+  <p class="updated-line"><strong>दुई मुख्य सङ्ख्या आफ्नै घडीसँग पढ्नुहोस्।</strong> नेपाल प्रहरीको ${esc(TOLL_NE)} को बुलेटिनमा मृत्यु सङ्ख्या ${ne(C.TOLL.deadNepal)} छ। NDRRMA को ${esc(MISSING_NE)} को अपडेटमा ${ne(C.TOLL.missing)} जना सम्पर्कविहीन छन्। सम्पर्कविहीन हुनु मृत्यु पुष्टि हुनु होइन।</p>`;
 }
 
 /* -- /ne/ : the event briefing --------------------------------------------- */
@@ -116,10 +116,10 @@ ${LAKE_WARNING}
 <h2>के भयो</h2>
 <p><strong>२०२६ अगस्ट २६ को बिहान करिब ९ बजे</strong> रसुवागढीमा भोटेकोशी नदी अचानक बढ्यो। रसुवामा पानी परेको थिएन। केही मिनेटमै पानी तिमुरे पुग्यो र त्यहाँका नौ बैंक शाखा र भन्सार कार्यालय बगायो। त्रिशूलीसँग भोटेकोशी मिसिने ठाउँ स्याफ्रुबेसीको हेलिप्याड भत्कियो, जसले पहिलो दिनको हवाई उद्धार ढिलो बनायो, जुन दिन त्यो सबैभन्दा जरुरी थियो।</p>
 <p>बाढी जिल्लाको सिमानामा रोकिएन। भोटेकोशी स्याफ्रुबेसीमा त्रिशूलीसँग मिसिन्छ, र त्रिशूली नारायणीमा। पानी नुवाकोटको बेत्रावती र त्रिशूली बजार, धादिङको गल्छी र ढुंगे बजार हुँदै मुग्लिन पार गर्‍यो। सशस्त्र प्रहरी बलका अनुसार बिहीबार दिउँसोसम्म नारायणी नदीबाट मात्रै ${ne(C.TOLL.narayaniRecovered)} शव निकालिएका छन्।</p>
-<p>पहिलो दुई दिनमा सङ्ख्या बारम्बार बढ्यो, किनभने खोजी टोली सम्पर्कविहीन भएका ठाउँमा पुग्दै गए। बुधबार साँझ प्रधानमन्त्री कार्यालयले ९५ र प्राधिकरणले ७२ भनेको थियो; शनिबार बिहान ६ बजे नेपाल प्रहरीको सङ्ख्या ${ne(C.TOLL.deadNepalEarlier)} पुग्यो, र ${esc(TOLL_NE)} मा NDRRMA को सङ्ख्या <strong>${ne(C.TOLL.deadNepal)}</strong> भयो। यही कारण यहाँको हरेक सङ्ख्या अस्थायी हो।</p>
+<p>पहिलो दुई दिनमा सङ्ख्या बारम्बार बढ्यो, किनभने खोजी टोली सम्पर्कविहीन भएका ठाउँमा पुग्दै गए। बुधबार साँझ प्रधानमन्त्री कार्यालयले ९५ र प्राधिकरणले ७२ भनेको थियो; शनिबार बिहान ६ बजे नेपाल प्रहरीको सङ्ख्या ${ne(C.TOLL.deadNepalEarlier)} पुग्यो, र ${esc(TOLL_NE)} को प्रहरी बुलेटिनमा <strong>${ne(C.TOLL.deadNepal)}</strong> पुग्यो। यही कारण यहाँको हरेक सङ्ख्या अस्थायी हो।</p>
 
 <h3>कुन जिल्लामा कति शव फेला परे</h3>
-${table(['जिल्ला', 'शव फेला परेको'], C.BODIES_BY_DISTRICT.map(([d, n]) => [esc(NE_DISTRICTS[d] || d), `<span class="num">${ne(n)}</span>`]).concat([['<strong>यो सूचीको जम्मा</strong>', `<strong class="num">${ne(C.BODIES_BY_DISTRICT.reduce((a, [, n]) => a + n, 0))}</strong>`]]), `नेपाल प्रहरी, ${esc(BODIES_NE)}। यो अन्तिम पूरा जिल्लागत विवरण हो; माथिको कुल सङ्ख्या यसपछिको हो। तालिकामा भएको जिल्ला शव फेला परेको ठाउँ हो, मृतकको स्थायी ठेगाना होइन।`)}
+${table(['जिल्ला', 'शव फेला परेको'], C.BODIES_BY_DISTRICT.map(([d, n]) => [esc(NE_DISTRICTS[d] || d), `<span class="num">${ne(n)}</span>`]).concat([['<strong>यो सूचीको जम्मा</strong>', `<strong class="num">${ne(C.BODIES_BY_DISTRICT.reduce((a, [, n]) => a + n, 0))}</strong>`]]), `नेपाल प्रहरी, ${esc(BODIES_NE)}। जिल्लागत विवरणको जम्मा माथिको राष्ट्रिय कुलसँग मिल्छ। तालिकामा भएको जिल्ला शव फेला परेको ठाउँ हो, मृतकको स्थायी ठेगाना होइन।`)}
 <p>चीनतर्फ ग्याइरोङ नजिक थप <strong>${ne(C.TOLL.deadChina)} जना</strong>को मृत्यु पुष्टि भएको छ।</p>
 
 <h2>बेपत्ता</h2>
@@ -141,7 +141,7 @@ ${table(['समूह', 'बेपत्ता सूचीमा'], C.MISSING_
 <p>कति मानिस विस्थापित भए भन्ने कुनै सरकारी वा मानवीय निकायले अझै सङ्ख्या सार्वजनिक गरेको छैन।</p>
 
 <h2>उद्धार र प्रतिकार्य</h2>
-<p>नेपाली सेना, सशस्त्र प्रहरी बल र नेपाल प्रहरीले सैनिक तथा निजी हेलिकप्टरसहित खोजी र उद्धार गरिरहेका छन्। NDRRMA का अनुसार ${esc(TOLL_NE)} सम्म <strong>${ne(C.TOLL.rescued)} जना</strong> उद्धार गरिएका छन्। पहिले सार्वजनिक भएको नामसहितको सूची ११३ जनाको मात्र हो, त्यसैले त्यो नयाँ कुलको विवरण होइन।</p>
+<p>नेपाली सेना, सशस्त्र प्रहरी बल र नेपाल प्रहरीले सैनिक तथा निजी हेलिकप्टरसहित खोजी र उद्धार गरिरहेका छन्। NDRRMA का अनुसार ${esc(MISSING_NE)} सम्म <strong>${ne(C.TOLL.rescued)} जना</strong> उद्धार गरिएका छन्। पहिले सार्वजनिक भएको नामसहितको सूची ११३ जनाको मात्र हो, त्यसैले त्यो नयाँ कुलको विवरण होइन।</p>
 <p>मन्त्रिपरिषद्ले घाइतेको निःशुल्क उपचार, मृतकका परिवारलाई आर्थिक सहायता, र सडक खोल्ने, बिजुली र सञ्चार पुनःस्थापना गर्ने तथा विस्थापितलाई खाना र आश्रय दिने निर्णय गरेको छ। नेपालले चीन र भारतसँग सहयोग मागेको छ।</p>
 
 <h2>प्रायः सोधिने प्रश्न</h2>

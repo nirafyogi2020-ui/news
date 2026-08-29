@@ -8,8 +8,8 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-08-29T10:00:00+05:45",
-  "asOfSource": "NDRRMA Search, Rescue and Relief situation update, 10am Saturday; Nepal Police district breakdown remains from 6am",
+  "asOf": "2026-08-29T14:00:00+05:45",
+  "asOfSource": "Nepal Police bulletin, 2pm Saturday",
   "stats": [
     {
       "icon": "dead",
@@ -17,7 +17,7 @@
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "NDRRMA reported 626 bodies recovered in Nepal in its 10am Saturday situation update, 10 more than Nepal Police's 6am count. The last complete district breakdown is still the police total of 616: Chitwan 233, Nawalparasi East 158, Gorkha 48, Nawalparasi West 47, Dhading 45, Nuwakot 41, Tanahun 31 and Rasuwa 13. The NDRRMA update did not give a new district split. China's separate toll of 7 is not added here."
+      "detail": "Nepal Police reported 626 bodies found in Nepal by 2pm Saturday. Its district breakdown sums to 626: Chitwan 233, Nawalparasi East 158, Gorkha 54, Nawalparasi West 47, Dhading 49, Nuwakot 41, Tanahun 31 and Rasuwa 13. NDRRMA reported the same national total in its 10am Saturday update. China's separate toll of 7 is not added here."
     },
     {
       "icon": "missing",

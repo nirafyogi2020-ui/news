@@ -155,12 +155,12 @@ function numbersGrid() {
     <div class="statbox"><span class="n crit">${C.TOLL.missing}</span><span class="l">listed missing in Nepal</span><span class="src">${esc(C.MISSING_SOURCE)}, ${esc(AS_OF_MISSING)}</span></div>
     <div class="statbox"><span class="n">${C.TOLL.missingChina}</span><span class="l">missing on the China side</span><span class="src">CCTV, Gyirong Port</span></div>
     <div class="statbox"><span class="n">${C.TOLL.injured}</span><span class="l">injured</span><span class="src">NDRRMA and Nepal Police</span></div>
-    <div class="statbox"><span class="n">${C.TOLL.rescued}</span><span class="l">rescued so far</span><span class="src">NDRRMA, ${esc(AS_OF_TOLL)}</span></div>
+    <div class="statbox"><span class="n">${C.TOLL.rescued}</span><span class="l">rescued so far</span><span class="src">${esc(C.MISSING_SOURCE)}, ${esc(AS_OF_MISSING)}</span></div>
     <div class="statbox"><span class="n">${C.DAMAGE.hydropowerProjects}</span><span class="l">hydropower projects damaged, about ${C.DAMAGE.hydropowerMW} MW</span><span class="src">Nepal Electricity Authority</span></div>
     <div class="statbox"><span class="n sm">${esc(C.DAMAGE.costEstimate)}</span><span class="l">road and bridge damage, preliminary</span><span class="src">Minister Sunil Lamsal, 26 Aug</span></div>
     <div class="statbox"><span class="n sm">${esc(C.DAMAGE.reliefReleased)}</span><span class="l">relief money released</span><span class="src">Government of Nepal</span></div>
   </div>
-  <p class="updated-line"><strong>Read every number against its own clock.</strong> The death toll and the missing count are from the ${esc(C.TOLL_SOURCE)} of ${esc(AS_OF_TOLL)}. The district breakdown further down is from the earlier ${esc(C.BODIES_SOURCE)} of ${esc(AS_OF_BODIES)} and adds to less than the total above, because the later update raised the national figure without republishing every district. Damage and rescue figures come from the ${esc(C.SITREP_SHORT)}. Every count here is provisional and moves in both directions.</p>`;
+  <p class="updated-line"><strong>Read every number against its own clock.</strong> The death toll and district breakdown are from the ${esc(C.TOLL_SOURCE)} of ${esc(AS_OF_TOLL)}. The missing and rescue figures are from the ${esc(C.MISSING_SOURCE)} of ${esc(AS_OF_MISSING)}. Damage figures come from the ${esc(C.SITREP_SHORT)}. Every count here is provisional and moves in both directions.</p>`;
 }
 
 const SECOND_FLOOD_WARNING = `<div class="callout callout-alert">
@@ -178,7 +178,7 @@ export function nepalFloodHub(ctx) {
   const faq = faqBlock([
     {
       q: 'Is there a flood in Nepal right now?',
-      a: `<p>Yes. A flash flood struck Rasuwa district on 26 August 2026 and ran downstream along the Trishuli and Narayani rivers. As of ${esc(AS_OF_TOLL)}, NDRRMA reports ${C.TOLL.deadNepal} dead and ${C.TOLL.missing} people listed out of contact in Nepal. Officials warn a second surge is possible because a new barrier lake has formed upstream inside Tibet. <a href="/nepal-flood/rasuwa/">Full coverage of the Rasuwa flood</a>.</p>`,
+      a: `<p>Yes. A flash flood struck Rasuwa district on 26 August 2026 and ran downstream along the Trishuli and Narayani rivers. As of ${esc(AS_OF_TOLL)}, Nepal Police report ${C.TOLL.deadNepal} dead in Nepal; NDRRMA listed ${C.TOLL.missing} people out of contact at ${esc(AS_OF_MISSING)}. Officials warn a second surge is possible because a new barrier lake has formed upstream inside Tibet. <a href="/nepal-flood/rasuwa/">Full coverage of the Rasuwa flood</a>.</p>`,
     },
     {
       q: 'Which rivers in Nepal flood most often?',
@@ -323,7 +323,7 @@ ${SECOND_FLOOD_WARNING}
 <h2>What happened</h2>
 <p>At about <strong>09:00 Nepal time on 26 August 2026</strong>, the Bhote Koshi rose suddenly where it crosses into Nepal at Rasuwagadhi. It was not raining in the Rasuwa catchment. Within minutes the water was through Timure, the nearest Nepali settlement, taking nine bank branches and the customs post with it. Syabrubesi, downstream and the gateway to the Langtang trek, lost its helipad, which slowed rescue flights into the upper valley on the first day, when they mattered most. Around a dozen riverside settlements in northern Rasuwa were hit in that first hour.</p>
 <p>The flood did not stop at the district line. The Bhote Koshi joins the Trishuli at Syabrubesi, and the Trishuli runs on into the Narayani. The surge moved through Betrawati and Trishuli Bazar in Nuwakot, Galchhi and Dhunge Bazaar in Dhading, and past Muglin. Bodies have since been recovered as far as Chitwan and Nawalparasi. The Armed Police Force alone recovered ${C.TOLL.narayaniRecovered} from the Narayani by Thursday afternoon.</p>
-<p>Counts rose sharply and repeatedly through the first two days as search teams reached areas that had been cut off. The Prime Minister’s Office reported 95 dead on Wednesday evening and NDRRMA 72; by 6am Saturday the police count was ${C.TOLL.deadNepalEarlier}, and by ${esc(AS_OF_TOLL)} NDRRMA reported <strong>${C.TOLL.deadNepal}</strong>. Every figure on this page is provisional for that reason.</p>
+<p>Counts rose sharply and repeatedly through the first two days as search teams reached areas that had been cut off. The Prime Minister’s Office reported 95 dead on Wednesday evening and NDRRMA 72; by 6am Saturday the police count was ${C.TOLL.deadNepalEarlier}, and by ${esc(AS_OF_TOLL)} Nepal Police reported <strong>${C.TOLL.deadNepal}</strong>. Every figure on this page is provisional for that reason.</p>
 <p><a href="/nepal-flood/rasuwa/timeline/">See the full hour-by-hour timeline</a>.</p>
 
 <h3>The route the water took</h3>
@@ -471,15 +471,15 @@ ${numbersGrid()}
 <p>The flood started in Rasuwa, but the river carried people a long way downstream. Most bodies have been recovered in <strong>Chitwan</strong>, six districts below the source. A district in the table below is where a body was <em>found</em>, not where the person was from.</p>
 ${table(['District', 'Bodies recovered'], C.BODIES_BY_DISTRICT.map(([d, n]) => [esc(d), n]).concat([
     ['<strong>Total, Nepal</strong>', `<strong class="num">${totalListed}</strong>`],
-  ]), `${esc(C.BODIES_SOURCE)}, ${esc(AS_OF_BODIES)}. This is the last complete district breakdown; the national total above is later and higher.`)}
+  ]), `${esc(C.BODIES_SOURCE)}, ${esc(AS_OF_BODIES)}. The district figures add to the national total above.`)}
 <p>The Armed Police Force reported <strong>${C.TOLL.narayaniRecovered} bodies recovered from the Narayani river alone</strong> by Thursday afternoon. That is more than the entire national toll stood at 24 hours earlier. Chitwan’s mortuary has filled, and an identification centre is being set up.</p>
 <p>A further <strong>${C.TOLL.deadChina} deaths</strong> are confirmed on the Chinese side, near Gyirong (Kyirong) county just over the border from Rasuwagadhi, where the dry port and customs area were hit. That brings the confirmed total across both countries to <strong>${C.TOLL.deadNepal + C.TOLL.deadChina}</strong>.</p>
 
 <h2>Injured</h2>
-<p>NDRRMA reported <strong>${C.TOLL.injured} injured people receiving hospital treatment</strong> at ${esc(AS_OF_TOLL)}. This is a current treatment count, not a cumulative injury total.</p>
+<p>NDRRMA reported <strong>${C.TOLL.injured} injured people receiving hospital treatment</strong> at ${esc(AS_OF_MISSING)}. This is a current treatment count, not a cumulative injury total.</p>
 
 <h2>Rescued</h2>
-<p>Search and rescue is being run by the Nepali Army, Nepal Police and the Armed Police Force with military and private helicopters. NDRRMA reported <strong>${C.TOLL.rescued} people rescued</strong> at ${esc(AS_OF_TOLL)}. Its earlier named nationality list totals 113, so it is not a full breakdown of the current total.</p>
+<p>Search and rescue is being run by the Nepali Army, Nepal Police and the Armed Police Force with military and private helicopters. NDRRMA reported <strong>${C.TOLL.rescued} people rescued</strong> at ${esc(AS_OF_MISSING)}. Its earlier named nationality list totals 113, so it is not a full breakdown of the current total.</p>
 ${table(['Rescued', 'People'], C.TOLL.rescuedBreakdown.map(([k, v]) => [esc(k), v]).concat([['<strong>Earlier named list total</strong>', `<strong class="num">${C.TOLL.rescuedBreakdown.reduce((sum, [, value]) => sum + value, 0)}</strong>`]]), 'NDRRMA, 27 August 2026. This is an older named list, not a breakdown of the latest total.')}
 
 <h2>How the toll has moved</h2>
@@ -491,7 +491,7 @@ ${table(['When', 'Reported dead', 'Source'], [
     ['13:30 Thursday, 27 Aug', 270, 'Nepal Police'],
     ['14:30 Thursday, 27 Aug', 289, 'Nepal Police'],
     [esc(AS_OF_TOLL_EARLIER), C.TOLL.deadNepalEarlier, 'Nepal Police'],
-    [`<strong>${esc(AS_OF_TOLL)}</strong>`, `<strong class="num">${C.TOLL.deadNepal}</strong>`, '<strong>NDRRMA</strong>'],
+    [`<strong>${esc(AS_OF_TOLL)}</strong>`, `<strong class="num">${C.TOLL.deadNepal}</strong>`, '<strong>Nepal Police</strong>'],
   ], 'Compiled from Nepal Police bulletins and the UN OCHA situation overview of 27 August.')}
 <p>Three separate things move these figures, and they move at different speeds:</p>
 <ul>
@@ -503,7 +503,7 @@ ${table(['When', 'Reported dead', 'Source'], [
 
 <h2>Sources for every figure on this page</h2>
 <ul>
-  <li><strong>Dead, by district:</strong> Nepal Police bulletin, ${esc(AS_OF_TOLL)}. <a href="https://www.nepalpolice.gov.np/" rel="noopener nofollow" target="_blank">nepalpolice.gov.np</a></li>
+  <li><strong>Dead, by district:</strong> Nepal Police bulletin, ${esc(AS_OF_BODIES)}. <a href="https://www.nepalpolice.gov.np/" rel="noopener nofollow" target="_blank">nepalpolice.gov.np</a></li>
   <li><strong>Missing:</strong> Nepal Police bulletin, ${esc(AS_OF_MISSING)}.</li>
   <li><strong>Injured, rescued, response:</strong> ${esc(C.SITREP_SHORT)} on <a href="https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" rel="noopener nofollow" target="_blank">ReliefWeb</a>, drawing on NDRRMA and Nepal Police.</li>
   <li><strong>Narayani recoveries:</strong> Armed Police Force, reported by Nepalnews, 27 August.</li>
@@ -514,7 +514,7 @@ ${table(['When', 'Reported dead', 'Source'], [
 `;
 
   const t = `Rasuwa Flood Death Toll: ${C.TOLL.deadNepal} Confirmed Dead, District by District`;
-  const d = `Rasuwa flood death toll: ${C.TOLL.deadNepal} confirmed dead and ${C.TOLL.injured} injured in Nepal as of ${AS_OF_TOLL}, with the district-by-district table and a source for every figure.`;
+  const d = `Rasuwa flood: ${C.TOLL.deadNepal} confirmed dead in Nepal as of ${AS_OF_TOLL}. NDRRMA reported ${C.TOLL.injured} injured in hospital at ${AS_OF_MISSING}. District table and sources included.`;
   return {
     path, title: t, description: d, lastmod: ctx.modified, priority: '0.9', changefreq: 'daily',
     html: page({
@@ -522,7 +522,7 @@ ${table(['When', 'Reported dead', 'Source'], [
       path, title: t, description: d,
       ogTitle: `Rasuwa flood death toll: ${C.TOLL.deadNepal} confirmed dead`,
       h1: 'Rasuwa flood: confirmed dead, injured and rescued',
-      lede: `Confirmed figures only, with the bulletin and the time attached to each one. NDRRMA put the toll at ${C.TOLL.deadNepal} dead as of ${AS_OF_TOLL}, up from Nepal Police's ${C.TOLL.deadNepalEarlier} at 6am.`,
+      lede: `Confirmed figures only, with the bulletin and the time attached to each one. Nepal Police put the toll at ${C.TOLL.deadNepal} dead as of ${AS_OF_TOLL}, up from ${C.TOLL.deadNepalEarlier} at 6am.`,
       crumbs: [{ label: 'Home', href: '/' }, { label: 'Nepal floods', href: '/nepal-flood/' }, { label: 'Rasuwa flood 2026', href: '/nepal-flood/rasuwa/' }, { label: 'Casualties' }],
       statusPill: 'live',
       updatedNote: bylineLive(ctx.modified),
