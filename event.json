@@ -8,24 +8,24 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-08-29T06:00:00+05:45",
-  "asOfSource": "Nepal Police bulletin (bodies found as of 6am Saturday); NDRRMA, missing and China figures unchanged since Friday evening / Saturday morning",
+  "asOf": "2026-08-29T10:00:00+05:45",
+  "asOfSource": "NDRRMA Search, Rescue and Relief situation update, 10am Saturday; Nepal Police district breakdown remains from 6am",
   "stats": [
     {
       "icon": "dead",
-      "value": "616",
+      "value": "626",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepal Police raised the toll to 616 bodies found, in a bulletin posted on its own website giving the count as of 6am Saturday, up from 553 in Friday's 5pm bulletin. The new district breakdown sums to 616: Chitwan 233, Nawalparasi East 158, Gorkha 48, Nawalparasi West 47, Dhading 45, Nuwakot 41, Tanahun 31, Rasuwa 13. The bulletin does not restate injured, rescued or missing figures, which still stand at their last published counts. Sources differ on whether this counts deaths on the China side, where state media (Xinhua) had the toll at 7 as of Saturday morning, so it is not added here."
+      "detail": "NDRRMA reported 626 bodies recovered in Nepal in its 10am Saturday situation update, 10 more than Nepal Police's 6am count. The last complete district breakdown is still the police total of 616: Chitwan 233, Nawalparasi East 158, Gorkha 48, Nawalparasi West 47, Dhading 45, Nuwakot 41, Tanahun 31 and Rasuwa 13. The NDRRMA update did not give a new district split. China's separate toll of 7 is not added here."
     },
     {
       "icon": "missing",
-      "value": "1,924",
+      "value": "2,426",
       "tone": "critical",
       "label": "listed missing in Nepal",
-      "bar": 99,
-      "detail": "NDRRMA said in a Friday evening Search, Rescue and Relief update that 1,924 people are now listed out of contact in Nepal, nearly double the 977 it had given that same afternoon, up from 910 the evening before that. NDRRMA said the rise came from adding more local residents to the list, not a new wave of people going missing. The count of foreign nationals held at 517, unchanged. This figure is NDRRMA's, not the police's. Out of contact does not mean dead: phone lines, power and internet are still down across the valley."
+      "bar": 100,
+      "detail": "NDRRMA listed 2,426 people out of contact in Nepal in its 10am Saturday situation update, up from 1,924 in its Friday evening update. The authority's earlier category breakdown is not a breakdown of this new total. Out of contact does not mean dead: disrupted phones, power and internet can prevent contact. This is NDRRMA's figure, not Nepal Police's."
     },
     {
       "icon": "missing",
@@ -36,10 +36,10 @@
     },
     {
       "icon": "people",
-      "value": "113",
+      "value": "4,451",
       "label": "rescued so far",
-      "bar": 30,
-      "detail": "NDRRMA reports 113 people rescued from Timure, Dhunche, Syabrubesi, Uttargaya and Bidur: 88 Nepali citizens, 11 Indian, 8 Chinese, 4 Korean and 2 American. The authority has published their names. Nepal Police separately reported 1,545 people rescued in total as of its 7am bulletin on 28 August, reported by Onlinekhabar. NDRRMA itself told ABC News on Friday afternoon that 3,253 people had been rescued by helicopter across the flood zone, and its Friday evening update put that broader tally at about 3,742, a figure that has not been named or broken down. The Nepali Army said its helicopters had rescued 706 people by 3pm Friday, up from 449 at 12:20pm, including 40 foreign nationals (29 Indian, 4 German, 4 Chinese, 1 Omani and 2 South Korean), reported by Onlinekhabar. Nepal Tourism Board separately said 117 stranded tourists have been rescued from the Bhotekoshi area, reported by Onlinekhabar."
+      "bar": 60,
+      "detail": "NDRRMA reported 4,451 people rescued in its 10am Saturday situation update. Its earlier named nationality list totals 113, so it is not a full breakdown of the current total. Nepal Police had separately reported 2,301 rescued as of 7am Saturday. Agency totals can differ by reporting time and scope."
     },
     {
       "icon": "power",
