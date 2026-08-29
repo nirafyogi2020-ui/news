@@ -1,6 +1,20 @@
 {
-  "updated": "2026-08-29T06:55:00+05:45",
+  "updated": "2026-08-29T07:50:00+05:45",
   "posts": [
+    {
+      "id": "foreign-journalist-rules",
+      "title": "Nepal tells foreign journalists covering the flood to get formal clearance",
+      "time": "2026-08-29T07:50:00+05:45",
+      "image": "",
+      "body": [
+        "Nepal's Department of Information has told foreign journalists covering the Bhotekoshi flood to get formal clearance before reporting from the field, the Kathmandu Post reports.",
+        "Correspondents must submit their passport and visa, an appointment letter and recommendation from their own outlet, a recommendation from their country's foreign ministry or embassy in Nepal, an organisational identity card and details of their salary and benefits, then apply online and collect a press card in person with two passport sized photos.",
+        "Department spokesperson Govinda Prasad Pandey said the arrangement is not new and has long applied to foreign journalists under existing print and broadcast rules. An unnamed government official told the paper it is meant to streamline coverage of the disaster rather than set permanent policy."
+      ],
+      "sources": [
+        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/29/nepal-brings-new-rules-for-foreign-journalists-covering-bhotekoshi-flooding" }
+      ]
+    },
     {
       "id": "apf-4800-personnel",
       "title": "Armed Police Force says it has now sent over 4,800 personnel to the flood zone",
@@ -216,13 +230,13 @@
     },
     {
       "id": "rasuwa-flood",
-      "title": "Nepal Police raise toll to 553 in new Friday evening bulletin",
-      "time": "2026-08-28T20:55:00+05:45",
+      "title": "Nepal Police raise toll to 616 in new Saturday morning bulletin",
+      "time": "2026-08-29T06:00:00+05:45",
       "image": "",
       "body": [
-        "Nepal Police raised the confirmed toll again, to 553 dead, in a bulletin posted on the force's own website as of 5pm Friday. That is up from the 547 the force had given minutes earlier, which itself came within minutes of Nepal's disaster authority NDRRMA's separate figure of 538. Nepal Police reported 1,473 people injured in Nepal, up from 466 the day before. China's state media separately put Tibet-side deaths at 5 on Friday, then Xinhua raised the figure to 7 by Saturday morning; Xinhua also put the missing count on the China side at 554, down slightly from the 558 given a day earlier. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.",
+        "Nepal Police raised the confirmed toll again, to 616 dead, in a bulletin posted on the force's own website giving the count of bodies found as of 6am Saturday. That is up from the 553 the force had given in Friday's 5pm bulletin. The new bulletin did not restate injured, rescued or missing figures, so those still stand at Nepal Police's last published count of 1,473 injured and 1,545 rescued as of Friday morning, and NDRRMA's separate count of 1,924 missing in Nepal from Friday evening. China's state media put Tibet-side deaths at 7 as of Saturday morning, unchanged since the last update, and Xinhua's missing count on the China side at 554. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.",
         "Rescue counts vary by agency and by day. Police said 1,545 people caught in the flood had been rescued as of the 7am bulletin, and NDRRMA told ABC News on Friday afternoon that 3,253 people had been rescued by helicopter across the flood zone, a broader tally that has not been named or broken down; NDRRMA's Friday evening update put that same tally at about 3,742, AP reports. NDRRMA's own earlier, named list stands at 113. The Nepali Army said on Friday its helicopters had rescued 706 people from Timure, Syabrubesi and Mailung by 3pm, up from 449 at 12:20pm, including 40 foreign nationals: 29 Indian, 4 German, 4 Chinese, 1 Omani and 2 South Korean, Onlinekhabar reports. Nepal Tourism Board said 117 stranded tourists have now been rescued from the Bhotekoshi area, 85 of them Indian, 16 Chinese, 9 South Korean, 2 American and 2 Italian, with 3 not yet identified by nationality, Onlinekhabar reports. Twenty eight police personnel remain out of contact.",
-        "The 5pm bulletin also gave a new district breakdown, adding up to the 553 total: Chitwan 222, Nawalparasi East 134, Gorkha 47, Dhading 40, Nuwakot 38, Tanahun 31, Nawalparasi West 28 and Rasuwa 13, Nepal Police said. Chitwan and Nawalparasi East, both downstream on the Narayani, again took the largest increases. Health facilities in Chitwan, which has the most bodies, can hold only around 50 at a time, which is slowing identification and release to families.",
+        "The Saturday morning bulletin gave a new district breakdown, adding up to the 616 total: Chitwan 233, Nawalparasi East 158, Gorkha 48, Nawalparasi West 47, Dhading 45, Nuwakot 41, Tanahun 31 and Rasuwa 13, Nepal Police said. Nawalparasi East and Nawalparasi West took the largest increases from Friday's count, alongside Chitwan. Health facilities in Chitwan, which has the most bodies, can hold only around 50 at a time, which is slowing identification and release to families.",
         "NDRRMA repeated its missing count of 977 people in Nepal in Friday afternoon's update alongside the new death toll, ABC News reports, so the figure has not moved since Friday morning. Nepal's tourism board says 517 of the missing are foreign nationals, from 33 countries. Out of contact does not mean dead. Phone lines, power and internet are down across the valley and are coming back slowly.",
         "The barrier lake upstream near the Chhochen Khola and Purepu Tsangpo was reported to have breached, but Nepal's government has not confirmed a dam collapse and the two accounts have not been reconciled. Chinese state media report the lake has since grown rather than drained. See the update above for what is and is not confirmed. USGS first read the shaking on Wednesday as an earthquake, then found no earthquake took place: the signal came from an ice and rock avalanche that fell into the Lhende Khola on the Tibet side, dammed the river, then broke.",
         "The Home Administration says 13,295 security personnel are working the flood zone: 7,250 from Nepal Police, 4,200 from the Nepali Army and 1,845 from the Armed Police Force, Khabarhub reports. NDRRMA's Friday evening update put the number of security personnel mobilised even higher, at about 14,829, AP reports. Prime Minister Balendra Shah travelled to Bidur in Nuwakot on Thursday to see the damage.",
@@ -230,7 +244,7 @@
         "Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear."
       ],
       "sources": [
-        { "name": "Nepal Police", "url": "https://www.nepalpolice.gov.np/news/10267/" },
+        { "name": "Nepal Police", "url": "https://www.nepalpolice.gov.np/news/10268/" },
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-flood-death-tol.html" },
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/people-rescued-rasuwa-flood-2.html" },
         { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/489-bodies-recovered.html" },
@@ -254,7 +268,7 @@
       "image": "",
       "body": [
         "Nepal's disaster authority NDRRMA said in a Friday evening Search, Rescue and Relief update that 1,924 people are now listed out of contact in Nepal, nearly double the 977 it had given that same afternoon. NDRRMA said the jump came from adding more local residents to the tally, not from a new wave of people going missing, AP reports. The count of foreign nationals held at 517, unchanged since Friday morning.",
-        "The same evening update put NDRRMA's own separate figure for the dead at 579, and said more than 3,700 people have now been rescued and about 14,800 security personnel are mobilised for the search, AP reports. Nepal Police's own bulletin, last updated at 5pm Friday, still stands at 553 dead. The two agencies have not reconciled their counts, and this page keeps the confirmed Nepal Police figure until they do.",
+        "That evening update put NDRRMA's own separate figure for the dead at 579, and said more than 3,700 people have now been rescued and about 14,800 security personnel are mobilised for the search, AP reports. Nepal Police's own bulletin was 553 dead on Friday evening, and has since risen to 616 dead in Saturday morning's bulletin. The two agencies have not reconciled their counts, and this page keeps the confirmed Nepal Police figure until they do.",
         "Separately, Province Police said 116 people from Madhesh Province remain out of contact, 10 fewer than earlier in the day after some reached their families, spokesperson SSP Prabhu Prasad Dhakal told Onlinekhabar.",
         "Out of contact does not mean dead. Phone lines, power and internet are still down across large parts of the flood zone, and officials are still working through the lists as contact is slowly restored.",
         "If you are trying to find someone in the flood zone, call the nearest District Police Office or 100, and register the same details with the local ward office."

@@ -8,16 +8,16 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-08-29T04:10:00+05:45",
-  "asOfSource": "Nepal Police and NDRRMA bulletins; China toll and missing count from Xinhua, Saturday morning",
+  "asOf": "2026-08-29T06:00:00+05:45",
+  "asOfSource": "Nepal Police bulletin (bodies found as of 6am Saturday); NDRRMA, missing and China figures unchanged since Friday evening / Saturday morning",
   "stats": [
     {
       "icon": "dead",
-      "value": "553",
+      "value": "616",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepal Police raised the toll to 553 in a bulletin posted on its own website as of 5pm Friday, up from 547 minutes earlier (which itself came within minutes of NDRRMA's separate figure of 538). Nepal Police reported 1,473 people injured in Nepal, up from 466 the day before. Earlier steps: 489 at midday Friday, 469 at 7am the same day and 389 the previous evening. The new district breakdown sums to 553: Chitwan 222, Nawalparasi East 134, Gorkha 47, Dhading 40, Nuwakot 38, Tanahun 31, Nawalparasi West 28, Rasuwa 13. Sources differ on whether this counts deaths on the China side, where state media (Xinhua) raised their own toll to 7 by Saturday morning, up from 5, so they are not added here."
+      "detail": "Nepal Police raised the toll to 616 bodies found, in a bulletin posted on its own website giving the count as of 6am Saturday, up from 553 in Friday's 5pm bulletin. The new district breakdown sums to 616: Chitwan 233, Nawalparasi East 158, Gorkha 48, Nawalparasi West 47, Dhading 45, Nuwakot 41, Tanahun 31, Rasuwa 13. The bulletin does not restate injured, rescued or missing figures, which still stand at their last published counts. Sources differ on whether this counts deaths on the China side, where state media (Xinhua) had the toll at 7 as of Saturday morning, so it is not added here."
     },
     {
       "icon": "missing",
