@@ -1,6 +1,33 @@
 {
-  "updated": "2026-08-29T14:58:00+05:45",
+  "updated": "2026-08-29T22:35:01+05:45",
   "posts": [
+    {
+      "id": "relief-fund-504bn",
+      "title": "PM says more than Rs 5bn deposited for flood relief",
+      "time": "2026-08-29T21:04:13+05:45",
+      "image": "",
+      "body": [
+        "Prime Minister Balen Shah said Rs 5.04 billion has been deposited in nine commercial bank accounts for flood rescue and relief, Onlinekhabar reports.",
+        "The same report says another US$1.8 million has been deposited at Himalayan Bank and Laxmi Bank. The government urges donors to use only its published QR code and bank accounts because fake collection links are circulating."
+      ],
+      "sources": [
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/pm-disaster-relief-fund-2.html" }
+      ]
+    },
+    {
+      "id": "hydropower-sites-898-missing",
+      "title": "IPPAN says 898 people remain missing at hydropower sites",
+      "time": "2026-08-29T19:47:47+05:45",
+      "image": "",
+      "body": [
+        "The Independent Power Producers’ Association, Nepal says 898 people remain unaccounted for at 11 hydropower projects in Rasuwa and Nuwakot, Onlinekhabar reports.",
+        "The association says 361 people have been evacuated, including 254 from Upper Trishuli-1, and around 300 are believed trapped inside that project's tunnel.",
+        "This is a project-site count with a different scope from Nepal Police's wider missing list. Chinese experts have arrived to help with tunnel rescue, Onlinekhabar reports."
+      ],
+      "sources": [
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/people-missing-hydropower.html" }
+      ]
+    },
     {
       "id": "tourists-rescued-accounted",
       "title": "Tourism Board says 187 tourists rescued or accounted for",
@@ -208,25 +235,16 @@
     },
     {
       "id": "barrier-lake-burst",
-      "title": "Nepal says no dam collapse confirmed, as barrier lake accounts diverge and volume keeps rising",
-      "time": "2026-08-28T19:35:00+05:45",
+      "title": "Experts say immediate lake-burst risk has fallen, caution remains",
+      "time": "2026-08-29T20:54:29+05:45",
       "image": "",
       "body": [
-        "Nepal Police issued an alert on Friday saying Chinese authorities reported that the barrier lake near the Chhochen Khola and the Purepu Tsangpo, just across the border from Rasuwa, had burst. Rasuwa's Chief District Officer said a circular went out telling people along the riverbanks to stay safe, and the Nepali Army suspended rescue operations along the border for one and a half hours as a precaution, Onlinekhabar reports. Chinese authorities separately pulled their own rescue teams back a kilometre from the site.",
-        "The Kathmandu Post reported early Friday afternoon that the lake had breached, and NDRRMA flew aerial reconnaissance over Rasuwa to check the impact downstream. Rescue operations in Tibet later resumed after water levels at the lake dropped slightly, Chinese state media said, ABC News reports. China's state media then reported on Friday evening that a new glacial slip had sent about 50,000 cubic metres of ice and debris into the same lake, ABC News reports.",
-        "But Nepal's government has not confirmed that a dam or the lake itself collapsed. Government spokesperson and Education Minister Sasmit Pokharel said Friday that Nepal had only received word that glaciers had broken and sent water mixed with debris over the top, not that a dam had failed, and that China had indicated there was no immediate major threat. The Kathmandu Post says the two accounts, a reported breach and the government's more cautious version, have not been reconciled.",
-        "The lake's volume has also kept rising rather than falling. China's Ministry of Water Resources put it at about 2 million cubic metres on Thursday morning; by Friday evening it had grown to about 2.5 million cubic metres, ABC News reports. China had earlier warned that about 3 million more cubic metres of water was expected to flow into the lake over three days, with peak flow expected around 1 September, ABC News reports.",
-        "NDRRMA said separately on Friday that sediment laden water is rising again in the Bhotekoshi, two days after the first flood hit the same river. Spokesperson Shanti Mahat urged people living along the Bhotekoshi, and rescue and relief workers in the area, to stay on high alert and move to safer ground immediately if they see any sign of danger, Onlinekhabar reports.",
-        "Late Friday night, China's embassy said the lake was \"at a high water level and has begun to overflow\" and called the situation critical, ABC News reports. That came hours after Chinese state broadcaster CCTV had said the water level had dropped about 10 metres from its high point on Thursday morning and called the flood risk manageable, Reuters reported via CBS News. The two Chinese accounts, one hours apart from the other, have not been reconciled either, on top of the earlier dispute over whether the lake breached at all.",
-        "This is a new and separate risk on top of the flood that has already killed hundreds. Whichever account turns out to be right, if you live or work along the Bhote Koshi in Rasuwa, move away from the riverbank now and wait for officials to say it is clear."
+        "The Department of Hydrology and Meteorology says the immediate risk of a sudden lake burst has fallen after water began flowing out naturally, Onlinekhabar reports.",
+        "Experts warn that fresh landslides could still trigger renewed flooding. This is a change from earlier reports that described the water body as a possible immediate threat.",
+        "Stay away from the Bhote Koshi and Trishuli riverbanks until local officials say it is safe."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/police-alert-notice.html" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/new-flood-risk-sediment.html" },
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/28/barrier-lake-near-china-border-breaches-raising-fresh-flood-threat-in-nepal" },
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/28/nepal-s-bhotekoshi-flood-what-we-know-on-day-three-as-death-toll-nears-500" },
-        { "name": "ABC News Australia", "url": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974" },
-        { "name": "CBS News", "url": "https://www.cbsnews.com/news/nepal-flood-rescue-efforts-death-toll/" }
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/risk-lake-burst-rasuwa-low.html" }
       ],
       "revised": true
     },
@@ -275,21 +293,21 @@
     },
     {
       "id": "rasuwa-flood",
-      "title": "Nepal Police confirms 626 dead, with district counts updated",
-      "time": "2026-08-29T14:00:00+05:45",
+      "title": "Nepal Police reports 669 bodies, 2,362 still missing",
+      "time": "2026-08-29T16:00:00+05:45",
       "image": "",
       "body": [
-        "Nepal Police's 2pm Saturday bulletin says 626 bodies have been found in Nepal. That matches NDRRMA's 10am situation update, while the police bulletin updates the district breakdown: Dhading 49 and Gorkha 54, up from 45 and 48 in the 6am police bulletin.",
-        "NDRRMA also lists 2,426 people out of contact in Nepal, up from 1,924 in its Friday evening update. Out of contact does not mean dead. Damaged phones, power and internet still prevent many families from reaching people in the flood zone.",
-        "The update says 4,451 people have been rescued and 101 injured people are receiving hospital treatment. It lists 15,224 security personnel deployed for search, rescue and relief, the Kathmandu Post reports.",
-        "Nepal Police's new district breakdown sums to 626 bodies: Chitwan 233, Nawalparasi East 158, Gorkha 54, Nawalparasi West 47, Dhading 49, Nuwakot 41, Tanahun 31 and Rasuwa 13.",
+        "Nepal Police's 4pm Saturday update says 669 bodies have been recovered in Nepal, Nepal News reports. Nepal News gives the district count as Chitwan 248, Nawalparasi East 158, Nawalparasi West 75, Gorkha 54, Dhading 49, Nuwakot 41, Tanahun 31 and Rasuwa 13.",
+        "Nepal Police says 2,362 people remain missing, The Kathmandu Post reports. The paper says the list includes 1,863 Nepali nationals and 499 foreign nationals. Out of contact does not mean dead. Phone, power and internet failures still prevent many families from reaching people in the flood zone.",
+        "Nepal Police says 2,301 people have been rescued, including 1,622 in Nuwakot, 676 in Rasuwa and three in Dhading, The Rising Nepal reports. That is a separate police count from NDRRMA's 4,451-person figure at 10am.",
+        "The latest police count is up from 626 bodies reported by NDRRMA at 10am, The Kathmandu Post reports. Search teams are still recovering bodies downstream and trying to reach people trapped at hydropower sites.",
         "Keep away from the Bhote Koshi, Trishuli and Narayani riverbanks until officials say it is safe."
       ],
       "sources": [
-        { "name": "NDRRMA", "url": "https://ndrrma.gov.np/mediafiles/publications/Situation_updates_bhadra13_10_AM.pdf" },
-        { "name": "Nepal Police", "url": "https://nepalpolice.gov.np/news/10269/" },
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/29/updates-bhotekoshi-flood-death-toll-reaches-616-hundreds-still-missing" },
-        { "name": "The Associated Press", "url": "https://apnews.com/article/nepal-china-flood-rescue-fde34c839b648f93f6aa011f044deb00" }
+        { "name": "Nepal News", "url": "https://english.nepalnews.com/s/nation/latest-update-669-bodies-recovered-in-rasuwa-bhote-koshi-flood/" },
+        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/29/2-362-people-still-missing-after-bhotekoshi-floods-police-say" },
+        { "name": "The Rising Nepal", "url": "https://www.risingnepaldaily.com/news/85765" },
+        { "name": "NDRRMA", "url": "https://ndrrma.gov.np/mediafiles/publications/Situation_updates_bhadra13_10_AM.pdf" }
       ],
       "revised": true
     },
@@ -300,7 +318,7 @@
       "image": "",
       "body": [
         "Nepal's disaster authority NDRRMA said in a Friday evening Search, Rescue and Relief update that 1,924 people are now listed out of contact in Nepal, nearly double the 977 it had given that same afternoon. NDRRMA said the jump came from adding more local residents to the tally, not from a new wave of people going missing, AP reports. The count of foreign nationals held at 517, unchanged since Friday morning.",
-        "That evening update put NDRRMA's own separate figure for the dead at 579, and said more than 3,700 people had been rescued and about 14,800 security personnel were mobilised for the search, AP reports. Saturday's later NDRRMA update raised the national toll to 626. Nepal Police's earlier 6am figure was 616, before the NDRRMA update.",
+        "That evening update put NDRRMA's own separate figure for the dead at 579, and said more than 3,700 people had been rescued and about 14,800 security personnel were mobilised for the search, AP reports. Saturday's NDRRMA bulletin then listed 626 bodies, before Nepal Police's 4pm update reported 669. Nepal Police's earlier 6am figure was 616, before those later updates.",
         "Separately, Province Police said 116 people from Madhesh Province remain out of contact, 10 fewer than earlier in the day after some reached their families, spokesperson SSP Prabhu Prasad Dhakal told Onlinekhabar.",
         "Out of contact does not mean dead. Phone lines, power and internet are still down across large parts of the flood zone, and officials are still working through the lists as contact is slowly restored.",
         "If you are trying to find someone in the flood zone, call the nearest District Police Office or 100, and register the same details with the local ward office."

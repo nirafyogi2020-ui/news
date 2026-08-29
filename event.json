@@ -8,24 +8,24 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-08-29T14:00:00+05:45",
-  "asOfSource": "Nepal Police bulletin, 2pm Saturday",
+  "asOf": "2026-08-29T16:00:00+05:45",
+  "asOfSource": "Nepal Police bulletin, 4pm Saturday",
   "stats": [
     {
       "icon": "dead",
-      "value": "626",
+      "value": "669",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepal Police reported 626 bodies found in Nepal by 2pm Saturday. Its district breakdown sums to 626: Chitwan 233, Nawalparasi East 158, Gorkha 54, Nawalparasi West 47, Dhading 49, Nuwakot 41, Tanahun 31 and Rasuwa 13. NDRRMA reported the same national total in its 10am Saturday update. China's separate toll of 7 is not added here."
+      "detail": "Nepal Police reported 669 bodies found in Nepal by 4pm Saturday. Nepal News reported the district breakdown: Chitwan 248, Nawalparasi East 158, Nawalparasi West 75, Gorkha 54, Dhading 49, Nuwakot 41, Tanahun 31 and Rasuwa 13. China's separate toll of 7 is not added here."
     },
     {
       "icon": "missing",
-      "value": "2,426",
+      "value": "2,362",
       "tone": "critical",
       "label": "listed missing in Nepal",
       "bar": 100,
-      "detail": "NDRRMA listed 2,426 people out of contact in Nepal in its 10am Saturday situation update, up from 1,924 in its Friday evening update. The authority's earlier category breakdown is not a breakdown of this new total. Out of contact does not mean dead: disrupted phones, power and internet can prevent contact. This is NDRRMA's figure, not Nepal Police's."
+      "detail": "Nepal Police said 2,362 people remained missing in its Saturday update, The Kathmandu Post reported. The report said 1,863 were Nepali nationals and 499 were foreign nationals. Out of contact does not mean dead: disrupted phones, power and internet can prevent contact. This is Nepal Police's figure, not NDRRMA's earlier 2,426-person list."
     },
     {
       "icon": "missing",
@@ -39,7 +39,7 @@
       "value": "4,451",
       "label": "rescued so far",
       "bar": 60,
-      "detail": "NDRRMA reported 4,451 people rescued in its 10am Saturday situation update. Its earlier named nationality list totals 113, so it is not a full breakdown of the current total. Nepal Police had separately reported 2,301 rescued as of 7am Saturday. Agency totals can differ by reporting time and scope."
+      "detail": "NDRRMA reported 4,451 people rescued in its 10am Saturday situation update. The Rising Nepal, citing Nepal Police, reported 2,301 people rescued by 4pm. Agency totals can differ by reporting time and scope."
     },
     {
       "icon": "power",
@@ -67,11 +67,11 @@
     {
       "icon": "relief",
       "id": "relief-fund",
-      "value": "Rs 1bn",
+      "value": "Rs 5.04bn",
       "small": true,
-      "label": "relief money released",
-      "bar": 12,
-      "detail": "Rs 1 billion released by the government into the disaster relief fund, plus Rs 10 million each to Rasuwa and Nuwakot and Rs 5 million to Dhading. Public donations are not counted here until an official total is published."
+      "label": "relief fund deposited",
+      "bar": 60,
+      "detail": "Prime Minister Balen Shah said Rs 5.04 billion had been deposited in nine commercial bank accounts for flood rescue and relief, Onlinekhabar reported at 9:04pm Saturday. The same report said another US$1.8 million was deposited at Himalayan Bank and Laxmi Bank. This is money deposited in the fund, not the separate Rs 1 billion released by the government."
     }
   ]
 }

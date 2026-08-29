@@ -8,24 +8,24 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-08-29T14:00:00+05:45';
-export const TOLL_SOURCE = 'Nepal Police 2pm Saturday bulletin';
+export const TOLL_AS_OF = '2026-08-29T16:00:00+05:45';
+export const TOLL_SOURCE = 'Nepal Police 4pm Saturday bulletin';
 
 /* When the bulletin one step before TOLL_AS_OF was published. Used only for
    the "how the toll has moved" table, so that row's timestamp always matches
    TOLL.deadNepalEarlier instead of drifting out of date as later runs move
    both TOLL_AS_OF and deadNepalEarlier forward. */
-export const TOLL_EARLIER_AS_OF = '2026-08-29T06:00:00+05:45';
+export const TOLL_EARLIER_AS_OF = '2026-08-29T10:00:00+05:45';
 
-/* The district breakdown now comes from the same 2pm police bulletin as the
+/* The district breakdown now comes from the same 4pm police bulletin as the
    national toll. */
-export const BODIES_AS_OF = '2026-08-29T14:00:00+05:45';
-export const BODIES_SOURCE = 'Nepal Police 2pm Saturday bulletin';
+export const BODIES_AS_OF = '2026-08-29T16:00:00+05:45';
+export const BODIES_SOURCE = 'Nepal Police 4pm Saturday bulletin';
 
-/* NDRRMA's 10am update reports the current missing total. Its detailed group
-   breakdown is older and remains separately timestamped below. */
-export const MISSING_AS_OF = '2026-08-29T10:00:00+05:45';
-export const MISSING_SOURCE = 'NDRRMA 10am Search, Rescue and Relief situation update';
+/* Nepal Police's 4pm update reports the current missing total. Its detailed
+   group breakdown is older and remains separately timestamped below. */
+export const MISSING_AS_OF = '2026-08-29T16:00:00+05:45';
+export const MISSING_SOURCE = 'Nepal Police 4pm Saturday update';
 
 /* Who those people are was last broken down in the morning police bulletin,
    when the list stood at 826. The groups below still describe that list. */
@@ -49,10 +49,10 @@ export const EVENT = {
 
 /** Bodies recovered, by the district where they were found. */
 export const BODIES_BY_DISTRICT = [
-  ['Chitwan', 233],
+  ['Chitwan', 248],
   ['Nawalparasi East', 158],
   ['Gorkha', 54],
-  ['Nawalparasi West', 47],
+  ['Nawalparasi West', 75],
   ['Dhading', 49],
   ['Nuwakot', 41],
   ['Tanahun', 31],
@@ -89,10 +89,10 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 626,
-  deadNepalEarlier: 616,
+  deadNepal: 669,
+  deadNepalEarlier: 626,
   deadChina: 7,
-  missing: 2426,
+  missing: 2362,
   missingChina: 554,
   missingChinaForeign: 260,
   missingIndian: 133,
@@ -150,9 +150,9 @@ export const DAMAGE = {
 export const BARRIER_LAKE = {
   where: 'near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border',
   volume: '2.5 million cubic metres',
-  asOf: '2026-08-28T18:15:00+05:45',
-  source: 'Chinese authorities, reported by ABC News',
-  note: 'The Nepali Army suspended rescue operations along the border for one and a half hours as a precaution while Chinese teams pulled back a kilometre from the site. The Kathmandu Post reported early Friday afternoon that the lake had breached; NDRRMA said water levels in the Bhotekoshi surged as a result, and helicopters carried out aerial reconnaissance over Rasuwa to check the impact downstream. Chinese state media said Friday afternoon that rescue operations in Tibet had resumed after water levels at the lake dropped slightly, then reported a new glacial slip sent about 50,000 cubic metres of ice and debris into the same lake on Friday evening, ABC News reports. The lake grew from about 2 million cubic metres on Thursday morning to about 2.5 million cubic metres by Friday evening. China had earlier warned that some 3 million more cubic metres of water was expected to flow in over three days, with peak flow expected around 1 September, ABC News reports. Both rivers are upper tributaries of the Trishuli system, so the water is running down the same corridor the 26 August flood took.',
+  asOf: '2026-08-29T20:54:29+05:45',
+  source: 'Department of Hydrology and Meteorology and water experts, reported by Onlinekhabar',
+  note: 'The Nepali Army suspended rescue operations along the border for one and a half hours as a precaution while Chinese teams pulled back a kilometre from the site. The Kathmandu Post reported early Friday afternoon that the lake had breached; NDRRMA said water levels in the Bhotekoshi surged as a result, and helicopters carried out aerial reconnaissance over Rasuwa to check the impact downstream. Chinese state media said Friday afternoon that rescue operations in Tibet had resumed after water levels at the lake dropped slightly, then reported a new glacial slip sent about 50,000 cubic metres of ice and debris into the same lake on Friday evening, ABC News reports. The lake grew from about 2 million cubic metres on Thursday morning to about 2.5 million cubic metres by Friday evening. China had earlier warned that some 3 million more cubic metres of water was expected to flow in over three days, with peak flow expected around 1 September, ABC News reports. On Saturday evening, the Department of Hydrology and Meteorology said the immediate risk of a sudden lake burst had decreased after water began flowing out naturally. Onlinekhabar reported experts warning that fresh landslides could still trigger renewed flooding, so people downstream should remain cautious. Both rivers are upper tributaries of the Trishuli system, so the water is running down the same corridor the 26 August flood took.',
 };
 
 /** The route the water took. Coordinates and elevations as used on the map. */
@@ -230,6 +230,10 @@ export const TIMELINE = [
   ['20:55 NPT, 28 August', 'In a reversal, Nepal says it will let India, China, Australia and South Korea send in tunnel rescue and DNA identification experts, the Kathmandu Post reports. Nepal had said as recently as Wednesday and Thursday that its own army and police could handle the operation without outside rescue teams.'],
   ['Friday, 28 August', 'Water resources researcher Santosh Nepal tells Onlinekhabar that satellite images suggest a huge ice and rock fall off Langtang Lirung, not a glacial lake bursting, may have generated the flood directly by melting snow and ice on impact. He says it is too early to be sure and compares the mechanism to the 2021 Chamoli disaster in Uttarakhand.'],
   ['06:00 NPT, 29 August', 'Nepal Police raise the confirmed toll to 616 bodies found, in a bulletin posted on the force’s own website, up from 553 in Friday’s 5pm bulletin. The new district breakdown: Chitwan 233, Nawalparasi East 158, Gorkha 48, Nawalparasi West 47, Dhading 45, Nuwakot 41, Tanahun 31, Rasuwa 13.'],
+  ['16:00 NPT, 29 August', 'Nepal Police report 669 bodies recovered and 2,301 people rescued. Nepal News reports the district count as Chitwan 248, Nawalparasi East 158, Nawalparasi West 75, Gorkha 54, Dhading 49, Nuwakot 41, Tanahun 31 and Rasuwa 13.'],
+  ['19:47 NPT, 29 August', 'The Independent Power Producers’ Association, Nepal says 898 people remain unaccounted for at 11 affected hydropower projects in Rasuwa and Nuwakot. Onlinekhabar reports that 361 people have been evacuated, around 300 are believed trapped in the Upper Trishuli-1 tunnel, and Chinese experts have arrived to help with tunnel rescue.'],
+  ['20:54 NPT, 29 August', 'The Department of Hydrology and Meteorology says the immediate risk of a sudden lake burst has decreased after water began flowing out naturally. Onlinekhabar reports experts warning that fresh landslides could still trigger renewed flooding.'],
+  ['21:04 NPT, 29 August', 'Prime Minister Balen Shah says Rs 5.04 billion has been deposited in nine commercial bank accounts for flood rescue and relief, with another US$1.8 million deposited at two banks, Onlinekhabar reports.'],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */
