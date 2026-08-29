@@ -39,10 +39,10 @@
 import { loadPoliceNews } from './police.js';
 
 const CACHE_SECONDS = 60;
-/* Direct channel feeds are cheap to read, so Watch can check them often. */
+/* The verified Watch list is cheap to read, so it can check often. */
 const YT_FRESH_SECONDS = 120;     // 2 minutes
 const YT_BACKUP_SECONDS = 86400;  // 24 hours
-const YT_CHANNEL_SECONDS = 30 * 24 * 60 * 60; // Handles rarely change.
+const YT_CHANNEL_SECONDS = 30 * 24 * 60 * 60; // Channel metadata rarely changes.
 /** Card summaries: keep the full text each feed publishes, cleaned to plain
  *  text, capped only to keep one card from running very long. */
 const SUMMARY_MAX = 650;
@@ -52,9 +52,27 @@ const NEPAL_BOX = { minlat: 26.3, maxlat: 30.5, minlon: 80.0, maxlon: 88.3 };
    after checking its official site or verified YouTube identity. A short,
    accurate Watch list is better than a large list of anonymous re-uploads. */
 const YT_TRUSTED_CHANNELS = [
-  { handle: '@NepalPoliceHQ', source: 'Nepal Police', region: 'nepal' },
-  { handle: '@NDRRMA', source: 'NDRRMA', region: 'nepal' }
+  { id: 'UCMkrAY5yFo5eQ1SCj9aV28w', handle: '@NepalPoliceHQ', source: 'Nepal Police', region: 'nepal' },
+  { id: 'UCFbLXmNbJzBlNoS9-t19q4Q', handle: '@NDRRMA', source: 'NDRRMA', region: 'nepal' },
+  { id: 'UCTGVQIvtPu5kqNI5ABmN8Fw', handle: '@NepalTelevision', source: 'Nepal Television', region: 'nepal' },
+  { id: 'UC3yDoaqQzOd1bNP74ZrGPTA', handle: '@KantipurTVHD', source: 'Kantipur TV', region: 'nepal' },
+  { id: 'UCo4cuctdb-1YdZNgWEVZGwA', handle: '@onlinekhabarTV', source: 'Onlinekhabar TV', region: 'nepal' }
 ];
+
+/* A Watch card needs both the affected place and the hazard. This prevents a
+   general current-affairs video from appearing just because a channel wrote
+   "Nepal" in its channel description. */
+const VIDEO_PLACE = [
+  'nepal', 'rasuwa', 'bhotekoshi', 'bhote koshi', 'trishuli', 'nuwakot',
+  'timure', 'syabrubesi', 'langtang', 'gyirong', 'kyirong',
+  'नेपाल', 'रसुवा', 'भोटेकोशी', 'भोटे कोशी', 'त्रिशूली', 'त्रिशुली',
+  'नुवाकोट', 'तिमुरे', 'स्याफ्रुबेसी'
+];
+const VIDEO_HAZARD = [
+  'flood', 'flash flood', 'glacial lake', 'landslide', 'avalanche', 'disaster',
+  'बाढी', 'पहिरो', 'हिमताल', 'विपद्'
+];
+const VIDEO_MAX_AGE_MS = 21 * 24 * 60 * 60 * 1000;
 
 /** Only keep press items that are actually about this event or its hazards.
  *  Nepali-script sources publish in Devanagari, so the real keywords they'd
@@ -146,15 +164,16 @@ export async function onRequestGet(context) {
 
   for (const group of groups) {
     for (const item of group) {
-      if (!item.title || !item.url) continue;
-      if (FLUFF.test(item.title)) continue;
+      const safeItem = sanitizeItemUrls(item);
+      if (!safeItem || !safeItem.title || !safeItem.url) continue;
+      if (FLUFF.test(safeItem.title)) continue;
       // \p{L}/\p{N} (Unicode letter/number) rather than a-z0-9, so Devanagari
       // titles (Setopati, Nepal Police, ...) don't all collapse to the same
       // empty key and silently dedupe each other down to one survivor.
-      const key = item.title.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim().slice(0, 70);
+      const key = safeItem.title.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim().slice(0, 70);
       if (seen.has(key)) continue;
       seen.add(key);
-      items.push(item);
+      items.push(safeItem);
     }
   }
 
@@ -204,6 +223,7 @@ export async function onRequestGet(context) {
       showingBackup: youtubeFeed.showingBackup,
       configured: youtubeFeed.configured,
       unavailable: youtubeFeed.unavailable,
+      issues: youtubeFeed.issues,
       mode: 'verified-channels',
       channels: youtubeFeed.channels
     },
@@ -597,10 +617,9 @@ async function fetchBingNews() {
 }
 
 /**
- * Resolve each official YouTube handle once, then read its public Atom feed.
- * A handle lookup costs one small API unit; the feed itself does not consume
- * search quota. This replaces five broad searches whose random re-uploads
- * were making Watch stale and unreliable.
+ * Resolve each fixed, verified channel ID once, then read its uploads playlist
+ * through YouTube's supported API. This replaces broad searches whose random
+ * re-uploads were making Watch stale and unreliable.
  */
 async function fetchYoutube(env, request, context) {
   const key = env && env.YOUTUBE_API_KEY;
@@ -620,17 +639,18 @@ async function fetchYoutube(env, request, context) {
   if (hit) return normalizeYoutubeFeed(await hit.json());
 
   try {
-    const videos = await fetchTrustedYoutube(key, request, context);
+    const feed = await fetchTrustedYoutube(key, request, context);
     const result = {
-      items: videos,
+      items: feed.items,
       checkedAt: new Date().toISOString(),
       showingBackup: false,
       configured: true,
       unavailable: false,
+      issues: feed.issues,
       channels: YT_TRUSTED_CHANNELS.map(channel => channel.source)
     };
     context.waitUntil(cache.put(freshKey, cachedJson(result, YT_FRESH_SECONDS)));
-    if (videos.length) {
+    if (feed.items.length) {
       context.waitUntil(cache.put(backupKey, cachedJson(result, YT_BACKUP_SECONDS)));
     }
     return result;
@@ -643,6 +663,7 @@ async function fetchYoutube(env, request, context) {
       checkedAt: new Date().toISOString(),
       configured: true,
       unavailable: true,
+      issues: [],
       channels: YT_TRUSTED_CHANNELS.map(channel => channel.source)
     });
   }
@@ -656,6 +677,7 @@ function normalizeYoutubeFeed(value) {
       showingBackup: false,
       configured: true,
       unavailable: false,
+      issues: [],
       channels: []
     };
   }
@@ -666,6 +688,7 @@ function normalizeYoutubeFeed(value) {
       showingBackup: false,
       configured: true,
       unavailable: false,
+      issues: [],
       channels: []
     };
   }
@@ -675,6 +698,7 @@ function normalizeYoutubeFeed(value) {
     showingBackup: Boolean(value.showingBackup),
     configured: value.configured !== false,
     unavailable: Boolean(value.unavailable),
+    issues: Array.isArray(value.issues) ? value.issues.slice(0, YT_TRUSTED_CHANNELS.length) : [],
     channels: Array.isArray(value.channels) ? value.channels : []
   };
 }
@@ -691,9 +715,7 @@ function cachedJson(data, seconds) {
 async function fetchTrustedYoutube(key, request, context) {
   const settled = await Promise.allSettled(YT_TRUSTED_CHANNELS.map(async channel => {
     const identity = await resolveYoutubeChannel(channel, key, request, context);
-    const xml = await getText('https://www.youtube.com/feeds/videos.xml?channel_id=' +
-      encodeURIComponent(identity.id));
-    return parseYoutubeAtom(xml, channel, identity);
+    return fetchYoutubePlaylist(identity, channel, key);
   }));
 
   const videos = settled
@@ -710,50 +732,68 @@ async function fetchTrustedYoutube(key, request, context) {
   }
 
   const seen = new Set();
-  return videos.filter(video => {
+  const items = videos.filter(video => {
     const id = String(video.url || '').match(/[?&]v=([\w-]{6,15})/);
     if (!id || seen.has(id[1])) return false;
     seen.add(id[1]);
     return true;
   }).sort(byTimeDesc);
+  const issues = settled.flatMap((result, index) => result.status === 'rejected'
+    ? [YT_TRUSTED_CHANNELS[index].source + ' is temporarily unavailable'] : []);
+  return { items, issues };
 }
 
 async function resolveYoutubeChannel(channel, key, request, context) {
   const cache = caches.default;
   const base = request.url;
-  const cacheName = channel.handle.replace(/[^\w-]+/g, '').toLowerCase();
+  const cacheName = channel.id;
   const cacheKey = new Request(new URL('/__cache/youtube-channel-' + cacheName + '-v1', base).toString());
   const hit = await cache.match(cacheKey);
   if (hit) return hit.json();
 
-  const url = 'https://www.googleapis.com/youtube/v3/channels?part=id,snippet&forHandle=' +
-    encodeURIComponent(channel.handle) + '&key=' + encodeURIComponent(key);
+  const url = 'https://www.googleapis.com/youtube/v3/channels?part=id,snippet,contentDetails&id=' +
+    encodeURIComponent(channel.id) + '&key=' + encodeURIComponent(key);
   const json = JSON.parse(await getText(url));
   const found = json.items && json.items[0];
-  if (!found || !found.id) throw new Error('channel handle not found: ' + channel.handle);
+  if (!found || found.id !== channel.id) throw new Error('trusted channel not found: ' + channel.handle);
+  const uploads = found.contentDetails && found.contentDetails.relatedPlaylists &&
+    found.contentDetails.relatedPlaylists.uploads;
+  if (!uploads) throw new Error('trusted channel has no uploads playlist: ' + channel.handle);
 
   const thumbnails = found.snippet && found.snippet.thumbnails;
   const picture = thumbnails && (thumbnails.default || thumbnails.medium || thumbnails.high);
-  const identity = { id: found.id, avatar: picture && picture.url ? picture.url : null };
+  const identity = {
+    id: found.id,
+    uploads,
+    avatar: picture && picture.url ? picture.url : null
+  };
   const saved = cache.put(cacheKey, cachedJson(identity, YT_CHANNEL_SECONDS));
   if (context && typeof context.waitUntil === 'function') context.waitUntil(saved);
   else await saved;
   return identity;
 }
 
-/** YouTube publishes the same Atom format for its direct channel feeds and
- * webhook notifications. Keep parsing here small and explicit rather than
- * treating it as a normal newsroom RSS feed. */
-export function parseYoutubeAtom(xml, channel, identity) {
-  const entries = String(xml || '').split(/<entry[\s>]/i).slice(1);
+/** Read the uploads playlist for an immutable, verified channel ID. Unlike the
+ * retired public Atom endpoint, this is the supported YouTube API path. */
+async function fetchYoutubePlaylist(identity, channel, key) {
+  const url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails' +
+    '&maxResults=25&playlistId=' + encodeURIComponent(identity.uploads) +
+    '&key=' + encodeURIComponent(key);
+  const json = JSON.parse(await getText(url));
+  return parseYoutubePlaylist(json, channel, identity);
+}
+
+export function parseYoutubePlaylist(json, channel, identity) {
   const out = [];
-  for (const entry of entries) {
-    const videoId = cleanTitle(tag(entry, 'yt:videoId')) ||
-      cleanTitle(tag(entry, 'id')).replace(/^yt:video:/i, '');
-    if (!/^[\w-]{6,15}$/.test(videoId)) continue;
-    const title = cleanVideoTitle(tag(entry, 'title'));
+  for (const entry of json && Array.isArray(json.items) ? json.items : []) {
+    const snippet = entry && entry.snippet ? entry.snippet : {};
+    const videoId = entry && entry.contentDetails && entry.contentDetails.videoId ||
+      snippet.resourceId && snippet.resourceId.videoId;
+    if (!/^[\w-]{6,15}$/.test(videoId || '')) continue;
+    const title = cleanVideoTitle(snippet.title);
     if (!title) continue;
-    const published = tag(entry, 'published') || tag(entry, 'updated');
+    if (/^(private|deleted) video$/i.test(title)) continue;
+    const published = entry.contentDetails && entry.contentDetails.videoPublishedAt || snippet.publishedAt;
     out.push({
       title,
       url: 'https://www.youtube.com/watch?v=' + videoId,
@@ -763,21 +803,18 @@ export function parseYoutubeAtom(xml, channel, identity) {
       region: channel.region,
       image: 'https://i.ytimg.com/vi/' + videoId + '/hqdefault.jpg',
       avatar: identity && identity.avatar ? identity.avatar : null,
-      summary: summarize(tag(entry, 'media:description'), SUMMARY_MAX),
+      summary: summarize(snippet.description, SUMMARY_MAX),
       sourceVerified: true
     });
   }
   return out;
 }
 
-function isVideoOnTopic(video) {
-  // Channel descriptions often say "Nepal disaster authority" on every
-  // upload. Use the video title only, otherwise general old safety messages
-  // quietly pose as updates about this specific flood.
-  const text = video.title || '';
-  const videoHazard = ['flood', 'landslide', 'glacial lake', 'बाढी', 'पहिरो', 'हिमताल'];
-  return matches(text, TOPIC_STRONG) ||
-    (matches(text, videoHazard) && (matches(text, PLACE) || /नेपाल/.test(text)));
+export function isVideoOnTopic(video, now = Date.now()) {
+  const text = (video.title || '') + ' ' + (video.summary || '');
+  if (!matches(text, VIDEO_PLACE) || !matches(text, VIDEO_HAZARD)) return false;
+  const published = video.time ? new Date(video.time).getTime() : NaN;
+  return !Number.isFinite(published) || published >= now - VIDEO_MAX_AGE_MS;
 }
 
 /* YouTube titles are often a real headline followed by a wall of hashtags, or
@@ -968,7 +1005,10 @@ function matches(text, words) {
 }
 
 export async function getText(url) {
-  const res = await fetch(url, {
+  const safeUrl = safeHttpsUrl(url);
+  if (!safeUrl) throw new Error('refused non-HTTPS upstream URL');
+  const res = await fetch(safeUrl, {
+    signal: AbortSignal.timeout(12000),
     headers: {
       'accept': 'application/rss+xml, application/xml, application/json;q=0.9, */*;q=0.8',
       'user-agent': 'nepaldisasterupdatelive.nxtimaginelabs.com (hello@nxtimaginelabs.com)'
@@ -976,6 +1016,28 @@ export async function getText(url) {
   });
   if (!res.ok) throw new Error('HTTP ' + res.status);
   return res.text();
+}
+
+/** Never send an upstream-controlled URL straight to a browser card. */
+export function safeHttpsUrl(value) {
+  try {
+    const url = new URL(String(value || ''));
+    return url.protocol === 'https:' ? url.toString() : null;
+  } catch (_) {
+    return null;
+  }
+}
+
+function sanitizeItemUrls(item) {
+  if (!item || typeof item !== 'object') return null;
+  const url = safeHttpsUrl(item.url);
+  if (!url) return null;
+  return {
+    ...item,
+    url,
+    image: safeHttpsUrl(item.image),
+    avatar: safeHttpsUrl(item.avatar)
+  };
 }
 
 export function parseRss(xml) {

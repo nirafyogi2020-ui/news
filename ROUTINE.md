@@ -83,8 +83,11 @@ Authority, Department of Roads, ICIMOD, USGS, UN OCHA / ReliefWeb, GDACS), then
 Nepali newsrooms (Kathmandu Post, Onlinekhabar, Setopati, Ratopati, Nepalnews,
 Khabarhub, Himalayan Times), then one global wire (Reuters, AP, AFP, BBC).
 
-If nothing has genuinely changed since the last run, skip to step 7 and stop.
-Do not reword existing text to look busy.
+If nothing has genuinely changed since the last run, do not reword existing
+text to look busy. Before skipping publication, inspect `news-sitemap.xml`.
+If its oldest `publication_date` will be older than 48 hours before the next
+hourly run, still complete Step 6. The build removes expired URLs without
+pretending a story is new. Otherwise continue to Step 7 only.
 
 ## Step 3. The counters
 
@@ -252,6 +255,11 @@ home page title and description. You do not hand-write any of it, and you must
 not edit the `ssr` markers in `index.html`. Keeping `event.json` and
 `today.json` correct is what makes all of it correct. After the upload,
 `deploy.sh` pings IndexNow for Bing and Yandex.
+
+An hourly run with no new bulletin can still need a publish solely to remove a
+news-sitemap URL as it reaches the 48-hour limit. That is a real maintenance
+publish, not a content update: do not change a card's time or wording just to
+make it look fresh.
 
 If `deploy.sh` stops, it names what is wrong: a duplicate title, a title over
 75 characters, a wrong canonical, a broken internal link, an orphan page, a
