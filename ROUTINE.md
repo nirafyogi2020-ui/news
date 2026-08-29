@@ -16,6 +16,21 @@ recovery. It must not become a second automatic publisher until the first one
 is paused. This prevents two clean-looking runs from publishing different
 versions of the same page over each other.
 
+## Current publisher handoff
+
+The active automatic publisher is the Codex local schedule: the main run at
+minute 10 and the standby recovery run at minute 45. The two Claude Cloud
+routines are paused and must stay paused while this handoff is active.
+
+Before publishing, identify which runner woke you. If it is not one of those
+two Codex schedule runs, stop before editing, committing or deploying and
+report a publisher-handoff conflict. This guard prevents an old Claude routine
+from overwriting a newer Codex release if it is turned back on later.
+
+To return publishing to Claude Cloud: first pause both Codex schedules, then
+change this handoff section to name Claude Cloud as active, and only then
+enable both Claude routines. Do the steps in that order.
+
 Keeping the procedure here rather than only inside a routine prompt means every
 publisher uses the same facts, checks and publishing rules. A change to how the
 site is edited is made once, reviewed and committed like any other site change.
