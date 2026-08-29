@@ -238,5 +238,23 @@
     "type": "image/png",
     "credit": "Nepal News",
     "article": "https://english.nepalnews.com/s/travel-tourism/bhote-koshi-floods-184-foreign-tourists-rescued-420-out-of-communication/"
+  },
+  "updates-2026-08-29-relief-fund-504bn": {
+    "file": "updates-2026-08-29-relief-fund-504bn.jpg",
+    "type": "image/jpeg",
+    "credit": "OnlineKhabar English News",
+    "article": "https://english.onlinekhabar.com/pm-disaster-relief-fund-2.html"
+  },
+  "updates-2026-08-29-barrier-lake-burst": {
+    "file": "updates-2026-08-29-barrier-lake-burst.png",
+    "type": "image/png",
+    "credit": "OnlineKhabar English News",
+    "article": "https://english.onlinekhabar.com/risk-lake-burst-rasuwa-low.html"
+  },
+  "updates-2026-08-29-hydropower-sites-898-missing": {
+    "file": "updates-2026-08-29-hydropower-sites-898-missing.jpg",
+    "type": "image/jpeg",
+    "credit": "OnlineKhabar English News",
+    "article": "https://english.onlinekhabar.com/people-missing-hydropower.html"
   }
 }

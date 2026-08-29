@@ -52,6 +52,7 @@ function table(head, rows, caption) {
 const AS_OF_TOLL = nptLong(C.TOLL_AS_OF);
 const AS_OF_TOLL_EARLIER = nptLong(C.TOLL_EARLIER_AS_OF);
 const AS_OF_MISSING = nptLong(C.MISSING_AS_OF);
+const AS_OF_NDRRMA = nptLong('2026-08-29T10:00:00+05:45');
 const AS_OF_BODIES = nptLong(C.BODIES_AS_OF);
 const AS_OF_MISSING_BREAKDOWN = nptLong(C.MISSING_BREAKDOWN_AS_OF);
 const AS_OF_SITREP = nptLong(C.SITREP_AS_OF);
@@ -155,7 +156,7 @@ function numbersGrid() {
     <div class="statbox"><span class="n crit">${C.TOLL.missing}</span><span class="l">listed missing in Nepal</span><span class="src">${esc(C.MISSING_SOURCE)}, ${esc(AS_OF_MISSING)}</span></div>
     <div class="statbox"><span class="n">${C.TOLL.missingChina}</span><span class="l">missing on the China side</span><span class="src">CCTV, Gyirong Port</span></div>
     <div class="statbox"><span class="n">${C.TOLL.injured}</span><span class="l">injured</span><span class="src">NDRRMA and Nepal Police</span></div>
-    <div class="statbox"><span class="n">${C.TOLL.rescued}</span><span class="l">rescued so far</span><span class="src">${esc(C.MISSING_SOURCE)}, ${esc(AS_OF_MISSING)}</span></div>
+    <div class="statbox"><span class="n">${C.TOLL.rescued}</span><span class="l">rescued so far</span><span class="src">NDRRMA, ${esc(AS_OF_NDRRMA)}</span></div>
     <div class="statbox"><span class="n">${C.DAMAGE.hydropowerProjects}</span><span class="l">hydropower projects damaged, about ${C.DAMAGE.hydropowerMW} MW</span><span class="src">Nepal Electricity Authority</span></div>
     <div class="statbox"><span class="n sm">${esc(C.DAMAGE.costEstimate)}</span><span class="l">road and bridge damage, preliminary</span><span class="src">Minister Sunil Lamsal, 26 Aug</span></div>
     <div class="statbox"><span class="n sm">${esc(C.DAMAGE.reliefReleased)}</span><span class="l">relief money released</span><span class="src">Government of Nepal</span></div>
@@ -164,10 +165,10 @@ function numbersGrid() {
 }
 
 const SECOND_FLOOD_WARNING = `<div class="callout callout-alert">
-  <p class="callout-title">A second flood is happening: the barrier lake upstream has burst</p>
-  <p>Nepal Police say Chinese authorities have reported that the <strong>barrier lake</strong>, formed by debris blocking a river, ${esc(C.BARRIER_LAKE.where)} has burst. Chinese state media had put the volume behind it at around <strong>${esc(C.BARRIER_LAKE.volume)}</strong> and warned it was at risk of breaching.</p>
+  <p class="callout-title">Immediate lake-burst risk has fallen, caution remains</p>
+  <p>The Department of Hydrology and Meteorology says the immediate risk of a sudden burst from the <strong>barrier lake</strong>, ${esc(C.BARRIER_LAKE.where)}, has fallen after water began flowing out naturally, Onlinekhabar reports. Chinese state media had put the volume behind it at around <strong>${esc(C.BARRIER_LAKE.volume)}</strong> and warned it was at risk of breaching.</p>
   <p>${esc(C.BARRIER_LAKE.note)} Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave, so a warning would come with less notice than normal.</p>
-  <p><strong>Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</strong> Downstream in India, authorities in Bihar have opened the Valmikinagar Barrage on the Gandak as a precaution and prepared to move 10,000 to 12,000 people.</p>
+  <p><strong>Keep off the banks of the Bhote Koshi, the Trishuli and the Narayani until officials say it is clear.</strong> Fresh landslides could still trigger renewed flooding.</p>
   <p class="faint" style="margin-bottom:0;">Source: ${esc(C.BARRIER_LAKE.source)}, ${esc(nptLong(C.BARRIER_LAKE.asOf))}.</p>
 </div>`;
 
@@ -178,7 +179,7 @@ export function nepalFloodHub(ctx) {
   const faq = faqBlock([
     {
       q: 'Is there a flood in Nepal right now?',
-      a: `<p>Yes. A flash flood struck Rasuwa district on 26 August 2026 and ran downstream along the Trishuli and Narayani rivers. As of ${esc(AS_OF_TOLL)}, Nepal Police report ${C.TOLL.deadNepal} dead in Nepal; NDRRMA listed ${C.TOLL.missing} people out of contact at ${esc(AS_OF_MISSING)}. Officials warn a second surge is possible because a new barrier lake has formed upstream inside Tibet. <a href="/nepal-flood/rasuwa/">Full coverage of the Rasuwa flood</a>.</p>`,
+      a: `<p>Yes. A flash flood struck Rasuwa district on 26 August 2026 and ran downstream along the Trishuli and Narayani rivers. As of ${esc(AS_OF_TOLL)}, Nepal Police report ${C.TOLL.deadNepal} dead in Nepal; Nepal Police report ${C.TOLL.missing} people missing at ${esc(AS_OF_MISSING)}. The immediate lake-burst risk has fallen, but officials warn fresh landslides could still trigger renewed flooding. <a href="/nepal-flood/rasuwa/">Full coverage of the Rasuwa flood</a>.</p>`,
     },
     {
       q: 'Which rivers in Nepal flood most often?',
@@ -300,7 +301,7 @@ export function rasuwaEvent(ctx) {
     },
     {
       q: 'How many people are still missing?',
-      a: `<p>NDRRMA listed ${C.TOLL.missing} people out of contact in Nepal in its ${esc(AS_OF_MISSING)} update. The last detailed Nepal Police list is older: 579 travellers (466 of them foreign nationals), 161 Rasuwa residents, 85 security personnel and one Nuwakot resident. Chinese state media separately report ${C.TOLL.missingChina} missing around Gyirong Port on the Tibet side, ${C.TOLL.missingChinaForeign} of them foreign nationals. Combined, that is more than 2,900 people unaccounted for, though the two countries’ counts of foreign nationals may overlap. Out of contact does not mean dead. Phone lines, power and internet are down across the valley.</p>`,
+      a: `<p>Nepal Police reported ${C.TOLL.missing} people missing in its ${esc(AS_OF_MISSING)} update. The last detailed Nepal Police list is older: 579 travellers (466 of them foreign nationals), 161 Rasuwa residents, 85 security personnel and one Nuwakot resident. Chinese state media separately report ${C.TOLL.missingChina} missing around Gyirong Port on the Tibet side, ${C.TOLL.missingChinaForeign} of them foreign nationals. Combined, that is more than 2,900 people unaccounted for, though the two countries’ counts of foreign nationals may overlap. Out of contact does not mean dead. Phone lines, power and internet are down across the valley.</p>`,
     },
     {
       q: 'Is it safe to travel to Langtang or Syabrubesi now?',
@@ -348,8 +349,8 @@ ${C.CAUSES.filter(c => c.rank !== 'Ruled out').map(c => `<li><strong>${esc(c.tit
 <p><a href="/nepal-flood/rasuwa/damage/">See the full damage assessment</a>, project by project.</p>
 
 <h2>Who is missing, and what that number means</h2>
-<p>NDRRMA listed <strong>${C.TOLL.missing} people out of contact</strong> in its ${esc(AS_OF_MISSING)} update. That figure is a contact list, not a casualty list: phone lines, power and internet are down across the valley and are coming back slowly, so being out of contact does not mean dead.</p>
-${table(['Group', 'Listed missing'], C.MISSING_BREAKDOWN.map(([k, v]) => [esc(k), v]), `Nepal Police breakdown of the ${C.MISSING_BREAKDOWN_TOTAL} on the list at ${esc(AS_OF_MISSING_BREAKDOWN)}. NDRRMA's current total of ${C.TOLL.missing} is later and has not been broken down.`)}
+<p>Nepal Police reported <strong>${C.TOLL.missing} people out of contact</strong> in its ${esc(AS_OF_MISSING)} update. That figure is a contact list, not a casualty list: phone lines, power and internet are down across the valley and are coming back slowly, so being out of contact does not mean dead.</p>
+${table(['Group', 'Listed missing'], C.MISSING_BREAKDOWN.map(([k, v]) => [esc(k), v]), `Nepal Police breakdown of the ${C.MISSING_BREAKDOWN_TOTAL} on the list at ${esc(AS_OF_MISSING_BREAKDOWN)}. The current police total of ${C.TOLL.missing} is later and has not been broken down.`)}
 <p>Most of the missing foreign travellers were moving toward the Kailash Mansarovar pilgrimage route through Tibet. Chinese state media separately report ${C.TOLL.missingChina} people missing around Gyirong Port on the Tibet side, ${C.TOLL.missingChinaForeign} of them foreign nationals.</p>
 <p><a href="/nepal-flood/rasuwa/missing-persons/">How to report someone missing</a>, including the cross-border and foreign-national routes.</p>
 
@@ -434,7 +435,7 @@ ${faq.html}
           '@type': 'SpecialAnnouncement',
           '@id': `${SITE}${path}#announcement`,
           name: 'Rasuwa flash flood, Nepal, active emergency',
-          text: 'A flash flood struck the Bhote Koshi and Trishuli valleys in Rasuwa and Nuwakot districts on 26 August 2026. Search and rescue continues. China has reported a new barrier lake forming upstream inside Tibet holding around 2 million cubic metres of water, and warns it could break. Keep off the banks of the Bhote Koshi, Trishuli and Narayani until officials say it is clear.',
+          text: 'A flash flood struck the Bhote Koshi and Trishuli valleys in Rasuwa and Nuwakot districts on 26 August 2026. Search and rescue continues. The Department of Hydrology and Meteorology says the immediate risk from a new barrier lake upstream inside Tibet has fallen as water flows out naturally, but fresh landslides could still trigger renewed flooding. Keep off the banks of the Bhote Koshi, Trishuli and Narayani until officials say it is clear.',
           category: 'https://www.wikidata.org/wiki/Q8068',
           datePosted: '2026-08-26T12:00:00+05:45',
           expires: '2026-12-31',
@@ -476,10 +477,10 @@ ${table(['District', 'Bodies recovered'], C.BODIES_BY_DISTRICT.map(([d, n]) => [
 <p>A further <strong>${C.TOLL.deadChina} deaths</strong> are confirmed on the Chinese side, near Gyirong (Kyirong) county just over the border from Rasuwagadhi, where the dry port and customs area were hit. That brings the confirmed total across both countries to <strong>${C.TOLL.deadNepal + C.TOLL.deadChina}</strong>.</p>
 
 <h2>Injured</h2>
-<p>NDRRMA reported <strong>${C.TOLL.injured} injured people receiving hospital treatment</strong> at ${esc(AS_OF_MISSING)}. This is a current treatment count, not a cumulative injury total.</p>
+<p>NDRRMA reported <strong>${C.TOLL.injured} injured people receiving hospital treatment</strong> at ${esc(AS_OF_NDRRMA)}. This is a current treatment count, not a cumulative injury total.</p>
 
 <h2>Rescued</h2>
-<p>Search and rescue is being run by the Nepali Army, Nepal Police and the Armed Police Force with military and private helicopters. NDRRMA reported <strong>${C.TOLL.rescued} people rescued</strong> at ${esc(AS_OF_MISSING)}. Its earlier named nationality list totals 113, so it is not a full breakdown of the current total.</p>
+<p>Search and rescue is being run by the Nepali Army, Nepal Police and the Armed Police Force with military and private helicopters. NDRRMA reported <strong>${C.TOLL.rescued} people rescued</strong> at ${esc(AS_OF_NDRRMA)}. Its earlier named nationality list totals 113, so it is not a full breakdown of the current total.</p>
 ${table(['Rescued', 'People'], C.TOLL.rescuedBreakdown.map(([k, v]) => [esc(k), v]).concat([['<strong>Earlier named list total</strong>', `<strong class="num">${C.TOLL.rescuedBreakdown.reduce((sum, [, value]) => sum + value, 0)}</strong>`]]), 'NDRRMA, 27 August 2026. This is an older named list, not a breakdown of the latest total.')}
 
 <h2>How the toll has moved</h2>
@@ -514,7 +515,7 @@ ${table(['When', 'Reported dead', 'Source'], [
 `;
 
   const t = `Rasuwa Flood Death Toll: ${C.TOLL.deadNepal} Confirmed Dead, District by District`;
-  const d = `Rasuwa flood: ${C.TOLL.deadNepal} confirmed dead in Nepal as of ${AS_OF_TOLL}. NDRRMA reported ${C.TOLL.injured} injured in hospital at ${AS_OF_MISSING}. District table and sources included.`;
+  const d = `Rasuwa flood: ${C.TOLL.deadNepal} confirmed dead in Nepal as of ${AS_OF_TOLL}. NDRRMA reported ${C.TOLL.injured} injured in hospital at ${AS_OF_NDRRMA}. District table and sources included.`;
   return {
     path, title: t, description: d, lastmod: ctx.modified, priority: '0.9', changefreq: 'daily',
     html: page({
@@ -522,7 +523,7 @@ ${table(['When', 'Reported dead', 'Source'], [
       path, title: t, description: d,
       ogTitle: `Rasuwa flood death toll: ${C.TOLL.deadNepal} confirmed dead`,
       h1: 'Rasuwa flood: confirmed dead, injured and rescued',
-      lede: `Confirmed figures only, with the bulletin and the time attached to each one. Nepal Police put the toll at ${C.TOLL.deadNepal} dead as of ${AS_OF_TOLL}, up from ${C.TOLL.deadNepalEarlier} at 6am.`,
+      lede: `Confirmed figures only, with the bulletin and the time attached to each one. Nepal Police put the toll at ${C.TOLL.deadNepal} dead as of ${AS_OF_TOLL}, up from ${C.TOLL.deadNepalEarlier} at ${AS_OF_TOLL_EARLIER}.`,
       crumbs: [{ label: 'Home', href: '/' }, { label: 'Nepal floods', href: '/nepal-flood/' }, { label: 'Rasuwa flood 2026', href: '/nepal-flood/rasuwa/' }, { label: 'Casualties' }],
       statusPill: 'live',
       updatedNote: bylineLive(ctx.modified),
@@ -559,8 +560,8 @@ export function missingPersons(ctx) {
 </div>
 
 <h2>Who is on the missing list</h2>
-<p>NDRRMA listed <strong>${C.TOLL.missing} people</strong> out of contact in Nepal in its update of ${esc(AS_OF_MISSING)}.</p>
-${table(['Group', 'Listed missing'], C.MISSING_BREAKDOWN.map(([k, v]) => [esc(k), v]).concat([['<strong>Total on that list</strong>', `<strong class="num">${C.MISSING_BREAKDOWN_TOTAL}</strong>`]]), `Nepal Police, ${esc(AS_OF_MISSING_BREAKDOWN)}. NDRRMA's later total is ${C.TOLL.missing}; it has not published a new breakdown.`)}
+<p>Nepal Police listed <strong>${C.TOLL.missing} people</strong> out of contact in its update of ${esc(AS_OF_MISSING)}.</p>
+${table(['Group', 'Listed missing'], C.MISSING_BREAKDOWN.map(([k, v]) => [esc(k), v]).concat([['<strong>Total on that list</strong>', `<strong class="num">${C.MISSING_BREAKDOWN_TOTAL}</strong>`]]), `Nepal Police, ${esc(AS_OF_MISSING_BREAKDOWN)}. The current police total is ${C.TOLL.missing}; it has not published a new breakdown.`)}
 
 <h3>Where the missing travellers were from</h3>
 <p>Of the 579 travellers on the list, 466 are foreign nationals and 113 are Nepali. Most of the foreign travellers were moving toward the <strong>Kailash Mansarovar pilgrimage route</strong> through Tibet, which runs through the Rasuwagadhi crossing.</p>
@@ -577,7 +578,7 @@ ${table(['Group', 'Out of contact'], C.OUT_OF_CONTACT.map(([k, v]) => [esc(k), v
 <div class="callout">
   <p class="callout-title">Two things to hold in mind about this number</p>
   <p><strong>Out of contact does not mean dead.</strong> Phone lines, power and internet are down across the Bhote Koshi and Trishuli valleys and are coming back slowly. A large share of this list is people nobody has been able to reach, not people known to have been in the water. Names come off the list alive every day.</p>
-  <p><strong>This figure and the death toll share the same NDRRMA update.</strong> Being out of contact does not mean someone has died, and the authority has not published a new group breakdown for this total.</p>
+  <p><strong>This current missing figure comes from Nepal Police, while the earlier detailed group breakdown is older.</strong> Being out of contact does not mean someone has died, and police have not published a new group breakdown for this total.</p>
 </div>
 
 <h2>How to report a missing person</h2>
@@ -628,7 +629,7 @@ ${C.MISSING_STEPS.map((s, i) => `<div class="check-row"><span class="mark">${Str
       ],
       extraPills: '<a class="pill" href="/ne/bepatta/" hreflang="ne" lang="ne">नेपालीमा पढ्नुहोस्</a>',
       h1: 'Missing persons: the Rasuwa flood',
-      lede: `NDRRMA lists ${C.TOLL.missing} people out of contact in Nepal, and Chinese state media a further ${C.TOLL.missingChina} across the border. This page explains what the numbers mean and the exact steps to report someone, including from outside Nepal.`,
+      lede: `Nepal Police lists ${C.TOLL.missing} people out of contact in Nepal, and Chinese state media a further ${C.TOLL.missingChina} across the border. This page explains what the numbers mean and the exact steps to report someone, including from outside Nepal.`,
       crumbs: [{ label: 'Home', href: '/' }, { label: 'Nepal floods', href: '/nepal-flood/' }, { label: 'Rasuwa flood 2026', href: '/nepal-flood/rasuwa/' }, { label: 'Missing persons' }],
       statusPill: 'live',
       updatedNote: bylineLive(ctx.modified),
@@ -672,7 +673,7 @@ ${table(['Strand', 'What is happening'], C.RESPONSE.map(([k, v]) => [`<strong>${
 
 <h2>What is still to come</h2>
 <p>Two things are unresolved as this page stands. First, the cause is not officially confirmed. The leading explanation is an ice-and-rock avalanche that blocked the Lhende Khola inside Tibet, and the USGS has reassessed the seismic signal recorded minutes before as a glacial collapse rather than an earthquake. <a href="/nepal-flood/rasuwa/cause/">The full account of what caused it</a> sets out the evidence.</p>
-<p>Second, the hazard has not ended. China reports a new barrier lake forming upstream holding around 2 million cubic metres of water, and warns it could break. Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave, so any warning would come late. New entries are added to this timeline as bulletins are published.</p>
+<p>Second, the hazard has not ended. The Department of Hydrology and Meteorology says the immediate risk from the new barrier lake has fallen as water flows out naturally, but experts warn that fresh landslides could still trigger renewed flooding. Most river gauges on the Bhote Koshi and Trishuli were destroyed in the first wave, so any warning would come late. New entries are added to this timeline as bulletins are published.</p>
 <p><a href="/nepal-flood/rasuwa/live-updates/">Follow the live updates</a> for anything published since the last entry above.</p>
 `;
   const t = 'Rasuwa Flood Timeline: Hour by Hour, 26 August 2026 Onwards';
@@ -722,7 +723,7 @@ export function cause(ctx) {
     },
     {
       q: 'Could it happen again in the same valley?',
-      a: '<p>Yes, and officials say the immediate risk has not passed: China’s Ministry of Water Resources reports a new barrier lake forming upstream inside Tibet holding around 2 million cubic metres of water, and warns it could break. Beyond this event, a broadly similar flood struck the same river in July 2025, and ICIMOD scientists say cascading glacial hazards are increasing at an "unprecedented" pace across the Hindu Kush Himalaya.</p>',
+      a: '<p>Yes, but the immediate risk has fallen. The Department of Hydrology and Meteorology says water is flowing out naturally from the new water body, while experts warn fresh landslides could still trigger renewed flooding. Beyond this event, a broadly similar flood struck the same river in July 2025, and ICIMOD scientists say cascading glacial hazards are increasing at an "unprecedented" pace across the Hindu Kush Himalaya.</p>',
     },
   ]);
 
@@ -743,7 +744,7 @@ ${C.CAUSES.map(c => `<h3>${esc(c.title)}</h3>
 <h2>Why the distinction matters downstream</h2>
 <p>This is not an academic question. Each explanation implies something different about what happens next:</p>
 <ul>
-  <li><strong>A landslide dam can re-form.</strong> Debris that blocked a river once can block it again, and the material is already sitting in the valley. That is precisely what has now happened: China’s Ministry of Water Resources reports a new barrier lake near the confluence of the Chhochen Khola and the Purepu Tsangpo, holding around 2 million cubic metres of water by the morning of 27 August, and Chinese state media warn it could break. Both rivers feed the Trishuli system, so a release would run down the same corridor.</li>
+  <li><strong>A landslide dam can re-form.</strong> Debris that blocked a river once can block it again, and the material is already sitting in the valley. The Department of Hydrology and Meteorology now says the immediate risk from the new water body has fallen as water flows out naturally, but experts warn fresh landslides could still trigger renewed flooding. Both rivers feed the Trishuli system, so a release would run down the same corridor.</li>
   <li><strong>A drained glacial lake is spent</strong>, but the same conditions exist at other lakes in the same range, several of them unmonitored because they sit across the border.</li>
   <li><strong>If seismic shaking had been the trigger</strong>, every unstable slope and moraine in the area would have to be reassessed for aftershock risk. The USGS reassessment makes that less relevant here: the signal was the collapse, not a quake that caused it.</li>
 </ul>
@@ -2088,7 +2089,7 @@ export function foreignNationals(ctx) {
 <p class="measure">The flood came down the Bhote Koshi at Timure and Rasuwagadhi, which is Nepal's main overland crossing to Tibet and the road to the Langtang trekking region. On any given morning that road carries traders, pilgrims, tour groups and trekkers from a long list of countries. The people on it were not residents of the valley, which is why so many of them are counted as travellers rather than as residents of Rasuwa.</p>
 
 <h2>What the two countries have published</h2>
-<p class="measure">The morning Nepal Police bulletin of ${esc(AS_OF_MISSING_BREAKDOWN)} broke its list of ${C.MISSING_BREAKDOWN_TOTAL} into groups, of which travellers were by far the largest at 579, and said 466 of those travellers were foreign nationals. Chinese state media report ${C.TOLL.missingChina} people missing around Gyirong Port on the Tibet side, ${C.TOLL.missingChinaForeign} of them foreign nationals. NDRRMA's current total is ${C.TOLL.missing}, without a new breakdown.</p>
+<p class="measure">The morning Nepal Police bulletin of ${esc(AS_OF_MISSING_BREAKDOWN)} broke its list of ${C.MISSING_BREAKDOWN_TOTAL} into groups, of which travellers were by far the largest at 579, and said 466 of those travellers were foreign nationals. Chinese state media report ${C.TOLL.missingChina} people missing around Gyirong Port on the Tibet side, ${C.TOLL.missingChinaForeign} of them foreign nationals. Nepal Police's current total is ${C.TOLL.missing}, without a new breakdown.</p>
 <p class="measure">Adding the two national figures together gives a number over thirteen hundred, and that is the figure most international coverage has used. It should be read with care: the two countries may be counting some of the same people, since a traveller who crossed the border that morning could appear on either side's list.</p>
 
 <h2>Among the rescued</h2>
