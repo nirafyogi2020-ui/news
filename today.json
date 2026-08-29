@@ -1,6 +1,21 @@
 {
-  "updated": "2026-08-29T13:53:00+05:45",
+  "updated": "2026-08-29T14:58:00+05:45",
   "posts": [
+    {
+      "id": "tourists-rescued-accounted",
+      "title": "Tourism Board says 187 tourists rescued or accounted for",
+      "time": "2026-08-29T14:44:56+05:45",
+      "image": "",
+      "body": [
+        "The Nepal Tourism Board's latest update says 184 foreign tourists have been rescued from flood-affected areas and three others have come back into contact, Onlinekhabar reports.",
+        "That puts 187 tourists rescued or accounted for. The board says 420 tourists remain out of contact, a separate count from NDRRMA's wider list of 2,426 people in Nepal.",
+        "Out of contact does not mean dead. Families looking for someone should use the Foreign Ministry's emergency control room and local police rather than rely on unverified social media posts."
+      ],
+      "sources": [
+        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/tourists-rescued-flood.html" },
+        { "name": "Nepalnews", "url": "https://english.nepalnews.com/s/travel-tourism/bhote-koshi-floods-184-foreign-tourists-rescued-420-out-of-communication/" }
+      ]
+    },
     {
       "id": "power-restoration-nuwakot",
       "title": "Ministry says power is back in five Nuwakot areas as repairs continue",
@@ -260,19 +275,19 @@
     },
     {
       "id": "rasuwa-flood",
-      "title": "NDRRMA raises Nepal flood toll to 626, with 2,426 people out of contact",
-      "time": "2026-08-29T10:00:00+05:45",
+      "title": "Nepal Police confirms 626 dead, with district counts updated",
+      "time": "2026-08-29T14:00:00+05:45",
       "image": "",
       "body": [
-        "NDRRMA's 10am Saturday situation update puts Nepal's flood toll at 626 bodies recovered. That is 10 more than Nepal Police reported at 6am, the Kathmandu Post and Associated Press report.",
+        "Nepal Police's 2pm Saturday bulletin says 626 bodies have been found in Nepal. That matches NDRRMA's 10am situation update, while the police bulletin updates the district breakdown: Dhading 49 and Gorkha 54, up from 45 and 48 in the 6am police bulletin.",
         "NDRRMA also lists 2,426 people out of contact in Nepal, up from 1,924 in its Friday evening update. Out of contact does not mean dead. Damaged phones, power and internet still prevent many families from reaching people in the flood zone.",
         "The update says 4,451 people have been rescued and 101 injured people are receiving hospital treatment. It lists 15,224 security personnel deployed for search, rescue and relief, the Kathmandu Post reports.",
-        "Nepal Police's last complete district breakdown remains 616 bodies: Chitwan 233, Nawalparasi East 158, Gorkha 48, Nawalparasi West 47, Dhading 45, Nuwakot 41, Tanahun 31 and Rasuwa 13. NDRRMA has not yet published a new district split for the count of 626.",
+        "Nepal Police's new district breakdown sums to 626 bodies: Chitwan 233, Nawalparasi East 158, Gorkha 54, Nawalparasi West 47, Dhading 49, Nuwakot 41, Tanahun 31 and Rasuwa 13.",
         "Keep away from the Bhote Koshi, Trishuli and Narayani riverbanks until officials say it is safe."
       ],
       "sources": [
         { "name": "NDRRMA", "url": "https://ndrrma.gov.np/mediafiles/publications/Situation_updates_bhadra13_10_AM.pdf" },
-        { "name": "Nepal Police", "url": "https://www.nepalpolice.gov.np/news/10268/" },
+        { "name": "Nepal Police", "url": "https://nepalpolice.gov.np/news/10269/" },
         { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/29/updates-bhotekoshi-flood-death-toll-reaches-616-hundreds-still-missing" },
         { "name": "The Associated Press", "url": "https://apnews.com/article/nepal-china-flood-rescue-fde34c839b648f93f6aa011f044deb00" }
       ],

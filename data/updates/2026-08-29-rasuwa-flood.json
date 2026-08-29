@@ -1,13 +1,13 @@
 {
   "slug": "2026-08-29-rasuwa-flood",
   "id": "rasuwa-flood",
-  "title": "NDRRMA raises Nepal flood toll to 626, with 2,426 people out of contact",
-  "time": "2026-08-29T10:00:00+05:45",
+  "title": "Nepal Police confirms 626 dead, with district counts updated",
+  "time": "2026-08-29T14:00:00+05:45",
   "body": [
-    "NDRRMA's 10am Saturday situation update puts Nepal's flood toll at 626 bodies recovered. That is 10 more than Nepal Police reported at 6am, the Kathmandu Post and Associated Press report.",
+    "Nepal Police's 2pm Saturday bulletin says 626 bodies have been found in Nepal. That matches NDRRMA's 10am situation update, while the police bulletin updates the district breakdown: Dhading 49 and Gorkha 54, up from 45 and 48 in the 6am police bulletin.",
     "NDRRMA also lists 2,426 people out of contact in Nepal, up from 1,924 in its Friday evening update. Out of contact does not mean dead. Damaged phones, power and internet still prevent many families from reaching people in the flood zone.",
     "The update says 4,451 people have been rescued and 101 injured people are receiving hospital treatment. It lists 15,224 security personnel deployed for search, rescue and relief, the Kathmandu Post reports.",
-    "Nepal Police's last complete district breakdown remains 616 bodies: Chitwan 233, Nawalparasi East 158, Gorkha 48, Nawalparasi West 47, Dhading 45, Nuwakot 41, Tanahun 31 and Rasuwa 13. NDRRMA has not yet published a new district split for the count of 626.",
+    "Nepal Police's new district breakdown sums to 626 bodies: Chitwan 233, Nawalparasi East 158, Gorkha 54, Nawalparasi West 47, Dhading 49, Nuwakot 41, Tanahun 31 and Rasuwa 13.",
     "Keep away from the Bhote Koshi, Trishuli and Narayani riverbanks until officials say it is safe."
   ],
   "sources": [
@@ -17,7 +17,7 @@
     },
     {
       "name": "Nepal Police",
-      "url": "https://www.nepalpolice.gov.np/news/10268/"
+      "url": "https://nepalpolice.gov.np/news/10269/"
     },
     {
       "name": "The Kathmandu Post",
