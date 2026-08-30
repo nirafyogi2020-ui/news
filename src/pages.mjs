@@ -324,7 +324,7 @@ ${SECOND_FLOOD_WARNING}
 <h2>What happened</h2>
 <p>At about <strong>09:00 Nepal time on 26 August 2026</strong>, the Bhote Koshi rose suddenly where it crosses into Nepal at Rasuwagadhi. It was not raining in the Rasuwa catchment. Within minutes the water was through Timure, the nearest Nepali settlement, taking nine bank branches and the customs post with it. Syabrubesi, downstream and the gateway to the Langtang trek, lost its helipad, which slowed rescue flights into the upper valley on the first day, when they mattered most. Around a dozen riverside settlements in northern Rasuwa were hit in that first hour.</p>
 <p>The flood did not stop at the district line. The Bhote Koshi joins the Trishuli at Syabrubesi, and the Trishuli runs on into the Narayani. The surge moved through Betrawati and Trishuli Bazar in Nuwakot, Galchhi and Dhunge Bazaar in Dhading, and past Muglin. Bodies have since been recovered as far as Chitwan and Nawalparasi. The Armed Police Force alone recovered ${C.TOLL.narayaniRecovered} from the Narayani by Thursday afternoon.</p>
-<p>Counts rose sharply and repeatedly through the first two days as search teams reached areas that had been cut off. The Prime Minister’s Office reported 95 dead on Wednesday evening and NDRRMA 72; by ${esc(AS_OF_TOLL_EARLIER)} the police count was ${C.TOLL.deadNepalEarlier}, and by ${esc(AS_OF_TOLL)} NDRRMA reported <strong>${C.TOLL.deadNepal}</strong>. Every figure on this page is provisional for that reason.</p>
+<p>Counts rose sharply and repeatedly through the first two days as search teams reached areas that had been cut off. The Prime Minister’s Office reported 95 dead on Wednesday evening and NDRRMA 72; by ${esc(AS_OF_TOLL_EARLIER)} ${esc(C.TOLL_EARLIER_SOURCE)} reported ${C.TOLL.deadNepalEarlier}, and by ${esc(AS_OF_TOLL)} ${esc(C.TOLL_SOURCE)} reported <strong>${C.TOLL.deadNepal}</strong>. Every figure on this page is provisional for that reason.</p>
 <p><a href="/nepal-flood/rasuwa/timeline/">See the full hour-by-hour timeline</a>.</p>
 
 <h3>The route the water took</h3>
@@ -491,7 +491,7 @@ ${table(['When', 'Reported dead', 'Source'], [
     ['Late Wednesday, 26 Aug', '~160', 'NDRRMA and Nepal Police, 157 bodies recovered'],
     ['13:30 Thursday, 27 Aug', 270, 'Nepal Police'],
     ['14:30 Thursday, 27 Aug', 289, 'Nepal Police'],
-    [esc(AS_OF_TOLL_EARLIER), C.TOLL.deadNepalEarlier, 'Nepal Police'],
+    [esc(AS_OF_TOLL_EARLIER), C.TOLL.deadNepalEarlier, esc(C.TOLL_EARLIER_SOURCE)],
     [`<strong>${esc(AS_OF_TOLL)}</strong>`, `<strong class="num">${C.TOLL.deadNepal}</strong>`, '<strong>Nepal Police</strong>'],
   ], 'Compiled from Nepal Police bulletins and the UN OCHA situation overview of 27 August.')}
 <p>Three separate things move these figures, and they move at different speeds:</p>
