@@ -1,0 +1,31 @@
+{
+  "slug": "2026-08-30-rasuwa-flood",
+  "id": "rasuwa-flood",
+  "title": "NDRRMA reports 734 dead, 2,498 still missing",
+  "time": "2026-08-30T09:00:00+05:45",
+  "body": [
+    "NDRRMA's 9am Sunday situation update says 734 bodies and human remains have been recovered in Nepal and 2,498 people remain missing, Onlinekhabar and The Kathmandu Post report. The district count is Chitwan 259, Nawalparasi East 184, Nawalparasi West 82, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 36 and Rasuwa 13.",
+    "The same NDRRMA update says 8,186 people have been rescued: 2,974 by the Nepali Army, 2,699 by Nepal Police and 2,513 by the Armed Police Force. Those agency figures add exactly to 8,186. The latest update does not publish a full location-by-location rescue breakdown.",
+    "NDRRMA reports 242 injured people receiving treatment or discharged. Xinhua reports 16 dead and 546 missing on the China side as of 6pm Saturday, including 261 foreign nationals. Out of contact does not mean dead. Keep away from the Bhote Koshi, Trishuli and Narayani riverbanks until officials say it is safe."
+  ],
+  "sources": [
+    {
+      "name": "Onlinekhabar",
+      "url": "https://english.onlinekhabar.com/rasuwa-flood-death-toll-6.html"
+    },
+    {
+      "name": "The Kathmandu Post",
+      "url": "https://kathmandupost.com/national/2026/08/30/death-toll-from-bhotekoshi-flood-reaches-734"
+    },
+    {
+      "name": "Xinhua",
+      "url": "https://english.news.cn/20260830/e7b4495a33324bccbb8cf4a0b39bb1e4/c.html"
+    },
+    {
+      "name": "Nepal News",
+      "url": "https://english.nepalnews.com/s/nation/bhote-koshi-flood-update-death-toll-reaches-734-over-2400-missing/"
+    }
+  ],
+  "revised": true,
+  "image": ""
+}

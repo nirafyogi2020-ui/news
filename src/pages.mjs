@@ -52,7 +52,7 @@ function table(head, rows, caption) {
 const AS_OF_TOLL = nptLong(C.TOLL_AS_OF);
 const AS_OF_TOLL_EARLIER = nptLong(C.TOLL_EARLIER_AS_OF);
 const AS_OF_MISSING = nptLong(C.MISSING_AS_OF);
-const AS_OF_NDRRMA = nptLong('2026-08-29T10:00:00+05:45');
+const AS_OF_NDRRMA = nptLong(C.RESCUE_AS_OF);
 const AS_OF_BODIES = nptLong(C.BODIES_AS_OF);
 const AS_OF_MISSING_BREAKDOWN = nptLong(C.MISSING_BREAKDOWN_AS_OF);
 const AS_OF_SITREP = nptLong(C.SITREP_AS_OF);
@@ -161,7 +161,7 @@ function numbersGrid() {
     <div class="statbox"><span class="n sm">${esc(C.DAMAGE.costEstimate)}</span><span class="l">road and bridge damage, preliminary</span><span class="src">Minister Sunil Lamsal, 26 Aug</span></div>
     <div class="statbox"><span class="n sm">${esc(C.DAMAGE.reliefReleased)}</span><span class="l">relief money released</span><span class="src">Government of Nepal</span></div>
   </div>
-  <p class="updated-line"><strong>Read every number against its own clock.</strong> The death toll and district breakdown are from the ${esc(C.TOLL_SOURCE)} of ${esc(AS_OF_TOLL)}. The missing and rescue figures are from the ${esc(C.MISSING_SOURCE)} of ${esc(AS_OF_MISSING)}. Damage figures come from the ${esc(C.SITREP_SHORT)}. Every count here is provisional and moves in both directions.</p>`;
+  <p class="updated-line"><strong>Read every number against its own clock.</strong> The death toll and district breakdown are from the ${esc(C.TOLL_SOURCE)} of ${esc(AS_OF_TOLL)}. The missing figure is from the ${esc(C.MISSING_SOURCE)} of ${esc(AS_OF_MISSING)}. The rescue figure is from the ${esc(C.RESCUE_SOURCE)} of ${esc(AS_OF_NDRRMA)}. Damage figures come from the ${esc(C.SITREP_SHORT)}. Every count here is provisional and moves in both directions.</p>`;
 }
 
 const SECOND_FLOOD_WARNING = `<div class="callout callout-alert">
@@ -301,7 +301,7 @@ export function rasuwaEvent(ctx) {
     },
     {
       q: 'How many people are still missing?',
-      a: `<p>Nepal Police reported ${C.TOLL.missing} people missing in its ${esc(AS_OF_MISSING)} update. The last detailed Nepal Police list is older: 579 travellers (466 of them foreign nationals), 161 Rasuwa residents, 85 security personnel and one Nuwakot resident. Chinese state media separately report ${C.TOLL.missingChina} missing around Gyirong Port on the Tibet side, ${C.TOLL.missingChinaForeign} of them foreign nationals. Combined, that is more than 2,900 people unaccounted for, though the two countries’ counts of foreign nationals may overlap. Out of contact does not mean dead. Phone lines, power and internet are down across the valley.</p>`,
+      a: `<p>NDRRMA reported ${C.TOLL.missing} people missing in its ${esc(AS_OF_MISSING)} update. The last detailed Nepal Police list is older: 579 travellers (466 of them foreign nationals), 161 Rasuwa residents, 85 security personnel and one Nuwakot resident. Chinese state media separately report ${C.TOLL.missingChina} missing around Gyirong Port on the Tibet side, ${C.TOLL.missingChinaForeign} of them foreign nationals. Combined, that is ${C.TOLL.missing + C.TOLL.missingChina} people unaccounted for, though the two countries’ counts may overlap. Out of contact does not mean dead. Phone lines, power and internet are down across the valley.</p>`,
     },
     {
       q: 'Is it safe to travel to Langtang or Syabrubesi now?',
@@ -324,7 +324,7 @@ ${SECOND_FLOOD_WARNING}
 <h2>What happened</h2>
 <p>At about <strong>09:00 Nepal time on 26 August 2026</strong>, the Bhote Koshi rose suddenly where it crosses into Nepal at Rasuwagadhi. It was not raining in the Rasuwa catchment. Within minutes the water was through Timure, the nearest Nepali settlement, taking nine bank branches and the customs post with it. Syabrubesi, downstream and the gateway to the Langtang trek, lost its helipad, which slowed rescue flights into the upper valley on the first day, when they mattered most. Around a dozen riverside settlements in northern Rasuwa were hit in that first hour.</p>
 <p>The flood did not stop at the district line. The Bhote Koshi joins the Trishuli at Syabrubesi, and the Trishuli runs on into the Narayani. The surge moved through Betrawati and Trishuli Bazar in Nuwakot, Galchhi and Dhunge Bazaar in Dhading, and past Muglin. Bodies have since been recovered as far as Chitwan and Nawalparasi. The Armed Police Force alone recovered ${C.TOLL.narayaniRecovered} from the Narayani by Thursday afternoon.</p>
-<p>Counts rose sharply and repeatedly through the first two days as search teams reached areas that had been cut off. The Prime Minister’s Office reported 95 dead on Wednesday evening and NDRRMA 72; by 6am Saturday the police count was ${C.TOLL.deadNepalEarlier}, and by ${esc(AS_OF_TOLL)} Nepal Police reported <strong>${C.TOLL.deadNepal}</strong>. Every figure on this page is provisional for that reason.</p>
+<p>Counts rose sharply and repeatedly through the first two days as search teams reached areas that had been cut off. The Prime Minister’s Office reported 95 dead on Wednesday evening and NDRRMA 72; by ${esc(AS_OF_TOLL_EARLIER)} the police count was ${C.TOLL.deadNepalEarlier}, and by ${esc(AS_OF_TOLL)} NDRRMA reported <strong>${C.TOLL.deadNepal}</strong>. Every figure on this page is provisional for that reason.</p>
 <p><a href="/nepal-flood/rasuwa/timeline/">See the full hour-by-hour timeline</a>.</p>
 
 <h3>The route the water took</h3>
@@ -358,7 +358,7 @@ ${table(['Group', 'Listed missing'], C.MISSING_BREAKDOWN.map(([k, v]) => [esc(k)
 ${faq.html}
 
 <h2>How this page is put together</h2>
-<p>Casualty figures come from Nepal Police bulletins. Damage, rescue and response figures come from the ${esc(C.SITREP_SHORT)}, which in turn draws on NDRRMA, Nepal Police, the Department of Roads and the Nepal Electricity Authority. Different bulletins published at different hours give different counts; where two sources disagree, the lower confirmed figure is shown, with the source and the time named next to it. Nothing here is generated automatically from a model. The figures are typed in by hand from the bulletins, which is why they carry a timestamp rather than a claim of being live to the minute.</p>
+<p>Casualty figures come from Nepal Police and NDRRMA situation reports. Damage, rescue and response figures come from the ${esc(C.SITREP_SHORT)} and the latest NDRRMA update, which draw on NDRRMA, Nepal Police, the Department of Roads and the Nepal Electricity Authority. Different bulletins published at different hours give different counts; where two sources disagree, the lower confirmed figure is shown, with the source and the time named next to it. Nothing here is generated automatically from a model. The figures are typed in by hand from the bulletins, which is why they carry a timestamp rather than a claim of being live to the minute.</p>
 <p>If a number here is wrong, <a href="/contact/">tell us</a> and it gets corrected or removed. <a href="/sources/">Every source this site uses is listed publicly</a>.</p>
 `;
 
@@ -477,11 +477,11 @@ ${table(['District', 'Bodies recovered'], C.BODIES_BY_DISTRICT.map(([d, n]) => [
 <p>A further <strong>${C.TOLL.deadChina} deaths</strong> are confirmed on the Chinese side, near Gyirong (Kyirong) county just over the border from Rasuwagadhi, where the dry port and customs area were hit. That brings the confirmed total across both countries to <strong>${C.TOLL.deadNepal + C.TOLL.deadChina}</strong>.</p>
 
 <h2>Injured</h2>
-<p>NDRRMA reported <strong>${C.TOLL.injured} injured people receiving hospital treatment</strong> at ${esc(AS_OF_NDRRMA)}. This is a current treatment count, not a cumulative injury total.</p>
+<p>NDRRMA reported <strong>${C.TOLL.injured} injured people receiving treatment or discharged</strong> at ${esc(AS_OF_NDRRMA)}. This is the bulletin's current count, not a cumulative injury total.</p>
 
 <h2>Rescued</h2>
-<p>Search and rescue is being run by the Nepali Army, Nepal Police and the Armed Police Force with military and private helicopters. NDRRMA reported <strong>${C.TOLL.rescued} people rescued</strong> at ${esc(AS_OF_NDRRMA)}. Its earlier named nationality list totals 113, so it is not a full breakdown of the current total.</p>
-${table(['Rescued', 'People'], C.TOLL.rescuedBreakdown.map(([k, v]) => [esc(k), v]).concat([['<strong>Earlier named list total</strong>', `<strong class="num">${C.TOLL.rescuedBreakdown.reduce((sum, [, value]) => sum + value, 0)}</strong>`]]), 'NDRRMA, 27 August 2026. This is an older named list, not a breakdown of the latest total.')}
+<p>Search and rescue is being run by the Nepali Army, Nepal Police and the Armed Police Force with military and private helicopters. NDRRMA reported <strong>${C.TOLL.rescued} people rescued</strong> at ${esc(AS_OF_NDRRMA)}. Its current agency breakdown is shown below, and the rows add exactly to the displayed total.</p>
+${table(['Agency', 'Rescued'], C.TOLL.rescuedBreakdown.map(([k, v]) => [esc(k), v]).concat([['<strong>Total</strong>', `<strong class="num">${C.TOLL.rescuedBreakdown.reduce((sum, [, value]) => sum + value, 0)}</strong>`]]), `${esc(C.RESCUE_SOURCE)}, ${esc(AS_OF_NDRRMA)}. The agency figures add to the current rescue total.`)}
 
 <h2>How the toll has moved</h2>
 <p>This is the clearest illustration of why a casualty figure without a timestamp is useless during an event like this. Every figure below was correct when it was published.</p>
@@ -504,9 +504,10 @@ ${table(['When', 'Reported dead', 'Source'], [
 
 <h2>Sources for every figure on this page</h2>
 <ul>
-  <li><strong>Dead, by district:</strong> Nepal Police bulletin, ${esc(AS_OF_BODIES)}. <a href="https://www.nepalpolice.gov.np/" rel="noopener nofollow" target="_blank">nepalpolice.gov.np</a></li>
-  <li><strong>Missing:</strong> Nepal Police bulletin, ${esc(AS_OF_MISSING)}.</li>
-  <li><strong>Injured, rescued, response:</strong> ${esc(C.SITREP_SHORT)} on <a href="https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" rel="noopener nofollow" target="_blank">ReliefWeb</a>, drawing on NDRRMA and Nepal Police.</li>
+  <li><strong>Dead, by district:</strong> ${esc(C.BODIES_SOURCE)}, ${esc(AS_OF_BODIES)}. <a href="https://ndrrma.gov.np/" rel="noopener nofollow" target="_blank">ndrrma.gov.np</a></li>
+  <li><strong>Missing:</strong> ${esc(C.MISSING_SOURCE)}, ${esc(AS_OF_MISSING)}.</li>
+  <li><strong>Injured and rescued:</strong> ${esc(C.RESCUE_SOURCE)}.</li>
+  <li><strong>Older damage and response figures:</strong> ${esc(C.SITREP_SHORT)} on <a href="https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026" rel="noopener nofollow" target="_blank">ReliefWeb</a>, drawing on NDRRMA and Nepal Police.</li>
   <li><strong>Narayani recoveries:</strong> Armed Police Force, reported by Nepalnews, 27 August.</li>
   <li><strong>Hospital figures:</strong> Tribhuvan University Teaching Hospital, reported by Nagarik News, 27 August.</li>
   <li><strong>Chinese-side deaths:</strong> Chinese state media (CCTV) regarding Gyirong county.</li>
@@ -2089,14 +2090,14 @@ export function foreignNationals(ctx) {
 <p class="measure">The flood came down the Bhote Koshi at Timure and Rasuwagadhi, which is Nepal's main overland crossing to Tibet and the road to the Langtang trekking region. On any given morning that road carries traders, pilgrims, tour groups and trekkers from a long list of countries. The people on it were not residents of the valley, which is why so many of them are counted as travellers rather than as residents of Rasuwa.</p>
 
 <h2>What the two countries have published</h2>
-<p class="measure">The morning Nepal Police bulletin of ${esc(AS_OF_MISSING_BREAKDOWN)} broke its list of ${C.MISSING_BREAKDOWN_TOTAL} into groups, of which travellers were by far the largest at 579, and said 466 of those travellers were foreign nationals. Chinese state media report ${C.TOLL.missingChina} people missing around Gyirong Port on the Tibet side, ${C.TOLL.missingChinaForeign} of them foreign nationals. Nepal Police's current total is ${C.TOLL.missing}, without a new breakdown.</p>
-<p class="measure">Adding the two national figures together gives a number over thirteen hundred, and that is the figure most international coverage has used. It should be read with care: the two countries may be counting some of the same people, since a traveller who crossed the border that morning could appear on either side's list.</p>
+<p class="measure">The morning Nepal Police bulletin of ${esc(AS_OF_MISSING_BREAKDOWN)} broke its list of ${C.MISSING_BREAKDOWN_TOTAL} into groups, of which travellers were by far the largest at 579, and said 466 of those travellers were foreign nationals. Chinese state media report ${C.TOLL.missingChina} people missing around Gyirong Port on the Tibet side, ${C.TOLL.missingChinaForeign} of them foreign nationals. NDRRMA's current Nepal total is ${C.TOLL.missing}, without a new full breakdown.</p>
+<p class="measure">Adding the two national figures together gives ${C.TOLL.missing + C.TOLL.missingChina}, and that is the figure most international coverage has used. It should be read with care: the two countries may be counting some of the same people, since a traveller who crossed the border that morning could appear on either side's list.</p>
 
 <h2>Among the rescued</h2>
-<p class="measure">NDRRMA's latest total is ${C.TOLL.rescued} rescued. Its older named nationality list is below and does not add up to that total.</p>
-${table(['Nationality', 'Rescued'], C.TOLL.rescuedBreakdown.map(([k, v]) => [esc(k), v]).concat([
-    ['<strong>Earlier named list total</strong>', `<strong class="num">${C.TOLL.rescuedBreakdown.reduce((sum, [, value]) => sum + value, 0)}</strong>`],
-  ]), `NDRRMA, which published this older named list.`)}
+<p class="measure">NDRRMA's latest total is ${C.TOLL.rescued} rescued. Its current agency breakdown is below, and the rows add exactly to that total.</p>
+${table(['Agency', 'Rescued'], C.TOLL.rescuedBreakdown.map(([k, v]) => [esc(k), v]).concat([
+    ['<strong>Total</strong>', `<strong class="num">${C.TOLL.rescuedBreakdown.reduce((sum, [, value]) => sum + value, 0)}</strong>`],
+  ]), `${esc(C.RESCUE_SOURCE)}, ${esc(AS_OF_NDRRMA)}.`)}
 
 <h2>Embassies and consular help</h2>
 <p class="measure">A consular section is the right first call for a family outside Nepal. They can ask the Nepali authorities questions that an individual cannot, they are already in contact with the police and NDRRMA about this event, and they can help with documents if someone has lost everything. Contact details for the missions in Kathmandu are on the <a href="/nepal-flood/emergency-numbers/">emergency numbers page</a>.</p>
