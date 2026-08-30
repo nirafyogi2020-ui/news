@@ -8,24 +8,27 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-08-29T16:00:00+05:45';
-export const TOLL_SOURCE = 'Nepal Police 4pm Saturday bulletin';
+export const TOLL_AS_OF = '2026-08-30T09:00:00+05:45';
+export const TOLL_SOURCE = 'NDRRMA 9am Sunday situation update';
 
 /* When the bulletin one step before TOLL_AS_OF was published. Used only for
    the "how the toll has moved" table, so that row's timestamp always matches
    TOLL.deadNepalEarlier instead of drifting out of date as later runs move
    both TOLL_AS_OF and deadNepalEarlier forward. */
-export const TOLL_EARLIER_AS_OF = '2026-08-29T10:00:00+05:45';
+export const TOLL_EARLIER_AS_OF = '2026-08-29T16:00:00+05:45';
 
 /* The district breakdown now comes from the same 4pm police bulletin as the
    national toll. */
-export const BODIES_AS_OF = '2026-08-29T16:00:00+05:45';
-export const BODIES_SOURCE = 'Nepal Police 4pm Saturday bulletin';
+export const BODIES_AS_OF = '2026-08-30T09:00:00+05:45';
+export const BODIES_SOURCE = 'NDRRMA 9am Sunday situation update';
 
 /* Nepal Police's 4pm update reports the current missing total. Its detailed
    group breakdown is older and remains separately timestamped below. */
-export const MISSING_AS_OF = '2026-08-29T16:00:00+05:45';
-export const MISSING_SOURCE = 'Nepal Police 4pm Saturday update';
+export const MISSING_AS_OF = '2026-08-30T09:00:00+05:45';
+export const MISSING_SOURCE = 'NDRRMA 9am Sunday situation update';
+
+export const RESCUE_AS_OF = '2026-08-30T09:00:00+05:45';
+export const RESCUE_SOURCE = 'NDRRMA 9am Sunday situation update';
 
 /* Who those people are was last broken down in the morning police bulletin,
    when the list stood at 826. The groups below still describe that list. */
@@ -49,13 +52,13 @@ export const EVENT = {
 
 /** Bodies recovered, by the district where they were found. */
 export const BODIES_BY_DISTRICT = [
-  ['Chitwan', 248],
-  ['Nawalparasi East', 158],
-  ['Gorkha', 54],
-  ['Nawalparasi West', 75],
-  ['Dhading', 49],
-  ['Nuwakot', 41],
-  ['Tanahun', 31],
+  ['Chitwan', 259],
+  ['Nawalparasi East', 184],
+  ['Nawalparasi West', 82],
+  ['Gorkha', 58],
+  ['Nuwakot', 52],
+  ['Dhading', 50],
+  ['Tanahun', 36],
   ['Rasuwa', 13],
 ];
 
@@ -89,21 +92,19 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 669,
-  deadNepalEarlier: 626,
-  deadChina: 7,
-  missing: 2362,
-  missingChina: 554,
-  missingChinaForeign: 260,
+  deadNepal: 734,
+  deadNepalEarlier: 669,
+  deadChina: 16,
+  missing: 2498,
+  missingChina: 546,
+  missingChinaForeign: 261,
   missingIndian: 133,
-  injured: 101,
-  rescued: 4451,
+  injured: 242,
+  rescued: 8186,
   rescuedBreakdown: [
-    ['Nepali citizens', 88],
-    ['Indian citizens', 11],
-    ['Chinese citizens', 8],
-    ['Korean citizens', 4],
-    ['US citizens', 2],
+    ['Nepali Army', 2974],
+    ['Nepal Police', 2699],
+    ['Armed Police Force', 2513],
   ],
   narayaniRecovered: 121,
 };
@@ -234,11 +235,12 @@ export const TIMELINE = [
   ['19:47 NPT, 29 August', 'The Independent Power Producers’ Association, Nepal says 898 people remain unaccounted for at 11 affected hydropower projects in Rasuwa and Nuwakot. Onlinekhabar reports that 361 people have been evacuated, around 300 are believed trapped in the Upper Trishuli-1 tunnel, and Chinese experts have arrived to help with tunnel rescue.'],
   ['20:54 NPT, 29 August', 'The Department of Hydrology and Meteorology says the immediate risk of a sudden lake burst has decreased after water began flowing out naturally. Onlinekhabar reports experts warning that fresh landslides could still trigger renewed flooding.'],
   ['21:04 NPT, 29 August', 'Prime Minister Balen Shah says Rs 5.04 billion has been deposited in nine commercial bank accounts for flood rescue and relief, with another US$1.8 million deposited at two banks, Onlinekhabar reports.'],
+  ['09:00 NPT, 30 August', 'NDRRMA reports 734 bodies and human remains recovered, 2,498 people missing, 242 injured or discharged, and 8,186 people rescued. The district body count is Chitwan 259, Nawalparasi East 184, Nawalparasi West 82, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 36 and Rasuwa 13. The rescue total breaks down to 2,974 by the Nepali Army, 2,699 by Nepal Police and 2,513 by the Armed Police Force, Onlinekhabar and the Kathmandu Post report.'],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */
 export const RESPONSE = [
-  ['Search and rescue', 'The Nepali Army, Armed Police Force and Nepal Police are deployed with military and private helicopters. 113 people have been rescued so far, 88 Nepali citizens and 25 foreign nationals, from Timure, Dhunche, Syabrubesi, Uttargaya and Bidur.'],
+  ['Search and rescue', 'NDRRMA reported 8,186 people rescued in its 9am Sunday update: 2,974 by the Nepali Army, 2,699 by Nepal Police and 2,513 by the Armed Police Force. Those agency figures add exactly to 8,186. The latest update does not publish a full location-by-location breakdown. The Nepali Army separately reported 2,697 people rescued in Rasuwa by 7am from Timure, Syabrubesi, Dhunche and Mailung, The Kathmandu Post reported.'],
   ['Cabinet decisions', 'Free medical treatment for the injured, financial assistance to bereaved families, and orders to reopen roads, restore power and telecommunications, and provide food and shelter for the displaced.'],
   ['International assistance', 'Nepal has asked China and India for help. China has pledged relief funding; India is sending humanitarian supplies. The IFRC has released emergency funding to the Nepal Red Cross Society, which is distributing water, tarpaulins, blankets and first-aid supplies.'],
   ['Downstream precautions in India', 'Authorities in Bihar have opened the Valmikinagar Barrage on the Gandak, the same river that is called the Narayani inside Nepal, and prepared to evacuate 10,000 to 12,000 people.'],

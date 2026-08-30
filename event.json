@@ -8,38 +8,38 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-08-29T16:00:00+05:45",
-  "asOfSource": "Nepal Police bulletin, 4pm Saturday",
+  "asOf": "2026-08-30T09:00:00+05:45",
+  "asOfSource": "NDRRMA situation update, 9am Sunday",
   "stats": [
     {
       "icon": "dead",
-      "value": "669",
+      "value": "734",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepal Police reported 669 bodies found in Nepal by 4pm Saturday. Nepal News reported the district breakdown: Chitwan 248, Nawalparasi East 158, Nawalparasi West 75, Gorkha 54, Dhading 49, Nuwakot 41, Tanahun 31 and Rasuwa 13. China's separate toll of 7 is not added here."
+      "detail": "NDRRMA's 9am Sunday situation update reported 734 bodies and human remains recovered in Nepal. The district breakdown is Chitwan 259, Nawalparasi East 184, Nawalparasi West 82, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 36 and Rasuwa 13. China's separate toll of 16 is not added here."
     },
     {
       "icon": "missing",
-      "value": "2,362",
+      "value": "2,498",
       "tone": "critical",
       "label": "listed missing in Nepal",
       "bar": 100,
-      "detail": "Nepal Police said 2,362 people remained missing in its Saturday update, The Kathmandu Post reported. The report said 1,863 were Nepali nationals and 499 were foreign nationals. Out of contact does not mean dead: disrupted phones, power and internet can prevent contact. This is Nepal Police's figure, not NDRRMA's earlier 2,426-person list."
+      "detail": "NDRRMA's 9am Sunday situation update reported 2,498 people still missing, The Kathmandu Post and Onlinekhabar reported. The update identified 589 foreign nationals and 127 Nepalis travelling with foreign tourists, but did not publish a complete nationality split. Out of contact does not mean dead: disrupted phones, power and internet can prevent contact."
     },
     {
       "icon": "missing",
-      "value": "554",
+      "value": "546",
       "label": "missing on the China side",
       "bar": 56,
-      "detail": "Xinhua, China's state news agency, reports 554 people missing around Gyirong Port in Xizang (Tibet) as of Saturday morning, down slightly from the 558 Chinese media had given earlier, with 260 of them foreign nationals. Combined with Nepal's list that is more than 2,400 people unaccounted for across both countries, although the two countries' counts of foreign nationals may overlap."
+      "detail": "Xinhua reports 546 people missing around Gyirong Port in Xizang (Tibet) as of 6pm Saturday, including 261 foreign nationals. Combined with Nepal's 2,498-person list that is 3,044 people unaccounted for across both countries, although the two countries' counts may overlap."
     },
     {
       "icon": "people",
-      "value": "4,451",
+      "value": "8,186",
       "label": "rescued so far",
-      "bar": 60,
-      "detail": "NDRRMA reported 4,451 people rescued in its 10am Saturday situation update. The Rising Nepal, citing Nepal Police, reported 2,301 people rescued by 4pm. Agency totals can differ by reporting time and scope."
+      "bar": 100,
+      "detail": "NDRRMA's 9am Sunday situation update reported 8,186 people rescued: 2,974 by the Nepali Army, 2,699 by Nepal Police and 2,513 by the Armed Police Force. Those agency figures add exactly to 8,186. The Nepali Army separately reported 2,697 people rescued in Rasuwa by 7am from Timure, Syabrubesi, Dhunche and Mailung, The Kathmandu Post reported."
     },
     {
       "icon": "power",
