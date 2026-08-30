@@ -8,16 +8,16 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-08-30T13:00:00+05:45",
-  "asOfSource": "NDRRMA 1pm Sunday situation update, reported by Onlinekhabar",
+  "asOf": "2026-08-30T14:00:00+05:45",
+  "asOfSource": "Nepal Police bulletin 10275, 2pm Sunday",
   "stats": [
     {
       "icon": "dead",
-      "value": "752",
+      "value": "768",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "NDRRMA's 1pm Sunday situation update reported 752 bodies found in Nepal, Onlinekhabar reported. The district breakdown is Chitwan 259, Nawalparasi East 184, Nawalparasi West 100, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 36 and Rasuwa 13. China's separate toll of 16 is not added here."
+      "detail": "Nepal Police bulletin 10275 reported 768 bodies found in Nepal by 2pm Sunday. The district breakdown is Chitwan 264, Nawalparasi East 194, Nawalparasi West 100, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 37 and Rasuwa 13. China's separate toll of 16 is not added here."
     },
     {
       "icon": "missing",
@@ -32,7 +32,7 @@
       "value": "546",
       "label": "missing on the China side",
       "bar": 56,
-      "detail": "Xinhua reports 546 people missing around Gyirong Port in Xizang (Tibet) as of 6pm Saturday, including 261 foreign nationals. Combined with Nepal's 2,498-person list that is 3,044 people unaccounted for across both countries, although the two countries' counts may overlap."
+      "detail": "Xinhua reports 546 people missing around Gyirong Port in Xizang (Tibet) as of 6pm Saturday, including 261 foreign nationals. Combined with Nepal's 2,502-person list that is 3,048 people unaccounted for across both countries, although the two countries' counts may overlap."
     },
     {
       "icon": "people",
