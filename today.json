@@ -1,6 +1,20 @@
 {
-  "updated": "2026-08-30T13:21:06+05:45",
+  "updated": "2026-08-30T13:57:12+05:45",
   "posts": [
+    {
+      "id": "china-relief-supplies",
+      "title": "China sends 50 tonnes of emergency supplies to Nepal",
+      "time": "2026-08-30T11:11:00+05:45",
+      "image": "",
+      "body": [
+        "China sent 50 tonnes of emergency relief supplies to Nepal on Sunday, The Kathmandu Post reports. Two Chinese military transport aircraft carried 13,200 items to Kathmandu at around 7am.",
+        "The Kathmandu Post says the supplies include tents, blankets, sleeping bags, hard tack and first-aid kits. The Chinese Embassy also said five tunnel experts had flown to flood-hit areas and four more would be sent soon.",
+        "Relief delivery is separate from the search for people trapped in hydropower tunnels. Coordinate aid through district relief committees or response agencies."
+      ],
+      "sources": [
+        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/30/china-sends-50-tonnes-of-emergency-relief-supplies-to-flood-hit-nepal" }
+      ]
+    },
     {
       "id": "relief-fund-504bn",
       "title": "PM says more than Rs 5bn deposited for flood relief",
@@ -144,18 +158,18 @@
     },
     {
       "id": "trishuli-flood-alert-fresh-warning",
-      "title": "Nepal issues fresh flood alert for the Trishuli riverbank down to Muglin",
-      "time": "2026-08-28T22:30:00+05:45",
+      "title": "Fresh flood warning issued as Bhotekoshi rises",
+      "time": "2026-08-30T10:22:00+05:45",
       "image": "",
       "body": [
-        "Nepal's Flood Forecasting Division, under NDRRMA, issued a fresh high alert Friday night for communities along the Trishuli River as far as Muglin, after Chinese officials told the District Police Office in Rasuwa that water levels in the Bhote Koshi had spiked again, Nepal News reports. The Prime Minister's Office joined the warning.",
-        "Authorities urged riverbank residents, and rescue and relief workers in the area, to stay on high alert and move to safer ground immediately if conditions change. It is not confirmed whether this is linked to the barrier lake upstream that China's embassy called critical on Friday night.",
-        "If you live or work along the Trishuli down to Muglin, move away from the riverbank now and wait for officials to say it is clear."
+        "Authorities in Nepal warned of possible fresh flooding on Sunday after water levels rose in the Bhotekoshi River, the Associated Press reports. Warning notices reached people's phones through Sunday morning.",
+        "The Associated Press says Dharam Raj Uprety, chief executive of NDRRMA, told it that Chinese authorities had reported increased water flow upstream. Residents in flood-hit districts were urged to remain on high alert.",
+        "Rescue crews were clearing the Prithvi Highway while residents in Galchhi moved to higher ground. Stay away from riverbanks and follow local warnings."
       ],
       "sources": [
-        { "name": "Nepal News", "url": "https://english.nepalnews.com/s/nation/high-alert-issued-for-trishuli-river-basin-following-fresh-flash-flood-surge-in-bhote-koshi/" },
-        { "name": "ABC News Australia", "url": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974" }
-      ]
+        { "name": "The Associated Press", "url": "https://apnews.com/article/nepal-china-flood-galchhi-warning-afec20e612514ca3598c65b29f485303" }
+      ],
+      "revised": true
     },
     {
       "id": "schools-swept-students-unaccounted",
@@ -277,19 +291,18 @@
     },
     {
       "id": "foreign-rescue-experts-accepted",
-      "title": "Nepal reverses itself, accepts foreign tunnel rescue and DNA experts",
-      "time": "2026-08-28T20:55:00+05:45",
+      "title": "Foreign tunnel-rescue teams now working in flood zone",
+      "time": "2026-08-30T09:37:00+05:45",
       "image": "",
       "body": [
-        "Nepal's government has reversed an earlier decision and will let India, China, Australia and South Korea send in specialists to help with tunnel rescues and to identify bodies, the Kathmandu Post reports.",
-        "Foreign Minister Shisir Khanal said Nepal has identified three areas where it will accept outside support, though the paper names only two: rescuing people trapped inside hydropower tunnels in Rasuwa and Nuwakot, and DNA and forensic work to identify bodies. \"We need to conduct DNA tests on a large number of samples,\" Khanal said. \"Foreign experts will assist us in identifying the bodies promptly so that we can hand them over to their relatives on time.\"",
-        "A senior government official told the paper that Kathmandu had come under heavy pressure from other countries to allow at least search and rescue teams and some experts in, because their own citizens are also among the missing.",
-        "As recently as Wednesday and Thursday, Nepal said its own army and police could handle the operation alone and that it did not need outside rescue teams. That position did not hold even a full day.",
-        "This is a narrower opening, not a reversal on everyone who offered help. Nepal is still not accepting a broader international search and rescue deployment, only tunnel rescue and DNA identification experts from these four countries."
+        "The Kathmandu Post reports that Indian, Chinese and South Korean teams reached flood-hit areas Saturday to support specialised tunnel rescue. The 11-member Indian reconnaissance team flew to Chilime and Langtang with Nepali Army and Armed Police Force personnel.",
+        "China's Ministry of Emergency Management sent five tunnel experts to Nepal, and the Chinese Embassy said another four would be sent soon, The Kathmandu Post reports.",
+        "South Korean experts were also allowed to inspect affected areas. This is specialised assistance for tunnel rescue, forensic and DNA work, not a broad foreign deployment. People searching for relatives should use official control rooms and police channels."
       ],
       "sources": [
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/28/diplomatic-pressure-pushes-nepal-to-seek-foreign-rescue-expertise" }
-      ]
+        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/30/indian-chinese-and-korean-teams-moved-to-flood-hit-areas-to-support-search-and-rescue-effort" }
+      ],
+      "revised": true
     },
     {
       "id": "rasuwa-flood",
