@@ -262,5 +262,23 @@
     "type": "image/jpeg",
     "credit": "The Kathmandu Post",
     "article": "https://kathmandupost.com/national/2026/08/30/death-toll-from-bhotekoshi-flood-reaches-734"
+  },
+  "updates-2026-08-30-china-relief-supplies": {
+    "file": "updates-2026-08-30-china-relief-supplies.jpg",
+    "type": "image/jpeg",
+    "credit": "The Kathmandu Post",
+    "article": "https://kathmandupost.com/national/2026/08/30/china-sends-50-tonnes-of-emergency-relief-supplies-to-flood-hit-nepal"
+  },
+  "updates-2026-08-30-trishuli-flood-alert-fresh-warning": {
+    "file": "updates-2026-08-30-trishuli-flood-alert-fresh-warning.jpg",
+    "type": "image/jpeg",
+    "credit": "AP News",
+    "article": "https://apnews.com/article/nepal-china-flood-galchhi-warning-afec20e612514ca3598c65b29f485303"
+  },
+  "updates-2026-08-30-foreign-rescue-experts-accepted": {
+    "file": "updates-2026-08-30-foreign-rescue-experts-accepted.jpg",
+    "type": "image/jpeg",
+    "credit": "The Kathmandu Post",
+    "article": "https://kathmandupost.com/national/2026/08/30/indian-chinese-and-korean-teams-moved-to-flood-hit-areas-to-support-search-and-rescue-effort"
   }
 }
