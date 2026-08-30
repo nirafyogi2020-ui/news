@@ -480,8 +480,8 @@ ${table(['District', 'Bodies recovered'], C.BODIES_BY_DISTRICT.map(([d, n]) => [
 <p>NDRRMA reported <strong>${C.TOLL.injured} injured people receiving treatment or discharged</strong> at ${esc(AS_OF_NDRRMA)}. This is the bulletin's current count, not a cumulative injury total.</p>
 
 <h2>Rescued</h2>
-<p>Search and rescue is being run by the Nepali Army, Nepal Police and the Armed Police Force with military and private helicopters. NDRRMA reported <strong>${C.TOLL.rescued} people rescued</strong> at ${esc(AS_OF_NDRRMA)}. Its current agency breakdown is shown below, and the rows add exactly to the displayed total.</p>
-${table(['Agency', 'Rescued'], C.TOLL.rescuedBreakdown.map(([k, v]) => [esc(k), v]).concat([['<strong>Total</strong>', `<strong class="num">${C.TOLL.rescuedBreakdown.reduce((sum, [, value]) => sum + value, 0)}</strong>`]]), `${esc(C.RESCUE_SOURCE)}, ${esc(AS_OF_NDRRMA)}. The agency figures add to the current rescue total.`)}
+<p>Search and rescue is being run by the Nepali Army, Nepal Police and the Armed Police Force with military and private helicopters. NDRRMA reported <strong>${C.TOLL.rescued} people rescued</strong> at ${esc(AS_OF_NDRRMA)}. The latest report does not publish a current agency or location breakdown, so no sub-rows are inferred.</p>
+${C.TOLL.rescuedBreakdown.length ? table(['Agency', 'Rescued'], C.TOLL.rescuedBreakdown.map(([k, v]) => [esc(k), v]).concat([['<strong>Total</strong>', `<strong class="num">${C.TOLL.rescuedBreakdown.reduce((sum, [, value]) => sum + value, 0)}</strong>`]]), `${esc(C.RESCUE_SOURCE)}, ${esc(AS_OF_NDRRMA)}. The agency figures add to the current rescue total.`) : ''}
 
 <h2>How the toll has moved</h2>
 <p>This is the clearest illustration of why a casualty figure without a timestamp is useless during an event like this. Every figure below was correct when it was published.</p>
@@ -492,7 +492,7 @@ ${table(['When', 'Reported dead', 'Source'], [
     ['13:30 Thursday, 27 Aug', 270, 'Nepal Police'],
     ['14:30 Thursday, 27 Aug', 289, 'Nepal Police'],
     [esc(AS_OF_TOLL_EARLIER), C.TOLL.deadNepalEarlier, esc(C.TOLL_EARLIER_SOURCE)],
-    [`<strong>${esc(AS_OF_TOLL)}</strong>`, `<strong class="num">${C.TOLL.deadNepal}</strong>`, '<strong>Nepal Police</strong>'],
+    [`<strong>${esc(AS_OF_TOLL)}</strong>`, `<strong class="num">${C.TOLL.deadNepal}</strong>`, '<strong>NDRRMA, reported by Onlinekhabar</strong>'],
   ], 'Compiled from Nepal Police bulletins and the UN OCHA situation overview of 27 August.')}
 <p>Three separate things move these figures, and they move at different speeds:</p>
 <ul>
@@ -524,7 +524,7 @@ ${table(['When', 'Reported dead', 'Source'], [
       path, title: t, description: d,
       ogTitle: `Rasuwa flood death toll: ${C.TOLL.deadNepal} confirmed dead`,
       h1: 'Rasuwa flood: confirmed dead, injured and rescued',
-      lede: `Confirmed figures only, with the bulletin and the time attached to each one. Nepal Police put the toll at ${C.TOLL.deadNepal} dead as of ${AS_OF_TOLL}, up from ${C.TOLL.deadNepalEarlier} at ${AS_OF_TOLL_EARLIER}.`,
+      lede: `Confirmed figures only, with the bulletin and the time attached to each one. ${C.TOLL_SOURCE} put the toll at ${C.TOLL.deadNepal} dead as of ${AS_OF_TOLL}, up from ${C.TOLL.deadNepalEarlier} at ${AS_OF_TOLL_EARLIER}.`,
       crumbs: [{ label: 'Home', href: '/' }, { label: 'Nepal floods', href: '/nepal-flood/' }, { label: 'Rasuwa flood 2026', href: '/nepal-flood/rasuwa/' }, { label: 'Casualties' }],
       statusPill: 'live',
       updatedNote: bylineLive(ctx.modified),
@@ -2094,10 +2094,10 @@ export function foreignNationals(ctx) {
 <p class="measure">Adding the two national figures together gives ${C.TOLL.missing + C.TOLL.missingChina}, and that is the figure most international coverage has used. It should be read with care: the two countries may be counting some of the same people, since a traveller who crossed the border that morning could appear on either side's list.</p>
 
 <h2>Among the rescued</h2>
-<p class="measure">NDRRMA's latest total is ${C.TOLL.rescued} rescued. Its current agency breakdown is below, and the rows add exactly to that total.</p>
-${table(['Agency', 'Rescued'], C.TOLL.rescuedBreakdown.map(([k, v]) => [esc(k), v]).concat([
+<p class="measure">NDRRMA's latest total is ${C.TOLL.rescued} rescued. The latest report does not publish a current agency or location breakdown, so no sub-rows are inferred.</p>
+${C.TOLL.rescuedBreakdown.length ? table(['Agency', 'Rescued'], C.TOLL.rescuedBreakdown.map(([k, v]) => [esc(k), v]).concat([
     ['<strong>Total</strong>', `<strong class="num">${C.TOLL.rescuedBreakdown.reduce((sum, [, value]) => sum + value, 0)}</strong>`],
-  ]), `${esc(C.RESCUE_SOURCE)}, ${esc(AS_OF_NDRRMA)}.`)}
+  ]), `${esc(C.RESCUE_SOURCE)}, ${esc(AS_OF_NDRRMA)}.`) : ''}
 
 <h2>Embassies and consular help</h2>
 <p class="measure">A consular section is the right first call for a family outside Nepal. They can ask the Nepali authorities questions that an individual cannot, they are already in contact with the police and NDRRMA about this event, and they can help with documents if someone has lost everything. Contact details for the missions in Kathmandu are on the <a href="/nepal-flood/emergency-numbers/">emergency numbers page</a>.</p>
