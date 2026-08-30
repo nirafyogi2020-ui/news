@@ -8,24 +8,24 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-08-30T11:00:00+05:45",
-  "asOfSource": "Nepal Police bulletin 10274, 11am Sunday",
+  "asOf": "2026-08-30T13:00:00+05:45",
+  "asOfSource": "NDRRMA 1pm Sunday situation update, reported by Onlinekhabar",
   "stats": [
     {
       "icon": "dead",
-      "value": "735",
+      "value": "752",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepal Police bulletin 10274 reported 735 bodies found in Nepal by 11am Sunday. The district breakdown is Chitwan 259, Nawalparasi East 184, Nawalparasi West 82, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 37 and Rasuwa 13. China's separate toll of 16 is not added here."
+      "detail": "NDRRMA's 1pm Sunday situation update reported 752 bodies found in Nepal, Onlinekhabar reported. The district breakdown is Chitwan 259, Nawalparasi East 184, Nawalparasi West 100, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 36 and Rasuwa 13. China's separate toll of 16 is not added here."
     },
     {
       "icon": "missing",
-      "value": "2,498",
+      "value": "2,502",
       "tone": "critical",
       "label": "listed missing in Nepal",
       "bar": 100,
-      "detail": "NDRRMA's 9am Sunday situation update reported 2,498 people still missing, The Kathmandu Post and Onlinekhabar reported. The update identified 589 foreign nationals and 127 Nepalis travelling with foreign tourists, but did not publish a complete nationality split. Out of contact does not mean dead: disrupted phones, power and internet can prevent contact."
+      "detail": "NDRRMA's 1pm Sunday situation update reported 2,502 people still unaccounted for, Onlinekhabar reported. The earlier 9am update identified 589 foreign nationals and 127 Nepalis travelling with foreign tourists, but the newer report did not publish a complete nationality split. Out of contact does not mean dead: disrupted phones, power and internet can prevent contact."
     },
     {
       "icon": "missing",
@@ -36,10 +36,10 @@
     },
     {
       "icon": "people",
-      "value": "8,186",
+      "value": "8,730",
       "label": "rescued so far",
       "bar": 100,
-      "detail": "NDRRMA's 9am Sunday situation update reported 8,186 people rescued: 2,974 by the Nepali Army, 2,699 by Nepal Police and 2,513 by the Armed Police Force. Those agency figures add exactly to 8,186. The Nepali Army separately reported 2,697 people rescued in Rasuwa by 7am from Timure, Syabrubesi, Dhunche and Mailung, The Kathmandu Post reported."
+      "detail": "NDRRMA's 1pm Sunday situation update reported 8,730 people rescued, Onlinekhabar reported. The report did not publish a current agency or location breakdown for that total, so no sub-rows are inferred."
     },
     {
       "icon": "power",
