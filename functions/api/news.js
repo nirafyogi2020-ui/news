@@ -42,7 +42,6 @@ const CACHE_SECONDS = 60;
 /* The verified Watch list is cheap to read, so it can check often. */
 const YT_FRESH_SECONDS = 60;      // 1 minute
 const YT_BACKUP_SECONDS = 86400;  // 24 hours
-const YT_CHANNEL_SECONDS = 30 * 24 * 60 * 60; // Channel metadata rarely changes.
 /** Card summaries: keep the full text each feed publishes, cleaned to plain
  *  text, capped only to keep one card from running very long. */
 const SUMMARY_MAX = 650;
@@ -610,14 +609,12 @@ async function fetchBingNews() {
  * re-uploads were making Watch stale and unreliable.
  */
 async function fetchYoutube(env, request, context) {
-  const key = env && env.YOUTUBE_API_KEY;
-  if (!key) return normalizeYoutubeFeed({
-    items: [],
-    checkedAt: new Date().toISOString(),
-    configured: false,
-    channels: YT_TRUSTED_CHANNELS.map(channel => channel.source)
-  });
-
+  /* Nothing to configure any more. The Watch tab used to depend on a Google
+     API key, and a key has a daily quota: when it ran out every channel
+     answered "no videos" without answering "error", so the tab emptied and
+     nothing on the page could say why. The public per-channel feeds need no
+     account at all, so there is no quota left to run out and no credential
+     left to expire. */
   const cache = caches.default;
   const base = request.url;
   const freshKey  = new Request(new URL('/__cache/youtube-trusted-v1-fresh', base).toString());
@@ -627,7 +624,7 @@ async function fetchYoutube(env, request, context) {
   if (hit) return normalizeYoutubeFeed(await hit.json());
 
   try {
-    const feed = await fetchTrustedYoutube(key, request, context);
+    const feed = await fetchTrustedYoutube();
     const result = {
       items: feed.items,
       checkedAt: new Date().toISOString(),
@@ -708,11 +705,67 @@ function cachedJson(data, seconds) {
   });
 }
 
-async function fetchTrustedYoutube(key, request, context) {
-  const settled = await Promise.allSettled(YT_TRUSTED_CHANNELS.map(async channel => {
-    const identity = await resolveYoutubeChannel(channel, key, request, context);
-    return fetchYoutubePlaylist(identity, channel, key);
-  }));
+/* Each channel's public uploads feed. No key, no account, no daily quota —
+   which is the whole point of using it. The API path this replaced was capped
+   by a Google project's quota, and when that quota ran out the Watch tab went
+   empty with no error to show for it: every channel answered "fine, nothing
+   here". A feed that cannot run out cannot do that. */
+export function channelFeedUrl(channelId) {
+  return 'https://www.youtube.com/feeds/videos.xml?channel_id=' + encodeURIComponent(channelId);
+}
+
+function tagText(block, tag) {
+  const match = block.match(new RegExp('<' + tag + '[^>]*>([\\s\\S]*?)</' + tag + '>'));
+  return match ? decodeXml(match[1]) : '';
+}
+
+function decodeXml(text) {
+  return String(text || '')
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&amp;/g, '&')
+    .trim();
+}
+
+/** Read one channel's Atom feed into the same card shape the rest of the
+ *  Watch tab uses. Exported so a test can hold it to a real feed. */
+export function parseYoutubeAtom(xml, channel) {
+  const out = [];
+  const entries = String(xml || '').split('<entry>').slice(1);
+  for (const entry of entries) {
+    const videoId = tagText(entry, 'yt:videoId');
+    if (!/^[\w-]{6,15}$/.test(videoId)) continue;
+    const title = cleanVideoTitle(tagText(entry, 'title'));
+    if (!title) continue;
+    if (/^(private|deleted) video$/i.test(title)) continue;
+    const published = tagText(entry, 'published') || tagText(entry, 'updated');
+    const thumb = (entry.match(/<media:thumbnail[^>]*url="([^"]+)"/) || [])[1];
+    out.push({
+      title,
+      url: 'https://www.youtube.com/watch?v=' + videoId,
+      source: channel.source,
+      time: toIso(published),
+      kind: 'video',
+      region: channel.region,
+      image: thumb || ('https://i.ytimg.com/vi/' + videoId + '/hqdefault.jpg'),
+      avatar: null,
+      summary: summarize(tagText(entry, 'media:description'), SUMMARY_MAX),
+      sourceVerified: true
+    });
+  }
+  return out;
+}
+
+async function fetchChannelFeed(channel) {
+  return parseYoutubeAtom(await getText(channelFeedUrl(channel.id)), channel);
+}
+
+async function fetchTrustedYoutube() {
+  const settled = await Promise.allSettled(
+    YT_TRUSTED_CHANNELS.map(channel => fetchChannelFeed(channel))
+  );
 
   const parsed = settled
     .filter(result => result.status === 'fulfilled')
@@ -745,73 +798,6 @@ async function fetchTrustedYoutube(key, request, context) {
     .slice(0, 5)
     .map(video => video.source + ': ' + video.title);
   return { items, issues, considered: parsed.length, rejected };
-}
-
-async function resolveYoutubeChannel(channel, key, request, context) {
-  const cache = caches.default;
-  const base = request.url;
-  const cacheName = channel.id;
-  const cacheKey = new Request(new URL('/__cache/youtube-channel-' + cacheName + '-v1', base).toString());
-  const hit = await cache.match(cacheKey);
-  if (hit) return hit.json();
-
-  const url = 'https://www.googleapis.com/youtube/v3/channels?part=id,snippet,contentDetails&id=' +
-    encodeURIComponent(channel.id) + '&key=' + encodeURIComponent(key);
-  const json = JSON.parse(await getText(url));
-  const found = json.items && json.items[0];
-  if (!found || found.id !== channel.id) throw new Error('trusted channel not found: ' + channel.handle);
-  const uploads = found.contentDetails && found.contentDetails.relatedPlaylists &&
-    found.contentDetails.relatedPlaylists.uploads;
-  if (!uploads) throw new Error('trusted channel has no uploads playlist: ' + channel.handle);
-
-  const thumbnails = found.snippet && found.snippet.thumbnails;
-  const picture = thumbnails && (thumbnails.default || thumbnails.medium || thumbnails.high);
-  const identity = {
-    id: found.id,
-    uploads,
-    avatar: picture && picture.url ? picture.url : null
-  };
-  const saved = cache.put(cacheKey, cachedJson(identity, YT_CHANNEL_SECONDS));
-  if (context && typeof context.waitUntil === 'function') context.waitUntil(saved);
-  else await saved;
-  return identity;
-}
-
-/** Read the uploads playlist for an immutable, verified channel ID. Unlike the
- * retired public Atom endpoint, this is the supported YouTube API path. */
-async function fetchYoutubePlaylist(identity, channel, key) {
-  const url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails' +
-    '&maxResults=25&playlistId=' + encodeURIComponent(identity.uploads) +
-    '&key=' + encodeURIComponent(key);
-  const json = JSON.parse(await getText(url));
-  return parseYoutubePlaylist(json, channel, identity);
-}
-
-export function parseYoutubePlaylist(json, channel, identity) {
-  const out = [];
-  for (const entry of json && Array.isArray(json.items) ? json.items : []) {
-    const snippet = entry && entry.snippet ? entry.snippet : {};
-    const videoId = entry && entry.contentDetails && entry.contentDetails.videoId ||
-      snippet.resourceId && snippet.resourceId.videoId;
-    if (!/^[\w-]{6,15}$/.test(videoId || '')) continue;
-    const title = cleanVideoTitle(snippet.title);
-    if (!title) continue;
-    if (/^(private|deleted) video$/i.test(title)) continue;
-    const published = entry.contentDetails && entry.contentDetails.videoPublishedAt || snippet.publishedAt;
-    out.push({
-      title,
-      url: 'https://www.youtube.com/watch?v=' + videoId,
-      source: channel.source,
-      time: toIso(published),
-      kind: 'video',
-      region: channel.region,
-      image: 'https://i.ytimg.com/vi/' + videoId + '/hqdefault.jpg',
-      avatar: identity && identity.avatar ? identity.avatar : null,
-      summary: summarize(snippet.description, SUMMARY_MAX),
-      sourceVerified: true
-    });
-  }
-  return out;
 }
 
 export function isVideoOnTopic(video, now = Date.now()) {
