@@ -1,11 +1,12 @@
 import { test } from 'node:test';
+import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 
 import {
   nepaliNumber, readFigures, scopeOf, canSetCounter, pickFigure,
   resolveBoard, inBounds
 } from '../functions/api/_figures-core.js';
-import { bsDateToIso, extractBody } from '../functions/api/police.js';
+import { bsDateToIso, extractBody, statedClock } from '../functions/api/police.js';
 import { sumLosses } from '../functions/api/bipad.js';
 
 /* --------------------------------------------------------------------------
@@ -274,4 +275,87 @@ test('the timeline row is valid JavaScript, quotes and all', async () => {
   const rows = new Function('return ' + block.replace('export const TIMELINE =', '').replace(/;\s*$/, ''))();
   assert.ok(Array.isArray(rows));
   assert.ok(rows.some(r => r[1].includes('1,114')));
+});
+
+/* --------------------------------------------------------------------------
+   Four faults found by running the thing against a real bulletin
+
+   Every one of these produced a plausible-looking wrong number, or wrote to
+   the repository when nobody asked it to. They are the reason this file
+   exists.
+   ----------------------------------------------------------------------- */
+
+test('a keyword does not reach across a comma for another clause’s number', () => {
+  // A landslide headline in the sidebar of a police page. Read carelessly,
+  // "६ जना घाइते, २९ जना बेपत्ता" gives 29 injured: the injured keyword
+  // grabbing the missing count from the clause after it.
+  const found = readFigures('बाढी तथा पहिरोमा परी ६ जनाको मृत्यु, ६ जना घाइते, २९ जना बेपत्ता');
+  const value = m => found.filter(f => f.metric === m).map(f => f.value);
+  assert.deepEqual(value('dead'), [6]);
+  assert.deepEqual(value('injured'), [6], 'must not take 29 from the next clause');
+  assert.deepEqual(value('missing'), [29]);
+});
+
+test('reads both spellings of "rescued" in Nepali', () => {
+  // Nepal Police write उद्दार; the newsrooms write उद्धार. Only accepting one
+  // silently dropped 6,907 rescued out of a bulletin that plainly stated it.
+  const line = 'बाढी प्रभावित क्षेत्रहरूबाट ६ हजार ९ सय ७ जनाको उद्दार गरिएको छ ' +
+    'भने हालसम्म बेपत्ता भएका ५ हजार १५ जनाको खोजी कार्य भइरहेको छ';
+  const found = readFigures(line);
+  assert.equal(found.find(f => f.metric === 'rescued').value, 6907);
+  assert.equal(found.find(f => f.metric === 'missing').value, 5015);
+  assert.equal(readFigures('११ हजार ९ सय ९३ जनाको उद्धार').find(f => f.metric === 'rescued').value, 11993);
+});
+
+test('a bulletin page is read inside its article, not whole', () => {
+  // The sidebar of a real police page carried a different incident entirely.
+  // Read as part of this bulletin its figures become candidates for this
+  // event; they lose on later rules, but a number that survives only because
+  // something else threw it out is one rule away from being published.
+  const page = [
+    '<html><body><nav>प्रहरी कन्ट्रोल : १००</nav>',
+    '<div class="news-article"><p>बुधबार १७:०० बजे सम्म १ हजार १ सय ३२ जनाको शव फेला परेको छ।</p>',
+    '<p>जसमध्ये चितवनमा ३ सय ४८ जना।</p></div></div>',
+    '<aside><a>बाढी तथा पहिरोमा परी ६ जनाको मृत्यु, ६ जना घाइते, २९ जना बेपत्ता</a></aside>',
+    '</body></html>'
+  ].join('');
+
+  const body = extractBody(page);
+  assert.ok(body.includes('१ हजार १ सय ३२'), 'keeps the bulletin');
+  assert.ok(body.includes('चितवनमा'), 'keeps the district breakdown');
+  assert.ok(!body.includes('पहिरोमा'), 'drops the unrelated sidebar headline');
+
+  const figures = readFigures(body);
+  assert.equal(figures.find(f => f.metric === 'dead').value, 1132);
+});
+
+test('an unrecognised page yields no body rather than the wrong body', () => {
+  assert.equal(extractBody('<html><body><p>१ हजार जना</p></body></html>'), null);
+  assert.equal(extractBody(''), null);
+});
+
+test('importing the updater does not run it', async () => {
+  // The update script writes event.json, src/content.mjs and today.json. It
+  // used to do that on import, which meant the line at the top of this file
+  // importing one helper out of it reached across the network and rewrote the
+  // repository on whatever machine ran the tests. A figure reached a commit
+  // that way, unreviewed.
+  const before = readFileSync(new URL('../event.json', import.meta.url), 'utf8');
+  await import('../src/figures-update.mjs');
+  const after = readFileSync(new URL('../event.json', import.meta.url), 'utf8');
+  assert.equal(after, before, 'importing the module must not touch the repository');
+});
+
+test('a bulletin is stamped with the hour it says it counts up to', () => {
+  // The police listing carries a date and no clock, so an item is stamped
+  // noon. The bulletin body says "बुधबार १७:०० बजे सम्म". Stamped noon, a 5pm
+  // police bulletin loses first-wins to a 4:14pm newsroom item relaying an
+  // older figure — which is how 1,132 from the bulletin lost to 1,114 from a
+  // relay.
+  assert.equal(statedClock('काठमाडौं, बुधबार १७:०० बजे सम्म १ हजार १ सय ३२ जनाको शव'), '17:00');
+  assert.equal(statedClock('आज दिउँसो २:३० बजे सम्म'), '02:30');
+  // a bare time with no बजे could be anything on the page
+  assert.equal(statedClock('page updated 17:00'), null);
+  assert.equal(statedClock(null), null);
+  assert.equal(statedClock('२५:९९ बजे'), null);
 });
