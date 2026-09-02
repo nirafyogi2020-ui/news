@@ -7020,8 +7020,15 @@ var LiveFeed = (function(){
              picture. The newsroom's own photograph is the second chance. Only
              when both fail does the frame come off, which is why a card is
              never left holding an empty grey rectangle. */
-          var img = ogAsset(ogSlug + '-thumb.png') || post.image;
-          var backup = post.image && post.image !== img ? post.image : '';
+          /* The newsroom's own photograph first: it is a photograph, and the
+             tile drawn here has the headline burnt into it, which the card
+             then prints again underneath — the same words twice, once as
+             picture and once as text. The tile is the safety net rather than
+             the first choice, and it is a good one: it always exists and it
+             always suits the card. */
+          var tile = ogAsset(ogSlug + '-thumb.png');
+          var img = post.image || tile;
+          var backup = tile && tile !== img ? tile : '';
           if(!img) return '<p class="tc-stamp tc-stamp-fallback">' + esc(stamp(post.time)) +
             (ago ? ' · ' + esc(ago) : '') + '</p>';
           var tag = '<img class="post-photo" loading="lazy" decoding="async" referrerpolicy="no-referrer" ' +
