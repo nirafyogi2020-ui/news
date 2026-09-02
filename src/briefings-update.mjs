@@ -45,6 +45,20 @@ export const CARDS_PER_DAY = 3;
 export const MAX_NEW_CARDS = 12;
 export const LOOKBACK_DAYS = 14;
 
+/* A headline that states the toll is the one thing this must never publish.
+   The counters move every few hours; a card built around "1,204 dead" is
+   wrong by dinner, and the site's own audit rightly refuses to publish a page
+   whose story cards contradict its counters. The live figures card covers
+   that story already, and it rewrites itself. So a story whose headline is a
+   number is skipped here and left to the machinery built for it. */
+const TOLL_WORDS = /(dead|death|toll|killed|missing|unaccounted|casualt|bodies|recovered|rescued|शव|मृत्यु|बेपत्ता|मृतक|उद्धार)/i;
+const BIG_NUMBER = /\b\d{1,3}(?:,\d{3})+\b|\b\d{3,}\b|[०-९]/;
+
+export function statesAToll(text) {
+  const value = String(text || '');
+  return TOLL_WORDS.test(value) && BIG_NUMBER.test(value);
+}
+
 /* The sources a card may be built from: the bodies that issue the figures and
    the newsrooms that have been checked for this event. A card carries the
    name, so an unfamiliar name on the front page is worse than a hole. */
@@ -145,6 +159,7 @@ export function planCards(items, { today, archive, now = Date.now(), startedAt =
     })
     .filter(item => !used.has(String(item.url).split('#')[0]))
     .filter(item => oneSentence(item.summary).length >= 60)
+    .filter(item => !statesAToll(item.title))
     .sort((a, b) => Date.parse(b.time) - Date.parse(a.time));
 
   const added = [];
@@ -202,6 +217,24 @@ function report(changed, line) {
   }
 }
 
+/**
+ * Drop automatic cards that state a figure, including any this script wrote
+ * before it knew better. Hand-written cards are never touched: a person who
+ * dated a toll deliberately gets to keep it.
+ */
+export function pruneStaleAutoCards(today) {
+  const posts = (today && today.posts) || [];
+  const kept = posts.filter(post => {
+    if (!post || !post.auto) return true;
+    const text = [post.title, ...(Array.isArray(post.body) ? post.body : [])].join(' ');
+    return !statesAToll(text);
+  });
+  if (kept.length === posts.length) return 0;
+  const dropped = posts.length - kept.length;
+  today.posts = kept;
+  return dropped;
+}
+
 export async function main() {
   let today;
   try {
@@ -223,12 +256,14 @@ export async function main() {
   }
 
   const archive = readArchive();
+  const pruned = pruneStaleAutoCards(today);
   const cards = planCards(items, { today, archive, startedAt });
-  if (!cards.length) {
+  if (!cards.length && !pruned) {
     report(false, `no gap to fill (${items.length} stories read)`);
     return;
   }
 
+  if (pruned) console.log(`  - ${pruned} automatic card(s) dropped for stating a figure`);
   today.posts = (today.posts || []).concat(cards)
     .sort((a, b) => Date.parse(b.time || 0) - Date.parse(a.time || 0));
   const newest = today.posts.map(p => p.time).filter(Boolean).sort().pop();
@@ -236,7 +271,8 @@ export async function main() {
 
   writeFileSync(TODAY, JSON.stringify(today, null, 2) + '\n');
   for (const card of cards) console.log(`  + ${nptDay(card.time)}  ${card.title.slice(0, 70)}`);
-  report(true, `${cards.length} briefing${cards.length === 1 ? '' : 's'} filled in`);
+  report(true, `${cards.length} briefing${cards.length === 1 ? '' : 's'} filled in`
+    + (pruned ? `, ${pruned} stale card(s) dropped` : ''));
 }
 
 /* Load-bearing guard, the same one the figures updater carries: this file

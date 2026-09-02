@@ -1,16 +1,20 @@
 {
   "slug": "2026-09-02-latest-reported-figures",
   "id": "latest-reported-figures",
-  "title": "Latest reported figures: 1,204 confirmed dead",
-  "time": "2026-09-02T14:14:38.000Z",
+  "title": "Latest reported figures: 1,222 confirmed dead",
+  "time": "2026-09-02T20:00:00+05:45",
   "body": [
-    "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. confirmed dead: 1,204, up from 1,132, reported by Nagarik News.",
+    "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. confirmed dead: 1,222, up from 1,204, reported by Nepal Police. rescued: 11,993, up from 8,730, reported by Nepalnews.",
     "Where a report describes one district or one stretch of river rather than the national figure, it is not used here. Out of contact does not mean dead."
   ],
   "sources": [
     {
-      "name": "Nagarik News",
-      "url": "https://nagariknews.nagariknetwork.com/social-affairs/rasuwa-flood-update-death-toll-reaches-1-204-over-4-200-still-unaccounted-for-22-65.html"
+      "name": "Nepal Police",
+      "url": "https://nepalpolice.gov.np/news/10313/"
+    },
+    {
+      "name": "Nepalnews",
+      "url": "https://english.nepalnews.com/s/nation/multinational-rescue-operations-underway-in-bhote-koshi-flood-zone-mofa/"
     }
   ],
   "revised": true,

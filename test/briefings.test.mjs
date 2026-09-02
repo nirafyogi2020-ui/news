@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { readDistricts } from '../functions/api/_figures-core.js';
 import { latestDistricts } from '../functions/api/figures.js';
 import { firstEarlierDetail, repairDetails } from '../src/figures-update.mjs';
-import { planCards, coveredDays, usedUrls, nptDay, oneSentence } from '../src/briefings-update.mjs';
+import { planCards, coveredDays, usedUrls, nptDay, oneSentence, statesAToll, pruneStaleAutoCards } from '../src/briefings-update.mjs';
 
 const BULLETIN = 'जसमध्ये रसुवामा ४५ जना, नुवाकोटमा १ सय ५५ जना, धादिङमा ५९ जना, ' +
   'चितवनमा ३ सय ४८ जना, गोरखामा ६८ जना, तनहुँमा ३८ जना, नवलपरासी पूर्वमा २ सय १७ जना र ' +
@@ -75,4 +75,29 @@ test('importing the briefing filler does not run it', () => {
   const source = readFileSync(new URL('../src/briefings-update.mjs', import.meta.url), 'utf8');
   assert.match(source, /const invoked = process\.argv\[1\]/);
   assert.match(source, /if \(invoked\) main\(\);/);
+});
+
+test('an automatic card never carries a figure that will move', () => {
+  assert.equal(statesAToll('Bhotekoshi flood leaves 1,204 dead; 4,216 unaccounted for'), true);
+  assert.equal(statesAToll('हालसम्म १ हजार जनाको शव फेला'), true);
+  assert.equal(statesAToll('Ncell extends free voice and data in flood-hit areas'), false);
+
+  const items = [{
+    kind: 'press', source: 'Onlinekhabar', title: 'Death toll reaches 1,204',
+    url: 'https://example.com/toll', time: '2026-08-31T10:00:00+05:45', summary: 'k'.repeat(80)
+  }];
+  assert.equal(planCards(items, { today: { posts: [] }, archive: [], now: Date.parse('2026-09-02T12:00:00Z') }).length, 0);
+});
+
+test('a card that already stated a figure is dropped, a hand-written one is kept', () => {
+  const today = {
+    posts: [
+      { auto: true, title: 'Toll reaches 1,204', body: [] },
+      { title: 'A person wrote this about 1,204 dead', body: [] },
+      { auto: true, title: 'Ncell extends free data', body: ['No figures here.'] }
+    ]
+  };
+  assert.equal(pruneStaleAutoCards(today), 1);
+  assert.equal(today.posts.length, 2);
+  assert.equal(pruneStaleAutoCards(today), 0, 'a pruned feed is left alone next time');
 });
