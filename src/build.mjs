@@ -343,12 +343,110 @@ function ssrTodayCards(list) {
   }).join('') + `<p class="today-updated">Updated ${escHtml(nptLong(modified))}</p>`;
 }
 
+/* ---------------------------------------------------------------------------
+   The two tables that used to be typed by hand.
+
+   "Confirmed dead, and where" carried a district breakdown from the police
+   bulletin of 27 August, and "Damage and rescue, official numbers" carried
+   the NDRRMA update of 30 August. Both were still on the page days later,
+   under a hero that had already moved on — the page contradicting itself in
+   two places at once. Both are now written from event.json, which is the file
+   the scheduled reader keeps current, so neither can drift from the counters
+   again.
+   ------------------------------------------------------------------------ */
+
+/** The counter event.json holds for a label, or null. */
+function statFor(label) {
+  return (event.stats || []).find(s => s && s.label === label) || null;
+}
+
+/** A counter's prose with the archived earlier text cut off — that clause is
+ *  useful in the tile panel, and far too long for a table cell. */
+function shortDetail(stat) {
+  const text = String((stat && stat.detail) || '');
+  const at = text.indexOf('Earlier detail');
+  return (at === -1 ? text : text.slice(0, at)).replace(/\s*Source:\s*https?:\S+/g, '').trim();
+}
+
+function ssrTollNepal() {
+  const dead = statFor('confirmed dead');
+  const missing = statFor('listed missing in Nepal');
+  const d = event.districts;
+
+  const intro = 'The flood started in Rasuwa, but the water carried people far downstream. '
+    + (missing ? `${missing.value} people are still listed missing. ` : '')
+    + 'A district here is where a body was found, not where the person was from.';
+
+  const rows = d && Array.isArray(d.rows) && d.rows.length
+    ? d.rows.map(r => `<tr><td>${escHtml(r.district)}</td><td class="num-cell">${escHtml(Number(r.value).toLocaleString('en-US'))}</td></tr>`).join('')
+    : '';
+
+  const stamp = d && d.time ? nptLong(d.time) : '';
+  const note = rows
+    ? `${escHtml(d.source || 'Nepal Police')} bulletin${stamp ? ', ' + escHtml(stamp) : ''}, `
+      + `totalling ${escHtml(Number(d.total || 0).toLocaleString('en-US'))}. `
+      + 'Read automatically from the bulletin, not typed in. '
+      + 'The headline figure above can be higher: it takes the first national total any source publishes, and the police breakdown follows.'
+    : 'No district breakdown has been published yet today. The national figure above stands.';
+
+  return '<details open>'
+    + '<summary>'
+    + '<span class="toll-flag" aria-hidden="true"><svg class="flag" style="width:18px;height:22px"><use href="#np-flag"></use></svg></span>'
+    + 'Nepal'
+    + `<span class="toll-n critical">${escHtml(dead ? dead.value : '—')}</span>`
+    + '</summary>'
+    + '<div class="accord-body">'
+    + `<p style="margin-bottom:10px;">${escHtml(intro)}</p>`
+    + (rows
+      ? '<div class="table-scroll"><table class="data-table toll-table" id="toll-districts">'
+        + '<thead><tr><th>District</th><th>Bodies recovered</th></tr></thead>'
+        + `<tbody>${rows}</tbody></table></div>`
+      : '')
+    + `<p style="font-size:0.78rem; color:var(--text-faint); margin:8px 0 0;" id="toll-districts-note">${note}</p>`
+    + '</div></details>';
+}
+
+/* Every counter the page holds, in one table, straight from the same file the
+   tiles read. The day counter is skipped: it is computed at render time and
+   is not a reported figure. */
+function ssrOfficial() {
+  const stats = (event.stats || []).filter(s => s && s.icon !== 'day' && s.value !== 'auto:day');
+  if (!stats.length) return '<p class="measure">No official figures are published yet.</p>';
+
+  const rows = stats.map(s =>
+    `<tr><td>${escHtml(s.label)}</td><td class="num-cell">${escHtml(s.value)}</td>`
+    + `<td>${escHtml(shortDetail(s))}</td></tr>`
+  ).join('');
+
+  return `<p class="measure" style="margin-top:6px; color:var(--text-muted); font-size:0.93rem;">`
+    + 'Read automatically from the published bulletins and reports, not typed in. '
+    + 'These are the same figures as the counters at the top of this page, from the same file, so the two cannot disagree'
+    + (event.asOf ? `. Last moved ${escHtml(nptLong(event.asOf))}` : '')
+    + (event.asOfSource ? `, from ${escHtml(event.asOfSource)}` : '') + '.</p>'
+    + '<div class="table-scroll"><table class="data-table stat-table">'
+    + '<thead><tr><th>Figure</th><th>Count</th><th>What the source said</th></tr></thead>'
+    + `<tbody>${rows}</tbody></table></div>`
+    + '<p style="margin-top:14px; font-size:0.78rem; color:var(--text-faint);">'
+    + 'Search and rescue is still running, so every number here can change. '
+    + 'Tap any counter at the top of the page for the sentence it came from. '
+    + '<span id="official-check-status"></span></p>';
+}
+
 const escHtml = (v) => String(v == null ? '' : v)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const escAttr = (v) => escHtml(v).replace(/"/g, '&quot;');
 
 let index = read('index.html');
 const before = index;
+
+index = index.replace(
+  /<!--ssr:toll-nepal-->[\s\S]*?<!--\/ssr:toll-nepal-->/g,
+  () => `<!--ssr:toll-nepal-->${ssrTollNepal()}<!--/ssr:toll-nepal-->`
+);
+index = index.replace(
+  /<!--ssr:official-->[\s\S]*?<!--\/ssr:official-->/g,
+  () => `<!--ssr:official-->${ssrOfficial()}<!--/ssr:official-->`
+);
 
 const cards = ssrTodayCards(posts.slice(0, 6));
 index = index.replace(

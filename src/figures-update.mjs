@@ -31,6 +31,7 @@ import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { resolveBoard, METRICS } from '../functions/api/_figures-core.js';
+import { latestDistricts } from '../functions/api/figures.js';
 import { loadPoliceNews } from '../functions/api/police.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -117,14 +118,34 @@ async function main() {
       stat.priorDetail = stat.detail;
       stat.priorAsOf = event.asOf || null;
     }
+    /* An earlier version of this script captured the prose after it had
+       already been wrapped once, so some counters carry a chain of "Earlier
+       detail" clauses rather than a single one. Trimming on every pass keeps
+       exactly the first, which is the hand-written breakdown worth keeping,
+       and repairs the counters that already grew a second. */
+    stat.priorDetail = firstEarlierDetail(stat.priorDetail);
 
     stat.value = figure.value.toLocaleString('en-US');
     stat.detail = sourceSentence(figure, current, stat.priorDetail, stat.priorAsOf);
     applied.push({ metric, from: current, to: figure.value, source: figure.source });
   }
 
-  if (!applied.length) {
+  /* The district breakdown under the toll is read from the same police
+     bulletin the total comes from, so the table and the counter can never
+     state two different things. It moves on its own schedule: a bulletin
+     often restates the districts without moving the national figure, and
+     that is still a change worth publishing. */
+  const districtsMoved = applyDistricts(event, board.districts);
+  const repaired = repairDetails(event);
+
+  if (!applied.length && !districtsMoved && !repaired) {
     report(false, skipped.length ? 'no counter moved. ' + skipped.join('; ') : 'no counter moved');
+    return;
+  }
+
+  if (!applied.length) {
+    writeFileSync(EVENT, JSON.stringify(event, null, 2) + '\n');
+    report(true, districtsMoved ? 'district breakdown updated' : 'counter detail repaired');
     return;
   }
 
@@ -149,6 +170,22 @@ async function main() {
   }
   if (skipped.length) for (const s of skipped) console.log('  skipped ' + s);
   report(true, `${applied.length} counter${applied.length === 1 ? '' : 's'} updated`);
+}
+
+/**
+ * Write the district breakdown into event.json, and say whether it moved.
+ *
+ * A bulletin that states no breakdown leaves the last good one standing: an
+ * empty table would read as "nobody was found anywhere", which is the same
+ * class of mistake as printing a zero for a figure nobody stated.
+ */
+export function applyDistricts(event, districts) {
+  if (!districts || !Array.isArray(districts.rows) || districts.rows.length < 2) return false;
+  const before = JSON.stringify((event.districts && event.districts.rows) || []);
+  const after = JSON.stringify(districts.rows);
+  if (before === after) return false;
+  event.districts = districts;
+  return true;
 }
 
 /**
@@ -374,6 +411,39 @@ export function replaceField(text, name, value) {
  * it, and when. It replaces the previous detail for that counter, because a
  * detail describing an old figure is worse than a short accurate one.
  */
+/**
+ * Cut a counter's detail back to one "Earlier detail" clause.
+ *
+ * An earlier version of this script captured the prose after it had already
+ * been wrapped once, so two counters carry the clause twice — the same
+ * breakdown printed under itself, each copy dated differently. Keeping the
+ * first is right: it is the one the live sentence is followed by. Runs on
+ * every pass, including passes where no counter moved, because the counters
+ * that grew a second clause are precisely the ones that stopped moving.
+ */
+export function repairDetails(event) {
+  let changed = false;
+  for (const stat of (event && event.stats) || []) {
+    if (!stat) continue;
+    const prior = firstEarlierDetail(stat.priorDetail);
+    if (prior !== stat.priorDetail) { stat.priorDetail = prior; changed = true; }
+    const detail = String(stat.detail || '');
+    const first = detail.indexOf('Earlier detail');
+    if (first === -1) continue;
+    const second = detail.indexOf('Earlier detail', first + 1);
+    if (second === -1) continue;
+    stat.detail = detail.slice(0, second).trim();
+    changed = true;
+  }
+  return changed;
+}
+
+export function firstEarlierDetail(text) {
+  if (!text) return text;
+  const at = String(text).indexOf('Earlier detail');
+  return at === -1 ? text : String(text).slice(0, at).trim();
+}
+
 export function sourceSentence(figure, previous, priorDetail, priorAsOf) {
   const when = figure.statedTime ? ` at ${figure.statedTime}` : '';
   const moved = previous
@@ -426,10 +496,11 @@ async function fetchBoard() {
      figure only wins if its sentence says it is a correction. */
   const board = resolveBoard(items, { floors: published });
 
+  const districts = latestDistricts(items);
   const stated = METRICS.filter(m => board[m]).length;
   console.log(`  read ${items.length} reports from ${new Set(items.map(i => i.source).filter(Boolean)).size} sources; ${stated} figure(s) stated`);
 
-  return { board, published };
+  return { board, published, districts };
 }
 
 /** The figures event.json currently carries. */
