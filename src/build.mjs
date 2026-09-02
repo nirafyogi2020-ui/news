@@ -320,9 +320,10 @@ function ssrTodayCards(list) {
        photograph too. */
     const thumb = assetVersioned(`${ogName}-thumb.png`);
     const story = assetVersioned(`${ogName}-story.png`);
-    return `<article class="post-card today-card" data-title="${escAttr(post.title)}"`
+    return `<article class="post-card today-card${thumb ? '' : ' no-photo'}" data-title="${escAttr(post.title)}"`
       + ` data-permalink="${escAttr(post.url)}"`
       + (story ? ` data-story="${escAttr(story)}"` : '') + '>'
+      + (thumb ? '' : `<p class="tc-stamp tc-stamp-fallback">${escHtml(stamp)}</p>`)
       + '<div class="tc-media">'
       + (thumb
         ? `<a class="post-photo-link" href="${escAttr(post.url)}" tabindex="-1" aria-hidden="true">`
