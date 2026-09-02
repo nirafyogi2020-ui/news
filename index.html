@@ -1201,7 +1201,11 @@
   .toc-langs{margin-top:6px; display:flex; flex-direction:column; gap:5px;}
   .toc-langs a{font-size:0.8rem; color:var(--text-muted); text-decoration:none;}
   .toc-langs a:hover{color:var(--critical);}
-  .eyebrow::before{content:""; display:inline-block; width:16px; height:2px; margin-right:9px; vertical-align:middle; background:var(--critical);}
+  /* The rule before a section label was red on every heading, so the page had
+     a dozen small alarms in it and the colour stopped meaning anything. Red is
+     kept for the hero and for figures; elsewhere the rule is a rule. */
+  .eyebrow::before{content:""; display:inline-block; width:16px; height:2px; margin-right:9px; vertical-align:middle; background:var(--border-strong);}
+  .hero .eyebrow::before, .ticker .eyebrow::before{background:var(--critical);}
   /* On phones the primary nav is the bottom bar. A second sticky chip rail on
      top of it just ate screen and made the page feel cluttered, so it is gone. */
   @media (max-width:1080px){
@@ -2471,6 +2475,44 @@
     .sitehead.is-tucked{transform:none;}
   }
 
+  /* --- the Help tab's doors ----------------------------------------------
+     A person opening this tab wants to do one of five things. They were all
+     below the fold behind explanation, so the tab opened on prose rather than
+     on the thing somebody in trouble actually came for. */
+  .help-jump{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr));
+    gap:12px; margin:8px 0 30px;
+  }
+  .help-jump .hj{
+    display:flex; flex-direction:column; gap:3px; padding:14px 16px;
+    border:1px solid var(--border); border-radius:14px; background:var(--surface);
+    text-decoration:none; color:var(--text);
+    box-shadow:var(--lift), var(--shadow);
+    transition:transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+  }
+  .help-jump .hj:hover{transform:translateY(-2px); box-shadow:var(--lift), var(--shadow-lg); border-color:var(--border-strong);}
+  .help-jump .hj-k{
+    font-size:0.64rem; letter-spacing:0.13em; text-transform:uppercase;
+    font-weight:700; color:var(--text-faint);
+  }
+  .help-jump .hj-v{font-family:var(--font-mono); font-size:1.12rem; font-weight:700; line-height:1.1;}
+  .help-jump .hj-n{font-size:0.76rem; color:var(--text-muted); line-height:1.35;}
+  /* One of the five is a phone call to the police, and it is not the same
+     kind of thing as the other four. */
+  .help-jump .hj-urgent{background:var(--alert); border-color:var(--alert); color:#fff;}
+  .help-jump .hj-urgent .hj-k, .help-jump .hj-urgent .hj-n{color:rgba(255,255,255,0.86);}
+  .help-jump .hj-urgent .hj-v{font-size:1.5rem;}
+  .help-jump .hj-give{border-left:3px solid var(--calm);}
+
+  /* --- Help tab, given edges ---------------------------------------------
+     The tab was one long column of prose with headings floating in it. Each
+     block is now a bounded thing a reader can look at and leave. */
+  #panel-help section > h3{
+    margin-top:34px; padding-top:22px; border-top:1px solid var(--border);
+    font-size:1.05rem; letter-spacing:-0.01em;
+  }
+  #panel-help .measure{max-width:70ch;}
+
 </style>
 </head>
 <body>
@@ -3344,6 +3386,39 @@
 
   <!-- =================== HELP =================== -->
   <div class="tabpanel" id="panel-help" role="tabpanel" aria-labelledby="tab-help" hidden>
+    <!-- Everything on this tab is something a person came here to do, and all
+         of it used to be below the fold behind a wall of explanation. These
+         are the doors, in the order somebody in trouble needs them: call
+         first, then report a person, then the official fund, then the
+         government's own pages. -->
+    <nav class="help-jump" aria-label="What do you need?">
+      <a class="hj hj-urgent" href="tel:100">
+        <span class="hj-k">Call now</span>
+        <span class="hj-v">100</span>
+        <span class="hj-n">Nepal Police</span>
+      </a>
+      <a class="hj" href="#emergency">
+        <span class="hj-k">Helplines</span>
+        <span class="hj-v">All numbers</span>
+        <span class="hj-n">Ambulance, fire, hospitals</span>
+      </a>
+      <a class="hj" href="#missing-report">
+        <span class="hj-k">Someone missing</span>
+        <span class="hj-v">How to report</span>
+        <span class="hj-n">Police, embassies, families abroad</span>
+      </a>
+      <a class="hj hj-give" href="#help">
+        <span class="hj-k">Donate</span>
+        <span class="hj-v">Official QR</span>
+        <span class="hj-n">PM's Disaster Relief Fund</span>
+      </a>
+      <a class="hj" href="#sources">
+        <span class="hj-k">Government links</span>
+        <span class="hj-v">Where facts come from</span>
+        <span class="hj-n">NDRRMA, Police, ministries</span>
+      </a>
+    </nav>
+
     <section id="emergency" data-toc="1. Emergency numbers">
       <p class="eyebrow" data-i18n="sec.emergency.eyebrow">Emergency</p>
       <h2 data-i18n="sec.emergency.h2">Numbers to call in Nepal</h2>
@@ -3382,7 +3457,7 @@
         <a href="https://drrportal.gov.np/" target="_blank" rel="noopener">Disaster Risk Reduction Portal &#8599;</a>
       </div>
 
-      <h3 style="margin-top:34px;">Reporting someone missing</h3>
+      <h3 id="missing-report" style="margin-top:34px;">Reporting someone missing</h3>
       <div class="checklist">
         <div class="check-row"><span class="mark">01</span><p style="margin:0;">Call the nearest District Police Office or 100. Give full name, age, last known location, and what they were wearing.</p></div>
         <div class="check-row"><span class="mark">02</span><p style="margin:0;">Register the same details with the local ward office, they hold the evacuation and shelter lists.</p></div>
@@ -3780,6 +3855,8 @@ var SITE = {
 (function(){
   var DICT = {
     ne: {
+      'sec.what-happened.eyebrow': '०२. समयरेखा', 'sec.what-happened.h2': 'के भयो',
+      'sec.what-happened.lede': 'प्रहरी, स्थानीय अधिकारी र समाचार प्रतिवेदनबाट तयार पारिएको। समय अनुमानित हो।',
       'tab.overview': 'अहिले',
       'tab.today': 'आज',
       'sec.today.eyebrow': 'आज',
@@ -3917,6 +3994,8 @@ var SITE = {
       'em.c8.who': 'पर्यटक प्रहरी', 'em.c8.note': 'पर्यटक र ट्रेकरहरूका लागि मद्दत'
     },
     hi: {
+      'sec.what-happened.eyebrow': '02. समयरेखा', 'sec.what-happened.h2': 'क्या हुआ',
+      'sec.what-happened.lede': 'पुलिस, स्थानीय अधिकारियों और समाचार रिपोर्टों से संकलित। समय अनुमानित है।',
       'tab.overview': 'अभी',
       'tab.today': 'आज',
       'sec.today.eyebrow': 'आज',
@@ -4054,6 +4133,8 @@ var SITE = {
       'em.c8.who': 'पर्यटक पुलिस', 'em.c8.note': 'यात्रियों और ट्रेकरों के लिए मदद'
     },
     zh: {
+      'sec.what-happened.eyebrow': '02. 时间线', 'sec.what-happened.h2': '发生了什么',
+      'sec.what-happened.lede': '根据警方、地方官员和新闻报道整理。时间为大致时间。',
       'tab.overview': '现在',
       'tab.today': '今日',
       'sec.today.eyebrow': '今日',
