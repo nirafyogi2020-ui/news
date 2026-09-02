@@ -6889,12 +6889,24 @@ var LiveFeed = (function(){
              servers, which move files, expire them and refuse hotlinks. The
              tile is built here from a real source photograph and cannot
              vanish. */
+          /* Two chances at a picture before the card gives up on having one.
+             The tile drawn here at build time is preferred — it always suits
+             the card and nobody else can move it — but those tiles are
+             generated rather than committed, so on a deployment that did not
+             build them the URL answers with the fallback page instead of a
+             picture. The newsroom's own photograph is the second chance. Only
+             when both fail does the frame come off, which is why a card is
+             never left holding an empty grey rectangle. */
           var img = ogAsset(ogSlug + '-thumb.png') || post.image;
+          var backup = post.image && post.image !== img ? post.image : '';
           if(!img) return '<p class="tc-stamp tc-stamp-fallback">' + esc(stamp(post.time)) +
             (ago ? ' · ' + esc(ago) : '') + '</p>';
           var tag = '<img class="post-photo" loading="lazy" decoding="async" referrerpolicy="no-referrer" ' +
             'src="' + esc(img) + '" alt="" width="800" height="450"' + (perma ? '' : ' data-expand="' + uid + '"') + ' ' +
-            'onerror="this.closest(\'.post-card\').classList.add(\'no-photo\'); this.remove();">';
+            'data-backup="' + esc(backup) + '" ' +
+            'onerror="var b=this.getAttribute(\'data-backup\'); ' +
+              'if(b){ this.removeAttribute(\'data-backup\'); this.src=b; return; } ' +
+              'this.closest(\'.post-card\').classList.add(\'no-photo\'); this.remove();">';
           /* A picture that goes to the story is what a reader expects from a
              news card, and the old one only toggled the text clamp. The stamp
              rides on the picture rather than sitting in white space above it. */
