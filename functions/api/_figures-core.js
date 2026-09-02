@@ -114,32 +114,32 @@ const PATTERNS = {
     [new RegExp('(?:toll|fatalities)\\s+(?:has\\s+)?(?:risen|climbed|reached|rose)\\s+to\\s+' + NUM_EN, 'i'), 'en'],
     [new RegExp(NUM_NE + '\\s*(?:जनाको|जनाक|जना)?\\s*(?:मृत्यु|निधन)', ''), 'ne'],
     [new RegExp(NUM_NE + '\\s*(?:जनाको\\s*)?शव', ''), 'ne'],
-    [new RegExp('मृतक\\s*(?:संख्या)?[^\\d०-९]{0,12}' + NUM_NE, ''), 'ne']
+    [new RegExp('मृतक\\s*(?:संख्या)?[^\\d०-९,।;·]{0,12}' + NUM_NE, ''), 'ne']
   ],
   missing: [
     [new RegExp(NUM_EN + '\\s*(?:people|persons?)?\\s*(?:still\\s+|remain\\s+|are\\s+)?missing\\b', 'i'), 'en'],
     [new RegExp(NUM_EN + '\\s*(?:people|persons?)?\\s*(?:remain\\s+|are\\s+)?unaccounted\\s+for\\b', 'i'), 'en'],
     [new RegExp(NUM_EN + '\\s*(?:people|persons?)?\\s*(?:are\\s+)?out\\s+of\\s+contact\\b', 'i'), 'en'],
     [new RegExp(NUM_NE + '\\s*(?:जना)?\\s*(?:बेपत्ता|सम्पर्कविहीन|सम्पर्कविहिन)', ''), 'ne'],
-    [new RegExp('(?:बेपत्ता|सम्पर्कविहीन)\\s*(?:संख्या)?[^\\d०-९]{0,12}' + NUM_NE, ''), 'ne']
+    [new RegExp('(?:बेपत्ता|सम्पर्कविहीन)\\s*(?:संख्या)?[^\\d०-९,।;·]{0,12}' + NUM_NE, ''), 'ne']
   ],
   injured: [
     [new RegExp(NUM_EN + '\\s*(?:people|persons?|others?)?\\s*(?:were\\s+|are\\s+|have\\s+been\\s+)?injured\\b', 'i'), 'en'],
     [new RegExp(NUM_EN + '\\s*(?:people|persons?)?\\s*(?:were\\s+)?(?:wounded|hurt)\\b', 'i'), 'en'],
     [new RegExp(NUM_NE + '\\s*(?:जना)?\\s*घाइते', ''), 'ne'],
-    [new RegExp('घाइते[^\\d०-९]{0,12}' + NUM_NE, ''), 'ne']
+    [new RegExp('घाइते[^\\d०-९,।;·]{0,12}' + NUM_NE, ''), 'ne']
   ],
   rescued: [
     [new RegExp(NUM_EN + '\\s*(?:people|persons?)?\\s*(?:have\\s+been\\s+|were\\s+|been\\s+)?rescued\\b', 'i'), 'en'],
     [new RegExp(NUM_EN + '\\s*(?:people|persons?)?\\s*(?:were\\s+)?(?:evacuated|airlifted)\\b', 'i'), 'en'],
     [new RegExp('rescued\\s+(?:a\\s+total\\s+of\\s+)?' + NUM_EN, 'i'), 'en'],
-    [new RegExp(NUM_NE + '\\s*(?:जनाको|जना)?\\s*उद्धार', ''), 'ne'],
-    [new RegExp('उद्धार\\s*(?:गरिएको)?\\s*(?:संख्या)?[^\\d०-९]{0,12}' + NUM_NE, ''), 'ne']
+    [new RegExp(NUM_NE + '\\s*(?:जनाको|जना)?\\s*उद्(?:धा|दा)र', ''), 'ne'],
+    [new RegExp('उद्(?:धा|दा)र\\s*(?:गरिएको)?\\s*(?:संख्या)?[^\\d०-९,।;·]{0,12}' + NUM_NE, ''), 'ne']
   ],
   personnel: [
     [new RegExp(NUM_EN + '\\s*(?:security\\s+)?personnel\\s+(?:have\\s+been\\s+)?(?:deployed|mobilis|mobiliz)', 'i'), 'en'],
     [new RegExp(NUM_NE + '\\s*(?:जना)?\\s*(?:जनशक्ति|सुरक्षाकर्मी)\\s*(?:खटि|परिचालन)', ''), 'ne'],
-    [new RegExp('खटिएको\\s*जनशक्ति[^\\d०-९]{0,12}' + NUM_NE, ''), 'ne']
+    [new RegExp('खटिएको\\s*जनशक्ति[^\\d०-९,।;·]{0,12}' + NUM_NE, ''), 'ne']
   ]
 };
 

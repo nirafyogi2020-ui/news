@@ -8,20 +8,20 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-09-02T16:14:39+05:45';
-export const TOLL_SOURCE = 'Onlinekhabar';
-export const TOLL_EARLIER_SOURCE = 'Nepal Police bulletin 10275, 2pm Sunday';
+export const TOLL_AS_OF = '2026-09-02T17:00:00+05:45';
+export const TOLL_SOURCE = 'Nepal Police';
+export const TOLL_EARLIER_SOURCE = 'Onlinekhabar';
 
 /* When the bulletin one step before TOLL_AS_OF was published. Used only for
    the "how the toll has moved" table, so that row's timestamp always matches
    TOLL.deadNepalEarlier instead of drifting out of date as later runs move
    both TOLL_AS_OF and deadNepalEarlier forward. */
-export const TOLL_EARLIER_AS_OF = '2026-08-30T14:00:00+05:45';
+export const TOLL_EARLIER_AS_OF = '2026-09-02T16:14:39+05:45';
 
 /* The district breakdown now comes from the same 2pm police bulletin as the
    national toll. */
-export const BODIES_AS_OF = '2026-09-02T16:14:39+05:45';
-export const BODIES_SOURCE = 'Onlinekhabar';
+export const BODIES_AS_OF = '2026-09-02T17:00:00+05:45';
+export const BODIES_SOURCE = 'Nepal Police';
 
 /* NDRRMA's 1pm Sunday update reports the current missing total. Its detailed
    group breakdown is older and remains separately timestamped below. */
@@ -93,8 +93,8 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 1114,
-  deadNepalEarlier: 768,
+  deadNepal: 1132,
+  deadNepalEarlier: 1114,
   deadChina: 16,
   missing: 5015,
   missingChina: 546,
@@ -237,6 +237,7 @@ export const TIMELINE = [
   ['13:00 NPT, 30 August', 'NDRRMA reports 752 bodies found in Nepal, 2,502 people out of contact and 8,730 people rescued in its 1pm Sunday situation update, Onlinekhabar reports. The district count is Chitwan 259, Nawalparasi East 184, Nawalparasi West 100, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 36 and Rasuwa 13, which adds to 752. The report does not publish a current rescue agency or location breakdown.'],
   ['14:00 NPT, 30 August', 'Nepal Police bulletin 10275 reports 768 bodies found in Nepal. The district count is Chitwan 264, Nawalparasi East 194, Nawalparasi West 100, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 37 and Rasuwa 13, which adds to 768.'],
   ['16:14 NPT, 2 September', "Nepal's confirmed death toll is reported at 1,114, up from 768, by Onlinekhabar."],
+  ['17:00 NPT, 2 September', "Nepal's confirmed death toll is reported at 1,132, up from 1,114, by Nepal Police."],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */

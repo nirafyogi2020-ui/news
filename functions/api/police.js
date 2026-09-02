@@ -106,24 +106,76 @@ export async function loadPoliceNews({ withBodies = true } = {}) {
       } catch (e) {
         item.body = null;
       }
+      /* The listing carries no clock time, so the item is stamped noon. The
+         bulletin itself usually says which hour it counts up to — "बुधबार
+         १७:०० बजे सम्म" — and that hour decides whether it is newer than a
+         newsroom report of the same day.
+
+         This is not cosmetic. A 5pm police bulletin stamped noon loses the
+         first-wins comparison to a newsroom that published at 4:14pm relaying
+         an older figure, and the page then shows the older number while the
+         newer one sits in the bulletin it was read from. Seen exactly that
+         way: 1,132 from the bulletin losing to 1,114 from a relay. */
+      const hour = statedClock(item.body);
+      if (hour) {
+        item.time = item.time ? item.time.slice(0, 11) + hour + ':00+05:45' : item.time;
+        item.dateOnly = false;
+      }
     }));
   }
 
   return top;
 }
 
-/** The readable text of one bulletin page, with the chrome stripped out. */
+/**
+ * The readable text of one bulletin page.
+ *
+ * Scoped to the article container, and that scoping is not cosmetic. Nepal
+ * Police pages carry a sidebar of other headlines, and those headlines are
+ * about other incidents: one of them read "6 dead, 6 injured, 29 missing" in a
+ * landslide elsewhere in the country. Read as part of this bulletin those
+ * become candidate figures for this event. They lose on the rules in
+ * _figures-core.js, but a figure that only survives because a later rule threw
+ * it out is one rule away from being published, so it should never be read in
+ * the first place.
+ *
+ * If the container cannot be found the page is skipped rather than read whole,
+ * for the same reason: no body is better than the wrong body. The listing
+ * teaser still stands.
+ */
 export function extractBody(html) {
   const source = String(html || '');
-  const scoped = source.match(/<div[^>]+class="[^"]*(?:news-detail|detail-content|editor-content|content-area)[^"]*"[^>]*>([\s\S]*?)<\/div>\s*<\/div>/i);
-  const region = scoped ? scoped[1] : source;
+  const scoped =
+    source.match(/<div[^>]+class="[^"]*news-article[^"]*"[^>]*>([\s\S]*?)<\/div>\s*<\/div>/i) ||
+    source.match(/<div[^>]+class="[^"]*(?:news-detail|detail-content|editor-content)[^"]*"[^>]*>([\s\S]*?)<\/div>\s*<\/div>/i) ||
+    source.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
+  if (!scoped) return null;
+
   const text = cleanText(
-    region
+    scoped[1]
       .replace(/<script[\s\S]*?<\/script>/gi, ' ')
       .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+      .replace(/<!--[\s\S]*?-->/g, ' ')
       .replace(/<\/(p|div|li|br|h[1-6])>/gi, ' । ')
   );
   return text ? text.slice(0, 4000) : null;
+}
+
+/**
+ * The hour a bulletin says it counts up to: "बुधबार १७:०० बजे सम्म".
+ *
+ * Only a time written next to बजे ("o'clock") counts. A bare "17:00" elsewhere
+ * on the page could be anything, and a guessed hour is worse than the noon it
+ * would replace.
+ */
+export function statedClock(body) {
+  if (!body) return null;
+  const m = latinDigits(body).match(/(\d{1,2})\s*:\s*(\d{2})\s*बजे/);
+  if (!m) return null;
+  const hour = Number(m[1]);
+  const minute = Number(m[2]);
+  if (!(hour >= 0 && hour <= 23) || !(minute >= 0 && minute <= 59)) return null;
+  return String(hour).padStart(2, '0') + ':' + String(minute).padStart(2, '0');
 }
 
 /* ---------------------------------------------------------------------------
@@ -205,15 +257,42 @@ export function tollFromPolice(items) {
    Plumbing
    ------------------------------------------------------------------------- */
 
-async function getText(url) {
-  const res = await fetch(url, {
-    headers: {
-      'accept': 'text/html',
-      'user-agent': 'nepaldisasterupdatelive.nxtimaginelabs.com (hello@nxtimaginelabs.com)'
-    }
-  });
-  if (!res.ok) throw new Error('HTTP ' + res.status);
+/**
+ * Fetch a page, retrying a server-side failure once.
+ *
+ * nepalpolice.gov.np returns a 502 often enough to matter — it did so twice
+ * while this was being written. Without a retry a transient one drops the most
+ * authoritative source in the list for that whole run, and the figure board
+ * falls back to whichever newsroom is relaying an older bulletin. One short
+ * retry costs nothing and recovers almost all of them.
+ *
+ * A 404 is not retried: it is an answer, not a failure.
+ */
+async function getText(url, attempt = 0) {
+  let res;
+  try {
+    res = await fetch(url, {
+      headers: {
+        'accept': 'text/html',
+        'user-agent': 'nepaldisasterupdatelive.nxtimaginelabs.com (hello@nxtimaginelabs.com)'
+      }
+    });
+  } catch (e) {
+    if (attempt < RETRIES) return retry(url, attempt);
+    throw e;
+  }
+  if (!res.ok) {
+    if (res.status >= 500 && attempt < RETRIES) return retry(url, attempt);
+    throw new Error('HTTP ' + res.status);
+  }
   return res.text();
+}
+
+const RETRIES = 2;
+
+function retry(url, attempt) {
+  return new Promise(resolve => setTimeout(resolve, 400 * (attempt + 1)))
+    .then(() => getText(url, attempt + 1));
 }
 
 function matches(text, words) {

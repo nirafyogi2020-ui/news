@@ -27,7 +27,7 @@
  */
 
 import { readFileSync, writeFileSync } from 'node:fs';
-import { join, dirname } from 'node:path';
+import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { resolveBoard, METRICS } from '../functions/api/_figures-core.js';
@@ -464,7 +464,21 @@ function report(changed, message) {
   }
 }
 
-main().catch(err => {
-  console.error('figures-update failed: ' + err.message);
-  report(false, 'failed — event.json untouched');
-});
+/* Only when this file is run as a command.
+ *
+ * Without this guard, importing the module runs the whole update as a side
+ * effect — which means the test file that imports one helper out of it would
+ * reach across the network and rewrite event.json, src/content.mjs and
+ * today.json on whatever machine ran `npm test`. That is not a hypothetical:
+ * it happened here, and a figure reached a commit without anybody having
+ * looked at it. A script that writes to the repository has to be impossible
+ * to trigger by importing. */
+const runDirectly = process.argv[1] &&
+  fileURLToPath(import.meta.url) === resolve(process.argv[1]);
+
+if (runDirectly) {
+  main().catch(err => {
+    console.error('figures-update failed: ' + err.message);
+    report(false, 'failed — nothing written');
+  });
+}
