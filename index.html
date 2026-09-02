@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Nepal Flood Live: 1,222 dead, 5,015 missing in Rasuwa, 2 Sep</title>
-<meta name="description" content="Nepalnews: 1,222 confirmed dead and 5,015 listed missing after the Rasuwa flood. Toll by district, rescue and helpline numbers, an interactive map of the valley, and the official relief fund. Updated 2 September 2026, 8:58 pm NPT.">
+<title>Nepal Flood Live: 1,222 dead, 4,216 missing in Rasuwa, 2 Sep</title>
+<meta name="description" content="Nepalnews: 1,222 confirmed dead and 4,216 listed missing after the Rasuwa flood. Toll by district, rescue and helpline numbers, an interactive map of the valley, and the official relief fund. Updated 2 September 2026, 8:58 pm NPT.">
 <meta name="news_keywords" content="Rasuwa flood, Rasuwa flood live, Nepal flood, Nepal flood live updates, Nepal flood death toll">
 <link rel="canonical" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/">
 <link rel="alternate" hreflang="en" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/">
@@ -27,8 +27,8 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nepal Flood Live: 1,222 dead, 5,015 missing in Rasuwa, 2 Sep">
-<meta property="og:description" content="Nepalnews: 1,222 confirmed dead and 5,015 listed missing after the Rasuwa flood. Toll by district, rescue and helpline numbers, an interactive map of the valley, and the official relief fund. Updated 2 September 2026, 8:58 pm NPT.">
+<meta property="og:title" content="Nepal Flood Live: 1,222 dead, 4,216 missing in Rasuwa, 2 Sep">
+<meta property="og:description" content="Nepalnews: 1,222 confirmed dead and 4,216 listed missing after the Rasuwa flood. Toll by district, rescue and helpline numbers, an interactive map of the valley, and the official relief fund. Updated 2 September 2026, 8:58 pm NPT.">
 <meta property="og:url" content="https://nepaldisasterupdatelive.nxtimaginelabs.com/">
 <meta property="og:site_name" content="Nepal Disaster Update Live">
 <meta property="og:locale" content="en_US">
@@ -50,8 +50,8 @@
 <!-- Twitter -->
 <meta name="ndu:story-image" content="https://nepaldisasterupdatelive.nxtimaginelabs.com/assets/og/home-story.png?v=1788388669">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Nepal Flood Live: 1,222 dead, 5,015 missing in Rasuwa, 2 Sep">
-<meta name="twitter:description" content="Nepalnews: 1,222 confirmed dead and 5,015 listed missing after the Rasuwa flood. Toll by district, rescue and helpline numbers, an interactive map of the valley, and the official relief fund. Updated 2 September 2026, 8:58 pm NPT.">
+<meta name="twitter:title" content="Nepal Flood Live: 1,222 dead, 4,216 missing in Rasuwa, 2 Sep">
+<meta name="twitter:description" content="Nepalnews: 1,222 confirmed dead and 4,216 listed missing after the Rasuwa flood. Toll by district, rescue and helpline numbers, an interactive map of the valley, and the official relief fund. Updated 2 September 2026, 8:58 pm NPT.">
 <meta name="twitter:image" content="https://nepaldisasterupdatelive.nxtimaginelabs.com/assets/og/home.png?v=1788388669">
 <meta name="twitter:image:alt" content="Rasuwa flood, live: live figures, map, helplines and the official relief fund">
 <link rel="alternate" type="application/rss+xml" title="Nepal Disaster Update, live feed" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/feed.xml">
@@ -73,8 +73,8 @@
  "@context": "https://schema.org",
  "@type": "LiveBlogPosting",
  "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#liveblog",
- "headline": "Nepal Flood Live: 1,222 dead, 5,015 missing in Rasuwa, 2 Sep",
- "description": "Nepalnews: 1,222 confirmed dead and 5,015 listed missing after the Rasuwa flood. Toll by district, rescue and helpline numbers, an interactive map of the valley, and the official relief fund. Updated 2 September 2026, 8:58 pm NPT.",
+ "headline": "Nepal Flood Live: 1,222 dead, 4,216 missing in Rasuwa, 2 Sep",
+ "description": "Nepalnews: 1,222 confirmed dead and 4,216 listed missing after the Rasuwa flood. Toll by district, rescue and helpline numbers, an interactive map of the valley, and the official relief fund. Updated 2 September 2026, 8:58 pm NPT.",
  "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/",
  "inLanguage": "en",
  "isAccessibleForFree": true,
@@ -789,15 +789,43 @@
     .flag .cloth, .flag .np-sheen{animation:none;}
   }
 
-  /* ===== site header ===== */
-  .sitehead{border-bottom:1px solid var(--border); background:color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter:saturate(1.6) blur(12px); position:sticky; top:0; z-index:60;}
-  .sitehead-inner{max-width:1240px; margin:0 auto; padding:0 20px; height:60px; display:flex; align-items:center; gap:20px;}
+  /* ===== site header =====
+     Three rows, in order of how long a reader needs them:
+       1. the masthead — who this is. Folds away on the way down the page.
+       2. the sections — always there, with the index and search pinned to
+          either end so they never move between tabs.
+       3. the parts of the open section — filled in by script.
+     ===================================================================== */
+  .sitehead{
+    position:sticky; top:0; z-index:60;
+    border-bottom:1px solid var(--border);
+    background:color-mix(in srgb, var(--surface) 92%, transparent);
+    backdrop-filter:saturate(1.6) blur(14px);
+  }
 
-  /* masthead */
-  .brand{display:flex; align-items:center; gap:13px; text-decoration:none; color:var(--text); flex-shrink:0;}
+  /* --- row 1: masthead --- */
+  .head-brandrow{
+    max-width:1240px; margin:0 auto; padding:0 22px;
+    display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:16px;
+    height:76px; overflow:hidden;
+    transition:height .34s cubic-bezier(.22,.72,.24,1), opacity .22s ease;
+  }
+  .sitehead.is-tight .head-brandrow{ height:0; opacity:0; pointer-events:none; }
+
+  .hb-side{display:flex; align-items:center; gap:8px; min-width:0;}
+  .hb-right{justify-content:flex-end;}
+  .hb-place{
+    display:inline-flex; align-items:center; gap:9px;
+    font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.09em;
+    text-transform:uppercase; color:var(--text-faint); white-space:nowrap;
+  }
+  .hb-place .hb-country{color:var(--text-muted); font-weight:600;}
+  .hb-sep{width:3px; height:3px; border-radius:50%; background:currentColor; opacity:.55; flex-shrink:0;}
+
+  .brand{display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--text); flex-shrink:0;}
   .brand-mark{
-    position:relative; display:grid; place-items:center; width:46px; height:46px; flex-shrink:0;
-    border-radius:14px; border:1px solid var(--border);
+    position:relative; display:grid; place-items:center; width:50px; height:50px; flex-shrink:0;
+    border-radius:15px; border:1px solid var(--border);
     background:
       radial-gradient(120% 110% at 22% 8%, color-mix(in srgb, var(--crimson) 15%, transparent), transparent 62%),
       linear-gradient(158deg, var(--surface), var(--surface-2));
@@ -805,78 +833,165 @@
     transition:transform .28s cubic-bezier(.2,.85,.3,1), box-shadow .28s, border-color .28s;
   }
   :root[data-theme="dark"] .brand-mark{box-shadow:0 1px 2px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06);}
-  .brand-mark .mark{width:27px; height:27px;}
+  .brand-mark .mark{width:31px; height:31px;}
   .brand:hover .brand-mark{transform:translateY(-1.5px); border-color:color-mix(in srgb, var(--crimson) 40%, var(--border));
     box-shadow:0 8px 20px -10px color-mix(in srgb, var(--crimson) 60%, transparent), inset 0 1px 0 rgba(255,255,255,.55);}
-  .brand-text{display:flex; flex-direction:column; gap:4px; line-height:1;}
-  .brand-name{font-family:var(--font-display); font-weight:600; font-size:1.19rem; letter-spacing:-0.022em;}
-  .brand-live{display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--critical); font-weight:500;}
-  .brand-live i{width:6px; height:6px; border-radius:50%; background:var(--critical); animation:pulse 2s ease-in-out infinite; box-shadow:0 0 0 3px color-mix(in srgb, var(--critical) 18%, transparent);}
+  .brand-name{
+    font-family:var(--font-display); font-weight:600; font-size:1.5rem;
+    letter-spacing:-0.028em; line-height:1; white-space:nowrap;
+  }
 
-  /* primary tabs, desktop */
-  .tabbar{display:flex; gap:4px; margin-left:auto;}
+  /* --- row 2: sections --- */
+  .head-navrow{
+    max-width:1240px; margin:0 auto; padding:0 14px;
+    display:flex; align-items:center; gap:8px; height:52px;
+    border-top:1px solid var(--border);
+  }
+  .sitehead.is-tight .head-navrow{border-top-color:transparent;}
+  .nav-icon{
+    flex-shrink:0; width:38px; height:38px; display:grid; place-items:center;
+    background:none; border:1px solid transparent; border-radius:10px;
+    color:var(--text-muted); cursor:pointer; transition:background .14s, color .14s, border-color .14s;
+  }
+  .nav-icon svg{width:19px; height:19px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round;}
+  .nav-icon:hover{background:var(--surface-2); color:var(--text); border-color:var(--border);}
+  .nav-icon[aria-expanded="true"]{background:var(--surface-2); color:var(--text); border-color:var(--border);}
+
+  .tabbar{
+    display:flex; gap:2px; flex:1; min-width:0;
+    justify-content:center; overflow-x:auto; scrollbar-width:none;
+  }
+  .tabbar::-webkit-scrollbar{display:none;}
   .tabbar button,
   .tabbar a.tab-link{text-decoration:none;}
   .tabbar button,
   .tabbar a.tab-link{
     position:relative; display:inline-flex; align-items:center; gap:7px;
-    font-family:var(--font-body); font-size:0.88rem; font-weight:500; white-space:nowrap;
-    background:none; border:1px solid transparent; padding:8px 13px; border-radius:10px;
-    color:var(--text-muted); cursor:pointer; transition:background .14s, color .14s;
+    font-family:var(--font-body); font-size:0.92rem; font-weight:500; white-space:nowrap;
+    background:none; border:0; padding:14px 15px 13px; border-radius:0;
+    color:var(--text-muted); cursor:pointer; transition:color .14s;
   }
-  .tabbar .tab-ico{width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; opacity:.75;}
+  .tabbar .tab-ico{width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; opacity:.7;}
+  .tabbar button::after,
+  .tabbar a.tab-link::after{
+    content:''; position:absolute; left:15px; right:15px; bottom:0; height:2px;
+    border-radius:2px 2px 0 0; background:var(--crimson);
+    transform:scaleX(0); transform-origin:center; transition:transform .22s cubic-bezier(.22,.72,.24,1);
+  }
   .tabbar button:hover,
-  .tabbar a.tab-link:hover{color:var(--text); background:var(--surface-2);}
-  .tabbar button[aria-selected="true"]{color:var(--text); background:var(--surface-2); border-color:var(--border); font-weight:600;}
-  .tabbar button[aria-selected="true"] .tab-ico{opacity:1; color:var(--critical);}
+  .tabbar a.tab-link:hover{color:var(--text);}
+  .tabbar button[aria-selected="true"]{color:var(--text); font-weight:650;}
+  .tabbar button[aria-selected="true"]::after{transform:scaleX(1);}
+  .tabbar button[aria-selected="true"] .tab-ico{opacity:1; color:var(--crimson);}
+  .tabbar button .badge{font-family:var(--font-mono); font-size:0.6rem; background:var(--critical); color:#fff; border-radius:20px; padding:1px 6px;}
+
+  /* --- row 3: the parts of the open section --- */
+  .head-subrow{border-top:1px solid var(--border); background:var(--surface-2);}
+  .head-subrow[hidden]{display:none;}
+  .subnav{
+    max-width:1240px; margin:0 auto; padding:0 20px;
+    display:flex; align-items:center; gap:4px; height:42px;
+    overflow-x:auto; scrollbar-width:none;
+  }
+  .subnav::-webkit-scrollbar{display:none;}
+  .subnav a{
+    display:inline-flex; align-items:center; height:27px; padding:0 12px;
+    border-radius:20px; white-space:nowrap; text-decoration:none;
+    font-size:0.82rem; font-weight:500; color:var(--text-muted);
+    border:1px solid transparent; transition:background .14s, color .14s, border-color .14s;
+  }
+  .subnav a:hover{background:var(--surface); color:var(--text); border-color:var(--border);}
+  .subnav a.active{background:var(--surface); color:var(--text); border-color:var(--border-strong); font-weight:600;}
+  .subnav a.sub-home{color:var(--text); font-weight:600;}
+  .subnav a.sub-home::after{content:''; width:1px; height:16px; background:var(--border); margin-left:12px;}
+
   .portal-note{border:1px solid var(--border); border-left:3px solid var(--ok, #16a34a); border-radius:12px; padding:12px 14px; margin-bottom:16px; background:var(--surface-2);}
   .portal-note strong{display:block; font-size:0.9rem; margin-bottom:6px;}
   .portal-note p{margin:0 0 6px; font-size:0.86rem; line-height:1.55;}
   .portal-note .portal-why{font-size:0.78rem; color:var(--text-faint); margin-bottom:0;}
-  .tabbar button .badge{font-family:var(--font-mono); font-size:0.6rem; background:var(--critical); color:#fff; border-radius:20px; padding:1px 6px;}
 
-  /* search + settings */
-  .head-tools{display:flex; align-items:center; gap:8px; flex-shrink:0;}
-  .search-trigger{
-    display:inline-flex; align-items:center; gap:9px; height:36px; padding:0 10px 0 11px;
-    background:var(--bg); border:1px solid var(--border); border-radius:10px;
-    font-family:var(--font-body); font-size:0.84rem; color:var(--text-faint); cursor:pointer; transition:border-color .14s, color .14s;
+  /* ===== the index drawer ===== */
+  .drawer-scrim{
+    position:fixed; inset:0; z-index:80; background:rgba(12,14,18,.42);
+    opacity:0; transition:opacity .24s ease; backdrop-filter:blur(2px);
   }
-  .search-trigger:hover{border-color:var(--border-strong); color:var(--text-muted);}
-  .search-trigger svg{width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round;}
-  .search-trigger-label{max-width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-  .search-kbd{font-family:var(--font-mono); font-size:0.66rem; border:1px solid var(--border); border-bottom-width:2px; border-radius:5px; padding:1px 6px; color:var(--text-faint); background:var(--surface-2);}
-  .search-trigger[aria-expanded="true"]{border-color:var(--border-strong); color:var(--text);}
+  .drawer-scrim.is-open{opacity:1;}
+  .drawer{
+    position:fixed; top:0; left:0; bottom:0; z-index:81; width:min(340px, 86vw);
+    display:flex; flex-direction:column;
+    background:var(--surface); border-right:1px solid var(--border);
+    box-shadow:0 0 60px -12px rgba(12,14,18,.35);
+    transform:translateX(-100%); transition:transform .26s cubic-bezier(.22,.72,.24,1);
+  }
+  .drawer.is-open{transform:none;}
+  .drawer-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 20px; border-bottom:1px solid var(--border);
+  }
+  .drawer-title{font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-faint);}
+  .drawer-close{background:none; border:0; font-size:1.5rem; line-height:1; color:var(--text-muted); cursor:pointer; padding:0 4px;}
+  .drawer-close:hover{color:var(--text);}
+  .drawer-body{flex:1; overflow-y:auto; padding:10px 12px 20px;}
+  .dr-group{padding:4px 0;}
+  .dr-tab{
+    display:block; width:100%; text-align:left; background:none; border:0; cursor:pointer;
+    font-family:var(--font-display); font-size:1.02rem; font-weight:600; color:var(--text);
+    padding:9px 10px; border-radius:9px;
+  }
+  .dr-tab:hover{background:var(--surface-2);}
+  .dr-tab.is-current{color:var(--crimson);}
+  .dr-list{list-style:none; margin:0 0 4px; padding:0 0 0 10px; border-left:1px solid var(--border); margin-left:12px;}
+  .dr-list a{
+    display:block; padding:7px 10px; border-radius:8px; text-decoration:none;
+    font-size:0.86rem; color:var(--text-muted);
+  }
+  .dr-list a:hover{background:var(--surface-2); color:var(--text);}
+  .drawer-foot{
+    border-top:1px solid var(--border); padding:14px 20px;
+    display:flex; flex-direction:column; gap:8px; font-size:0.82rem;
+  }
+  .drawer-foot a{color:var(--text-muted); text-decoration:none;}
+  .drawer-foot a:hover{color:var(--text); text-decoration:underline;}
 
-  /* below desktop: masthead only, primary nav moves to the bottom bar */
+  /* The button shows the theme you would switch TO, not the one you are in:
+     a moon on a light page, a sun on a dark one. */
+  .theme-btn .ico-sun{display:none;}
+  .theme-btn .ico-moon{display:block;}
+  :root[data-theme="dark"] .theme-btn .ico-sun{display:block;}
+  :root[data-theme="dark"] .theme-btn .ico-moon{display:none;}
+
+  /* below desktop: the tab row scrolls sideways instead of wrapping */
   @media (max-width:1080px){
-    .tabbar{display:none;}
-    .sitehead-inner{gap:10px;}
-    .head-tools{margin-left:auto;}
-    .search-trigger-label, .search-kbd{display:none;}
-    .search-trigger{width:36px; padding:0; justify-content:center;}
+    .head-brandrow{height:66px; padding:0 14px;}
+    .brand-mark{width:42px; height:42px; border-radius:13px;}
+    .brand-mark .mark{width:26px; height:26px;}
+    .brand-name{font-size:1.22rem;}
+    .hb-left{display:none;}
+    .head-brandrow{grid-template-columns:auto 1fr;}
+    .brand{order:1;}
+    .hb-right{order:2;}
+    .tabbar{justify-content:flex-start;}
   }
-  /* Three controls plus the masthead do not fit a small phone at full size, so
-     the mark, the wordmark and the language chip all step down together. */
   @media (max-width:560px){
+    .head-brandrow{height:60px; padding:0 12px;}
     .brand{gap:10px;}
-    .brand-mark{width:40px; height:40px; border-radius:12px;}
-    .brand-mark .mark{width:24px; height:24px;}
-    .brand-name{font-size:1.04rem;}
-    .sitehead-inner{padding:0 12px; gap:8px;}
-    .head-tools{gap:6px;}
-    /* Keep the globe, drop the code: a globe is readable to someone who reads
-       neither English nor Nepali, which is exactly who needs this button. */
+    .brand-mark{width:38px; height:38px; border-radius:11px;}
+    .brand-mark .mark{width:23px; height:23px;}
+    .brand-name{font-size:1.06rem;}
+    .head-navrow{height:48px; padding:0 6px;}
+    .tabbar button{padding:12px 11px; font-size:0.86rem;}
+    .tabbar button::after{left:11px; right:11px;}
     .lang-btn{width:36px; padding:0; gap:0; justify-content:center;}
     .lang-btn .lang-code{display:none;}
+    .subnav{height:40px; padding:0 10px;}
   }
   @media (max-width:400px){
-    .brand-name{font-size:0.98rem;}
-    .brand-live{font-size:0.54rem; letter-spacing:0.11em;}
-    .brand-mark{width:37px; height:37px; border-radius:11px;}
-    .brand-mark .mark{width:22px; height:22px;}
+    .brand-name{font-size:0.99rem;}
     .icon-btn{width:34px; height:34px;}
     .lang-btn{width:34px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .head-brandrow, .drawer, .drawer-scrim, .tabbar button::after{transition:none;}
   }
 
   .icon-btn{
@@ -2562,6 +2677,350 @@
   #panel-help .measure + .deeplinks .deeplink,
   #panel-help .deeplinks .deeplink{font-weight:500;}
 
+
+  /* =====================================================================
+     THE BRIEFING CARD  (Now tab)
+     One bordered card. The switch across the top picks which of the four
+     parts is on screen. The parts that are not on screen stay in the
+     markup — hidden, not deleted — so search engines and a reader with
+     JavaScript off still get the whole briefing.
+     ===================================================================== */
+  .briefcard{
+    margin:26px 0 34px;
+    border:1px solid var(--border); border-radius:18px;
+    background:var(--surface); box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .briefcard-switch{
+    display:flex; gap:2px; padding:6px 8px;
+    border-bottom:1px solid var(--border); background:var(--surface-2);
+    overflow-x:auto; scrollbar-width:none;
+  }
+  .briefcard-switch::-webkit-scrollbar{display:none;}
+  .briefcard-switch button{
+    flex:1 1 auto; white-space:nowrap; cursor:pointer;
+    padding:10px 14px; border:1px solid transparent; border-radius:11px;
+    background:none; color:var(--text-muted);
+    font-family:var(--font-body); font-size:0.88rem; font-weight:550;
+    transition:background .15s, color .15s, border-color .15s, box-shadow .15s;
+  }
+  .briefcard-switch button:hover{color:var(--text); background:color-mix(in srgb, var(--surface) 70%, transparent);}
+  .briefcard-switch button[aria-selected="true"]{
+    background:var(--surface); color:var(--text); font-weight:650;
+    border-color:var(--border); box-shadow:0 1px 2px rgba(15,18,24,.06);
+  }
+  .briefcard-body{padding:26px 28px 30px;}
+  .briefcard-body > section{margin:0 !important;}
+  .briefcard-body > section[hidden]{display:none;}
+  .briefcard-body > section > .eyebrow:first-child{margin-top:0;}
+  .briefcard-body > section > h2{margin-top:2px;}
+  @media (max-width:700px){
+    .briefcard{border-radius:14px; margin:20px 0 26px;}
+    .briefcard-body{padding:20px 16px 24px;}
+    .briefcard-switch button{flex:0 0 auto; padding:9px 12px; font-size:0.83rem;}
+  }
+
+  /* =====================================================================
+     THE HERO, AS A CARD
+     ===================================================================== */
+  .hero.hero-card{
+    border:1px solid var(--border); border-radius:20px; background:var(--surface);
+    box-shadow:var(--shadow); padding:34px 34px 30px; margin-top:26px;
+  }
+  .hero.hero-card h1{margin-top:10px;}
+  .hero-stamp{
+    display:flex; align-items:center; flex-wrap:wrap; gap:8px 14px;
+    margin:20px 0 0; padding:12px 14px;
+    border:1px solid var(--border); border-radius:12px; background:var(--surface-2);
+    font-size:0.86rem; color:var(--text-muted);
+  }
+  .hero-stamp .hs-live{
+    display:inline-flex; align-items:center; gap:7px; flex-shrink:0;
+    font-family:var(--font-mono); font-size:0.68rem; font-weight:600;
+    letter-spacing:0.13em; text-transform:uppercase; color:var(--crimson);
+  }
+  .hero-stamp .hs-live i{
+    width:7px; height:7px; border-radius:50%; background:var(--crimson);
+    animation:pulse 2s ease-in-out infinite;
+    box-shadow:0 0 0 3px color-mix(in srgb, var(--crimson) 16%, transparent);
+  }
+  .hero-stamp b{color:var(--text); font-weight:600;}
+  .hero-stamp .hs-sep{width:1px; height:15px; background:var(--border);}
+  @media (max-width:700px){
+    .hero.hero-card{padding:24px 18px 22px; border-radius:16px; margin-top:18px;}
+    .hero-stamp{font-size:0.8rem;}
+    .hero-stamp .hs-sep{display:none;}
+  }
+
+  /* =====================================================================
+     LATEST UPDATES, AS CARDS
+     The same five items, but each one is its own tile instead of a row in
+     a list. A row of dates down a left edge reads as a log; a tile reads
+     as something to open.
+     ===================================================================== */
+  .ticker{
+    border:0; background:none; padding:0; margin:30px 0 6px;
+  }
+  .ticker-head{
+    display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
+    margin:0 0 16px; padding:0;
+  }
+  .ticker-head h2{margin:0; font-size:1.32rem; letter-spacing:-0.02em;}
+  .ticker-head .tk-dot{
+    width:8px; height:8px; border-radius:50%; background:var(--crimson);
+    animation:pulse 2s ease-in-out infinite; align-self:center;
+  }
+  .ticker-head .tk-when{
+    margin-left:auto; font-family:var(--font-mono);
+    font-size:0.72rem; color:var(--text-faint);
+  }
+  .ticker ol{
+    list-style:none; margin:0; padding:0;
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(258px, 1fr)); gap:14px;
+  }
+  .ticker ol li{
+    margin:0; padding:16px 17px 17px;
+    border:1px solid var(--border); border-radius:14px; background:var(--surface);
+    display:flex; flex-direction:column; gap:8px;
+    transition:border-color .16s, transform .16s, box-shadow .16s;
+  }
+  .ticker ol li:hover{
+    border-color:var(--border-strong); transform:translateY(-2px);
+    box-shadow:0 10px 24px -18px rgba(15,18,24,.5);
+  }
+  .ticker ol li time{
+    font-family:var(--font-mono); font-size:0.68rem; font-weight:600;
+    letter-spacing:0.04em; color:var(--crimson);
+  }
+  .ticker ol li .tk-ago{color:var(--text-faint); font-weight:500;}
+  .ticker ol li a{
+    font-size:0.98rem; font-weight:600; line-height:1.34;
+    color:var(--text); text-decoration:none; border:0;
+  }
+  .ticker ol li a:hover{text-decoration:underline; text-underline-offset:3px;}
+  .ticker .tk-sum{
+    margin:0; font-size:0.84rem; line-height:1.5; color:var(--text-muted);
+    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .ticker .tk-foot{margin:16px 0 0;}
+  @media (max-width:560px){
+    .ticker ol{grid-template-columns:1fr;}
+    .ticker-head .tk-when{margin-left:0; width:100%;}
+  }
+
+  /* =====================================================================
+     THE DAY'S STORIES
+
+     Two rules decide the whole grid:
+       1. Every card in a row is the same height. A card is a unit of the
+          same kind of thing; different heights read as different kinds.
+       2. A card with no photograph is not a smaller card. It gets a
+          typographic cover of exactly the same shape, and it sorts after
+          the picture cards so the pictures lead and the text follows.
+     ===================================================================== */
+  .today-grid{
+    display:grid; gap:18px; margin-top:20px;
+    grid-template-columns:repeat(auto-fill, minmax(290px, 1fr));
+    align-items:stretch; max-width:none;
+  }
+  .today-grid > .post-card{height:100%;}
+  .today-grid .post-card{display:flex; flex-direction:column;}
+  .today-grid .post-card .post-body{flex:1 1 auto;}
+
+  /* Picture cards first, text-only cards after them. */
+  .today-grid > .post-card{order:1;}
+  .today-grid > .post-card.no-photo{order:2;}
+  .today-grid > .post-card:first-child{order:0;}
+  .today-grid > p, .today-grid > .today-updated, .today-grid > .today-more{order:3; grid-column:1 / -1;}
+  .today-grid > .today-more{margin:4px 0 0;}
+
+  /* The lead story, sideways: picture left, headline and standfirst right. */
+  @media (min-width:900px){
+    .today-grid{grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));}
+    .today-grid > .post-card:first-child{
+      grid-column:1 / -1;
+      display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+      grid-template-rows:auto 1fr auto;
+    }
+    .today-grid > .post-card:first-child .tc-media{grid-column:1; grid-row:1 / -1;}
+    .today-grid > .post-card:first-child .tc-media .post-photo{
+      height:100%; aspect-ratio:auto; min-height:320px;
+    }
+    .today-grid > .post-card:first-child .post-body{grid-column:2; grid-row:1 / 3; padding:22px 24px 6px;}
+    .today-grid > .post-card:first-child .post-foot{grid-column:2; grid-row:3;}
+    .today-grid > .post-card:first-child .tc-title{font-size:1.72rem; line-height:1.14;}
+    .today-grid > .post-card:first-child .post-summary.clamped{-webkit-line-clamp:7;}
+  }
+
+  /* --- the card with no photograph ------------------------------------
+     Same shape as a picture card, filled with its own headline set large
+     over the house colours. It is a cover, not a hole. */
+  .today-card.no-photo .tc-media{
+    display:block !important; position:relative;
+    aspect-ratio:16/9; overflow:hidden;
+    background:
+      radial-gradient(115% 100% at 12% 0%, color-mix(in srgb, var(--crimson) 22%, transparent), transparent 62%),
+      linear-gradient(150deg, var(--surface-2), color-mix(in srgb, var(--navy) 10%, var(--surface-2)));
+    border-bottom:1px solid var(--border);
+  }
+  .today-card.no-photo .tc-media .post-photo,
+  .today-card.no-photo .tc-media .post-photo-link{display:none;}
+  .today-card.no-photo .tc-cover{
+    position:absolute; inset:0; display:flex; flex-direction:column;
+    justify-content:flex-end; gap:8px; padding:18px 20px;
+  }
+  .today-card.no-photo .tc-cover-kicker{
+    font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.16em;
+    text-transform:uppercase; color:var(--crimson); font-weight:600;
+  }
+  .today-card.no-photo .tc-cover-text{
+    font-family:var(--font-display); font-weight:600;
+    font-size:1.22rem; line-height:1.22; letter-spacing:-0.02em; color:var(--text);
+    display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .today-card.no-photo{border-left:0;}
+  .today-card.no-photo .post-body{padding-top:12px;}
+  .today-card.no-photo .tc-stamp-fallback{display:none;}
+  .today-grid > .post-card:first-child.no-photo .tc-media{aspect-ratio:auto;}
+
+  /* The whole card opens the reader. */
+  .today-grid .post-card{cursor:pointer;}
+  .today-grid .post-card:focus-visible{outline:2px solid var(--crimson); outline-offset:3px;}
+
+  /* =====================================================================
+     THE READER
+
+     Tapping a card used to leave the site. It now opens the story over the
+     page, with the page still visible round the edges so it is obvious you
+     never went anywhere. The picture is pinned; only the words move.
+     ===================================================================== */
+  .reader{
+    position:fixed; inset:0; z-index:140; display:flex;
+    align-items:center; justify-content:center; padding:clamp(14px, 4vh, 46px);
+    background:rgba(10,12,16,.58); backdrop-filter:blur(4px);
+    opacity:0; transition:opacity .2s ease;
+  }
+  .reader.is-open{opacity:1;}
+  .reader[hidden]{display:none;}
+  .reader-panel{
+    position:relative;
+    width:min(880px, 100%); max-height:100%;
+    display:flex; flex-direction:column; overflow:hidden;
+    background:var(--surface); border:1px solid var(--border-strong);
+    border-radius:20px; box-shadow:0 40px 90px -30px rgba(8,10,14,.7);
+    transform:translateY(14px) scale(.985);
+    transition:transform .24s cubic-bezier(.2,.8,.3,1);
+  }
+  .reader.is-open .reader-panel{transform:none;}
+  /* Pinned. The photograph stays while the words move under it. */
+  .reader-media{
+    position:relative; flex:0 0 auto; background:var(--surface-2);
+    border-bottom:1px solid var(--border);
+  }
+  .reader-media img{
+    display:block; width:100%; height:clamp(180px, 32vh, 320px);
+    object-fit:cover; background:var(--surface-2);
+  }
+  .reader.no-photo .reader-media{display:none;}
+  .reader-close{
+    position:absolute; top:12px; right:12px; z-index:2;
+    width:38px; height:38px; border-radius:50%; cursor:pointer;
+    display:grid; place-items:center; font-size:1.35rem; line-height:1;
+    background:rgba(16,18,22,.62); color:#fff; border:1px solid rgba(255,255,255,.22);
+    backdrop-filter:blur(6px); transition:background .15s;
+  }
+  .reader-close:hover{background:rgba(16,18,22,.85);}
+  .reader.no-photo .reader-close{
+    background:var(--surface-2); color:var(--text-muted); border-color:var(--border);
+  }
+  .reader-scroll{overflow-y:auto; -webkit-overflow-scrolling:touch; padding:26px 30px 30px;}
+  .reader-stamp{
+    margin:0 0 10px; font-family:var(--font-mono); font-size:0.72rem;
+    letter-spacing:0.05em; color:var(--crimson); font-weight:600;
+  }
+  .reader-title{
+    margin:0 0 14px; font-family:var(--font-display); font-weight:650;
+    font-size:clamp(1.4rem, 3.2vw, 1.95rem); line-height:1.16; letter-spacing:-0.025em;
+  }
+  .reader-body{font-size:1.03rem; line-height:1.68; color:var(--text);}
+  .reader-body p{margin:0 0 1em;}
+  .reader-body p:last-child{margin-bottom:0;}
+  .reader-sources{
+    margin-top:20px; padding-top:16px; border-top:1px solid var(--border);
+    font-size:0.85rem; color:var(--text-muted);
+  }
+  .reader-sources b{font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-faint); display:block; margin-bottom:6px;}
+  .reader-sources a{color:var(--text-muted);}
+  .reader-foot{
+    flex:0 0 auto; display:flex; gap:10px; flex-wrap:wrap;
+    padding:14px 30px; border-top:1px solid var(--border); background:var(--surface-2);
+  }
+  @media (max-width:640px){
+    .reader{padding:10px;}
+    .reader-panel{border-radius:16px;}
+    .reader-scroll{padding:20px 18px 24px;}
+    .reader-foot{padding:12px 18px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reader, .reader-panel{transition:none;}
+  }
+
+  /* =====================================================================
+     THE MAP TAB
+     The map gets the room. The two explanatory panels stand side by side
+     underneath instead of running one after the other down a page that was
+     already three screens long.
+     ===================================================================== */
+  /* `hidden` must win. Several component rules set display on the same
+     elements, which left "hidden" controls on screen. */
+  [hidden]{display:none !important;}
+
+  .map-shell.map-shell-wide{margin-top:6px; border-radius:16px;}
+  .map-shell.map-shell-wide #flood-map{height:clamp(420px, 62vh, 660px);}
+  .map-explain{display:grid; gap:20px; margin-top:22px;}
+  @media (min-width:1000px){
+    .map-explain{grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:start;}
+    .map-explain .panel{margin:0;}
+    /* Stacked, so each reason has a full line of text rather than a column
+       three words wide. */
+    .map-explain .grid-2{grid-template-columns:1fr;}
+  }
+  .map-explain .card h3{font-size:1.06rem; letter-spacing:-0.015em;}
+  .map-explain .card p{font-size:0.98rem; line-height:1.62; color:var(--text);}
+  .map-explain .data-table{font-size:0.95rem;}
+  .map-explain .data-table td, .map-explain .data-table th{padding:11px 12px;}
+
+  /* =====================================================================
+     THE HELP TAB
+     Less type, more air, and red kept for the one number that has to be
+     dialled. Everything else is separated by a rule, not by colour.
+     ===================================================================== */
+  .help-lede{
+    display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+    margin:0 0 26px; padding:16px 18px;
+    border:1px solid var(--border); border-left:3px solid var(--alert);
+    border-radius:14px; background:var(--surface);
+  }
+  .help-call{
+    display:inline-flex; align-items:center; gap:11px; flex-shrink:0;
+    padding:10px 18px 10px 15px; border-radius:11px;
+    background:var(--alert); color:#fff; text-decoration:none;
+  }
+  .help-call svg{width:19px; height:19px;}
+  .help-call b{font-family:var(--font-mono); font-size:1.36rem; font-weight:700; letter-spacing:-0.01em;}
+  .help-call span{font-size:0.84rem; opacity:.88;}
+  .help-lede-note{font-size:0.92rem; color:var(--text-muted); line-height:1.55;}
+
+  /* One rule between sections, and room to breathe on either side of it. */
+  #panel-help > section + section{
+    margin-top:44px; padding-top:36px; border-top:1px solid var(--border);
+  }
+  #panel-help .measure.lede{font-size:0.98rem; line-height:1.6;}
+  #panel-help h3{margin-top:30px;}
+  @media (max-width:640px){
+    .help-lede{gap:12px; padding:14px;}
+    .help-call{width:100%; justify-content:center;}
+  }
 </style>
 </head>
 <body>
@@ -2641,55 +3100,82 @@
   </symbol>
 </svg>
 
-<header class="sitehead">
-  <div class="sitehead-inner">
+<header class="sitehead" id="sitehead">
+
+  <!-- Row 1. The masthead, and nothing else. It is the widest, quietest line on
+       the page, and it is the one that folds away as soon as the reader starts
+       reading. -->
+  <div class="head-brandrow">
+    <div class="hb-side hb-left">
+      <span class="hb-place">
+        <span class="hb-country">Nepal</span>
+        <span class="hb-sep" aria-hidden="true"></span>
+        <span class="hb-region">Rasuwa</span>
+        <span class="hb-sep" aria-hidden="true"></span>
+        <time class="hb-date" id="hb-date">2 September 2026</time>
+      </span>
+    </div>
+
     <a href="#overview" class="brand" data-tab-link="overview" aria-label="Nepal Disaster Update, home">
       <span class="brand-mark"><svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><use href="#ndu-mark"></use></svg></span>
-      <span class="brand-text">
-        <span class="brand-name" data-i18n="brand.name">Nepal Disaster Update</span>
-        <span class="brand-live"><i aria-hidden="true"></i><span data-i18n="brand.liveTag">Live coverage</span></span>
-      </span>
+      <span class="brand-name" data-i18n="brand.name">Nepal Disaster Update</span>
     </a>
 
-    <nav class="tabbar" id="tabbar" role="tablist" aria-label="Main sections">
-      <button role="tab" id="tab-overview" aria-label="Now, the main briefing" aria-controls="panel-overview" aria-selected="true"  data-tab="overview">
-        <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M6 10.2V20h12v-9.8"/></svg>
-        <span data-i18n="tab.overview">Now</span></button>
-      <button role="tab" id="tab-today" aria-label="Today, the daily stories" aria-controls="panel-today" aria-selected="false" data-tab="today">
-        <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>
-        <span data-i18n="tab.today">Today</span></button>
-      <button role="tab" id="tab-live" aria-label="Live updates" aria-controls="panel-live" aria-selected="false" data-tab="live">
-        <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2.4"/><path d="M7.8 7.8a5.9 5.9 0 0 0 0 8.4M16.2 16.2a5.9 5.9 0 0 0 0-8.4"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 19.1a10 10 0 0 0 0-14.2"/></svg>
-        <span data-i18n="tab.live">Live</span><span class="badge" id="live-badge" hidden>0</span></button>
-      <button role="tab" id="tab-video" aria-label="Watch, videos and photos" aria-controls="panel-video" aria-selected="false" data-tab="video">
-        <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="13" height="13" rx="2.5"/><path d="M16 10.5 21 8v8l-5-2.5z"/></svg>
-        <span data-i18n="tab.video">Watch</span><span class="badge" id="media-badge" hidden>0</span></button>
-      <button role="tab" id="tab-map" aria-label="Map of the flood path" aria-controls="panel-map" aria-selected="false" data-tab="map">
-        <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3.6 3.6 6.1v14.3L9 17.9l6 2.5 5.4-2.5V3.6L15 6.1z"/><path d="M9 3.6v14.3M15 6.1v14.3"/></svg>
-        <span data-i18n="tab.map">Map</span></button>
-      <button role="tab" id="tab-help" aria-label="Help, emergency numbers and donations" aria-controls="panel-help" aria-selected="false" data-tab="help">
-        <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.4s-7.1-4.2-7.1-9.9A4.55 4.55 0 0 1 12 7.2a4.55 4.55 0 0 1 7.1 3.3c0 5.7-7.1 9.9-7.1 9.9z"/></svg>
-        <span data-i18n="tab.help">Help</span></button>
-    </nav>
-
-    <div class="head-tools">
-      <button class="search-trigger" id="search-btn" type="button" aria-expanded="false" aria-controls="search-pop">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.6-3.6"></path></svg>
-        <span class="search-trigger-label" data-i18n="search.trigger">Search this briefing</span>
-        <kbd class="search-kbd" aria-hidden="true">/</kbd>
-      </button>
+    <div class="hb-side hb-right">
       <button class="icon-btn lang-btn" id="lang-btn" type="button" aria-expanded="false" aria-controls="lang-pop" aria-label="Change language">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3.2 9.5h17.6M3.2 14.5h17.6"></path><path d="M12 3a16 16 0 0 1 0 18a16 16 0 0 1 0-18z"></path></svg>
         <span class="lang-code" id="lang-code">EN</span>
       </button>
-      <button class="icon-btn" id="settings-btn" type="button" aria-expanded="false" aria-controls="settings-pop" aria-label="Settings">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"></circle><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1A1.7 1.7 0 008.9 19a1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1A1.7 1.7 0 004.6 8.9a1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V10a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"></path></svg>
+      <button class="icon-btn theme-btn" id="theme-btn" type="button" aria-label="Switch between light and dark" aria-pressed="false">
+        <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"></path></svg>
+        <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2z"></path></svg>
       </button>
     </div>
+  </div>
 
+  <!-- Row 2. The sections, with the index on the left and search on the right.
+       Those two never leave, on any tab. -->
+  <div class="head-navrow">
+    <button class="nav-icon" id="drawer-btn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open the site index">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
 
+    <nav class="tabbar" id="tabbar" role="tablist" aria-label="Main sections">
+      <button role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true" data-tab="overview"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M6 10.2V20h12v-9.8"/></svg><span data-i18n="tab.overview">Now</span></button>
+      <button role="tab" id="tab-today" aria-controls="panel-today" aria-selected="false" data-tab="today"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg><span data-i18n="tab.today">Today</span></button>
+      <button role="tab" id="tab-live" aria-controls="panel-live" aria-selected="false" data-tab="live"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2.4"/><path d="M7.8 7.8a5.9 5.9 0 0 0 0 8.4M16.2 16.2a5.9 5.9 0 0 0 0-8.4"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 19.1a10 10 0 0 0 0-14.2"/></svg><span data-i18n="tab.live">Live</span><span class="badge" id="live-badge" hidden>0</span></button>
+      <button role="tab" id="tab-video" aria-controls="panel-video" aria-selected="false" data-tab="video"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="13" height="13" rx="2.5"/><path d="M16 10.5 21 8v8l-5-2.5z"/></svg><span data-i18n="tab.video">Watch</span><span class="badge" id="media-badge" hidden>0</span></button>
+      <button role="tab" id="tab-map" aria-controls="panel-map" aria-selected="false" data-tab="map"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3.6 3.6 6.1v14.3L9 17.9l6 2.5 5.4-2.5V3.6L15 6.1z"/><path d="M9 3.6v14.3M15 6.1v14.3"/></svg><span data-i18n="tab.map">Map</span></button>
+      <button role="tab" id="tab-help" aria-controls="panel-help" aria-selected="false" data-tab="help"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.4s-7.1-4.2-7.1-9.9A4.55 4.55 0 0 1 12 7.2a4.55 4.55 0 0 1 7.1 3.3c0 5.7-7.1 9.9-7.1 9.9z"/></svg><span data-i18n="tab.help">Help</span></button>
+    </nav>
+
+    <button class="nav-icon" id="search-btn" type="button" aria-expanded="false" aria-controls="search-pop" aria-label="Search this briefing">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.6-3.6"></path></svg>
+    </button>
+  </div>
+
+  <!-- Row 3. Where you are inside the section you picked. Filled in by script
+       from the sections of the open tab, so it can never list a heading that
+       is not there. -->
+  <div class="head-subrow" id="subrow" hidden>
+    <nav class="subnav" id="subnav" aria-label="Jump to a part of this section"></nav>
   </div>
 </header>
+
+<!-- The index drawer. Every tab, and every section inside every tab, on one
+     sheet. This is the column that used to sit permanently down the left. -->
+<div class="drawer-scrim" id="drawer-scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Site index">
+  <div class="drawer-head">
+    <span class="drawer-title">Sections</span>
+    <button class="drawer-close" id="drawer-close" type="button" aria-label="Close">&times;</button>
+  </div>
+  <nav class="drawer-body" id="drawer-body"></nav>
+  <div class="drawer-foot">
+    <a href="/ne/" hreflang="ne" lang="ne">नेपालीमा पढ्नुहोस्</a>
+    <a href="/sources/">Sources and method</a>
+  </div>
+</aside>
 
     <!-- search: command palette -->
     <div class="search-pop" id="search-pop" hidden>
@@ -2717,55 +3203,6 @@
       <p class="lang-note">Headings, buttons and answers change language. News cards stay in the language the source published them in.</p>
     </div>
 
-    <!-- settings popover -->
-    <div class="settings-pop" id="settings-pop" hidden role="menu" aria-label="Settings">
-      <div class="set-head"><b>Settings</b></div>
-      <div class="set-group">
-        <div class="set-label" data-i18n="settings.language">Language</div>
-        <div class="seg" id="lang-seg" role="group" aria-label="Language">
-          <button type="button" data-lang-choice="en" aria-pressed="true">English</button>
-          <button type="button" data-lang-choice="ne" aria-pressed="false">नेपाली</button>
-          <button type="button" data-lang-choice="hi" aria-pressed="false">हिन्दी</button>
-          <button type="button" data-lang-choice="zh" aria-pressed="false">中文</button>
-        </div>
-      </div>
-      <div class="set-group">
-        <div class="set-label" data-i18n="settings.appearance">Appearance</div>
-        <div class="seg" id="theme-seg" role="group" aria-label="Colour theme">
-          <button type="button" data-theme-choice="light"  aria-pressed="true">Light</button>
-          <button type="button" data-theme-choice="dark"   aria-pressed="false">Dark</button>
-          <button type="button" data-theme-choice="system" aria-pressed="false">Device</button>
-        </div>
-      </div>
-      <div class="set-group">
-        <div class="set-label" data-i18n="settings.alerts">Alerts</div>
-        <button class="set-row" type="button" id="reopen-news">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 10-12 0c0 7-3 8-3 8h18s-3-1-3-8"></path><path d="M13.7 21a2 2 0 01-3.4 0"></path></svg>
-          <span data-i18n="settings.showMajorUpdate">Show major news update</span>
-        </button>
-        <button class="set-row" type="button" id="toggle-popup" aria-pressed="true">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"></rect><path d="M3 9h18"></path></svg>
-          <span data-i18n="settings.popupOnArrival">Pop-up on arrival</span><span class="soon" id="popup-state">On</span>
-        </button>
-      </div>
-    </div>
-
-
-<!-- Breaking strip. The label is pinned, the facts scroll past it: what is
-     happening, the figures as they stand, and the numbers to call. A wall of
-     static text in a red band is something people learn to look past. -->
-<div class="statusbar" id="statusbar" role="region" aria-label="Breaking news">
-  <button class="sb-label" id="statusbar-open" type="button">
-    <span class="dot" aria-hidden="true"></span>
-    <b data-i18n="status.label">LIVE</b>
-  </button>
-  <div class="sb-track" id="statusbar-track" aria-live="off">
-    <div class="sb-run" id="statusbar-run"></div>
-    <div class="sb-run" id="statusbar-run2" aria-hidden="true"></div>
-  </div>
-  <span class="sb-fade" aria-hidden="true"></span>
-  <span id="statusbar-time" class="sb-time">Checking&hellip;</span>
-</div>
 
 <!-- ===== major news modal ===== -->
 <div class="modal-backdrop" id="news-modal" hidden role="dialog" aria-modal="true" aria-labelledby="news-modal-title">
@@ -2790,23 +3227,8 @@
   </div>
 </div>
 
-<div class="shell layout has-home-rail">
+<div class="shell layout has-home-rail no-toc">
 
-  <nav class="toc" aria-label="Section navigation" id="toc">
-    <ol id="toc-list"></ol>
-    <div class="toc-status">
-      <p class="ts-live"><i aria-hidden="true"></i>Live coverage</p>
-      <dl>
-        <dt>Day</dt><dd id="ts-day">Day 8</dd>
-        <dt>Last updated</dt><dd id="ts-updated">2 September 2026, 8:00 pm NPT</dd>
-        <dt>Reporting</dt><dd>Public sources, checked</dd>
-      </dl>
-      <div class="toc-langs">
-        <a href="/ne/" hreflang="ne" lang="ne">नेपालीमा</a>
-        <a href="/sources/">Sources and method</a>
-      </div>
-    </div>
-  </nav>
 
   <main id="main">
 
@@ -2814,19 +3236,21 @@
   <div class="tabpanel" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
 
 
-    <header class="hero">
-      <div class="hero-chips">
-        <span class="chip-live"><i aria-hidden="true"></i>Live</span>
-        <span class="chip-meta" id="hero-day">Day 8</span>
-        <span class="chip-meta" id="hero-updated">Updating&hellip;</span>
-      </div>
+    <header class="hero hero-card">
+      <p class="hero-stamp">
+        <span class="hs-live"><i aria-hidden="true"></i>Live coverage</span>
+        <span class="hs-sep" aria-hidden="true"></span>
+        <span id="hero-day">Day 8</span>
+        <span class="hs-sep" aria-hidden="true"></span>
+        <span id="hero-updated">Checking for new reports&hellip;</span>
+      </p>
       <h1 data-i18n="hero.h1">Rasuwa flood, live</h1>
       <p class="lede" data-i18n="hero.lede">A flash flood came down the Bhotekoshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.</p>
       <!-- The headline figures, server-rendered from event.json by src/build.mjs.
            A reader who arrives from a search for the death toll used to have to
            scroll past the whole briefing grid to find it. It is the reason they
            came, so it goes above the fold, and it links to the full table. -->
-      <div class="hero-figures" id="hero-figures"><!--ssr:herofig--><div class="hf-row"><div class="hf-stat"><span class="hf-n critical">1,222</span><span class="hf-l">confirmed dead</span></div><div class="hf-stat"><span class="hf-n critical">5,015</span><span class="hf-l">listed missing in Nepal</span></div><div class="hf-stat"><span class="hf-n">11,993</span><span class="hf-l">rescued so far</span></div></div><p class="hf-note">Nepalnews, 2 September 2026, 8:58 pm NPT. <a href="#numbers-title">Every figure and where it came from</a></p><!--/ssr:herofig--></div>
+      <div class="hero-figures" id="hero-figures"><!--ssr:herofig--><div class="hf-row"><div class="hf-stat"><span class="hf-n critical">1,222</span><span class="hf-l">confirmed dead</span></div><div class="hf-stat"><span class="hf-n critical">4,216</span><span class="hf-l">listed missing in Nepal</span></div><div class="hf-stat"><span class="hf-n">11,993</span><span class="hf-l">rescued so far</span></div></div><p class="hf-note">Nepalnews, 2 September 2026, 8:58 pm NPT. <a href="#numbers-title">Every figure and where it came from</a></p><!--/ssr:herofig--></div>
       <div class="hero-actions">
         <button class="btn btn-primary" type="button" data-goto-tab="live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="2.4"/><path d="M7.8 7.8a5.9 5.9 0 0 0 0 8.4M16.2 16.2a5.9 5.9 0 0 0 0-8.4"/></svg><span data-i18n="hero.cta.live">Latest updates</span></button>
         <button class="btn" type="button" data-goto-tab="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3.6 3.6 6.1v14.3L9 17.9l6 2.5 5.4-2.5V3.6L15 6.1z"/></svg><span data-i18n="hero.cta.map">See the map</span></button>
@@ -2894,6 +3318,24 @@
       <p><a class="deeplink" href="/updates/">Read every briefing in the archive</a></p>
     </section>
 
+    <!-- ===== the briefing card =====
+         One card, four faces. The toll, the timeline, the cause and the
+         questions used to run one after another down the page, so a reader
+         who wanted the cause scrolled past everything else to reach it. They
+         are all still in the markup for a crawler; only one is on screen. -->
+    <div class="briefcard" id="briefcard">
+      <div class="briefcard-switch" role="tablist" aria-label="Parts of the briefing">
+        <button type="button" role="tab" data-pane="toll" aria-selected="true">Confirmed toll</button>
+        <button type="button" role="tab" data-pane="what-happened" aria-selected="false">What happened</button>
+        <button type="button" role="tab" data-pane="cause" aria-selected="false">What caused it</button>
+        <button type="button" role="tab" data-pane="faq" aria-selected="false">Common questions</button>
+      </div>
+      <div class="briefcard-body">
+    <section id="toll" data-toc="1. Confirmed toll">
+      <p class="eyebrow">01. Confirmed</p>
+      <h2 data-i18n="sec.numbers.h2">Confirmed dead, and where</h2>
+      <p class="measure lede">Confirmed deaths only, both sides of the border. Tap a row for the breakdown.</p>
+
     <!-- ===== live counters =====
          Rendered from /event.json when it loads. The markup below is the
          fallback and stays visible if that file is missing. -->
@@ -2920,7 +3362,7 @@
           <span>Rescue helpline 1234<span class="act-sub">Police 100 · Ambulance 102 · NEOC 1144</span></span>
         </a>
       </div>
-      <div class="numgrid" id="numgrid"><!--ssr:numgrid--><button class="stat" data-detail="Nepal Police: 1,222. Up from 1,204. Read automatically from the published report, not edited by hand. Source: https://nepalpolice.gov.np/news/10313/ Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Onlinekhabar: 1,114. Up from 768. Read automatically from the published report, not edited by hand. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html"><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-9C1 8.5 3 4.5 7 4.5c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6 4 4.5 7.5-1 2-3 4-5 5.5"></path><path d="M4.5 12.5h4l1.5-3 2.5 6 1.5-3h5"></path></svg></span><span class="n critical">1,222</span><span class="l">confirmed dead</span><span class="bar"><i style="width:100%"></i></span></button><button class="stat" data-detail="Nepal Police: 5,015. Up from 3,916. Read automatically from the published report, not edited by hand. Source: https://nepalpolice.gov.np/news/10312/ Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: NDTV: 3,916. Up from 2,502. Read automatically from the published report, not edited by hand. Source: https://www.ndtv.com/world-news/nepal-flash-floods-live-updates-rasuwa-bhotekoshi-flood-rescue-relief-operations-latest-news-11979911#publisher=newsstand"><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path><path d="M10.5 7.5v3l2 1.5"></path></svg></span><span class="n critical">5,015</span><span class="l">listed missing in Nepal</span><span class="bar"><i style="width:100%"></i></span></button><button class="stat" data-detail="Xinhua reports 546 people missing around Gyirong Port in Xizang (Tibet) as of 6pm Saturday, including 261 foreign nationals. Combined with Nepal's 2,502-person list that is 3,048 people unaccounted for across both countries, although the two countries' counts may overlap."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path><path d="M10.5 7.5v3l2 1.5"></path></svg></span><span class="n">546</span><span class="l">missing on the China side</span><span class="bar"><i style="width:56%"></i></span></button><button class="stat" data-detail="Nepalnews: 11,993. Up from 8,730. Read automatically from the published report, not edited by hand. Source: https://english.nepalnews.com/s/nation/multinational-rescue-operations-underway-in-bhote-koshi-flood-zone-mofa/ Earlier detail (as of 2026-09-02T14:14:38.000Z), kept for the breakdown and the caveats and not describing the current figure: NDRRMA's 1pm Sunday situation update reported 8,730 people rescued, Onlinekhabar reported. The report did not publish a current agency or location breakdown for that total, so no sub-rows are inferred."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"></circle><path d="M3.5 19v-1c0-2.8 2.5-4.5 5.5-4.5s5.5 1.7 5.5 4.5v1"></path><path d="M16 5.5a3 3 0 0 1 0 5.8"></path><path d="M17.5 13.2c2 .6 3.5 2 3.5 4.3V19"></path></svg></span><span class="n">11,993</span><span class="l">rescued so far</span><span class="bar"><i style="width:100%"></i></span></button><button class="stat" data-detail="The Nepal Electricity Authority reports 14 projects damaged with a combined capacity of about 748 MW: 9 operating plants (354 MW) and 5 under construction (394 MW). Named ones include Rasuwagadhi, Chilime, Sanjen Khola, Upper Trishuli-1, Trishuli and Devighat, plus a 220 kV substation. An earlier same-day Ministry of Energy estimate said 431 MW."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l5 3V11l5 3V8l8 4v9z"></path><path d="M3 21h18"></path><path d="M13 8V4l3-1v4"></path></svg></span><span class="n">14</span><span class="l">hydropower projects damaged</span><span class="bar"><i style="width:60%"></i></span></button><button class="stat" data-detail="Counting from the morning of 26 August 2026, when the flood hit. Search, rescue and recovery work is still going on this many days later."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2.5"></rect><path d="M3.5 10h17"></path><path d="M8 3v4M16 3v4"></path></svg></span><span class="n">Day 8</span><span class="l">since the flood</span><span class="bar"><i style="width:16%"></i></span></button><button class="stat" id="econ-loss-stat" data-detail="Physical Infrastructure Minister Sunil Lamsal put damage to roads and bridges at about Rs 200 billion on 26 August, and called it preliminary. Hydropower and private property are not in that figure. The whole 42 km road from Betrawati to the Rasuwagadhi border crossing was destroyed at multiple points."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"></path><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg></span><span class="n small" id="econ-loss-value">Rs 200bn</span><span class="l">damage, early estimate</span><span class="bar"><i style="width:8%"></i></span></button><button class="stat" id="relief-fund-stat" data-detail="Prime Minister Balen Shah said Rs 5.04 billion had been deposited in nine commercial bank accounts for flood rescue and relief, Onlinekhabar reported at 9:04pm Saturday. The same report said another US$1.8 million was deposited at Himalayan Bank and Laxmi Bank. This is money deposited in the fund, not the separate Rs 1 billion released by the government."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2.5"></rect><circle cx="12" cy="12" r="2.6"></circle><path d="M6 9.5v5M18 9.5v5"></path></svg></span><span class="n small" id="relief-fund-value">Rs 5.04bn</span><span class="l">relief fund deposited</span><span class="bar"><i style="width:60%"></i></span></button><!--/ssr:numgrid-->
+      <div class="numgrid" id="numgrid"><!--ssr:numgrid--><button class="stat" data-detail="Nepal Police: 1,222. Up from 1,204. Read automatically from the published report, not edited by hand. Source: https://nepalpolice.gov.np/news/10313/ Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Onlinekhabar: 1,114. Up from 768. Read automatically from the published report, not edited by hand. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html"><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-9C1 8.5 3 4.5 7 4.5c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6 4 4.5 7.5-1 2-3 4-5 5.5"></path><path d="M4.5 12.5h4l1.5-3 2.5 6 1.5-3h5"></path></svg></span><span class="n critical">1,222</span><span class="l">confirmed dead</span><span class="bar"><i style="width:100%"></i></span></button><button class="stat" data-detail="Nepalnews: 4,216 still unaccounted for, alongside 1,204 bodies recovered, in the same 2 September bulletin as the current toll. Source: https://nepalnews.com/ An earlier automatic read reported 5,015 here; no bulletin supports that figure and it has been withdrawn."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path><path d="M10.5 7.5v3l2 1.5"></path></svg></span><span class="n critical">4,216</span><span class="l">listed missing in Nepal</span><span class="bar"><i style="width:100%"></i></span></button><button class="stat" data-detail="Xinhua reports 546 people missing around Gyirong Port in Xizang (Tibet) as of 6pm Saturday, including 261 foreign nationals. Combined with Nepal's 2,502-person list that is 3,048 people unaccounted for across both countries, although the two countries' counts may overlap."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path><path d="M10.5 7.5v3l2 1.5"></path></svg></span><span class="n">546</span><span class="l">missing on the China side</span><span class="bar"><i style="width:56%"></i></span></button><button class="stat" data-detail="Nepalnews: 11,993. Up from 8,730. Read automatically from the published report, not edited by hand. Source: https://english.nepalnews.com/s/nation/multinational-rescue-operations-underway-in-bhote-koshi-flood-zone-mofa/ Earlier detail (as of 2026-09-02T14:14:38.000Z), kept for the breakdown and the caveats and not describing the current figure: NDRRMA's 1pm Sunday situation update reported 8,730 people rescued, Onlinekhabar reported. The report did not publish a current agency or location breakdown for that total, so no sub-rows are inferred."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"></circle><path d="M3.5 19v-1c0-2.8 2.5-4.5 5.5-4.5s5.5 1.7 5.5 4.5v1"></path><path d="M16 5.5a3 3 0 0 1 0 5.8"></path><path d="M17.5 13.2c2 .6 3.5 2 3.5 4.3V19"></path></svg></span><span class="n">11,993</span><span class="l">rescued so far</span><span class="bar"><i style="width:100%"></i></span></button><button class="stat" data-detail="The Nepal Electricity Authority reports 14 projects damaged with a combined capacity of about 748 MW: 9 operating plants (354 MW) and 5 under construction (394 MW). Named ones include Rasuwagadhi, Chilime, Sanjen Khola, Upper Trishuli-1, Trishuli and Devighat, plus a 220 kV substation. An earlier same-day Ministry of Energy estimate said 431 MW."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l5 3V11l5 3V8l8 4v9z"></path><path d="M3 21h18"></path><path d="M13 8V4l3-1v4"></path></svg></span><span class="n">14</span><span class="l">hydropower projects damaged</span><span class="bar"><i style="width:60%"></i></span></button><button class="stat" data-detail="Counting from the morning of 26 August 2026, when the flood hit. Search, rescue and recovery work is still going on this many days later."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2.5"></rect><path d="M3.5 10h17"></path><path d="M8 3v4M16 3v4"></path></svg></span><span class="n">Day 8</span><span class="l">since the flood</span><span class="bar"><i style="width:16%"></i></span></button><button class="stat" id="econ-loss-stat" data-detail="Physical Infrastructure Minister Sunil Lamsal put damage to roads and bridges at about Rs 200 billion on 26 August, and called it preliminary. Hydropower and private property are not in that figure. The whole 42 km road from Betrawati to the Rasuwagadhi border crossing was destroyed at multiple points."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"></path><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg></span><span class="n small" id="econ-loss-value">Rs 200bn</span><span class="l">damage, early estimate</span><span class="bar"><i style="width:8%"></i></span></button><button class="stat" id="relief-fund-stat" data-detail="Prime Minister Balen Shah said Rs 5.04 billion had been deposited in nine commercial bank accounts for flood rescue and relief, Onlinekhabar reported at 9:04pm Saturday. The same report said another US$1.8 million was deposited at Himalayan Bank and Laxmi Bank. This is money deposited in the fund, not the separate Rs 1 billion released by the government."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2.5"></rect><circle cx="12" cy="12" r="2.6"></circle><path d="M6 9.5v5M18 9.5v5"></path></svg></span><span class="n small" id="relief-fund-value">Rs 5.04bn</span><span class="l">relief fund deposited</span><span class="bar"><i style="width:60%"></i></span></button><!--/ssr:numgrid-->
       </div>
       <p class="detail" id="stat-detail">Tap any number to see where it comes from. Early counts move. Where sources disagree, the lower confirmed figure is shown.</p>
     </div>
@@ -2993,13 +3435,9 @@
       <span class="mapteaser-go" aria-hidden="true">&rsaquo;</span>
     </button>
 
-    <section id="toll" data-toc="1. Confirmed toll">
-      <p class="eyebrow">01. Confirmed</p>
-      <h2 data-i18n="sec.numbers.h2">Confirmed dead, and where</h2>
-      <p class="measure lede">Confirmed deaths only, both sides of the border. Tap a row for the breakdown.</p>
 
       <div class="accord toll-accord" id="toll-accord">
-        <!--ssr:toll-nepal--><details open><summary><span class="toll-flag" aria-hidden="true"><svg class="flag" style="width:18px;height:22px"><use href="#np-flag"></use></svg></span>Nepal<span class="toll-n critical">1,222</span></summary><div class="accord-body"><p style="margin-bottom:10px;">The flood started in Rasuwa, but the water carried people far downstream. 5,015 people are still listed missing. A district here is where a body was found, not where the person was from.</p><div class="table-scroll"><table class="data-table toll-table" id="toll-districts"><thead><tr><th>District</th><th>Bodies recovered</th></tr></thead><tbody><tr><td>Chitwan</td><td class="num-cell">348</td></tr><tr><td>Nawalparasi East</td><td class="num-cell">218</td></tr><tr><td>Nawalparasi West</td><td class="num-cell">194</td></tr><tr><td>Nuwakot</td><td class="num-cell">155</td></tr><tr><td>Rasuwa</td><td class="num-cell">127</td></tr><tr><td>Gorkha</td><td class="num-cell">68</td></tr><tr><td>Dhading</td><td class="num-cell">60</td></tr><tr><td>Tanahun</td><td class="num-cell">38</td></tr><tr><td>India (returned)</td><td class="num-cell">14</td></tr></tbody></table></div><p style="font-size:0.78rem; color:var(--text-faint); margin:8px 0 0;" id="toll-districts-note">Nepal Police bulletin, 2 September 2026, 8:00 pm NPT, totalling 1,222. Read automatically from the bulletin, not typed in. The headline figure above can be higher: it takes the first national total any source publishes, and the police breakdown follows.</p></div></details><!--/ssr:toll-nepal-->
+        <!--ssr:toll-nepal--><details open><summary><span class="toll-flag" aria-hidden="true"><svg class="flag" style="width:18px;height:22px"><use href="#np-flag"></use></svg></span>Nepal<span class="toll-n critical">1,222</span></summary><div class="accord-body"><p style="margin-bottom:10px;">The flood started in Rasuwa, but the water carried people far downstream. 4,216 people are still listed missing. A district here is where a body was found, not where the person was from.</p><div class="table-scroll"><table class="data-table toll-table" id="toll-districts"><thead><tr><th>District</th><th>Bodies recovered</th></tr></thead><tbody><tr><td>Chitwan</td><td class="num-cell">348</td></tr><tr><td>Nawalparasi East</td><td class="num-cell">218</td></tr><tr><td>Nawalparasi West</td><td class="num-cell">194</td></tr><tr><td>Nuwakot</td><td class="num-cell">155</td></tr><tr><td>Rasuwa</td><td class="num-cell">127</td></tr><tr><td>Gorkha</td><td class="num-cell">68</td></tr><tr><td>Dhading</td><td class="num-cell">60</td></tr><tr><td>Tanahun</td><td class="num-cell">38</td></tr><tr><td>India (returned)</td><td class="num-cell">14</td></tr></tbody></table></div><p style="font-size:0.78rem; color:var(--text-faint); margin:8px 0 0;" id="toll-districts-note">Nepal Police bulletin, 2 September 2026, 8:00 pm NPT, totalling 1,222. Read automatically from the bulletin, not typed in. The headline figure above can be higher: it takes the first national total any source publishes, and the police breakdown follows.</p></div></details><!--/ssr:toll-nepal-->
         <details>
           <summary>
             <span class="toll-flag" aria-hidden="true">🇨🇳</span>
@@ -3063,7 +3501,7 @@
         <span class="livedot" aria-hidden="true" title="Watching NDRRMA's site for a newer report"></span>
         <span data-i18n="sec.damage.h2">Damage and rescue, official numbers</span>
       </h3>
-      <!--ssr:official--><p class="measure" style="margin-top:6px; color:var(--text-muted); font-size:0.93rem;">Read automatically from the published bulletins and reports, not typed in. These are the same figures as the counters at the top of this page, from the same file, so the two cannot disagree. Last moved 2 September 2026, 8:58 pm NPT, from Nepalnews.</p><div class="table-scroll"><table class="data-table stat-table"><thead><tr><th>Figure</th><th>Count</th><th>What the source said</th></tr></thead><tbody><tr><td>confirmed dead</td><td class="num-cell">1,222</td><td>Nepal Police: 1,222. Up from 1,204. Read automatically from the published report, not edited by hand.</td></tr><tr><td>listed missing in Nepal</td><td class="num-cell">5,015</td><td>Nepal Police: 5,015. Up from 3,916. Read automatically from the published report, not edited by hand.</td></tr><tr><td>missing on the China side</td><td class="num-cell">546</td><td>Xinhua reports 546 people missing around Gyirong Port in Xizang (Tibet) as of 6pm Saturday, including 261 foreign nationals. Combined with Nepal's 2,502-person list that is 3,048 people unaccounted for across both countries, although the two countries' counts may overlap.</td></tr><tr><td>rescued so far</td><td class="num-cell">11,993</td><td>Nepalnews: 11,993. Up from 8,730. Read automatically from the published report, not edited by hand.</td></tr><tr><td>hydropower projects damaged</td><td class="num-cell">14</td><td>The Nepal Electricity Authority reports 14 projects damaged with a combined capacity of about 748 MW: 9 operating plants (354 MW) and 5 under construction (394 MW). Named ones include Rasuwagadhi, Chilime, Sanjen Khola, Upper Trishuli-1, Trishuli and Devighat, plus a 220 kV substation. An earlier same-day Ministry of Energy estimate said 431 MW.</td></tr><tr><td>damage, early estimate</td><td class="num-cell">Rs 200bn</td><td>Physical Infrastructure Minister Sunil Lamsal put damage to roads and bridges at about Rs 200 billion on 26 August, and called it preliminary. Hydropower and private property are not in that figure. The whole 42 km road from Betrawati to the Rasuwagadhi border crossing was destroyed at multiple points.</td></tr><tr><td>relief fund deposited</td><td class="num-cell">Rs 5.04bn</td><td>Prime Minister Balen Shah said Rs 5.04 billion had been deposited in nine commercial bank accounts for flood rescue and relief, Onlinekhabar reported at 9:04pm Saturday. The same report said another US$1.8 million was deposited at Himalayan Bank and Laxmi Bank. This is money deposited in the fund, not the separate Rs 1 billion released by the government.</td></tr></tbody></table></div><p style="margin-top:14px; font-size:0.78rem; color:var(--text-faint);">Search and rescue is still running, so every number here can change. Tap any counter at the top of the page for the sentence it came from. <span id="official-check-status"></span></p><!--/ssr:official-->
+      <!--ssr:official--><p class="measure" style="margin-top:6px; color:var(--text-muted); font-size:0.93rem;">Read automatically from the published bulletins and reports, not typed in. These are the same figures as the counters at the top of this page, from the same file, so the two cannot disagree. Last moved 2 September 2026, 8:58 pm NPT, from Nepalnews.</p><div class="table-scroll"><table class="data-table stat-table"><thead><tr><th>Figure</th><th>Count</th><th>What the source said</th></tr></thead><tbody><tr><td>confirmed dead</td><td class="num-cell">1,222</td><td>Nepal Police: 1,222. Up from 1,204. Read automatically from the published report, not edited by hand.</td></tr><tr><td>listed missing in Nepal</td><td class="num-cell">4,216</td><td>Nepalnews: 4,216 still unaccounted for, alongside 1,204 bodies recovered, in the same 2 September bulletin as the current toll. An earlier automatic read reported 5,015 here; no bulletin supports that figure and it has been withdrawn.</td></tr><tr><td>missing on the China side</td><td class="num-cell">546</td><td>Xinhua reports 546 people missing around Gyirong Port in Xizang (Tibet) as of 6pm Saturday, including 261 foreign nationals. Combined with Nepal's 2,502-person list that is 3,048 people unaccounted for across both countries, although the two countries' counts may overlap.</td></tr><tr><td>rescued so far</td><td class="num-cell">11,993</td><td>Nepalnews: 11,993. Up from 8,730. Read automatically from the published report, not edited by hand.</td></tr><tr><td>hydropower projects damaged</td><td class="num-cell">14</td><td>The Nepal Electricity Authority reports 14 projects damaged with a combined capacity of about 748 MW: 9 operating plants (354 MW) and 5 under construction (394 MW). Named ones include Rasuwagadhi, Chilime, Sanjen Khola, Upper Trishuli-1, Trishuli and Devighat, plus a 220 kV substation. An earlier same-day Ministry of Energy estimate said 431 MW.</td></tr><tr><td>damage, early estimate</td><td class="num-cell">Rs 200bn</td><td>Physical Infrastructure Minister Sunil Lamsal put damage to roads and bridges at about Rs 200 billion on 26 August, and called it preliminary. Hydropower and private property are not in that figure. The whole 42 km road from Betrawati to the Rasuwagadhi border crossing was destroyed at multiple points.</td></tr><tr><td>relief fund deposited</td><td class="num-cell">Rs 5.04bn</td><td>Prime Minister Balen Shah said Rs 5.04 billion had been deposited in nine commercial bank accounts for flood rescue and relief, Onlinekhabar reported at 9:04pm Saturday. The same report said another US$1.8 million was deposited at Himalayan Bank and Laxmi Bank. This is money deposited in the fund, not the separate Rs 1 billion released by the government.</td></tr></tbody></table></div><p style="margin-top:14px; font-size:0.78rem; color:var(--text-faint);">Search and rescue is still running, so every number here can change. Tap any counter at the top of the page for the sentence it came from. <span id="official-check-status"></span></p><!--/ssr:official-->
       <div class="deeplinks">
         <a class="deeplink" href="/nepal-flood/rasuwa/timeline/">The full hour-by-hour timeline</a>
         <a class="deeplink" href="/nepal-flood/rasuwa/damage/">Damage assessment, station by station</a>
@@ -3155,6 +3593,8 @@
         <a class="deeplink" href="/nepal-flood/">Floods in Nepal, and why rivers rise so fast</a>
       </div>
     </section>
+      </div>
+    </div>
   </div>
 
   <!-- =================== TODAY =================== -->
@@ -3300,16 +3740,15 @@
   <!-- =================== WATCH =================== -->
   <div class="tabpanel" id="panel-video" role="tabpanel" aria-labelledby="tab-video" hidden>
     <section id="videos" data-toc="1. Videos">
-      <p class="eyebrow">Watch</p>
-      <h2>Videos</h2>
-      <p class="measure lede">Flood videos from YouTube, newest first. Tap one to watch full screen, then swipe for the next.</p>
-
-      <div class="feed-head" style="margin-top:20px;">
-        <span class="livedot" aria-hidden="true"></span>
-        <span class="feed-status" id="video-status">Loading&hellip;</span>
-      </div>
-      <p class="video-freshness" id="video-freshness" aria-live="polite" hidden></p>
-      <div class="seg" id="video-region-seg" role="group" aria-label="Filter videos by source" style="margin-top:14px; max-width:420px;">
+      <!-- No preamble. A wall of video thumbnails explains itself, and every
+           line of text above it was one more thing between the reader and
+           the first picture. The status line, the freshness note and the
+           source filter are kept in the markup as hidden hooks so the feed
+           script still has somewhere to write. -->
+      <h2 class="visually-hidden">Videos</h2>
+      <span class="feed-status visually-hidden" id="video-status">Loading&hellip;</span>
+      <p class="video-freshness" id="video-freshness" hidden></p>
+      <div class="seg" id="video-region-seg" hidden>
         <button type="button" data-vregion="all" aria-pressed="true">All sources</button>
         <button type="button" data-vregion="nepal" aria-pressed="false">Nepali sources</button>
       </div>
@@ -3368,13 +3807,16 @@
   <!-- =================== MAP =================== -->
   <div class="tabpanel" id="panel-map" role="tabpanel" aria-labelledby="tab-map" hidden>
     <section id="geography" data-toc="1. Follow the water">
-      <p class="eyebrow" data-i18n="sec.map.eyebrow">Maps</p>
-      <h2 data-i18n="sec.map.h2">Follow the water, step by step</h2>
-      <p class="measure lede">The flood did not start in Nepal. It began high inside Tibet and fell more than 3,000 metres before it reached the first Nepali town. Press play to watch it travel, or tap any stop.</p>
+      <!-- No heading over the map. A reader who has pressed "Map" knows they
+           are looking at a map, and the three lines that used to sit here
+           pushed it below the fold on a laptop. What the map cannot say for
+           itself — that the flood started in Tibet, 3,000 m up — is one line
+           on the bar instead. -->
+      <h2 class="visually-hidden" data-i18n="sec.map.h2">Follow the water, step by step</h2>
 
-      <div class="map-shell">
+      <div class="map-shell map-shell-wide">
         <div class="map-bar">
-          <span class="hint">Tap a pin, or a stop below.</span>
+          <span class="hint">Began in Tibet, 3,000&thinsp;m up &middot; tap a pin, or press play</span>
           <button class="chip" type="button" data-layer="sat" aria-pressed="true">Satellite</button>
           <button class="chip" type="button" data-layer="terrain" aria-pressed="false">Terrain</button>
           <button class="chip" type="button" data-layer="street" aria-pressed="false">Streets</button>
@@ -3391,6 +3833,7 @@
         <p class="attrib" id="map-attrib"></p>
       </div>
 
+      <div class="map-explain">
       <div class="panel">
         <div class="panel-head"><h3>Why here, and why so fast</h3><p class="panel-sub">Three things about this valley that decided how bad it got</p></div>
       <div class="grid-2">
@@ -3426,6 +3869,7 @@
         </table>
       </div>
       </div>
+      </div>
       <div class="deeplinks">
         <a class="deeplink" href="/nepal-flood/rasuwa/map/">Every point on the flood path, with coordinates</a>
         <a class="deeplink" href="/nepal-flood/rasuwa/timeline/">When the water reached each place</a>
@@ -3440,42 +3884,22 @@
          are the doors, in the order somebody in trouble needs them: call
          first, then report a person, then the official fund, then the
          government's own pages. -->
-    <nav class="help-jump" aria-label="What do you need?">
-      <a class="hj hj-urgent" href="tel:100">
-        <span class="hj-k">Call now</span>
-        <span class="hj-v">100</span>
-        <span class="hj-n">Nepal Police</span>
+    <!-- The five doors that used to sit here duplicated the section bar in
+         the header, one screen further down and three times the height. One
+         line, one urgent number, and the sections do the rest. -->
+    <p class="help-lede">
+      <a class="help-call" href="tel:100">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.3 3.5h3l1.5 4-2 1.4a12 12 0 0 0 6.3 6.3l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A16.8 16.8 0 0 1 4.3 5.7a2 2 0 0 1 2-2.2z"/></svg>
+        <b>100</b><span>Nepal Police, from any phone</span>
       </a>
-      <a class="hj" href="#emergency">
-        <span class="hj-k">Helplines</span>
-        <span class="hj-v">All numbers</span>
-        <span class="hj-n">Ambulance, fire, hospitals</span>
-      </a>
-      <a class="hj" href="#missing-report">
-        <span class="hj-k">Someone missing</span>
-        <span class="hj-v">How to report</span>
-        <span class="hj-n">Police, embassies, families abroad</span>
-      </a>
-      <a class="hj hj-give" href="#help">
-        <span class="hj-k">Donate</span>
-        <span class="hj-v">Official QR</span>
-        <span class="hj-n">PM's Disaster Relief Fund</span>
-      </a>
-      <a class="hj" href="#sources">
-        <span class="hj-k">Government links</span>
-        <span class="hj-v">Where facts come from</span>
-        <span class="hj-n">NDRRMA, Police, ministries</span>
-      </a>
-    </nav>
+      <span class="help-lede-note">In immediate danger, call first. Everything else on this tab can wait.</span>
+    </p>
 
     <section id="emergency" data-toc="1. Emergency numbers">
       <p class="eyebrow" data-i18n="sec.emergency.eyebrow">Emergency</p>
       <h2 data-i18n="sec.emergency.h2">Numbers to call in Nepal</h2>
       <p class="measure lede"><span data-i18n="em.lede.a">Tap any number below to dial it. These are national numbers and work from any phone in Nepal. From a mobile, </span><strong>112</strong><span data-i18n="em.lede.b"> also reaches emergency services.</span></p>
 
-      <div class="emerg-banner">
-        <p><strong data-i18n="em.banner.strong">If someone is in immediate danger right now, call 100 (Police) or 112 from a mobile.</strong> <span data-i18n="em.banner.rest">Do not wait for this page to load anything else.</span></p>
-      </div>
 
       <div class="call-grid">
         <a class="call" href="tel:100"><span class="digits">100</span><span class="who" data-i18n="em.c1.who">Nepal Police</span><span class="note" data-i18n="em.c1.note">General emergency, rescue, missing persons</span></a>
@@ -3735,7 +4159,7 @@
   <aside class="rail" id="rail" aria-label="Live summary">
     <section class="rail-card is-pinned" aria-labelledby="rail-fig-h">
       <p class="rail-head" id="rail-fig-h"><span class="rail-tick" aria-hidden="true"></span>Where it stands</p>
-      <div id="rail-figures"><!--ssr:railfig--><div class="rail-fig"><span class="rf-n critical">1,222</span><span class="rf-l">confirmed dead</span></div><div class="rail-fig"><span class="rf-n critical">5,015</span><span class="rf-l">listed missing in Nepal</span></div><div class="rail-fig"><span class="rf-n">11,993</span><span class="rf-l">rescued so far</span></div><p class="rail-note">Nepalnews, 2 September 2026, 8:58 pm NPT. <a href="#numbers-title">Every figure, and where it came from</a></p><!--/ssr:railfig--></div>
+      <div id="rail-figures"><!--ssr:railfig--><div class="rail-fig"><span class="rf-n critical">1,222</span><span class="rf-l">confirmed dead</span></div><div class="rail-fig"><span class="rf-n critical">4,216</span><span class="rf-l">listed missing in Nepal</span></div><div class="rail-fig"><span class="rf-n">11,993</span><span class="rf-l">rescued so far</span></div><p class="rail-note">Nepalnews, 2 September 2026, 8:58 pm NPT. <a href="#numbers-title">Every figure, and where it came from</a></p><!--/ssr:railfig--></div>
     </section>
 
     <section class="rail-card" aria-labelledby="rail-latest-h">
@@ -3743,17 +4167,6 @@
       <ol class="rail-list" id="rail-latest"><!--ssr:raillatest--><li><time datetime="2026-09-02T15:14:29.000Z">2 September 2026, 8:59 pm NPT</time><a href="/updates/2026-09-02-auto-2026-09-02-bhotekoshi-flood-leaves-1-204-dead-4-216-still-unaccou/">Bhotekoshi flood leaves 1,204 dead; 4,216 still unaccounted for</a></li><li><time datetime="2026-09-02T15:13:58.000Z">2 September 2026, 8:58 pm NPT</time><a href="/updates/2026-09-02-auto-2026-09-02-multinational-rescue-operations-underway-in-bhote-kosh/">Multinational rescue operations underway in Bhote Koshi flood zone: MoFA</a></li><li><time datetime="2026-09-02T20:00:00+05:45">2 September 2026, 8:00 pm NPT</time><a href="/updates/2026-09-02-latest-reported-figures/">Latest reported figures: 1,222 confirmed dead</a></li><li><time datetime="2026-09-01T10:17:43.000Z">1 September 2026, 4:02 pm NPT</time><a href="/updates/2026-09-01-auto-2026-09-01-tatopani-route-hit-again-as-zhangmu-closed-over-flood-/">Tatopani route hit again as Zhangmu closed over flood concerns</a></li><li><time datetime="2026-09-01T06:51:18.000Z">1 September 2026, 12:36 pm NPT</time><a href="/updates/2026-09-01-auto-2026-09-01-nepal-liquors-donates-rs-10-1-million-to-flood-relief-/">Nepal Liquors donates Rs 10.1 million to flood relief fund</a></li><!--/ssr:raillatest--></ol>
     </section>
 
-    <section class="rail-card" aria-labelledby="rail-src-h">
-      <p class="rail-head" id="rail-src-h"><span class="rail-tick" aria-hidden="true"></span>Where this comes from</p>
-      <ul class="rail-src">
-        <li><span class="vtick" aria-hidden="true">✓</span><b>Nepal Police</b><span class="rs-kind">Official</span></li>
-        <li><span class="vtick" aria-hidden="true">✓</span><b>NDRRMA</b><span class="rs-kind">Official</span></li>
-        <li><span class="vtick" aria-hidden="true">✓</span><b>UN OCHA</b><span class="rs-kind">Alerts</span></li>
-        <li><span class="vtick" aria-hidden="true">✓</span><b>Kathmandu Post</b><span class="rs-kind">Newsroom</span></li>
-        <li><span class="vtick" aria-hidden="true">✓</span><b>Onlinekhabar</b><span class="rs-kind">Newsroom</span></li>
-      </ul>
-      <p class="rail-note"><a href="/sources/">Every source on this site, and how each one is checked</a></p>
-    </section>
 
     <section class="rail-card" aria-labelledby="rail-help-h">
       <p class="rail-head" id="rail-help-h"><span class="rail-tick" aria-hidden="true"></span>If you need help</p>
@@ -3766,6 +4179,353 @@
 
   </aside>
 </div>
+
+<script>
+/* =========================================================================
+   Masthead behaviour: the fold, the index drawer, and the dateline.
+   ========================================================================= */
+
+/* --- the fold ------------------------------------------------------------
+   Reading is downward. On the way down the masthead row folds away and only
+   the section bar is left; on the way back up the whole head returns. The
+   threshold and the small dead zone stop it flickering on a trackpad. */
+(function(){
+  var head = document.getElementById('sitehead');
+  if(!head) return;
+  var last = window.scrollY, ticking = false;
+
+  function frame(){
+    ticking = false;
+    var y = window.scrollY;
+    var delta = y - last;
+    if(Math.abs(delta) < 6) return;
+    if(y < 90){ head.classList.remove('is-tight'); }
+    else if(delta > 0){ head.classList.add('is-tight'); }
+    else { head.classList.remove('is-tight'); }
+    last = y;
+  }
+  document.addEventListener('scroll', function(){
+    if(ticking) return;
+    ticking = true;
+    if(window.requestAnimationFrame) requestAnimationFrame(frame);
+    else setTimeout(frame, 16);
+  }, { passive:true });
+})();
+
+/* --- the index drawer ----------------------------------------------------
+   Every tab, and the sections inside each tab, on one sheet. Built from the
+   live DOM so it lists exactly what exists. */
+(function(){
+  var btn    = document.getElementById('drawer-btn');
+  var panel  = document.getElementById('drawer');
+  var scrim  = document.getElementById('drawer-scrim');
+  var body   = document.getElementById('drawer-body');
+  var closeB = document.getElementById('drawer-close');
+  if(!btn || !panel || !body) return;
+
+  function build(){
+    body.innerHTML = '';
+    document.querySelectorAll('#tabbar button[data-tab]').forEach(function(tab){
+      var key = tab.getAttribute('data-tab');
+      var group = document.createElement('div');
+      group.className = 'dr-group';
+
+      var head = document.createElement('button');
+      head.type = 'button';
+      head.className = 'dr-tab';
+      head.textContent = tab.querySelector('span[data-i18n]').textContent;
+      if(Tabs.current === key) head.classList.add('is-current');
+      head.addEventListener('click', function(){ Tabs.show(key); close(); });
+      group.appendChild(head);
+
+      var sections = document.querySelectorAll('#panel-' + key + ' section[data-toc]');
+      if(sections.length > 1){
+        var ol = document.createElement('ol');
+        ol.className = 'dr-list';
+        sections.forEach(function(sec){
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          a.href = '#' + sec.id;
+          a.textContent = String(sec.getAttribute('data-toc')).replace(/^\s*\d+\.\s*/, '');
+          a.addEventListener('click', function(e){
+            e.preventDefault();
+            Tabs.show(key);
+            close();
+            requestAnimationFrame(function(){
+              if(window.BriefCard && window.BriefCard.has(sec.id)){
+                window.BriefCard.show(sec.id, { scroll:true });
+              } else {
+                sec.scrollIntoView({ behavior:'smooth', block:'start' });
+              }
+            });
+          });
+          li.appendChild(a);
+          ol.appendChild(li);
+        });
+        group.appendChild(ol);
+      }
+      body.appendChild(group);
+    });
+  }
+
+  function open(){
+    build();
+    panel.hidden = false; scrim.hidden = false;
+    /* Force a layout read so the browser has a "before" to animate from.
+       requestAnimationFrame is throttled in a background tab, and a drawer
+       that never opens because the tab was not focused is worse than one
+       that opens without a slide. */
+    void panel.offsetWidth;
+    panel.classList.add('is-open'); scrim.classList.add('is-open');
+    btn.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    panel.classList.remove('is-open'); scrim.classList.remove('is-open');
+    btn.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+    setTimeout(function(){
+      if(!panel.classList.contains('is-open')){ panel.hidden = true; scrim.hidden = true; }
+    }, 240);
+  }
+
+  btn.addEventListener('click', function(){
+    if(panel.classList.contains('is-open')) close(); else open();
+  });
+  closeB.addEventListener('click', close);
+  scrim.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && panel.classList.contains('is-open')) close();
+  });
+})();
+
+/* --- the dateline --------------------------------------------------------
+   Left of the masthead. Today's date in Kathmandu, not the reader's. */
+(function(){
+  var el = document.getElementById('hb-date');
+  if(!el) return;
+  try {
+    var d = new Date();
+    el.textContent = d.toLocaleDateString('en-GB', {
+      day:'numeric', month:'long', year:'numeric', timeZone:'Asia/Kathmandu'
+    });
+    el.setAttribute('datetime', d.toISOString().slice(0,10));
+  } catch(e){}
+})();
+</script>
+
+<script>
+/* =========================================================================
+   The briefing card's switch (Now tab).
+
+   Four sections, one card. Only the chosen one is on screen; the rest stay
+   in the document so a crawler, a reader with JavaScript off, and in-page
+   search all still see the whole briefing.
+   ========================================================================= */
+window.BriefCard = (function(){
+  var card = document.getElementById('briefcard');
+  if(!card) return { show:function(){}, has:function(){ return false; } };
+  var buttons = Array.prototype.slice.call(card.querySelectorAll('[data-pane]'));
+  var panes   = Array.prototype.slice.call(card.querySelectorAll('.briefcard-body > section'));
+
+  function show(id, opts){
+    opts = opts || {};
+    var found = false;
+    panes.forEach(function(p){
+      var on = p.id === id;
+      if(on) found = true;
+      p.hidden = !on;
+    });
+    if(!found) return false;
+    buttons.forEach(function(b){
+      b.setAttribute('aria-selected', String(b.getAttribute('data-pane') === id));
+    });
+    if(opts.scroll){
+      card.scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+    return true;
+  }
+
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){ show(b.getAttribute('data-pane')); });
+  });
+
+  /* Someone arriving on /#cause, or following a search result into the
+     middle of the briefing, must land on the right face of the card. */
+  function fromHash(){
+    var id = location.hash.slice(1);
+    if(id) show(id, { scroll:true });
+  }
+  window.addEventListener('hashchange', fromHash);
+
+  show(panes.length ? panes[0].id : '');
+  fromHash();
+
+  return {
+    show: show,
+    has: function(id){ return panes.some(function(p){ return p.id === id; }); }
+  };
+})();
+</script>
+
+<!-- ===== the reader =====
+     One story, opened over the page. Filled in from the card that was
+     clicked, so it can never disagree with what the reader just tapped. -->
+<div class="reader" id="reader" hidden role="dialog" aria-modal="true" aria-labelledby="reader-title">
+  <div class="reader-panel">
+    <div class="reader-media">
+      <img id="reader-img" alt="" width="880" height="320">
+    </div>
+    <button class="reader-close" id="reader-close" type="button" aria-label="Close this story">&times;</button>
+    <div class="reader-scroll" id="reader-scroll">
+      <p class="reader-stamp" id="reader-stamp"></p>
+      <h2 class="reader-title" id="reader-title"></h2>
+      <div class="reader-body" id="reader-body"></div>
+      <div class="reader-sources" id="reader-sources" hidden></div>
+    </div>
+    <div class="reader-foot">
+      <a class="btn btn-primary" id="reader-full" href="#">Read the full briefing</a>
+      <button class="btn btn-ghost" type="button" id="reader-dismiss">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================================
+   The reader.
+
+   A story card used to be a link: tapping it took the reader off the page
+   and lost their place. It now opens the same story over the page, with the
+   page still showing round the edges. The picture is pinned to the top of
+   the sheet and only the words scroll.
+
+   Everything shown comes out of the card itself, so this works for the
+   server-rendered cards and for the ones the live feed writes later.
+   ========================================================================= */
+(function(){
+  var box     = document.getElementById('reader');
+  if(!box) return;
+  var img     = document.getElementById('reader-img');
+  var stamp   = document.getElementById('reader-stamp');
+  var title   = document.getElementById('reader-title');
+  var body    = document.getElementById('reader-body');
+  var srcBox  = document.getElementById('reader-sources');
+  var full    = document.getElementById('reader-full');
+  var lastFocus = null;
+
+  function textOf(card, sel){
+    var el = card.querySelector(sel);
+    return el ? el.textContent.trim() : '';
+  }
+
+  function open(card){
+    var photo = card.querySelector('.tc-media .post-photo');
+    /* The card's own photograph, not the share poster: the poster is the
+       headline set over artwork, which would repeat the headline printed
+       directly underneath it here. */
+    var src = (photo && photo.getAttribute('src')) || card.getAttribute('data-story') || '';
+    var hasPhoto = !!src && !card.classList.contains('no-photo');
+
+    box.classList.toggle('no-photo', !hasPhoto);
+    if(hasPhoto){ img.src = src; img.alt = ''; } else { img.removeAttribute('src'); }
+
+    stamp.textContent = textOf(card, '.tc-stamp') || textOf(card, '.tc-stamp-fallback');
+    title.textContent = card.getAttribute('data-title') || textOf(card, '.tc-title');
+
+    var summary = card.querySelector('.post-summary');
+    body.innerHTML = summary ? summary.innerHTML : '';
+
+    var sources = card.querySelector('.tc-sources');
+    if(sources){
+      srcBox.hidden = false;
+      srcBox.innerHTML = '<b>Where this came from</b>' +
+        sources.innerHTML.replace(/^\s*<b>[^<]*<\/b>\s*/i, '');
+    } else {
+      srcBox.hidden = true;
+    }
+
+    var link = card.getAttribute('data-permalink') ||
+               (card.querySelector('.tc-title a') && card.querySelector('.tc-title a').getAttribute('href'));
+    if(link){ full.hidden = false; full.href = link; } else { full.hidden = true; }
+
+    lastFocus = document.activeElement;
+    box.hidden = false;
+    document.body.style.overflow = 'hidden';
+    document.getElementById('reader-scroll').scrollTop = 0;
+    void box.offsetWidth;
+    box.classList.add('is-open');
+    document.getElementById('reader-close').focus();
+  }
+
+  function close(){
+    box.classList.remove('is-open');
+    document.body.style.overflow = '';
+    setTimeout(function(){ if(!box.classList.contains('is-open')) box.hidden = true; }, 220);
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  document.getElementById('reader-close').addEventListener('click', close);
+  document.getElementById('reader-dismiss').addEventListener('click', close);
+  box.addEventListener('click', function(e){ if(e.target === box) close(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && !box.hidden) close();
+  });
+
+  /* One listener for every card that exists now or is written later. The
+     footer buttons and the source links keep their own behaviour — someone
+     who aims at "Full briefing" or at a newspaper's name means it. */
+  document.addEventListener('click', function(e){
+    var card = e.target.closest ? e.target.closest('.today-grid .post-card') : null;
+    if(!card) return;
+    if(e.target.closest('.post-foot')) return;
+    if(e.target.closest('.tc-sources')) return;
+    if(e.target.closest('[data-share]')) return;
+    e.preventDefault();
+    open(card);
+  });
+
+  /* Reachable from the keyboard, since it is now the main way in. */
+  function makeFocusable(){
+    document.querySelectorAll('.today-grid .post-card:not([tabindex])').forEach(function(c){
+      c.setAttribute('tabindex', '0');
+      c.setAttribute('role', 'button');
+    });
+  }
+  makeFocusable();
+  setInterval(makeFocusable, 2000);
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var card = document.activeElement && document.activeElement.closest &&
+               document.activeElement.closest('.today-grid .post-card');
+    if(card && document.activeElement === card){ e.preventDefault(); open(card); }
+  });
+
+  /* A card with no artwork gets its headline set large as its own cover, so
+     it is the same shape as a card that has a photograph. */
+  function coverTextOnlyCards(){
+    document.querySelectorAll('.today-grid .post-card.no-photo').forEach(function(card){
+      var media = card.querySelector('.tc-media');
+      if(!media){
+        media = document.createElement('div');
+        media.className = 'tc-media';
+        card.insertBefore(media, card.firstChild);
+      }
+      if(media.querySelector('.tc-cover')) return;
+      var head = card.getAttribute('data-title') ||
+                 (card.querySelector('.tc-title') ? card.querySelector('.tc-title').textContent.trim() : '');
+      var when = (card.querySelector('.tc-stamp, .tc-stamp-fallback') || {}).textContent || '';
+      var cover = document.createElement('div');
+      cover.className = 'tc-cover';
+      cover.innerHTML = '<span class="tc-cover-kicker"></span><span class="tc-cover-text"></span>';
+      cover.querySelector('.tc-cover-kicker').textContent = when.trim() || 'Briefing';
+      cover.querySelector('.tc-cover-text').textContent = head;
+      media.appendChild(cover);
+    });
+  }
+  coverTextOnlyCards();
+  setInterval(coverTextOnlyCards, 1500);
+})();
+</script>
 
 <button class="to-top" id="to-top" type="button" aria-label="Back to top">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>
@@ -3882,7 +4642,23 @@ var SITE = {
     buttons.forEach(function(b){
       b.setAttribute('aria-pressed', String(b.getAttribute('data-theme-choice') === choice));
     });
+    if(themeBtn){
+      themeBtn.setAttribute('aria-pressed', String(dark));
+      themeBtn.setAttribute('aria-label', dark ? 'Switch to the light theme' : 'Switch to the dark theme');
+      root.classList.toggle('is-dark', dark);
+    }
   }
+
+  /* One button in the masthead, not a three-way setting. It flips to the
+     opposite of whatever is on screen right now, which is what a reader
+     reaching for a moon icon expects. */
+  var themeBtn = document.getElementById('theme-btn');
+  if(themeBtn) themeBtn.addEventListener('click', function(){
+    var darkNow = root.getAttribute('data-theme') === 'dark';
+    choice = darkNow ? 'light' : 'dark';
+    try { localStorage.setItem('theme-choice', choice); } catch(e){}
+    apply();
+  });
 
   buttons.forEach(function(b){
     b.addEventListener('click', function(){
@@ -4365,7 +5141,7 @@ var SITE = {
     { btn: document.getElementById('search-btn'),   pop: document.getElementById('search-pop') },
     { btn: document.getElementById('settings-btn'), pop: document.getElementById('settings-pop') },
     { btn: document.getElementById('lang-btn'),     pop: document.getElementById('lang-pop') }
-  ];
+  ].filter(function(p){ return p.btn && p.pop; });
 
   function closeAll(except){
     pairs.forEach(function(p){
@@ -4459,50 +5235,49 @@ var Tabs = (function(){
     listeners.forEach(function(fn){ fn(name); });
   }
 
+  /* Row 3 of the header. The sections of the tab you are on, as one line of
+     buttons. Clicking one scrolls to it; the tab and the address bar do not
+     change. Tabs with nothing to list simply have no third row. */
   function buildToc(){
     var panel = document.getElementById('panel-' + current);
-    var list = document.getElementById('toc-list');
-    var nav = document.getElementById('toc');
-    var sections = panel ? panel.querySelectorAll('section[data-toc]') : [];
+    var row = document.getElementById('subrow');
+    var nav = document.getElementById('subnav');
     var layout = document.querySelector('.layout');
-    list.innerHTML = '';
-    /* A tab with nothing to list does not need a contents list, but hiding
-       the whole column left a stripe of nothing down the left of the page on
-       Today, Watch and Map. The standing status — which day this is, when the
-       page last moved, where it gets its facts — belongs on every tab
-       anyway, so only the list goes away. */
-    /* The dashboard shape — contents on the left, standing figures on the
-       right — belongs to the front page only. Every other tab has one job
-       and gets the whole width to do it in. */
+    var sections = panel ? panel.querySelectorAll('section[data-toc]') : [];
+    if(!row || !nav) return;
+
     var DASHBOARD_TABS = { overview: 1 };
     layout.setAttribute('data-tab-layout', DASHBOARD_TABS[current] ? 'dashboard' : 'full');
-    if(!DASHBOARD_TABS[current]){
-      nav.style.display = 'none';
-      layout.classList.remove('no-toc');
-      return;
-    }
 
-    nav.style.display = '';
-    if(sections.length < 2){
-      nav.classList.add('toc-listless');
-      layout.classList.remove('no-toc');
-      return;
-    }
-    nav.classList.remove('toc-listless');
-    layout.classList.remove('no-toc');
+    nav.innerHTML = '';
+    if(sections.length < 2){ row.hidden = true; return; }
+    row.hidden = false;
+
+    var home = document.createElement('a');
+    home.href = '#' + current;
+    home.className = 'sub-home';
+    home.textContent = 'Home';
+    home.addEventListener('click', function(e){
+      e.preventDefault();
+      window.scrollTo({ top:0, behavior:'smooth' });
+    });
+    nav.appendChild(home);
+
     sections.forEach(function(sec){
-      var li = document.createElement('li');
       var a = document.createElement('a');
       a.href = '#' + sec.id;
-      a.textContent = sec.getAttribute('data-toc');
+      /* The list is written "1. Confirmed toll" for the drawer, where the
+         order matters. Across one line it reads better without the number. */
+      a.textContent = String(sec.getAttribute('data-toc')).replace(/^\s*\d+\.\s*/, '');
       a.addEventListener('click', function(e){
-        // scroll ourselves so the tab stays in the address bar and the
-        // sticky chip bar keeps its place on screen
         e.preventDefault();
-        sec.scrollIntoView({ behavior:'smooth', block:'start' });
+        if(window.BriefCard && window.BriefCard.has(sec.id)){
+          window.BriefCard.show(sec.id, { scroll:true });
+        } else {
+          sec.scrollIntoView({ behavior:'smooth', block:'start' });
+        }
       });
-      li.appendChild(a);
-      list.appendChild(li);
+      nav.appendChild(a);
     });
   }
 
@@ -4513,8 +5288,12 @@ var Tabs = (function(){
       if(window.closeHeaderPopovers) window.closeHeaderPopovers();
     });
   });
-  document.querySelectorAll('[data-tab-link]').forEach(function(el){
-    el.addEventListener('click', function(e){ e.preventDefault(); show(el.getAttribute('data-tab-link')); });
+  /* Delegated, because the feeds write more of these links after load. */
+  document.addEventListener('click', function(e){
+    var el = e.target.closest && e.target.closest('[data-tab-link]');
+    if(!el) return;
+    e.preventDefault();
+    show(el.getAttribute('data-tab-link'));
   });
   document.querySelectorAll('[data-goto-tab]').forEach(function(el){
     el.addEventListener('click', function(){ show(el.getAttribute('data-goto-tab')); });
@@ -4538,8 +5317,17 @@ var Tabs = (function(){
 /* Scroll-spy for the section list on the left */
 (function(){
   function onScroll(){
-    var links = Array.prototype.slice.call(document.querySelectorAll('#toc-list a'));
+    var links = Array.prototype.slice.call(document.querySelectorAll('#subnav a[href^="#"]:not(.sub-home)'));
     if(!links.length) return;
+    /* Inside the briefing card the sections are stacked faces, not places on
+       the page, so "where am I" is whichever face is showing. */
+    if(window.BriefCard && links.length && window.BriefCard.has(links[0].getAttribute('href').slice(1))){
+      links.forEach(function(a){
+        var sec = document.querySelector(a.getAttribute('href'));
+        a.classList.toggle('active', !!sec && !sec.hidden);
+      });
+      return;
+    }
     var pos = window.scrollY + 160;
     var activeIdx = 0;
     links.forEach(function(a, i){
@@ -4549,7 +5337,7 @@ var Tabs = (function(){
     links.forEach(function(a, i){ a.classList.toggle('active', i === activeIdx); });
 
     var active = links[activeIdx];
-    var strip = document.getElementById('toc');
+    var strip = document.getElementById('subnav');
     if(active && strip && strip.scrollWidth > strip.clientWidth + 4){
       var box = active.getBoundingClientRect();
       var rail = strip.getBoundingClientRect();
@@ -4568,13 +5356,11 @@ var Tabs = (function(){
    ========================================================================= */
 (function(){
   var head = document.querySelector('.sitehead');
-  var toc = document.getElementById('toc');
   var root = document.documentElement;
 
   function measure(){
     root.style.setProperty('--head-h', Math.round(head.getBoundingClientRect().height) + 'px');
-    var stuck = toc && toc.offsetParent !== null && getComputedStyle(toc).position === 'sticky';
-    root.style.setProperty('--toc-h', stuck ? Math.round(toc.getBoundingClientRect().height) + 'px' : '0px');
+    root.style.setProperty('--toc-h', '0px');
   }
 
   measure();
@@ -5374,7 +6160,9 @@ var LiveFeed = (function(){
             : initials(it.source)) + '</div>' +
           '<div class="video-info">' +
             '<div class="video-title">' + title + '</div>' +
-            '<div class="video-sub">' + source + verifiedMark + ' · ' + PostCards.timeAgo(it.time) + '</div>' +
+            /* Title only. The channel name, the tick and the age were three
+               lines of small grey type under every thumbnail, and none of
+               them helped anyone decide what to watch. */
             '<div class="video-actions"><button class="post-btn" type="button" data-share="1">' +
               '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"></line></svg>Share</button></div>' +
           '</div>' +
@@ -5599,11 +6387,11 @@ var LiveFeed = (function(){
      between fetches. */
   function agoText(ms){
     var s = Math.round(ms / 1000);
-    if(s < 5) return 'Feed checked now';
-    if(s < 60) return 'Feed checked ' + s + 's ago';
+    if(s < 45) return 'Sources checked just now';
     var m = Math.round(s / 60);
-    if(m < 60) return 'Feed checked ' + m + ' min ago';
-    return 'Feed checked ' + Math.round(m / 60) + 'h ago';
+    if(m < 60) return 'Sources checked ' + m + (m === 1 ? ' minute ago' : ' minutes ago');
+    var h = Math.round(m / 60);
+    return 'Sources checked ' + h + (h === 1 ? ' hour ago' : ' hours ago');
   }
   setInterval(function(){
     if(!lastCheck) return;
@@ -5716,11 +6504,14 @@ var LiveFeed = (function(){
 
   document.getElementById('news-modal-close').addEventListener('click', close);
   document.getElementById('news-modal-dismiss').addEventListener('click', close);
-  document.getElementById('statusbar-open').addEventListener('click', open);
-  document.getElementById('reopen-news').addEventListener('click', function(){
+  var sbOpen = document.getElementById('statusbar-open');
+  if(sbOpen) sbOpen.addEventListener('click', open);
+  var reopen = document.getElementById('reopen-news');
+  if(reopen) reopen.addEventListener('click', function(){
     if(window.closeHeaderPopovers) window.closeHeaderPopovers();
     open();
   });
+  window.reopenMajorUpdate = open;
   modal.addEventListener('click', function(e){ if(e.target === modal) close(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !modal.hidden) close(); });
   modal.querySelectorAll('[data-goto-tab]').forEach(function(b){ b.addEventListener('click', close); });
@@ -5729,11 +6520,12 @@ var LiveFeed = (function(){
   var toggle = document.getElementById('toggle-popup');
   var state = document.getElementById('popup-state');
   function paintToggle(){
+    if(!toggle) return;
     var on = enabled();
     toggle.setAttribute('aria-pressed', String(on));
-    state.textContent = on ? 'On' : 'Off';
+    if(state) state.textContent = on ? 'On' : 'Off';
   }
-  toggle.addEventListener('click', function(){
+  if(toggle) toggle.addEventListener('click', function(){
     try { localStorage.setItem(STORAGE_OPT, enabled() ? 'off' : 'on'); } catch(e){}
     paintToggle();
   });
@@ -7276,13 +8068,28 @@ var LiveFeed = (function(){
     });
   }
 
+  /* The front page shows the day, not the archive. Thirty-nine cards ran to
+     ten thousand pixels there and buried everything under it; the Today tab
+     is where the whole run belongs. */
+  var HOME_MAX = 7;
+
   function render(d){
     var posts = newestFirst((d && Array.isArray(d.posts)) ? d.posts : []);
-    var html = posts.length
-      ? posts.map(card).join('') +
-        (d.updated ? '<p class="today-updated">Updated ' + esc(fmtUpdated(d.updated)) + '</p>' : '')
-      : '<p style="font-size:0.92rem; color:var(--text-muted);">Nothing new to report this hour. See the <a href="#live" data-tab-link="live">Live</a> tab for the raw feed.</p>';
-    grids.forEach(function(g){ g.innerHTML = html; });
+    var stampLine = d && d.updated
+      ? '<p class="today-updated">Updated ' + esc(fmtUpdated(d.updated)) + '</p>' : '';
+    var empty = '<p style="font-size:0.92rem; color:var(--text-muted);">Nothing new to report this hour. See the <a href="#live" data-tab-link="live">Live</a> tab for the raw feed.</p>';
+
+    grids.forEach(function(g){
+      if(!posts.length){ g.innerHTML = empty; return; }
+      var isHome = g.id === 'today-grid-home';
+      var list = isHome ? posts.slice(0, HOME_MAX) : posts;
+      g.innerHTML = list.map(card).join('') +
+        (isHome && posts.length > HOME_MAX
+          ? '<p class="today-more"><a class="deeplink" href="#today" data-tab-link="today">' +
+            'All ' + posts.length + ' stories of the day</a></p>'
+          : '') +
+        stampLine;
+    });
   }
 
   /* keep the "Read more / Read less" label in step with the clamp */
