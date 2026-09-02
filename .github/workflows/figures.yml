@@ -72,8 +72,17 @@ jobs:
         id: figures
         run: node src/figures-update.mjs
 
+      # The counters looked after themselves while the briefings did not, so
+      # the Today tab grew a two-day hole the moment nobody was writing. This
+      # fills a thin day from the same feeds, using each newsroom's own
+      # headline and one sentence of its own summary, attributed and linked.
+      # It never edits or removes a hand-written card.
+      - name: Fill any gap in the briefings
+        id: briefings
+        run: node src/briefings-update.mjs
+
       - name: Rebuild the pages and the share images
-        if: steps.figures.outputs.changed == 'true'
+        if: steps.figures.outputs.changed == 'true' || steps.briefings.outputs.changed == 'true'
         run: |
           node src/og-build.mjs
           node src/build.mjs
@@ -82,17 +91,17 @@ jobs:
       # pages disagree, if a story card still prints an overtaken toll, or if the
       # live coverage reads as finished.
       - name: Audit
-        if: steps.figures.outputs.changed == 'true'
+        if: steps.figures.outputs.changed == 'true' || steps.briefings.outputs.changed == 'true'
         run: node src/check.mjs
 
       - name: Commit and push
-        if: steps.figures.outputs.changed == 'true'
+        if: steps.figures.outputs.changed == 'true' || steps.briefings.outputs.changed == 'true'
         run: |
           git config user.name  'nepal-disaster-update-live'
           git config user.email 'hello@nxtimaginelabs.com'
           git add -A
           git diff --cached --quiet && exit 0
-          git commit -m "figures: automatic update from the published reports"
+          git commit -m "auto: figures and briefings from the published reports"
           git push
 
       # Publishing is a separate step from committing, because this project
@@ -106,7 +115,7 @@ jobs:
       # rather than failed, so the rest of the workflow keeps working and the
       # reason is visible in the run log.
       - name: Publish to Cloudflare Pages
-        if: steps.figures.outputs.changed == 'true' && env.CLOUDFLARE_API_TOKEN != ''
+        if: (steps.figures.outputs.changed == 'true' || steps.briefings.outputs.changed == 'true') && env.CLOUDFLARE_API_TOKEN != ''
         run: |
           npx wrangler pages deploy . \
             --project-name nepal-flood-relief \
@@ -114,7 +123,7 @@ jobs:
             --commit-dirty=true
 
       - name: Say so if publishing was skipped
-        if: steps.figures.outputs.changed == 'true' && env.CLOUDFLARE_API_TOKEN == ''
+        if: (steps.figures.outputs.changed == 'true' || steps.briefings.outputs.changed == 'true') && env.CLOUDFLARE_API_TOKEN == ''
         run: |
           echo "The figures were committed but NOT published."
           echo "Add a CLOUDFLARE_API_TOKEN repository secret to publish automatically."
