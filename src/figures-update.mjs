@@ -2,7 +2,7 @@
 /**
  * The automatic counter update.
  *
- * Reads the live figure board, compares it with event.json, and writes the
+ * Reads the sources, compares what they state with event.json, and writes the
  * counters that have actually moved. Run by .github/workflows/figures.yml on a
  * schedule and by hand with `npm run figures`.
  *
@@ -15,9 +15,12 @@
  *   - invent a figure. It writes only what a named source stated, with a URL.
  *   - touch prose. `detail` text, story cards and headlines stay as written,
  *     except for the one sentence naming the source of each counter.
- *   - write anything when the board is empty or the site is unreachable. A
- *     failed run leaves the file exactly as it found it and exits 0, because a
- *     scraper outage is not a reason to fail a build.
+ *   - write anything when no source states a figure, or the sources are
+ *     unreachable. A failed run leaves every file exactly as it found it and
+ *     exits 0, because a scraper outage is not a reason to fail a build.
+ *   - depend on the deployed copy of the site to tell it the figures. It runs
+ *     the same resolver the endpoint runs, in-process, so it works before the
+ *     code it updates has ever been deployed.
  *
  * Exit codes: 0 always, unless the repo state itself is broken. It prints
  * `changed=true|false` for the workflow to read.
@@ -26,6 +29,9 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+import { resolveBoard, METRICS } from '../functions/api/_figures-core.js';
+import { loadPoliceNews } from '../functions/api/police.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const EVENT = join(ROOT, 'event.json');
@@ -384,19 +390,70 @@ export function sourceSentence(figure, previous, priorDetail, priorAsOf) {
   return text;
 }
 
+/**
+ * Build the figure board here, from the sources, rather than asking the
+ * deployed site for it.
+ *
+ * The first version of this called the site's own /api/figures. That was a
+ * loop: the endpoint only returns a board once the new code is deployed, and
+ * the deploy only carries new figures once this script has run. On the first
+ * run against the live site it did exactly what that loop implies — read an
+ * older shape, find no board, and correctly change nothing, for ever.
+ *
+ * So the resolver is imported and run in-process, over the same two inputs the
+ * endpoint uses: the site's aggregated news feed, which is already deployed
+ * and stable, and the police bulletins read directly. The rules that decide a
+ * figure live in one module and are applied identically in both places, so the
+ * page and this script can never disagree about what a source said.
+ */
 async function fetchBoard() {
-  try {
-    const res = await fetch(`${SITE}/api/figures`, {
-      headers: { accept: 'application/json' },
-      signal: AbortSignal.timeout(30000)
-    });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
-    return data && data.board ? data : null;
-  } catch (e) {
-    console.log('  figure board: ' + e.message);
-    return null;
+  const published = readPublished();
+
+  const [news, police] = await Promise.all([
+    fetchJson(`${SITE}/api/news`).catch(e => { console.log('  news: ' + e.message); return null; }),
+    loadPoliceNews().catch(e => { console.log('  police: ' + e.message); return null; })
+  ]);
+
+  const items = [];
+  if (news && Array.isArray(news.items)) {
+    for (const item of news.items) if (item && item.kind !== 'video') items.push(item);
   }
+  if (police) items.push(...police);
+
+  if (!items.length) return null;
+
+  /* What the page already publishes is the floor for each counter: a lower
+     figure only wins if its sentence says it is a correction. */
+  const board = resolveBoard(items, { floors: published });
+
+  const stated = METRICS.filter(m => board[m]).length;
+  console.log(`  read ${items.length} reports from ${new Set(items.map(i => i.source).filter(Boolean)).size} sources; ${stated} figure(s) stated`);
+
+  return { board, published };
+}
+
+/** The figures event.json currently carries. */
+function readPublished() {
+  try {
+    const event = JSON.parse(readFileSync(EVENT, 'utf8'));
+    const out = {};
+    for (const [metric, label] of Object.entries(STAT_LABELS)) {
+      const stat = (event.stats || []).find(s => s && s.label === label);
+      if (stat) out[metric] = Number(String(stat.value).replace(/\D/g, '')) || 0;
+    }
+    return out;
+  } catch (e) {
+    return {};
+  }
+}
+
+async function fetchJson(url) {
+  const res = await fetch(url, {
+    headers: { accept: 'application/json' },
+    signal: AbortSignal.timeout(30000)
+  });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  return res.json();
 }
 
 function report(changed, message) {
