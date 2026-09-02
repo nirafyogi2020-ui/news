@@ -2309,6 +2309,106 @@
     .layout.has-home-rail #panel-today .today-grid > .post-card:first-child{grid-column:1 / -1;}
   }
 
+  /* =========================================================================
+     The finish.
+
+     Three things carry this page: the strip of figures at the very top, the
+     counter board under the headline, and the standing column on the left.
+     They were three different visual languages — a red bar, a row of boxes
+     and a list of labels — so the eye had to learn the page three times.
+     What follows makes them one: the same measure of space, the same rule
+     weight, figures always in the data face, red used only where a number
+     means someone died.
+     ====================================================================== */
+
+  /* --- the standing column ------------------------------------------------
+     Present on every tab now, so it needs to hold the page's left edge on
+     its own rather than looking like a list that lost its items. */
+  nav.toc.toc-listless ol{display:none;}
+  nav.toc .toc-status{
+    border-left:2px solid var(--border); padding-left:16px; margin-top:26px;
+  }
+  nav.toc.toc-listless .toc-status{margin-top:0; border-left-color:var(--critical);}
+  nav.toc .toc-status .ts-live{
+    display:flex; align-items:center; gap:8px; margin:0 0 14px;
+    font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase;
+    font-weight:700; color:var(--critical);
+  }
+  nav.toc .toc-status dt{
+    font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--text-faint); font-weight:600;
+  }
+  nav.toc .toc-status dd{font-family:var(--font-mono); font-size:0.8rem; line-height:1.35;}
+  nav.toc .toc-langs{margin-top:16px; padding-top:14px; border-top:1px solid var(--border);}
+
+  /* --- the strip at the top ----------------------------------------------
+     It was a solid red band of scrolling text, which is the visual language
+     of a cable-news chyron and reads as noise rather than as information.
+     The band is now the page's own surface; the red is spent on the numbers
+     inside it, which is the only part that is actually urgent. */
+  .statusbar, .statusbar-inner{
+    background:var(--surface-2);
+    border-bottom:1px solid var(--border);
+    color:var(--text-muted);
+  }
+  .statusbar b, .statusbar strong, .statusbar .sb-n{color:var(--critical); font-family:var(--font-mono);}
+  .statusbar a{color:var(--text);}
+
+  /* --- the counter board --------------------------------------------------
+     This is the page's thesis and it was three flat boxes. Now the figure
+     leads at a size nothing else on the page competes with, the label sits
+     under it in small caps, and a hairline of the figure's own colour runs
+     along the top of each so the board reads left to right as one object. */
+  .hf-stat{position:relative; padding:20px 20px 18px;}
+  .hf-stat::before{
+    content:""; position:absolute; inset:0 0 auto; height:2px;
+    background:var(--border-strong);
+  }
+  .hf-stat:first-child::before{background:var(--critical);}
+  .hf-stat .hf-n{font-size:clamp(2rem, 3.2vw, 2.9rem); line-height:0.98; font-weight:700;}
+  .hf-stat .hf-l{
+    margin-top:8px; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase;
+    font-weight:600; color:var(--text-muted);
+  }
+
+  /* --- section headings ---------------------------------------------------
+     One treatment, so a reader learns it once: a short rule, the number of
+     the section, then the heading. The rule is the only decoration and it
+     encodes order, which the sections genuinely have. */
+  main > .tabpanel > section > .eyebrow, main > section > .eyebrow{
+    font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase;
+    font-weight:700; color:var(--text-faint); margin-bottom:10px;
+  }
+  main h2{font-size:clamp(1.5rem, 2.1vw, 2rem); line-height:1.12; margin:0 0 10px;}
+
+  /* --- the live ticker ----------------------------------------------------
+     It is the newest thing on the page, so it gets the page's only accent
+     edge, and its rows get room to breathe. */
+  .ticker{border-top:2px solid var(--critical);}
+  .ticker li{padding:14px 16px;}
+  .ticker li:hover{background:var(--surface-2);}
+  .ticker time{margin-bottom:3px;}
+
+  /* --- the rail -----------------------------------------------------------
+     Same family as the cards, quieter, and its figures line up with the
+     board's because they are the same numbers. */
+  .rail-card{background:var(--surface);}
+  .rail-fig .rf-n{font-size:1.5rem; font-weight:700; line-height:1;}
+  .rail-fig .rf-l{
+    font-size:0.66rem; letter-spacing:0.09em; text-transform:uppercase;
+    color:var(--text-muted); font-weight:600;
+  }
+  .rail-head{
+    font-size:0.66rem; letter-spacing:0.14em; text-transform:uppercase;
+    font-weight:700; color:var(--text-faint);
+  }
+
+  /* --- links --------------------------------------------------------------
+     An underline that appears on hover rather than sitting there permanently
+     keeps a page this dense from looking like it has been highlighted. */
+  main a:not(.btn):not(.deeplink):not(.post-btn){text-decoration:none; border-bottom:1px solid var(--border-strong);}
+  main a:not(.btn):not(.deeplink):not(.post-btn):hover{border-bottom-color:var(--critical); color:var(--critical);}
+
 </style>
 </head>
 <body>
@@ -4174,12 +4274,18 @@ var Tabs = (function(){
     var sections = panel ? panel.querySelectorAll('section[data-toc]') : [];
     var layout = document.querySelector('.layout');
     list.innerHTML = '';
+    /* A tab with nothing to list does not need a contents list, but hiding
+       the whole column left a stripe of nothing down the left of the page on
+       Today, Watch and Map. The standing status — which day this is, when the
+       page last moved, where it gets its facts — belongs on every tab
+       anyway, so only the list goes away. */
+    nav.style.display = '';
     if(sections.length < 2){
-      nav.style.display = 'none';
-      layout.classList.add('no-toc');
+      nav.classList.add('toc-listless');
+      layout.classList.remove('no-toc');
       return;
     }
-    nav.style.display = '';
+    nav.classList.remove('toc-listless');
     layout.classList.remove('no-toc');
     sections.forEach(function(sec){
       var li = document.createElement('li');
@@ -5434,10 +5540,16 @@ var LiveFeed = (function(){
      search result is exactly what Google demotes as an intrusive interstitial,
      and it stands between a reader and the numbers at the worst moment. The
      status bar above it stays tappable, so nothing is lost. */
-  var narrow = window.matchMedia && matchMedia('(max-width: 900px)').matches;
-  var seen = false;
-  try { seen = localStorage.getItem(STORAGE_SEEN) === '1'; } catch(e){}
-  if(!seen && !narrow && enabled()) setTimeout(open, 1400);
+  /* It no longer opens by itself. Everything the pop-up said — the headline,
+     the toll, the two buttons — is the first thing on the page behind it, so
+     it was covering its own content to announce it, and a reader arriving
+     from a search result had to dismiss a box before reading the number they
+     came for. It stays reachable from the status bar and from Settings for
+     anyone who wants the summary again.
+
+     STORAGE_SEEN is left in place: readers who dismissed it once should not
+     have it come back if this ever opens automatically again. */
+  void STORAGE_SEEN;
 })();
 
 /* =========================================================================
