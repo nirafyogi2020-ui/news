@@ -435,6 +435,61 @@ try {
   errors.push(`counter freshness check could not run: ${e.message}`);
 }
 
+/* -- structure --------------------------------------------------------------
+   One stray closing tag is enough to wreck the whole desktop layout without
+   breaking anything a link checker would notice. A browser recovering from a
+   mismatched </details> closed <main> early and threw the briefing rail out
+   to the end of <body>: the grid kept holding a 320px column open for a rail
+   that was no longer inside it, so every wide screen showed the page squashed
+   left against a stripe of nothing. The page still "worked". It just looked
+   broken, which is worse, because nothing failed loudly enough to say so.
+
+   This walks the tags of every built page and refuses a build whose elements
+   do not nest. It is the cheapest possible version of that check and it would
+   have caught that one immediately.
+   -------------------------------------------------------------------------- */
+const VOID_TAGS = new Set([
+  'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
+  'link', 'meta', 'param', 'source', 'track', 'wbr'
+]);
+/* Tags the HTML spec lets a page leave open; closing them is optional, so an
+   unclosed one is not a fault to report. */
+const OPTIONAL_END = new Set(['li', 'dt', 'dd', 'p', 'option', 'thead', 'tbody', 'tfoot', 'tr', 'td', 'th']);
+
+export function unbalancedTags(html) {
+  const withoutSkipped = String(html)
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/<script\b[\s\S]*?<\/script>/gi, '')
+    .replace(/<style\b[\s\S]*?<\/style>/gi, '')
+    .replace(/<svg\b[\s\S]*?<\/svg>/gi, '');
+  const tag = /<(\/?)([a-zA-Z][a-zA-Z0-9-]*)\b([^>]*)>/g;
+  const stack = [];
+  let match;
+  while ((match = tag.exec(withoutSkipped))) {
+    const closing = match[1] === '/';
+    const name = match[2].toLowerCase();
+    if (VOID_TAGS.has(name) || /\/\s*$/.test(match[3])) continue;
+    if (!closing) { stack.push(name); continue; }
+    if (OPTIONAL_END.has(name) && !stack.includes(name)) continue;
+    while (stack.length && OPTIONAL_END.has(stack[stack.length - 1]) && stack[stack.length - 1] !== name) {
+      stack.pop();
+    }
+    if (!stack.length) return `stray </${name}>`;
+    const open = stack.pop();
+    if (open !== name) return `</${name}> closes <${open}>`;
+  }
+  const left = stack.filter(t => !OPTIONAL_END.has(t));
+  return left.length ? `never closed: <${left[left.length - 1]}>` : null;
+}
+
+for (const page of pages) {
+  const fault = unbalancedTags(page.html);
+  if (fault) {
+    errors.push(`${page.path}: the markup does not nest — ${fault}. ` +
+      'A browser recovers from this by moving elements out of the layout, which silently breaks the page.');
+  }
+}
+
 /* -- report ----------------------------------------------------------------- */
 console.log(`checked ${pages.length} pages, ${locs.length} sitemap urls`);
 if (warnings.length) {
