@@ -186,8 +186,7 @@ export function planCards(items, { today, archive, now = Date.now(), startedAt =
       image: item.image || '',
       body: [
         oneSentence(item.summary),
-        `Reported by ${item.source}. This card was filled in automatically from the source's own report, ` +
-        'to keep the day from reading as empty. Follow the link for the full story.'
+        `Reported by ${item.source}. Read automatically from that report; follow the link for the full story.`
       ],
       sources: [{ name: item.source, url: item.url }],
       auto: true

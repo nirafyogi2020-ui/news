@@ -1162,12 +1162,27 @@
      rail is present. Avoid squeezing Today cards into two tiny columns merely
      because the browser itself is wide. */
   @media (min-width:1240px){
-    .layout.has-home-rail #panel-today .today-grid{grid-template-columns:1fr; max-width:none;}
-    .layout.has-home-rail #panel-today .today-grid > .post-card:first-child{grid-column:auto; display:flex; grid-template-columns:none; grid-template-rows:none;}
-    .layout.has-home-rail #panel-today .today-grid > .post-card:first-child .tc-media{grid-column:auto; grid-row:auto;}
-    .layout.has-home-rail #panel-today .today-grid > .post-card:first-child .tc-media .post-photo{height:auto; min-height:0; aspect-ratio:16/9;}
-    .layout.has-home-rail #panel-today .today-grid > .post-card:first-child .post-body{grid-column:auto; grid-row:auto; padding-top:12px;}
-    .layout.has-home-rail #panel-today .today-grid > .post-card:first-child .post-foot{grid-column:auto; grid-row:auto;}
+    /* Two columns, with the newest story running across both. One column on a
+       1600px screen gave every card a 580px-tall photograph and turned six
+       briefings into six screens of scrolling. */
+    .layout.has-home-rail #panel-today .today-grid{grid-template-columns:repeat(2, minmax(0,1fr)); max-width:none; gap:20px;}
+    .layout.has-home-rail #panel-today .today-grid > .post-card:first-child{grid-column:1 / -1;}
+    /* The lead reads sideways: picture left, headline and standfirst right,
+       both the same height, so neither side leaves a gap the other has to
+       stare at. */
+    .layout.has-home-rail #panel-today .today-grid > .post-card:first-child{
+      display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); grid-template-rows:auto 1fr auto;
+    }
+    .layout.has-home-rail #panel-today .today-grid > .post-card:first-child .tc-media{grid-column:1; grid-row:1 / -1; height:100%;}
+    .layout.has-home-rail #panel-today .today-grid > .post-card:first-child .tc-media .post-photo-link{display:block; height:100%;}
+    .layout.has-home-rail #panel-today .today-grid > .post-card:first-child .tc-media .post-photo{height:100%; min-height:270px; aspect-ratio:auto; object-fit:cover;}
+    .layout.has-home-rail #panel-today .today-grid > .post-card:first-child .post-body{grid-column:2; grid-row:1 / 3; padding:20px 20px 0;}
+    .layout.has-home-rail #panel-today .today-grid > .post-card:first-child .post-foot{grid-column:2; grid-row:3;}
+    /* With no picture the lead has nothing to sit beside, so it stops
+       pretending and uses the full width. */
+    .layout.has-home-rail #panel-today .today-grid > .post-card.no-photo:first-child{grid-template-columns:minmax(0,1fr);}
+    .layout.has-home-rail #panel-today .today-grid > .post-card.no-photo:first-child .post-body{grid-column:1; grid-row:1;}
+    .layout.has-home-rail #panel-today .today-grid > .post-card.no-photo:first-child .post-foot{grid-column:1; grid-row:2;}
     .layout.has-home-rail #panel-today .today-grid > .post-card:first-child .tc-title{font-size:1.42rem;}
     .layout.has-home-rail #panel-today .today-grid > .post-card:first-child .post-summary.clamped{-webkit-line-clamp:4;}
   }
@@ -2215,7 +2230,10 @@
   @media (min-width:900px){
     .hero h1{ font-size:clamp(2.6rem, 4.4vw, 4rem); line-height:1.02; letter-spacing:-0.035em; }
     .hero .lede{ font-size:1.12rem; line-height:1.62; }
-    section{ padding:56px 0; }
+    /* Scoped to the page's own top-level sections. Applied to every <section>
+       it also padded the live ticker and the rail cards, which is where the
+       band of nothing above and below "Latest updates" came from. */
+    main > .tabpanel > section[id], main > section[id]{ padding:56px 0; }
   }
   h2{ letter-spacing:-0.02em; }
 
@@ -2227,6 +2245,68 @@
   @media (prefers-reduced-motion: reduce){
     body::before{ transform:none; }
     .post-card:hover, .rail-card:hover, .numgrid .stat:hover{ transform:none; }
+  }
+
+  /* =========================================================================
+     The story cards.
+
+     Four things were wrong with them and all four came from the same place:
+     the card reserved room for a photograph before it knew whether it had
+     one. A dead hotlink, a briefing with no picture, and a lead card whose
+     text was shorter than its image all produced the same grey hole. So the
+     picture frame is now sized by its own contents, and a card with nothing
+     to show removes the frame instead of leaving it empty.
+     ====================================================================== */
+
+  /* A picture is a fixed shape, never taller than a reader's patience. */
+  .today-card .tc-media{position:relative; overflow:hidden; background:var(--surface-2);}
+  .today-card .tc-media .post-photo{
+    display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover;
+    background:var(--surface-2);
+  }
+  /* No picture, no frame. `no-photo` is set by the image's own onerror and by
+     the renderer when a briefing has no artwork at all, so a hotlink that
+     dies on someone else's server collapses here rather than leaving a slab
+     of grey with a date floating in it. */
+  .today-card.no-photo .tc-media{display:none;}
+  .today-card.no-photo .post-body{padding-top:18px;}
+  /* Those cards get a coloured spine instead, so a text-only briefing still
+     reads as a card in a row of cards rather than as something missing. */
+  .today-card.no-photo{border-left:3px solid var(--critical);}
+  .today-card.no-photo .tc-stamp-fallback{
+    display:block; padding:14px 18px 0; font-family:var(--font-mono);
+    font-size:0.72rem; letter-spacing:0.02em; color:var(--text-faint);
+  }
+
+  /* No "Read more". Tapping it expanded the text in place, which shifted
+     every card below it and threw the reader back up the page. The card is a
+     summary; the briefing page is the full text, and the whole card links to
+     it. */
+  .today-card .tc-more{display:none !important;}
+  .today-card .post-summary.clamped{
+    display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:3; overflow:hidden;
+  }
+  .layout.has-home-rail #panel-today .today-grid > .post-card:first-child .post-summary.clamped{-webkit-line-clamp:5;}
+
+  /* How long ago, next to when. "8:59 pm NPT" answers a different question
+     from "7 hours ago", and a live page has to answer the second one. */
+  .today-card .tc-ago{
+    font-family:var(--font-mono); font-size:0.7rem; color:var(--critical);
+    letter-spacing:0.02em; margin-left:8px; font-weight:700;
+  }
+  .today-card .tc-title{font-size:1.08rem; line-height:1.3; letter-spacing:-0.015em; margin:0;}
+  .today-card .tc-title a{text-decoration:none;}
+  .today-card:hover .tc-title a{text-decoration:underline; text-underline-offset:3px;}
+  .layout.has-home-rail #panel-today .today-grid > .post-card:first-child .tc-title{font-size:1.5rem; line-height:1.18;}
+  .today-card .tc-sources{margin-top:10px; font-size:0.76rem; color:var(--text-faint);}
+
+  /* Wide screens get the width back. The page held itself to 1440px whatever
+     the monitor did, which on a 1600px screen reads as the site refusing the
+     room it was given. */
+  @media (min-width:1600px){
+    .shell.layout.has-home-rail{max-width:1680px;}
+    .layout.has-home-rail #panel-today .today-grid{grid-template-columns:repeat(3, minmax(0,1fr));}
+    .layout.has-home-rail #panel-today .today-grid > .post-card:first-child{grid-column:1 / -1;}
   }
 
 </style>
@@ -6775,10 +6855,27 @@ var LiveFeed = (function(){
     var perma = permalink(post);
     var ogSlug = perma ? perma.replace(/^\/|\/$/g, '').replace(/\//g, '-') : '';
 
-    var stampHtml = '<p class="tc-stamp">' + esc(stamp(post.time)) + rev + '</p>';
+    /* "7 h ago" beside the clock time. A timestamp tells a reader when the
+       report was filed; only the elapsed time tells them whether the page is
+       alive. */
+    function agoText(iso){
+      var t = Date.parse(iso);
+      if(!isFinite(t)) return '';
+      var mins = Math.round((Date.now() - t) / 60000);
+      if(mins < 1) return 'just now';
+      if(mins < 60) return mins + ' min ago';
+      var hrs = Math.round(mins / 60);
+      if(hrs < 24) return hrs + ' h ago';
+      var days = Math.round(hrs / 24);
+      return days + ' d ago';
+    }
+    var ago = agoText(post.time);
+    var stampHtml = '<p class="tc-stamp">' + esc(stamp(post.time)) + rev +
+      (ago ? '<span class="tc-ago">' + esc(ago) + '</span>' : '') + '</p>';
 
     return (
-      '<article class="post-card today-card" data-url="' + esc(url) + '" data-title="' + esc(post.title || '') + '"' +
+      '<article class="post-card today-card' + (ogAsset(ogSlug + '-thumb.png') || post.image ? '' : ' no-photo') +
+        '" data-url="' + esc(url) + '" data-title="' + esc(post.title || '') + '"' +
         (perma ? ' data-permalink="' + esc(perma) + '"' : '') +
         (ogSlug && ogAsset(ogSlug + '-story.png')
           ? ' data-story="' + esc(ogAsset(ogSlug + '-story.png')) + '"' : '') + '>' +
@@ -6786,8 +6883,15 @@ var LiveFeed = (function(){
            drawn for this briefing at build time. A card with no picture at
            all is the one thing that made this grid look unfinished. */
         (function(){
-          var img = post.image || ogAsset(ogSlug + '-thumb.png');
-          if(!img) return stampHtml;
+          /* The locally drawn tile first, the newsroom's own photograph
+             only as a fallback. It used to be the other way round, and that
+             is why cards went blank: those URLs point at other people's
+             servers, which move files, expire them and refuse hotlinks. The
+             tile is built here from a real source photograph and cannot
+             vanish. */
+          var img = ogAsset(ogSlug + '-thumb.png') || post.image;
+          if(!img) return '<p class="tc-stamp tc-stamp-fallback">' + esc(stamp(post.time)) +
+            (ago ? ' · ' + esc(ago) : '') + '</p>';
           var tag = '<img class="post-photo" loading="lazy" decoding="async" referrerpolicy="no-referrer" ' +
             'src="' + esc(img) + '" alt="" width="800" height="450"' + (perma ? '' : ' data-expand="' + uid + '"') + ' ' +
             'onerror="this.closest(\'.post-card\').classList.add(\'no-photo\'); this.remove();">';
