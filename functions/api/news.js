@@ -635,7 +635,9 @@ async function fetchYoutube(env, request, context) {
       configured: true,
       unavailable: false,
       issues: feed.issues,
-      channels: YT_TRUSTED_CHANNELS.map(channel => channel.source)
+      channels: YT_TRUSTED_CHANNELS.map(channel => channel.source),
+      considered: feed.considered,
+      rejected: feed.rejected
     };
     context.waitUntil(cache.put(freshKey, cachedJson(result, YT_FRESH_SECONDS)));
     if (feed.items.length) {
