@@ -20,6 +20,26 @@
 /assets/*
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
 
+# The share and card pictures were being answered with `Content-Type:
+# text/html`. Paired with the `nosniff` above — which is correct and stays —
+# a browser refuses to decode them, so every card's photograph failed to load
+# and the cards collapsed to text. Stating the type here settles it.
+/assets/og/*
+  Content-Type: image/png
+  Cache-Control: public, max-age=31536000, immutable
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+
+/sitemap-index.xml
+  Content-Type: application/xml; charset=utf-8
+
+/news-sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+
 /favicon.svg
   Cache-Control: public, max-age=86400
 
