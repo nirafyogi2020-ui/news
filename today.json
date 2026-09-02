@@ -1,6 +1,27 @@
 {
-  "updated": "2026-08-30T14:29:16+05:45",
+  "updated": "2026-09-02T10:29:39.000Z",
   "posts": [
+    {
+      "id": "latest-reported-figures",
+      "title": "Latest reported figures: 1,114 confirmed dead",
+      "time": "2026-09-02T10:29:39.000Z",
+      "image": "",
+      "body": [
+        "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. confirmed dead: 1,114, up from 768, reported by Onlinekhabar. listed missing: 3,916, up from 2,502, reported by NDTV.",
+        "Where a report describes one district or one stretch of river rather than the national figure, it is not used here. Out of contact does not mean dead."
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html"
+        },
+        {
+          "name": "NDTV",
+          "url": "https://www.ndtv.com/world-news/nepal-flash-floods-live-updates-rasuwa-bhotekoshi-flood-rescue-relief-operations-latest-news-11979911#publisher=newsstand"
+        }
+      ],
+      "revised": true
+    },
     {
       "id": "china-relief-supplies",
       "title": "China sends 50 tonnes of emergency supplies to Nepal",
@@ -12,7 +33,10 @@
         "Relief delivery is separate from the search for people trapped in hydropower tunnels. Coordinate aid through district relief committees or response agencies."
       ],
       "sources": [
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/30/china-sends-50-tonnes-of-emergency-relief-supplies-to-flood-hit-nepal" }
+        {
+          "name": "The Kathmandu Post",
+          "url": "https://kathmandupost.com/national/2026/08/30/china-sends-50-tonnes-of-emergency-relief-supplies-to-flood-hit-nepal"
+        }
       ]
     },
     {
@@ -25,7 +49,10 @@
         "The same report says another US$1.8 million has been deposited at Himalayan Bank and Laxmi Bank. The government urges donors to use only its published QR code and bank accounts because fake collection links are circulating."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/pm-disaster-relief-fund-2.html" }
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/pm-disaster-relief-fund-2.html"
+        }
       ]
     },
     {
@@ -39,7 +66,10 @@
         "This is a project-site count with a different scope from Nepal Police's wider missing list. Chinese experts have arrived to help with tunnel rescue, Onlinekhabar reports."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/people-missing-hydropower.html" }
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/people-missing-hydropower.html"
+        }
       ]
     },
     {
@@ -53,8 +83,14 @@
         "Out of contact does not mean dead. Families looking for someone should use the Foreign Ministry's emergency control room and local police rather than rely on unverified social media posts."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/tourists-rescued-flood.html" },
-        { "name": "Nepalnews", "url": "https://english.nepalnews.com/s/travel-tourism/bhote-koshi-floods-184-foreign-tourists-rescued-420-out-of-communication/" }
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/tourists-rescued-flood.html"
+        },
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/travel-tourism/bhote-koshi-floods-184-foreign-tourists-rescued-420-out-of-communication/"
+        }
       ]
     },
     {
@@ -68,7 +104,10 @@
         "Do not approach damaged power lines or try to reconnect a building yourself. Report hazards to local authorities or Nepal Electricity Authority staff."
       ],
       "sources": [
-        { "name": "Nepal News", "url": "https://english.nepalnews.com/s/business/electricity-restoration-efforts-intensified-in-flood-affected-areas/" }
+        {
+          "name": "Nepal News",
+          "url": "https://english.nepalnews.com/s/business/electricity-restoration-efforts-intensified-in-flood-affected-areas/"
+        }
       ]
     },
     {
@@ -82,8 +121,14 @@
         "Rescue work is continuing in the affected districts. Do not travel into the flood zone unless officials ask you to do so."
       ],
       "sources": [
-        { "name": "NDRRMA", "url": "https://ndrrma.gov.np/mediafiles/publications/Situation_updates_bhadra13_10_AM.pdf" },
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/29/updates-bhotekoshi-flood-death-toll-reaches-616-hundreds-still-missing" }
+        {
+          "name": "NDRRMA",
+          "url": "https://ndrrma.gov.np/mediafiles/publications/Situation_updates_bhadra13_10_AM.pdf"
+        },
+        {
+          "name": "The Kathmandu Post",
+          "url": "https://kathmandupost.com/national/2026/08/29/updates-bhotekoshi-flood-death-toll-reaches-616-hundreds-still-missing"
+        }
       ],
       "revised": true
     },
@@ -98,7 +143,10 @@
         "Department spokesperson Govinda Prasad Pandey said the arrangement is not new and has long applied to foreign journalists under existing print and broadcast rules. An unnamed government official told the paper it is meant to streamline coverage of the disaster rather than set permanent policy."
       ],
       "sources": [
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/29/nepal-brings-new-rules-for-foreign-journalists-covering-bhotekoshi-flooding" }
+        {
+          "name": "The Kathmandu Post",
+          "url": "https://kathmandupost.com/national/2026/08/29/nepal-brings-new-rules-for-foreign-journalists-covering-bhotekoshi-flooding"
+        }
       ]
     },
     {
@@ -111,7 +159,10 @@
         "That is well above the 1,845 Armed Police Force personnel the Home Administration named in Friday evening's tally of all security forces working the flood. It is not clear whether the two counts are measuring the same thing, and neither the Armed Police Force nor the Home Ministry has explained the gap."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://www.onlinekhabar.com/2026/08/2006169/bhotekoshi-flood-armed-forces-increase-manpower-for-search-and-rescue-4800-more-mobilized" }
+        {
+          "name": "Onlinekhabar",
+          "url": "https://www.onlinekhabar.com/2026/08/2006169/bhotekoshi-flood-armed-forces-increase-manpower-for-search-and-rescue-4800-more-mobilized"
+        }
       ]
     },
     {
@@ -124,7 +175,10 @@
         "Phone lines being down is the main reason families cannot reach relatives in the flood zone. If you are trying to find someone, keep trying the same number rather than assuming coverage in their area is still out."
       ],
       "sources": [
-        { "name": "The Rising Nepal", "url": "https://risingnepaldaily.com/news/85723" }
+        {
+          "name": "The Rising Nepal",
+          "url": "https://risingnepaldaily.com/news/85723"
+        }
       ]
     },
     {
@@ -138,8 +192,14 @@
         "None of the seven has been identified yet. They are not part of Nepal's own confirmed toll, since they were found across the border."
       ],
       "sources": [
-        { "name": "The Standard", "url": "https://www.thestandard.com.hk/world/article/341221/India-recovers-7-bodies-swept-downstream-after-Nepal-floods" },
-        { "name": "Arab News", "url": "https://www.arabnews.com/node/2656111/world" }
+        {
+          "name": "The Standard",
+          "url": "https://www.thestandard.com.hk/world/article/341221/India-recovers-7-bodies-swept-downstream-after-Nepal-floods"
+        },
+        {
+          "name": "Arab News",
+          "url": "https://www.arabnews.com/node/2656111/world"
+        }
       ]
     },
     {
@@ -153,7 +213,10 @@
         "European Commission President Ursula von der Leyen said Europe stands with Nepal as it responds to the flood."
       ],
       "sources": [
-        { "name": "The Rising Nepal", "url": "https://risingnepaldaily.com/news/85719" }
+        {
+          "name": "The Rising Nepal",
+          "url": "https://risingnepaldaily.com/news/85719"
+        }
       ]
     },
     {
@@ -167,7 +230,10 @@
         "Rescue crews were clearing the Prithvi Highway while residents in Galchhi moved to higher ground. Stay away from riverbanks and follow local warnings."
       ],
       "sources": [
-        { "name": "The Associated Press", "url": "https://apnews.com/article/nepal-china-flood-galchhi-warning-afec20e612514ca3598c65b29f485303" }
+        {
+          "name": "The Associated Press",
+          "url": "https://apnews.com/article/nepal-china-flood-galchhi-warning-afec20e612514ca3598c65b29f485303"
+        }
       ],
       "revised": true
     },
@@ -183,8 +249,14 @@
         "Families looking for a student should go through the District Police Office or the local ward office, the same channels this page lists for anyone missing in the flood."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/flood-nuwakot-school.html" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/tribhuvan-trishuli-school-flood.html" }
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/flood-nuwakot-school.html"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/tribhuvan-trishuli-school-flood.html"
+        }
       ]
     },
     {
@@ -199,7 +271,10 @@
         "Out of contact does not mean dead. Transport operators are asking the government to widen search and rescue to cover the drivers and workers along the route."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/truck-driver-missing-rasuwa-flood.html" }
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/truck-driver-missing-rasuwa-flood.html"
+        }
       ]
     },
     {
@@ -214,7 +289,10 @@
         "This is one researcher's preliminary reading, not a finding from the government or ICIMOD, and the cause of the flood is still not officially confirmed."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/flood-trigger-langtang-rockfall.html" }
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/flood-trigger-langtang-rockfall.html"
+        }
       ]
     },
     {
@@ -229,7 +307,10 @@
         "The Rasuwagadhi to Kerung road took the worst damage from the Bhotekoshi flood and is expected to stay impassable for months, so the drivers are asking officials to bring them home through an alternative border crossing instead."
       ],
       "sources": [
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/28/eighty-container-drivers-stranded-in-kerung-plead-for-repatriation" }
+        {
+          "name": "The Kathmandu Post",
+          "url": "https://kathmandupost.com/national/2026/08/28/eighty-container-drivers-stranded-in-kerung-plead-for-repatriation"
+        }
       ]
     },
     {
@@ -244,7 +325,10 @@
         "The Cabinet has told the Finance Ministry to prepare a relief and rehabilitation package for people and businesses affected by the flood in Rasuwa. The details of that package have not been published yet."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/cabinet-makes-3-key-decisions-on-flood-relief-fertiliser-and-aid.html" }
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/cabinet-makes-3-key-decisions-on-flood-relief-fertiliser-and-aid.html"
+        }
       ]
     },
     {
@@ -258,7 +342,10 @@
         "Stay away from the Bhote Koshi and Trishuli riverbanks until local officials say it is safe."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/risk-lake-burst-rasuwa-low.html" }
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/risk-lake-burst-rasuwa-low.html"
+        }
       ],
       "revised": true
     },
@@ -272,8 +359,14 @@
         "It is the broadest estimate yet of how many people the flood has touched, wider than the confirmed death, missing and rescued counts on this page, and it has not been confirmed by the Nepali government."
       ],
       "sources": [
-        { "name": "The Jerusalem Post", "url": "https://www.jpost.com/environment-and-climate-change/article-906895" },
-        { "name": "ABC News Australia", "url": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974" }
+        {
+          "name": "The Jerusalem Post",
+          "url": "https://www.jpost.com/environment-and-climate-change/article-906895"
+        },
+        {
+          "name": "ABC News Australia",
+          "url": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974"
+        }
       ]
     },
     {
@@ -286,7 +379,10 @@
         "Give only through the channels listed on this page, or the government's own portal at pmdrf.nchl.com.np. A donation QR code shared on social media is not verified unless it leads there."
       ],
       "sources": [
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/28/government-asks-meta-tiktok-to-remove-graphic-flood-content-misinformation" }
+        {
+          "name": "The Kathmandu Post",
+          "url": "https://kathmandupost.com/national/2026/08/28/government-asks-meta-tiktok-to-remove-graphic-flood-content-misinformation"
+        }
       ]
     },
     {
@@ -300,7 +396,10 @@
         "South Korean experts were also allowed to inspect affected areas. This is specialised assistance for tunnel rescue, forensic and DNA work, not a broad foreign deployment. People searching for relatives should use official control rooms and police channels."
       ],
       "sources": [
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/30/indian-chinese-and-korean-teams-moved-to-flood-hit-areas-to-support-search-and-rescue-effort" }
+        {
+          "name": "The Kathmandu Post",
+          "url": "https://kathmandupost.com/national/2026/08/30/indian-chinese-and-korean-teams-moved-to-flood-hit-areas-to-support-search-and-rescue-effort"
+        }
       ],
       "revised": true
     },
@@ -315,8 +414,14 @@
         "The police bulletin changes the Nepal death total from 752 at 1pm to 768 at 2pm. Out of contact does not mean dead. Families should use official police and local authority channels, not unverified social media posts."
       ],
       "sources": [
-        { "name": "Nepal Police", "url": "https://nepalpolice.gov.np/news/10275/" },
-        { "name": "Onlinekhabar", "url": "https://www.onlinekhabar.com/2026/08/2006948/rasuwa-flood-death-toll-reaches-752-8730-rescued" }
+        {
+          "name": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10275/"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://www.onlinekhabar.com/2026/08/2006948/rasuwa-flood-death-toll-reaches-752-8730-rescued"
+        }
       ],
       "revised": true
     },
@@ -333,11 +438,26 @@
         "If you are trying to find someone in the flood zone, call the nearest District Police Office or 100, and register the same details with the local ward office."
       ],
       "sources": [
-        { "name": "The Associated Press", "url": "https://www.dailyrecordnews.com/ap_news/us/the-latest-almost-2-000-missing-in-nepal-as-himalayan-border-flash-flood-death-toll/article_121a524e-97dc-5528-8d8d-a0721a0e65f0.html" },
-        { "name": "ANI", "url": "https://aninews.in/news/world/asia/nepal-flood-death-toll-rises-to-579-missing-count-surges-to-1924-as-rescue-ops-continue20260828202538/" },
-        { "name": "CBS News", "url": "https://www.cbsnews.com/news/nepal-flood-rescue-efforts-death-toll/" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-flood-116-madhesh.html" },
-        { "name": "ABC News Australia", "url": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974" }
+        {
+          "name": "The Associated Press",
+          "url": "https://www.dailyrecordnews.com/ap_news/us/the-latest-almost-2-000-missing-in-nepal-as-himalayan-border-flash-flood-death-toll/article_121a524e-97dc-5528-8d8d-a0721a0e65f0.html"
+        },
+        {
+          "name": "ANI",
+          "url": "https://aninews.in/news/world/asia/nepal-flood-death-toll-rises-to-579-missing-count-surges-to-1924-as-rescue-ops-continue20260828202538/"
+        },
+        {
+          "name": "CBS News",
+          "url": "https://www.cbsnews.com/news/nepal-flood-rescue-efforts-death-toll/"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/rasuwa-flood-116-madhesh.html"
+        },
+        {
+          "name": "ABC News Australia",
+          "url": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974"
+        }
       ],
       "revised": true
     },
@@ -356,14 +476,38 @@
         "UNICEF says at least 17,000 children have been affected across Rasuwa, Nuwakot and Dhading. It counts 18 schools destroyed and 20 more damaged in those three districts, wider than the 8 schools Onlinekhabar had reported damaged in Rasuwa and Nuwakot alone a day earlier. UNICEF says around 10,000 school-age children now need help such as temporary classrooms and replacement books to keep learning."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html" },
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/pms-disaster-relief-fund.html" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/pm-disaster-relief-fund.html" },
-        { "name": "The Rising Nepal", "url": "https://risingnepaldaily.com/news/85720" },
-        { "name": "UNICEF", "url": "https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance" }
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html"
+        },
+        {
+          "name": "The Kathmandu Post",
+          "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/pms-disaster-relief-fund.html"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/pm-disaster-relief-fund.html"
+        },
+        {
+          "name": "The Rising Nepal",
+          "url": "https://risingnepaldaily.com/news/85720"
+        },
+        {
+          "name": "UNICEF",
+          "url": "https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance"
+        }
       ],
       "revised": true
     },
@@ -382,13 +526,34 @@
         "Nepal's disaster authority NDRRMA said in its Friday evening update that 933 hydropower workers are among the 1,924 people it now lists as missing in Nepal, the Associated Press reports. That is a far bigger number than IPPAN's own count above, and NDRRMA has not broken its total down by project."
       ],
       "sources": [
-        { "name": "Bloomberg", "url": "https://www.bloomberg.com/news/articles/2026-08-28/nepal-rescuers-race-to-save-people-trapped-in-hydropower-tunnel" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/hydropower-out-of-contact.html" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/nepali-army-rescue-operations.html" },
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/27/from-army-camps-to-hospitals-families-desperately-search-for-missing-members" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/more-than-25-workers-trapped-in-langtang-hydropower-tunnel.html" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/landslide-upper-trishuli-3-b.html" },
-        { "name": "Euronews", "url": "https://www.euronews.com/2026/08/28/number-of-missing-in-nepal-floods-passes-2400-as-unicef-says-17000-children-need-aid" }
+        {
+          "name": "Bloomberg",
+          "url": "https://www.bloomberg.com/news/articles/2026-08-28/nepal-rescuers-race-to-save-people-trapped-in-hydropower-tunnel"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/hydropower-out-of-contact.html"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/nepali-army-rescue-operations.html"
+        },
+        {
+          "name": "The Kathmandu Post",
+          "url": "https://kathmandupost.com/national/2026/08/27/from-army-camps-to-hospitals-families-desperately-search-for-missing-members"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/more-than-25-workers-trapped-in-langtang-hydropower-tunnel.html"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/landslide-upper-trishuli-3-b.html"
+        },
+        {
+          "name": "Euronews",
+          "url": "https://www.euronews.com/2026/08/28/number-of-missing-in-nepal-floods-passes-2400-as-unicef-says-17000-children-need-aid"
+        }
       ],
       "revised": true
     },
@@ -403,8 +568,14 @@
         "Wong also announced A$5 million in Australian aid: 2 million to the World Food Programme, 2 million to Australian NGOs through the Australian Humanitarian Partnership, and 1 million to the Emergency Action Alliance for local recovery work. Three more Australian humanitarian specialists are being sent to join the 20 staff already in Nepal."
       ],
       "sources": [
-        { "name": "ABC News Australia", "url": "https://www.abc.net.au/news/2026-08-29/death-toll-rises-as-rescuers-work-through-flood-devastation/107092742" },
-        { "name": "The Standard", "url": "https://www.standard.net.au/story/9339027/almost-40-australians-missing-in-nepals-flash-floods/" }
+        {
+          "name": "ABC News Australia",
+          "url": "https://www.abc.net.au/news/2026-08-29/death-toll-rises-as-rescuers-work-through-flood-devastation/107092742"
+        },
+        {
+          "name": "The Standard",
+          "url": "https://www.standard.net.au/story/9339027/almost-40-australians-missing-in-nepals-flash-floods/"
+        }
       ],
       "revised": true
     },
@@ -419,8 +590,14 @@
         "Out of contact does not mean dead. Canadians with concerns about a family member in the flood zone should contact Global Affairs Canada's emergency watch and response centre."
       ],
       "sources": [
-        { "name": "Medicine Hat News", "url": "https://medicinehatnews.com/news/national-news/2026/08/28/canada-provides-5m-to-nepal-relief-efforts-as-search-for-missing-canadians-continues/" },
-        { "name": "Abbotsford News", "url": "https://abbynews.com/2026/08/28/32-canadians-permanent-residents-unaccounted-for-in-nepal-floods/" }
+        {
+          "name": "Medicine Hat News",
+          "url": "https://medicinehatnews.com/news/national-news/2026/08/28/canada-provides-5m-to-nepal-relief-efforts-as-search-for-missing-canadians-continues/"
+        },
+        {
+          "name": "Abbotsford News",
+          "url": "https://abbynews.com/2026/08/28/32-canadians-permanent-residents-unaccounted-for-in-nepal-floods/"
+        }
       ]
     },
     {
@@ -435,7 +612,10 @@
         "This is India's own count of its nationals, kept by its own ministry. It is not the same figure as Nepal's missing list, and the two should not be added together."
       ],
       "sources": [
-        { "name": "The Tribune", "url": "https://www.tribuneindia.com/news/india/flash-floods-in-nepal-320-indians-missing-400-others-stranded-on-chinese-side-mea/" }
+        {
+          "name": "The Tribune",
+          "url": "https://www.tribuneindia.com/news/india/flash-floods-in-nepal-320-indians-missing-400-others-stranded-on-chinese-side-mea/"
+        }
       ]
     },
     {
@@ -448,7 +628,10 @@
         "India's foreign ministry spokesperson said India would provide Nepal with assistance, including Bailey bridges, whenever required. No timeline for delivery has been given yet."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/nepal-asks-india-china-to-build-42-bailey-bridges-in-flood-hit-areas.html" }
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/nepal-asks-india-china-to-build-42-bailey-bridges-in-flood-hit-areas.html"
+        }
       ]
     },
     {
@@ -465,8 +648,14 @@
         "People trying to get aid into Rasuwa should coordinate through the district disaster relief committee or the army rather than travelling in on their own. The new route takes light vehicles only, and conditions can still change."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-cut-off-flood-shortage.html" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/rasuwa-reconnected-road-network.html" }
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/rasuwa-cut-off-flood-shortage.html"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/rasuwa-reconnected-road-network.html"
+        }
       ],
       "revised": true
     },
@@ -481,7 +670,10 @@
         "The ministry said the order is meant to protect students, parents, teachers and staff while the disaster response continues."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/universities-suspend-exams.html" }
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/universities-suspend-exams.html"
+        }
       ]
     },
     {
@@ -497,8 +689,14 @@
         "Families looking for someone should go through the District Police Office or the local ward office rather than to hospitals directly, since those are the lists that get updated centrally."
       ],
       "sources": [
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/national/2026/08/28/nepal-struggles-to-store-and-identify-bodies-carried-downstream-by-devastating-flood" },
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/flood-bodies-overwhelm-hospital.html" }
+        {
+          "name": "The Kathmandu Post",
+          "url": "https://kathmandupost.com/national/2026/08/28/nepal-struggles-to-store-and-identify-bodies-carried-downstream-by-devastating-flood"
+        },
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/flood-bodies-overwhelm-hospital.html"
+        }
       ],
       "revised": true
     },
@@ -514,9 +712,18 @@
         "Officials have previously warned the road could shut again if heavy rain returns to the area."
       ],
       "sources": [
-        { "name": "Onlinekhabar", "url": "https://english.onlinekhabar.com/prithvi-highway-blocked.html" },
-        { "name": "The Kathmandu Post", "url": "https://kathmandupost.com/money/2026/08/28/prithvi-highway-shutdown-puts-kathmandu-supplies-under-pressure" },
-        { "name": "Nepal News", "url": "https://english.nepalnews.com/s/nation/prithvi-highway-reopens-following-flood-disruption/" }
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/prithvi-highway-blocked.html"
+        },
+        {
+          "name": "The Kathmandu Post",
+          "url": "https://kathmandupost.com/money/2026/08/28/prithvi-highway-shutdown-puts-kathmandu-supplies-under-pressure"
+        },
+        {
+          "name": "Nepal News",
+          "url": "https://english.nepalnews.com/s/nation/prithvi-highway-reopens-following-flood-disruption/"
+        }
       ],
       "revised": true
     }

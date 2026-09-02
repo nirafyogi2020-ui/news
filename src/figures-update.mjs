@@ -30,6 +30,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const EVENT = join(ROOT, 'event.json');
 const CONTENT = join(ROOT, 'src', 'content.mjs');
+const TODAY = join(ROOT, 'today.json');
 
 const SITE = process.env.SITE_ORIGIN ||
   'https://nepaldisasterupdatelive.nxtimaginelabs.com';
@@ -49,6 +50,17 @@ const STAT_LABELS = {
    the article pages disagree, which is the correct behaviour and the reason
    this script writes both. */
 const TOLL_FIELDS = { dead: 'deadNepal', missing: 'missing', rescued: 'rescued' };
+
+/* Every figure on the static pages is printed next to an "as of" line and the
+   name of whoever published it. Moving the number without moving those two is
+   worse than not moving it at all: the page then states a fresh figure over a
+   stale timestamp, which is the specific failure this whole change exists to
+   remove. Each metric therefore owns the constants that describe it. */
+const STAMP_FIELDS = {
+  dead:    [['TOLL_AS_OF', 'TOLL_SOURCE'], ['BODIES_AS_OF', 'BODIES_SOURCE']],
+  missing: [['MISSING_AS_OF', 'MISSING_SOURCE']],
+  rescued: [['RESCUE_AS_OF', 'RESCUE_SOURCE']]
+};
 
 /* A single run will not move a counter by more than this multiple of its
    current value. A parser fault or a garbled bulletin that produced, say,
@@ -123,7 +135,8 @@ async function main() {
   }
 
   writeFileSync(EVENT, JSON.stringify(event, null, 2) + '\n');
-  syncContent(applied);
+  syncContent(applied, board.board);
+  syncToday(applied, board.board);
 
   for (const a of applied) {
     console.log(`  ${a.metric}: ${a.from} → ${a.to}  (${a.source})`);
@@ -143,7 +156,7 @@ async function main() {
  * `deadNepalEarlier` carries the previous toll so the prose can say "up
  * from"; it moves to what the dead figure used to be.
  */
-export function syncContent(applied) {
+export function syncContent(applied, figures) {
   let text;
   try {
     text = readFileSync(CONTENT, 'utf8');
@@ -154,18 +167,190 @@ export function syncContent(applied) {
 
   const before = text;
   for (const change of applied) {
+    const figure = (figures && figures[change.metric]) || {};
     const field = TOLL_FIELDS[change.metric];
-    if (!field) continue;
-    text = replaceField(text, field, change.to);
+    if (field) text = replaceField(text, field, change.to);
+
     if (change.metric === 'dead') {
+      /* The "how the toll has moved" row keeps the figure it was published
+         with, so it has to carry the stamp that figure was published with
+         too. Both are read before either is overwritten. */
       text = replaceField(text, 'deadNepalEarlier', change.from);
+      text = replaceString(text, 'TOLL_EARLIER_AS_OF', readString(before, 'TOLL_AS_OF'));
+      text = replaceString(text, 'TOLL_EARLIER_SOURCE', readString(before, 'TOLL_SOURCE'));
     }
+
+    for (const [asOfField, sourceField] of STAMP_FIELDS[change.metric] || []) {
+      if (figure.time) text = replaceString(text, asOfField, nptIso(figure.time));
+      if (figure.source) text = replaceString(text, sourceField, sourceLabel(figure));
+    }
+
+    if (change.metric === 'dead') text = addTimelineEntry(text, figure, change);
   }
 
   if (text === before) return false;
   writeFileSync(CONTENT, text);
   console.log('  src/content.mjs kept in step');
   return true;
+}
+
+/** Read the current value of an `export const NAME = '...'` string. */
+export function readString(text, name) {
+  const m = text.match(new RegExp('\\b' + name + "\\s*=\\s*'([^']*)'"));
+  return m ? m[1] : null;
+}
+
+/** Replace one `export const NAME = '...'` string, and nothing else. */
+export function replaceString(text, name, value) {
+  if (value == null) return text;
+  const pattern = new RegExp("(\\b" + name + "\\s*=\\s*')[^']*(')");
+  if (!pattern.test(text)) {
+    console.log(`  content.mjs has no ${name} — left alone`);
+    return text;
+  }
+  return text.replace(pattern, '$1' + String(value).replace(/'/g, "\\'") + '$2');
+}
+
+/** How a figure names itself on the page: who said it, and at what hour. */
+export function sourceLabel(figure) {
+  const when = figure.statedTime ? `, ${figure.statedTime}` : '';
+  return `${figure.source}${when}`;
+}
+
+/**
+ * Add one row to the timeline of the event.
+ *
+ * The timeline is the page's record of how the toll moved, and it is the part
+ * a reader scrolls to understand whether the number is still climbing. A
+ * counter that moves without a timeline row leaves the page asserting a jump
+ * it never shows its working for.
+ *
+ * One row per figure, never a duplicate: if the timeline already carries this
+ * figure the text is left exactly as it is, so repeated runs cannot grow the
+ * file. The wording is a fixed template with the source's own name in it —
+ * this script does not write prose, it writes a record.
+ */
+export function addTimelineEntry(text, figure, change) {
+  const marker = '\nexport const TIMELINE = [';
+  const start = text.indexOf(marker);
+  if (start === -1) return text;
+  const end = text.indexOf('\n];', start);
+  if (end === -1) return text;
+
+  const block = text.slice(start, end);
+  const line =
+    `Nepal's confirmed death toll is reported at ${change.to.toLocaleString('en-US')}, ` +
+    `up from ${change.from.toLocaleString('en-US')}, by ${figure.source || 'the published report'}.`;
+
+  /* Already recorded, by this script or by an editor. */
+  if (block.includes(`reported at ${change.to.toLocaleString('en-US')}`)) return text;
+
+  const stamp = nptStamp(figure.time);
+  const row = `  ['${stamp}', ${JSON.stringify(line)}],\n`;
+  return text.slice(0, end + 1) + row + text.slice(end + 1);
+}
+
+/**
+ * The same instant written in Nepal time, which is the convention every
+ * timestamp in content.mjs already follows. A UTC "Z" stamp would parse
+ * identically and read as somebody else's clock on a Nepali page.
+ */
+export function nptIso(iso) {
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return iso;
+  const npt = new Date(d.getTime() + (5 * 60 + 45) * 60000);
+  return npt.toISOString().replace(/\.\d+Z$/, '') + '+05:45';
+}
+
+/** "14:00 NPT, 30 August", the format the timeline already uses. */
+export function nptStamp(iso) {
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return 'Latest report';
+  const opts = { timeZone: 'Asia/Kathmandu' };
+  const time = d.toLocaleTimeString('en-GB', { ...opts, hour: '2-digit', minute: '2-digit' });
+  const day = d.toLocaleDateString('en-GB', { ...opts, day: 'numeric', month: 'long' });
+  return `${time} NPT, ${day}`;
+}
+
+/**
+ * Keep today.json current.
+ *
+ * Two things happen here, and neither of them writes a story.
+ *
+ * `updated` moves, because the whole site derives its "last modified" from
+ * the newest of today.json, event.json and the briefings — and the structured
+ * data that tells search engines the coverage is still running is three days
+ * past that. A page whose figures move while its date does not is a page that
+ * reads as abandoned.
+ *
+ * And one briefing card, always the same card, carries the current figures.
+ * It is rewritten in place rather than added to, so a counter that moves six
+ * times in an afternoon leaves one accurate card and not six near-identical
+ * ones. Everything an editor has written stays untouched.
+ */
+export function syncToday(applied, figures) {
+  let today;
+  try {
+    today = JSON.parse(readFileSync(TODAY, 'utf8'));
+  } catch (e) {
+    console.log('  today.json: ' + e.message);
+    return false;
+  }
+
+  const dead = figures && figures.dead;
+  const newest = applied
+    .map(a => (figures[a.metric] || {}).time)
+    .filter(Boolean)
+    .sort()
+    .pop() || new Date().toISOString();
+
+  today.updated = newest;
+
+  const posts = today.posts || (today.posts = []);
+  const lines = applied.map(a => {
+    const f = figures[a.metric] || {};
+    const label = { dead: 'confirmed dead', missing: 'listed missing', rescued: 'rescued' }[a.metric] || a.metric;
+    return `${label}: ${a.to.toLocaleString('en-US')}, ` +
+      `${a.to > a.from ? 'up from' : 'corrected down from'} ${a.from.toLocaleString('en-US')}` +
+      `${f.source ? `, reported by ${f.source}` : ''}.`;
+  });
+
+  const card = {
+    id: LIVE_CARD_ID,
+    title: dead
+      ? `Latest reported figures: ${dead.value.toLocaleString('en-US')} confirmed dead`
+      : 'Latest reported figures',
+    time: newest,
+    image: '',
+    body: [
+      'These figures are read automatically from the published reports as they ' +
+      'appear, and are not written or checked by hand. ' + lines.join(' '),
+      'Where a report describes one district or one stretch of river rather than ' +
+      'the national figure, it is not used here. Out of contact does not mean dead.'
+    ],
+    sources: dedupeSources(applied.map(a => figures[a.metric]).filter(Boolean)),
+    revised: true
+  };
+
+  const at = posts.findIndex(p => p && p.id === LIVE_CARD_ID);
+  if (at === -1) posts.unshift(card); else posts[at] = card;
+
+  writeFileSync(TODAY, JSON.stringify(today, null, 2) + '\n');
+  console.log('  today.json updated' + (at === -1 ? ' (live figures card added)' : ''));
+  return true;
+}
+
+/* The one card this script owns. Always rewritten, never duplicated. */
+const LIVE_CARD_ID = 'latest-reported-figures';
+
+function dedupeSources(figures) {
+  const out = [];
+  for (const f of figures) {
+    if (!f || !f.url || !f.source) continue;
+    if (out.some(s => s.url === f.url)) continue;
+    out.push({ name: f.source, url: f.url });
+  }
+  return out;
 }
 
 /** Replace `name: <number>` once, leaving everything else untouched. */
