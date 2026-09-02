@@ -1,19 +1,19 @@
 {
-  "updated": "2026-09-02T17:00:00+05:45",
+  "updated": "2026-09-02T14:14:38.000Z",
   "posts": [
     {
       "id": "latest-reported-figures",
-      "title": "Latest reported figures: 1,132 confirmed dead",
-      "time": "2026-09-02T17:00:00+05:45",
+      "title": "Latest reported figures: 1,204 confirmed dead",
+      "time": "2026-09-02T14:14:38.000Z",
       "image": "",
       "body": [
-        "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. confirmed dead: 1,132, up from 1,114, reported by Nepal Police.",
+        "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. confirmed dead: 1,204, up from 1,132, reported by Nagarik News.",
         "Where a report describes one district or one stretch of river rather than the national figure, it is not used here. Out of contact does not mean dead."
       ],
       "sources": [
         {
-          "name": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10312/"
+          "name": "Nagarik News",
+          "url": "https://nagariknews.nagariknetwork.com/social-affairs/rasuwa-flood-update-death-toll-reaches-1-204-over-4-200-still-unaccounted-for-22-65.html"
         }
       ],
       "revised": true

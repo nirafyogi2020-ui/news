@@ -8,16 +8,16 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-09-02T17:00:00+05:45",
-  "asOfSource": "Nepal Police",
+  "asOf": "2026-09-02T14:14:38.000Z",
+  "asOfSource": "Nagarik News",
   "stats": [
     {
       "icon": "dead",
-      "value": "1,132",
+      "value": "1,204",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepal Police: 1,132. Up from 1,114. Read automatically from the published report, not edited by hand. Source: https://nepalpolice.gov.np/news/10312/ Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Onlinekhabar: 1,114. Up from 768. Read automatically from the published report, not edited by hand. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Nepal Police bulletin 10275 reported 768 bodies found in Nepal by 2pm Sunday. The district breakdown is Chitwan 264, Nawalparasi East 194, Nawalparasi West 100, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 37 and Rasuwa 13. China's separate toll of 16 is not added here.",
+      "detail": "Nagarik News: 1,204. Up from 1,132. Read automatically from the published report, not edited by hand. Source: https://nagariknews.nagariknetwork.com/social-affairs/rasuwa-flood-update-death-toll-reaches-1-204-over-4-200-still-unaccounted-for-22-65.html Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Onlinekhabar: 1,114. Up from 768. Read automatically from the published report, not edited by hand. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Nepal Police bulletin 10275 reported 768 bodies found in Nepal by 2pm Sunday. The district breakdown is Chitwan 264, Nawalparasi East 194, Nawalparasi West 100, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 37 and Rasuwa 13. China's separate toll of 16 is not added here.",
       "priorDetail": "Onlinekhabar: 1,114. Up from 768. Read automatically from the published report, not edited by hand. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Nepal Police bulletin 10275 reported 768 bodies found in Nepal by 2pm Sunday. The district breakdown is Chitwan 264, Nawalparasi East 194, Nawalparasi West 100, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 37 and Rasuwa 13. China's separate toll of 16 is not added here.",
       "priorAsOf": "2026-08-30T14:00:00+05:45"
     },
