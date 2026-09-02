@@ -18,7 +18,12 @@ node_modules/
 # data/updates/, PROMPT.md, deploy.sh, functions/, _headers, _redirects and
 # the root icons.
 # ---------------------------------------------------------------------------
-assets/og/
+# The share and card pictures were left out of Git because deploy.sh uploaded
+# them straight to Cloudflare. Publishing now happens from this repository, so
+# anything not committed simply is not on the site: every card lost its
+# photograph and every shared link lost its preview image the day publishing
+# moved. They are build output and it is not ideal to track them, but a
+# picture that exists only on a developer's laptop is not a picture.
 
 # Generated, but small, and Cloudflare Pages now deploys straight from this
 # repository — so a file that is not committed is a file that is not on the

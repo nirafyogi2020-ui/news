@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="ogbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B0D11"/>
+      <stop offset="1" stop-color="#141821"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#ogbg)"/>
+  <g transform="translate(700,60) scale(5)" opacity="0.06">
+    <polygon points="60,16 52,46 58,72 50,104 8,104" fill="#D8404B"/>
+    <polygon points="60,16 112,104 50,104 58,72 52,46" fill="#3D74C4"/>
+  </g>
+  <rect x="0" y="0" width="10" height="630" fill="#D8404B"/>
+
+  <g transform="translate(64,38) scale(0.62)">
+  <g>
+    <defs>
+      <clipPath id="ogLc"><polygon points="60,16 52,46 58,72 50,104 8,104"/></clipPath>
+      <clipPath id="ogRc"><polygon points="60,16 112,104 50,104 58,72 52,46"/></clipPath>
+    </defs>
+    <polygon points="60,16 52,46 58,72 50,104 8,104" fill="#D8404B"/>
+    <g clip-path="url(#ogLc)" stroke="#A32A34" stroke-width="1.6" fill="none" opacity="0.55">
+      <path d="M30,60 L55,52"/><path d="M24,72 L56,64"/><path d="M18,84 L53,80"/><path d="M13,96 L51,94"/>
+    </g>
+    <polygon points="60,16 112,104 50,104 58,72 52,46" fill="#3D74C4"/>
+    <g clip-path="url(#ogRc)" stroke="#2A5793" stroke-width="1.6" fill="none" opacity="0.5">
+      <path d="M65,52 L95,58"/><path d="M60,64 L100,70"/><path d="M56,78 L104,82"/><path d="M52,92 L108,94"/>
+    </g>
+    <polygon points="60,16 52,30 68,30" fill="#F4F0E6"/>
+  </g></g>
+  <text x="146" y="88" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="25" font-weight="800"
+    letter-spacing="3.6" fill="#F4F0E6">NEPAL DISASTER UPDATE</text>
+  <text x="146" y="118" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18"
+    letter-spacing="2.8" fill="#B9B4A6">NEPAL DISASTER UPDATE</text>
+  
+
+  <text x="72" y="214" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
+      font-size="68" font-weight="600" fill="#F4F0E6">Lightning, Fire and Cold Waves</text><text x="72" y="292" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
+      font-size="68" font-weight="600" fill="#F4F0E6">in Nepal: The Steady Killers</text>
+  <text x="72" y="344" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
+      fill="#B9B4A6">Lightning kills around a hundred people a year in Nepal, village</text><text x="72" y="382" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
+      fill="#B9B4A6">fires spread through dense housing in the dry season, and Tarai…</text>
+  
+
+  <rect x="72" y="534" width="1056" height="1" fill="rgba(244,240,230,0.16)"/>
+  <text x="72" y="578" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" fill="#B9B4A6"
+    letter-spacing="0.4">nepaldisasterupdatelive.nxtimaginelabs.com</text>
+  <text x="1128" y="578" text-anchor="end" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22"
+    font-weight="700" letter-spacing="1.2" fill="#B9B4A6"
+    >VERIFIED SOURCES ONLY</text>
+</svg>
