@@ -689,15 +689,28 @@
 
 <style>
   :root{
-    --bg:#f9f9f7; --surface:#fcfcfb; --surface-2:#f1f0eb;
-    --text:#0b0b0b; --text-muted:#52514e; --text-faint:#898781;
-    --border:#e1e0d9; --border-strong:#c3c2b7;
-    --critical:#d03b3b; --crimson:#DC143C; --navy:#003893;
+    /* The palette is taken from the valley this site reports on, not from a
+       theme: the pale silt-grey of the Bhotekoshi in flood, the blue-slate of
+       the Ganesh Himal above it, and Nepal's own crimson kept for the one
+       thing that must never be decorative — the number of people killed.
+       Everything else is deliberately quiet so that red means something. */
+    --bg:#f2f4f6; --surface:#ffffff; --surface-2:#e9edf1;
+    --text:#0f1720; --text-muted:#4a5764; --text-faint:#78848f;
+    --border:#dde3e9; --border-strong:#bcc7d1;
+    --critical:#b3261e; --crimson:#DC143C; --navy:#003893;
+    /* One cool counterweight, used for the figures that are good news —
+       people rescued — so the board is not read as uniformly fatal. */
+    --calm:#1d5e7a;
+    --tint:rgba(15,23,32,0.05);
     /* Fixed alert red for filled surfaces that carry white text. It must not
        flip with the theme, or white-on-pink loses contrast in dark mode. */
     --alert:#b5271f;
-    --shadow: 0 1px 2px rgba(11,11,11,0.05), 0 4px 16px rgba(11,11,11,0.04);
-    --shadow-lg: 0 4px 12px rgba(11,11,11,0.08), 0 24px 60px rgba(11,11,11,0.14);
+    --shadow: 0 1px 1px rgba(15,23,32,0.04), 0 2px 6px rgba(15,23,32,0.06);
+    --shadow-lg: 0 2px 8px rgba(15,23,32,0.08), 0 18px 48px rgba(15,23,32,0.12);
+    /* A hairline of light along the top edge of a raised surface. One line is
+       what separates a card that sits on the page from a rectangle drawn on
+       it. */
+    --lift:inset 0 1px 0 rgba(255,255,255,0.9);
     --font-display:'Newsreader', Georgia, 'Times New Roman', serif;
     --font-body:'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
@@ -707,12 +720,19 @@
   /* Light is the default look. Dark applies only if the visitor picks it in Settings,
      or picks "Match my device" and their device is dark. */
   :root[data-theme="dark"]{
-    --bg:#0d0d0d; --surface:#1a1a19; --surface-2:#161615;
-    --text:#ffffff; --text-muted:#c3c2b7; --text-faint:#898781;
-    --border:#2c2c2a; --border-strong:#383835;
-    --critical:#e0685f;
-    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.4);
-    --shadow-lg: 0 4px 12px rgba(0,0,0,0.5), 0 24px 60px rgba(0,0,0,0.6);
+    /* Not black. A flat neutral black flattens every card onto one plane and
+       is why the dark view read as unfinished; this is the blue-black of the
+       gorge at night, with each surface a measurable step lighter than the
+       one behind it. */
+    --bg:#0a0f16; --surface:#141c26; --surface-2:#101822;
+    --text:#eef3f8; --text-muted:#9fb0c0; --text-faint:#6d7f90;
+    --border:#22303e; --border-strong:#33455a;
+    --critical:#ff6b5e;
+    --calm:#6fc3d9;
+    --tint:rgba(255,255,255,0.04);
+    --shadow: 0 1px 1px rgba(0,0,0,0.5), 0 3px 10px rgba(0,0,0,0.45);
+    --shadow-lg: 0 4px 14px rgba(0,0,0,0.55), 0 28px 70px rgba(0,0,0,0.65);
+    --lift:inset 0 1px 0 rgba(255,255,255,0.06);
   }
 
   *{box-sizing:border-box;}
@@ -2118,6 +2138,96 @@
   .actrow{ gap:6px; }
   .actrow a{ flex:1 1 100%; }
 }
+
+  /* =========================================================================
+     Depth, atmosphere and motion.
+
+     The page was flat: every card was the same rectangle on the same plane,
+     so a reader's eye had nothing to climb. What follows gives the layout a
+     stack — a backdrop, a page plane, raised cards — using light rather than
+     outlines, because outlines everywhere is what made it look drawn instead
+     of built.
+
+     The restraint is deliberate and it is about the subject. This page counts
+     people who died four days ago. Motion here is atmosphere, never
+     spectacle: a backdrop that drifts a little slower than the page, cards
+     that acknowledge a cursor, and nothing that bounces, spins or announces
+     itself. Every effect below is switched off entirely for a reader who has
+     asked their system for reduced motion.
+     ====================================================================== */
+
+  /* The valley behind the page. Two soft washes — the river's silt haze low
+     and left, the cold of the snowline high and right — over the base colour.
+     They are painted on a fixed layer so the content scrolls over them, which
+     is what gives the header its sense of depth on a long page. */
+  body::before{
+    content:""; position:fixed; inset:-20vh 0 0; z-index:-2; pointer-events:none;
+    background:
+      radial-gradient(1100px 620px at 12% 0%, color-mix(in srgb, var(--calm) 22%, transparent), transparent 70%),
+      radial-gradient(900px 520px at 88% 6%, color-mix(in srgb, var(--critical) 12%, transparent), transparent 68%);
+    opacity:0.5;
+    transform:translate3d(0, var(--parallax, 0px), 0);
+    will-change:transform;
+  }
+  /* A fine grain over the wash. Flat gradients band on wide screens; this
+     breaks the bands up and is the difference between a background and a
+     surface. */
+  body::after{
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:0.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Raised surfaces. One shared treatment so cards read as one family: a
+     hairline of light along the top edge, a soft shadow beneath, and a lift
+     under the cursor small enough that it registers without being a trick. */
+  .rail-card, .post-card, .today-grid .post-card, .numgrid .stat, .hf-stat{
+    box-shadow:var(--lift), var(--shadow);
+    transition:transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  }
+  .post-card:hover, .rail-card:hover{
+    transform:translateY(-2px);
+    box-shadow:var(--lift), var(--shadow-lg);
+    border-color:var(--border-strong);
+  }
+  .numgrid .stat:hover{ transform:translateY(-1px); box-shadow:var(--lift), var(--shadow-lg); }
+
+  /* The header sits above the wash rather than in it. */
+  header{
+    background:color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter:saturate(1.4) blur(14px);
+    -webkit-backdrop-filter:saturate(1.4) blur(14px);
+    border-bottom:1px solid var(--border);
+  }
+
+  /* Figures are data, so they are set in the data face, aligned in columns
+     that do not jump as the numbers change. The rescued figure takes the cool
+     colour: it is the one counter on the board that is good news, and reading
+     it in the same red as the dead was simply wrong. */
+  .hf-stat .hf-n, .numgrid .stat .n, .rail-fig .rf-n, .toll-n{
+    font-family:var(--font-mono); font-variant-numeric:tabular-nums lining-nums;
+    letter-spacing:-0.03em;
+  }
+  .rail-fig:last-of-type .rf-n:not(.critical), .hf-stat:last-child .hf-n:not(.critical){ color:var(--calm); }
+
+  /* Type scale. The headline was competing with the body for weight; giving
+     it room and a tighter fit is most of what makes a news page look edited
+     rather than assembled. */
+  @media (min-width:900px){
+    .hero h1{ font-size:clamp(2.6rem, 4.4vw, 4rem); line-height:1.02; letter-spacing:-0.035em; }
+    .hero .lede{ font-size:1.12rem; line-height:1.62; }
+    section{ padding:56px 0; }
+  }
+  h2{ letter-spacing:-0.02em; }
+
+  /* A keyboard user must always be able to see where they are. */
+  a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-visible{
+    outline:2px solid var(--critical); outline-offset:3px; border-radius:6px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    body::before{ transform:none; }
+    .post-card:hover, .rail-card:hover, .numgrid .stat:hover{ transform:none; }
+  }
 
 </style>
 </head>
@@ -6783,6 +6893,32 @@ var LiveFeed = (function(){
         g.innerHTML = '<p style="font-size:0.92rem; color:var(--text-muted);">Today&rsquo;s posts are not up yet. See the <a href="#live" data-tab-link="live">Live</a> tab.</p>';
       });
     });
+})();
+</script>
+
+<script>
+/* The backdrop drifts at a fraction of the page's speed. It is the only
+   parallax on the site and it moves one fixed layer, never content, so
+   nothing a reader is trying to read can slide away from them. Written
+   against rAF so the scroll handler itself does no layout work, and switched
+   off outright for anyone whose system asks for reduced motion. */
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reduce && reduce.matches) return;
+  var root = document.documentElement, ticking = false;
+  function paint(){
+    ticking = false;
+    /* Capped: past the first couple of screens the drift has done its job and
+       any more just pulls the wash off the top of the window. */
+    var y = Math.min(window.scrollY || 0, 1400);
+    root.style.setProperty('--parallax', (y * 0.12).toFixed(1) + 'px');
+  }
+  addEventListener('scroll', function(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(paint);
+  }, { passive: true });
+  paint();
 })();
 </script>
 
