@@ -211,7 +211,9 @@ export async function onRequestGet(context) {
       unavailable: youtubeFeed.unavailable,
       issues: youtubeFeed.issues,
       mode: 'verified-channels',
-      channels: youtubeFeed.channels
+      channels: youtubeFeed.channels,
+      considered: youtubeFeed.considered,
+      rejected: youtubeFeed.rejected
     },
     economicLoss: findEconomicLoss(finalItems),
     reliefFund: findReliefFund(finalItems),
@@ -664,7 +666,9 @@ function normalizeYoutubeFeed(value) {
       configured: true,
       unavailable: false,
       issues: [],
-      channels: []
+      channels: [],
+      considered: value.length,
+      rejected: []
     };
   }
   if (!value || !Array.isArray(value.items)) {
@@ -675,7 +679,9 @@ function normalizeYoutubeFeed(value) {
       configured: true,
       unavailable: false,
       issues: [],
-      channels: []
+      channels: [],
+      considered: 0,
+      rejected: []
     };
   }
   return {
@@ -685,7 +691,9 @@ function normalizeYoutubeFeed(value) {
     configured: value.configured !== false,
     unavailable: Boolean(value.unavailable),
     issues: Array.isArray(value.issues) ? value.issues.slice(0, YT_TRUSTED_CHANNELS.length) : [],
-    channels: Array.isArray(value.channels) ? value.channels : []
+    channels: Array.isArray(value.channels) ? value.channels : [],
+    considered: Number.isFinite(value.considered) ? value.considered : 0,
+    rejected: Array.isArray(value.rejected) ? value.rejected.slice(0, 5) : []
   };
 }
 
@@ -704,10 +712,10 @@ async function fetchTrustedYoutube(key, request, context) {
     return fetchYoutubePlaylist(identity, channel, key);
   }));
 
-  const videos = settled
+  const parsed = settled
     .filter(result => result.status === 'fulfilled')
-    .flatMap(result => result.value)
-    .filter(isVideoOnTopic);
+    .flatMap(result => result.value);
+  const videos = parsed.filter(video => isVideoOnTopic(video));
   if (!settled.some(result => result.status === 'fulfilled')) {
     const reasons = settled
       .filter(result => result.status === 'rejected')
@@ -726,7 +734,15 @@ async function fetchTrustedYoutube(key, request, context) {
   }).sort(byTimeDesc);
   const issues = settled.flatMap((result, index) => result.status === 'rejected'
     ? [YT_TRUSTED_CHANNELS[index].source + ' is temporarily unavailable'] : []);
-  return { items, issues };
+  /* A channel that answers with videos none of which are about this event
+     looks exactly like a channel that answered with nothing: no error, no
+     items, an empty Watch tab. These two numbers separate the two cases in
+     the response itself, so the next person does not have to guess. */
+  const rejected = parsed
+    .filter(video => !isVideoOnTopic(video))
+    .slice(0, 5)
+    .map(video => video.source + ': ' + video.title);
+  return { items, issues, considered: parsed.length, rejected };
 }
 
 async function resolveYoutubeChannel(channel, key, request, context) {
