@@ -5,8 +5,8 @@ on a machine that can reach Cloudflare. Everything in here has been run and
 verified except the two steps marked **BLOCKED**, which need credentials the
 cloud session did not have.
 
-State at handoff: branch `main`, commit `bc8df22`. Working tree clean, tests
-green, audit clean.
+State at handoff: branch `main`, commit `5151d95`. Working tree clean, 33
+tests green, audit clean.
 
 ---
 
@@ -31,7 +31,7 @@ live domain is not.
 - `src/figures-update.mjs` writes `event.json`, `src/content.mjs` and
   `today.json`, moves every "as of" stamp, adds one timeline row, and keeps one
   live-figures briefing card.
-- 27 tests pass. `npm run check` passes clean — it was failing three staleness
+- 33 tests pass. `npm run check` passes clean — it was failing three staleness
   checks before this change.
 - The workflow has run twice on `main`, both green. Its log reads
   `read 88 reports from 17 sources; 2 figure(s) stated`.
@@ -101,10 +101,10 @@ IndexNow. Do not call wrangler directly: without `--branch main` it infers the
 branch from git, and a detached HEAD publishes a *preview* deployment while
 reporting success, leaving the live domain on the previous build.
 
-Expect the counters to jump from 781 to **1,114 dead** and **3,916 missing**.
-That is correct, not a parser fault: those figures come from sentences stating a
-national total, and they match the independent bulletin site the numbers were
-checked against.
+Expect the counters to jump from 781 to **1,132 dead** and **5,015 missing**,
+both from the Nepal Police bulletin of 17:00 on 2 September, with its district
+breakdown intact. That is correct, not a parser fault: they come from sentences
+stating a national total, on the most authoritative source in the list.
 
 ---
 
@@ -146,6 +146,13 @@ would have put "17 injured across Nepal this month" over the event's 292.
 converts BS dates from one verified anchor and that year's month lengths. Other
 years return `null`, so a bulletin shows with no timestamp rather than a wrong
 one. Adding 2084 is adding one row to `BS_YEARS`.
+
+**Never import `src/figures-update.mjs` for its helpers without care.** It
+writes to the repository. It is guarded to run only when executed as a command,
+and that guard is load-bearing: without it, `npm test` rewrote event.json,
+src/content.mjs and today.json from live sources, and a figure reached a commit
+unreviewed. `test/figures.test.mjs` has a test that fails if the guard is
+removed.
 
 **GitHub's minimum schedule is five minutes**, and scheduled runs are queued
 rather than guaranteed. The workflow is what keeps the repository honest; the
