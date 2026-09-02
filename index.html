@@ -2420,6 +2420,57 @@
   main a:not(.btn):not(.deeplink):not(.post-btn){text-decoration:none; border-bottom:1px solid var(--border-strong);}
   main a:not(.btn):not(.deeplink):not(.post-btn):hover{border-bottom-color:var(--critical); color:var(--critical);}
 
+  /* =========================================================================
+     One layout per tab, and a header that gets out of the way.
+     ====================================================================== */
+
+  /* --- what belongs beside the story -------------------------------------
+     The dashboard — the standing figures on the right, the contents on the
+     left — is the shape of the front page, where a reader arriving cold needs
+     the toll, the newest lines and the helplines all at once. It is the wrong
+     shape everywhere else: on Live the news is the point, on Watch the video
+     is the point, on Map the map is. Repeating the same figures beside them
+     told the reader nothing they had not already read one tab ago, and took
+     a third of the window to do it. So every other tab is one column, full
+     width. */
+  .layout[data-tab-layout="full"]{grid-template-columns:minmax(0,1fr) !important; gap:0 !important;}
+  .layout[data-tab-layout="full"] > nav.toc,
+  .layout[data-tab-layout="full"] > aside.rail{display:none !important;}
+  @media (min-width:1240px){
+    .layout.has-home-rail[data-tab-layout="full"]{grid-template-columns:minmax(0,1fr) !important;}
+  }
+  /* With the whole width to play with, the day's stories run wider rather
+     than growing taller. */
+  @media (min-width:1100px){
+    .layout[data-tab-layout="full"] #panel-today .today-grid{grid-template-columns:repeat(3, minmax(0,1fr)) !important; max-width:none;}
+    .layout[data-tab-layout="full"] #panel-today .today-grid > .post-card:first-child{grid-column:1 / -1;}
+  }
+  @media (min-width:1600px){
+    .layout[data-tab-layout="full"] #panel-today .today-grid{grid-template-columns:repeat(4, minmax(0,1fr)) !important;}
+  }
+
+  /* --- the header ---------------------------------------------------------
+     A bar pinned to the top of a long page is a bar the reader is given once
+     and then charged for on every screen after it. It now leaves when the
+     reader is going down the page and comes back the moment they turn round,
+     which is when a reader wants navigation. The transform is on a wrapper so
+     the blur and the border travel with it, and it is a transform rather than
+     a change of position so nothing below it reflows while it moves. */
+  .sitehead{
+    transform:translate3d(0,0,0);
+    transition:transform 320ms cubic-bezier(0.22, 0.61, 0.36, 1),
+               box-shadow 320ms ease;
+    will-change:transform;
+  }
+  .sitehead.is-tucked{transform:translate3d(0,-102%,0);}
+  /* Once the page has moved at all the bar is floating over content rather
+     than sitting at the top of it, and a shadow is what says so. */
+  .sitehead.is-floating{box-shadow:0 1px 0 var(--border), 0 8px 24px rgba(0,0,0,0.10);}
+  @media (prefers-reduced-motion: reduce){
+    .sitehead{transition:none;}
+    .sitehead.is-tucked{transform:none;}
+  }
+
 </style>
 </head>
 <body>
@@ -4290,6 +4341,17 @@ var Tabs = (function(){
        Today, Watch and Map. The standing status — which day this is, when the
        page last moved, where it gets its facts — belongs on every tab
        anyway, so only the list goes away. */
+    /* The dashboard shape — contents on the left, standing figures on the
+       right — belongs to the front page only. Every other tab has one job
+       and gets the whole width to do it in. */
+    var DASHBOARD_TABS = { overview: 1 };
+    layout.setAttribute('data-tab-layout', DASHBOARD_TABS[current] ? 'dashboard' : 'full');
+    if(!DASHBOARD_TABS[current]){
+      nav.style.display = 'none';
+      layout.classList.remove('no-toc');
+      return;
+    }
+
     nav.style.display = '';
     if(sections.length < 2){
       nav.classList.add('toc-listless');
@@ -7165,6 +7227,47 @@ var LiveFeed = (function(){
     requestAnimationFrame(paint);
   }, { passive: true });
   paint();
+})();
+</script>
+
+<script>
+/* The header leaves when the reader is going down and comes back the instant
+   they turn round. Two rules keep it from twitching: a movement has to be
+   worth more than a few pixels before it counts, and the bar is always shown
+   near the top of the page and whenever the keyboard focus is inside it, so
+   it can never hide a control somebody is using. */
+(function(){
+  var head = document.querySelector('.sitehead');
+  if(!head) return;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)');
+  var lastY = window.scrollY || 0, ticking = false;
+  var THRESHOLD = 6;     /* ignore the jitter of a trackpad settling */
+  var FREE_ZONE = 90;    /* never hide it this near the top */
+
+  function frame(){
+    ticking = false;
+    var y = Math.max(0, window.scrollY || 0);
+    var delta = y - lastY;
+    head.classList.toggle('is-floating', y > 4);
+
+    if(Math.abs(delta) < THRESHOLD) return;
+    if(y < FREE_ZONE || head.contains(document.activeElement)){
+      head.classList.remove('is-tucked');
+    } else {
+      head.classList.toggle('is-tucked', delta > 0);
+    }
+    lastY = y;
+  }
+
+  addEventListener('scroll', function(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(frame);
+  }, { passive: true });
+
+  /* Tabbing into the header, or opening a menu in it, must bring it back. */
+  head.addEventListener('focusin', function(){ head.classList.remove('is-tucked'); });
+  if(!(reduce && reduce.matches)) frame();
 })();
 </script>
 
