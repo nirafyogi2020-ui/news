@@ -1,23 +1,6 @@
 {
-  "updated": "2026-09-02T15:14:29.000Z",
+  "updated": "2026-09-02T20:00:00+05:45",
   "posts": [
-    {
-      "id": "auto-2026-09-02-bhotekoshi-flood-leaves-1-204-dead-4-216-still-unaccounted-f",
-      "title": "Bhotekoshi flood leaves 1,204 dead; 4,216 still unaccounted for",
-      "time": "2026-09-02T15:14:29.000Z",
-      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/09/rasuwa-badhi-deathbody-1230-1024x576-1.jpg",
-      "body": [
-        "Unidentified bodies from the Bhotekoshi flood being managed. Kathmandu, September 2 At least 1,204 bodies have been recovered following the devastating floods in Rasuwa, according to the National Disaster Risk Reduction and Management…",
-        "Reported by Onlinekhabar. This card was filled in automatically from the source's own report, to keep the day from reading as empty. Follow the link for the full story."
-      ],
-      "sources": [
-        {
-          "name": "Onlinekhabar",
-          "url": "https://english.onlinekhabar.com/bhotekoshi-flood-death-toll-5.html"
-        }
-      ],
-      "auto": true
-    },
     {
       "id": "auto-2026-09-02-multinational-rescue-operations-underway-in-bhote-koshi-floo",
       "title": "Multinational rescue operations underway in Bhote Koshi flood zone: MoFA",
@@ -37,17 +20,21 @@
     },
     {
       "id": "latest-reported-figures",
-      "title": "Latest reported figures: 1,204 confirmed dead",
-      "time": "2026-09-02T14:14:38.000Z",
+      "title": "Latest reported figures: 1,222 confirmed dead",
+      "time": "2026-09-02T20:00:00+05:45",
       "image": "",
       "body": [
-        "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. confirmed dead: 1,204, up from 1,132, reported by Nagarik News.",
+        "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. confirmed dead: 1,222, up from 1,204, reported by Nepal Police. rescued: 11,993, up from 8,730, reported by Nepalnews.",
         "Where a report describes one district or one stretch of river rather than the national figure, it is not used here. Out of contact does not mean dead."
       ],
       "sources": [
         {
-          "name": "Nagarik News",
-          "url": "https://nagariknews.nagariknetwork.com/social-affairs/rasuwa-flood-update-death-toll-reaches-1-204-over-4-200-still-unaccounted-for-22-65.html"
+          "name": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10313/"
+        },
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/multinational-rescue-operations-underway-in-bhote-koshi-flood-zone-mofa/"
         }
       ],
       "revised": true

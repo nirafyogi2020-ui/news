@@ -8,16 +8,16 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-09-02T14:14:38.000Z",
-  "asOfSource": "Nagarik News",
+  "asOf": "2026-09-02T15:13:58.000Z",
+  "asOfSource": "Nepalnews",
   "stats": [
     {
       "icon": "dead",
-      "value": "1,204",
+      "value": "1,222",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nagarik News: 1,204. Up from 1,132. Read automatically from the published report, not edited by hand. Source: https://nagariknews.nagariknetwork.com/social-affairs/rasuwa-flood-update-death-toll-reaches-1-204-over-4-200-still-unaccounted-for-22-65.html Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Onlinekhabar: 1,114. Up from 768. Read automatically from the published report, not edited by hand. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
+      "detail": "Nepal Police: 1,222. Up from 1,204. Read automatically from the published report, not edited by hand. Source: https://nepalpolice.gov.np/news/10313/ Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Onlinekhabar: 1,114. Up from 768. Read automatically from the published report, not edited by hand. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
       "priorDetail": "Onlinekhabar: 1,114. Up from 768. Read automatically from the published report, not edited by hand. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
       "priorAsOf": "2026-08-30T14:00:00+05:45"
     },
@@ -40,10 +40,12 @@
     },
     {
       "icon": "people",
-      "value": "8,730",
+      "value": "11,993",
       "label": "rescued so far",
       "bar": 100,
-      "detail": "NDRRMA's 1pm Sunday situation update reported 8,730 people rescued, Onlinekhabar reported. The report did not publish a current agency or location breakdown for that total, so no sub-rows are inferred."
+      "detail": "Nepalnews: 11,993. Up from 8,730. Read automatically from the published report, not edited by hand. Source: https://english.nepalnews.com/s/nation/multinational-rescue-operations-underway-in-bhote-koshi-flood-zone-mofa/ Earlier detail (as of 2026-09-02T14:14:38.000Z), kept for the breakdown and the caveats and not describing the current figure: NDRRMA's 1pm Sunday situation update reported 8,730 people rescued, Onlinekhabar reported. The report did not publish a current agency or location breakdown for that total, so no sub-rows are inferred.",
+      "priorDetail": "NDRRMA's 1pm Sunday situation update reported 8,730 people rescued, Onlinekhabar reported. The report did not publish a current agency or location breakdown for that total, so no sub-rows are inferred.",
+      "priorAsOf": "2026-09-02T14:14:38.000Z"
     },
     {
       "icon": "power",
@@ -86,15 +88,19 @@
       },
       {
         "district": "Nawalparasi East",
-        "value": 217
+        "value": 218
       },
       {
         "district": "Nawalparasi West",
-        "value": 188
+        "value": 194
       },
       {
         "district": "Nuwakot",
         "value": 155
+      },
+      {
+        "district": "Rasuwa",
+        "value": 127
       },
       {
         "district": "Gorkha",
@@ -102,11 +108,7 @@
       },
       {
         "district": "Dhading",
-        "value": 59
-      },
-      {
-        "district": "Rasuwa",
-        "value": 45
+        "value": 60
       },
       {
         "district": "Tanahun",
@@ -117,9 +119,9 @@
         "value": 14
       }
     ],
-    "total": 1132,
+    "total": 1222,
     "source": "Nepal Police",
-    "url": "https://nepalpolice.gov.np/news/10312/",
-    "time": "2026-09-02T17:00:00+05:45"
+    "url": "https://nepalpolice.gov.np/news/10313/",
+    "time": "2026-09-02T20:00:00+05:45"
   }
 }
