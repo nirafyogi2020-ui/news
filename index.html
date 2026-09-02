@@ -2351,8 +2351,19 @@
     border-bottom:1px solid var(--border);
     color:var(--text-muted);
   }
-  .statusbar b, .statusbar strong, .statusbar .sb-n{color:var(--critical); font-family:var(--font-mono);}
-  .statusbar a{color:var(--text);}
+  /* The "LIVE" button keeps its red, because it is the one control in the
+     strip and red is what makes it findable. Everything else in the strip is
+     text. */
+  .statusbar .sb-label{background:var(--alert); color:#fff; font-weight:700; letter-spacing:0.1em;}
+  .statusbar .sb-item{color:var(--text-muted);}
+  /* Figures inside the strip: the data face, so the eye picks them out of the
+     sentence without the sentence having to shout. */
+  .statusbar .sb-item b{
+    color:var(--critical); font-family:var(--font-mono); font-weight:700;
+    letter-spacing:0.01em;
+  }
+  .statusbar a{color:inherit; border-bottom:0;}
+  .statusbar a:hover .sb-item, .statusbar a:hover{color:var(--text);}
 
   /* --- the counter board --------------------------------------------------
      This is the page's thesis and it was three flat boxes. Now the figure
