@@ -23,13 +23,11 @@
     },
     {
       "icon": "missing",
-      "value": "5,015",
+      "value": "4,216",
       "tone": "critical",
       "label": "listed missing in Nepal",
       "bar": 100,
-      "detail": "Nepal Police: 5,015. Up from 3,916. Read automatically from the published report, not edited by hand. Source: https://nepalpolice.gov.np/news/10312/ Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: NDTV: 3,916. Up from 2,502. Read automatically from the published report, not edited by hand. Source: https://www.ndtv.com/world-news/nepal-flash-floods-live-updates-rasuwa-bhotekoshi-flood-rescue-relief-operations-latest-news-11979911#publisher=newsstand",
-      "priorDetail": "NDTV: 3,916. Up from 2,502. Read automatically from the published report, not edited by hand. Source: https://www.ndtv.com/world-news/nepal-flash-floods-live-updates-rasuwa-bhotekoshi-flood-rescue-relief-operations-latest-news-11979911#publisher=newsstand",
-      "priorAsOf": "2026-08-30T14:00:00+05:45"
+      "detail": "Nepalnews: 4,216 still unaccounted for, alongside 1,204 bodies recovered, in the same 2 September bulletin as the current toll. Source: https://nepalnews.com/ An earlier automatic read reported 5,015 here; no bulletin supports that figure and it has been withdrawn."
     },
     {
       "icon": "missing",
