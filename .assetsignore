@@ -5,3 +5,4 @@ PROMPT.md
 package.json
 package-lock.json
 deploy.sh
+HANDOFF.md

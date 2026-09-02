@@ -1,23 +1,19 @@
 {
-  "updated": "2026-09-02T10:29:39.000Z",
+  "updated": "2026-09-02T12:00:00+05:45",
   "posts": [
     {
       "id": "latest-reported-figures",
       "title": "Latest reported figures: 1,114 confirmed dead",
-      "time": "2026-09-02T10:29:39.000Z",
+      "time": "2026-09-02T12:00:00+05:45",
       "image": "",
       "body": [
-        "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. confirmed dead: 1,114, up from 768, reported by Onlinekhabar. listed missing: 3,916, up from 2,502, reported by NDTV.",
+        "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. listed missing: 5,015, up from 3,916, reported by Nepal Police.",
         "Where a report describes one district or one stretch of river rather than the national figure, it is not used here. Out of contact does not mean dead."
       ],
       "sources": [
         {
-          "name": "Onlinekhabar",
-          "url": "https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html"
-        },
-        {
-          "name": "NDTV",
-          "url": "https://www.ndtv.com/world-news/nepal-flash-floods-live-updates-rasuwa-bhotekoshi-flood-rescue-relief-operations-latest-news-11979911#publisher=newsstand"
+          "name": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10312/"
         }
       ],
       "revised": true

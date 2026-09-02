@@ -25,8 +25,8 @@ export const BODIES_SOURCE = 'Onlinekhabar';
 
 /* NDRRMA's 1pm Sunday update reports the current missing total. Its detailed
    group breakdown is older and remains separately timestamped below. */
-export const MISSING_AS_OF = '2026-09-02T08:55:34+05:45';
-export const MISSING_SOURCE = 'NDTV';
+export const MISSING_AS_OF = '2026-09-02T12:00:00+05:45';
+export const MISSING_SOURCE = 'Nepal Police';
 
 export const RESCUE_AS_OF = '2026-08-30T13:00:00+05:45';
 export const RESCUE_SOURCE = 'NDRRMA 1pm Sunday situation update, reported by Onlinekhabar';
@@ -96,7 +96,7 @@ export const TOLL = {
   deadNepal: 1114,
   deadNepalEarlier: 768,
   deadChina: 16,
-  missing: 3916,
+  missing: 5015,
   missingChina: 546,
   missingChinaForeign: 261,
   missingIndian: 133,
