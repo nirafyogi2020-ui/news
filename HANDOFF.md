@@ -1,21 +1,18 @@
 # Handoff: finish switching the figures to automatic
 
-Written by the cloud session that built the change, for whoever picks this up
-on a machine that can reach Cloudflare. Everything in here has been run and
-verified except the publish, which needs a Cloudflare credential the cloud
-session did not have.
+Written by the cloud session that built the change, and updated on 2 September
+2026 once the publish was wired up and verified against the live domain.
 
-State at handoff: branch `main`, commit `5151d95`. Working tree clean, 33
-tests green, audit clean.
+State: branch `main`. Working tree clean, 33 tests green, audit clean, Pages
+connected to the repository, live domain serving the current figures.
 
 ---
 
 ## The one-line version
 
-The site's counters now read themselves from the sources every five minutes,
-with no model and no cost per run. Everything works except the publish, which
-needs a Cloudflare token. Until that exists the repository is current and the
-live domain is not.
+The site's counters read themselves from the sources every five minutes, with
+no model and no cost per run, and every push to `main` deploys itself. Nothing
+is outstanding.
 
 ---
 
@@ -38,25 +35,18 @@ live domain is not.
 
 ---
 
-## The only blocker: publishing
+## Publishing: resolved (2 September 2026)
 
-Cloudflare Pages is **not** connected to this GitHub repository. `deploy.sh`
-uploads directly with wrangler. A push therefore changes the repository and
-nothing else. That is the whole reason the live page sat three days behind its
-own sources.
+The Pages project `nepal-flood-relief` is now connected to this GitHub
+repository, so every push to `main` deploys itself. `wrangler pages project
+list` reports `Git Provider: Yes` for the project. No `CLOUDFLARE_API_TOKEN`
+secret exists and none is needed; the workflow's own publish step stays skipped
+by design, which is correct — a second publisher would race this one.
 
-In the Cloudflare dashboard: My Profile → API Tokens → Create Token, with the
-**Cloudflare Pages: Edit** permission.
-
-In GitHub: Settings → Secrets and variables → Actions → New repository secret,
-named exactly `CLOUDFLARE_API_TOKEN`.
-
-*Either* of those, not both:
-
-- the secret, which makes the workflow publish on its own every five minutes; or
-- connecting the Pages project `nepal-flood-relief` to this repository in the
-  Cloudflare dashboard, after which every push deploys itself and no secret is
-  needed.
+`deploy.sh` still works and is still the right way to publish by hand from a
+machine logged into Cloudflare. It remains the only supported manual path: do
+not call wrangler directly, because without `--branch main` a detached HEAD
+publishes a preview deployment while reporting success.
 
 ### Subtlety worth knowing
 
@@ -150,7 +140,7 @@ Bump `node-version` in the workflow when convenient.
     curl -s https://nepaldisasterupdatelive.nxtimaginelabs.com/ \
       | grep -o '<title>[^<]*</title>'
 
-Should read 1,114 dead and a 2 September date, not 781 and 30 August.
+Should read the current toll and today's date, not 781 and 30 August.
 
     curl -s https://nepaldisasterupdatelive.nxtimaginelabs.com/api/figures \
       | head -c 200
