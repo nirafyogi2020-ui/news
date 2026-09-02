@@ -31,7 +31,7 @@
  *   }
  */
 
-import { resolveBoard, METRICS, inBounds } from './_figures-core.js';
+import { resolveBoard, METRICS, inBounds, readDistricts, isPrimary } from './_figures-core.js';
 import { loadPoliceNews } from './police.js';
 
 /* The board is the fastest-moving thing on the site, so it gets the shortest
@@ -70,6 +70,7 @@ export async function onRequestGet(context) {
      A real correction still gets through, and the page labels it as one. */
   const board = resolveBoard(items, { floors: published || {} });
   const changed = diff(published, board);
+  const districts = latestDistricts(items);
 
   const response = new Response(JSON.stringify({
     updated: new Date().toISOString(),
@@ -77,6 +78,7 @@ export async function onRequestGet(context) {
     published,
     board,
     changed,
+    districts,
     sources: {
       counted: items.length,
       names: [...new Set(items.map(i => i.source).filter(Boolean))].sort(),
@@ -92,6 +94,31 @@ export async function onRequestGet(context) {
 
   context.waitUntil(cache.put(cacheKey, response.clone()));
   return response;
+}
+
+/**
+ * The newest bulletin that actually breaks the toll down by district.
+ *
+ * Only the police publish this breakdown, and only in some of their bulletins,
+ * so a bulletin without one must leave the last good breakdown standing rather
+ * than blanking the table. Returning null here is what lets the page do that.
+ */
+export function latestDistricts(items) {
+  const bulletins = (items || [])
+    .filter(item => item && isPrimary(item.source))
+    .sort((a, b) => (Date.parse(b.time) || 0) - (Date.parse(a.time) || 0));
+  for (const item of bulletins) {
+    const rows = readDistricts([item.title, item.summary, item.body].filter(Boolean).join(' '));
+    if (rows.length < 2) continue;
+    return {
+      rows,
+      total: rows.reduce((sum, row) => sum + row.value, 0),
+      source: item.source,
+      url: item.url || null,
+      time: item.time || null
+    };
+  }
+  return null;
 }
 
 /**

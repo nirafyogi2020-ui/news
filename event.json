@@ -17,8 +17,8 @@
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nagarik News: 1,204. Up from 1,132. Read automatically from the published report, not edited by hand. Source: https://nagariknews.nagariknetwork.com/social-affairs/rasuwa-flood-update-death-toll-reaches-1-204-over-4-200-still-unaccounted-for-22-65.html Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Onlinekhabar: 1,114. Up from 768. Read automatically from the published report, not edited by hand. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Nepal Police bulletin 10275 reported 768 bodies found in Nepal by 2pm Sunday. The district breakdown is Chitwan 264, Nawalparasi East 194, Nawalparasi West 100, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 37 and Rasuwa 13. China's separate toll of 16 is not added here.",
-      "priorDetail": "Onlinekhabar: 1,114. Up from 768. Read automatically from the published report, not edited by hand. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Nepal Police bulletin 10275 reported 768 bodies found in Nepal by 2pm Sunday. The district breakdown is Chitwan 264, Nawalparasi East 194, Nawalparasi West 100, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 37 and Rasuwa 13. China's separate toll of 16 is not added here.",
+      "detail": "Nagarik News: 1,204. Up from 1,132. Read automatically from the published report, not edited by hand. Source: https://nagariknews.nagariknetwork.com/social-affairs/rasuwa-flood-update-death-toll-reaches-1-204-over-4-200-still-unaccounted-for-22-65.html Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Onlinekhabar: 1,114. Up from 768. Read automatically from the published report, not edited by hand. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
+      "priorDetail": "Onlinekhabar: 1,114. Up from 768. Read automatically from the published report, not edited by hand. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
       "priorAsOf": "2026-08-30T14:00:00+05:45"
     },
     {
@@ -27,8 +27,8 @@
       "tone": "critical",
       "label": "listed missing in Nepal",
       "bar": 100,
-      "detail": "Nepal Police: 5,015. Up from 3,916. Read automatically from the published report, not edited by hand. Source: https://nepalpolice.gov.np/news/10312/ Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: NDTV: 3,916. Up from 2,502. Read automatically from the published report, not edited by hand. Source: https://www.ndtv.com/world-news/nepal-flash-floods-live-updates-rasuwa-bhotekoshi-flood-rescue-relief-operations-latest-news-11979911#publisher=newsstand Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: NDRRMA's 1pm Sunday situation update reported 2,502 people still unaccounted for, Onlinekhabar reported. The earlier 9am update identified 589 foreign nationals and 127 Nepalis travelling with foreign tourists, but the newer report did not publish a complete nationality split. Out of contact does not mean dead: disrupted phones, power and internet can prevent contact.",
-      "priorDetail": "NDTV: 3,916. Up from 2,502. Read automatically from the published report, not edited by hand. Source: https://www.ndtv.com/world-news/nepal-flash-floods-live-updates-rasuwa-bhotekoshi-flood-rescue-relief-operations-latest-news-11979911#publisher=newsstand Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: NDRRMA's 1pm Sunday situation update reported 2,502 people still unaccounted for, Onlinekhabar reported. The earlier 9am update identified 589 foreign nationals and 127 Nepalis travelling with foreign tourists, but the newer report did not publish a complete nationality split. Out of contact does not mean dead: disrupted phones, power and internet can prevent contact.",
+      "detail": "Nepal Police: 5,015. Up from 3,916. Read automatically from the published report, not edited by hand. Source: https://nepalpolice.gov.np/news/10312/ Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: NDTV: 3,916. Up from 2,502. Read automatically from the published report, not edited by hand. Source: https://www.ndtv.com/world-news/nepal-flash-floods-live-updates-rasuwa-bhotekoshi-flood-rescue-relief-operations-latest-news-11979911#publisher=newsstand",
+      "priorDetail": "NDTV: 3,916. Up from 2,502. Read automatically from the published report, not edited by hand. Source: https://www.ndtv.com/world-news/nepal-flash-floods-live-updates-rasuwa-bhotekoshi-flood-rescue-relief-operations-latest-news-11979911#publisher=newsstand",
       "priorAsOf": "2026-08-30T14:00:00+05:45"
     },
     {
@@ -77,5 +77,49 @@
       "bar": 60,
       "detail": "Prime Minister Balen Shah said Rs 5.04 billion had been deposited in nine commercial bank accounts for flood rescue and relief, Onlinekhabar reported at 9:04pm Saturday. The same report said another US$1.8 million was deposited at Himalayan Bank and Laxmi Bank. This is money deposited in the fund, not the separate Rs 1 billion released by the government."
     }
-  ]
+  ],
+  "districts": {
+    "rows": [
+      {
+        "district": "Chitwan",
+        "value": 348
+      },
+      {
+        "district": "Nawalparasi East",
+        "value": 217
+      },
+      {
+        "district": "Nawalparasi West",
+        "value": 188
+      },
+      {
+        "district": "Nuwakot",
+        "value": 155
+      },
+      {
+        "district": "Gorkha",
+        "value": 68
+      },
+      {
+        "district": "Dhading",
+        "value": 59
+      },
+      {
+        "district": "Rasuwa",
+        "value": 45
+      },
+      {
+        "district": "Tanahun",
+        "value": 38
+      },
+      {
+        "district": "India (returned)",
+        "value": 14
+      }
+    ],
+    "total": 1132,
+    "source": "Nepal Police",
+    "url": "https://nepalpolice.gov.np/news/10312/",
+    "time": "2026-09-02T17:00:00+05:45"
+  }
 }

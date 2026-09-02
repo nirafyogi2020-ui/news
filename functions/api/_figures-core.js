@@ -449,3 +449,73 @@ export function resolveBoard(items, options = {}) {
   }
   return board;
 }
+
+/* ---------------------------------------------------------------------------
+   The district breakdown.
+
+   The police bulletin does not only state a national total; it says where the
+   bodies were found, district by district, in one sentence. The page used to
+   carry that breakdown as hand-typed HTML, which went stale the moment the
+   next bulletin landed and stayed stale for days. Reading it from the same
+   sentence the total comes from is what keeps the table and the counter from
+   contradicting each other.
+
+   The sentence reads "जसमध्ये रसुवामा ४५ जना, नुवाकोटमा १ सय ५५ जना, ..." —
+   a district name, the locative मा, then the figure, then जना. One district
+   in the run is written without the मा, and the bodies recovered in India and
+   handed back are a row of their own, so both shapes are matched here.
+   ------------------------------------------------------------------------ */
+
+/* Written as they appear in the bulletins, with the English label the table
+   prints. A name is matched at its longest first, so "नवलपरासी पूर्व" can
+   never be read as a bare "नवलपरासी". */
+export const DISTRICTS = [
+  { ne: 'नवलपरासी पूर्व', en: 'Nawalparasi East' },
+  { ne: 'नवलपरासी पश्चिम', en: 'Nawalparasi West' },
+  { ne: 'रसुवा', en: 'Rasuwa' },
+  { ne: 'नुवाकोट', en: 'Nuwakot' },
+  { ne: 'धादिङ', en: 'Dhading' },
+  { ne: 'चितवन', en: 'Chitwan' },
+  { ne: 'गोरखा', en: 'Gorkha' },
+  { ne: 'तनहुँ', en: 'Tanahun' },
+  { ne: 'तनहुं', en: 'Tanahun' },
+  { ne: 'मकवानपुर', en: 'Makwanpur' },
+  { ne: 'पर्सा', en: 'Parsa' },
+  { ne: 'भारत', en: 'India (returned)' }
+];
+
+/* The joiners that carry no meaning for this reader but do sit between a
+   district name and its figure: the zero-width marks Nepali typesetting
+   leaves inside words, and the honorific spacing around them. */
+function flatten(text) {
+  return latinDigits(text).replace(/[​‌‍]/g, '');
+}
+
+/**
+ * Read every district figure stated in one bulletin.
+ *
+ * Returns `[]` rather than a partial guess when the sentence is not there, so
+ * a bulletin that states only a national total leaves the previous breakdown
+ * standing instead of blanking the table.
+ */
+export function readDistricts(text) {
+  const flat = flatten(text);
+  const out = [];
+  const seen = new Set();
+  for (const district of DISTRICTS) {
+    if (seen.has(district.en)) continue;
+    /* name, optional locative, then the figure up to जना. The figure itself
+       may be digits or the "१ सय ५५" spelled form, so it is handed to the
+       same reader the totals use. */
+    const pattern = new RegExp(
+      flatten(district.ne) + '(?:मा|माा)?\\s*(?:भेटिएको\\s*)?[^0-9]{0,48}?([0-9][0-9\\s,]*(?:(?:हजार|सय)[0-9\\s,]*)*)\\s*(?:जना|गरी|वटा)'
+    );
+    const match = flat.match(pattern);
+    if (!match) continue;
+    const value = nepaliNumber(match[1]);
+    if (!Number.isFinite(value) || value <= 0 || value > 100000) continue;
+    seen.add(district.en);
+    out.push({ district: district.en, value });
+  }
+  return out.sort((a, b) => b.value - a.value);
+}
