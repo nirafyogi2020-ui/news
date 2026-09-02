@@ -8,24 +8,28 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-08-30T14:00:00+05:45",
-  "asOfSource": "Nepal Police bulletin 10275, 2pm Sunday",
+  "asOf": "2026-09-02T10:29:39.000Z",
+  "asOfSource": "Onlinekhabar",
   "stats": [
     {
       "icon": "dead",
-      "value": "768",
+      "value": "1,114",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepal Police bulletin 10275 reported 768 bodies found in Nepal by 2pm Sunday. The district breakdown is Chitwan 264, Nawalparasi East 194, Nawalparasi West 100, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 37 and Rasuwa 13. China's separate toll of 16 is not added here."
+      "detail": "Onlinekhabar: 1,114. Up from 768. Read automatically from the published report, not edited by hand. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Nepal Police bulletin 10275 reported 768 bodies found in Nepal by 2pm Sunday. The district breakdown is Chitwan 264, Nawalparasi East 194, Nawalparasi West 100, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 37 and Rasuwa 13. China's separate toll of 16 is not added here.",
+      "priorDetail": "Nepal Police bulletin 10275 reported 768 bodies found in Nepal by 2pm Sunday. The district breakdown is Chitwan 264, Nawalparasi East 194, Nawalparasi West 100, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 37 and Rasuwa 13. China's separate toll of 16 is not added here.",
+      "priorAsOf": "2026-08-30T14:00:00+05:45"
     },
     {
       "icon": "missing",
-      "value": "2,502",
+      "value": "3,916",
       "tone": "critical",
       "label": "listed missing in Nepal",
       "bar": 100,
-      "detail": "NDRRMA's 1pm Sunday situation update reported 2,502 people still unaccounted for, Onlinekhabar reported. The earlier 9am update identified 589 foreign nationals and 127 Nepalis travelling with foreign tourists, but the newer report did not publish a complete nationality split. Out of contact does not mean dead: disrupted phones, power and internet can prevent contact."
+      "detail": "NDTV: 3,916. Up from 2,502. Read automatically from the published report, not edited by hand. Source: https://www.ndtv.com/world-news/nepal-flash-floods-live-updates-rasuwa-bhotekoshi-flood-rescue-relief-operations-latest-news-11979911#publisher=newsstand Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: NDRRMA's 1pm Sunday situation update reported 2,502 people still unaccounted for, Onlinekhabar reported. The earlier 9am update identified 589 foreign nationals and 127 Nepalis travelling with foreign tourists, but the newer report did not publish a complete nationality split. Out of contact does not mean dead: disrupted phones, power and internet can prevent contact.",
+      "priorDetail": "NDRRMA's 1pm Sunday situation update reported 2,502 people still unaccounted for, Onlinekhabar reported. The earlier 9am update identified 589 foreign nationals and 127 Nepalis travelling with foreign tourists, but the newer report did not publish a complete nationality split. Out of contact does not mean dead: disrupted phones, power and internet can prevent contact.",
+      "priorAsOf": "2026-08-30T14:00:00+05:45"
     },
     {
       "icon": "missing",

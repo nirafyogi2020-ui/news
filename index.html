@@ -2084,6 +2084,41 @@
   .ticker p.tk-sum{margin:4px 0 0; font-size:0.85rem; color:var(--text-muted); line-height:1.45;}
   .ticker .tk-foot{padding:10px 14px; font-size:0.8rem;}
   @media (prefers-reduced-motion: reduce){.ticker-head .tk-dot{animation:none;}}
+/* -------------------------------------------------------------------------
+   The official actions row.
+
+   Above the counters, because for the small number of readers who arrive
+   needing to report someone missing or to give money, a phone number is
+   worth more than a figure. It sits in one quiet row rather than a banner:
+   the people who need it find it immediately, and everyone else reads past
+   it. Every destination is a government domain, named in the link.
+   ---------------------------------------------------------------------- */
+.actrow{
+  display:flex; flex-wrap:wrap; gap:8px;
+  margin:0 0 14px;
+}
+.actrow a{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:9px 13px; border-radius:11px;
+  border:1px solid var(--line, rgba(120,130,150,.28));
+  background:var(--card, rgba(127,137,160,.06));
+  color:inherit; text-decoration:none;
+  font-size:.82rem; line-height:1.25; font-weight:600;
+  transition:border-color .15s ease, background-color .15s ease, transform .15s ease;
+}
+.actrow a:hover{ border-color:currentColor; transform:translateY(-1px); }
+.actrow a:focus-visible{ outline:2px solid currentColor; outline-offset:2px; }
+.actrow .act-sub{
+  display:block; font-weight:450; opacity:.68; font-size:.74rem; margin-top:1px;
+}
+.actrow .act-ico{ flex:none; width:17px; height:17px; opacity:.75; }
+.actrow .act-urgent{ border-color:rgba(200,60,60,.45); }
+.block-note-sep{ opacity:.4; margin:0 5px; }
+@media (max-width:520px){
+  .actrow{ gap:6px; }
+  .actrow a{ flex:1 1 100%; }
+}
+
 </style>
 </head>
 <body>
@@ -2422,9 +2457,26 @@
     <div class="numblock" id="numblock">
       <div class="numblock-head">
         <h2 class="block-title" id="numbers-title">Where the numbers stand</h2>
-        <span class="block-note"><span class="livedot" aria-hidden="true"></span><span id="glance-updated">checking&hellip;</span></span>
+        <span class="block-note"><span class="livedot" aria-hidden="true"></span><span id="glance-updated">checking&hellip;</span><span class="block-note-sep" aria-hidden="true">·</span><span id="figures-checked">Sources checked just now</span></span>
       </div>
       <p class="numblock-sub" id="numbers-sub">Rasuwa flash flood, 26 August 2026 · as of 30 August 2026, 2:00 pm NPT · Nepal Police bulletin 10275, 2pm Sunday</p>
+      <!-- Official destinations, on government domains. Ordered by what a
+           reader in trouble needs first: report a person, then give, then
+           the numbers to call. -->
+      <div class="actrow">
+        <a class="act-urgent" href="https://rescue.opmcm.gov.np/" target="_blank" rel="noopener">
+          <svg class="act-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></svg>
+          <span>Report someone missing<span class="act-sub">rescue.opmcm.gov.np · Prime Minister&rsquo;s Office</span></span>
+        </a>
+        <a href="https://donate.gov.np/" target="_blank" rel="noopener">
+          <svg class="act-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2.5"></rect><circle cx="12" cy="12" r="2.6"></circle></svg>
+          <span>Give to the official fund<span class="act-sub">donate.gov.np · Disaster Relief Fund</span></span>
+        </a>
+        <a href="tel:1234">
+          <svg class="act-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5c0 8.3 6.7 15 15 15v-3.2l-4-1.6-2 2a12 12 0 0 1-6.2-6.2l2-2L7.2 5z"></path></svg>
+          <span>Rescue helpline 1234<span class="act-sub">Police 100 · Ambulance 102 · NEOC 1144</span></span>
+        </a>
+      </div>
       <div class="numgrid" id="numgrid"><!--ssr:numgrid--><button class="stat" data-detail="Nepal Police bulletin 10275 reported 768 bodies found in Nepal by 2pm Sunday. The district breakdown is Chitwan 264, Nawalparasi East 194, Nawalparasi West 100, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 37 and Rasuwa 13. China's separate toll of 16 is not added here."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-9C1 8.5 3 4.5 7 4.5c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6 4 4.5 7.5-1 2-3 4-5 5.5"></path><path d="M4.5 12.5h4l1.5-3 2.5 6 1.5-3h5"></path></svg></span><span class="n critical">768</span><span class="l">confirmed dead</span><span class="bar"><i style="width:100%"></i></span></button><button class="stat" data-detail="NDRRMA's 1pm Sunday situation update reported 2,502 people still unaccounted for, Onlinekhabar reported. The earlier 9am update identified 589 foreign nationals and 127 Nepalis travelling with foreign tourists, but the newer report did not publish a complete nationality split. Out of contact does not mean dead: disrupted phones, power and internet can prevent contact."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path><path d="M10.5 7.5v3l2 1.5"></path></svg></span><span class="n critical">2,502</span><span class="l">listed missing in Nepal</span><span class="bar"><i style="width:100%"></i></span></button><button class="stat" data-detail="Xinhua reports 546 people missing around Gyirong Port in Xizang (Tibet) as of 6pm Saturday, including 261 foreign nationals. Combined with Nepal's 2,502-person list that is 3,048 people unaccounted for across both countries, although the two countries' counts may overlap."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path><path d="M10.5 7.5v3l2 1.5"></path></svg></span><span class="n">546</span><span class="l">missing on the China side</span><span class="bar"><i style="width:56%"></i></span></button><button class="stat" data-detail="NDRRMA's 1pm Sunday situation update reported 8,730 people rescued, Onlinekhabar reported. The report did not publish a current agency or location breakdown for that total, so no sub-rows are inferred."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"></circle><path d="M3.5 19v-1c0-2.8 2.5-4.5 5.5-4.5s5.5 1.7 5.5 4.5v1"></path><path d="M16 5.5a3 3 0 0 1 0 5.8"></path><path d="M17.5 13.2c2 .6 3.5 2 3.5 4.3V19"></path></svg></span><span class="n">8,730</span><span class="l">rescued so far</span><span class="bar"><i style="width:100%"></i></span></button><button class="stat" data-detail="The Nepal Electricity Authority reports 14 projects damaged with a combined capacity of about 748 MW: 9 operating plants (354 MW) and 5 under construction (394 MW). Named ones include Rasuwagadhi, Chilime, Sanjen Khola, Upper Trishuli-1, Trishuli and Devighat, plus a 220 kV substation. An earlier same-day Ministry of Energy estimate said 431 MW."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l5 3V11l5 3V8l8 4v9z"></path><path d="M3 21h18"></path><path d="M13 8V4l3-1v4"></path></svg></span><span class="n">14</span><span class="l">hydropower projects damaged</span><span class="bar"><i style="width:60%"></i></span></button><button class="stat" data-detail="Counting from the morning of 26 August 2026, when the flood hit. Search, rescue and recovery work is still going on this many days later."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2.5"></rect><path d="M3.5 10h17"></path><path d="M8 3v4M16 3v4"></path></svg></span><span class="n">Day 5</span><span class="l">since the flood</span><span class="bar"><i style="width:16%"></i></span></button><button class="stat" id="econ-loss-stat" data-detail="Physical Infrastructure Minister Sunil Lamsal put damage to roads and bridges at about Rs 200 billion on 26 August, and called it preliminary. Hydropower and private property are not in that figure. The whole 42 km road from Betrawati to the Rasuwagadhi border crossing was destroyed at multiple points."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"></path><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg></span><span class="n small" id="econ-loss-value">Rs 200bn</span><span class="l">damage, early estimate</span><span class="bar"><i style="width:8%"></i></span></button><button class="stat" id="relief-fund-stat" data-detail="Prime Minister Balen Shah said Rs 5.04 billion had been deposited in nine commercial bank accounts for flood rescue and relief, Onlinekhabar reported at 9:04pm Saturday. The same report said another US$1.8 million was deposited at Himalayan Bank and Laxmi Bank. This is money deposited in the fund, not the separate Rs 1 billion released by the government."><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2.5"></rect><circle cx="12" cy="12" r="2.6"></circle><path d="M6 9.5v5M18 9.5v5"></path></svg></span><span class="n small" id="relief-fund-value">Rs 5.04bn</span><span class="l">relief fund deposited</span><span class="bar"><i style="width:60%"></i></span></button><!--/ssr:numgrid-->
       </div>
       <p class="detail" id="stat-detail">Tap any number to see where it comes from. Early counts move. Where sources disagree, the lower confirmed figure is shown.</p>
@@ -6140,7 +6192,6 @@ var LiveFeed = (function(){
 (function(){
   var grid = document.getElementById('numgrid');
   if(!grid) return;
-  var latestLiveToll = null;
 
   var ICONS = {
     dead:    '<path d="M12 21s-7-4.35-9.5-9C1 8.5 3 4.5 7 4.5c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6 4 4.5 7.5-1 2-3 4-5 5.5"></path><path d="M4.5 12.5h4l1.5-3 2.5 6 1.5-3h5"></path>',
@@ -6223,57 +6274,200 @@ var LiveFeed = (function(){
     window.dispatchEvent(new CustomEvent('event-loaded', { detail: event }));
   }
 
-  /* The counters are edited by hand, once an hour at best. Nepal Police
-     publish a new toll when they have one. In the gap between those two the
-     page was showing a figure its own source had already overtaken, which is
-     the worst thing a disaster page can do.
+  /* -----------------------------------------------------------------------
+     The live figure board.
 
-     /api/figures reads the toll out of the police bulletin itself. It is used
-     only to raise the number, never to lower it, it says on the page that the
-     figure came straight from the bulletin and at what hour, and if the
-     bulletin says nothing this recognises, the edited figure stands. */
-  function applyLiveToll(){
-    fetch('/api/figures', { cache:'no-store' })
+     The counters in event.json are written by a scheduled job, and between
+     its runs a bulletin lands and a newsroom publishes it. /api/figures reads
+     every source this site follows — the government portals, the police
+     bulletins and the newsrooms — and says what each one currently states for
+     the dead, the missing and the rescued.
+
+     Three rules the endpoint enforces and this code relies on:
+
+       - a sentence naming a place and claiming no total never sets a counter,
+         so "105 bodies along one riverbank" cannot stand in for the national
+         figure;
+       - a figure below the published one only wins if it says it is a
+         correction, so a re-indexed day-one wire story cannot walk a counter
+         backwards;
+       - a metric nobody states is absent, and the built figure stands.
+
+     The page asks every second. The response carries a fifteen-second cache,
+     so the browser answers most of those asks from its own copy and the edge
+     answers the rest — the number moves within seconds of anyone publishing
+     it, and the cost does not grow with the number of readers.
+     --------------------------------------------------------------------- */
+
+  /* Counter label in event.json -> metric name in the board. */
+  var LIVE_METRICS = {
+    'confirmed dead': 'dead',
+    'listed missing in Nepal': 'missing',
+    'rescued so far': 'rescued'
+  };
+
+  var liveShown = {};      // metric -> the value currently painted
+  var lastCheckedAt = 0;   // when the board last answered
+
+  function fmtNum(n){
+    var v = Number(n);
+    return isNaN(v) ? String(n) : v.toLocaleString('en-US');
+  }
+
+  function nptTime(iso){
+    var d = new Date(iso);
+    if(isNaN(d.getTime())) return '';
+    try{
+      return d.toLocaleString('en-GB', {
+        timeZone:'Asia/Kathmandu', day:'numeric', month:'short',
+        hour:'2-digit', minute:'2-digit'
+      }) + ' NPT';
+    }catch(e){ return ''; }
+  }
+
+  /* The sentence under a tile: what the number is, who stated it, when, how
+     it moved, and what else is being reported. A reader who taps a number
+     should not have to take it on faith. */
+  function detailFor(fig, previous){
+    var parts = [];
+    var when = fig.statedTime ? ' at ' + fig.statedTime : '';
+    parts.push((fig.source || 'Source') + when + ': ' + fmtNum(fig.value) + '.');
+
+    if(previous && previous !== fig.value){
+      parts.push(fig.value > previous
+        ? 'Up from ' + fmtNum(previous) + '.'
+        : 'Corrected down from ' + fmtNum(previous) + '.');
+    }
+    if(fig.time) parts.push('Published ' + nptTime(fig.time) + '.');
+    if(fig.sentence) parts.push('“' + fig.sentence + '”');
+
+    /* The figures that did not set the counter, including the district and
+       riverbank sub-counts. Showing them is the honest version of "sources
+       disagree": the reader sees the spread instead of one line. */
+    var others = (fig.others || []).filter(function(o){ return o && o.value !== fig.value; });
+    if(others.length){
+      parts.push('Also reported: ' + others.slice(0, 4).map(function(o){
+        return fmtNum(o.value) + ' (' + (o.source || 'unnamed') +
+          (o.scope === 'local' ? ', one area only' : '') + ')';
+      }).join(', ') + '.');
+    }
+    parts.push('Read automatically from the published reports. Nothing here is written by hand.');
+    return parts.join(' ');
+  }
+
+  function paintFigure(metric, label, fig){
+    var tileEl = grid.querySelector('.stat[data-label="' + label + '"]');
+    var previous = liveShown[metric];
+
+    if(tileEl){
+      var value = tileEl.querySelector('.n');
+      if(value){
+        if(previous == null){
+          previous = Number(String(value.textContent).replace(/\D/g, '')) || null;
+        }
+        value.textContent = fmtNum(fig.value);
+      }
+      tileEl.setAttribute('data-detail', detailFor(fig, previous));
+      /* If this tile's panel is open, refresh it in place rather than making
+         the reader tap again to see the number they just watched change. */
+      if(tileEl.classList.contains('is-active')){
+        var panel = document.getElementById('stat-detail');
+        if(panel) panel.textContent = tileEl.getAttribute('data-detail');
+      }
+    }
+
+    /* The hero and the sticky rail repeat the first counter. */
+    if(metric === 'dead'){
+      document.querySelectorAll('#hero-figures .hf-stat:first-child .hf-n, #rail-figures .rail-fig:first-child .rf-n')
+        .forEach(function(el){ el.textContent = fmtNum(fig.value); });
+    }
+
+    liveShown[metric] = fig.value;
+  }
+
+  /* One line under the counters naming what is currently ahead of the built
+     figures, so the freshness is visible without tapping anything. */
+  function paintLiveNote(data){
+    var sub = document.getElementById('numbers-sub');
+    if(!sub) return;
+
+    var moved = Object.keys(data.changed || {});
+    var note = document.getElementById('live-figures-note');
+
+    if(!moved.length){
+      if(note) note.remove();
+      return;
+    }
+    if(!note){
+      note = document.createElement('span');
+      note.id = 'live-figures-note';
+      sub.appendChild(note);
+    }
+    note.textContent = ' · Live: ' + moved.map(function(m){
+      var c = data.changed[m];
+      var fig = data.board[m] || {};
+      return fmtNum(c.to) + ' ' + m + (c.direction === 'down' ? ' (corrected down)' : '') +
+        (fig.source ? ', ' + fig.source : '');
+    }).join(' · ');
+  }
+
+  function applyBoard(data){
+    if(!data || !data.board) return;
+    for(var label in LIVE_METRICS){
+      if(!Object.prototype.hasOwnProperty.call(LIVE_METRICS, label)) continue;
+      var metric = LIVE_METRICS[label];
+      var fig = data.board[metric];
+      /* A metric no source states is absent, not zero. Leave the built
+         figure alone rather than painting a confident nothing. */
+      if(!fig || typeof fig.value !== 'number') continue;
+      if(liveShown[metric] === fig.value) continue;
+      paintFigure(metric, label, fig);
+    }
+    paintLiveNote(data);
+    window.__liveFigures = data;
+    window.dispatchEvent(new CustomEvent('live-figures', { detail: data }));
+  }
+
+  /* "Checked Ns ago", moving every second. The sources publish when they
+     publish; this says how long ago the site last looked, which is the part
+     the site can honestly promise. */
+  function paintFreshness(){
+    var el = document.getElementById('figures-checked');
+    if(!el || !lastCheckedAt) return;
+    var s = Math.max(0, Math.round((Date.now() - lastCheckedAt) / 1000));
+    el.textContent = s < 2 ? 'Sources checked just now'
+      : s < 60 ? 'Sources checked ' + s + 's ago'
+      : 'Sources checked ' + Math.round(s / 60) + ' min ago';
+  }
+
+  var inFlight = false;
+  function pollFigures(){
+    if(inFlight || document.hidden) return;
+    inFlight = true;
+    /* Default caching on purpose. The board carries a short max-age, so the
+       browser answers most of these from its own copy and only goes to the
+       network when that copy expires. Asking every second therefore costs
+       roughly one request per cache window, not one per second. */
+    fetch('/api/figures')
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(data){
-        if(!data || !data.ahead || !data.live) return;
-        var live = data.live;
-        var dead = String(live.dead);
-        if(latestLiveToll === dead) return;
-        latestLiveToll = dead;
-        var tileEl = grid.querySelector('.stat[data-label="confirmed dead"]');
-        var when = live.statedTime ? ' at ' + live.statedTime : '';
-        if(tileEl){
-          var value = tileEl.querySelector('.n');
-          if(value) value.textContent = dead;
-          tileEl.setAttribute('data-detail',
-            'Nepal Police bulletin' + when + ': ' + dead + ' confirmed dead. ' +
-            'Read from the bulletin itself, which is newer than the figure this page was built with.');
-        }
-        document.querySelectorAll('#hero-figures .hf-stat:first-child .hf-n, #rail-figures .rail-fig:first-child .rf-n')
-          .forEach(function(el){ el.textContent = dead; });
-        var sub = document.getElementById('numbers-sub');
-        if(sub){
-          var note = document.getElementById('live-police-toll-note');
-          if(!note){
-            note = document.createElement('span');
-            note.id = 'live-police-toll-note';
-            sub.appendChild(note);
-          }
-          note.textContent = ' · Live police bulletin: ' + dead + (when ? ' (' + live.statedTime + ')' : '');
-        }
-        window.__liveToll = live;
-        window.dispatchEvent(new CustomEvent('live-toll', { detail: live }));
+        if(!data) return;
+        lastCheckedAt = Date.parse(data.checkedAt || data.updated) || Date.now();
+        applyBoard(data);
+        paintFreshness();
       })
-      .catch(function(){ /* the edited figure stands */ });
+      .catch(function(){ /* the built figures stand */ })
+      .then(function(){ inFlight = false; });
   }
 
   fetch('/event.json', { cache:'no-store' })
     .then(function(r){ return r.ok ? r.json() : null; })
-    .then(function(event){ apply(event); applyLiveToll(); })
+    .then(function(event){ apply(event); pollFigures(); })
     .catch(function(){ /* fallback markup stays */ });
-  setInterval(applyLiveToll, 2 * 60 * 1000);
-  document.addEventListener('visibilitychange', function(){ if(!document.hidden) applyLiveToll(); });
+
+  setInterval(pollFigures, 1000);
+  setInterval(paintFreshness, 1000);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) pollFigures(); });
 })();
 
 /* =========================================================================
