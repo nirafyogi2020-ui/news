@@ -19,10 +19,16 @@ node_modules/
 # the root icons.
 # ---------------------------------------------------------------------------
 assets/og/
-sitemap.xml
-sitemap-index.xml
-news-sitemap.xml
-robots.txt
+
+# Generated, but small, and Cloudflare Pages now deploys straight from this
+# repository — so a file that is not committed is a file that is not on the
+# site. These were being uploaded by deploy.sh and stopped reaching the live
+# domain the moment publishing moved to Git. robots.txt was answering with the
+# HTML fallback page, which tells a crawler nothing.
+!sitemap.xml
+!sitemap-index.xml
+!news-sitemap.xml
+!robots.txt
 updates.json
 /404.html
 /about/
