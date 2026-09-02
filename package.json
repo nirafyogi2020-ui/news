@@ -3,14 +3,15 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Nepal Disaster Update Live — static site plus Cloudflare Pages Functions.",
+  "description": "Nepal Disaster Update Live \u2014 static site plus Cloudflare Pages Functions.",
   "scripts": {
     "build": "node src/build.mjs",
     "check": "node src/check.mjs",
     "test": "node --test test/*.test.mjs",
     "dev": "npx wrangler pages dev . --port 8788",
     "deploy": "./deploy.sh",
-    "ping": "node src/indexnow.mjs"
+    "ping": "node src/indexnow.mjs",
+    "figures": "node src/figures-update.mjs"
   },
   "optionalDependencies": {
     "@resvg/resvg-js": "^2.6.2"

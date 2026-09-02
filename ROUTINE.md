@@ -143,19 +143,61 @@ one further down.
 - Where sources disagree, use the lower confirmed figure and name who confirmed
   it.
 
-### The counters now correct themselves between runs
+### The counters update themselves, with no run at all
 
-`/api/figures` reads the death toll straight out of the Nepal Police bulletin
-and the home page raises its hero counter to that figure on its own, naming the
-bulletin hour. It only ever raises a figure, never lowers one, and it does not
-touch `event.json`, `src/content.mjs`, the page title or the share card. So the
-run still has to do step 3 properly: the live read buys the site an hour of
-honesty, it does not replace the edit.
+The figures are no longer part of this procedure. A scheduled job keeps them
+current, and it uses no model and costs nothing per run.
 
-The audit also fails the deploy when a story card still prints a toll the
-police have overtaken, for example a card headlined "toll passes 389" while
-`src/content.mjs` says 469. Rewrite the card. Writing "up from 389" is fine and
-is the honest way to show a rising toll.
+How it works:
+
+- `/api/figures` reads every source this site follows — the government
+  portals, the police bulletins with their full text, and the newsrooms — and
+  resolves one figure per metric for the dead, the missing and the rescued.
+- The home page polls it every second and repaints the counters. The response
+  carries a short cache, so a reader sees a new figure within seconds of
+  anyone publishing it and the cost does not grow with the audience.
+- `.github/workflows/figures.yml` runs `src/figures-update.mjs` on a schedule,
+  which writes any moved figure into `event.json`, names the source in the
+  counter's detail, and pushes. It commits nothing when nothing moved.
+
+Three rules keep that safe, and they matter more than the speed:
+
+1. **A sub-count never sets a counter.** A sentence that names a place and
+   claims no total is one district's or one riverbank's share. On the
+   afternoon this was built the feed carried "a total of 1,114 bodies
+   recovered", "133 bodies recovered in Rasuwa" and "105 bodies found along
+   the bank from Timure to Ghatte Khola" — all true, one of them the national
+   toll. Taking the most recent would have put 105 under the hero.
+2. **A figure below the published one only wins if it says it is a
+   correction.** Wire archives resurface with fresh timestamps; a day-one
+   story reading "more than 1,400 still missing" must not walk the counter
+   back. A real revision still gets through and the page labels it as one.
+3. **A metric nobody states is absent, never zero.** The built figure stands.
+
+`/api/bipad` is available alongside it, reading Nepal's national disaster
+portal (bipadportal.gov.np) for the part no newsroom publishes: how many
+separate incidents are open across the country and the infrastructure damage
+filed against them. It is deliberately kept out of the counters. Its totals
+cover every hazard in Nepal over a rolling window, which is a different
+quantity from one event's toll, and its loss records for this event were still
+unfiled when this was written — a zero there means "not yet reported", never
+"nobody died".
+
+What this run must still do: everything else. The counters being right does
+not make a story card right. A card headlined on an overtaken toll still fails
+the audit and still has to be rewritten, and "up from 768" is still the honest
+way to show a rising figure.
+
+What this run must not do: hand-edit a counter in `event.json` to a figure it
+found in a search result. The job will overwrite it at the next tick, and the
+search result is the thing most likely to be hours stale. If a counter looks
+wrong, fix the reader in `functions/api/_figures-core.js` and add the sentence
+that fooled it to `test/figures.test.mjs`, so it stays fixed.
+
+Two things the job deliberately leaves alone: the editorial `detail` prose
+under each counter, which it preserves verbatim under `priorDetail` and
+reprints explicitly dated rather than deleting; and any move larger than three
+times the current figure, which it reports and leaves for a person.
 
 ## Step 4. The story cards
 

@@ -1,0 +1,63 @@
+# Keeps the counters in event.json current without anybody, or any model,
+# being involved.
+#
+# The script this runs reads the site's own /api/figures board, which reads
+# the government bulletins and the newsrooms directly. If a counter has moved
+# it writes the new figure with the name of whoever stated it, commits, and
+# pushes. If nothing moved — which is most runs, and is a good run — it
+# commits nothing.
+#
+# Five minutes is GitHub's own floor for scheduled workflows, and scheduled
+# runs are queued rather than guaranteed, so treat this as the layer that
+# keeps the repository honest rather than the one that makes the page fast.
+# The page itself polls /api/figures every second and is served from the edge
+# cache, so what a reader sees is never waiting on this workflow.
+
+name: Update figures
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+# One at a time. Two overlapping runs would race on the same file and the
+# loser would push a figure the winner had already replaced.
+concurrency:
+  group: figures
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Read the live figures and update event.json
+        id: figures
+        run: node src/figures-update.mjs
+
+      # Deliberately does not run the site build. The build regenerates the
+      # share images and the static pages, which needs the optional image
+      # dependency and belongs to a deploy, not to a counter update. Running it
+      # here would have this workflow commit an unrelated diff every time a
+      # number moved. It validates the one file it wrote and stops there.
+      - name: Check event.json is still valid
+        if: steps.figures.outputs.changed == 'true'
+        run: node -e "JSON.parse(require('fs').readFileSync('event.json','utf8'))"
+
+      - name: Commit and push
+        if: steps.figures.outputs.changed == 'true'
+        run: |
+          git config user.name  'nepal-disaster-update-live'
+          git config user.email 'hello@nxtimaginelabs.com'
+          git add event.json
+          git diff --cached --quiet && exit 0
+          git commit -m "figures: automatic counter update from published reports"
+          git push
