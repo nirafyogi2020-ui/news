@@ -18,41 +18,29 @@ versions of the same page over each other.
 
 ## Current publisher handoff
 
-**Read this before running anything. There are now two things that can publish
-this site, and only one of them may be switched on.**
+**The figures workflow is the only automatic publisher.** The Codex local
+schedule that used to hold this role has been deleted and is not coming back.
+There is nothing to pause and nothing to hand over.
 
-The figures are no longer published by an editorial run. `.github/workflows/
-figures.yml` reads the sources every five minutes, writes any moved figure,
-rebuilds the pages and the share images, runs this repository's own audit, and
-pushes. It uses no model and costs nothing per run. See "The counters update
-themselves" below for the rules it applies.
+`.github/workflows/figures.yml` reads the sources every five minutes, writes
+any moved figure, rebuilds the pages and the share images, runs this
+repository's own audit, and pushes. It uses no model and costs nothing per run.
+The rules it applies are in "The counters update themselves" below.
 
-That workflow is a second automatic publisher, which this file has always
-forbidden. So the changeover has an order, and doing it out of order will have
-the two of them overwriting each other's releases:
+It publishes to Cloudflare Pages only once a `CLOUDFLARE_API_TOKEN` repository
+secret exists, with the Cloudflare Pages: Edit permission. Until then it
+commits and says in its run log that it could not publish.
 
-1. **Pause the Codex local schedule first** — both the :10 main run and the
-   :45 standby run. While it is running it will hand-edit the same counters
-   the workflow writes, and whichever deploys last wins. That is exactly the
-   failure this section exists to prevent, and it has already happened once:
-   on 2 September the live site served 781 dead from a Codex release while the
-   repository said 768, because the two were not reading from the same place.
-2. **Add the `CLOUDFLARE_API_TOKEN` repository secret**, with the Cloudflare
-   Pages: Edit permission. Until it exists the workflow commits but cannot
-   publish, and says so in its run log.
-3. **Then** the workflow is the active automatic publisher, and this section
-   should be left saying so.
+An editorial run — a person or an agent — remains welcome for everything that
+is not a figure: the story cards, the map, the helplines, the prose. It must
+not hand-edit a counter, because the workflow will overwrite it at the next
+tick and the hand-edited value is the one more likely to be stale. If a counter
+looks wrong, fix the reader in `functions/api/_figures-core.js` and add the
+sentence that fooled it to `test/figures.test.mjs`, so it stays fixed.
 
-An editorial run — Codex, Claude, or a person — remains welcome for everything
-that is not a figure: the story cards, the map, the helplines, the prose. It
-must not hand-edit a counter, because the workflow will overwrite it at the
-next tick and the hand-edited value is the one more likely to be stale. If a
-counter looks wrong, fix the reader in `functions/api/_figures-core.js` and add
-the sentence that fooled it to `test/figures.test.mjs`.
-
-Before publishing by hand, identify which runner woke you. If an automatic
-publisher other than the workflow is active, stop before editing, committing or
-deploying and report a publisher-handoff conflict.
+If a second automatic publisher is ever introduced, pause this workflow before
+switching it on. Two publishers writing the same counters means whichever
+deploys last wins, and the numbers flip back and forth between releases.
 
 Keeping the procedure here rather than only inside a routine prompt means every
 publisher uses the same facts, checks and publishing rules. A change to how the

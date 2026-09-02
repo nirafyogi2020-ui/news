@@ -2,8 +2,8 @@
 
 Written by the cloud session that built the change, for whoever picks this up
 on a machine that can reach Cloudflare. Everything in here has been run and
-verified except the two steps marked **BLOCKED**, which need credentials the
-cloud session did not have.
+verified except the publish, which needs a Cloudflare credential the cloud
+session did not have.
 
 State at handoff: branch `main`, commit `5151d95`. Working tree clean, 33
 tests green, audit clean.
@@ -33,30 +33,12 @@ live domain is not.
   live-figures briefing card.
 - 33 tests pass. `npm run check` passes clean — it was failing three staleness
   checks before this change.
-- The workflow has run twice on `main`, both green. Its log reads
+- The workflow has run three times on `main`, all green. Its log reads
   `read 88 reports from 17 sources; 2 figure(s) stated`.
 
 ---
 
-## BLOCKED 1 — pause the Codex local schedule
-
-**Do this before anything else, and before adding the token.**
-
-`ROUTINE.md` has always allowed exactly one automatic publisher. The Codex
-local schedule (:10 main run, :45 standby) is still that publisher, and the new
-workflow is a second one. Both write the same counters. Whichever deploys last
-wins, and the numbers will flip back and forth.
-
-This has already happened once: on 2 September the live site served **781 dead**
-from a Codex release while the repository said **768**. They were not reading
-from the same place.
-
-Pause both Codex runs. Leave editorial work — story cards, map, helplines,
-prose — with whoever does it. Only the counters move to the workflow.
-
----
-
-## BLOCKED 2 — add the Cloudflare token
+## The only blocker: publishing
 
 Cloudflare Pages is **not** connected to this GitHub repository. `deploy.sh`
 uploads directly with wrangler. A push therefore changes the repository and
