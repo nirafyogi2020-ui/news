@@ -1,17 +1,28 @@
-# Keeps the counters in event.json current without anybody, or any model,
-# being involved.
+# Keeps the whole page current without anybody, or any model, being involved.
 #
-# The script this runs reads the site's own /api/figures board, which reads
-# the government bulletins and the newsrooms directly. If a counter has moved
-# it writes the new figure with the name of whoever stated it, commits, and
-# pushes. If nothing moved — which is most runs, and is a good run — it
-# commits nothing.
+# The script this runs reads the site's own /api/figures board, which reads the
+# government bulletins and the newsrooms directly. When a figure has moved it
+# writes the new number into event.json, keeps src/content.mjs in step so the
+# article pages cannot disagree with the hero, moves every "as of" stamp that
+# describes those figures, records the move in the event timeline, and refreshes
+# the one briefing card that carries the current numbers. Then it rebuilds the
+# static pages and the share images the same way a deploy does, runs the site's
+# own audit, and pushes.
 #
-# Five minutes is GitHub's own floor for scheduled workflows, and scheduled
-# runs are queued rather than guaranteed, so treat this as the layer that
-# keeps the repository honest rather than the one that makes the page fast.
-# The page itself polls /api/figures every second and is served from the edge
-# cache, so what a reader sees is never waiting on this workflow.
+# It commits nothing when nothing moved, which is most runs and is a good run.
+#
+# Why the full build and not just the data files: the static pages, the sitemap
+# and the share pictures are generated from those files. Committing a new figure
+# without regenerating them would leave the repository stating two different
+# numbers, which is exactly the failure this whole change exists to remove. The
+# audit at the end is the same one that gates a deploy, so a run that would
+# break the site fails here instead of on the live domain.
+#
+# Five minutes is GitHub's own floor for scheduled workflows, and scheduled runs
+# are queued rather than guaranteed. So this is the layer that keeps the
+# repository honest, not the one that makes the page fast: the page itself polls
+# /api/figures every second and is served from the edge cache, so a reader never
+# waits on this workflow.
 
 name: Update figures
 
@@ -20,7 +31,7 @@ on:
     - cron: '*/5 * * * *'
   workflow_dispatch:
 
-# One at a time. Two overlapping runs would race on the same file and the
+# One at a time. Two overlapping runs would race on the same files and the
 # loser would push a figure the winner had already replaced.
 concurrency:
   group: figures
@@ -39,25 +50,66 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Read the live figures and update event.json
+      # The rasteriser behind the share images is an optional dependency. If it
+      # is missing, og-build quietly leaves the committed pictures alone and the
+      # build then points the page at a fallback image — a silent regression
+      # committed on a schedule. Installing it here is what stops that.
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Read the live figures
         id: figures
         run: node src/figures-update.mjs
 
-      # Deliberately does not run the site build. The build regenerates the
-      # share images and the static pages, which needs the optional image
-      # dependency and belongs to a deploy, not to a counter update. Running it
-      # here would have this workflow commit an unrelated diff every time a
-      # number moved. It validates the one file it wrote and stops there.
-      - name: Check event.json is still valid
+      - name: Rebuild the pages and the share images
         if: steps.figures.outputs.changed == 'true'
-        run: node -e "JSON.parse(require('fs').readFileSync('event.json','utf8'))"
+        run: |
+          node src/og-build.mjs
+          node src/build.mjs
+
+      # The same audit that gates a deploy: it fails if the hero and the article
+      # pages disagree, if a story card still prints an overtaken toll, or if the
+      # live coverage reads as finished.
+      - name: Audit
+        if: steps.figures.outputs.changed == 'true'
+        run: node src/check.mjs
 
       - name: Commit and push
         if: steps.figures.outputs.changed == 'true'
         run: |
           git config user.name  'nepal-disaster-update-live'
           git config user.email 'hello@nxtimaginelabs.com'
-          git add event.json
+          git add -A
           git diff --cached --quiet && exit 0
-          git commit -m "figures: automatic counter update from published reports"
+          git commit -m "figures: automatic update from the published reports"
           git push
+
+      # Publishing is a separate step from committing, because this project
+      # uploads to Cloudflare Pages directly rather than having Pages watch the
+      # repository. Without this, a pushed figure sits in git and the live
+      # domain keeps serving the previous build — which is precisely how the
+      # page came to be three days behind its own sources.
+      #
+      # It needs a CLOUDFLARE_API_TOKEN repository secret with the "Cloudflare
+      # Pages: Edit" permission. Until that secret exists the step is skipped
+      # rather than failed, so the rest of the workflow keeps working and the
+      # reason is visible in the run log.
+      - name: Publish to Cloudflare Pages
+        if: steps.figures.outputs.changed == 'true' && env.CLOUDFLARE_API_TOKEN != ''
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 50a5fbe4a48d72c1f8c595221ec3ac50
+        run: |
+          npx wrangler pages deploy . \
+            --project-name nepal-flood-relief \
+            --branch main \
+            --commit-dirty=true
+
+      - name: Say so if publishing was skipped
+        if: steps.figures.outputs.changed == 'true' && env.CLOUDFLARE_API_TOKEN == ''
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          echo "The figures were committed but NOT published."
+          echo "Add a CLOUDFLARE_API_TOKEN repository secret to publish automatically."
+          echo "Until then the live site updates only when someone runs ./deploy.sh."

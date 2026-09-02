@@ -200,3 +200,78 @@ test('BIPAD sums the records that do carry figures', () => {
   assert.equal(totals.housesDestroyed, 5);
   assert.equal(totals.filed, 2);
 });
+
+/* --------------------------------------------------------------------------
+   Keeping the rest of the page in step with the figures
+
+   A number that moves on its own is only half the job. The static pages read
+   their figures from src/content.mjs, print them next to an "as of" line, and
+   the whole site derives its "last modified" from today.json. Moving the
+   number without moving those leaves the page stating a fresh figure over a
+   three-day-old date, which is the failure this change exists to remove.
+   ----------------------------------------------------------------------- */
+import {
+  replaceField, replaceString, readString, nptIso, nptStamp, addTimelineEntry
+} from '../src/figures-update.mjs';
+
+const CONTENT_SAMPLE = [
+  "export const TOLL_AS_OF = '2026-08-30T14:00:00+05:45';",
+  "export const TOLL_SOURCE = 'Nepal Police bulletin 10275, 2pm Sunday';",
+  'export const TOLL = {',
+  '  deadNepal: 768,',
+  '  deadNepalEarlier: 752,',
+  '};',
+  '',
+  'export const TIMELINE = [',
+  "  ['14:00 NPT, 30 August', 'Nepal Police bulletin 10275 reports 768 bodies found in Nepal.'],",
+  '];'
+].join('\n');
+
+test('moves one numeric field and nothing else', () => {
+  const out = replaceField(CONTENT_SAMPLE, 'deadNepal', 1114);
+  assert.ok(out.includes('deadNepal: 1114,'));
+  assert.ok(out.includes('deadNepalEarlier: 752,'), 'the neighbouring field is untouched');
+});
+
+test('an unknown field is left alone rather than appended', () => {
+  assert.equal(replaceField(CONTENT_SAMPLE, 'noSuchField', 5), CONTENT_SAMPLE);
+  assert.equal(replaceString(CONTENT_SAMPLE, 'NO_SUCH_STAMP', 'x'), CONTENT_SAMPLE);
+});
+
+test('moves the "as of" stamp and the source name with the figure', () => {
+  let out = replaceString(CONTENT_SAMPLE, 'TOLL_AS_OF', '2026-09-02T16:14:39+05:45');
+  out = replaceString(out, 'TOLL_SOURCE', 'Onlinekhabar');
+  assert.equal(readString(out, 'TOLL_AS_OF'), '2026-09-02T16:14:39+05:45');
+  assert.equal(readString(out, 'TOLL_SOURCE'), 'Onlinekhabar');
+});
+
+test('timestamps are written in Nepal time, not somebody else’s clock', () => {
+  assert.equal(nptIso('2026-09-02T10:29:39.000Z'), '2026-09-02T16:14:39+05:45');
+  // same instant, just written the way the rest of the file writes it
+  assert.equal(new Date(nptIso('2026-09-02T10:29:39.000Z')).toISOString(),
+    '2026-09-02T10:29:39.000Z');
+  assert.equal(nptStamp('2026-09-02T10:29:39.000Z'), '16:14 NPT, 2 September');
+});
+
+test('a moved toll is recorded in the timeline, once', () => {
+  const figure = { source: 'Onlinekhabar', time: '2026-09-02T10:29:39.000Z' };
+  const change = { from: 768, to: 1114 };
+
+  const once = addTimelineEntry(CONTENT_SAMPLE, figure, change);
+  assert.ok(once.includes('reported at 1,114'));
+  assert.ok(once.includes('16:14 NPT, 2 September'));
+
+  // running again must not grow the file
+  const twice = addTimelineEntry(once, figure, change);
+  assert.equal(twice, once);
+});
+
+test('the timeline row is valid JavaScript, quotes and all', async () => {
+  const figure = { source: "Nepal's own bureau", time: '2026-09-02T10:29:39.000Z' };
+  const out = addTimelineEntry(CONTENT_SAMPLE, figure, { from: 768, to: 1114 });
+  const block = out.slice(out.indexOf('export const TIMELINE'));
+  // eslint-disable-next-line no-new-func
+  const rows = new Function('return ' + block.replace('export const TIMELINE =', '').replace(/;\s*$/, ''))();
+  assert.ok(Array.isArray(rows));
+  assert.ok(rows.some(r => r[1].includes('1,114')));
+});
