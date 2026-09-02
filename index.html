@@ -2513,6 +2513,55 @@
   }
   #panel-help .measure{max-width:70ch;}
 
+  /* =========================================================================
+     The Help tab, given edges.
+
+     Four sections — numbers, giving, hazards, sources — ran as one unbroken
+     column, so a reader scrolling it could not tell where one subject ended
+     and the next began, and the whole tab read as more text than it is. Each
+     is now a bounded panel with its own header. Nothing was cut: a person
+     looking for a helpline should not lose the sentence explaining which
+     helpline, and a page that tells people what to do in a landslide has
+     earned its length. It just needs walls.
+     ====================================================================== */
+  @media (min-width:900px){
+    #panel-help > section[id]{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:32px 34px 34px;
+      margin-bottom:22px;
+      box-shadow:var(--lift), var(--shadow);
+    }
+    /* The panel supplies the separation, so the rule under the heading would
+       be a second line doing the same job. */
+    #panel-help > section[id]{border-bottom:1px solid var(--border);}
+    #panel-help > section[id] > h2{margin-top:2px;}
+  }
+  /* Each section's own subject line, so the panel says what it is before the
+     reader has to work it out from the contents. */
+  #panel-help > section[id] > .eyebrow{color:var(--critical);}
+
+  /* Sources: four groups of links that were four stacked lists. As a grid
+     they fit on one screen and read as a directory, which is what they are. */
+  #sources .card p a{
+    display:inline-block; margin:0 10px 8px 0; padding:7px 12px;
+    border:1px solid var(--border); border-radius:9px;
+    background:var(--bg); font-size:0.84rem; text-decoration:none;
+    border-bottom:1px solid var(--border);
+  }
+  #sources .card p a:hover{border-color:var(--critical); color:var(--critical);}
+  #sources .card p br{display:none;}
+  #sources .card h3{border-top:0; padding-top:0; margin-top:0;}
+  @media (min-width:1000px){
+    #sources .grid-2{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px;}
+  }
+
+  /* The helpline directory chips already existed; giving them the same shape
+     as the source chips means a reader learns one thing, not two. */
+  #panel-help .measure + .deeplinks .deeplink,
+  #panel-help .deeplinks .deeplink{font-weight:500;}
+
 </style>
 </head>
 <body>
