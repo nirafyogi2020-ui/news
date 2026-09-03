@@ -8,7 +8,7 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-09-03T10:00:00+05:45",
+  "asOf": "2026-09-03T14:00:00+05:45",
   "asOfSource": "Nepal Police",
   "stats": [
     {
@@ -23,11 +23,13 @@
     },
     {
       "icon": "missing",
-      "value": "4,216",
+      "value": "4,875",
       "tone": "critical",
       "label": "listed missing in Nepal",
       "bar": 100,
-      "detail": "Nepalnews: 4,216 still unaccounted for, alongside 1,204 bodies recovered, in the same 2 September bulletin as the current toll. Source: https://nepalnews.com/ An earlier automatic read reported 5,015 here; no bulletin supports that figure and it has been withdrawn."
+      "detail": "Nepal Police: 4,875. Up from 4,216. Read automatically from the published report, not edited by hand. Source: https://nepalpolice.gov.np/news/10318/ Earlier detail (as of 2026-09-03T10:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Nepalnews: 4,216 still unaccounted for, alongside 1,204 bodies recovered, in the same 2 September bulletin as the current toll. Source: https://nepalnews.com/ An earlier automatic read reported 5,015 here; no bulletin supports that figure and it has been withdrawn.",
+      "priorDetail": "Nepalnews: 4,216 still unaccounted for, alongside 1,204 bodies recovered, in the same 2 September bulletin as the current toll. Source: https://nepalnews.com/ An earlier automatic read reported 5,015 here; no bulletin supports that figure and it has been withdrawn.",
+      "priorAsOf": "2026-09-03T10:00:00+05:45"
     },
     {
       "icon": "missing",
@@ -81,10 +83,6 @@
   "districts": {
     "rows": [
       {
-        "district": "Gorkha",
-        "value": 1252
-      },
-      {
         "district": "Chitwan",
         "value": 355
       },
@@ -105,6 +103,10 @@
         "value": 127
       },
       {
+        "district": "Gorkha",
+        "value": 69
+      },
+      {
         "district": "Dhading",
         "value": 60
       },
@@ -117,9 +119,9 @@
         "value": 18
       }
     ],
-    "total": 2435,
+    "total": 1252,
     "source": "Nepal Police",
-    "url": "https://nepalpolice.gov.np/news/10313/",
-    "time": "2026-09-03T10:00:00+05:45"
+    "url": "https://nepalpolice.gov.np/news/10318/",
+    "time": "2026-09-03T14:00:00+05:45"
   }
 }

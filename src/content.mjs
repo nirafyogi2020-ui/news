@@ -26,8 +26,8 @@ export const BODIES_SOURCE = 'Nepal Police';
 /* The missing figure comes from the same Nepalnews bulletin as the newest
    toll: 1,204 recovered, 4,216 still unaccounted for. An earlier automatic
    read had put this at 5,015, which no bulletin supports. */
-export const MISSING_AS_OF = '2026-09-02T20:59:00+05:45';
-export const MISSING_SOURCE = 'Nepalnews';
+export const MISSING_AS_OF = '2026-09-03T14:00:00+05:45';
+export const MISSING_SOURCE = 'Nepal Police';
 
 export const RESCUE_AS_OF = '2026-09-02T20:58:58+05:45';
 export const RESCUE_SOURCE = 'Nepalnews';
@@ -97,7 +97,7 @@ export const TOLL = {
   deadNepal: 1252,
   deadNepalEarlier: 1222,
   deadChina: 16,
-  missing: 4216,
+  missing: 4875,
   missingChina: 546,
   missingChinaForeign: 261,
   missingIndian: 133,
