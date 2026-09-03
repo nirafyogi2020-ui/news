@@ -8,28 +8,28 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-09-03T10:00:00+05:45';
-export const TOLL_SOURCE = 'Nepal Police';
+export const TOLL_AS_OF = '2026-09-03T22:21:37+05:45';
+export const TOLL_SOURCE = 'Nepalnews';
 export const TOLL_EARLIER_SOURCE = 'Nepal Police';
 
 /* When the bulletin one step before TOLL_AS_OF was published. Used only for
    the "how the toll has moved" table, so that row's timestamp always matches
    TOLL.deadNepalEarlier instead of drifting out of date as later runs move
    both TOLL_AS_OF and deadNepalEarlier forward. */
-export const TOLL_EARLIER_AS_OF = '2026-09-02T20:00:00+05:45';
+export const TOLL_EARLIER_AS_OF = '2026-09-03T10:00:00+05:45';
 
 /* The district breakdown now comes from the same 2pm police bulletin as the
    national toll. */
-export const BODIES_AS_OF = '2026-09-03T10:00:00+05:45';
-export const BODIES_SOURCE = 'Nepal Police';
+export const BODIES_AS_OF = '2026-09-03T22:21:37+05:45';
+export const BODIES_SOURCE = 'Nepalnews';
 
 /* The missing figure comes from the same Nepalnews bulletin as the newest
    toll: 1,204 recovered, 4,216 still unaccounted for. An earlier automatic
    read had put this at 5,015, which no bulletin supports. */
-export const MISSING_AS_OF = '2026-09-03T14:00:00+05:45';
-export const MISSING_SOURCE = 'Nepal Police';
+export const MISSING_AS_OF = '2026-09-03T22:21:37+05:45';
+export const MISSING_SOURCE = 'Nepalnews';
 
-export const RESCUE_AS_OF = '2026-09-02T20:58:58+05:45';
+export const RESCUE_AS_OF = '2026-09-03T22:21:37+05:45';
 export const RESCUE_SOURCE = 'Nepalnews';
 
 /* Who those people are was last broken down in the morning police bulletin,
@@ -94,15 +94,15 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 1252,
-  deadNepalEarlier: 1222,
+  deadNepal: 1259,
+  deadNepalEarlier: 1252,
   deadChina: 16,
-  missing: 4875,
+  missing: 5083,
   missingChina: 546,
   missingChinaForeign: 261,
   missingIndian: 133,
   injured: 242,
-  rescued: 11993,
+  rescued: 12038,
   rescuedBreakdown: [],
   narayaniRecovered: 121,
 };
@@ -242,6 +242,7 @@ export const TIMELINE = [
   ['19:59 NPT, 2 September', "Nepal's confirmed death toll is reported at 1,204, up from 1,132, by Nagarik News."],
   ['20:00 NPT, 2 September', "Nepal's confirmed death toll is reported at 1,222, up from 1,204, by Nepal Police."],
   ['10:00 NPT, 3 September', "Nepal's confirmed death toll is reported at 1,252, up from 1,222, by Nepal Police."],
+  ['22:21 NPT, 3 September', "Nepal's confirmed death toll is reported at 1,259, up from 1,252, by Nepalnews."],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */
