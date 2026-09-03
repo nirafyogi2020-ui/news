@@ -8,8 +8,8 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-02T14:15:00.000Z</news:publication_date>
-      <news:title>Nepal Flood Live: 1,222 dead, 4,216 missing in Rasuwa, 2 Sep</news:title>
+      <news:publication_date>2026-09-03T04:15:00.000Z</news:publication_date>
+      <news:title>Nepal Flood Live: 1,252 dead, 4,216 missing in Rasuwa, 3 Sep</news:title>
     </news:news>
   </url>
   <url>
@@ -19,8 +19,41 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-02T14:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-03T04:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-03-auto-2026-09-03-missing-flood-victims-families-called-for-dna-testing/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T05:03:06.000Z</news:publication_date>
+      <news:title>Missing flood victims’ families called for DNA testing</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-03-auto-2026-09-03-locals-risk-lives-crossing-taksugad-after-flood-washes/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T05:01:28.000Z</news:publication_date>
+      <news:title>Locals risk lives crossing Taksugad after flood washes away bridge</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-03-latest-reported-figures/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T04:15:00.000Z</news:publication_date>
+      <news:title>Latest reported figures: 1,252 confirmed dead</news:title>
     </news:news>
   </url>
   <url>
