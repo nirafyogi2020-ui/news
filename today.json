@@ -1,6 +1,57 @@
 {
-  "updated": "2026-09-02T20:00:00+05:45",
+  "updated": "2026-09-03T10:00:00+05:45",
   "posts": [
+    {
+      "id": "auto-2026-09-03-missing-flood-victims-families-called-for-dna-testing",
+      "title": "Missing flood victims’ families called for DNA testing",
+      "time": "2026-09-03T05:03:06.000Z",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/09/syaphrubesi-rasuwa-flood-3-1024x681-1.jpg",
+      "body": [
+        "September 3, Kathmandu Nepal Police has begun a DNA testing process to search for citizens who went missing in the Bhotekoshi River flood in Rasuwa, and to identify unclaimed bodies and human remains that have been recovered.",
+        "Reported by Onlinekhabar. Read automatically from that report; follow the link for the full story."
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/families-called-for-dna.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-09-03-locals-risk-lives-crossing-taksugad-after-flood-washes-away-",
+      "title": "Locals risk lives crossing Taksugad after flood washes away bridge",
+      "time": "2026-09-03T05:01:28.000Z",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/09/Taksugad-Khola_jajarkot-1-1024x599-1.jpg",
+      "body": [
+        "Surkhet, September 3 Residents and travellers have been forced to risk their lives to cross the Taksugad stream after floods washed away a bridge and a temporary causeway between wards 10 and 11 of Nalgad Municipality in Jajarkot along the…",
+        "Reported by Onlinekhabar. Read automatically from that report; follow the link for the full story."
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/locals-risk-lives-crossing-taksugad-after-flood-washes-away-bridge.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "latest-reported-figures",
+      "title": "Latest reported figures: 1,252 confirmed dead",
+      "time": "2026-09-03T10:00:00+05:45",
+      "image": "",
+      "body": [
+        "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. confirmed dead: 1,252, up from 1,222, reported by Nepal Police.",
+        "Where a report describes one district or one stretch of river rather than the national figure, it is not used here. Out of contact does not mean dead."
+      ],
+      "sources": [
+        {
+          "name": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10313/"
+        }
+      ],
+      "revised": true
+    },
     {
       "id": "auto-2026-09-02-multinational-rescue-operations-underway-in-bhote-koshi-floo",
       "title": "Multinational rescue operations underway in Bhote Koshi flood zone: MoFA",
@@ -17,27 +68,6 @@
         }
       ],
       "auto": true
-    },
-    {
-      "id": "latest-reported-figures",
-      "title": "Latest reported figures: 1,222 confirmed dead",
-      "time": "2026-09-02T20:00:00+05:45",
-      "image": "",
-      "body": [
-        "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. confirmed dead: 1,222, up from 1,204, reported by Nepal Police. rescued: 11,993, up from 8,730, reported by Nepalnews.",
-        "Where a report describes one district or one stretch of river rather than the national figure, it is not used here. Out of contact does not mean dead."
-      ],
-      "sources": [
-        {
-          "name": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10313/"
-        },
-        {
-          "name": "Nepalnews",
-          "url": "https://english.nepalnews.com/s/nation/multinational-rescue-operations-underway-in-bhote-koshi-flood-zone-mofa/"
-        }
-      ],
-      "revised": true
     },
     {
       "id": "auto-2026-09-01-tatopani-route-hit-again-as-zhangmu-closed-over-flood-concer",
