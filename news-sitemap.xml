@@ -89,26 +89,4 @@
       <news:title>Latest reported figures: 1,222 confirmed dead</news:title>
     </news:news>
   </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-01-auto-2026-09-01/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-01T11:29:35.000Z</news:publication_date>
-      <news:title>बाढी प्रभावितका लागि डब्ल्यूएचओद्वारा २ करोड बढीको स्वास्थ्य सामग्री सहयोग</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-01-auto-2026-09-01-tatopani-route-hit-again-as-zhangmu-closed-over-flood-/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-01T10:17:43.000Z</news:publication_date>
-      <news:title>Tatopani route hit again as Zhangmu closed over flood concerns</news:title>
-    </news:news>
-  </url>
 </urlset>

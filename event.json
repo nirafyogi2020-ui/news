@@ -83,8 +83,12 @@
   "districts": {
     "rows": [
       {
+        "district": "Gorkha",
+        "value": 1280
+      },
+      {
         "district": "Chitwan",
-        "value": 355
+        "value": 359
       },
       {
         "district": "Nawalparasi East",
@@ -96,15 +100,11 @@
       },
       {
         "district": "Nuwakot",
-        "value": 177
+        "value": 185
       },
       {
         "district": "Rasuwa",
-        "value": 127
-      },
-      {
-        "district": "Gorkha",
-        "value": 69
+        "value": 140
       },
       {
         "district": "Dhading",
@@ -119,9 +119,9 @@
         "value": 18
       }
     ],
-    "total": 1252,
+    "total": 2488,
     "source": "Nepal Police",
-    "url": "https://nepalpolice.gov.np/news/10318/",
-    "time": "2026-09-03T14:00:00+05:45"
+    "url": "https://nepalpolice.gov.np/news/10321/",
+    "time": "2026-09-03T20:00:00+05:45"
   }
 }
