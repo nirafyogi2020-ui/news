@@ -4085,7 +4085,7 @@
            script still has somewhere to write. -->
       <h2 class="visually-hidden">Videos</h2>
       <span class="feed-status visually-hidden" id="video-status">Loading&hellip;</span>
-      <p class="video-freshness" id="video-freshness" hidden></p>
+      <p class="video-freshness visually-hidden" id="video-freshness" role="status" hidden></p>
       <div class="seg" id="video-region-seg" hidden>
         <button type="button" data-vregion="all" aria-pressed="true">All sources</button>
         <button type="button" data-vregion="nepal" aria-pressed="false">Nepali sources</button>
@@ -6361,25 +6361,23 @@ var LiveFeed = (function(){
     return ((w[0] || '?')[0] + (w[1] ? w[1][0] : '')).toUpperCase();
   }
 
+  /* Watch is the video tab, so it opens on video. This used to write a line
+     of plumbing across the top of it — when the feeds were last polled, how
+     old the newest clip was, and how many of the five channels had not
+     answered this time. None of that is what somebody came to the tab for,
+     and "4 verified sources temporarily unavailable" reads as a fault report
+     above a wall of working videos. The line is kept as an accessible status
+     for anyone listening to the page, and shown to nobody. */
   function renderVideoFreshness(){
     if(!videoFreshness) return;
     var meta = videoFeedMeta || {};
-    if(!latestVideos.length && !meta.checkedAt && !videoFeedCheckedAt){
-      videoFreshness.hidden = true;
-      return;
-    }
     var newest = meta.newestAt || (newestByTime(latestVideos) || {}).time;
     var checked = meta.checkedAt || meta.searchedAt || videoFeedCheckedAt;
-    var label = meta.mode === 'verified-channels' ? 'Verified sources checked ' : 'Watch feed checked ';
     var parts = [];
-    if(checked) parts.push(label + nptClock(checked));
+    if(checked) parts.push('Sources checked ' + nptClock(checked));
     if(newest) parts.push('newest clip ' + PostCards.timeAgo(newest));
-    if(meta.issues && meta.issues.length){
-      parts.push(meta.issues.length + ' verified source' + (meta.issues.length === 1 ? '' : 's') + ' temporarily unavailable');
-    }
-    if(meta.showingBackup) parts.push('showing last good verified list');
-    videoFreshness.textContent = parts.join(' · ') || 'Video time is not available yet';
-    videoFreshness.hidden = false;
+    videoFreshness.textContent = parts.join(' · ');
+    videoFreshness.hidden = true;
   }
 
   function renderVideos(all){
