@@ -896,29 +896,6 @@
     color:#fff; border-radius:20px; padding:1px 6px; font-weight:600;
   }
 
-  /* --- row 3: the parts of the open section --- */
-  .head-subrow{border-top:1px solid var(--border); background:var(--surface-2);}
-  .subnav{
-    max-width:1400px; margin:0 auto; padding:0 24px;
-    display:flex; align-items:center; gap:0; height:40px;
-    overflow-x:auto; scrollbar-width:none;
-  }
-  .subnav::-webkit-scrollbar{display:none;}
-  .subnav a{
-    position:relative; display:inline-flex; align-items:center; height:100%;
-    padding:0 14px; white-space:nowrap; text-decoration:none;
-    font-size:0.85rem; font-weight:500; color:var(--text-muted);
-    transition:color .14s;
-  }
-  .subnav a:first-child{padding-left:0;}
-  .subnav a:hover{color:var(--text);}
-  .subnav a.active{color:var(--text); font-weight:700;}
-  .subnav a.active::after{
-    content:''; position:absolute; left:14px; right:14px; bottom:0; height:2px; background:var(--text);
-  }
-  .subnav a.active:first-child::after{left:0;}
-  .subnav a.sub-home{font-weight:700; color:var(--text);}
-
   .portal-note{border:1px solid var(--border); border-left:3px solid var(--ok, #16a34a); border-radius:12px; padding:12px 14px; margin-bottom:16px; background:var(--surface-2);}
   .portal-note strong{display:block; font-size:0.9rem; margin-bottom:6px;}
   .portal-note p{margin:0 0 6px; font-size:0.86rem; line-height:1.55;}
@@ -1029,7 +1006,6 @@
     .ht-pill .lang-code{display:none;}
     .tabbar button{font-size:0.94rem; padding:12px 13px 11px;}
     .tabbar button::after{left:13px; right:13px;}
-    .subnav{height:38px; padding:0 14px;}
   }
   @media (prefers-reduced-motion: reduce){
     .head-top, .drawer, .drawer-scrim, .tabbar button::after{transition:none;}
@@ -3201,6 +3177,51 @@
   /* The tabs that are one long read get their own top margin instead. */
   #panel-today > section, #panel-live > section:first-child,
   #panel-video > section:first-child, #panel-map > section:first-child{margin-top:26px;}
+
+  /* =======================================================================
+     USE THE WHOLE SCREEN
+
+     The dashboard held itself to 1560px however wide the monitor was, so on
+     an ordinary desktop it sat in the middle of the window with a band of
+     empty grey down each side, and the day's stories were squeezed into a
+     column narrower than the space beside them. The masthead, the tab row,
+     the dashboard and the footer now share one measure that grows with the
+     window and only stops at 1800px, which is where a line of body text
+     starts to get hard to follow. Article pages are untouched: they are one
+     long read and keep their narrower column on purpose.
+     ======================================================================= */
+  :root{ --page-max:1800px; --page-gut:clamp(20px, 2.4vw, 52px); }
+
+  @media (min-width:1080px){
+    .head-top,
+    .tabbar,
+    .shell.layout.has-home-rail,
+    footer .shell{
+      max-width:var(--page-max);
+      padding-left:var(--page-gut);
+      padding-right:var(--page-gut);
+    }
+    footer .shell{padding-top:36px; padding-bottom:40px;}
+
+    /* The rail grows with the page instead of staying a fixed sliver. */
+    .layout.has-home-rail.no-toc{grid-template-columns:minmax(0,1fr) 340px; gap:40px;}
+  }
+  @media (min-width:1500px){
+    .layout.has-home-rail.no-toc{grid-template-columns:minmax(0,1fr) 372px; gap:48px;}
+  }
+  @media (min-width:1800px){
+    .layout.has-home-rail.no-toc{grid-template-columns:minmax(0,1fr) 400px;}
+  }
+
+  /* The lead story on Today runs its photo down the whole card. With the page
+     this wide that photo grew to its full natural height and pushed the words
+     off the first screen, so it is capped and cropped instead. */
+  @media (min-width:1200px){
+    #panel-today .today-grid > .post-card:first-child .tc-media{max-height:440px;}
+    #panel-today .today-grid > .post-card:first-child .tc-media .post-photo{
+      max-height:440px; object-fit:cover;
+    }
+  }
 </style>
 </head>
 <body>
@@ -3332,11 +3353,6 @@
     </nav>
   </div>
 
-  <!-- Row 3. The parts of the section you are in, written by script from the
-       open tab so it can never list a heading that is not there. -->
-  <div class="head-subrow" id="subrow" hidden>
-    <nav class="subnav" id="subnav" aria-label="Jump to a part of this section"></nav>
-  </div>
 </header>
 
 <!-- The index drawer. Every tab, and every section inside every tab, on one
@@ -5507,50 +5523,17 @@ var Tabs = (function(){
     listeners.forEach(function(fn){ fn(name); });
   }
 
-  /* Row 3 of the header. The sections of the tab you are on, as one line of
-     buttons. Clicking one scrolls to it; the tab and the address bar do not
-     change. Tabs with nothing to list simply have no third row. */
+  /* The header is two rows now: the masthead and the tabs. The third row
+     used to repeat the parts of the open tab ("Home, Confirmed toll, What
+     happened...") — the briefing card already carries those as its own
+     switch, so the row was saying everything twice and eating a band of
+     screen. All that survives here is the layout flag the tabs set, which
+     tells the grid whether this tab wants the right-hand rail. */
   function buildToc(){
-    var panel = document.getElementById('panel-' + current);
-    var row = document.getElementById('subrow');
-    var nav = document.getElementById('subnav');
     var layout = document.querySelector('.layout');
-    var sections = panel ? panel.querySelectorAll('section[data-toc]') : [];
-    if(!row || !nav) return;
-
+    if(!layout) return;
     var DASHBOARD_TABS = { overview: 1 };
     layout.setAttribute('data-tab-layout', DASHBOARD_TABS[current] ? 'dashboard' : 'full');
-
-    nav.innerHTML = '';
-    if(sections.length < 2){ row.hidden = true; return; }
-    row.hidden = false;
-
-    var home = document.createElement('a');
-    home.href = '#' + current;
-    home.className = 'sub-home';
-    home.textContent = 'Home';
-    home.addEventListener('click', function(e){
-      e.preventDefault();
-      window.scrollTo({ top:0, behavior:'smooth' });
-    });
-    nav.appendChild(home);
-
-    sections.forEach(function(sec){
-      var a = document.createElement('a');
-      a.href = '#' + sec.id;
-      /* The list is written "1. Confirmed toll" for the drawer, where the
-         order matters. Across one line it reads better without the number. */
-      a.textContent = String(sec.getAttribute('data-toc')).replace(/^\s*\d+\.\s*/, '');
-      a.addEventListener('click', function(e){
-        e.preventDefault();
-        if(window.BriefCard && window.BriefCard.has(sec.id)){
-          window.BriefCard.show(sec.id, { scroll:true });
-        } else {
-          sec.scrollIntoView({ behavior:'smooth', block:'start' });
-        }
-      });
-      nav.appendChild(a);
-    });
   }
 
   buttons.forEach(function(b){
@@ -5584,43 +5567,6 @@ var Tabs = (function(){
     onChange: function(fn){ listeners.push(fn); },
     get current(){ return current; }
   };
-})();
-
-/* Scroll-spy for the section list on the left */
-(function(){
-  function onScroll(){
-    var links = Array.prototype.slice.call(document.querySelectorAll('#subnav a[href^="#"]:not(.sub-home)'));
-    if(!links.length) return;
-    /* Inside the briefing card the sections are stacked faces, not places on
-       the page, so "where am I" is whichever face is showing. */
-    if(window.BriefCard && links.length && window.BriefCard.has(links[0].getAttribute('href').slice(1))){
-      links.forEach(function(a){
-        var sec = document.querySelector(a.getAttribute('href'));
-        a.classList.toggle('active', !!sec && !sec.hidden);
-      });
-      return;
-    }
-    var pos = window.scrollY + 160;
-    var activeIdx = 0;
-    links.forEach(function(a, i){
-      var sec = document.querySelector(a.getAttribute('href'));
-      if(sec && sec.offsetTop <= pos) activeIdx = i;
-    });
-    links.forEach(function(a, i){ a.classList.toggle('active', i === activeIdx); });
-
-    var active = links[activeIdx];
-    var strip = document.getElementById('subnav');
-    if(active && strip && strip.scrollWidth > strip.clientWidth + 4){
-      var box = active.getBoundingClientRect();
-      var rail = strip.getBoundingClientRect();
-      if(box.left < rail.left + 8 || box.right > rail.right - 8){
-        strip.scrollTo({ left: active.offsetLeft - 16, behavior:'smooth' });
-      }
-    }
-  }
-  document.addEventListener('scroll', onScroll, { passive: true });
-  Tabs.onChange(onScroll);
-  onScroll();
 })();
 
 /* =========================================================================
