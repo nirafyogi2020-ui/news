@@ -1,6 +1,23 @@
 {
-  "updated": "2026-09-03T10:00:00+05:45",
+  "updated": "2026-09-03T14:00:00+05:45",
   "posts": [
+    {
+      "id": "latest-reported-figures",
+      "title": "Latest reported figures: 1,252 confirmed dead",
+      "time": "2026-09-03T14:00:00+05:45",
+      "image": "",
+      "body": [
+        "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. listed missing: 4,875, up from 4,216, reported by Nepal Police.",
+        "Where a report describes one district or one stretch of river rather than the national figure, it is not used here. Out of contact does not mean dead."
+      ],
+      "sources": [
+        {
+          "name": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10318/"
+        }
+      ],
+      "revised": true
+    },
     {
       "id": "auto-2026-09-03-missing-flood-victims-families-called-for-dna-testing",
       "title": "Missing flood victims’ families called for DNA testing",
@@ -36,23 +53,6 @@
       "auto": true
     },
     {
-      "id": "latest-reported-figures",
-      "title": "Latest reported figures: 1,252 confirmed dead",
-      "time": "2026-09-03T10:00:00+05:45",
-      "image": "",
-      "body": [
-        "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. confirmed dead: 1,252, up from 1,222, reported by Nepal Police.",
-        "Where a report describes one district or one stretch of river rather than the national figure, it is not used here. Out of contact does not mean dead."
-      ],
-      "sources": [
-        {
-          "name": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10313/"
-        }
-      ],
-      "revised": true
-    },
-    {
       "id": "auto-2026-09-02-multinational-rescue-operations-underway-in-bhote-koshi-floo",
       "title": "Multinational rescue operations underway in Bhote Koshi flood zone: MoFA",
       "time": "2026-09-02T15:13:58.000Z",
@@ -65,6 +65,23 @@
         {
           "name": "Nepalnews",
           "url": "https://english.nepalnews.com/s/nation/multinational-rescue-operations-underway-in-bhote-koshi-flood-zone-mofa/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-09-01-",
+      "title": "बाढी प्रभावितका लागि डब्ल्यूएचओद्वारा २ करोड बढीको स्वास्थ्य सामग्री सहयोग",
+      "time": "2026-09-01T11:29:35.000Z",
+      "image": "https://images.nagariknewscdn.com/2026/third-party/1779104584_who.jpg",
+      "body": [
+        "विश्व स्वास्थ्य संगठन (डब्ल्यूएचओ) दक्षिण–पूर्वी एसिया क्षेत्रीय स्वास्थ्य आपत्कालीन कोषमार्फत नेपाललाई बाढी प्रभावित समुदायका लागि करिब २ करोड २८ लाख रुपैयाँ बराबरको आपत्कालीन स्वास्थ्य सामग्री उपलब्ध गराइएको छ।",
+        "Reported by Nagarik News. Read automatically from that report; follow the link for the full story."
+      ],
+      "sources": [
+        {
+          "name": "Nagarik News",
+          "url": "https://nagariknews.nagariknetwork.com/health/who-provides-over-20-million-rupees-in-health-supplies-for-flood-victims-49-85.html"
         }
       ],
       "auto": true

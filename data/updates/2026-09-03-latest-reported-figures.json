@@ -2,15 +2,15 @@
   "slug": "2026-09-03-latest-reported-figures",
   "id": "latest-reported-figures",
   "title": "Latest reported figures: 1,252 confirmed dead",
-  "time": "2026-09-03T10:00:00+05:45",
+  "time": "2026-09-03T14:00:00+05:45",
   "body": [
-    "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. confirmed dead: 1,252, up from 1,222, reported by Nepal Police.",
+    "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. listed missing: 4,875, up from 4,216, reported by Nepal Police.",
     "Where a report describes one district or one stretch of river rather than the national figure, it is not used here. Out of contact does not mean dead."
   ],
   "sources": [
     {
       "name": "Nepal Police",
-      "url": "https://nepalpolice.gov.np/news/10313/"
+      "url": "https://nepalpolice.gov.np/news/10318/"
     }
   ],
   "revised": true,
