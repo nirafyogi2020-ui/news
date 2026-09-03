@@ -5,6 +5,10 @@
        <stop offset="0.62" stop-color="#0B0D11" stop-opacity="0.48"/>
        <stop offset="1" stop-color="#0B0D11" stop-opacity="0.93"/></linearGradient>
     <clipPath id="ptclip"><rect x="0" y="0" width="800" height="450" rx="0"/></clipPath>
+    <linearGradient id="ptground" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#141821"/>
+      <stop offset="1" stop-color="#0B0D11"/>
+    </linearGradient>
   </defs>
   <rect width="800" height="450" fill="#0B0D11"/>
   <g clip-path="url(#ptclip)">
@@ -35,9 +39,8 @@
     font-size="16" letter-spacing="0.6" fill="rgba(255,255,255,0.82)"
     >Photo: OnlineKhabar English News</text>
 
-  <text x="34" y="320" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
-    font-size="34" font-weight="600" fill="#FFFFFF">Latest reported figures: 1,222 confirmed</text><text x="34" y="362" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
-    font-size="34" font-weight="600" fill="#FFFFFF">dead</text>
+  <text x="34" y="362" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
+    font-size="34" font-weight="600" fill="#FFFFFF">Latest reported figures, 2 September 2026</text>
 
   <rect x="0" y="443" width="800" height="7" fill="#D8404B"/>
   <rect x="0.75" y="0.75" width="798.5" height="448.5" fill="none"

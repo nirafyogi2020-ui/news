@@ -3315,6 +3315,398 @@
       max-height:440px; object-fit:cover;
     }
   }
+
+  /* =====================================================================
+     FRONT PAGE — September 2026
+
+     One shape for Now, Today and Live. A lead story in the middle carrying
+     a photograph, a narrow column of headlines down the left, the live
+     figures and the helplines down the right, and under all three the day's
+     stories in an even river of cards.
+
+     Two rules hold it together. Every card in a row is the same height
+     because every part of it is a fixed height — the picture is 16:9, the
+     headline clamps at three lines, the summary at three — so a short story
+     never leaves a card half empty. And the page draws lines instead of
+     boxes: hairline rules between columns and under headings, the way a
+     newspaper does, so the borders stop shouting.
+     ===================================================================== */
+  :root{
+    --rule:#dbe1e7;
+    --rule-hair:#e7ebef;
+    --pack-gap:30px;
+  }
+  :root[data-theme="dark"]{
+    --rule:#233140;
+    --rule-hair:#1a2530;
+  }
+
+  /* --- the three columns ------------------------------------------------ */
+  .dash-top{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    grid-template-areas:"lead" "side" "rail";
+    gap:26px;
+    align-items:start;
+  }
+  .dash-lead{grid-area:lead; min-width:0;}
+  .dash-side{grid-area:side; min-width:0;}
+  .dash-top > .rail{grid-area:rail; padding:0; gap:14px;}
+
+  @media (min-width:1000px){
+    .dash-top{
+      grid-template-columns:minmax(0,1fr) 330px;
+      grid-template-areas:"lead rail" "side rail";
+      gap:0 34px;
+    }
+    .dash-side{margin-top:26px;}
+  }
+  @media (min-width:1280px){
+    .dash-top{
+      grid-template-columns:286px minmax(0,1fr) 326px;
+      grid-template-areas:"side lead rail";
+      gap:0 32px;
+    }
+    .dash-side{
+      margin-top:0; padding-right:32px;
+      border-right:1px solid var(--rule);
+      margin-right:-32px;
+    }
+    .dash-top > .rail{padding-left:32px; margin-left:-32px; border-left:1px solid var(--rule);}
+  }
+  @media (min-width:1520px){
+    .dash-top{grid-template-columns:310px minmax(0,1fr) 350px;}
+  }
+
+  /* --- the lead ---------------------------------------------------------
+     A newspaper front page leads with a picture, and this page did not have
+     one: the first thing a reader met was a rounded slab of flat colour with
+     type on it. The photograph is a real one from a cited source, credited
+     under the frame the way a picture desk credits it. */
+  .hero.hero-card{
+    background:var(--surface);
+    border:1px solid var(--rule);
+    border-radius:6px;
+    padding:0 0 22px;
+    overflow:hidden;
+    box-shadow:none;
+  }
+  .lead-media{margin:0; position:relative; background:none;}
+  .lead-media img{
+    width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; display:block;
+    background:var(--surface-2);
+  }
+  .lead-media figcaption,
+  .img-credit{
+    margin:0; padding:7px 22px 0;
+    font-family:var(--font-mono); font-size:0.66rem; letter-spacing:0.04em;
+    color:var(--text-faint); line-height:1.5;
+  }
+  .hero.hero-card > :not(.lead-media):not(figcaption){margin-left:22px; margin-right:22px;}
+  .hero.hero-card .hero-kicker{margin-top:16px;}
+  .hero.hero-card h1{font-size:clamp(2rem, 1.3rem + 2.4vw, 3.05rem); margin-top:8px;}
+  .hero.hero-card .lede{max-width:60ch;}
+
+  /* The three counters read as a strip of type rather than three boxes. */
+  .hero-figures .hf-row{
+    display:grid; grid-template-columns:repeat(3, minmax(0,1fr));
+    gap:0; margin:18px 0 0; background:none; border-radius:0;
+    border:0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  }
+  .hero-figures .hf-stat{
+    padding:14px 16px 13px; border:0; border-right:1px solid var(--rule-hair);
+    background:none; border-radius:0; box-shadow:none;
+    display:flex; flex-direction:column; gap:3px;
+  }
+  .hero-figures .hf-stat:first-child{border-left:0;}
+  .hero-figures .hf-stat:last-child{border-right:0;}
+  .hero-figures .hf-stat .hf-n{
+    font-size:clamp(1.55rem, 1.05rem + 1.4vw, 2.25rem); letter-spacing:-0.045em; line-height:1;
+  }
+  .hero-figures .hf-stat .hf-l{
+    margin-top:2px; font-family:var(--font-mono); font-size:0.63rem; letter-spacing:0.09em;
+    text-transform:uppercase; color:var(--text-faint);
+  }
+  .hero-figures .hf-note{margin:10px 0 0; font-size:0.76rem; color:var(--text-faint);}
+  @media (max-width:560px){
+    .hero-figures .hf-row{grid-template-columns:1fr;}
+    .hero-figures .hf-stat{border-right:0; border-bottom:1px solid var(--rule-hair);}
+    .hero-figures .hf-stat:last-child{border-bottom:0;}
+  }
+
+  /* --- the left column: headlines, no pictures --------------------------
+     Text only, on purpose. A column of thumbnails 60px wide next to a
+     photograph 700px wide is noise; a list of headlines is the thing a
+     reader actually scans. */
+  .ticker{border:0; border-top:0; border-radius:0; background:none; margin:0;}
+  .ticker .ticker-head{
+    margin:0 0 2px; padding:0 0 9px; gap:8px;
+    border-bottom:2px solid var(--critical);
+  }
+  .ticker .ticker-head h2{
+    font-family:var(--font-body); font-size:0.78rem; font-weight:700;
+    letter-spacing:0.11em; text-transform:uppercase;
+  }
+  .ticker .ticker-head .tk-when{font-size:0.62rem; letter-spacing:0.03em;}
+  .ticker ol{display:block; gap:0;}
+  .ticker ol li{
+    margin:0; padding:14px 0; gap:5px;
+    border:0; border-bottom:1px solid var(--rule-hair); border-radius:0;
+    background:none; transition:none;
+  }
+  .ticker ol li:last-child{border-bottom:0;}
+  .ticker ol li:hover{
+    border-color:transparent; border-bottom-color:var(--rule-hair);
+    transform:none; box-shadow:none; background:none;
+  }
+  .ticker ol li time{font-size:0.63rem; letter-spacing:0.07em; text-transform:uppercase;}
+  .ticker ol li a{
+    font-family:var(--font-display); font-size:1.04rem; font-weight:600; line-height:1.26;
+  }
+  .ticker .tk-sum{-webkit-line-clamp:2; font-size:0.83rem; margin:0;}
+  .ticker .tk-foot{margin:14px 0 0; padding:0;}
+
+  /* --- the right column ------------------------------------------------- */
+  .rail-card{border-radius:6px; box-shadow:none; border-color:var(--rule);}
+  .rail-card.is-pinned{box-shadow:none;}
+  .rail-head{border-bottom:1px solid var(--rule);}
+  .rail-card:hover{box-shadow:none;}
+
+  /* =====================================================================
+     THE RIVER — every story card the site draws, one shape
+
+     Fixed picture, three-line headline, three-line summary, footer pinned
+     to the floor. Cards in a row end level because each part of them is the
+     same height, not because the shortest one was stretched to meet the
+     tallest.
+     ===================================================================== */
+  .today-grid{
+    display:block; max-width:none; margin-top:0;
+  }
+  .river{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(258px, 1fr));
+    gap:26px 24px;
+    margin-top:22px;
+  }
+  .river > p, .today-grid > p{grid-column:1 / -1;}
+
+  .river .post-card,
+  .pack .post-card{
+    background:none; border:0; border-radius:0; box-shadow:none;
+    display:flex; flex-direction:column; overflow:visible;
+  }
+  .river .post-card:hover,
+  .pack .post-card:hover{box-shadow:none; border-color:transparent; transform:none;}
+
+  .today-card .tc-media{border-radius:4px; overflow:hidden; background:var(--surface-2);}
+  .today-card .tc-media .post-photo{
+    width:100%; aspect-ratio:16/9; object-fit:cover; display:block;
+    transition:transform .4s cubic-bezier(.2,.7,.3,1);
+  }
+  .today-card:hover .tc-media .post-photo{transform:scale(1.035);}
+  .today-card .tc-media .tc-stamp{
+    position:static; margin:0; padding:0; background:none; color:inherit;
+  }
+
+  .river .post-card .post-body,
+  .pack .post-card .post-body{
+    padding:11px 0 0; display:flex; flex-direction:column; flex:1 1 auto; gap:6px;
+  }
+  /* One line, always. A two-line kicker pushed every headline in the row
+     down by a different amount and the tops stopped lining up. */
+  .today-card .tc-kicker{
+    display:block; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    font-family:var(--font-mono); font-size:0.63rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--critical); font-weight:600;
+  }
+  .today-card .tc-kicker .tc-when{color:var(--text-faint); font-weight:500;}
+  .today-card .tc-kicker .check{
+    width:11px; height:11px; display:inline-block; vertical-align:-1px; margin-left:4px;
+  }
+
+  /* The house tile, for a report filed without a photograph. */
+  .tc-media-blank{
+    aspect-ratio:16/9; display:grid; place-items:center; padding:16px;
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--critical) 9%, var(--surface-2)), var(--surface-2));
+    border:1px solid var(--rule-hair);
+  }
+  .tcb-name{
+    font-family:var(--font-display); font-size:1.15rem; font-weight:600; line-height:1.2;
+    color:var(--text-faint); text-align:center;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  /* The section rule, wherever a tab needs one of its own. */
+  .tab-rule{
+    margin:0 0 4px; padding-bottom:9px; border-bottom:2px solid var(--critical);
+    font-family:var(--font-body); font-size:0.82rem; font-weight:700;
+    letter-spacing:0.11em; text-transform:uppercase; color:var(--text);
+  }
+  #panel-video .video-grid{margin-top:20px;}
+
+  /* A column that runs out before the lead does ends on a line and a link
+     rather than on nothing. */
+  .pack-side .pack-foot{
+    margin:0; margin-top:auto; padding-top:14px;
+    border-top:1px solid var(--rule-hair); font-size:0.82rem;
+  }
+  .pack-side .pack-foot .deeplink{margin:0;}
+
+  /* In a narrow column each item stands on its own, so the kicker may take
+     two lines rather than losing the time to an ellipsis. */
+  .pack-side .today-card .tc-kicker{white-space:normal; overflow:visible;}
+  .pack-side .tc-media-blank{padding:6px;}
+  .pack-side .tcb-name{font-size:0.7rem;}
+  .today-card .tc-title{
+    font-size:1.09rem; line-height:1.26; margin:0;
+    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .today-card .post-summary{font-size:0.9rem; line-height:1.55; color:var(--text-muted);}
+  .today-card .post-summary.clamped{-webkit-line-clamp:3;}
+  .today-card .post-summary p{margin:0 0 0.5em;}
+  .today-card .tc-credit{
+    margin:0; font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.04em;
+    color:var(--text-faint); line-height:1.5;
+  }
+  .today-card .tc-sources{font-size:0.74rem; margin:0;}
+  .river .post-card .post-foot,
+  .pack .post-card .post-foot{
+    margin-top:auto; padding:11px 0 0; border-top:1px solid var(--rule-hair);
+    background:none; gap:14px;
+  }
+  .river .post-btn, .pack .post-btn{
+    border:0; background:none; padding:0; font-size:0.78rem; color:var(--text-muted);
+  }
+  .river .post-btn:hover, .pack .post-btn:hover{color:var(--critical); background:none;}
+  .today-card .tc-more{display:none;}
+
+  /* =====================================================================
+     THE PACKAGE — lead in the middle, two thin columns beside it
+
+     Used by Today and Live so that all three tabs read as one newspaper.
+     ===================================================================== */
+  .pack{
+    display:grid; grid-template-columns:minmax(0,1fr);
+    grid-template-areas:"lead" "left" "right";
+    gap:26px; margin-top:20px;
+  }
+  .pack-lead{grid-area:lead; min-width:0;}
+  .pack-left{grid-area:left; min-width:0;}
+  .pack-right{grid-area:right; min-width:0;}
+  @media (min-width:900px){
+    .pack{
+      grid-template-columns:minmax(0,1fr) 300px;
+      grid-template-areas:"lead right" "left right";
+      gap:26px 30px;
+    }
+  }
+  @media (min-width:1280px){
+    .pack{
+      grid-template-columns:282px minmax(0,1fr) 300px;
+      grid-template-areas:"left lead right";
+      gap:0 30px;
+    }
+    .pack-left{padding-right:30px; margin-right:-30px; border-right:1px solid var(--rule);}
+    .pack-right{padding-left:30px; margin-left:-30px; border-left:1px solid var(--rule);}
+  }
+
+  /* the lead card inside a package */
+  .pack-lead .post-card .tc-title{
+    font-family:var(--font-display); font-size:clamp(1.5rem, 1.05rem + 1.5vw, 2.15rem);
+    line-height:1.14; -webkit-line-clamp:4;
+  }
+  .pack-lead .post-card .post-summary{font-size:1rem; line-height:1.62;}
+  .pack-lead .post-card .post-summary.clamped{-webkit-line-clamp:5;}
+  .pack-lead .post-card .post-body{padding-top:14px; gap:9px;}
+
+  /* the thin columns: small picture, headline, one line */
+  .pack-side{display:flex; flex-direction:column;}
+  .pack-side .pack-head{
+    margin:0 0 4px; padding-bottom:8px; border-bottom:2px solid var(--critical);
+    font-family:var(--font-body); font-size:0.74rem; font-weight:700;
+    letter-spacing:0.11em; text-transform:uppercase; color:var(--text);
+  }
+  .pack-side .post-card{
+    display:grid; grid-template-columns:96px minmax(0,1fr); gap:12px;
+    padding:14px 0; border-bottom:1px solid var(--rule-hair);
+  }
+  .pack-side .post-card:last-child{border-bottom:0;}
+  .pack-side .post-card .tc-media{grid-column:1; align-self:start;}
+  .pack-side .post-card .post-body{grid-column:2; padding:0; gap:5px;}
+  .pack-side .post-card .tc-title{font-size:0.95rem; -webkit-line-clamp:3;}
+  .pack-side .post-card .post-summary,
+  .pack-side .post-card .tc-sources,
+  .pack-side .post-card .post-foot,
+  .pack-side .post-card .tc-credit{display:none;}
+  .pack-side .post-card.no-photo{grid-template-columns:minmax(0,1fr);}
+  .pack-side .post-card.no-photo .post-body{grid-column:1;}
+
+  /* =====================================================================
+     SECTION HEADS
+
+     A red rule over a small capital line. It is the one piece of furniture
+     the page repeats, so every block announces itself the same way.
+     ===================================================================== */
+  .sec-head, #today-summary > .eyebrow{margin-bottom:0;}
+  .sec-head{
+    padding-bottom:9px; border-bottom:2px solid var(--critical); margin-bottom:0;
+    display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+  }
+  .sec-head h2{
+    font-family:var(--font-body); font-size:0.82rem; font-weight:700;
+    letter-spacing:0.11em; text-transform:uppercase;
+  }
+  .sec-head .sec-sub{
+    margin:0; font-size:0.8rem; color:var(--text-faint);
+  }
+  #panel-today h2, #panel-live #feed-tab > h2{
+    font-family:var(--font-body); font-size:0.82rem; font-weight:700;
+    letter-spacing:0.11em; text-transform:uppercase;
+    padding-bottom:9px; border-bottom:2px solid var(--critical); display:block;
+  }
+  #panel-today #today-summary > .eyebrow,
+  #panel-today #today-summary > .lede{display:none;}
+
+  /* =====================================================================
+     THE BRIEFING CARD
+
+     Square corners, a rule under the switch instead of a filled tab, so it
+     reads as part of the same paper rather than a widget dropped on it.
+     ===================================================================== */
+  .briefcard{border-radius:6px; border-color:var(--rule);}
+  .briefcard-switch{border-bottom:1px solid var(--rule); background:none;}
+  .briefcard-switch button{
+    font-family:var(--font-body); font-size:0.82rem; font-weight:600;
+    letter-spacing:0.05em; text-transform:uppercase; padding:14px 18px;
+    border-bottom:2px solid transparent; margin-bottom:-1px;
+  }
+  .briefcard-switch button[aria-selected="true"]{
+    background:none; color:var(--text); border-bottom-color:var(--critical);
+  }
+
+  #feed-tab-grid{display:block; margin-top:16px;}
+  #feed-tab-grid > .skeleton{display:none;}
+
+  /* The rule that starts the second half of a tab. */
+  .river-head{
+    margin:34px 0 0; padding-bottom:9px; border-bottom:2px solid var(--critical);
+    font-family:var(--font-body); font-size:0.78rem; font-weight:700;
+    letter-spacing:0.11em; text-transform:uppercase; color:var(--text);
+  }
+  .today-more{margin:22px 0 0; font-size:0.9rem;}
+  .today-updated{
+    margin:16px 0 0; font-family:var(--font-mono); font-size:0.68rem;
+    letter-spacing:0.05em; color:var(--text-faint);
+  }
+  .today-card .tc-kicker .tc-when::before{content:'\00b7'; margin-right:7px; color:var(--text-faint);}
+  .today-card .tc-kicker .rev{
+    font-family:var(--font-mono); font-size:0.58rem; letter-spacing:0.06em;
+    padding:1px 5px; border-radius:3px; background:var(--critical); color:#fff;
+  }
+
+  /* One last sweep: nothing on this page needs a pill-shaped corner. */
+  .post-grid .post-card, .rail-btn, .foldcard, .plain-item{border-radius:6px;}
 </style>
 </head>
 <body>
@@ -3409,11 +3801,6 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.8-3.8"></path></svg>
         </button>
       </div>
-      <p class="ht-dateline">
-        <span class="dl-live"><i aria-hidden="true"></i>Live</span>
-        <span class="dl-place">Nepal &middot; Rasuwa</span>
-        <time class="dl-date" id="hb-date">2 September 2026</time>
-      </p>
     </div>
 
     <a href="#overview" class="brand" data-tab-link="overview" aria-label="Nepal Disaster Update, home">
@@ -3541,6 +3928,17 @@
 
 
     <header class="hero hero-card">
+      <!-- A front page leads with a picture. This one is a real photograph
+           from a source the briefing already cites, credited under the frame
+           the way a picture desk credits it, not an illustration of a
+           disaster drawn by this site. -->
+      <figure class="lead-media">
+        <img src="/assets/photos/updates-2026-08-27-rasuwa-flood.jpg"
+             alt="The Bhotekoshi in flood through Rasuwa district, Nepal"
+             width="1200" height="675" fetchpriority="high" decoding="async"
+             onerror="this.closest('.lead-media').remove();">
+        <figcaption>Photograph: ICIMOD &middot; published here with credit by Nepal Disaster Update</figcaption>
+      </figure>
       <p class="hero-kicker">
         <span id="hero-day">Day 8</span>
         <span class="hk-sep" aria-hidden="true"></span>
@@ -3564,6 +3962,13 @@
         <a href="/ne/" hreflang="ne" lang="ne">नेपालीमा</a>
       </p>
     </header>
+
+      </div>
+
+      <!-- The left-hand column. Headlines only: a strip of 60px thumbnails
+           beside a 700px photograph is noise, and a list of headlines is what
+           a reader actually scans down the side of a front page. -->
+      <div class="dash-side">
 
     <!-- ===== live ticker =====
          Written by src/build.mjs from the same archive the briefings come
@@ -3606,8 +4011,8 @@
     })();
     </script>
 
-
       </div>
+
       <aside class="rail" id="rail" aria-label="Live summary">
     <section class="rail-card is-pinned" aria-labelledby="rail-fig-h">
       <p class="rail-head" id="rail-fig-h"><span class="rail-tick" aria-hidden="true"></span>Where it stands</p>
@@ -4083,7 +4488,11 @@
            the first picture. The status line, the freshness note and the
            source filter are kept in the markup as hidden hooks so the feed
            script still has somewhere to write. -->
-      <h2 class="visually-hidden">Videos</h2>
+      <!-- One rule and one line of small capitals, the same as every other
+           block on the site. A tab that opened straight onto a wall of
+           thumbnails with nothing over it was the one place the page did not
+           say where you were. -->
+      <h2 class="tab-rule">Video from verified channels</h2>
       <span class="feed-status visually-hidden" id="video-status">Loading&hellip;</span>
       <p class="video-freshness visually-hidden" id="video-freshness" role="status" hidden></p>
       <div class="seg" id="video-region-seg" hidden>
@@ -4596,19 +5005,6 @@
   });
 })();
 
-/* --- the dateline --------------------------------------------------------
-   Left of the masthead. Today's date in Kathmandu, not the reader's. */
-(function(){
-  var el = document.getElementById('hb-date');
-  if(!el) return;
-  try {
-    var d = new Date();
-    el.textContent = d.toLocaleDateString('en-GB', {
-      day:'numeric', month:'long', year:'numeric', timeZone:'Asia/Kathmandu'
-    });
-    el.setAttribute('datetime', d.toISOString().slice(0,10));
-  } catch(e){}
-})();
 </script>
 
 <script>
@@ -4627,13 +5023,13 @@ window.BriefCard = (function(){
 
   function show(id, opts){
     opts = opts || {};
-    var found = false;
-    panes.forEach(function(p){
-      var on = p.id === id;
-      if(on) found = true;
-      p.hidden = !on;
-    });
+    /* Decide first, then paint. This used to hide every pane as it looked for
+       the right one, so an id that is not a pane — /#overview, which is what
+       the tab strip leaves in the address bar — blanked the whole briefing on
+       reload, and only a click on the switch brought it back. */
+    var found = panes.some(function(p){ return p.id === id; });
     if(!found) return false;
+    panes.forEach(function(p){ p.hidden = p.id !== id; });
     buttons.forEach(function(b){
       b.setAttribute('aria-selected', String(b.getAttribute('data-pane') === id));
     });
@@ -6146,7 +6542,10 @@ var PostCards = (function(){
   }
 
   function card(item, index){
-    var summary = item.summary || item.title;
+    /* An RSS item often carries its own headline as its description. Printed
+       under the headline it is the same sentence twice, so it is dropped. */
+    var summary = item.summary && item.summary.trim() !== String(item.title || '').trim()
+      ? item.summary : '';
     var verifiedMark = sourceMark(item);
     var also = item.alsoReported || [];
     var corrob = also.length
@@ -6155,35 +6554,53 @@ var PostCards = (function(){
       : '';
     var uid = 'post-' + index + '-' + Math.random().toString(36).slice(2,7);
     var ytId = item.kind === 'video' ? youtubeId(item.url) : null;
+
+    /* Same card as Today and the front page: picture on top, source and time
+       in small capitals, headline, three lines of the report, the credit, and
+       the buttons on the floor. Three tabs, one card, so the site reads as one
+       newspaper instead of three separate widgets. */
     var media = '';
-    var mediaCredit = '';
     if(ytId){
-      media = '<div class="post-video" data-yt-id="' + escapeHtml(ytId) + '">' +
+      media = '<div class="tc-media"><div class="post-video" data-yt-id="' + escapeHtml(ytId) + '">' +
         (item.image ? '<img class="post-photo" loading="lazy" referrerpolicy="no-referrer" src="' + escapeHtml(item.image) + '" alt="" onerror="this.style.display=\'none\'">' : '') +
         '<button class="post-play" type="button" data-play-video="1" aria-label="Play video">' +
           '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>' +
         '</button>' +
-      '</div>';
+      '</div></div>';
     } else if(item.image){
-      media = '<img class="post-photo" loading="lazy" referrerpolicy="no-referrer" src="' + escapeHtml(item.image) + '" alt="" data-expand="' + uid + '" onerror="this.closest(\'.post-card\').classList.add(\'no-photo\'); this.remove();">';
-      mediaCredit = '<p class="post-photo-credit">Image from ' + escapeHtml(item.source || 'source') + '</p>';
+      media = '<div class="tc-media">' +
+        '<a class="post-photo-link" href="' + escapeHtml(item.url) + '" target="_blank" rel="noopener nofollow" tabindex="-1" aria-hidden="true">' +
+        '<img class="post-photo" loading="lazy" referrerpolicy="no-referrer" src="' + escapeHtml(item.image) + '" alt="" width="800" height="450" ' +
+        'onerror="this.closest(\'.post-card\').classList.add(\'no-photo\'); this.closest(\'.tc-media\').remove();">' +
+      '</a></div>';
     }
+
+    var credit = item.image && !ytId
+      ? 'Photograph: ' + escapeHtml(item.source || 'the publisher')
+      : '';
+
+    /* No picture filed with the report. Rather than leave a card two thirds
+       the height of the ones beside it, it gets the house tile: the outlet's
+       name set large on a tinted ground, which is plainly not a photograph
+       and says as much underneath. */
+    if(!media){
+      media = '<div class="tc-media tc-media-blank" aria-hidden="true">' +
+        '<span class="tcb-name">' + escapeHtml(item.source || 'Source') + '</span>' +
+      '</div>';
+      credit = 'No photograph filed with this report';
+    }
+
     return (
-      '<article class="post-card" data-url="' + escapeHtml(item.url) + '" data-title="' + escapeHtml(item.title) + '">' +
-        '<div class="post-head">' +
-          '<div class="post-avatar" aria-hidden="true">' + escapeHtml(initials(item.source)) + '</div>' +
-          '<div class="post-who">' +
-            '<span class="name">' + escapeHtml(item.source || 'Source') + verifiedMark + '</span>' +
-            '<span class="meta">' + escapeHtml(whenLabel(item)) + '</span>' +
-          '</div>' +
-        '</div>' +
+      '<article class="post-card today-card" data-url="' + escapeHtml(item.url) + '" data-title="' + escapeHtml(item.title) + '">' +
         media +
-        mediaCredit +
         '<div class="post-body">' +
-          '<p class="post-summary clamped" id="' + uid + '" data-expand="' + uid + '">' + escapeHtml(summary) + '</p>' +
-          (corrob
-            ? '<div style="font-size:0.72rem; color:var(--text-faint); margin-top:6px;">' + escapeHtml(corrob) + '</div>'
-            : '') +
+          '<p class="tc-kicker">' + escapeHtml(item.source || 'Source') + verifiedMark +
+            '<span class="tc-when">' + escapeHtml(whenLabel(item)) + '</span></p>' +
+          '<p class="tc-title"><a href="' + escapeHtml(item.url) + '" target="_blank" rel="noopener nofollow">' +
+            escapeHtml(item.title) + '</a></p>' +
+          (summary ? '<p class="post-summary clamped" id="' + uid + '" data-expand="' + uid + '">' + escapeHtml(summary) + '</p>' : '') +
+          (credit ? '<p class="tc-credit">' + credit + '</p>' : '') +
+          (corrob ? '<div class="tc-sources">' + escapeHtml(corrob) + '</div>' : '') +
         '</div>' +
         '<div class="post-foot">' +
           '<button class="post-btn" type="button" data-share="1">' +
@@ -6199,13 +6616,43 @@ var PostCards = (function(){
     );
   }
 
+  var EMPTY = '<p style="font-size:0.88rem; color:var(--text-faint);">No automatic posts right now. The checked summaries elsewhere on this page still apply.</p>';
+
   function render(container, items, limit){
     if(!container) return;
-    if(!items.length){
-      container.innerHTML = '<p style="font-size:0.88rem; color:var(--text-faint);">No automatic posts right now. The checked summaries elsewhere on this page still apply.</p>';
-      return;
+    if(!items.length){ container.innerHTML = EMPTY; return; }
+    container.innerHTML = '<div class="river">' +
+      items.slice(0, limit || items.length).map(card).join('') + '</div>';
+  }
+
+  /* The Live tab is a front page too: the newest report runs large in the
+     middle with its picture, five more down each side, and the rest of the
+     hour underneath in the same river the other tabs use. */
+  function renderPack(container, items, limit){
+    if(!container) return;
+    if(!items.length){ container.innerHTML = EMPTY; return; }
+    var list = items.slice(0, limit || items.length);
+    var lead  = list.slice(0, 1);
+    var left  = list.slice(1, 6);
+    var right = list.slice(6, 11);
+    var rest  = list.slice(11);
+    function column(title, group, side, foot){
+      if(!group.length) return '';
+      return '<div class="pack-side pack-' + side + '">' +
+        '<p class="pack-head">' + escapeHtml(title) + '</p>' +
+        group.map(card).join('') +
+        (foot ? '<p class="pack-foot">' + foot + '</p>' : '') + '</div>';
     }
-    container.innerHTML = items.slice(0, limit || items.length).map(card).join('');
+    container.innerHTML =
+      '<div class="pack">' +
+        column('Also reported', left, 'left',
+          '<a class="deeplink" href="#today" data-tab-link="today">The day\'s checked briefings</a>') +
+        '<div class="pack-lead">' + lead.map(card).join('') + '</div>' +
+        column('Around the story', right, 'right',
+          '<a class="deeplink" href="#live" data-tab-link="live">The official log below</a>') +
+      '</div>' +
+      (rest.length ? '<p class="river-head">Everything else this hour</p>' +
+        '<div class="river">' + rest.map(card).join('') + '</div>' : '');
   }
 
   /* Share sheet. On phones this opens the real OS share sheet (Facebook story,
@@ -6322,7 +6769,7 @@ var PostCards = (function(){
     }
   });
 
-  return { render: render, timeAgo: timeAgo, sourceMark: sourceMark };
+  return { render: render, renderPack: renderPack, timeAgo: timeAgo, sourceMark: sourceMark };
 })();
 
 var LiveFeed = (function(){
@@ -6495,7 +6942,7 @@ var LiveFeed = (function(){
       // Official/alert are primary sources, not press, always shown.
       return i.kind !== 'press' || i.region === regionFilter;
     });
-    PostCards.render(feedTabGrid, items, 60);
+    PostCards.renderPack(feedTabGrid, items, 60);
     /* A heading with nothing under it is worse than no heading. If the feed
        has no cards — it failed, or nothing has been published yet — the whole
        block steps out and the official log below moves up. */
@@ -8233,6 +8680,41 @@ var LiveFeed = (function(){
     return OG_VERSIONS[name] || ('/assets/og/' + name);
   }
 
+  /* Who took the picture, from the manifest the build writes beside the
+     downloaded photographs. A news photograph belongs to the newsroom that
+     took it, so it is credited under the frame; a tile drawn here is
+     credited to this site, with the newsroom that published the figures
+     named beside it. Nothing on a card is left uncredited. */
+  var PHOTO_CREDITS = {};
+  fetch('/assets/photos/index.json', { cache:'force-cache' })
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(j){
+      if(!j) return;
+      Object.keys(j).forEach(function(k){ PHOTO_CREDITS[k] = j[k] && j[k].credit; });
+      repaint();
+    })
+    .catch(function(){});
+
+  function creditLine(ogSlug, usedRemote, post){
+    var shot = PHOTO_CREDITS[ogSlug];
+    var outlet = post.sources && post.sources[0] && post.sources[0].name;
+    if(usedRemote && outlet) return 'Photograph: ' + outlet;
+    if(shot) return 'Photograph: ' + shot + ' · via Nepal Disaster Update';
+    return 'Graphic: Nepal Disaster Update' + (outlet ? ' · figures from ' + outlet : '');
+  }
+
+  function agoText(iso){
+    var t = Date.parse(iso);
+    if(!isFinite(t)) return '';
+    var mins = Math.round((Date.now() - t) / 60000);
+    if(mins < 1) return 'just now';
+    if(mins < 60) return mins + ' min ago';
+    var hrs = Math.round(mins / 60);
+    if(hrs < 24) return hrs + ' h ago';
+    var days = Math.round(hrs / 24);
+    return days + ' d ago';
+  }
+
   function card(post, i){
     var uid = 'today-' + (post.id ? String(post.id).replace(/[^\w-]/g, '') : i) + '-' + i;
     var paras = Array.isArray(post.body) ? post.body : (post.body ? [post.body] : []);
@@ -8246,87 +8728,49 @@ var LiveFeed = (function(){
 
     var rev = post.revised ? ' <span class="rev">updated</span>' : (post.earlier ? ' <span class="rev earlier">earlier</span>' : '');
 
-    /* Every briefing has its own page and its own share pictures, drawn at
-       build time. Hanging them on the card means the share sheet can offer
-       the right link and the right story image without another request. */
     var perma = permalink(post);
     var ogSlug = perma ? perma.replace(/^\/|\/$/g, '').replace(/\//g, '-') : '';
 
-    /* "7 h ago" beside the clock time. A timestamp tells a reader when the
-       report was filed; only the elapsed time tells them whether the page is
-       alive. */
-    function agoText(iso){
-      var t = Date.parse(iso);
-      if(!isFinite(t)) return '';
-      var mins = Math.round((Date.now() - t) / 60000);
-      if(mins < 1) return 'just now';
-      if(mins < 60) return mins + ' min ago';
-      var hrs = Math.round(mins / 60);
-      if(hrs < 24) return hrs + ' h ago';
-      var days = Math.round(hrs / 24);
-      return days + ' d ago';
-    }
+    /* The newsroom's own photograph first, the tile drawn here as the safety
+       net: the tile has the headline burnt into it and the card prints the
+       same words underneath. Only when neither loads does the frame come off,
+       so a card is never left holding an empty grey rectangle. */
+    var tile = ogAsset(ogSlug + '-thumb.png');
+    var img = post.image || tile;
+    var backup = tile && tile !== img ? tile : '';
+    var credit = img ? creditLine(ogSlug, !!post.image, post) : '';
     var ago = agoText(post.time);
-    var stampHtml = '<p class="tc-stamp">' + esc(stamp(post.time)) + rev +
-      (ago ? '<span class="tc-ago">' + esc(ago) + '</span>' : '') + '</p>';
+
+    var media = '';
+    if(img){
+      var tag = '<img class="post-photo" loading="lazy" decoding="async" referrerpolicy="no-referrer" ' +
+        'src="' + esc(img) + '" alt="" width="800" height="450" ' +
+        'data-backup="' + esc(backup) + '" ' +
+        'onerror="var b=this.getAttribute(\'data-backup\'); ' +
+          'if(b){ this.removeAttribute(\'data-backup\'); this.src=b; return; } ' +
+          'this.closest(\'.post-card\').classList.add(\'no-photo\'); this.remove();">';
+      media = '<div class="tc-media">' +
+        (perma ? '<a class="post-photo-link" href="' + esc(perma) + '" tabindex="-1" aria-hidden="true">' + tag + '</a>' : tag) +
+      '</div>';
+    }
 
     return (
-      '<article class="post-card today-card' + (ogAsset(ogSlug + '-thumb.png') || post.image ? '' : ' no-photo') +
+      '<article class="post-card today-card' + (img ? '' : ' no-photo') +
         '" data-url="' + esc(url) + '" data-title="' + esc(post.title || '') + '"' +
         (perma ? ' data-permalink="' + esc(perma) + '"' : '') +
         (ogSlug && ogAsset(ogSlug + '-story.png')
           ? ' data-story="' + esc(ogAsset(ogSlug + '-story.png')) + '"' : '') + '>' +
-        /* A news photo if the briefing has one that loads, otherwise the tile
-           drawn for this briefing at build time. A card with no picture at
-           all is the one thing that made this grid look unfinished. */
-        (function(){
-          /* The locally drawn tile first, the newsroom's own photograph
-             only as a fallback. It used to be the other way round, and that
-             is why cards went blank: those URLs point at other people's
-             servers, which move files, expire them and refuse hotlinks. The
-             tile is built here from a real source photograph and cannot
-             vanish. */
-          /* Two chances at a picture before the card gives up on having one.
-             The tile drawn here at build time is preferred — it always suits
-             the card and nobody else can move it — but those tiles are
-             generated rather than committed, so on a deployment that did not
-             build them the URL answers with the fallback page instead of a
-             picture. The newsroom's own photograph is the second chance. Only
-             when both fail does the frame come off, which is why a card is
-             never left holding an empty grey rectangle. */
-          /* The newsroom's own photograph first: it is a photograph, and the
-             tile drawn here has the headline burnt into it, which the card
-             then prints again underneath — the same words twice, once as
-             picture and once as text. The tile is the safety net rather than
-             the first choice, and it is a good one: it always exists and it
-             always suits the card. */
-          var tile = ogAsset(ogSlug + '-thumb.png');
-          var img = post.image || tile;
-          var backup = tile && tile !== img ? tile : '';
-          if(!img) return '<p class="tc-stamp tc-stamp-fallback">' + esc(stamp(post.time)) +
-            (ago ? ' · ' + esc(ago) : '') + '</p>';
-          var tag = '<img class="post-photo" loading="lazy" decoding="async" referrerpolicy="no-referrer" ' +
-            'src="' + esc(img) + '" alt="" width="800" height="450"' + (perma ? '' : ' data-expand="' + uid + '"') + ' ' +
-            'data-backup="' + esc(backup) + '" ' +
-            'onerror="var b=this.getAttribute(\'data-backup\'); ' +
-              'if(b){ this.removeAttribute(\'data-backup\'); this.src=b; return; } ' +
-              'this.closest(\'.post-card\').classList.add(\'no-photo\'); this.remove();">';
-          /* A picture that goes to the story is what a reader expects from a
-             news card, and the old one only toggled the text clamp. The stamp
-             rides on the picture rather than sitting in white space above it. */
-          return '<div class="tc-media">' +
-            (perma ? '<a class="post-photo-link" href="' + esc(perma) + '" tabindex="-1" aria-hidden="true">' + tag + '</a>' : tag) +
-            stampHtml +
-          '</div>';
-        })() +
+        media +
         '<div class="post-body">' +
+          '<p class="tc-kicker">' + esc(stamp(post.time)) + rev +
+            (ago ? '<span class="tc-when">' + esc(ago) + '</span>' : '') + '</p>' +
           (post.title
             ? '<p class="tc-title">' + (perma
                 ? '<a href="' + esc(perma) + '">' + esc(post.title) + '</a>'
                 : esc(post.title)) + '</p>'
             : '') +
           '<div class="post-summary clamped" id="' + uid + '" data-expand="' + uid + '">' + bodyHtml + '</div>' +
-          '<button class="tc-more" type="button" data-expand="' + uid + '">Read more</button>' +
+          (credit ? '<p class="tc-credit">' + esc(credit) + '</p>' : '') +
           (srcHtml ? '<div class="tc-sources"><b>Sources:</b> ' + srcHtml + '</div>' : '') +
         '</div>' +
         '<div class="post-foot">' +
@@ -8361,9 +8805,53 @@ var LiveFeed = (function(){
   /* The front page shows the day, not the archive. Thirty-nine cards ran to
      ten thousand pixels there and buried everything under it; the Today tab
      is where the whole run belongs. */
-  var HOME_MAX = 7;
+  var HOME_MAX = 8;
+
+  /* The two shapes every tab is built from.
+
+     A river is a run of equal cards: same picture, same three-line headline,
+     same three-line summary, footer on the floor. Cards in a row finish level
+     because each part of them is a fixed height, not because the short ones
+     were stretched to meet the tall one.
+
+     A package is a front page: the lead in the middle with its picture large,
+     and a thin column of headlines either side of it. Today and Live are both
+     built from one, which is what makes them read as the same newspaper as
+     the front page rather than three different sites. */
+  function river(list){
+    if(!list.length) return '';
+    return '<div class="river">' + list.map(card).join('') + '</div>';
+  }
+
+  function column(title, list, side, foot){
+    if(!list.length) return '';
+    return '<div class="pack-side pack-' + side + '">' +
+      '<p class="pack-head">' + esc(title) + '</p>' +
+      list.map(card).join('') +
+      (foot ? '<p class="pack-foot">' + foot + '</p>' : '') +
+    '</div>';
+  }
+
+  function packHtml(posts){
+    var lead  = posts.slice(0, 1);
+    var left  = posts.slice(1, 6);
+    var right = posts.slice(6, 11);
+    return '<div class="pack">' +
+      column('Also reported', left, 'left',
+        '<a class="deeplink" href="/nepal-flood/rasuwa/live-updates/">Every update, newest first</a>') +
+      '<div class="pack-lead">' + lead.map(card).join('') + '</div>' +
+      column('Earlier today', right, 'right',
+        '<a class="deeplink" href="/updates/">The whole archive of briefings</a>') +
+    '</div>';
+  }
+
+  /* Held so the credits can be painted in a second time once the photograph
+     manifest arrives, without another trip for the stories themselves. */
+  var LAST = null;
+  function repaint(){ if(LAST) render(LAST); }
 
   function render(d){
+    LAST = d;
     var posts = newestFirst((d && Array.isArray(d.posts)) ? d.posts : []);
     var stampLine = d && d.updated
       ? '<p class="today-updated">Updated ' + esc(fmtUpdated(d.updated)) + '</p>' : '';
@@ -8372,12 +8860,20 @@ var LiveFeed = (function(){
     grids.forEach(function(g){
       if(!posts.length){ g.innerHTML = empty; return; }
       var isHome = g.id === 'today-grid-home';
-      var list = isHome ? posts.slice(0, HOME_MAX) : posts;
-      g.innerHTML = list.map(card).join('') +
-        (isHome && posts.length > HOME_MAX
-          ? '<p class="today-more"><a class="deeplink" href="#today" data-tab-link="today">' +
-            'All ' + posts.length + ' stories of the day</a></p>'
-          : '') +
+      if(isHome){
+        /* The front page already leads with the event itself, so the day's
+           stories run under it as a plain river. Eight of them fills two rows
+           at desktop width and leaves no half-empty last row. */
+        g.innerHTML = river(posts.slice(0, HOME_MAX)) +
+          (posts.length > HOME_MAX
+            ? '<p class="today-more"><a class="deeplink" href="#today" data-tab-link="today">' +
+              'All ' + posts.length + ' stories of the day</a></p>'
+            : '') + stampLine;
+        return;
+      }
+      var rest = posts.slice(11);
+      g.innerHTML = packHtml(posts) +
+        (rest.length ? '<p class="river-head">More from today</p>' + river(rest) : '') +
         stampLine;
     });
   }

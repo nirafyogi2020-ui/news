@@ -262,6 +262,17 @@ for (const pg of pages) {
   });
 }
 
+/** "3 September 2026" in Nepal time, for a picture that must not carry a
+    number that the next bulletin can overtake. */
+function nptDayLabel(iso) {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  const npt = new Date(d.getTime() + (5 * 60 + 45) * 60 * 1000);
+  const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June',
+                  'July', 'August', 'September', 'October', 'November', 'December'];
+  return `${npt.getUTCDate()} ${MONTHS[npt.getUTCMonth()]} ${npt.getUTCFullYear()}`;
+}
+
 /* Every briefing gets its own card, so a link posted to Facebook shows that
    briefing's headline rather than the site's.
 
@@ -281,11 +292,23 @@ for (const p of posts) {
   /* Same layout with or without the photograph. With no usable source
      picture the card is simply typographic: this site does not draw its own
      illustration of a news event. */
+
+  /* The figures briefing is retitled every time a counter moves, and its
+     picture is a build artefact that reaches the live domain minutes later.
+     The card therefore showed one toll burnt into the picture and a newer one
+     printed beneath it — the page contradicting itself in a single card. The
+     count comes off the drawn tile; the date it was filed goes on instead, so
+     nothing on the picture can be overtaken by the next bulletin. */
+  const volatile = /-latest-reported-figures$/.test(slug);
+  const drawnTitle = volatile
+    ? `Latest reported figures, ${nptDayLabel(p.time)}`
+    : p.title;
+
   /* A briefing's stamp is that briefing's own bulletin time, not the site's
      newest. Reshared next week it should still say when it was written. */
   const shot = {
     eyebrow: 'Briefing',
-    title: p.title,
+    title: drawnTitle,
     href,
     credit: photo ? photo.credit : '',
     stamp: stampFrom('PUBLISHED', p.time),
@@ -295,7 +318,7 @@ for (const p of posts) {
 
   story(`${slug}-story`, {
     eyebrow: 'Briefing',
-    title: p.title,
+    title: drawnTitle,
     sub: (p.body && p.body[0] ? p.body[0] : '').slice(0, 130),
     live: false,
   });

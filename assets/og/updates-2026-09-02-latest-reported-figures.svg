@@ -41,9 +41,9 @@
 
   <text x="66" y="250"
     font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="60" font-weight="600" fill="#FFFFFF"
-    >Latest reported figures:</text><text x="66" y="318"
+    >Latest reported figures,</text><text x="66" y="318"
     font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="60" font-weight="600" fill="#FFFFFF"
-    >1,222 confirmed dead</text>
+    >2 September 2026</text>
   
 
   <text x="1134" y="514" text-anchor="end" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif"

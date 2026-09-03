@@ -304,13 +304,23 @@ Sitemap: ${SITE}/sitemap-index.xml
    Both rewrites are idempotent: they target markers and an attribute, never
    the previous run's output.
    ------------------------------------------------------------------------- */
+/* Who took each photograph, from the manifest og-build writes beside the
+   files it downloads. The card prints it under the summary, so nothing on the
+   page is a picture with no name against it. */
+const PHOTO_INDEX = (() => {
+  try {
+    return JSON.parse(readFileSync(join(ROOT, 'assets', 'photos', 'index.json'), 'utf8'));
+  } catch { return {}; }
+})();
+
 function ssrTodayCards(list) {
   if (!list.length) {
     return '<p style="font-size:0.92rem; color:var(--text-muted);">No briefing has been published yet today. The <a href="/nepal-flood/rasuwa/live-updates/">live updates page</a> carries the raw newswire.</p>';
   }
-  return list.map((post, i) => {
+  const cards = list.map((post, i) => {
     const uid = `ssr-${post.slug}-${i}`;
     const stamp = nptLong(post.time);
+    const sourceNames = (post.sources || []).map(s => s.name).filter(Boolean);
     const sources = (post.sources || []).map(s =>
       s.url ? `<a href="${escAttr(s.url)}" target="_blank" rel="noopener nofollow">${escHtml(s.name || s.url)}</a>` : escHtml(s.name || '')
     ).join(', ');
@@ -320,28 +330,35 @@ function ssrTodayCards(list) {
        photograph too. */
     const thumb = assetVersioned(`${ogName}-thumb.png`);
     const story = assetVersioned(`${ogName}-story.png`);
+    const shot = PHOTO_INDEX[ogName] && PHOTO_INDEX[ogName].credit;
+    const credit = !thumb ? ''
+      : shot ? `Photograph: ${shot} · via Nepal Disaster Update`
+      : `Graphic: Nepal Disaster Update${sourceNames[0] ? ` · figures from ${sourceNames[0]}` : ''}`;
     return `<article class="post-card today-card${thumb ? '' : ' no-photo'}" data-title="${escAttr(post.title)}"`
       + ` data-permalink="${escAttr(post.url)}"`
       + (story ? ` data-story="${escAttr(story)}"` : '') + '>'
-      + (thumb ? '' : `<p class="tc-stamp tc-stamp-fallback">${escHtml(stamp)}</p>`)
-      + '<div class="tc-media">'
       + (thumb
-        ? `<a class="post-photo-link" href="${escAttr(post.url)}" tabindex="-1" aria-hidden="true">`
+        ? '<div class="tc-media">'
+          + `<a class="post-photo-link" href="${escAttr(post.url)}" tabindex="-1" aria-hidden="true">`
           + `<img class="post-photo" loading="lazy" decoding="async" width="800" height="450"`
           + ` src="${escAttr(thumb)}" alt=""></a>`
+          + '</div>'
         : '')
-      + `<p class="tc-stamp">${escHtml(stamp)}${post.revised ? ' <span class="rev">updated</span>' : ''}</p>`
-      + '</div>'
       + '<div class="post-body">'
+      + `<p class="tc-kicker">${escHtml(stamp)}${post.revised ? ' <span class="rev">updated</span>' : ''}</p>`
       + `<p class="tc-title"><a href="${escAttr(post.url)}">${escHtml(post.title)}</a></p>`
       + `<div class="post-summary clamped" id="${uid}" data-expand="${uid}">${post.body.map(b => `<p>${escHtml(b)}</p>`).join('')}</div>`
-      + `<button class="tc-more" type="button" data-expand="${uid}">Read more</button>`
+      + (credit ? `<p class="tc-credit">${escHtml(credit)}</p>` : '')
       + (sources ? `<div class="tc-sources"><b>Sources:</b> ${sources}</div>` : '')
       + '</div>'
       + `<div class="post-foot"><a class="post-btn" href="${escAttr(post.url)}">Full briefing</a>`
       + '<button class="post-btn" type="button" data-share="1">Share</button></div>'
       + '</article>';
-  }).join('') + `<p class="today-updated">Updated ${escHtml(nptLong(modified))}</p>`;
+  }).join('');
+  /* The same river the client renderer draws, so the markup a crawler is
+     served and the markup a reader ends up with are the same shape. */
+  return `<div class="river">${cards}</div>`
+    + `<p class="today-updated">Updated ${escHtml(nptLong(modified))}</p>`;
 }
 
 /* ---------------------------------------------------------------------------

@@ -319,19 +319,35 @@ export function ogPhotoThumb(o = {}) {
   const H = 450;
   const PAD = 34;
   const lines = wrap(o.title || '', 34, W - PAD * 2 - 20, 3);
-  const top = H - 88 - (lines.length - 1) * 42;
+  /* With a photograph behind it the headline sits along the bottom edge,
+     where the scrim is darkest. With no photograph the same layout left a
+     black card with the type in the gutter and nothing in the middle of it,
+     which is the tile readers were seeing beside a live headline. The
+     typographic tile is its own design: the mark set large and faint behind
+     the type, a red rule, and the headline on the optical centre. */
+  const hasPhoto = !!o.href;
+  const top = hasPhoto
+    ? H - 88 - (lines.length - 1) * 42
+    : Math.round(H / 2 - ((lines.length - 1) * 42) / 2 + 6);
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
   <defs>
     ${scrim('ptv', 'down')}
     <clipPath id="ptclip"><rect x="0" y="0" width="${W}" height="${H}" rx="0"/></clipPath>
+    <linearGradient id="ptground" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="${INK_2}"/>
+      <stop offset="1" stop-color="${INK}"/>
+    </linearGradient>
   </defs>
-  <rect width="${W}" height="${H}" fill="${INK}"/>
-  ${o.href ? `<g clip-path="url(#ptclip)">
+  <rect width="${W}" height="${H}" fill="${hasPhoto ? INK : 'url(#ptground)'}"/>
+  ${hasPhoto ? `<g clip-path="url(#ptclip)">
     <image href="${o.href}" x="0" y="0" width="${W}" height="${H}"
       preserveAspectRatio="xMidYMid slice"/>
-  </g>` : ''}
-  <rect width="${W}" height="${H}" fill="url(#ptv)"/>
+  </g>` : `${ghost(W - 250, 96, 2.3, 0.07)}
+  <rect x="${PAD}" y="${top - 62}" width="58" height="4" fill="${RED}"/>
+  ${o.stamp ? `<text x="${PAD}" y="${H - 40}" font-family="${SANS}" font-size="15"
+    font-weight="600" letter-spacing="2" fill="${CREAM_DIM}">${esc(String(o.stamp).toUpperCase())}</text>` : ''}`}
+  ${hasPhoto ? `<rect width="${W}" height="${H}" fill="url(#ptv)"/>` : ''}
 
   <g transform="translate(${PAD - 6},18) scale(0.38)">${mark('pt')}</g>
   <text x="${PAD + 44}" y="46" font-family="${SANS}" font-size="17" font-weight="800"
