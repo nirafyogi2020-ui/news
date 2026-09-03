@@ -62,14 +62,28 @@ const YT_TRUSTED_CHANNELS = [
    general current-affairs video from appearing just because a channel wrote
    "Nepal" in its channel description. */
 const VIDEO_PLACE = [
-  'nepal', 'rasuwa', 'bhotekoshi', 'bhote koshi', 'trishuli', 'nuwakot',
-  'timure', 'syabrubesi', 'langtang', 'gyirong', 'kyirong',
-  'नेपाल', 'रसुवा', 'भोटेकोशी', 'भोटे कोशी', 'त्रिशूली', 'त्रिशुली',
-  'नुवाकोट', 'तिमुरे', 'स्याफ्रुबेसी'
+  'nepal', 'rasuwa', 'rasuwagadhi', 'bhotekoshi', 'bhote koshi', 'trishuli',
+  'nuwakot', 'timure', 'syabrubesi', 'langtang', 'gyirong', 'kyirong',
+  'dhading', 'sindhupalchok', 'gorkha', 'chitwan', 'nawalparasi', 'kathmandu',
+  'नेपाल', 'रसुवा', 'रसुवागढी', 'भोटेकोशी', 'भोटे कोशी', 'त्रिशूली', 'त्रिशुली',
+  'नुवाकोट', 'तिमुरे', 'स्याफ्रुबेसी', 'धादिङ', 'सिन्धुपाल्चोक', 'गोरखा',
+  'चितवन', 'नवलपरासी', 'काठमाडौं', 'प्रहरी'
 ];
 const VIDEO_HAZARD = [
   'flood', 'flash flood', 'glacial lake', 'landslide', 'avalanche', 'disaster',
-  'बाढी', 'पहिरो', 'हिमताल', 'विपद्'
+  'inundat', 'washed away', 'swept away', 'debris flow', 'cloudburst',
+  'बाढी', 'पहिरो', 'हिमताल', 'विपद्', 'डुबान', 'बगायो', 'बगेर'
+];
+/* What a rescue channel actually posts about. The verified channels are
+   NDRRMA, Nepal Television, Kantipur, Onlinekhabar and Nepal Police, and
+   during a disaster most of what they publish is the response rather than
+   the water: "नेपाल प्रहरी निरन्तर उद्धारमा" names the country and the
+   rescue but never the word flood, and was thrown away every time. */
+const VIDEO_RESPONSE = [
+  'rescue', 'relief', 'evacuat', 'stranded', 'missing', 'death toll',
+  'damage', 'displaced', 'helicopter', 'search operation', 'aid',
+  'उद्धार', 'राहत', 'बेपत्ता', 'मृत्यु', 'क्षति', 'विस्थापित',
+  'नदीजन्य', 'नदिजन्य', 'हेलिकप्टर', 'खोजी', 'सुरक्षित'
 ];
 const VIDEO_MAX_AGE_MS = 21 * 24 * 60 * 60 * 1000;
 
@@ -800,9 +814,19 @@ async function fetchTrustedYoutube() {
   return { items, issues, considered: parsed.length, rejected };
 }
 
+/* Requiring the place AND the hazard in the same title threw away most of
+   what the verified channels post. Fifteen videos were considered on
+   3 September 2026 and all fifteen were rejected, including Nepal Police
+   footage of the rescue itself, so the Watch tab read "Video feed
+   unavailable" while the feed was working perfectly. A title now qualifies
+   if it names the hazard at all, or if it names both the place and what is
+   being done about it. Naming the place alone is still not enough — that is
+   what let an evening entertainment programme through on the word "Nepal". */
 export function isVideoOnTopic(video, now = Date.now()) {
   const text = (video.title || '') + ' ' + (video.summary || '');
-  if (!matches(text, VIDEO_PLACE) || !matches(text, VIDEO_HAZARD)) return false;
+  const onTopic = matches(text, VIDEO_HAZARD) ||
+    (matches(text, VIDEO_PLACE) && matches(text, VIDEO_RESPONSE));
+  if (!onTopic) return false;
   const published = video.time ? new Date(video.time).getTime() : NaN;
   return !Number.isFinite(published) || published >= now - VIDEO_MAX_AGE_MS;
 }
