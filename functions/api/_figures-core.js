@@ -491,15 +491,39 @@ function flatten(text) {
   return latinDigits(text).replace(/[​‌‍]/g, '');
 }
 
-/**
- * Read every district figure stated in one bulletin.
- *
- * Returns `[]` rather than a partial guess when the sentence is not there, so
- * a bulletin that states only a national total leaves the previous breakdown
- * standing instead of blanking the table.
- */
-export function readDistricts(text) {
-  const flat = flatten(text);
+/* The breakdown lives in one sentence, and only in that sentence.
+
+   A police item reaches this reader as title + summary + body joined together,
+   and the summary is a 220-character teaser that can stop in the middle of the
+   district run — "... चितवनमा ३ सय ५९ जना, गोरखामा" and then nothing. The body
+   that follows repeats the headline, so a district name left dangling at the
+   cut sat a few characters away from the national total and read it as its own
+   figure: Gorkha was published as 1,280 when the bulletin said 72, and the
+   table then totalled 2,488 against a national count of 1,259.
+
+   So the text is cut into candidate clauses first — each one opening at जसमध्ये
+   ("of whom") and closing at the danda that ends its sentence — and the run
+   that names the most districts wins. The truncated teaser names five and
+   stops; the body's own copy names all nine, and that is the one published.
+   A bulletin written without the clause still gets the whole text searched. */
+function breakdownClauses(flat) {
+  const out = [];
+  let from = 0;
+  for (;;) {
+    const start = flat.indexOf('जसमध्ये', from);
+    if (start < 0) break;
+    const rest = flat.slice(start);
+    const end = rest.indexOf('।');
+    out.push(end > 0 ? rest.slice(0, end) : rest);
+    from = start + 1;
+  }
+  out.push(flat);
+  return out;
+}
+
+/* Every district figure stated inside one run of text, in the order the
+   DISTRICTS list gives, before any sorting or filtering. */
+function districtsIn(flat) {
   const out = [];
   const seen = new Set();
   for (const district of DISTRICTS) {
@@ -517,5 +541,36 @@ export function readDistricts(text) {
     seen.add(district.en);
     out.push({ district: district.en, value });
   }
-  return out.sort((a, b) => b.value - a.value);
+  return out;
+}
+
+/* A district cannot hold every body the country has counted. A row worth as
+   much as all the others put together is a national total that has been read
+   as a district — the shape the Gorkha fault took — and is dropped rather
+   than published. Only applied where enough rows survive to still be a
+   breakdown, so a genuinely lopsided two-district bulletin is left alone. */
+function withoutTheNationalTotal(rows) {
+  if (rows.length <= 2) return rows;
+  const sum = rows.reduce((total, row) => total + row.value, 0);
+  const kept = rows.filter(row => row.value * 2 < sum);
+  return kept.length >= 2 ? kept : rows;
+}
+
+/**
+ * Read every district figure stated in one bulletin.
+ *
+ * Returns `[]` rather than a partial guess when the sentence is not there, so
+ * a bulletin that states only a national total leaves the previous breakdown
+ * standing instead of blanking the table.
+ */
+export function readDistricts(text) {
+  const flat = flatten(text);
+  let best = [];
+  for (const clause of breakdownClauses(flat)) {
+    const rows = withoutTheNationalTotal(districtsIn(clause));
+    const sum = rows.reduce((total, row) => total + row.value, 0);
+    const bestSum = best.reduce((total, row) => total + row.value, 0);
+    if (rows.length > best.length || (rows.length === best.length && sum > bestSum)) best = rows;
+  }
+  return best.sort((a, b) => b.value - a.value);
 }

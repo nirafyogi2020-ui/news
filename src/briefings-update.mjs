@@ -184,10 +184,10 @@ export function planCards(items, { today, archive, now = Date.now(), startedAt =
       title: item.title,
       time: item.time,
       image: item.image || '',
-      body: [
-        oneSentence(item.summary),
-        `Reported by ${item.source}. Read automatically from that report; follow the link for the full story.`
-      ],
+      /* The summary, and nothing after it. The card already prints the
+         source under the text and links to the full briefing, so a closing
+         line repeating both was a third of the card saying nothing new. */
+      body: [oneSentence(item.summary)],
       sources: [{ name: item.source, url: item.url }],
       auto: true
     });

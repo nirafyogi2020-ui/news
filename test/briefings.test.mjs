@@ -19,6 +19,37 @@ test('the district breakdown adds up to the total the same bulletin states', () 
   assert.equal(rows[0].value, 348);
 });
 
+/* The shape that actually reached the live site on 3 September 2026: the item
+   is title + summary + body joined, the 220-character summary stops in the
+   middle of the district run, and the body then repeats the headline total. */
+const TRUNCATED_FEED_ITEM = [
+  'भोटेकोशी बाढी अपडेट : १ हजार २ सय ८० जनाको शव फेला, २ जनाको उपचारको क्रममा मृत्यु',
+  'काठमाडौं, रसुवाको भोटेकोशीमा आएको विनाशकारी बाढीका कारण बिहीबार राति २०:०० बजे सम्म ' +
+    '१ हजार २ सय ८० जनाको शव फेला परेको छ । जसमध्ये रसुवामा १ सय ४० जना, नुवाकोटमा १ सय ८५ जना, ' +
+    'धादिङमा ६० जना, चितवनमा ३ सय ५९ जना, गोरखामा',
+  'भोटेकोशी बाढी अपडेट : १ हजार २ सय ८० जनाको शव फेला, २ जनाको उपचारको क्रममा मृत्यु । ' +
+    'काठमाडौं, रसुवाको भोटेकोशीमा आएको विनाशकारी बाढीका कारण १ हजार २ सय ८० जनाको शव फेला परेको हो । ' +
+    'जसमध्ये रसुवामा १ सय ४० जना, नुवाकोटमा १ सय ८५ जना, धादिङमा ६० जना, चितवनमा ३ सय ५९ जना, ' +
+    'गोरखामा ७२ जना, तनहुँमा ३८ जना, नवलपरासी पूर्वमा २ सय १८ जना र नवलपरासी पश्‍चिम १ सय ९० जना र ' +
+    'भारतमा भेटिएको (नवलपरासी पश्‍चिममा बुझाएको) १८ गरी १ हजार २ सय ८० जनाको शव फेला परेको हो ।'
+].join(' ');
+
+test('a district name left dangling by the summary cut does not read the headline total', () => {
+  const rows = readDistricts(TRUNCATED_FEED_ITEM);
+  const gorkha = rows.find(row => row.district === 'Gorkha');
+  assert.equal(gorkha.value, 72, 'Gorkha was published as 1,280, the national total');
+  assert.equal(rows.reduce((sum, row) => sum + row.value, 0), 1280,
+    'the breakdown must add up to the total the same bulletin states');
+});
+
+test('a district that swallows the national total is dropped, clause or no clause', () => {
+  const noClause = 'रसुवामा १ सय ४० जना, नुवाकोटमा १ सय ८५ जना, धादिङमा ६० जना, ' +
+    'चितवनमा ३ सय ५९ जना, गोरखामा १ हजार २ सय ८० जना ।';
+  const rows = readDistricts(noClause);
+  assert.equal(rows.some(row => row.district === 'Gorkha'), false);
+  assert.equal(rows.length, 4);
+});
+
 test('a bulletin with no breakdown yields nothing rather than a partial table', () => {
   assert.deepEqual(readDistricts('हालसम्म १ हजार जनाको शव फेला परेको छ ।'), []);
   assert.equal(latestDistricts([{ source: 'Nepal Police', time: '2026-09-02T17:00:00+05:45', summary: 'no breakdown' }]), null);

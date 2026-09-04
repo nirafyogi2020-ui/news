@@ -358,7 +358,7 @@ ${table(['Group', 'Listed missing'], C.MISSING_BREAKDOWN.map(([k, v]) => [esc(k)
 ${faq.html}
 
 <h2>How this page is put together</h2>
-<p>Casualty figures come from Nepal Police and NDRRMA situation reports. Damage, rescue and response figures come from the ${esc(C.SITREP_SHORT)} and the latest NDRRMA update, which draw on NDRRMA, Nepal Police, the Department of Roads and the Nepal Electricity Authority. Different bulletins published at different hours give different counts; where two sources disagree, the lower confirmed figure is shown, with the source and the time named next to it. Nothing here is generated automatically from a model. The figures are typed in by hand from the bulletins, which is why they carry a timestamp rather than a claim of being live to the minute.</p>
+<p>Casualty figures come from Nepal Police and NDRRMA situation reports. Damage, rescue and response figures come from the ${esc(C.SITREP_SHORT)} and the latest NDRRMA update, which draw on NDRRMA, Nepal Police, the Department of Roads and the Nepal Electricity Authority. Different bulletins published at different hours give different counts; where two sources disagree, the lower confirmed figure is shown, with the source and the time named next to it. Every figure carries the time of the bulletin it came from, because a casualty count without a timestamp is not usable during an event.</p>
 <p>If a number here is wrong, <a href="/contact/">tell us</a> and it gets corrected or removed. <a href="/sources/">Every source this site uses is listed publicly</a>.</p>
 `;
 
@@ -512,7 +512,7 @@ ${table(['When', 'Reported dead', 'Source'], [
   <li><strong>Hospital figures:</strong> Tribhuvan University Teaching Hospital, reported by Nagarik News, 27 August.</li>
   <li><strong>Chinese-side deaths:</strong> Chinese state media (CCTV) regarding Gyirong county.</li>
 </ul>
-<p class="faint">Figures are typed in by hand from the published bulletins. If one is wrong, <a href="/contact/">report it</a> and it gets corrected or removed.</p>
+<p class="faint">Figures come from the published bulletins named beside them. If one is wrong, <a href="/contact/">report it</a> and it gets corrected or removed.</p>
 `;
 
   const t = `Rasuwa Flood Death Toll: ${C.TOLL.deadNepal} Confirmed Dead, District by District`;
@@ -1402,7 +1402,7 @@ export function updateIndex(ctx) {
   const path = '/updates/';
   const posts = ctx.posts;
   const body = `
-<p class="measure">Every briefing published on this site, newest first. Each one is written by hand from named sources and carries the time it was published in Nepal time. Nothing here is auto-generated.</p>
+<p class="measure">Every briefing published on this site, newest first. Each one names its sources and carries the time it was published in Nepal time.</p>
 
 <ul class="postlist">
 ${posts.map(p => `<li><a class="postcard" href="${esc(p.url)}">
@@ -1738,7 +1738,7 @@ export function about(ctx) {
 
 <h2>How the information is put together</h2>
 <h3>Figures</h3>
-<p>Casualty, damage and rescue figures are typed in by hand from published bulletins, mainly the Nepal Police daily bulletin and NDRRMA situation reports. Each figure carries the source and the time of the bulletin it came from, because a casualty count without a timestamp is not usable during an event. Where two sources disagree, the lower confirmed figure is shown.</p>
+<p>Casualty, damage and rescue figures come from published bulletins, mainly the Nepal Police daily bulletin and NDRRMA situation reports. Each figure carries the source and the time of the bulletin it came from, because a casualty count without a timestamp is not usable during an event. Where two sources disagree, the lower confirmed figure is shown.</p>
 <h3>The live newswire</h3>
 <p>The feed on the live updates page is collected automatically by this site’s own server from UN disaster alerts (ReliefWeb, GDACS), the US Geological Survey, and a fixed list of named newsrooms in Nepal and abroad. It is a headline-and-link list: stories are read at the source, not copied here. An item is marked verified only when it comes from an official alerting source, or when two or more independent newsrooms report the same thing.</p>
 <h3>Written briefings</h3>
@@ -1804,7 +1804,7 @@ ${g.links.map(([u, n, d]) => `<li><a href="${esc(u)}" target="_blank" rel="noope
 
 <h2>How sources are used</h2>
 <ul>
-  <li><strong>Figures.</strong> Casualty, damage and rescue numbers come only from Nepal Police bulletins and NDRRMA situation reports, typed in by hand, with the bulletin time printed next to the figure.</li>
+  <li><strong>Figures.</strong> Casualty, damage and rescue numbers come only from Nepal Police bulletins and NDRRMA situation reports, with the bulletin time printed next to the figure.</li>
   <li><strong>The newswire.</strong> Headlines and links only, collected on a schedule by this site’s own server. Stories are read at the publisher, not reproduced here.</li>
   <li><strong>Verification.</strong> An item is marked verified when it comes from an official alerting source (ReliefWeb, GDACS, USGS) or when two or more independent newsrooms report the same thing. Everything else is left unmarked.</li>
   <li><strong>Photographs.</strong> Openly licensed images only, with credit, mostly from Wikimedia Commons. No AI-generated images are used anywhere on this site.</li>
