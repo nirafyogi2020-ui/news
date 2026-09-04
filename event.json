@@ -8,16 +8,16 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-09-03T16:36:37.000Z",
+  "asOf": "2026-09-04T03:29:05.000Z",
   "asOfSource": "Nepalnews",
   "stats": [
     {
       "icon": "dead",
-      "value": "1,259",
+      "value": "1,290",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepalnews: 1,259. Up from 1,252. Read automatically from the published report, not edited by hand. Source: https://english.nepalnews.com/s/nation/bhote-koshi-flood-death-toll-reaches-1259/ Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Onlinekhabar: 1,114. Up from 768. Read automatically from the published report, not edited by hand. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
+      "detail": "Nepalnews: 1,290. Up from 1,259. Read automatically from the published report, not edited by hand. Source: https://english.nepalnews.com/s/nation/bhote-koshi-flood-disaster-death-toll-reaches-1290-over-4700-remain-missing/ Earlier detail (as of 2026-08-30T14:00:00+05:45), kept for the breakdown and the caveats and not describing the current figure: Onlinekhabar: 1,114. Up from 768. Read automatically from the published report, not edited by hand. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
       "priorDetail": "Onlinekhabar: 1,114. Up from 768. Read automatically from the published report, not edited by hand. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
       "priorAsOf": "2026-08-30T14:00:00+05:45"
     },

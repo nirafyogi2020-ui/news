@@ -1,19 +1,53 @@
 {
-  "updated": "2026-09-03T16:36:37.000Z",
+  "updated": "2026-09-04T04:36:56.000Z",
   "posts": [
     {
+      "id": "auto-2026-09-04-",
+      "title": "सुरुङबाट १० दिनपछि निकालिएका साहको स्वास्थ्य अवस्था सामान्य",
+      "time": "2026-09-04T04:36:56.000Z",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/09/sanjay-saha.jpg",
+      "body": [
+        "१९ भदौ, काठमाडौं । त्रिशूली थ्री 'ए'को सुरुङबाट जीवित्तै उद्धार गरिएका सञ्जय साहको स्वास्थ्य अवस्था सामान्य रहेको पाइएको छ । उद्धार गरिपछि नेपाली सेनाले उनको स्वास्थ्य जाँच गराउँदा सामान्य रहेको देखिएको हो ।",
+        "Reported by Onlinekhabar (Nepali). Read automatically from that report; follow the link for the full story."
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar (Nepali)",
+          "url": "https://www.onlinekhabar.com/2026/09/2010493/sah-who-was-rescued-from-the-tunnel-after-10-days-is-in-normal-health"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-09-04-minister-rawal-for-carrying-out-exemplary-works-in-post-disa",
+      "title": "Minister Rawal for carrying out exemplary works in post-disaster recovery as well",
+      "time": "2026-09-04T04:35:15.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/09/Pratibha-rawal.jpg",
+      "body": [
+        "NUWAKOT: Minister for Land Management, Cooperatives, Federal Affairs and General Administration, Pratibha Rawal, has underscored on carrying out exemplary works in the post-disaster recovery phase as well.",
+        "Reported by Nepalnews. Read automatically from that report; follow the link for the full story."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/minister-rawal-for-carrying-out-exemplary-works-in-post-disaster-recovery-as-well/"
+        }
+      ],
+      "auto": true
+    },
+    {
       "id": "latest-reported-figures",
-      "title": "Latest reported figures: 1,259 confirmed dead",
-      "time": "2026-09-03T16:36:37.000Z",
+      "title": "Latest reported figures: 1,290 confirmed dead",
+      "time": "2026-09-04T03:29:05.000Z",
       "image": "",
       "body": [
-        "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. confirmed dead: 1,259, up from 1,252, reported by Nepalnews. listed missing: 5,083, up from 4,875, reported by Nepalnews. rescued: 12,038, up from 11,993, reported by Nepalnews.",
+        "These figures are read automatically from the published reports as they appear, and are not written or checked by hand. confirmed dead: 1,290, up from 1,259, reported by Nepalnews.",
         "Where a report describes one district or one stretch of river rather than the national figure, it is not used here. Out of contact does not mean dead."
       ],
       "sources": [
         {
           "name": "Nepalnews",
-          "url": "https://english.nepalnews.com/s/nation/bhote-koshi-flood-death-toll-reaches-1259/"
+          "url": "https://english.nepalnews.com/s/nation/bhote-koshi-flood-disaster-death-toll-reaches-1290-over-4700-remain-missing/"
         }
       ],
       "revised": true
