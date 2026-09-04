@@ -1,6 +1,27 @@
 {
-  "updated": "2026-09-04T04:35:15.000Z",
+  "updated": "2026-09-04T16:20:21.000Z",
   "posts": [
+    {
+      "id": "latest-reported-figures",
+      "title": "Latest reported figures: 1,294 confirmed dead",
+      "time": "2026-09-04T16:20:21.000Z",
+      "image": "",
+      "body": [
+        "The confirmed death toll in Nepal has risen to 1,294, from 1,290, Onlinekhabar reports. The number of people listed missing has risen to 8,898, from 5,083, Khabarhub reports.",
+        "Where a report describes one district or one stretch of river rather than the national figure, it is not used here. Out of contact does not mean dead."
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/rasuwa-flood-death-toll-8.html"
+        },
+        {
+          "name": "Khabarhub",
+          "url": "https://khabarhub.com/2026/04/1020594/"
+        }
+      ],
+      "revised": true
+    },
     {
       "id": "auto-2026-09-04-minister-rawal-for-carrying-out-exemplary-works-in-post-disa",
       "title": "Minister Rawal for carrying out exemplary works in post-disaster recovery as well",
@@ -16,23 +37,6 @@
         }
       ],
       "auto": true
-    },
-    {
-      "id": "latest-reported-figures",
-      "title": "Latest reported figures: 1,290 confirmed dead",
-      "time": "2026-09-04T03:29:05.000Z",
-      "image": "",
-      "body": [
-        "The confirmed death toll in Nepal has risen to 1,290, from 1,259, Nepalnews reports.",
-        "Where a report describes one district or one stretch of river rather than the national figure, it is not used here. Out of contact does not mean dead."
-      ],
-      "sources": [
-        {
-          "name": "Nepalnews",
-          "url": "https://english.nepalnews.com/s/nation/bhote-koshi-flood-disaster-death-toll-reaches-1290-over-4700-remain-missing/"
-        }
-      ],
-      "revised": true
     },
     {
       "id": "auto-2026-09-03-missing-flood-victims-families-called-for-dna-testing",
@@ -158,6 +162,22 @@
         {
           "name": "The Himalayan Times",
           "url": "https://thehimalayantimes.com/business/ncell-extends-free-voice-data-and-sms-services-in-flood-hit-areas"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-08-31-",
+      "title": "पूर्वसूचना प्रणालीमाथि प्रश्न",
+      "time": "2026-08-31T00:15:27.000Z",
+      "image": "https://images.nagariknewscdn.com/2025/third-party/1736727707_Sampadakiya.jpg",
+      "body": [
+        "भोटेकोसी–त्रिशूली तटीय क्षेत्रमा बुधबार आएको विनाशकारी बाढीले जनधनको ठुलो क्षति पुर्‍याएको छ। मानवीय र भौतिक नोक्सानीको अझै आकलन गर्न कठिन छ।"
+      ],
+      "sources": [
+        {
+          "name": "Nagarik News",
+          "url": "https://nagariknews.nagariknetwork.com/editorial/questions-on-the-early-warning-system-br-86-89.html"
         }
       ],
       "auto": true
