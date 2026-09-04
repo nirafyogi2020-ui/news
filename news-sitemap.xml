@@ -8,8 +8,8 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-04T04:36:56.000Z</news:publication_date>
-      <news:title>Nepal Flood Live: 1,290 dead, 5,083 missing in Rasuwa, 4 Sep</news:title>
+      <news:publication_date>2026-09-04T16:20:21.000Z</news:publication_date>
+      <news:title>Nepal Flood Live: 1,294 dead, 8,898 missing in Rasuwa, 4 Sep</news:title>
     </news:news>
   </url>
   <url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-04T04:36:56.000Z</news:publication_date>
+      <news:publication_date>2026-09-04T16:20:21.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-04-latest-reported-figures/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-04T16:20:21.000Z</news:publication_date>
+      <news:title>Latest reported figures: 1,294 confirmed dead</news:title>
     </news:news>
   </url>
   <url>
@@ -43,17 +54,6 @@
       </news:publication>
       <news:publication_date>2026-09-04T04:35:15.000Z</news:publication_date>
       <news:title>Minister Rawal for carrying out exemplary works in post-disaster recovery as well</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-04-latest-reported-figures/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-04T03:29:05.000Z</news:publication_date>
-      <news:title>Latest reported figures: 1,290 confirmed dead</news:title>
     </news:news>
   </url>
   <url>
@@ -87,39 +87,6 @@
       </news:publication>
       <news:publication_date>2026-09-03T05:01:28.000Z</news:publication_date>
       <news:title>Locals risk lives crossing Taksugad after flood washes away bridge</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-02-auto-2026-09-02-bhotekoshi-flood-leaves-1-204-dead-4-216-still-unaccou/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-02T15:14:29.000Z</news:publication_date>
-      <news:title>Bhotekoshi flood leaves 1,204 dead; 4,216 still unaccounted for</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-02-auto-2026-09-02-multinational-rescue-operations-underway-in-bhote-kosh/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-02T15:13:58.000Z</news:publication_date>
-      <news:title>Multinational rescue operations underway in Bhote Koshi flood zone: MoFA</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-02-latest-reported-figures/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-02T14:15:00.000Z</news:publication_date>
-      <news:title>Latest reported figures: 1,222 confirmed dead</news:title>
     </news:news>
   </url>
 </urlset>
