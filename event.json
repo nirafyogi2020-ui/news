@@ -27,8 +27,8 @@
       "tone": "critical",
       "label": "listed missing in Nepal",
       "bar": 100,
-      "detail": "Nepalnews: 5,083. Up from 4,875. Source: https://english.nepalnews.com/s/nation/bhote-koshi-flood-death-toll-reaches-1259/ Earlier note, 10:00 NPT, 3 September, describing a previous figure: Nepalnews: 4,216 still unaccounted for, alongside 1,204 bodies recovered, in the same 2 September bulletin as the current toll. Source: https://nepalnews.com/ An earlier automatic read reported 5,015 here; no bulletin supports that figure and it has been withdrawn.",
-      "priorDetail": "Nepalnews: 4,216 still unaccounted for, alongside 1,204 bodies recovered, in the same 2 September bulletin as the current toll. Source: https://nepalnews.com/ An earlier automatic read reported 5,015 here; no bulletin supports that figure and it has been withdrawn.",
+      "detail": "Nepalnews: 5,083. Up from 4,875. Source: https://english.nepalnews.com/s/nation/bhote-koshi-flood-death-toll-reaches-1259/ Earlier note, 10:00 NPT, 3 September, describing a previous figure: Nepalnews: 4,216 still unaccounted for, alongside 1,204 bodies recovered, in the same 2 September bulletin as the current toll. Source: https://nepalnews.com/ An earlier figure of 5,015 was published here; no bulletin supports it and it has been withdrawn.",
+      "priorDetail": "Nepalnews: 4,216 still unaccounted for, alongside 1,204 bodies recovered, in the same 2 September bulletin as the current toll. Source: https://nepalnews.com/ An earlier figure of 5,015 was published here; no bulletin supports it and it has been withdrawn.",
       "priorAsOf": "2026-09-03T10:00:00+05:45"
     },
     {

@@ -432,6 +432,13 @@ export function replaceField(text, name, value) {
  * every pass, including passes where no counter moved, because the counters
  * that grew a second clause are precisely the ones that stopped moving.
  */
+/* The clause was called "Earlier detail" before it was reworded to "Earlier
+   note"; a counter written by an older pass still carries the old label, so
+   every splitter matches both. Getting this wrong is silent: the split simply
+   fails to find its marker and the archived prose, citation URL and all, is
+   printed as though it described the current figure. */
+const EARLIER = /Earlier (?:detail|note)\b/;
+
 export function repairDetails(event) {
   let changed = false;
   for (const stat of (event && event.stats) || []) {
@@ -439,11 +446,12 @@ export function repairDetails(event) {
     const prior = firstEarlierDetail(stat.priorDetail);
     if (prior !== stat.priorDetail) { stat.priorDetail = prior; changed = true; }
     const detail = String(stat.detail || '');
-    const first = detail.indexOf('Earlier detail');
+    const first = detail.search(EARLIER);
     if (first === -1) continue;
-    const second = detail.indexOf('Earlier detail', first + 1);
+    const rest = detail.slice(first + 1);
+    const second = rest.search(EARLIER);
     if (second === -1) continue;
-    stat.detail = detail.slice(0, second).trim();
+    stat.detail = detail.slice(0, first + 1 + second).trim();
     changed = true;
   }
   return changed;
@@ -451,7 +459,7 @@ export function repairDetails(event) {
 
 export function firstEarlierDetail(text) {
   if (!text) return text;
-  const at = String(text).indexOf('Earlier detail');
+  const at = String(text).search(EARLIER);
   return at === -1 ? text : String(text).slice(0, at).trim();
 }
 
