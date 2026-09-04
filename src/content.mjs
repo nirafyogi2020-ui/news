@@ -413,7 +413,7 @@ export const SOURCE_GROUPS = [
     links: [
       ['https://www.nepalpolice.gov.np/', 'Nepal Police', 'Daily casualty and rescue bulletins; the source of the dead, missing and rescued figures.'],
       ['https://ndrrma.gov.np/', 'NDRRMA', 'National Disaster Risk Reduction and Management Authority. Publishes the numbered Sthiti Pratibedan situation reports.'],
-      ['https://bipad.gov.np/', 'BIPAD portal', 'Nepal’s official incident database and river-gauge readings. Read automatically by this site’s /api/incidents endpoint.'],
+      ['https://bipad.gov.np/', 'BIPAD portal', 'Nepal’s official incident database and river-gauge readings.'],
       ['https://neoc.gov.np/', 'National Emergency Operation Centre', 'Runs the 1149 disaster hotline and publishes district contacts.'],
       ['https://www.dhm.gov.np/', 'Department of Hydrology and Meteorology', 'Rainfall and river-level monitoring.'],
       ['https://seismonepal.gov.np/', 'National Seismological Centre', 'Nepal’s own earthquake records.'],
@@ -422,7 +422,7 @@ export const SOURCE_GROUPS = [
   },
   {
     title: 'International agencies and open scientific data',
-    note: 'Read automatically, on a schedule, by this site’s own server.',
+    note: 'Situation reporting, hazard alerts and open scientific data.',
     links: [
       ['https://reliefweb.int/', 'ReliefWeb (UN OCHA)', 'Humanitarian situation reporting and agency updates.'],
       ['https://www.gdacs.org/', 'GDACS', 'Global Disaster Alert and Coordination System, run by the UN and the European Commission.'],

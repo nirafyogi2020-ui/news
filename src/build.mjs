@@ -17,6 +17,8 @@ import { fileURLToPath } from 'node:url';
 import { SITE, nptDay, nptLong, ogFor, ogStoryFor, assetVersioned } from './template.mjs';
 import * as P from './pages.mjs';
 import * as NE from './pages-ne.mjs';
+import * as C from './content.mjs';
+import * as I from './investigation.mjs';
 import { isDisasterWireHeadline } from '../functions/api/global.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -274,6 +276,132 @@ write('updates.json', JSON.stringify({
   })),
 }, null, 2) + '\n');
 
+
+/* -- the Investigation tab's ledgers ----------------------------------------
+   src/investigation.mjs states each figure once and names the briefing it
+   came from by slug. This resolves those slugs against the archive that has
+   just been loaded, so every row in the ledger carries the headline, the
+   timestamp and the outward source links the briefing itself carries — and a
+   correction to a briefing corrects the ledger with it.
+
+   A slug that no longer resolves is a build error worth seeing rather than a
+   citation that quietly prints nothing, so it is reported and the row is
+   published with `source: null`, which the page renders as "citation missing"
+   instead of as a fact with nothing behind it. */
+function citeRows(rows) {
+  const bySlug = new Map(posts.map(p => [p.slug, p]));
+  const missing = [];
+  const out = rows.map(row => {
+    const post = bySlug.get(row.from);
+    if (!post) { missing.push(row.from); return { ...row, source: null }; }
+    return {
+      ...row,
+      source: {
+        title: post.title,
+        url: post.url,
+        time: post.time,
+        outlets: (post.sources || []).map(s => ({ name: s.name, url: s.url }))
+      }
+    };
+  });
+  if (missing.length) {
+    console.log(`  investigation: ${missing.length} citation(s) do not resolve: ${missing.join(', ')}`);
+  }
+  return out;
+}
+
+/* How the confirmed toll moved, read out of the timeline the site already
+   keeps rather than typed again. Every row in C.TIMELINE that states a
+   national figure is stamped with the hour it applies to; those are the
+   points, and the chart is drawn from them. A row that states no figure, or
+   states one for a single district, contributes nothing. */
+function tollSeries() {
+  const MONTHS = ['January','February','March','April','May','June','July',
+    'August','September','October','November','December'];
+  const YEAR = new Date(C.EVENT && C.EVENT.started ? C.EVENT.started : Date.now())
+    .getUTCFullYear();
+
+  const points = [];
+  for (const [when, text] of C.TIMELINE) {
+    /* "17:00 NPT, 28 August" / "Evening, 26 August" / "Friday, 28 August" */
+    const day = /(\d{1,2})\s+([A-Z][a-z]+)/.exec(when);
+    if (!day) continue;
+    const month = MONTHS.indexOf(day[2]);
+    if (month < 0) continue;
+    const clock = /(\d{1,2}):(\d{2})/.exec(when);
+    const hour = clock ? Number(clock[1]) : 12;
+    const minute = clock ? Number(clock[2]) : 0;
+    /* Nepal is UTC+5:45. Stored as an instant so the page can format it in
+       whatever zone it is showing. */
+    const at = Date.UTC(YEAR, month, Number(day[1]), hour - 5, minute - 45);
+
+    /* Only sentences that state a national count of the dead in Nepal.
+
+       Tibet keeps its own toll and the timeline records it — "China's state
+       media raise the Tibet side death toll to 5" — which is a real figure
+       for a different country, and reading it as a point on Nepal's curve
+       drew the line down to 5 in the middle of the week. */
+    if (/tibet side|china side|in tibet|xizang/i.test(text)) continue;
+
+    /* Order matters. "alongside the 489 toll" puts the figure before the
+       word, and a rule that reads forward from "toll" would take the first
+       number of the district list that follows it instead — 186, not 489.
+       Every capture starts with a digit, or "toll further, to 547" captures
+       the comma. */
+    const m =
+      /\bthe\s+(\d[\d,]*)\s+toll\b/i.exec(text)
+      || /(?:confirmed\s+)?toll[^.\d]{0,40}?(\d[\d,]*)/i.exec(text)
+      || /(\d[\d,]*)\s+bodies(?:\s+and\s+human\s+remains)?\s+(?:found|recovered)/i.exec(text);
+    if (!m) continue;
+    const value = Number(m[1].replace(/,/g, ''));
+    if (!Number.isFinite(value) || value <= 0 || value > 100000) continue;
+
+    /* Who said so, where the sentence names them. */
+    const who = /(Nepal Police|NDRRMA|Nepalnews|Nepal News|Onlinekhabar|Nagarik News|ABC News|Kathmandu Post|Prime Minister’s Office)/i.exec(text);
+    points.push({ at, value, source: who ? who[1] : null, when });
+  }
+
+  /* One point per instant, highest wins where two bodies published different
+     figures for the same hour — the page says so in the note under the chart
+     rather than silently averaging them. */
+  const byInstant = new Map();
+  for (const p of points) {
+    const seen = byInstant.get(p.at);
+    if (!seen || p.value > seen.value) byInstant.set(p.at, p);
+  }
+  /* This is a count of bodies recovered, so it cannot fall. A point below the
+     running maximum is a figure from a body that had not caught up yet, not a
+     drop in the toll, and plotting it puts a notch in a line that never
+     notched. The chart's caption says this is what it is showing. */
+  let high = 0;
+  return [...byInstant.values()]
+    .sort((a, b) => a.at - b.at)
+    .filter(p => { if (p.value < high) return false; high = p.value; return true; });
+}
+
+const investigation = {
+  updated: modified,
+  site: SITE,
+  /* Stated once here so the page can say what it is looking at without
+     repeating the event's name in four places. */
+  event: { name: event.name, started: event.started, where: event.where },
+  aid: citeRows(I.AID),
+  destroyed: citeRows(I.DESTROYED),
+  unaccounted: citeRows(I.UNACCOUNTED),
+  unknowns: I.UNKNOWNS,
+  causes: C.CAUSES,
+  hydropower: C.DAMAGE.hydropower.map(([name, where, note]) => ({ name, where, note })),
+  reliefReleased: C.DAMAGE.reliefBreakdown.map(([where, amount]) => ({ where, amount })),
+  tollSeries: tollSeries(),
+  places: C.PLACES,
+  sourceGroups: C.SOURCE_GROUPS
+};
+write('investigation.json', JSON.stringify(investigation, null, 2) + '\n');
+console.log(`investigation.json: ${investigation.aid.length} aid rows, `
+  + `${investigation.destroyed.length} damage rows, `
+  + `${investigation.unaccounted.length} unaccounted groups, `
+  + `${investigation.tollSeries.length} toll points`);
+
 /* -- robots ----------------------------------------------------------------- */
 write('robots.txt', `# ${SITE}
 # Everything here is public information about disasters in Nepal.
@@ -331,9 +459,13 @@ function ssrTodayCards(list) {
     const thumb = assetVersioned(`${ogName}-thumb.png`);
     const story = assetVersioned(`${ogName}-story.png`);
     const shot = PHOTO_INDEX[ogName] && PHOTO_INDEX[ogName].credit;
+    /* The photographer's name, and nothing else. It used to read "Photograph:
+       Nepal News · via Nepal Disaster Update", which credits this site under a
+       picture on this site, on every card in the river: two lines of grey
+       small-caps to say one thing a reader already knows. */
     const credit = !thumb ? ''
-      : shot ? `Photograph: ${shot} · via Nepal Disaster Update`
-      : `Graphic: Nepal Disaster Update${sourceNames[0] ? ` · figures from ${sourceNames[0]}` : ''}`;
+      : shot ? `Photograph: ${shot}`
+      : `Graphic${sourceNames[0] ? `: figures from ${sourceNames[0]}` : ''}`;
     return `<article class="post-card today-card${thumb ? '' : ' no-photo'}" data-title="${escAttr(post.title)}"`
       + ` data-permalink="${escAttr(post.url)}"`
       + (story ? ` data-story="${escAttr(story)}"` : '') + '>'
@@ -400,11 +532,24 @@ function ssrTollNepal() {
     : '';
 
   const stamp = d && d.time ? nptLong(d.time) : '';
+  /* The breakdown and the headline are two different counts of the same
+     thing, taken at two different moments by two different bodies, so they
+     are almost never equal — and a reader who notices the gap deserves to be
+     told which way it runs rather than left to wonder which number is wrong.
+     The old wording only ever explained a headline that was higher. */
+  const headline = dead ? Number(String(dead.value).replace(/\D/g, '')) : null;
+  const total = d ? Number(d.total || 0) : 0;
+  const gap = Number.isFinite(headline) && headline && total
+    ? (headline > total
+        ? `The headline figure above is higher, at ${headline.toLocaleString('en-US')}: it takes the newest national total any source has published, and this bulletin is the newest one broken down by district.`
+        : headline < total
+          ? `The headline figure above is lower, at ${headline.toLocaleString('en-US')}: it takes the newest national total any source has published, and this police bulletin counts ${(total - headline).toLocaleString('en-US')} more.`
+          : 'The headline figure above is the same total, from the same count.')
+    : '';
   const note = rows
     ? `${escHtml(d.source || 'Nepal Police')} bulletin${stamp ? ', ' + escHtml(stamp) : ''}, `
-      + `totalling ${escHtml(Number(d.total || 0).toLocaleString('en-US'))}. `
-      + 'Read automatically from the bulletin, not typed in. '
-      + 'The headline figure above can be higher: it takes the first national total any source publishes, and the police breakdown follows.'
+      + `totalling ${escHtml(total.toLocaleString('en-US'))}, which is the same total the bulletin itself states. `
+      + escHtml(gap)
     : 'No district breakdown has been published yet today. The national figure above stands.';
 
   return '<details open>'
@@ -437,8 +582,7 @@ function ssrOfficial() {
   ).join('');
 
   return `<p class="measure" style="margin-top:6px; color:var(--text-muted); font-size:0.93rem;">`
-    + 'Read automatically from the published bulletins and reports, not typed in. '
-    + 'These are the same figures as the counters at the top of this page, from the same file, so the two cannot disagree'
+    + 'The same figures as the counters at the top of this page, from the same file, so the two cannot disagree'
     + (event.asOf ? `. Last moved ${escHtml(nptLong(event.asOf))}` : '')
     + (event.asOfSource ? `, from ${escHtml(event.asOfSource)}` : '') + '.</p>'
     + '<div class="table-scroll"><table class="data-table stat-table">'
@@ -456,6 +600,402 @@ const escAttr = (v) => escHtml(v).replace(/"/g, '&quot;');
 
 let index = read('index.html');
 const before = index;
+
+/* ---------------------------------------------------------------------------
+   The Investigation tab, rendered on the server.
+
+   The rest of the site answers "what is happening". This answers "how do you
+   know", and it is the one part of the site where every claim has to arrive
+   already carrying its citation. So it is built here rather than fetched and
+   drawn by the browser: the ledgers, the curve and the tables are in the HTML
+   a crawler reads and a reader with a dead connection still gets, and the
+   page's own script only repaints the two panels that are genuinely live —
+   the board and the district table — from /api/figures.
+   ------------------------------------------------------------------------- */
+function invHead(n, kicker, title, note) {
+  return `<div class="inv-head"><span class="inv-num">${escHtml(n)}</span>`
+    + `<div><p class="inv-kicker">${escHtml(kicker)}</p>`
+    + `<h3>${escHtml(title)}</h3>`
+    + (note ? `<p class="inv-note">${note}</p>` : '')
+    + '</div></div>';
+}
+
+/* One citation line: this site's own briefing, then the outlets it read. */
+function invCite(source) {
+  if (!source) {
+    return '<p class="inv-cite inv-cite-missing">Citation missing: the briefing this row '
+      + 'was drawn from is no longer in the archive.</p>';
+  }
+  /* A briefing that drew on six reports from the same newsroom listed that
+     newsroom six times. One entry per outlet, in the order it first appears,
+     and the first URL is the one linked. */
+  const seen = new Set();
+  const outlets = (source.outlets || [])
+    .filter(o => o && o.name && !seen.has(o.name) && seen.add(o.name))
+    .map(o => o.url
+      ? `<a href="${escAttr(o.url)}" target="_blank" rel="noopener nofollow">${escHtml(o.name)}</a>`
+      : escHtml(o.name))
+    .join(', ');
+  return '<p class="inv-cite">'
+    + `<a class="inv-cite-post" href="${escAttr(source.url)}">${escHtml(source.title)}</a>`
+    + `<span class="inv-cite-when">${escHtml(nptLong(source.time))}</span>`
+    + (outlets ? `<span class="inv-cite-out">Reported by ${outlets}</span>` : '')
+    + '</p>';
+}
+
+/* The curve of the confirmed toll. Drawn as an inline SVG so it needs no
+   library, no script and no second request, and so it is still a picture in a
+   feed reader or a print-out. */
+function invCurve(series) {
+  if (series.length < 3) return '';
+  const W = 720, H = 260, L = 46, R = 14, T = 16, B = 34;
+  const t0 = series[0].at, t1 = series[series.length - 1].at;
+  const vMax = Math.max(...series.map(p => p.value));
+  /* Round the ceiling up to something a reader can read off the axis. */
+  const step = vMax > 800 ? 400 : vMax > 300 ? 200 : 100;
+  const top = Math.ceil(vMax / step) * step;
+
+  const x = t => L + ((t - t0) / (t1 - t0 || 1)) * (W - L - R);
+  const y = v => T + (1 - v / top) * (H - T - B);
+
+  const line = series.map((p, i) => `${i ? 'L' : 'M'}${x(p.at).toFixed(1)},${y(p.value).toFixed(1)}`).join('');
+  const area = `${line}L${x(t1).toFixed(1)},${y(0).toFixed(1)}L${x(t0).toFixed(1)},${y(0).toFixed(1)}Z`;
+
+  const gridlines = [];
+  for (let v = 0; v <= top; v += step) {
+    gridlines.push(`<line x1="${L}" x2="${W - R}" y1="${y(v).toFixed(1)}" y2="${y(v).toFixed(1)}" class="inv-grid"/>`
+      + `<text x="${L - 8}" y="${(y(v) + 4).toFixed(1)}" class="inv-axis" text-anchor="end">${v.toLocaleString('en-US')}</text>`);
+  }
+
+  /* One tick per calendar day in Nepal time, not per data point: the points
+     bunch up on the days the police published four bulletins. */
+  const days = [];
+  let lastDay = '';
+  for (const p of series) {
+    const day = nptDay(new Date(p.at).toISOString());
+    if (day === lastDay) continue;
+    lastDay = day;
+    const label = nptLong(new Date(p.at).toISOString(), false).replace(/ \d{4}$/, '');
+    days.push(`<text x="${x(p.at).toFixed(1)}" y="${H - 10}" class="inv-axis" text-anchor="middle">${escHtml(label)}</text>`);
+  }
+
+  const dots = series.map(p =>
+    `<circle cx="${x(p.at).toFixed(1)}" cy="${y(p.value).toFixed(1)}" r="3.4" class="inv-dot">`
+    + `<title>${escHtml(p.value.toLocaleString('en-US'))} confirmed dead, ${escHtml(p.when)}`
+    + (p.source ? `, ${escHtml(p.source)}` : '') + '</title></circle>').join('');
+
+  const first = series[0], last = series[series.length - 1];
+  return '<figure class="inv-chart">'
+    + `<svg viewBox="0 0 ${W} ${H}" role="img" preserveAspectRatio="xMidYMid meet" `
+    + `aria-label="The confirmed death toll from ${escAttr(first.value.toLocaleString('en-US'))} on `
+    + `${escAttr(first.when)} to ${escAttr(last.value.toLocaleString('en-US'))} on ${escAttr(last.when)}.">`
+    + gridlines.join('')
+    + `<path d="${area}" class="inv-area"/><path d="${line}" class="inv-line"/>`
+    + dots + days.join('')
+    + '</svg>'
+    + '<figcaption>Every point is a figure a named body published, at the hour it applies to. '
+    + 'Hover or tap a point for the source. The line only rises because this is a count of bodies '
+    + 'recovered: where a slower body was still publishing an older, lower figure, it is left off '
+    + 'rather than drawn as a fall.'
+    + '</figcaption></figure>';
+}
+
+/* The board, server-rendered from the same event.json the hero uses. The
+   page's script repaints it from /api/figures a second later; this is what a
+   crawler and a reader with no JavaScript get. */
+function invBoard() {
+  const rows = (event.stats || []).map(stat => {
+    const detail = String(stat.detail || '');
+    /* "since the flood" carries the token "auto:day", which the dashboard's
+       own script resolves against the reader's clock. Printed raw it read as
+       "auto:day" in the Count column. */
+    const shown = stat.value === 'auto:day'
+      ? (daysSince(event.started) ? `Day ${daysSince(event.started)}` : 'Day 1')
+      : stat.value;
+    /* The updater writes "Source: <url>" into the detail, and archives the
+       previous editorial note behind "Earlier detail (as of …)". Split them:
+       the live sentence is the claim, the archived one is context and must
+       not be read as describing the current figure. */
+    const urlMatch = /Source:\s*(https?:\/\/\S+)/.exec(detail);
+    const url = urlMatch ? urlMatch[1] : null;
+    const cut = detail.indexOf('Earlier detail (as of');
+    const now = (cut > -1 ? detail.slice(0, cut) : detail).replace(/Source:\s*https?:\/\/\S+/, '').trim();
+    const earlier = cut > -1 ? detail.slice(cut).replace(/Source:\s*https?:\/\/\S+/g, '').trim() : '';
+    let host = '';
+    try { if (url) host = new URL(url).hostname.replace(/^www\./, ''); } catch { host = ''; }
+    return '<tr>'
+      + `<td class="inv-b-label">${escHtml(stat.label)}</td>`
+      + `<td class="num-cell inv-b-value${stat.tone === 'critical' ? ' critical' : ''}">${escHtml(shown)}</td>`
+      /* Three separate slots, because the page's own script repaints the
+         first two from /api/figures a moment later and must not take the
+         archived note down with them. */
+      + '<td class="inv-b-said">'
+      + `<span class="inv-b-sentence">${escHtml(now) || 'No sentence recorded.'}</span>`
+      + (url ? `<a class="inv-b-src" href="${escAttr(url)}" target="_blank" rel="noopener nofollow">${escHtml(host)} &#8599;</a>` : '<span class="inv-b-src"></span>')
+      + (earlier ? `<details class="inv-earlier"><summary>What this counter said before</summary><p>${escHtml(earlier)}</p></details>` : '')
+      + '</td></tr>';
+  }).join('');
+
+  return invHead('01', 'The board', 'Every number on this site, and the sentence it came from',
+      `Last moved ${escHtml(nptLong(event.asOf))}, from ${escHtml(event.asOfSource || 'the sources')}. `
+      + 'Every figure carries the report it came from, and the figures other newsrooms are publishing for the same thing.')
+    + '<div class="inv-live" id="inv-live-note"><span class="livedot" aria-hidden="true"></span>'
+    + '<span id="inv-checked">Checking the sources&hellip;</span></div>'
+    + '<div class="table-scroll"><table class="data-table inv-board" id="inv-board-table">'
+    + '<thead><tr><th>Figure</th><th>Count</th><th>What the source said, and where</th></tr></thead>'
+    + `<tbody>${rows}</tbody></table></div>`;
+}
+
+function invDistricts() {
+  const d = event.districts;
+  if (!d || !Array.isArray(d.rows) || !d.rows.length) return '';
+  const total = d.rows.reduce((sum, r) => sum + r.value, 0);
+  const max = Math.max(...d.rows.map(r => r.value));
+  const rows = d.rows.map(r => {
+    const share = total ? (r.value / total * 100) : 0;
+    return '<tr>'
+      + `<td>${escHtml(r.district)}</td>`
+      + `<td class="inv-bar-cell"><span class="inv-bar"><i style="width:${(r.value / max * 100).toFixed(1)}%"></i></span></td>`
+      + `<td class="num-cell">${escHtml(r.value.toLocaleString('en-US'))}</td>`
+      + `<td class="num-cell inv-share">${share.toFixed(1)}%</td>`
+      + '</tr>';
+  }).join('');
+  return invHead('03', 'Recovery', 'Where the dead were found',
+      'A district here is where a body was found, not where the person was from. '
+      + 'The flood started in Rasuwa; the water carried people the length of the Trishuli and into the Narayani.')
+    + '<div class="table-scroll"><table class="data-table inv-dist" id="inv-dist-table">'
+    + '<thead><tr><th>District</th><th class="inv-bar-head">Share of bodies recovered</th><th>Bodies</th><th>Share</th></tr></thead>'
+    + `<tbody>${rows}</tbody></table></div>`
+    + `<p class="inv-foot" id="inv-dist-note">${escHtml(d.source || 'Nepal Police')} bulletin`
+    + (d.time ? `, ${escHtml(nptLong(d.time))}` : '')
+    + `, totalling ${escHtml(total.toLocaleString('en-US'))}, which is the same total the bulletin itself states. `
+    + `<a href="${escAttr(d.url || 'https://nepalpolice.gov.np/')}" target="_blank" rel="noopener nofollow">Read the bulletin &#8599;</a></p>`;
+}
+
+/* The descent. Seven places between the ice and the last reported damage,
+   with the height each one sits at, drawn as the profile the water actually
+   fell down. The map tab has these as pins on a map; a map cannot show a drop
+   of four and a half kilometres, and the drop is the reason a valley 60 km
+   downstream was hit by something that started as a landslide. */
+function invDescent(places) {
+  const stops = places.map(p => ({
+    name: p.name,
+    country: p.country,
+    text: p.text,
+    /* "~5,000 m" / "~460 m" */
+    elev: Number(String(p.elev || '').replace(/[^\d]/g, '')) || null
+  })).filter(p => p.elev);
+  if (stops.length < 3) return '';
+
+  /* The axis labels here carry a unit — "5,000 m" — so the gutter has to be
+     wider than the toll chart's, or the first digit is cut off by the
+     viewBox. */
+  const W = 720, H = 250, L = 78, R = 44, T = 20, B = 58;
+  const top = Math.ceil(Math.max(...stops.map(s => s.elev)) / 1000) * 1000;
+  const x = i => L + (i / (stops.length - 1)) * (W - L - R);
+  const y = v => T + (1 - v / top) * (H - T - B);
+
+  const line = stops.map((s, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(s.elev).toFixed(1)}`).join('');
+  const area = `${line}L${x(stops.length - 1).toFixed(1)},${y(0).toFixed(1)}L${x(0).toFixed(1)},${y(0).toFixed(1)}Z`;
+
+  const grid = [];
+  for (let v = 0; v <= top; v += 1000) {
+    grid.push(`<line x1="${L}" x2="${W - R}" y1="${y(v).toFixed(1)}" y2="${y(v).toFixed(1)}" class="inv-grid"/>`
+      + `<text x="${L - 8}" y="${(y(v) + 4).toFixed(1)}" class="inv-axis" text-anchor="end">${v.toLocaleString('en-US')} m</text>`);
+  }
+
+  const dots = stops.map((s, i) =>
+    `<circle cx="${x(i).toFixed(1)}" cy="${y(s.elev).toFixed(1)}" r="4" class="inv-dot">`
+    + `<title>${escHtml(s.name)}, ${escHtml(s.country)}, about ${escHtml(s.elev.toLocaleString('en-US'))} m</title></circle>`).join('');
+
+  /* Short labels under the axis: the first word of the name is the one a
+     reader recognises, and seven full names at this width would collide. */
+  const labels = stops.map((s, i) => {
+    const short = s.name.split(/[,/]/)[0].split(' ').slice(0, 2).join(' ');
+    return `<text x="${x(i).toFixed(1)}" y="${H - 30}" class="inv-axis" text-anchor="middle"`
+      + ` transform="rotate(-24 ${x(i).toFixed(1)} ${H - 30})">${escHtml(short)}</text>`;
+  }).join('');
+
+  const rows = stops.map(s =>
+    '<article class="inv-stop">'
+    + `<p class="inv-stop-h">${escHtml(s.elev.toLocaleString('en-US'))} m</p>`
+    + `<h4>${escHtml(s.name)}</h4>`
+    + `<p class="inv-card-by">${escHtml(s.country)}</p>`
+    + `<p class="inv-card-note">${escHtml(s.text)}</p>`
+    + '</article>').join('');
+
+  const drop = stops[0].elev - stops[stops.length - 1].elev;
+  return invHead('04', 'The descent', 'Down the valley, place by place',
+      `A drop of about ${escHtml(drop.toLocaleString('en-US'))} metres between the ice and the furthest point `
+      + 'where damage has been reported. This is why a landslide on the Tibetan side was still moving houses '
+      + '60 km inside Nepal: the water never had to slow down.')
+    + '<figure class="inv-chart">'
+    + `<svg viewBox="0 0 ${W} ${H}" role="img" preserveAspectRatio="xMidYMid meet" `
+    + `aria-label="The river's height falling from about ${escAttr(stops[0].elev.toLocaleString('en-US'))} metres `
+    + `at the source area to about ${escAttr(stops[stops.length - 1].elev.toLocaleString('en-US'))} metres at `
+    + `${escAttr(stops[stops.length - 1].name)}.">`
+    + grid.join('')
+    + `<path d="${area}" class="inv-area"/><path d="${line}" class="inv-line"/>`
+    + dots + labels
+    + '</svg>'
+    + '<figcaption>Heights are approximate. Hover or tap a point for the place it marks.'
+    + '</figcaption></figure>'
+    + `<div class="inv-stops">${rows}</div>`;
+}
+
+function invUnaccounted(rows) {
+  const cards = rows.map(r =>
+    '<article class="inv-card">'
+    + `<p class="inv-card-fig">${escHtml(r.figure)}</p>`
+    + `<h4>${escHtml(r.group)}</h4>`
+    + `<p class="inv-card-by">Counted by ${escHtml(r.counter)}</p>`
+    + `<p class="inv-card-note">${escHtml(r.detail)}</p>`
+    + invCite(r.source)
+    + '</article>').join('');
+  return invHead('05', 'The missing', 'Who is still unaccounted for, and who is counting them',
+      '<strong>These do not add up, and they are not meant to.</strong> Each body counts a different '
+      + 'population with a different cut-off, several are an association&rsquo;s or an embassy&rsquo;s own '
+      + 'estimate rather than a police figure, and they overlap. Summing them would produce a number '
+      + 'nobody has published. Out of contact does not mean dead.')
+    + `<div class="inv-cards">${cards}</div>`;
+}
+
+function invAid(rows) {
+  const money = rows.filter(r => r.kind === 'money');
+  const other = rows.filter(r => r.kind !== 'money');
+
+  /* Grouped by currency, and scaled only within a currency. Converting a euro
+     pledge and a rupee pledge onto one axis would invent a total and an
+     exchange rate that no source published. */
+  const byCurrency = new Map();
+  for (const r of money) {
+    if (!r.currency || !r.value) continue;
+    if (!byCurrency.has(r.currency)) byCurrency.set(r.currency, []);
+    byCurrency.get(r.currency).push(r);
+  }
+  const groups = [...byCurrency.entries()].map(([currency, list]) => {
+    const max = Math.max(...list.map(r => r.value));
+    const bars = list.sort((a, b) => b.value - a.value).map(r =>
+      '<div class="inv-aid-row">'
+      + `<div class="inv-aid-who"><b>${escHtml(r.giver)}</b>`
+      + `<span class="inv-aid-tag inv-tag-${escAttr(r.origin)}">${r.origin === 'domestic' ? 'Inside Nepal' : 'From abroad'}</span></div>`
+      + `<div class="inv-aid-bar"><i style="width:${(r.value / max * 100).toFixed(1)}%"></i></div>`
+      + `<div class="inv-aid-amt">${escHtml(r.stated)}</div>`
+      + `<div class="inv-aid-what">${escHtml(r.what)}${invCite(r.source)}</div>`
+      + '</div>').join('');
+    return `<div class="inv-aid-group"><p class="inv-aid-cur">Stated in ${escHtml(currency)}</p>${bars}</div>`;
+  }).join('');
+
+  const rest = other.concat(money.filter(r => !r.currency || !r.value)).map(r =>
+    '<article class="inv-card inv-card-tight">'
+    + `<p class="inv-card-fig inv-card-fig-sm">${escHtml(r.stated)}</p>`
+    + `<h4>${escHtml(r.giver)}</h4>`
+    + `<p class="inv-card-note">${escHtml(r.what)}</p>`
+    + invCite(r.source)
+    + '</article>').join('');
+
+  return invHead('06', 'Aid', 'What has been sent, by whom, and what it was for',
+      'Each row carries the figure its giver stated, in the currency they stated it in. '
+      + 'There is no combined total: adding a euro pledge to a rupee deposit would produce a headline '
+      + 'figure nobody published, and a wrong one the moment a rate moved. Bars compare within a currency only.')
+    + `<div class="inv-aid">${groups}</div>`
+    + '<h4 class="inv-sub">Help that is not money</h4>'
+    + `<div class="inv-cards">${rest}</div>`;
+}
+
+function invDamage(rows, hydro, relief) {
+  const cards = rows.map(r =>
+    '<article class="inv-card">'
+    + `<p class="inv-card-fig">${escHtml(r.figure)}</p>`
+    + `<h4>${escHtml(r.what)}</h4>`
+    + `<p class="inv-card-note">${escHtml(r.detail)}</p>`
+    + invCite(r.source)
+    + '</article>').join('');
+
+  const hydroRows = hydro.map(h =>
+    `<tr><td>${escHtml(h.name)}</td><td>${escHtml(h.where)}</td><td>${escHtml(h.note)}</td></tr>`).join('');
+  const reliefRows = relief.map(r =>
+    `<tr><td>${escHtml(r.where)}</td><td class="num-cell">${escHtml(r.amount)}</td></tr>`).join('');
+
+  return invHead('07', 'Damage', 'What the flood destroyed',
+      'Every figure here is preliminary, and the people who published them said so. '
+      + 'Four districts were still being surveyed when the headline damage estimate was given, '
+      + 'and it covers roads and bridges only.')
+    + `<div class="inv-cards">${cards}</div>`
+    + '<h4 class="inv-sub">The hydropower corridor, project by project</h4>'
+    + '<div class="table-scroll"><table class="data-table">'
+    + '<thead><tr><th>Project</th><th>District</th><th>What is reported</th></tr></thead>'
+    + `<tbody>${hydroRows}</tbody></table></div>`
+    + '<h4 class="inv-sub">Public money released, by destination</h4>'
+    + '<div class="table-scroll"><table class="data-table">'
+    + '<thead><tr><th>Where</th><th>Amount</th></tr></thead>'
+    + `<tbody>${reliefRows}</tbody></table></div>`;
+}
+
+function invCauses(causes) {
+  const items = causes.map((c, i) =>
+    `<li class="inv-cause inv-cause-${i}">`
+    + `<span class="inv-rank">${escHtml(c.rank)}</span>`
+    + `<h4>${escHtml(c.title)}</h4>`
+    + `<p>${escHtml(c.text)}</p></li>`).join('');
+  return invHead('08', 'Cause', 'What is claimed, ranked by how well it is supported',
+      'No government has confirmed a cause. These are the explanations on the table, ordered by how '
+      + 'far the evidence currently carries them. The order is a reading of what the cited bodies have '
+      + 'said, not a finding of its own.')
+    + `<ol class="inv-causes">${items}</ol>`;
+}
+
+function invUnknowns(list) {
+  const items = list.map(u =>
+    `<div class="inv-unknown"><h4>${escHtml(u.q)}</h4><p>${escHtml(u.a)}</p></div>`).join('');
+  return invHead('09', 'Gaps', 'What nobody has published',
+      'A missing figure is a finding too. These are the questions no source has answered, '
+      + 'set out so the absence is visible rather than invisible.')
+    + `<div class="inv-unknowns">${items}</div>`;
+}
+
+function invSources(groups) {
+  const blocks = groups.map(g =>
+    '<div class="inv-srcgroup">'
+    + `<h4>${escHtml(g.title)}</h4>`
+    + `<p class="inv-card-note">${escHtml(g.note)}</p>`
+    + '<ul>' + g.links.map(([url, name, what]) =>
+        `<li><a href="${escAttr(url)}" target="_blank" rel="noopener nofollow">${escHtml(name)} &#8599;</a>`
+        + (what ? `<span>${escHtml(what)}</span>` : '') + '</li>').join('')
+    + '</ul></div>').join('');
+  return invHead('10', 'Sources', 'Everything this site reads, and what it reads it for',
+      'The counters are resolved across all of these at once. '
+      + '<span id="inv-source-count"></span>')
+    + `<div class="inv-srcs">${blocks}</div>`;
+}
+
+function ssrInvestigation() {
+  const s = investigation;
+  return '<div class="inv">'
+    + '<section class="inv-sec" id="inv-board">' + invBoard() + '</section>'
+    + '<section class="inv-sec" id="inv-curve">'
+      + invHead('02', 'The count', 'How the confirmed toll moved, hour by hour',
+          `From ${escHtml(s.tollSeries[0] ? s.tollSeries[0].value.toLocaleString('en-US') : '')} on the evening of the flood `
+          + `to ${escHtml(s.tollSeries.length ? s.tollSeries[s.tollSeries.length - 1].value.toLocaleString('en-US') : '')} now, `
+          + `across ${escHtml(String(s.tollSeries.length))} published figures from `
+          + `${escHtml(String(new Set(s.tollSeries.map(p => p.source).filter(Boolean)).size))} named bodies.`)
+      + invCurve(s.tollSeries)
+    + '</section>'
+    + '<section class="inv-sec" id="inv-dist">' + invDistricts() + '</section>'
+    + '<section class="inv-sec" id="inv-descent">' + invDescent(s.places) + '</section>'
+    + '<section class="inv-sec" id="inv-missing">' + invUnaccounted(s.unaccounted) + '</section>'
+    + '<section class="inv-sec" id="inv-aid">' + invAid(s.aid) + '</section>'
+    + '<section class="inv-sec" id="inv-damage">' + invDamage(s.destroyed, s.hydropower, s.reliefReleased) + '</section>'
+    + '<section class="inv-sec" id="inv-cause">' + invCauses(s.causes) + '</section>'
+    + '<section class="inv-sec" id="inv-gaps">' + invUnknowns(s.unknowns) + '</section>'
+    + '<section class="inv-sec" id="inv-sources">' + invSources(s.sourceGroups) + '</section>'
+    + '</div>';
+}
+
+index = index.replace(
+  /<!--ssr:investigation-->[\s\S]*?<!--\/ssr:investigation-->/,
+  () => `<!--ssr:investigation-->${ssrInvestigation()}<!--/ssr:investigation-->`
+);
 
 index = index.replace(
   /<!--ssr:toll-nepal-->[\s\S]*?<!--\/ssr:toll-nepal-->/g,
@@ -712,15 +1252,24 @@ if (homeStory) {
    It is the same archive the cards below come from, so it can never disagree
    with them, and it adds no new claims of its own.
    ------------------------------------------------------------------------- */
+/* "Updated 3 September 2026, 10:21 pm NPT" is 38 characters. The ticker's
+   header sits in a 285px column on the dashboard, where that wraps and leaves
+   "NPT" alone on a second line — which is what the header has been showing.
+   Same facts, month abbreviated, and it fits on one line. */
+function nptCompact(iso) {
+  return nptLong(iso)
+    .replace(/^(\d+) ([A-Za-z]{3})[a-z]* (\d{4}), /, '$1 $2 $3 \u00b7 ');
+}
+
 function ssrTicker(list) {
   if (!list.length) return '';
   const head = `<div class="ticker-head"><span class="tk-dot" aria-hidden="true"></span>`
     + `<h2>Latest updates</h2>`
-    + `<span class="tk-when">Updated ${escHtml(nptLong(modified))}</span></div>`;
+    + `<span class="tk-when">Updated ${escHtml(nptCompact(modified))}</span></div>`;
   const items = list.map(p => {
     const first = (p.body && p.body[0]) || '';
     const sum = first.length > 155 ? first.slice(0, 155).replace(/\s+\S*$/, '') + '…' : first;
-    return `<li><time datetime="${escAttr(p.time)}">${escHtml(nptLong(p.time))}</time>`
+    return `<li><time datetime="${escAttr(p.time)}">${escHtml(nptCompact(p.time))}</time>`
       + `<a href="${escAttr(p.url)}">${escHtml(p.title)}</a>`
       + (sum ? `<p class="tk-sum">${escHtml(sum)}</p>` : '')
       + '</li>';

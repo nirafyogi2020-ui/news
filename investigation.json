@@ -1,0 +1,1449 @@
+{
+  "updated": "2026-09-04T04:36:56.000Z",
+  "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
+  "event": {
+    "name": "Rasuwa flood",
+    "started": "2026-08-26T09:00:00+05:45",
+    "where": "Rasuwa, Nuwakot, Dhading and downstream, Nepal"
+  },
+  "aid": [
+    {
+      "giver": "World Bank",
+      "origin": "international",
+      "kind": "money",
+      "stated": "Up to Rs 25 billion",
+      "currency": "NPR",
+      "value": 25000000000,
+      "what": "Emergency assistance offered to the finance ministry by the World Bank’s Nepal country director. An offer of aid, not a damage estimate, and not yet drawn down.",
+      "from": "2026-08-29-damage-cost",
+      "source": {
+        "title": "Damage put at Rs 200 billion, ADB approves $5m emergency grant",
+        "url": "/updates/2026-08-29-damage-cost/",
+        "time": "2026-08-29T05:56:00+05:45",
+        "outlets": [
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html"
+          },
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/pms-disaster-relief-fund.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/pm-disaster-relief-fund.html"
+          },
+          {
+            "name": "The Rising Nepal",
+            "url": "https://risingnepaldaily.com/news/85720"
+          },
+          {
+            "name": "UNICEF",
+            "url": "https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance"
+          }
+        ]
+      }
+    },
+    {
+      "giver": "Asian Development Bank",
+      "origin": "international",
+      "kind": "money",
+      "stated": "US$5 million",
+      "currency": "USD",
+      "value": 5000000,
+      "what": "Emergency grant approved for the flood response, about Rs 750 million. Announced by the finance ministry.",
+      "from": "2026-08-29-damage-cost",
+      "source": {
+        "title": "Damage put at Rs 200 billion, ADB approves $5m emergency grant",
+        "url": "/updates/2026-08-29-damage-cost/",
+        "time": "2026-08-29T05:56:00+05:45",
+        "outlets": [
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html"
+          },
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/pms-disaster-relief-fund.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/pm-disaster-relief-fund.html"
+          },
+          {
+            "name": "The Rising Nepal",
+            "url": "https://risingnepaldaily.com/news/85720"
+          },
+          {
+            "name": "UNICEF",
+            "url": "https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance"
+          }
+        ]
+      }
+    },
+    {
+      "giver": "Canada",
+      "origin": "international",
+      "kind": "money",
+      "stated": "C$5 million",
+      "currency": "CAD",
+      "value": 5000000,
+      "what": "Humanitarian assistance announced by Secretary of State for International Development Randeep Sarai, to be channelled through organisations such as the Red Cross. Five consular officials also sent to Kathmandu.",
+      "from": "2026-08-28-canada-missing-aid",
+      "source": {
+        "title": "Canada pledges $5 million as 32 Canadians remain unaccounted for",
+        "url": "/updates/2026-08-28-canada-missing-aid/",
+        "time": "2026-08-28T21:00:00+05:45",
+        "outlets": [
+          {
+            "name": "Medicine Hat News",
+            "url": "https://medicinehatnews.com/news/national-news/2026/08/28/canada-provides-5m-to-nepal-relief-efforts-as-search-for-missing-canadians-continues/"
+          },
+          {
+            "name": "Abbotsford News",
+            "url": "https://abbynews.com/2026/08/28/32-canadians-permanent-residents-unaccounted-for-in-nepal-floods/"
+          }
+        ]
+      }
+    },
+    {
+      "giver": "Australia",
+      "origin": "international",
+      "kind": "money",
+      "stated": "A$5 million",
+      "currency": "AUD",
+      "value": 5000000,
+      "what": "Announced by Foreign Minister Penny Wong: A$2m to the World Food Programme, A$2m to Australian NGOs through the Australian Humanitarian Partnership, A$1m to the Emergency Action Alliance. Three more humanitarian specialists sent, joining 20 already in Nepal.",
+      "from": "2026-08-29-australia-missing-aid",
+      "source": {
+        "title": "Australia's missing count rises to 41 after Friday evening dip to 38",
+        "url": "/updates/2026-08-29-australia-missing-aid/",
+        "time": "2026-08-29T03:20:00+05:45",
+        "outlets": [
+          {
+            "name": "ABC News Australia",
+            "url": "https://www.abc.net.au/news/2026-08-29/death-toll-rises-as-rescuers-work-through-flood-devastation/107092742"
+          },
+          {
+            "name": "The Standard",
+            "url": "https://www.standard.net.au/story/9339027/almost-40-australians-missing-in-nepals-flash-floods/"
+          }
+        ]
+      }
+    },
+    {
+      "giver": "European Union",
+      "origin": "international",
+      "kind": "money",
+      "stated": "€2 million",
+      "currency": "EUR",
+      "value": 2000000,
+      "what": "Humanitarian aid for food, healthcare, clean water and sanitation, announced by the EU Delegation to Nepal. On top of about €3 million already committed this year for disaster preparedness.",
+      "from": "2026-08-28-eu-aid-2m",
+      "source": {
+        "title": "European Union pledges 2 million euros in flood aid for Nepal",
+        "url": "/updates/2026-08-28-eu-aid-2m/",
+        "time": "2026-08-28T23:55:00+05:45",
+        "outlets": [
+          {
+            "name": "The Rising Nepal",
+            "url": "https://risingnepaldaily.com/news/85719"
+          }
+        ]
+      }
+    },
+    {
+      "giver": "China",
+      "origin": "international",
+      "kind": "supplies",
+      "stated": "50 tonnes",
+      "what": "13,200 items, namely tents, blankets, sleeping bags, hard tack and first-aid kits, flown into Kathmandu on two military transport aircraft at about 7am on Sunday 30 August.",
+      "from": "2026-08-30-china-relief-supplies",
+      "source": {
+        "title": "China sends 50 tonnes of emergency supplies to Nepal",
+        "url": "/updates/2026-08-30-china-relief-supplies/",
+        "time": "2026-08-30T11:11:00+05:45",
+        "outlets": [
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/30/china-sends-50-tonnes-of-emergency-relief-supplies-to-flood-hit-nepal"
+          }
+        ]
+      }
+    },
+    {
+      "giver": "China",
+      "origin": "international",
+      "kind": "people",
+      "stated": "5 experts, 4 more to follow",
+      "what": "Tunnel-rescue specialists sent by the Ministry of Emergency Management, for the hydropower tunnels in Rasuwa and Nuwakot.",
+      "from": "2026-08-30-foreign-rescue-experts-accepted",
+      "source": {
+        "title": "Foreign tunnel-rescue teams now working in flood zone",
+        "url": "/updates/2026-08-30-foreign-rescue-experts-accepted/",
+        "time": "2026-08-30T09:37:00+05:45",
+        "outlets": [
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/30/indian-chinese-and-korean-teams-moved-to-flood-hit-areas-to-support-search-and-rescue-effort"
+          }
+        ]
+      }
+    },
+    {
+      "giver": "India",
+      "origin": "international",
+      "kind": "people",
+      "stated": "11-member team",
+      "what": "Reconnaissance team flown to Chilime and Langtang with Nepali Army and Armed Police Force personnel, for specialised tunnel rescue.",
+      "from": "2026-08-30-foreign-rescue-experts-accepted",
+      "source": {
+        "title": "Foreign tunnel-rescue teams now working in flood zone",
+        "url": "/updates/2026-08-30-foreign-rescue-experts-accepted/",
+        "time": "2026-08-30T09:37:00+05:45",
+        "outlets": [
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/30/indian-chinese-and-korean-teams-moved-to-flood-hit-areas-to-support-search-and-rescue-effort"
+          }
+        ]
+      }
+    },
+    {
+      "giver": "South Korea",
+      "origin": "international",
+      "kind": "people",
+      "stated": "Inspection team",
+      "what": "Experts allowed in to inspect affected areas, alongside the Indian and Chinese tunnel-rescue teams.",
+      "from": "2026-08-30-foreign-rescue-experts-accepted",
+      "source": {
+        "title": "Foreign tunnel-rescue teams now working in flood zone",
+        "url": "/updates/2026-08-30-foreign-rescue-experts-accepted/",
+        "time": "2026-08-30T09:37:00+05:45",
+        "outlets": [
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/30/indian-chinese-and-korean-teams-moved-to-flood-hit-areas-to-support-search-and-rescue-effort"
+          }
+        ]
+      }
+    },
+    {
+      "giver": "India and China",
+      "origin": "international",
+      "kind": "works",
+      "stated": "42 Bailey bridges requested",
+      "what": "Nepal asked both countries to build 42 Bailey bridges across Rasuwa, Nuwakot and Dhading, the number NDRRMA assessed as urgently needed. India said it would help; no delivery timeline has been published.",
+      "from": "2026-08-28-bailey-bridges",
+      "source": {
+        "title": "Nepal asks India and China to build 42 Bailey bridges in flood zone",
+        "url": "/updates/2026-08-28-bailey-bridges/",
+        "time": "2026-08-28T14:50:00+05:45",
+        "outlets": [
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/nepal-asks-india-china-to-build-42-bailey-bridges-in-flood-hit-areas.html"
+          }
+        ]
+      }
+    },
+    {
+      "giver": "IFRC and the Nepal Red Cross Society",
+      "origin": "international",
+      "kind": "supplies",
+      "stated": "Emergency funding released",
+      "what": "The International Federation released emergency funding to the Nepal Red Cross, which is distributing water, tarpaulins, blankets and first-aid supplies.",
+      "from": "2026-08-28-red-cross-93000-affected",
+      "source": {
+        "title": "Red Cross says at least 93,000 people affected by the flood",
+        "url": "/updates/2026-08-28-red-cross-93000-affected/",
+        "time": "2026-08-28T18:15:00+05:45",
+        "outlets": [
+          {
+            "name": "The Jerusalem Post",
+            "url": "https://www.jpost.com/environment-and-climate-change/article-906895"
+          },
+          {
+            "name": "ABC News Australia",
+            "url": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974"
+          }
+        ]
+      }
+    },
+    {
+      "giver": "Government of Nepal",
+      "origin": "domestic",
+      "kind": "money",
+      "stated": "Rs 1 billion",
+      "currency": "NPR",
+      "value": 1000000000,
+      "what": "Released into the disaster relief fund on the evening of the flood, plus Rs 10 million each to Rasuwa and Nuwakot districts and Rs 5 million to Dhading. This is public money released, not public money donated.",
+      "from": "2026-08-29-damage-cost",
+      "source": {
+        "title": "Damage put at Rs 200 billion, ADB approves $5m emergency grant",
+        "url": "/updates/2026-08-29-damage-cost/",
+        "time": "2026-08-29T05:56:00+05:45",
+        "outlets": [
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html"
+          },
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/pms-disaster-relief-fund.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/pm-disaster-relief-fund.html"
+          },
+          {
+            "name": "The Rising Nepal",
+            "url": "https://risingnepaldaily.com/news/85720"
+          },
+          {
+            "name": "UNICEF",
+            "url": "https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance"
+          }
+        ]
+      }
+    },
+    {
+      "giver": "Public donations to the Prime Minister’s Disaster Relief Fund",
+      "origin": "domestic",
+      "kind": "money",
+      "stated": "Rs 5.04 billion",
+      "currency": "NPR",
+      "value": 5040000000,
+      "what": "Deposited across nine commercial bank accounts, Prime Minister Balen Shah said on 29 August. A further US$1.8 million was deposited at Himalayan Bank and Laxmi Bank. Separate from the Rs 1 billion the government itself released.",
+      "from": "2026-08-29-relief-fund-504bn",
+      "source": {
+        "title": "PM says more than Rs 5bn deposited for flood relief",
+        "url": "/updates/2026-08-29-relief-fund-504bn/",
+        "time": "2026-08-29T21:04:13+05:45",
+        "outlets": [
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/pm-disaster-relief-fund-2.html"
+          }
+        ]
+      }
+    },
+    {
+      "giver": "Gorkha Brewery",
+      "origin": "domestic",
+      "kind": "money",
+      "stated": "Rs 100 million",
+      "currency": "NPR",
+      "value": 100000000,
+      "what": "The largest single gift in the fund’s first six hours, which took in Rs 273.3 million in total.",
+      "from": "2026-08-29-damage-cost",
+      "source": {
+        "title": "Damage put at Rs 200 billion, ADB approves $5m emergency grant",
+        "url": "/updates/2026-08-29-damage-cost/",
+        "time": "2026-08-29T05:56:00+05:45",
+        "outlets": [
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html"
+          },
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/pms-disaster-relief-fund.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/pm-disaster-relief-fund.html"
+          },
+          {
+            "name": "The Rising Nepal",
+            "url": "https://risingnepaldaily.com/news/85720"
+          },
+          {
+            "name": "UNICEF",
+            "url": "https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance"
+          }
+        ]
+      }
+    },
+    {
+      "giver": "Nepal Liquors",
+      "origin": "domestic",
+      "kind": "money",
+      "stated": "Rs 10.1 million",
+      "currency": "NPR",
+      "value": 10100000,
+      "what": "Corporate donation to the Prime Minister’s Disaster Relief Fund.",
+      "from": "2026-09-01-auto-2026-09-01-nepal-liquors-donates-rs-10-1-million-to-flood-relief-",
+      "source": {
+        "title": "Nepal Liquors donates Rs 10.1 million to flood relief fund",
+        "url": "/updates/2026-09-01-auto-2026-09-01-nepal-liquors-donates-rs-10-1-million-to-flood-relief-/",
+        "time": "2026-09-01T06:51:18.000Z",
+        "outlets": [
+          {
+            "name": "The Himalayan Times",
+            "url": "https://thehimalayantimes.com/business/nepal-liquors-donates-rs-101-million-to-flood-relief-fund"
+          }
+        ]
+      }
+    },
+    {
+      "giver": "Padma Jyoti Group",
+      "origin": "domestic",
+      "kind": "money",
+      "stated": "Rs 10 million",
+      "currency": "NPR",
+      "value": 10000000,
+      "what": "Given through Syakar Trading Company to the Prime Minister’s Disaster Relief Fund.",
+      "from": "2026-08-31-auto-2026-08-31-padma-jyoti-group-contributes-rs-10-million-to-disaste",
+      "source": {
+        "title": "Padma Jyoti Group contributes Rs 10 million to disaster relief fund",
+        "url": "/updates/2026-08-31-auto-2026-08-31-padma-jyoti-group-contributes-rs-10-million-to-disaste/",
+        "time": "2026-08-31T07:53:42.000Z",
+        "outlets": [
+          {
+            "name": "The Himalayan Times",
+            "url": "https://thehimalayantimes.com/business/padma-jyoti-group-contributes-rs-10-million-to-disaster-relief-fund"
+          }
+        ]
+      }
+    },
+    {
+      "giver": "The Cabinet of Nepal",
+      "origin": "domestic",
+      "kind": "money",
+      "stated": "One month’s salary each",
+      "what": "The Prime Minister and every member of the Council of Ministers to give a month’s pay to the relief fund. The Cabinet also approved a government-to-government purchase of 25,000 tonnes of DAP fertiliser from India for farmers who lost supplies.",
+      "from": "2026-08-28-cabinet-relief-package",
+      "source": {
+        "title": "Cabinet orders relief package, ministers to give a month's pay",
+        "url": "/updates/2026-08-28-cabinet-relief-package/",
+        "time": "2026-08-28T14:00:00+05:45",
+        "outlets": [
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/cabinet-makes-3-key-decisions-on-flood-relief-fertiliser-and-aid.html"
+          }
+        ]
+      }
+    }
+  ],
+  "destroyed": [
+    {
+      "what": "Roads and bridges",
+      "figure": "Rs 200 billion",
+      "detail": "Physical Infrastructure and Transport Minister Sunil Lamsal’s preliminary estimate, given on the day of the flood. It covers roads and bridges only, not hydropower and not private property, and four districts were still being surveyed when it was given, so it is expected to rise.",
+      "from": "2026-08-29-damage-cost",
+      "source": {
+        "title": "Damage put at Rs 200 billion, ADB approves $5m emergency grant",
+        "url": "/updates/2026-08-29-damage-cost/",
+        "time": "2026-08-29T05:56:00+05:45",
+        "outlets": [
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html"
+          },
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/pms-disaster-relief-fund.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/pm-disaster-relief-fund.html"
+          },
+          {
+            "name": "The Rising Nepal",
+            "url": "https://risingnepaldaily.com/news/85720"
+          },
+          {
+            "name": "UNICEF",
+            "url": "https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance"
+          }
+        ]
+      }
+    },
+    {
+      "what": "The Betrawati to Rasuwagadhi road",
+      "figure": "42 km destroyed",
+      "detail": "The whole road to the Chinese border crossing, destroyed at multiple points, plus 16 km more elsewhere on the corridor.",
+      "from": "2026-08-27-damage-infra",
+      "source": {
+        "title": "14 hydropower projects hit and the whole border road destroyed",
+        "url": "/updates/2026-08-27-damage-infra/",
+        "time": "2026-08-27T09:30:00+05:45",
+        "outlets": [
+          {
+            "name": "UN OCHA / ReliefWeb",
+            "url": "https://reliefweb.int/report/nepal/nepal-flash-floods-rapid-situation-overview-27-august-2026"
+          },
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html"
+          }
+        ]
+      }
+    },
+    {
+      "what": "Hydropower",
+      "figure": "14 projects, about 748 MW",
+      "detail": "Nine operating plants totalling 354 MW and five under construction totalling 394 MW, on the Nepal Electricity Authority’s count. A same-day Ministry of Energy estimate put the loss at 431 MW, a measure of how fast the assessment was moving.",
+      "from": "2026-08-29-damage-cost",
+      "source": {
+        "title": "Damage put at Rs 200 billion, ADB approves $5m emergency grant",
+        "url": "/updates/2026-08-29-damage-cost/",
+        "time": "2026-08-29T05:56:00+05:45",
+        "outlets": [
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html"
+          },
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/pms-disaster-relief-fund.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/pm-disaster-relief-fund.html"
+          },
+          {
+            "name": "The Rising Nepal",
+            "url": "https://risingnepaldaily.com/news/85720"
+          },
+          {
+            "name": "UNICEF",
+            "url": "https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance"
+          }
+        ]
+      }
+    },
+    {
+      "what": "Bridges inside Rasuwa",
+      "figure": "13 swept away",
+      "detail": "Plus two more outside the district. Rasuwa was cut off from the road network entirely until an alternative light-vehicle route via Tokha and Kalikasthan reopened on 28 August.",
+      "from": "2026-08-28-rasuwa-isolation",
+      "source": {
+        "title": "Rasuwa reconnected by a light-vehicle road, but still short of almost everything",
+        "url": "/updates/2026-08-28-rasuwa-isolation/",
+        "time": "2026-08-28T17:30:00+05:45",
+        "outlets": [
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/rasuwa-cut-off-flood-shortage.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/rasuwa-reconnected-road-network.html"
+          }
+        ]
+      }
+    },
+    {
+      "what": "Schools",
+      "figure": "18 destroyed, 20 damaged",
+      "detail": "Across Rasuwa, Nuwakot and Dhading, on UNICEF’s count, wider than the 8 damaged schools reported in Rasuwa and Nuwakot the day before. UNICEF says at least 17,000 children are affected and about 10,000 need temporary classrooms and replacement books.",
+      "from": "2026-08-29-damage-cost",
+      "source": {
+        "title": "Damage put at Rs 200 billion, ADB approves $5m emergency grant",
+        "url": "/updates/2026-08-29-damage-cost/",
+        "time": "2026-08-29T05:56:00+05:45",
+        "outlets": [
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/rasuwa-floods-damage.html"
+          },
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/india-china-world-bank-aid-flood.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/energy-minister-directs-immediate-assessment-of-flood-damage.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/pms-disaster-relief-fund.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/pm-disaster-relief-fund.html"
+          },
+          {
+            "name": "The Rising Nepal",
+            "url": "https://risingnepaldaily.com/news/85720"
+          },
+          {
+            "name": "UNICEF",
+            "url": "https://www.unicef.ca/en/press-release/flash-floods-nepal-leave-more-17000-children-need-urgent-humanitarian-assistance"
+          }
+        ]
+      }
+    },
+    {
+      "what": "Bank branches",
+      "figure": "9 swept away",
+      "detail": "At Timure, Syabrubesi and the Rasuwagadhi crossing, in the first hour of the flood. Twenty-six bank employees were reported out of contact.",
+      "from": "2026-08-27-rasuwa-flood",
+      "source": {
+        "title": "Toll passes 389 as China warns lake may burst within days",
+        "url": "/updates/2026-08-27-rasuwa-flood/",
+        "time": "2026-08-27T22:30:00+05:45",
+        "outlets": [
+          {
+            "name": "Nepal Police",
+            "url": "https://www.nepalpolice.gov.np/"
+          },
+          {
+            "name": "Review Nepal",
+            "url": "https://www.reviewnepal.com/rasuwa-flood-389-bodies-recovered-as-families-await-news-of-loved-ones/"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/644-people-missing.html"
+          },
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/27/new-barrier-lake-in-nepal-raises-fresh-flood-threat-china-warns"
+          },
+          {
+            "name": "ICIMOD",
+            "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding"
+          },
+          {
+            "name": "Business Standard",
+            "url": "https://www.business-standard.com/world-news/glacial-collapse-triggered-nepal-flash-floods-not-earthquake-usgs-126082700207_1.html"
+          },
+          {
+            "name": "ANI",
+            "url": "https://aninews.in/news/national/general-news/ndrf-on-high-alert-as-nepal-flash-flood-threatens-gandak-bihar-up-deploy-rescue-teams-in-vulnerable-areas20260827033747/"
+          },
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/27/nepal-declines-foreign-rescue-teams-says-its-own-security-agencies-can-handle-operation"
+          }
+        ]
+      }
+    },
+    {
+      "what": "Mobile network",
+      "figure": "120 sites knocked out",
+      "detail": "Nepal Telecom had restored 80 of them by 29 August, flying technicians into the most remote towers by helicopter. Phone lines being down is the main reason families cannot reach relatives in the flood zone.",
+      "from": "2026-08-29-mobile-service-restored",
+      "source": {
+        "title": "Nepal Telecom restores mobile service at 80 of 120 flood-hit sites",
+        "url": "/updates/2026-08-29-mobile-service-restored/",
+        "time": "2026-08-29T06:22:00+05:45",
+        "outlets": [
+          {
+            "name": "The Rising Nepal",
+            "url": "https://risingnepaldaily.com/news/85723"
+          }
+        ]
+      }
+    },
+    {
+      "what": "People affected",
+      "figure": "At least 93,000",
+      "detail": "The IFRC’s head of delegation in Nepal, David Fisher, on 28 August. The broadest estimate published so far, wider than the confirmed dead, missing and rescued counts, and not confirmed by the Nepali government.",
+      "from": "2026-08-28-red-cross-93000-affected",
+      "source": {
+        "title": "Red Cross says at least 93,000 people affected by the flood",
+        "url": "/updates/2026-08-28-red-cross-93000-affected/",
+        "time": "2026-08-28T18:15:00+05:45",
+        "outlets": [
+          {
+            "name": "The Jerusalem Post",
+            "url": "https://www.jpost.com/environment-and-climate-change/article-906895"
+          },
+          {
+            "name": "ABC News Australia",
+            "url": "https://www.abc.net.au/news/2026-08-28/nepal-tibet-floods-live-updates/107086974"
+          }
+        ]
+      }
+    }
+  ],
+  "unaccounted": [
+    {
+      "group": "Hydropower project staff",
+      "figure": "898 at 11 projects",
+      "counter": "Independent Power Producers’ Association, Nepal",
+      "detail": "IPPAN’s own count on 29 August, across Rasuwa and Nuwakot. 361 people had been evacuated and around 300 were believed trapped in the Upper Trishuli-1 tunnel. NDRRMA separately put 933 hydropower workers among the missing.",
+      "from": "2026-08-28-hydropower-workers-out-of-contact",
+      "source": {
+        "title": "NDRRMA says 933 hydropower workers are among Nepal's missing",
+        "url": "/updates/2026-08-28-hydropower-workers-out-of-contact/",
+        "time": "2026-08-28T19:00:00+05:45",
+        "outlets": [
+          {
+            "name": "Bloomberg",
+            "url": "https://www.bloomberg.com/news/articles/2026-08-28/nepal-rescuers-race-to-save-people-trapped-in-hydropower-tunnel"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/hydropower-out-of-contact.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/nepali-army-rescue-operations.html"
+          },
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/27/from-army-camps-to-hospitals-families-desperately-search-for-missing-members"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/more-than-25-workers-trapped-in-langtang-hydropower-tunnel.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/landslide-upper-trishuli-3-b.html"
+          },
+          {
+            "name": "Euronews",
+            "url": "https://www.euronews.com/2026/08/28/number-of-missing-in-nepal-floods-passes-2400-as-unicef-says-17000-children-need-aid"
+          }
+        ]
+      }
+    },
+    {
+      "group": "Truck drivers, helpers and traders",
+      "figure": "More than 1,000",
+      "counter": "Nepal Truck Container Transportation Service",
+      "detail": "The transport association’s own estimate, alongside more than 400 container trucks missing on the Rasuwagadhi to Kerung and Trishuli corridor. Not confirmed by Nepal Police or NDRRMA.",
+      "from": "2026-08-28-container-trucks-workers-unaccounted",
+      "source": {
+        "title": "Trucking group says over 1,000 drivers, helpers and traders unaccounted for near the border",
+        "url": "/updates/2026-08-28-container-trucks-workers-unaccounted/",
+        "time": "2026-08-28T19:00:00+05:45",
+        "outlets": [
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/truck-driver-missing-rasuwa-flood.html"
+          }
+        ]
+      }
+    },
+    {
+      "group": "Foreign travellers",
+      "figure": "420 out of contact",
+      "counter": "Nepal Tourism Board",
+      "detail": "184 foreign tourists rescued and three more back in contact as of 29 August. The board’s list is separate from NDRRMA’s wider list of 2,426 people.",
+      "from": "2026-08-29-tourists-rescued-accounted",
+      "source": {
+        "title": "Tourism Board says 187 tourists rescued or accounted for",
+        "url": "/updates/2026-08-29-tourists-rescued-accounted/",
+        "time": "2026-08-29T14:44:56+05:45",
+        "outlets": [
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/tourists-rescued-flood.html"
+          },
+          {
+            "name": "Nepalnews",
+            "url": "https://english.nepalnews.com/s/travel-tourism/bhote-koshi-floods-184-foreign-tourists-rescued-420-out-of-communication/"
+          }
+        ]
+      }
+    },
+    {
+      "group": "Indian nationals",
+      "figure": "320 uncontactable",
+      "counter": "India’s Ministry of External Affairs",
+      "detail": "Plus about 100 more people of Indian origin. About 400 Indians stranded on the Chinese side were confirmed safe, 96 of them already back across into Nepal, and 63 Indian workers were rescued from Trishuli-1.",
+      "from": "2026-08-28-india-mea-320-uncontactable",
+      "source": {
+        "title": "India's foreign ministry says 320 of its nationals still uncontactable",
+        "url": "/updates/2026-08-28-india-mea-320-uncontactable/",
+        "time": "2026-08-28T21:15:00+05:45",
+        "outlets": [
+          {
+            "name": "The Tribune",
+            "url": "https://www.tribuneindia.com/news/india/flash-floods-in-nepal-320-indians-missing-400-others-stranded-on-chinese-side-mea/"
+          }
+        ]
+      }
+    },
+    {
+      "group": "Australian nationals",
+      "figure": "41 unaccounted for",
+      "counter": "Australia’s Department of Foreign Affairs and Trade",
+      "detail": "The count moved from 35 to 39 to 38 to 41 in three days. Most were on pilgrimages and tour groups heading for Mount Kailash.",
+      "from": "2026-08-29-australia-missing-aid",
+      "source": {
+        "title": "Australia's missing count rises to 41 after Friday evening dip to 38",
+        "url": "/updates/2026-08-29-australia-missing-aid/",
+        "time": "2026-08-29T03:20:00+05:45",
+        "outlets": [
+          {
+            "name": "ABC News Australia",
+            "url": "https://www.abc.net.au/news/2026-08-29/death-toll-rises-as-rescuers-work-through-flood-devastation/107092742"
+          },
+          {
+            "name": "The Standard",
+            "url": "https://www.standard.net.au/story/9339027/almost-40-australians-missing-in-nepals-flash-floods/"
+          }
+        ]
+      }
+    },
+    {
+      "group": "Canadian nationals",
+      "figure": "32 unaccounted for",
+      "counter": "Global Affairs Canada",
+      "detail": "None among the confirmed dead. About 858 Canadians were registered as being in Nepal and 18 in the Tibet Autonomous Region.",
+      "from": "2026-08-28-canada-missing-aid",
+      "source": {
+        "title": "Canada pledges $5 million as 32 Canadians remain unaccounted for",
+        "url": "/updates/2026-08-28-canada-missing-aid/",
+        "time": "2026-08-28T21:00:00+05:45",
+        "outlets": [
+          {
+            "name": "Medicine Hat News",
+            "url": "https://medicinehatnews.com/news/national-news/2026/08/28/canada-provides-5m-to-nepal-relief-efforts-as-search-for-missing-canadians-continues/"
+          },
+          {
+            "name": "Abbotsford News",
+            "url": "https://abbynews.com/2026/08/28/32-canadians-permanent-residents-unaccounted-for-in-nepal-floods/"
+          }
+        ]
+      }
+    },
+    {
+      "group": "School students",
+      "figure": "Hundreds being traced",
+      "counter": "Uttargaya Public School, Bidur",
+      "detail": "More than 370 students were in the school when the flood hit. The vice principal said about 40 percent had been contacted and the school no longer holds records for the rest.",
+      "from": "2026-08-28-schools-swept-students-unaccounted",
+      "source": {
+        "title": "Two schools swept up in the flood, hundreds of students still being traced",
+        "url": "/updates/2026-08-28-schools-swept-students-unaccounted/",
+        "time": "2026-08-28T21:00:00+05:45",
+        "outlets": [
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/flood-nuwakot-school.html"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/tribhuvan-trishuli-school-flood.html"
+          }
+        ]
+      }
+    },
+    {
+      "group": "Customs officers",
+      "figure": "15 out of contact",
+      "counter": "Rasuwa customs office, Timure",
+      "detail": "The customs post at the border crossing was among the first buildings the water reached.",
+      "from": "2026-08-27-rasuwa-flood",
+      "source": {
+        "title": "Toll passes 389 as China warns lake may burst within days",
+        "url": "/updates/2026-08-27-rasuwa-flood/",
+        "time": "2026-08-27T22:30:00+05:45",
+        "outlets": [
+          {
+            "name": "Nepal Police",
+            "url": "https://www.nepalpolice.gov.np/"
+          },
+          {
+            "name": "Review Nepal",
+            "url": "https://www.reviewnepal.com/rasuwa-flood-389-bodies-recovered-as-families-await-news-of-loved-ones/"
+          },
+          {
+            "name": "Onlinekhabar",
+            "url": "https://english.onlinekhabar.com/644-people-missing.html"
+          },
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/27/new-barrier-lake-in-nepal-raises-fresh-flood-threat-china-warns"
+          },
+          {
+            "name": "ICIMOD",
+            "url": "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding"
+          },
+          {
+            "name": "Business Standard",
+            "url": "https://www.business-standard.com/world-news/glacial-collapse-triggered-nepal-flash-floods-not-earthquake-usgs-126082700207_1.html"
+          },
+          {
+            "name": "ANI",
+            "url": "https://aninews.in/news/national/general-news/ndrf-on-high-alert-as-nepal-flash-flood-threatens-gandak-bihar-up-deploy-rescue-teams-in-vulnerable-areas20260827033747/"
+          },
+          {
+            "name": "The Kathmandu Post",
+            "url": "https://kathmandupost.com/national/2026/08/27/nepal-declines-foreign-rescue-teams-says-its-own-security-agencies-can-handle-operation"
+          }
+        ]
+      }
+    }
+  ],
+  "unknowns": [
+    {
+      "q": "How many people are displaced?",
+      "a": "No government or humanitarian body has published a consolidated figure for people displaced, sheltering or in need. UN OCHA named it as the priority information gap. The nearest thing is the IFRC’s \"at least 93,000 affected\", which measures something wider."
+    },
+    {
+      "q": "What actually caused it?",
+      "a": "No government has confirmed a cause. Two preliminary explanations are on the table. One is an ice-and-rock avalanche that dammed the Lhende Khola and then burst; the other is an ice and rock fall off Langtang Lirung that generated the surge directly. They are not the same mechanism."
+    },
+    {
+      "q": "Did the barrier lake on the Chinese side burst?",
+      "a": "The Kathmandu Post reported a breach on 28 August. Nepal’s government spokesperson said the same afternoon that Nepal had only been told glaciers broke and sent water over the top, not that a dam failed. The two accounts have never been reconciled."
+    },
+    {
+      "q": "Why do the missing counts disagree?",
+      "a": "Nepal Police, NDRRMA and the Tourism Board count different populations with different cut-offs, and foreign ministries keep their own lists of their own nationals. NDRRMA widened who it counts on 28 August, which nearly doubled the number overnight. None of these lists has been merged."
+    },
+    {
+      "q": "What will it cost to rebuild?",
+      "a": "The only figure published is Rs 200 billion for roads and bridges, called preliminary by the minister who gave it, with four districts still unsurveyed and energy infrastructure and private property excluded."
+    }
+  ],
+  "causes": [
+    {
+      "rank": "Leading explanation",
+      "title": "An ice-and-rock avalanche dammed the Lhende Khola, and the dam then burst",
+      "text": "Nepal’s Department of Hydrology and Meteorology and independent glaciologists, working from satellite imagery shared by Chinese counterparts through ICIMOD, put forward a preliminary hypothesis: an ice-and-rock avalanche blocked the Lhende Khola, a Bhote Koshi tributary on the Nepal-China border, roughly 20 km upstream of the Miteri Bridge. That formed a temporary debris-dammed lake, which then burst. This is described as preliminary, and no government has confirmed it."
+    },
+    {
+      "rank": "Newly proposed",
+      "title": "An ice and rock fall off Langtang Lirung may have generated the flood directly, without a lake bursting",
+      "text": "Santosh Nepal, a water resources and climate change researcher, told Onlinekhabar on Friday that satellite images point to a large mass of ice, snow and rock falling from about 5,000 to 5,500 metres on Langtang Lirung’s northern slope and dropping nearly 2,000 metres into the Lhende Khola. He said the impact’s energy may have rapidly melted snow and ice, sending a sudden surge of water downstream without a lake first forming and bursting. He compared the mechanism to Uttarakhand’s 2021 Chamoli disaster, and said it is too early to conclude what happened without more satellite data and a field investigation. This is one researcher’s preliminary reading, not a government or ICIMOD finding."
+    },
+    {
+      "rank": "Reassessed",
+      "title": "The 08:37 seismic signal was a glacial collapse, not an earthquake",
+      "text": "The US Geological Survey initially logged a magnitude 4.4 earthquake at 08:37 local time, minutes before the flood. It has since revised that analysis and concluded the signal was in fact a magnitude 5.2 glacial collapse rather than a tectonic earthquake, based on nearby seismic stations, long-period seismic waves and satellite imagery. In other words the tremor was not a separate trigger; it was the collapse itself being recorded."
+    },
+    {
+      "rank": "Related hazard",
+      "title": "Glacial lake drainage on the same river before",
+      "text": "A broadly similar flood on the same river in July 2025 was ultimately attributed to the drainage of a supraglacial lake, meltwater pooled on the surface of a glacier. ICIMOD scientists say cascading glacial hazards of this kind are increasing at an \"unprecedented\" pace across the Hindu Kush Himalaya."
+    },
+    {
+      "rank": "Ruled out",
+      "title": "Ordinary monsoon rainfall in Rasuwa",
+      "text": "Meteorologists have ruled out heavy local rainfall in Rasuwa itself as the cause, while noting that satellite data showed rainfall on the Tibetan side of the border. Rainfall alone does not explain a surge of this size arriving this fast, which is what pointed investigators upstream and across the border in the first place."
+    }
+  ],
+  "hydropower": [
+    {
+      "name": "Rasuwagadhi Hydropower Project",
+      "where": "Rasuwa",
+      "note": "Damaged. Sits on the Bhote Koshi immediately below the border crossing."
+    },
+    {
+      "name": "Chilime Hydropower",
+      "where": "Rasuwa",
+      "note": "Damaged. One of the country’s better-known community-shareholder projects."
+    },
+    {
+      "name": "Sanjen Khola Hydropower",
+      "where": "Rasuwa",
+      "note": "Damaged, on a Bhote Koshi tributary."
+    },
+    {
+      "name": "Upper Trishuli-1",
+      "where": "Rasuwa / Nuwakot",
+      "note": "Damaged. One of the largest projects on the corridor."
+    },
+    {
+      "name": "Upper Trishuli-3B substation",
+      "where": "Nuwakot",
+      "note": "220 kV substation damaged, which affects evacuation of power from the whole corridor. Twelve project staff were reported out of contact. The Ministry of Energy said Friday the project camp area is now completely buried under landslide debris, and rescue there is continuing."
+    },
+    {
+      "name": "Trishuli Hydropower Station",
+      "where": "Nuwakot",
+      "note": "Damaged. One of Nepal’s oldest operating stations."
+    },
+    {
+      "name": "Devighat Hydropower Station",
+      "where": "Nuwakot",
+      "note": "Damaged. The furthest downstream site where damage has been reported."
+    }
+  ],
+  "reliefReleased": [
+    {
+      "where": "Central disaster relief fund",
+      "amount": "Rs 1 billion"
+    },
+    {
+      "where": "Rasuwa district",
+      "amount": "Rs 10 million"
+    },
+    {
+      "where": "Nuwakot district",
+      "amount": "Rs 10 million"
+    },
+    {
+      "where": "Dhading district",
+      "amount": "Rs 5 million"
+    }
+  ],
+  "tollSeries": [
+    {
+      "at": 1787724900000,
+      "value": 157,
+      "source": "Prime Minister’s Office",
+      "when": "Evening, 26 August"
+    },
+    {
+      "at": 1787797800000,
+      "value": 165,
+      "source": "Nepal Police",
+      "when": "08:15 NPT, 27 August"
+    },
+    {
+      "at": 1787816700000,
+      "value": 270,
+      "source": "Nepal Police",
+      "when": "13:30 NPT, 27 August"
+    },
+    {
+      "at": 1787820300000,
+      "value": 289,
+      "source": "Nepal Police",
+      "when": "14:30 NPT, 27 August"
+    },
+    {
+      "at": 1787829300000,
+      "value": 359,
+      "source": "Nepal Police",
+      "when": "17:00 NPT, 27 August"
+    },
+    {
+      "at": 1787843700000,
+      "value": 389,
+      "source": "Nepal Police",
+      "when": "21:00 NPT, 27 August"
+    },
+    {
+      "at": 1787897700000,
+      "value": 489,
+      "source": "Nepal Police",
+      "when": "12:00 NPT, 28 August"
+    },
+    {
+      "at": 1787912460000,
+      "value": 538,
+      "source": "NDRRMA",
+      "when": "16:06 NPT, 28 August"
+    },
+    {
+      "at": 1787913480000,
+      "value": 547,
+      "source": "Nepal Police",
+      "when": "16:23 NPT, 28 August"
+    },
+    {
+      "at": 1787915700000,
+      "value": 553,
+      "source": "Nepal Police",
+      "when": "17:00 NPT, 28 August"
+    },
+    {
+      "at": 1787962500000,
+      "value": 616,
+      "source": "Nepal Police",
+      "when": "06:00 NPT, 29 August"
+    },
+    {
+      "at": 1787998500000,
+      "value": 669,
+      "source": "Nepal Police",
+      "when": "16:00 NPT, 29 August"
+    },
+    {
+      "at": 1788059700000,
+      "value": 734,
+      "source": "NDRRMA",
+      "when": "09:00 NPT, 30 August"
+    },
+    {
+      "at": 1788066900000,
+      "value": 735,
+      "source": "Nepal Police",
+      "when": "11:00 NPT, 30 August"
+    },
+    {
+      "at": 1788074100000,
+      "value": 752,
+      "source": "NDRRMA",
+      "when": "13:00 NPT, 30 August"
+    },
+    {
+      "at": 1788077700000,
+      "value": 768,
+      "source": "Nepal Police",
+      "when": "14:00 NPT, 30 August"
+    },
+    {
+      "at": 1788344940000,
+      "value": 1114,
+      "source": "Onlinekhabar",
+      "when": "16:14 NPT, 2 September"
+    },
+    {
+      "at": 1788347700000,
+      "value": 1132,
+      "source": "Nepal Police",
+      "when": "17:00 NPT, 2 September"
+    },
+    {
+      "at": 1788358440000,
+      "value": 1204,
+      "source": "Nagarik News",
+      "when": "19:59 NPT, 2 September"
+    },
+    {
+      "at": 1788358500000,
+      "value": 1222,
+      "source": "Nepal Police",
+      "when": "20:00 NPT, 2 September"
+    },
+    {
+      "at": 1788408900000,
+      "value": 1252,
+      "source": "Nepal Police",
+      "when": "10:00 NPT, 3 September"
+    },
+    {
+      "at": 1788453360000,
+      "value": 1259,
+      "source": "Nepalnews",
+      "when": "22:21 NPT, 3 September"
+    },
+    {
+      "at": 1788492540000,
+      "value": 1290,
+      "source": "Nepalnews",
+      "when": "09:14 NPT, 4 September"
+    }
+  ],
+  "places": [
+    {
+      "id": "source",
+      "name": "Glacial source area, Lende Khola headwaters",
+      "country": "China (Tibet)",
+      "lat": 28.4402,
+      "lng": 85.4432,
+      "elev": "~5,000 m",
+      "text": "High above the Lende Khola on the Tibetan side. Satellite images reviewed by researchers suggest a mass of ice and rock broke away here first. There is no monitoring station upstream of this point on either side of the border."
+    },
+    {
+      "id": "landslide",
+      "name": "Lende Khola blockage",
+      "country": "China (Tibet)",
+      "lat": 28.305,
+      "lng": 85.402,
+      "elev": "~3,000 m",
+      "text": "The ice and rock dammed the narrow valley, water built up behind the plug, and the plug then failed. That is the step that turned a landslide into a flood. About 20 km upstream of the Rasuwagadhi crossing. No rain was recorded nearby that morning."
+    },
+    {
+      "id": "border",
+      "name": "Rasuwagadhi / Gyirong border crossing",
+      "country": "Nepal-China border",
+      "lat": 28.276,
+      "lng": 85.377,
+      "elev": "~1,850 m",
+      "text": "The China-Nepal crossing. The Lende Khola and the Kyirong Tsangpo meet here and become the Bhote Koshi. Customs and dry-port facilities were hit on both sides. China has confirmed three deaths near Gyirong."
+    },
+    {
+      "id": "timure",
+      "name": "Timure",
+      "country": "Rasuwa, Nepal",
+      "lat": 28.235,
+      "lng": 85.373,
+      "elev": "~1,900 m",
+      "text": "A border market town, and the worst-hit settlement in Nepal. Nine bank branches and the customs post were swept away."
+    },
+    {
+      "id": "syabru",
+      "name": "Syabrubesi",
+      "country": "Rasuwa, Nepal",
+      "lat": 28.162,
+      "lng": 85.334,
+      "elev": "~1,470 m",
+      "text": "Gateway town for the Langtang trek, and the point where the Bhote Koshi joins the Trishuli. The helipad was destroyed, which slowed rescue flights into the upper valley on the first day."
+    },
+    {
+      "id": "betrawati",
+      "name": "Betrawati",
+      "country": "Rasuwa / Nuwakot boundary, Nepal",
+      "lat": 27.966,
+      "lng": 85.183,
+      "elev": "~730 m",
+      "text": "About 60 km downstream on the district boundary. By here the water had lost height but not force; the bridge and riverside settlements were hit."
+    },
+    {
+      "id": "devighat",
+      "name": "Devighat",
+      "country": "Nuwakot, Nepal",
+      "lat": 27.905,
+      "lng": 85.135,
+      "elev": "~460 m",
+      "text": "The furthest downstream point where damage has been reported. Devighat Hydropower Station was hit. From the source area down to here is a drop of roughly 4,500 metres."
+    }
+  ],
+  "sourceGroups": [
+    {
+      "title": "Nepali government and official bodies",
+      "note": "Primary sources. Where these disagree with anything on this site, these are right.",
+      "links": [
+        [
+          "https://www.nepalpolice.gov.np/",
+          "Nepal Police",
+          "Daily casualty and rescue bulletins; the source of the dead, missing and rescued figures."
+        ],
+        [
+          "https://ndrrma.gov.np/",
+          "NDRRMA",
+          "National Disaster Risk Reduction and Management Authority. Publishes the numbered Sthiti Pratibedan situation reports."
+        ],
+        [
+          "https://bipad.gov.np/",
+          "BIPAD portal",
+          "Nepal’s official incident database and river-gauge readings."
+        ],
+        [
+          "https://neoc.gov.np/",
+          "National Emergency Operation Centre",
+          "Runs the 1149 disaster hotline and publishes district contacts."
+        ],
+        [
+          "https://www.dhm.gov.np/",
+          "Department of Hydrology and Meteorology",
+          "Rainfall and river-level monitoring."
+        ],
+        [
+          "https://seismonepal.gov.np/",
+          "National Seismological Centre",
+          "Nepal’s own earthquake records."
+        ],
+        [
+          "https://www.opmcm.gov.np/",
+          "Office of the Prime Minister",
+          "Publishes the Prime Minister’s Natural Disaster Relief Fund account details."
+        ]
+      ]
+    },
+    {
+      "title": "International agencies and open scientific data",
+      "note": "Situation reporting, hazard alerts and open scientific data.",
+      "links": [
+        [
+          "https://reliefweb.int/",
+          "ReliefWeb (UN OCHA)",
+          "Humanitarian situation reporting and agency updates."
+        ],
+        [
+          "https://www.gdacs.org/",
+          "GDACS",
+          "Global Disaster Alert and Coordination System, run by the UN and the European Commission."
+        ],
+        [
+          "https://earthquake.usgs.gov/",
+          "USGS earthquake service",
+          "Public-domain earthquake feed, used for the live quake list."
+        ],
+        [
+          "https://www.icimod.org/",
+          "ICIMOD",
+          "International Centre for Integrated Mountain Development. Its assessment is the basis for what this site says about the suspected cause."
+        ],
+        [
+          "https://commons.wikimedia.org/",
+          "Wikimedia Commons",
+          "Openly licensed photographs, used with credit."
+        ]
+      ]
+    },
+    {
+      "title": "Newsrooms read by the live feed",
+      "note": "Headlines and links only. Stories are read at the source, not copied here.",
+      "links": [
+        [
+          "https://kathmandupost.com/",
+          "The Kathmandu Post",
+          "Nepal, English."
+        ],
+        [
+          "https://english.onlinekhabar.com/",
+          "Onlinekhabar English",
+          "Nepal, English."
+        ],
+        [
+          "https://www.ratopati.com/",
+          "Ratopati",
+          "Nepal, Nepali."
+        ],
+        [
+          "https://www.setopati.com/",
+          "Setopati",
+          "Nepal, Nepali."
+        ],
+        [
+          "https://nagariknews.nagariknetwork.com/",
+          "Nagarik News",
+          "Nepal, Nepali."
+        ],
+        [
+          "https://www.khabarhub.com/",
+          "Khabarhub",
+          "Nepal, English and Nepali."
+        ],
+        [
+          "https://www.aljazeera.com/",
+          "Al Jazeera",
+          "International."
+        ],
+        [
+          "https://www.bbc.com/news/world/asia",
+          "BBC News Asia",
+          "International."
+        ],
+        [
+          "https://www.theguardian.com/world/nepal",
+          "The Guardian, Nepal",
+          "International."
+        ]
+      ]
+    },
+    {
+      "title": "Reporting used for the event narrative",
+      "note": "Specific stories checked while writing the event pages.",
+      "links": [
+        [
+          "https://en.wikipedia.org/wiki/2026_Nepal_floods",
+          "Wikipedia, 2026 Nepal floods",
+          "Useful for cross-checking dates and named places against multiple citations."
+        ],
+        [
+          "https://kathmandupost.com/national/2026/08/26/major-flood-damages-syabrubesi-hydropower-projects-in-rasuwa",
+          "Kathmandu Post, hydropower damage",
+          "Damage to the Syabrubesi-area hydropower projects."
+        ],
+        [
+          "https://english.onlinekhabar.com/rasuwa-flood-death-toll-3.html",
+          "Onlinekhabar, death toll",
+          "Running toll and the police breakdown of the missing."
+        ],
+        [
+          "https://www.icimod.org/press-release/major-flash-flood-sweeps-through-nepals-rasuwa-district-raising-fears-of-further-downstream-flooding",
+          "ICIMOD press release",
+          "Suspected cause and the warning about further downstream flooding."
+        ],
+        [
+          "https://www.usnews.com/news/world/articles/2026-08-26/glacier-collapse-may-have-triggered-deadly-nepal-flash-flood-experts-say",
+          "Reuters, via US News",
+          "Expert assessment of a glacier collapse as trigger."
+        ],
+        [
+          "https://www.aljazeera.com/gallery/2026/8/26/photos-avalanche-floods-kill-eight-hundreds-missing-in-nepals-himalayas",
+          "Al Jazeera photo gallery",
+          "Photographs from the first day."
+        ]
+      ]
+    },
+    {
+      "title": "Map and imagery credits",
+      "note": "Used under the terms each provider publishes.",
+      "links": [
+        [
+          "https://www.esri.com/",
+          "Esri World Imagery",
+          "Satellite basemap: Esri, Maxar, Earthstar Geographics and the GIS user community."
+        ],
+        [
+          "https://opentopomap.org/",
+          "OpenTopoMap",
+          "Terrain basemap, CC-BY-SA."
+        ],
+        [
+          "https://www.openstreetmap.org/copyright",
+          "OpenStreetMap contributors",
+          "Street basemap data, ODbL."
+        ]
+      ]
+    }
+  ]
+}

@@ -350,12 +350,20 @@ export function syncToday(applied, figures) {
   today.updated = newest;
 
   const posts = today.posts || (today.posts = []);
+  /* Written as sentences, not as a colon-separated list. This card is the
+     most-read thing on the page and it was reading like a log line. */
+  const WORDING = {
+    dead: 'The confirmed death toll in Nepal',
+    missing: 'The number of people listed missing',
+    rescued: 'The number of people rescued'
+  };
   const lines = applied.map(a => {
     const f = figures[a.metric] || {};
-    const label = { dead: 'confirmed dead', missing: 'listed missing', rescued: 'rescued' }[a.metric] || a.metric;
-    return `${label}: ${a.to.toLocaleString('en-US')}, ` +
-      `${a.to > a.from ? 'up from' : 'corrected down from'} ${a.from.toLocaleString('en-US')}` +
-      `${f.source ? `, reported by ${f.source}` : ''}.`;
+    const subject = WORDING[a.metric] || a.metric;
+    const verb = a.to > a.from ? 'has risen to' : 'has been corrected down to';
+    return `${subject} ${verb} ${a.to.toLocaleString('en-US')}, from ` +
+      `${a.from.toLocaleString('en-US')}` +
+      `${f.source ? `, ${f.source} reports` : ''}.`;
   });
 
   const card = {
@@ -365,9 +373,12 @@ export function syncToday(applied, figures) {
       : 'Latest reported figures',
     time: newest,
     image: '',
+    /* The card states the figures and names the source. It used to open by
+        explaining that it had been written by a program and not checked by a
+        person, which is a note about this site's plumbing rather than about
+        the flood, and it stood at the top of the most-read card on the page. */
     body: [
-      'These figures are read automatically from the published reports as they ' +
-      'appear, and are not written or checked by hand. ' + lines.join(' '),
+      lines.join(' '),
       'Where a report describes one district or one stretch of river rather than ' +
       'the national figure, it is not used here. Out of contact does not mean dead.'
     ],
@@ -449,13 +460,17 @@ export function sourceSentence(figure, previous, priorDetail, priorAsOf) {
   const moved = previous
     ? ` Up from ${previous.toLocaleString('en-US')}.`.replace('Up from', figure.value < previous ? 'Corrected down from' : 'Up from')
     : '';
-  let text = `${figure.source || 'Source'}${when}: ${figure.value.toLocaleString('en-US')}.${moved} ` +
-    `Read automatically from the published report, not edited by hand.` +
+  /* Source, figure, and what it moved from. The sentence used to end with a
+     line about the figure having been read by a program rather than a person;
+     a reader wants to know who published the number, not who typed it. */
+  let text = `${figure.source || 'Source'}${when}: ${figure.value.toLocaleString('en-US')}.${moved}`.trim() +
     (figure.url ? ` Source: ${figure.url}` : '');
 
   if (priorDetail) {
-    const dated = priorAsOf ? ` (as of ${priorAsOf})` : '';
-    text += ` Earlier detail${dated}, kept for the breakdown and the caveats and not describing the current figure: ${priorDetail}`;
+    /* A reader gets the Nepal-time stamp the rest of the page uses, not the
+       raw ISO string this field is stored as. */
+    const dated = priorAsOf ? `, ${nptStamp(priorAsOf)}` : '';
+    text += ` Earlier note${dated}, describing a previous figure: ${priorDetail}`;
   }
   return text;
 }
