@@ -510,11 +510,15 @@ function statFor(label) {
   return (event.stats || []).find(s => s && s.label === label) || null;
 }
 
+/* Both wordings, because a counter written by an older pass still says
+   "Earlier detail" where a new one says "Earlier note". */
+const EARLIER = /Earlier (?:detail|note)\b/;
+
 /** A counter's prose with the archived earlier text cut off — that clause is
  *  useful in the tile panel, and far too long for a table cell. */
 function shortDetail(stat) {
   const text = String((stat && stat.detail) || '');
-  const at = text.indexOf('Earlier detail');
+  const at = text.search(EARLIER);
   return (at === -1 ? text : text.slice(0, at)).replace(/\s*Source:\s*https?:\S+/g, '').trim();
 }
 
@@ -718,9 +722,13 @@ function invBoard() {
        not be read as describing the current figure. */
     const urlMatch = /Source:\s*(https?:\/\/\S+)/.exec(detail);
     const url = urlMatch ? urlMatch[1] : null;
-    const cut = detail.indexOf('Earlier detail (as of');
-    const now = (cut > -1 ? detail.slice(0, cut) : detail).replace(/Source:\s*https?:\/\/\S+/, '').trim();
-    const earlier = cut > -1 ? detail.slice(cut).replace(/Source:\s*https?:\/\/\S+/g, '').trim() : '';
+    const cut = detail.search(EARLIER);
+    /* Every citation URL comes out of both halves, not just the first: the
+       archived clause carries one too, and it was being printed as a bare
+       address in the middle of the sentence. */
+    const strip = t => t.replace(/\s*Source:\s*https?:\/\/\S+/g, '').trim();
+    const now = strip(cut > -1 ? detail.slice(0, cut) : detail);
+    const earlier = cut > -1 ? strip(detail.slice(cut)) : '';
     let host = '';
     try { if (url) host = new URL(url).hostname.replace(/^www\./, ''); } catch { host = ''; }
     return '<tr>'
