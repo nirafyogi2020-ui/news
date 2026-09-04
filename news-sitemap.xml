@@ -8,8 +8,8 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-03T16:36:37.000Z</news:publication_date>
-      <news:title>Nepal Flood Live: 1,259 dead, 5,083 missing in Rasuwa, 3 Sep</news:title>
+      <news:publication_date>2026-09-04T04:36:56.000Z</news:publication_date>
+      <news:title>Nepal Flood Live: 1,290 dead, 5,083 missing in Rasuwa, 4 Sep</news:title>
     </news:news>
   </url>
   <url>
@@ -19,8 +19,41 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-03T16:36:37.000Z</news:publication_date>
+      <news:publication_date>2026-09-04T04:36:56.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-04-auto-2026-09-04/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-04T04:36:56.000Z</news:publication_date>
+      <news:title>सुरुङबाट १० दिनपछि निकालिएका साहको स्वास्थ्य अवस्था सामान्य</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-04-auto-2026-09-04-minister-rawal-for-carrying-out-exemplary-works-in-pos/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-04T04:35:15.000Z</news:publication_date>
+      <news:title>Minister Rawal for carrying out exemplary works in post-disaster recovery as well</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-04-latest-reported-figures/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-04T03:29:05.000Z</news:publication_date>
+      <news:title>Latest reported figures: 1,290 confirmed dead</news:title>
     </news:news>
   </url>
   <url>
