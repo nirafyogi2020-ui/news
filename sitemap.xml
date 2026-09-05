@@ -555,6 +555,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-08-26-auto-2026-08-26/</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/ne/</loc>
     <lastmod>2026-09-05T13:15:36.000Z</lastmod>
     <changefreq>hourly</changefreq>

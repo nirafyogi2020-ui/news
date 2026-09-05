@@ -89,15 +89,4 @@
       <news:title>Minister Rawal for carrying out exemplary works in post-disaster recovery as well</news:title>
     </news:news>
   </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-03-latest-reported-figures/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-03T16:36:37.000Z</news:publication_date>
-      <news:title>Latest reported figures: 1,259 confirmed dead</news:title>
-    </news:news>
-  </url>
 </urlset>
