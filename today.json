@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-05T05:21:32.000Z",
+  "updated": "2026-09-05T08:00:00.000Z",
   "posts": [
     {
       "id": "auto-2026-09-05-",
@@ -36,16 +36,16 @@
     {
       "id": "latest-reported-figures",
       "title": "Latest reported figures: 1,342 confirmed dead",
-      "time": "2026-09-05T01:49:11.000Z",
+      "time": "2026-09-05T08:00:00.000Z",
       "image": "",
       "body": [
-        "The confirmed death toll in Nepal has risen to 1,342, from 1,294, Nepalnews reports.",
+        "The number of people rescued has risen to 13,098, from 12,038, Nagarik News reports.",
         "Where a report describes one district or one stretch of river rather than the national figure, it is not used here. Out of contact does not mean dead."
       ],
       "sources": [
         {
-          "name": "Nepalnews",
-          "url": "https://english.nepalnews.com/s/nation/bhote-koshi-flood-death-toll-reaches-1342-nearly-4900-still-missing/"
+          "name": "Nagarik News",
+          "url": "https://nagariknews.nagariknetwork.com/social-affairs/rasuwa-flood-1-344-dead-5-000-left-without-contact-26-93.html"
         }
       ],
       "revised": true

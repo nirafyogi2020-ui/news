@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-05T05:21:32.000Z</news:publication_date>
+      <news:publication_date>2026-09-05T08:00:00.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,342 dead, 8,898 missing in Rasuwa, 5 Sep</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-05T05:21:32.000Z</news:publication_date>
+      <news:publication_date>2026-09-05T08:00:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-05-latest-reported-figures/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-05T08:00:00.000Z</news:publication_date>
+      <news:title>Latest reported figures: 1,342 confirmed dead</news:title>
     </news:news>
   </url>
   <url>
@@ -43,17 +54,6 @@
       </news:publication>
       <news:publication_date>2026-09-05T05:15:00.000Z</news:publication_date>
       <news:title>The geotechnical trap inside Nepal’s hydropower tunnels</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-05-latest-reported-figures/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-05T01:49:11.000Z</news:publication_date>
-      <news:title>Latest reported figures: 1,342 confirmed dead</news:title>
     </news:news>
   </url>
   <url>
