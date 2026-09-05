@@ -8,8 +8,8 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-04T16:20:21.000Z</news:publication_date>
-      <news:title>Nepal Flood Live: 1,294 dead, 8,898 missing in Rasuwa, 4 Sep</news:title>
+      <news:publication_date>2026-09-05T05:21:32.000Z</news:publication_date>
+      <news:title>Nepal Flood Live: 1,342 dead, 8,898 missing in Rasuwa, 5 Sep</news:title>
     </news:news>
   </url>
   <url>
@@ -19,8 +19,41 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-04T16:20:21.000Z</news:publication_date>
+      <news:publication_date>2026-09-05T05:21:32.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-05-auto-2026-09-05/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-05T05:21:32.000Z</news:publication_date>
+      <news:title>जलवायु परिवर्तनको क्षतिपूर्तिका लागि विश्व समुदायले नेपाललाई साथ दिनुपर्छ: महासचिव पोखरेल</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-05-auto-2026-09-05-the-geotechnical-trap-inside-nepal-s-hydropower-tunnel/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-05T05:15:00.000Z</news:publication_date>
+      <news:title>The geotechnical trap inside Nepal’s hydropower tunnels</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-05-latest-reported-figures/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-05T01:49:11.000Z</news:publication_date>
+      <news:title>Latest reported figures: 1,342 confirmed dead</news:title>
     </news:news>
   </url>
   <url>
@@ -65,28 +98,6 @@
       </news:publication>
       <news:publication_date>2026-09-03T16:36:37.000Z</news:publication_date>
       <news:title>Latest reported figures: 1,259 confirmed dead</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-03-auto-2026-09-03-missing-flood-victims-families-called-for-dna-testing/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-03T05:03:06.000Z</news:publication_date>
-      <news:title>Missing flood victims’ families called for DNA testing</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-03-auto-2026-09-03-locals-risk-lives-crossing-taksugad-after-flood-washes/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-03T05:01:28.000Z</news:publication_date>
-      <news:title>Locals risk lives crossing Taksugad after flood washes away bridge</news:title>
     </news:news>
   </url>
 </urlset>
