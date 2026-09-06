@@ -8,16 +8,16 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-09-05T13:15:36.000Z",
-  "asOfSource": "Nepalnews, 11AM",
+  "asOf": "2026-09-06T14:11:38.000Z",
+  "asOfSource": "Nepalnews",
   "stats": [
     {
       "icon": "dead",
-      "value": "1,344",
+      "value": "1,381",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepalnews at 11AM: 1,344. Up from 1,342. Source: https://english.nepalnews.com/s/main-left/nepal-news-evening-briefing-saturday-september-05-2026/ Earlier note, 14:00 NPT, 30 August, describing a previous figure: Onlinekhabar: 1,114. Up from 768. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
+      "detail": "Nepalnews: 1,381. Up from 1,344. Source: https://english.nepalnews.com/s/main-left/nepal-news-evening-briefing-sunday-september-06-2026/ Earlier note, 14:00 NPT, 30 August, describing a previous figure: Onlinekhabar: 1,114. Up from 768. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
       "priorDetail": "Onlinekhabar: 1,114. Up from 768. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
       "priorAsOf": "2026-08-30T14:00:00+05:45"
     },
@@ -92,15 +92,15 @@
       },
       {
         "district": "Nawalparasi West",
-        "value": 219
+        "value": 221
       },
       {
         "district": "Nuwakot",
-        "value": 193
+        "value": 196
       },
       {
         "district": "Rasuwa",
-        "value": 163
+        "value": 169
       },
       {
         "district": "Gorkha",
@@ -108,16 +108,16 @@
       },
       {
         "district": "Dhading",
-        "value": 67
+        "value": 69
       },
       {
         "district": "Tanahun",
         "value": 38
       }
     ],
-    "total": 1338,
+    "total": 1351,
     "source": "Nepal Police",
-    "url": "https://nepalpolice.gov.np/news/10335/",
-    "time": "2026-09-05T20:00:00+05:45"
+    "url": "https://nepalpolice.gov.np/news/10341/",
+    "time": "2026-09-06T20:00:00+05:45"
   }
 }
