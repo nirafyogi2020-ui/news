@@ -1474,7 +1474,6 @@ ${supersededNote}
 ${post.revised && !newest ? '<div class="callout"><p class="callout-title">Revised</p><p>This briefing was updated after publication as newer figures were confirmed. The time above is the time of the bulletin it is built on.</p></div>' : ''}
 ${post.body.map(p => `<p>${esc(p)}</p>`).join('\n')}
 ${sources}
-<p class="faint">Written and checked by hand against the sources above. Figures are attributed to the bulletin they came from; where two sources disagreed, the lower confirmed figure was used. If something here is wrong, <a href="/contact/">tell us</a> and it gets corrected or removed.</p>
 `;
 
   const first = stripTags(post.body[0] || post.title);

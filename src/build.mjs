@@ -616,11 +616,12 @@ const before = index;
    page's own script only repaints the two panels that are genuinely live —
    the board and the district table — from /api/figures.
    ------------------------------------------------------------------------- */
-function invHead(n, kicker, title, note) {
+function invHead(n, kicker, title, note, why) {
   return `<div class="inv-head"><span class="inv-num">${escHtml(n)}</span>`
     + `<div><p class="inv-kicker">${escHtml(kicker)}</p>`
     + `<h3>${escHtml(title)}</h3>`
     + (note ? `<p class="inv-note">${note}</p>` : '')
+    + (why ? `<details class="inv-why"><summary>Why it&rsquo;s set out this way</summary><p>${why}</p></details>` : '')
     + '</div></div>';
 }
 
@@ -672,15 +673,24 @@ function invCurve(series) {
   }
 
   /* One tick per calendar day in Nepal time, not per data point: the points
-     bunch up on the days the police published four bulletins. */
+     bunch up on the days the police published four bulletins. Labels are kept
+     short ("2 Sep") and any that would sit within 52px of the last one drawn
+     is dropped, so the axis never overlaps itself. */
+  const MONTH_ABBR = { January: 'Jan', February: 'Feb', March: 'Mar', April: 'Apr', May: 'May', June: 'Jun', July: 'Jul', August: 'Aug', September: 'Sep', October: 'Oct', November: 'Nov', December: 'Dec' };
   const days = [];
   let lastDay = '';
+  let lastLabelX = -Infinity;
   for (const p of series) {
     const day = nptDay(new Date(p.at).toISOString());
     if (day === lastDay) continue;
     lastDay = day;
-    const label = nptLong(new Date(p.at).toISOString(), false).replace(/ \d{4}$/, '');
-    days.push(`<text x="${x(p.at).toFixed(1)}" y="${H - 10}" class="inv-axis" text-anchor="middle">${escHtml(label)}</text>`);
+    const px = x(p.at);
+    if (px - lastLabelX < 52) continue;
+    lastLabelX = px;
+    const label = nptLong(new Date(p.at).toISOString(), false)
+      .replace(/ \d{4}$/, '')
+      .replace(/\b(January|February|March|April|May|June|July|August|September|October|November|December)\b/, (m) => MONTH_ABBR[m]);
+    days.push(`<text x="${px.toFixed(1)}" y="${H - 10}" class="inv-axis" text-anchor="middle">${escHtml(label)}</text>`);
   }
 
   const dots = series.map(p =>
@@ -745,8 +755,8 @@ function invBoard() {
   }).join('');
 
   return invHead('01', 'The board', 'Every number on this site, and the sentence it came from',
-      `Last moved ${escHtml(nptLong(event.asOf))}, from ${escHtml(event.asOfSource || 'the sources')}. `
-      + 'Every figure carries the report it came from, and the figures other newsrooms are publishing for the same thing.')
+      `Last moved ${escHtml(nptLong(event.asOf))}, from ${escHtml(event.asOfSource || 'the sources')}.`,
+      'Every figure carries the report it came from, and the figures other newsrooms are publishing for the same thing. Where they disagree, the board takes the newest figure stated as a national total.')
     + '<div class="inv-live" id="inv-live-note"><span class="livedot" aria-hidden="true"></span>'
     + '<span id="inv-checked">Checking the sources&hellip;</span></div>'
     + '<div class="table-scroll"><table class="data-table inv-board" id="inv-board-table">'
@@ -769,8 +779,8 @@ function invDistricts() {
       + '</tr>';
   }).join('');
   return invHead('03', 'Recovery', 'Where the dead were found',
-      'A district here is where a body was found, not where the person was from. '
-      + 'The flood started in Rasuwa; the water carried people the length of the Trishuli and into the Narayani.')
+      'A district here is where a body was found, not where the person was from.',
+      'The flood started in Rasuwa; the water then carried people the length of the Trishuli and into the Narayani, which is why most were recovered far downstream.')
     + '<div class="table-scroll"><table class="data-table inv-dist" id="inv-dist-table">'
     + '<thead><tr><th>District</th><th class="inv-bar-head">Share of bodies recovered</th><th>Bodies</th><th>Share</th></tr></thead>'
     + `<tbody>${rows}</tbody></table></div>`
@@ -834,9 +844,8 @@ function invDescent(places) {
 
   const drop = stops[0].elev - stops[stops.length - 1].elev;
   return invHead('04', 'The descent', 'Down the valley, place by place',
-      `A drop of about ${escHtml(drop.toLocaleString('en-US'))} metres between the ice and the furthest point `
-      + 'where damage has been reported. This is why a landslide on the Tibetan side was still moving houses '
-      + '60 km inside Nepal: the water never had to slow down.')
+      `A drop of about ${escHtml(drop.toLocaleString('en-US'))} metres between the ice and the furthest reported damage.`,
+      'This is why a landslide on the Tibetan side was still moving houses 60 km inside Nepal: on ground this steep the water never had to slow down.')
     + '<figure class="inv-chart">'
     + `<svg viewBox="0 0 ${W} ${H}" role="img" preserveAspectRatio="xMidYMid meet" `
     + `aria-label="The river's height falling from about ${escAttr(stops[0].elev.toLocaleString('en-US'))} metres `
@@ -861,10 +870,8 @@ function invUnaccounted(rows) {
     + invCite(r.source)
     + '</article>').join('');
   return invHead('05', 'The missing', 'Who is still unaccounted for, and who is counting them',
-      '<strong>These do not add up, and they are not meant to.</strong> Each body counts a different '
-      + 'population with a different cut-off, several are an association&rsquo;s or an embassy&rsquo;s own '
-      + 'estimate rather than a police figure, and they overlap. Summing them would produce a number '
-      + 'nobody has published. Out of contact does not mean dead.')
+      '<strong>These do not add up, and they are not meant to.</strong> Out of contact does not mean dead.',
+      'Each row counts a different population with a different cut-off; several are an association&rsquo;s or an embassy&rsquo;s own estimate rather than a police figure, and they overlap. Summing them would produce a number nobody has published.')
     + `<div class="inv-cards">${cards}</div>`;
 }
 
@@ -903,9 +910,8 @@ function invAid(rows) {
     + '</article>').join('');
 
   return invHead('06', 'Aid', 'What has been sent, by whom, and what it was for',
-      'Each row carries the figure its giver stated, in the currency they stated it in. '
-      + 'There is no combined total: adding a euro pledge to a rupee deposit would produce a headline '
-      + 'figure nobody published, and a wrong one the moment a rate moved. Bars compare within a currency only.')
+      'Each row carries the figure its giver stated, in the currency they stated it in. Bars compare within a currency only.',
+      'There is no combined total: adding a euro pledge to a rupee deposit would produce a headline figure nobody published, and a wrong one the moment a rate moved.')
     + `<div class="inv-aid">${groups}</div>`
     + '<h4 class="inv-sub">Help that is not money</h4>'
     + `<div class="inv-cards">${rest}</div>`;
@@ -926,9 +932,8 @@ function invDamage(rows, hydro, relief) {
     `<tr><td>${escHtml(r.where)}</td><td class="num-cell">${escHtml(r.amount)}</td></tr>`).join('');
 
   return invHead('07', 'Damage', 'What the flood destroyed',
-      'Every figure here is preliminary, and the people who published them said so. '
-      + 'Four districts were still being surveyed when the headline damage estimate was given, '
-      + 'and it covers roads and bridges only.')
+      'Every figure here is preliminary, and the people who published them said so.',
+      'Four districts were still being surveyed when the headline damage estimate was given, and it covers roads and bridges only. Hydropower and private property are not in it.')
     + `<div class="inv-cards">${cards}</div>`
     + '<h4 class="inv-sub">The hydropower corridor, project by project</h4>'
     + '<div class="table-scroll"><table class="data-table">'
@@ -947,9 +952,8 @@ function invCauses(causes) {
     + `<h4>${escHtml(c.title)}</h4>`
     + `<p>${escHtml(c.text)}</p></li>`).join('');
   return invHead('08', 'Cause', 'What is claimed, ranked by how well it is supported',
-      'No government has confirmed a cause. These are the explanations on the table, ordered by how '
-      + 'far the evidence currently carries them. The order is a reading of what the cited bodies have '
-      + 'said, not a finding of its own.')
+      'No government has confirmed a cause. These are the explanations on the table, ordered by how far the evidence currently carries them.',
+      'The order is a reading of what the cited bodies have said, not a finding of its own.')
     + `<ol class="inv-causes">${items}</ol>`;
 }
 
@@ -957,8 +961,7 @@ function invUnknowns(list) {
   const items = list.map(u =>
     `<div class="inv-unknown"><h4>${escHtml(u.q)}</h4><p>${escHtml(u.a)}</p></div>`).join('');
   return invHead('09', 'Gaps', 'What nobody has published',
-      'A missing figure is a finding too. These are the questions no source has answered, '
-      + 'set out so the absence is visible rather than invisible.')
+      'A missing figure is a finding too. These are the questions no source has answered.')
     + `<div class="inv-unknowns">${items}</div>`;
 }
 
@@ -986,7 +989,8 @@ function ssrInvestigation() {
           `From ${escHtml(s.tollSeries[0] ? s.tollSeries[0].value.toLocaleString('en-US') : '')} on the evening of the flood `
           + `to ${escHtml(s.tollSeries.length ? s.tollSeries[s.tollSeries.length - 1].value.toLocaleString('en-US') : '')} now, `
           + `across ${escHtml(String(s.tollSeries.length))} published figures from `
-          + `${escHtml(String(new Set(s.tollSeries.map(p => p.source).filter(Boolean)).size))} named bodies.`)
+          + `${escHtml(String(new Set(s.tollSeries.map(p => p.source).filter(Boolean)).size))} named bodies.`,
+          'The line only rises because this counts bodies recovered. Where a slower source was still publishing an older, lower figure, that point is left off rather than drawn as a fall.')
       + invCurve(s.tollSeries)
     + '</section>'
     + '<section class="inv-sec" id="inv-dist">' + invDistricts() + '</section>'
