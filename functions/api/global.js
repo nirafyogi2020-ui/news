@@ -26,7 +26,7 @@ import {
   spread, byTimeDesc, significantWords, jaccard, safeHttpsUrl
 } from './news.js';
 
-const CACHE_SECONDS = 300;
+const CACHE_SECONDS = 60;
 
 /** What counts as a disaster. Headline only. */
 const HAZARD = [
@@ -46,7 +46,7 @@ const PRIMARY_SOURCES = [
 ];
 const TRUSTED_SOURCES = [
   'Al Jazeera', 'BBC News', 'The Guardian', 'France 24', 'NDTV',
-  'Reuters', 'Associated Press', 'AFP', 'Agência Brasil'
+  'Reuters', 'Associated Press', 'AFP', 'Xinhua', 'Agência Brasil'
 ];
 
 const BRAZIL_HAZARD = [
@@ -81,6 +81,7 @@ export async function onRequestGet(context) {
     fetchWire('https://www.theguardian.com/world/rss', 'The Guardian').catch(track(errors, 'guardian')),
     fetchWire('https://www.france24.com/en/rss', 'France 24').catch(track(errors, 'france24')),
     fetchWire('https://feeds.feedburner.com/ndtvnews-world-news', 'NDTV').catch(track(errors, 'ndtv')),
+    fetchWire('https://english.news.cn/rss/', 'Xinhua').catch(track(errors, 'xinhua')),
     fetchNepalLocal(request).catch(track(errors, 'nepal')),
     fetchBrazilLocal().catch(track(errors, 'brazil')),
     fetchUnitedStatesAlerts().catch(track(errors, 'united-states'))

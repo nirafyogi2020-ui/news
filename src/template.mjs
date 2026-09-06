@@ -329,6 +329,15 @@ export function page(o) {
     return `<a href="${n.href}"${cur}${n.home ? ' class="is-home"' : ''}>${esc(n.label)}</a>`;
   }).join('');
 
+  /* The related-links block is appended to o.body by every page. On a page
+     with a rail it was rendered inside the article column, which left the
+     320px rail column blank beside and below it — a lopsided empty quarter at
+     the foot of the page. Lift it out and render it under the full width. */
+  const relSplit = String(o.body || '')
+    .match(/^([\s\S]*?)\s*(<section class="related">[\s\S]*<\/section>)\s*$/);
+  const bodyMain = relSplit ? relSplit[1] : (o.body || '');
+  const bodyRelated = relSplit ? relSplit[2] : '';
+
   /* hreflang pairs are emitted only where a genuine translation exists. A
      self-referencing alternate on a page with no counterpart is noise. */
   const alt = o.alternates && o.alternates.length
@@ -437,10 +446,11 @@ ${crumbHtml}
   ${o.lede ? `<p class="lede measure">${o.lede}</p>` : ''}
 </header>
 ${o.updatedNote ? `<p class="byline">${o.updatedNote}</p>` : ''}
-${o.body}
+${bodyMain}
 </article>
 </main>
 ${o.rail ? `<aside class="rail" aria-label="${esc(t.railLabel || 'Live summary')}">${o.rail}</aside>` : ''}
+${bodyRelated ? `<div class="page-related">${bodyRelated}</div>` : ''}
 </div>
 </div>
 

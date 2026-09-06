@@ -67,7 +67,7 @@ export const CARD_SOURCES = new Set([
   'Ministry of Home Affairs', 'The Kathmandu Post', 'Onlinekhabar',
   'Onlinekhabar (Nepali)', 'The Himalayan Times', 'Nepalnews', 'Setopati',
   'Khabarhub', 'Ratopati', 'Republica', 'MyRepublica', 'Nagarik News',
-  'Kantipur', 'ReliefWeb', 'UN OCHA', 'ICIMOD'
+  'Kantipur', 'ReliefWeb', 'UN OCHA', 'ICIMOD', 'Xinhua'
 ]);
 
 /** NPT calendar day for an instant. The feed is a Nepali news feed; a day

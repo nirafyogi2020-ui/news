@@ -240,10 +240,21 @@ a.card .go{display:inline-block; margin-top:.6em; font-size:0.8rem; font-weight:
 /* ---- prev/next + related ------------------------------------------------ */
 .related{border-top:1px solid var(--border); margin-top:44px; padding-top:22px;}
 .related h2{margin-top:0; font-size:1.15rem;}
+/* On a rail page the related block is lifted out of the article column and
+   runs the full width of the page, so the foot of the page is not a band of
+   cards on the left with an empty quarter on the right. */
+.page-related{margin-top:4px;}
+@media (min-width:1100px){
+  .page-layout > .page-related{grid-column:1 / -1;}
+}
 
 /* ---- footer ------------------------------------------------------------- */
-footer{border-top:1px solid var(--border); margin-top:56px; padding:26px 0 40px; background:var(--surface-2);}
-footer p{font-size:0.84rem; color:var(--text-muted); margin:0 0 .7em; max-width:70ch;}
+footer{border-top:1px solid var(--border); margin-top:56px; padding:32px 0 40px; background:var(--surface-2);}
+/* The footer sat in the narrow 820px shell under pages that were 1180 wide,
+   so it read as a second, thinner column pushed to the middle. It now takes
+   the same width as the widest page content. */
+footer .shell{max-width:1180px;}
+footer p{font-size:0.84rem; color:var(--text-muted); margin:0 0 .7em; max-width:74ch;}
 footer .footnav{display:flex; flex-wrap:wrap; gap:6px 16px; margin:0 0 16px; padding:0; list-style:none;}
 footer .footnav a{font-size:0.86rem; color:var(--text-muted); text-decoration:none;}
 footer .footnav a:hover{color:var(--critical); text-decoration:underline;}

@@ -160,6 +160,7 @@ export async function onRequestGet(context) {
     fetchGuardianNepal().catch(track(errors, 'guardian')),
     fetchNdtvWorld().catch(track(errors, 'ndtv')),
     fetchFrance24().catch(track(errors, 'france24')),
+    fetchXinhua().catch(track(errors, 'xinhua')),
     fetchBingNews().catch(track(errors, 'bing')),
     loadPoliceNews().catch(track(errors, 'nepalpolice')),
     fetchYoutube(env, request, context).catch(track(errors, 'youtube'))
@@ -264,7 +265,7 @@ const TRUSTED_SOURCES = [
   'Nepalnews', 'Ratopati', 'Khabarhub', 'The Himalayan Times', 'The Rising Nepal',
   'Nepal Minute', 'Onlinekhabar (Nepali)', 'Nepal Television', 'Al Jazeera',
   'BBC News', 'The Guardian', 'NDTV', 'France 24', 'Reuters', 'Associated Press',
-  'AFP'
+  'AFP', 'Xinhua'
 ];
 
 /** Order the pinned block: the body that issued the figure first, then the
@@ -599,6 +600,11 @@ async function fetchNdtvWorld() {
 async function fetchFrance24() {
   const xml = await getText('https://www.france24.com/en/rss');
   return onTopic(parseRss(xml), 'France 24', 'global', { strict: true });
+}
+
+async function fetchXinhua() {
+  const xml = await getText('https://english.news.cn/rss/');
+  return onTopic(parseRss(xml), 'Xinhua', 'global', { strict: true });
 }
 
 async function fetchBingNews() {
