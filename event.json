@@ -8,26 +8,26 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-09-04T03:29:05.000Z",
-  "asOfSource": "Nepalnews",
+  "asOf": "2026-09-05T13:15:36.000Z",
+  "asOfSource": "Nepalnews, 11AM",
   "stats": [
     {
       "icon": "dead",
-      "value": "1,290",
+      "value": "1,344",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepalnews: 1,290. Up from 1,259. Source: https://english.nepalnews.com/s/nation/bhote-koshi-flood-disaster-death-toll-reaches-1290-over-4700-remain-missing/ Earlier note, 14:00 NPT, 30 August, describing a previous figure: Onlinekhabar: 1,114. Up from 768. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
+      "detail": "Nepalnews at 11AM: 1,344. Up from 1,342. Source: https://english.nepalnews.com/s/main-left/nepal-news-evening-briefing-saturday-september-05-2026/ Earlier note, 14:00 NPT, 30 August, describing a previous figure: Onlinekhabar: 1,114. Up from 768. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
       "priorDetail": "Onlinekhabar: 1,114. Up from 768. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
       "priorAsOf": "2026-08-30T14:00:00+05:45"
     },
     {
       "icon": "missing",
-      "value": "5,083",
+      "value": "8,898",
       "tone": "critical",
       "label": "listed missing in Nepal",
       "bar": 100,
-      "detail": "Nepalnews: 5,083. Up from 4,875. Source: https://english.nepalnews.com/s/nation/bhote-koshi-flood-death-toll-reaches-1259/ Earlier note, 10:00 NPT, 3 September, describing a previous figure: Nepalnews: 4,216 still unaccounted for, alongside 1,204 bodies recovered, in the same 2 September bulletin as the current toll. Source: https://nepalnews.com/ An earlier figure of 5,015 was published here; no bulletin supports it and it has been withdrawn.",
+      "detail": "Khabarhub: 8,898. Up from 5,083. Source: https://khabarhub.com/2026/04/1020594/ Earlier note, 10:00 NPT, 3 September, describing a previous figure: Nepalnews: 4,216 still unaccounted for, alongside 1,204 bodies recovered, in the same 2 September bulletin as the current toll. Source: https://nepalnews.com/ An earlier figure of 5,015 was published here; no bulletin supports it and it has been withdrawn.",
       "priorDetail": "Nepalnews: 4,216 still unaccounted for, alongside 1,204 bodies recovered, in the same 2 September bulletin as the current toll. Source: https://nepalnews.com/ An earlier figure of 5,015 was published here; no bulletin supports it and it has been withdrawn.",
       "priorAsOf": "2026-09-03T10:00:00+05:45"
     },
@@ -40,10 +40,10 @@
     },
     {
       "icon": "people",
-      "value": "12,038",
+      "value": "13,098",
       "label": "rescued so far",
       "bar": 100,
-      "detail": "Nepalnews: 12,038. Up from 11,993. Source: https://english.nepalnews.com/s/nation/bhote-koshi-flood-death-toll-reaches-1259/ Earlier note, 19:59 NPT, 2 September, describing a previous figure: NDRRMA's 1pm Sunday situation update reported 8,730 people rescued, Onlinekhabar reported. The report did not publish a current agency or location breakdown for that total, so no sub-rows are inferred.",
+      "detail": "Nagarik News: 13,098. Up from 12,038. Source: https://nagariknews.nagariknetwork.com/social-affairs/rasuwa-flood-1-344-dead-5-000-left-without-contact-26-93.html Earlier note, 19:59 NPT, 2 September, describing a previous figure: NDRRMA's 1pm Sunday situation update reported 8,730 people rescued, Onlinekhabar reported. The report did not publish a current agency or location breakdown for that total, so no sub-rows are inferred.",
       "priorDetail": "NDRRMA's 1pm Sunday situation update reported 8,730 people rescued, Onlinekhabar reported. The report did not publish a current agency or location breakdown for that total, so no sub-rows are inferred.",
       "priorAsOf": "2026-09-02T14:14:38.000Z"
     },
@@ -84,44 +84,40 @@
     "rows": [
       {
         "district": "Chitwan",
-        "value": 359
+        "value": 362
       },
       {
         "district": "Nawalparasi East",
-        "value": 221
+        "value": 222
       },
       {
         "district": "Nawalparasi West",
-        "value": 194
+        "value": 219
       },
       {
         "district": "Nuwakot",
-        "value": 186
+        "value": 193
       },
       {
         "district": "Rasuwa",
-        "value": 140
+        "value": 163
       },
       {
         "district": "Gorkha",
-        "value": 72
+        "value": 74
       },
       {
         "district": "Dhading",
-        "value": 65
+        "value": 67
       },
       {
         "district": "Tanahun",
         "value": 38
-      },
-      {
-        "district": "India (returned)",
-        "value": 18
       }
     ],
-    "total": 1293,
+    "total": 1338,
     "source": "Nepal Police",
-    "url": "https://nepalpolice.gov.np/news/10322/",
-    "time": "2026-09-04T14:00:00+05:45"
+    "url": "https://nepalpolice.gov.np/news/10335/",
+    "time": "2026-09-05T20:00:00+05:45"
   }
 }
