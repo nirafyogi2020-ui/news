@@ -486,10 +486,11 @@ function ssrTodayCards(list) {
       + `<div class="post-foot"><a class="post-btn" href="${escAttr(post.url)}">Full briefing</a>`
       + '<button class="post-btn" type="button" data-share="1">Share</button></div>'
       + '</article>';
-  }).join('');
-  /* The same river the client renderer draws, so the markup a crawler is
-     served and the markup a reader ends up with are the same shape. */
-  return `<div class="river">${cards}</div>`
+  });
+  /* Use one compact card grid for both server and browser rendering. A centre
+     lead with thin side columns left blank space whenever a column had fewer
+     reports, and made the page look unfinished before JavaScript loaded. */
+  return `<div class="river">${cards.join('')}</div>`
     + `<p class="today-updated">Updated ${escHtml(nptLong(modified))}</p>`;
 }
 
@@ -1018,7 +1019,7 @@ index = index.replace(
   () => `<!--ssr:official-->${ssrOfficial()}<!--/ssr:official-->`
 );
 
-const cards = ssrTodayCards(posts.slice(0, 6));
+const cards = ssrTodayCards(posts.slice(0, 18));
 index = index.replace(
   /<!--ssr:today-->[\s\S]*?<!--\/ssr:today-->/g,
   () => `<!--ssr:today-->${cards}<!--/ssr:today-->`
