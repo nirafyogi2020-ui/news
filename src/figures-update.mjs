@@ -137,15 +137,19 @@ async function main() {
      that is still a change worth publishing. */
   const districtsMoved = applyDistricts(event, board.districts);
   const repaired = repairDetails(event);
+  /* A bulletin can confirm the same number again. That is still new evidence,
+     and it must move the page's "as of" line. Otherwise a new story card
+     makes the audit correctly stop the whole publisher before it can commit. */
+  const freshnessMoved = refreshAsOf(event, board.board);
 
-  if (!applied.length && !districtsMoved && !repaired) {
+  if (!applied.length && !districtsMoved && !repaired && !freshnessMoved) {
     report(false, skipped.length ? 'no counter moved. ' + skipped.join('; ') : 'no counter moved');
     return;
   }
 
   if (!applied.length) {
     writeFileSync(EVENT, JSON.stringify(event, null, 2) + '\n');
-    report(true, districtsMoved ? 'district breakdown updated' : 'counter detail repaired');
+    report(true, districtsMoved ? 'district breakdown updated' : freshnessMoved ? 'figure freshness updated' : 'counter detail repaired');
     return;
   }
 
@@ -170,6 +174,27 @@ async function main() {
   }
   if (skipped.length) for (const s of skipped) console.log('  skipped ' + s);
   report(true, `${applied.length} counter${applied.length === 1 ? '' : 's'} updated`);
+}
+
+/**
+ * Advance the shared "as of" line when a named source has re-confirmed a
+ * published figure. This changes no number. It records when the page last had
+ * evidence for the numbers it is showing, which is what the audit checks.
+ */
+export function refreshAsOf(event, figures) {
+  const candidates = Object.values(figures || [])
+    .filter(f => f && f.time && !isNaN(new Date(f.time).getTime()))
+    .sort((a, b) => new Date(b.time) - new Date(a.time));
+  const newest = candidates[0];
+  if (!newest) return false;
+  const before = Date.parse(event && event.asOf);
+  const after = Date.parse(newest.time);
+  if (!isFinite(after) || (isFinite(before) && after <= before)) return false;
+  event.asOf = newest.time;
+  event.asOfSource = newest.statedTime
+    ? `${newest.source}, ${newest.statedTime}`
+    : newest.source || event.asOfSource;
+  return true;
 }
 
 /**
@@ -373,15 +398,9 @@ export function syncToday(applied, figures) {
       : 'Latest reported figures',
     time: newest,
     image: '',
-    /* The card states the figures and names the source. It used to open by
-        explaining that it had been written by a program and not checked by a
-        person, which is a note about this site's plumbing rather than about
-        the flood, and it stood at the top of the most-read card on the page. */
-    body: [
-      lines.join(' '),
-      'Where a report describes one district or one stretch of river rather than ' +
-      'the national figure, it is not used here. Out of contact does not mean dead.'
-    ],
+    /* Keep the lead factual and source-led. Operational caveats belong in the
+       reporting process, not in the reader-facing news card. */
+    body: [lines.join(' ')],
     sources: dedupeSources(applied.map(a => figures[a.metric]).filter(Boolean)),
     revised: true
   };

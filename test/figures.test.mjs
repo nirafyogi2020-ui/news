@@ -212,7 +212,7 @@ test('BIPAD sums the records that do carry figures', () => {
    three-day-old date, which is the failure this change exists to remove.
    ----------------------------------------------------------------------- */
 import {
-  replaceField, replaceString, readString, nptIso, nptStamp, addTimelineEntry
+  replaceField, replaceString, readString, nptIso, nptStamp, addTimelineEntry, refreshAsOf
 } from '../src/figures-update.mjs';
 
 const CONTENT_SAMPLE = [
@@ -227,6 +227,16 @@ const CONTENT_SAMPLE = [
   "  ['14:00 NPT, 30 August', 'Nepal Police bulletin 10275 reports 768 bodies found in Nepal.'],",
   '];'
 ].join('\n');
+
+test('a later source confirmation advances the shared as-of stamp without changing a figure', () => {
+  const event = { asOf: '2026-09-05T13:15:36.000Z', asOfSource: 'Yesterday' };
+  const changed = refreshAsOf(event, {
+    dead: { value: 1344, source: 'Nepal Police', statedTime: '17:00 NPT', time: '2026-09-06T09:40:04.000Z' }
+  });
+  assert.equal(changed, true);
+  assert.equal(event.asOf, '2026-09-06T09:40:04.000Z');
+  assert.equal(event.asOfSource, 'Nepal Police, 17:00 NPT');
+});
 
 test('moves one numeric field and nothing else', () => {
   const out = replaceField(CONTENT_SAMPLE, 'deadNepal', 1114);

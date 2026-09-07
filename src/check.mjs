@@ -333,7 +333,7 @@ for (const f of ['event.json', 'today.json', 'src/content.mjs']) {
   if (m) errors.push(`${f}: looks like a secret in a committed file`);
 }
 
-/* -- the counters must not go stale behind the story feed ------------------- */
+/* -- the counters must not go stale behind figure reporting ----------------- */
 /* The failure this catches, which happened on 28 August: a run researched the
    news properly, found a new toll, wrote the story cards, and never touched
    event.json or src/content.mjs. today.json said 8:00 am, the headline number
@@ -341,8 +341,9 @@ for (const f of ['event.json', 'today.json', 'src/content.mjs']) {
    passed. The site looked freshly updated while showing a toll eighty short.
 
    Nothing catches that except comparing the two clocks, because each file is
-   internally consistent. So: if the newest story is much newer than the
-   figures under the hero, the run skipped step 3 and the build stops.
+   internally consistent. The comparison must be with the generated figures
+   card only. Today also carries general news, which must never imply that a
+   flood toll changed.
 
    This is a real gate rather than a warning. A stale toll on a disaster page
    is the worst thing this site can publish, and a warning scrolls past. */
@@ -350,21 +351,19 @@ const COUNTER_LAG_MAX_H = 6;
 try {
   const ev = JSON.parse(readFileSync(join(ROOT, 'event.json'), 'utf8'));
   const td = JSON.parse(readFileSync(join(ROOT, 'today.json'), 'utf8'));
-  const newestStory = (td.posts || [])
-    .map(p => new Date(p.time).getTime())
-    .filter(t => isFinite(t))
-    .sort((a, b) => b - a)[0];
+  const figuresCard = (td.posts || []).find(p => p && p.id === 'latest-reported-figures');
+  const figureCardTime = figuresCard && new Date(figuresCard.time).getTime();
   const asOf = new Date(ev.asOf).getTime();
 
   if (!isFinite(asOf)) {
     errors.push(`event.json: asOf "${ev.asOf}" does not parse`);
-  } else if (isFinite(newestStory)) {
-    const lagH = (newestStory - asOf) / 3600000;
+  } else if (isFinite(figureCardTime)) {
+    const lagH = (figureCardTime - asOf) / 3600000;
     if (lagH > COUNTER_LAG_MAX_H) {
       errors.push(
-        `the figures are ${Math.round(lagH)}h older than the newest story. ` +
-        `event.json asOf is ${ev.asOf} but the newest today.json post is dated ` +
-        `${new Date(newestStory).toISOString()}. Re-check the toll and the missing ` +
+        `the figures are ${Math.round(lagH)}h older than their own report card. ` +
+        `event.json asOf is ${ev.asOf} but the latest-reported-figures card is dated ` +
+        `${new Date(figureCardTime).toISOString()}. Re-check the toll and the missing ` +
         `count against the newest bulletin and update event.json AND src/content.mjs, ` +
         `or, if the figures genuinely have not moved, set asOf to the bulletin that ` +
         `most recently confirmed them. Do not just raise the limit.`

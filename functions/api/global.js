@@ -1,7 +1,7 @@
 /**
  * GET /api/global
  *
- * The same live feed, for disasters anywhere in the world.
+ * The broader live desk, for verified news from Nepal and the world.
  *
  * The Nepal feed (/api/news) is deliberately narrow: it only carries this
  * event and its hazards. This one is the other half. Readers here follow one
@@ -13,8 +13,8 @@
  *              USGS earthquakes of magnitude 5.5 and above
  *   Global     Al Jazeera, BBC World, The Guardian, France 24, NDTV
  *
- * A story only counts as a disaster story when a hazard word is in the
- * headline. "Storm" in the body of a political column is not news of a storm.
+ * Nepal coverage stays focused on the active flood in /api/news. This feed is
+ * deliberately broader: Today and Live are a verified general-news desk.
  *
  * Response shape matches /api/news, so the same card renderer draws both:
  *   { updated, items: [ { title, url, source, time, kind, region, image,
@@ -46,7 +46,8 @@ const PRIMARY_SOURCES = [
 ];
 const TRUSTED_SOURCES = [
   'Al Jazeera', 'BBC News', 'The Guardian', 'France 24', 'NDTV',
-  'Reuters', 'Associated Press', 'AFP', 'Xinhua', 'Agência Brasil'
+  'Reuters', 'Associated Press', 'AFP', 'Xinhua', 'Agência Brasil',
+  'DW News', 'NPR', 'CBC News'
 ];
 
 const BRAZIL_HAZARD = [
@@ -82,6 +83,9 @@ export async function onRequestGet(context) {
     fetchWire('https://www.france24.com/en/rss', 'France 24').catch(track(errors, 'france24')),
     fetchWire('https://feeds.feedburner.com/ndtvnews-world-news', 'NDTV').catch(track(errors, 'ndtv')),
     fetchWire('https://english.news.cn/rss/', 'Xinhua').catch(track(errors, 'xinhua')),
+    fetchWire('https://rss.dw.com/xml/rss-en-world', 'DW News').catch(track(errors, 'dw')),
+    fetchWire('https://feeds.npr.org/1004/rss.xml', 'NPR').catch(track(errors, 'npr')),
+    fetchWire('https://www.cbc.ca/webfeed/rss/rss-world', 'CBC News').catch(track(errors, 'cbc')),
     fetchNepalLocal(request).catch(track(errors, 'nepal')),
     fetchBrazilLocal().catch(track(errors, 'brazil')),
     fetchUnitedStatesAlerts().catch(track(errors, 'united-states'))
@@ -219,7 +223,6 @@ async function fetchBigQuakes() {
 async function fetchWire(url, source) {
   const xml = await getText(url);
   return parseRss(xml)
-    .filter(item => isDisasterWireHeadline(item.title))
     .slice(0, 10)
     .map(item => ({
       title: cleanTitle(item.title),
@@ -253,12 +256,10 @@ async function fetchNepalLocal(request) {
     .map(item => ({ ...item, country: 'nepal' }));
 }
 
-/** Brazil's public broadcaster is a named, national source. Filter its broad
- * feed locally so ordinary politics and sport do not appear as a disaster. */
+/** Brazil's public broadcaster is a named, national source. */
 async function fetchBrazilLocal() {
   const xml = await getText('https://agenciabrasil.ebc.com.br/rss/ultimasnoticias/feed.xml');
   return parseRss(xml)
-    .filter(item => isBrazilDisasterHeadline(item.title))
     .slice(0, 12)
     .map(item => ({
       title: cleanTitle(item.title),
