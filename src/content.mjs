@@ -29,8 +29,8 @@ export const BODIES_SOURCE = 'Nepalnews';
 export const MISSING_AS_OF = '2026-09-04T22:05:21+05:45';
 export const MISSING_SOURCE = 'Khabarhub';
 
-export const RESCUE_AS_OF = '2026-09-05T13:45:00+05:45';
-export const RESCUE_SOURCE = 'Nagarik News';
+export const RESCUE_AS_OF = '2026-09-07T06:59:42+05:45';
+export const RESCUE_SOURCE = 'Nepalnews';
 
 /* Who those people are was last broken down in the morning police bulletin,
    when the list stood at 826. The groups below still describe that list. */
@@ -102,7 +102,7 @@ export const TOLL = {
   missingChinaForeign: 261,
   missingIndian: 133,
   injured: 242,
-  rescued: 13098,
+  rescued: 13399,
   rescuedBreakdown: [],
   narayaniRecovered: 121,
 };
