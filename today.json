@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-08T04:15:35.000Z",
+  "updated": "2026-09-08T14:12:41.000Z",
   "posts": [
     {
       "id": "auto-2026-09-08-",
@@ -83,17 +83,20 @@
     },
     {
       "id": "latest-reported-figures",
-      "title": "Latest reported figures",
-      "time": "2026-09-07T01:14:42.000Z",
+      "title": "Latest reported figures: 1,358 confirmed dead",
+      "time": "2026-09-08T14:12:41.000Z",
       "image": "",
       "body": [
-        "The number of people rescued has risen to 13,399, from 13,098, Nepalnews reports.",
-        "Where a report describes one district or one stretch of river rather than the national figure, it is not used here. Out of contact does not mean dead."
+        "The confirmed death toll in Nepal has been corrected down to 1,358, from 1,381, Nepalnews reports. The number of people rescued has risen to 13,583, from 13,399, Nepalnews reports."
       ],
       "sources": [
         {
           "name": "Nepalnews",
-          "url": "https://english.nepalnews.com/s/nation/240901/"
+          "url": "https://english.nepalnews.com/s/main-left/nepal-news-evening-briefing-tuesday-september-08-2026/"
+        },
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/bhote-koshi-flood-death-toll-rises-to-1358-as-5326-remain-missing-as-of-6pm/"
         }
       ],
       "revised": true
