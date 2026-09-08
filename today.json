@@ -1,6 +1,54 @@
 {
-  "updated": "2026-09-07T04:25:05.000Z",
+  "updated": "2026-09-08T04:15:35.000Z",
   "posts": [
+    {
+      "id": "auto-2026-09-08-",
+      "title": "अस्ट्रेलियाकी विदेशमन्त्री वोङले गरिन् नेपाली दूतावास पुगेर शोक पुस्तिकामा हस्ताक्षर",
+      "time": "2026-09-08T04:15:35.000Z",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/09/shok-puistika.jpg",
+      "body": [
+        "२३ भदौ, काठमाडौं । भोटेकोशी बाढीका कारण भएको ठूलो मानवीय क्षतिप्रति दुःख व्यक्त गर्दै अस्ट्रेलियाकी विदेशमन्त्री पेनी वोङले क्यानबेरास्थित नेपाली राजदूतावास पुगेर शोक पुस्तिकामा हस्ताक्षर गरेकी छन्।"
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar (Nepali)",
+          "url": "https://www.onlinekhabar.com/2026/09/2012739/australian-foreign-minister-wong-visits-nepali-embassy-and-signs-condolence-book"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-09-08-landslide-blocks-mahakali-highway",
+      "title": "Landslide blocks Mahakali Highway",
+      "time": "2026-09-08T03:47:05.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/09/pahiro_0eLKwOUNxg.jpg",
+      "body": [
+        "BAITADI: A landslide occurred at Bitakam of Dogadakedar Rural Municipality-5 in the district has blocked the Mahakali Highway. It blockage obstructed vehicles entering the district."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/landslide-blocks-mahakali-highway/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-09-08-engineer-goes-missing-since-bhotes-koshi-floods-spouse-s-ple",
+      "title": "Engineer goes missing since Bhotes Koshi floods, spouse’s plea for rescue",
+      "time": "2026-09-08T02:55:00.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/08/badhi-rasuwa.jpg",
+      "body": [
+        "JANAKPURDHAM: It has been nearly two weeks the devastative Bhote Koshi flood struck Nepal from Rasuwa district, but the whereabouts of an engineer working in a hydropower project of Rasuwa is still unknown."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/engineer-goes-missing-since-bhotes-koshi-floods-spouses-plea-for-rescue/"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-09-07-",
       "title": "भोटेकाेशी बाढी : जलवायुको मूल्य कसले चुकाउने ?",
