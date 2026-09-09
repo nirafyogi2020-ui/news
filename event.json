@@ -8,8 +8,8 @@
   "lede": "The Bhote Koshi flood struck Rasuwa on 26 August. Search and recovery continue along the Trishuli and Narayani rivers.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-09-09T11:00:00+05:45",
-  "asOfSource": "NDRRMA · Nepal Police",
+  "asOf": "2026-09-09T17:00:00+05:45",
+  "asOfSource": "Nepal Police",
   "stats": [
     {
       "icon": "dead",
@@ -82,7 +82,7 @@
       },
       {
         "district": "Nawalparasi East",
-        "value": 226
+        "value": 227
       },
       {
         "district": "Nawalparasi West",
@@ -98,7 +98,7 @@
       },
       {
         "district": "Gorkha",
-        "value": 75
+        "value": 76
       },
       {
         "district": "Dhading",
@@ -107,16 +107,12 @@
       {
         "district": "Tanahun",
         "value": 38
-      },
-      {
-        "district": "Kathmandu hospitals",
-        "value": 2
       }
     ],
     "total": 1367,
-    "source": "NDRRMA · Nepal Police",
-    "url": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
-    "time": "2026-09-09T11:00:00+05:45"
+    "source": "Nepal Police",
+    "url": "https://nepalpolice.gov.np/news/10374/",
+    "time": "2026-09-09T17:00:00+05:45"
   },
   "figures": {
     "dead": {
