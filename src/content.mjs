@@ -16,7 +16,7 @@ export const TOLL_EARLIER_SOURCE = 'Nepalnews, 11AM';
    the "how the toll has moved" table, so that row's timestamp always matches
    TOLL.deadNepalEarlier instead of drifting out of date as later runs move
    both TOLL_AS_OF and deadNepalEarlier forward. */
-export const TOLL_EARLIER_AS_OF = '2026-09-05T19:00:36+05:45';
+export const TOLL_EARLIER_AS_OF = '2026-09-08T19:57:41+05:45';
 
 /* The district breakdown now comes from the same 2pm police bulletin as the
    national toll. */
@@ -276,6 +276,8 @@ export const TIMELINE = [
   ['07:34 NPT, 5 September', "Nepal's confirmed death toll is reported at 1,342, up from 1,294, by Nepalnews."],
   ['19:00 NPT, 5 September', "Nepal's confirmed death toll is reported at 1,344, up from 1,342, by Nepalnews."],
   ['19:56 NPT, 6 September', "Nepal's confirmed death toll is reported at 1,381, up from 1,344, by Nepalnews."],
+  ['19:57 NPT, 8 September', "Nepal's confirmed death toll is reported at 1,358, up from 1,381, by Nepalnews."],
+  ['14:31 NPT, 9 September', "Nepal's confirmed death toll is reported at 1,367, up from 1,358, by The Rising Nepal."],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */
