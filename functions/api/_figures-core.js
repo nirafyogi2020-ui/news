@@ -247,6 +247,7 @@ export function readFigures(text) {
 
   for (const sentence of sentences) {
     for (const metric of METRICS) {
+      if (metric === 'dead' && /DNA|डिएनए|डीएनए|नमुना|हस्तान्तरण|व्यवस्थापन|पहिचान नभएको|identified|handed over|samples/i.test(sentence)) continue;
       for (const [pattern, lang] of PATTERNS[metric]) {
         const match = sentence.match(pattern);
         if (!match) continue;
@@ -260,7 +261,13 @@ export function readFigures(text) {
         if (!inBounds(metric, value)) continue;
 
         const key = metric + ':' + value;
-        if (seen.has(key)) continue;
+        if (seen.has(key)) {
+          const previous = out.find(f => f.metric === metric && f.value === value);
+          if (previous && previous.scope !== 'total' && scopeOf(sentence) === 'total') {
+            previous.scope = 'total'; previous.sentence = sentence.trim().slice(0,240);
+          }
+          continue;
+        }
         seen.add(key);
 
         const clean = sentence.trim().slice(0, 240);

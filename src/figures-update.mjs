@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { loadSituation, applySituation } from '../functions/api/_situation.js';
+import { verifiedBoard, consistentDistricts } from '../functions/api/_verified-board.js';
 /**
  * The automatic counter update.
  *
@@ -86,6 +88,8 @@ async function main() {
   const event = JSON.parse(raw);
   const stats = event.stats || [];
 
+  const responseMoved = !!board.response && JSON.stringify(board.response) !== JSON.stringify(event.response);
+  if(responseMoved)event.response=board.response;
   const applied = [];
   const skipped = [];
 
@@ -125,6 +129,8 @@ async function main() {
        and repairs the counters that already grew a second. */
     stat.priorDetail = firstEarlierDetail(stat.priorDetail);
 
+    event.figures ||= {};
+    event.figures[metric] = figure;
     stat.value = figure.value.toLocaleString('en-US');
     stat.detail = sourceSentence(figure, current, stat.priorDetail, stat.priorAsOf);
     applied.push({ metric, from: current, to: figure.value, source: figure.source });
@@ -136,13 +142,14 @@ async function main() {
      often restates the districts without moving the national figure, and
      that is still a change worth publishing. */
   const districtsMoved = applyDistricts(event, board.districts);
+  if(districtsMoved) syncDistrictContent(event.districts);
   const repaired = repairDetails(event);
   /* A bulletin can confirm the same number again. That is still new evidence,
      and it must move the page's "as of" line. Otherwise a new story card
      makes the audit correctly stop the whole publisher before it can commit. */
   const freshnessMoved = refreshAsOf(event, board.board);
 
-  if (!applied.length && !districtsMoved && !repaired && !freshnessMoved) {
+  if (!applied.length && !districtsMoved && !repaired && !freshnessMoved && !responseMoved) {
     report(false, skipped.length ? 'no counter moved. ' + skipped.join('; ') : 'no counter moved');
     return;
   }
@@ -536,20 +543,22 @@ async function fetchBoard() {
 
   /* What the page already publishes is the floor for each counter: a lower
      figure only wins if its sentence says it is a correction. */
-  const board = resolveBoard(items, { floors: published });
+  const report = await loadSituation(items, published);
+  const baseline = applySituation(published, report);
+  const board = verifiedBoard(items, baseline);
 
-  const districts = latestDistricts(items);
+  const districts = consistentDistricts(latestDistricts(items), baseline.districts, board.dead);
   const stated = METRICS.filter(m => board[m]).length;
   console.log(`  read ${items.length} reports from ${new Set(items.map(i => i.source).filter(Boolean)).size} sources; ${stated} figure(s) stated`);
 
-  return { board, published, districts };
+  return { board, published, districts, response: baseline.response };
 }
 
 /** The figures event.json currently carries. */
 function readPublished() {
   try {
     const event = JSON.parse(readFileSync(EVENT, 'utf8'));
-    const out = {};
+    const out = { asOf: event.asOf, figures: event.figures, districts: event.districts, response: event.response };
     for (const [metric, label] of Object.entries(STAT_LABELS)) {
       const stat = (event.stats || []).find(s => s && s.label === label);
       if (stat) out[metric] = Number(String(stat.value).replace(/\D/g, '')) || 0;
@@ -594,4 +603,13 @@ if (runDirectly) {
     console.error('figures-update failed: ' + err.message);
     report(false, 'failed — nothing written');
   });
+}
+
+function syncDistrictContent(districts) {
+  const before=readFileSync(CONTENT,'utf8');
+  const rows=districts.rows.map(r=>[r.district,r.value]);
+  let next=before.replace(/export const BODIES_BY_DISTRICT = \[[\s\S]*?\n\];/, 'export const BODIES_BY_DISTRICT = '+JSON.stringify(rows,null,2)+';');
+  next=replaceString(next,'BODIES_AS_OF',districts.time);
+  next=replaceString(next,'BODIES_SOURCE',districts.source);
+  if(next!==before)writeFileSync(CONTENT,next);
 }

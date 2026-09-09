@@ -1,3 +1,5 @@
+import { loadSituation, applySituation } from './_situation.js';
+import { verifiedBoard, consistentDistricts } from './_verified-board.js';
 /**
  * GET /api/figures
  *
@@ -39,7 +41,7 @@ import { loadPoliceNews } from './police.js';
    fetches stop being absorbed by the edge and start being rate limits on
    nepalpolice.gov.np and the newsroom feeds. The page polls every second and
    is served from this cache, so reader count does not change the load. */
-const CACHE_SECONDS = 15;
+const CACHE_SECONDS = 30;
 
 /* Metric to the label the counters use in event.json. */
 const STAT_LABELS = {
@@ -68,9 +70,11 @@ export async function onRequestGet(context) {
      below it only wins if its sentence says it is a correction, which is what
      keeps a re-indexed day-one wire story from walking a counter backwards.
      A real correction still gets through, and the page labels it as one. */
-  const board = resolveBoard(items, { floors: published || {} });
+  const report = await loadSituation(items, published);
+  const baseline = applySituation(published || {}, report);
+  const board = verifiedBoard(items, baseline);
   const changed = diff(published, board);
-  const districts = latestDistricts(items);
+  const districts = consistentDistricts(latestDistricts(items), baseline?.districts, board.dead);
 
   const response = new Response(JSON.stringify({
     updated: new Date().toISOString(),
@@ -79,6 +83,7 @@ export async function onRequestGet(context) {
     board,
     changed,
     districts,
+    response: baseline.response,
     sources: {
       counted: items.length,
       names: [...new Set(items.map(i => i.source).filter(Boolean))].sort(),
@@ -152,7 +157,7 @@ async function loadPublished(origin) {
   if (!res.ok) throw new Error('HTTP ' + res.status);
   const event = await res.json();
 
-  const out = { asOf: event.asOf || null, source: event.asOfSource || null };
+  const out = { asOf: event.asOf || null, source: event.asOfSource || null, figures: event.figures, districts: event.districts, response: event.response };
   for (const [metric, label] of Object.entries(STAT_LABELS)) {
     const stat = (event.stats || []).find(s => s && s.label === label);
     out[metric] = stat ? (Number(String(stat.value).replace(/\D/g, '')) || null) : null;

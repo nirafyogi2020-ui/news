@@ -163,7 +163,7 @@ const CHROME = {
     livePill: 'Live coverage',
     archivePill: 'Archived event',
     foot1: `<strong>${SITE_NAME}</strong> is an independent volunteer briefing. It is not a government site and has no official status. No ads. No money is collected here: every giving link points at the Government of Nepal's own relief fund.`,
-    foot2: `Where this site and an official source disagree, the official source is right. Found something wrong? Write to <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> and it gets corrected or removed.`,
+    foot2: `Found something wrong? Write to <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> and we will fix it.`,
     foot3: `Contact: <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> &middot; <a href="/sources/">Sources</a> &middot; <a href="/about/">About this project</a> &middot; <a href="${SITE}/feed.xml">RSS feed</a>`,
   },
   ne: {
