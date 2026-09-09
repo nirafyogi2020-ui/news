@@ -369,3 +369,39 @@ test('a bulletin is stamped with the hour it says it counts up to', () => {
   assert.equal(statedClock(null), null);
   assert.equal(statedClock('२५:९९ बजे'), null);
 });
+
+// Regression: a mistaken large number must not become a permanent floor.
+import { verifiedBoard, consistentDistricts } from '../functions/api/_verified-board.js';
+test('a newer official bulletin corrects a missing list down without magic wording', () => {
+  const previous={figures:{missing:{value:8898,time:'2026-09-04T10:00:00Z'}}};
+  const board=verifiedBoard([{title:'5,326 people remain unaccounted for.', source:'Nepal Police',url:'https://nepalpolice.gov.np/news/123/',time:'2026-09-08T08:00:00Z'}],previous);
+  assert.equal(board.missing.value,5326);
+});
+test('an old bulletin and a source-name impersonation cannot replace verified figures', () => {
+  const previous={figures:{missing:{value:5326,time:'2026-09-08T08:00:00Z'}}};
+  const board=verifiedBoard([
+    {title:'8,898 people remain unaccounted for.',source:'Nepal Police',url:'https://example.com/news',time:'2026-09-08T09:00:00Z'},
+    {title:'2,502 people remain unaccounted for.',source:'Nepal Police',url:'https://nepalpolice.gov.np/news/1/',time:'2026-09-01T09:00:00Z'}
+  ],previous);
+  assert.equal(board.missing.value,5326);
+});
+test('district breakdown must match its sum and the headline, never be scaled to fit', () => {
+  const d={rows:[{district:'A',value:600},{district:'B',value:757}],total:1357,time:'2026-09-08T08:00:00Z'};
+  assert.deepEqual(consistentDistricts(d,null,{value:1357}),d);
+  assert.equal(consistentDistricts(d,null,{value:1358}),null);
+  assert.equal(consistentDistricts({...d,total:1400},null,{value:1400}),null);
+});
+
+test('DNA samples and unidentified-body records are not new deaths',()=>{
+ const figures=readFigures('शव पहिचानका लागि मृतकका १ हजार २ सय ८६ र आफन्तका १ हजार ४ सय १२ गरी कुल २ हजार ६ सय ९८ वटा डिएनए नमुना सङ्कलन गरिएको छ । साथै पहिचान नभएको १ हजार ३ सय १० वटा शवहरूको विवरण वेबसाइटमा अपलोड गरिएको छ ।');
+ assert.equal(figures.filter(f=>f.metric==='dead').length,0);
+});
+test('a repeated national total is not lost after a local headline',()=>{
+ const figures=readFigures('रसुवा बाढी : १ हजार ३ सय ६५ जनाको शव फेला । हालसम्म १ हजार ३ सय ६५ जनाको शव फेला परेको हो ।');
+ assert.equal(figures.find(f=>f.value===1365)?.scope,'total');
+});
+test('police missing list cannot overwrite the broader NDRRMA list',()=>{
+ const previous={figures:{missing:{value:5326,source:'NDRRMA · Onlinekhabar',time:'2026-09-08T07:15:00Z'}}};
+ const board=verifiedBoard([{title:'4,077 people remain unaccounted for.',source:'Nepal Police',url:'https://nepalpolice.gov.np/news/10365/',time:'2026-09-08T14:15:00Z'}],previous);
+ assert.equal(board.missing.value,5326);
+});

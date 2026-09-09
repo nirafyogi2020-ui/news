@@ -13,12 +13,14 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync, rmSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 
 import { SITE, nptDay, nptLong, ogFor, ogStoryFor, assetVersioned } from './template.mjs';
 import * as P from './pages.mjs';
 import * as NE from './pages-ne.mjs';
 import * as C from './content.mjs';
 import * as I from './investigation.mjs';
+import { renderInvestigation } from './dashboard.mjs';
 import { isDisasterWireHeadline } from '../functions/api/global.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -266,6 +268,9 @@ write('sitemap.xml', sitemap);
    real page here, rather than only linking out to other newsrooms. */
 write('updates.json', JSON.stringify({
   updated: modified,
+  figures: event.figures,
+  districts: event.districts,
+  response: event.response,
   site: SITE,
   updates: posts.map(p => ({
     url: p.url,
@@ -605,6 +610,10 @@ const escAttr = (v) => escHtml(v).replace(/"/g, '&quot;');
 
 let index = read('index.html');
 const before = index;
+for (const file of ['dashboard.css','dashboard.js']) {
+  const version=createHash('sha256').update(read('assets/'+file)).digest('hex').slice(0,12);
+  index=index.replace(new RegExp('/assets/'+file.replace('.', '\\.')+'(?:\\?v=[^"\\s]+)?','g'), '/assets/'+file+'?v='+version);
+}
 
 /* ---------------------------------------------------------------------------
    The Investigation tab, rendered on the server.
@@ -982,27 +991,7 @@ function invSources(groups) {
 }
 
 function ssrInvestigation() {
-  const s = investigation;
-  return '<div class="inv">'
-    + '<section class="inv-sec" id="inv-board">' + invBoard() + '</section>'
-    + '<section class="inv-sec" id="inv-curve">'
-      + invHead('02', 'The count', 'How the confirmed toll moved, hour by hour',
-          `From ${escHtml(s.tollSeries[0] ? s.tollSeries[0].value.toLocaleString('en-US') : '')} on the evening of the flood `
-          + `to ${escHtml(s.tollSeries.length ? s.tollSeries[s.tollSeries.length - 1].value.toLocaleString('en-US') : '')} now, `
-          + `across ${escHtml(String(s.tollSeries.length))} published figures from `
-          + `${escHtml(String(new Set(s.tollSeries.map(p => p.source).filter(Boolean)).size))} named bodies.`,
-          'The line only rises because this counts bodies recovered. Where a slower source was still publishing an older, lower figure, that point is left off rather than drawn as a fall.')
-      + invCurve(s.tollSeries)
-    + '</section>'
-    + '<section class="inv-sec" id="inv-dist">' + invDistricts() + '</section>'
-    + '<section class="inv-sec" id="inv-descent">' + invDescent(s.places) + '</section>'
-    + '<section class="inv-sec" id="inv-missing">' + invUnaccounted(s.unaccounted) + '</section>'
-    + '<section class="inv-sec" id="inv-aid">' + invAid(s.aid) + '</section>'
-    + '<section class="inv-sec" id="inv-damage">' + invDamage(s.destroyed, s.hydropower, s.reliefReleased) + '</section>'
-    + '<section class="inv-sec" id="inv-cause">' + invCauses(s.causes) + '</section>'
-    + '<section class="inv-sec" id="inv-gaps">' + invUnknowns(s.unknowns) + '</section>'
-    + '<section class="inv-sec" id="inv-sources">' + invSources(s.sourceGroups) + '</section>'
-    + '</div>';
+  return renderInvestigation(event, investigation.sourceGroups);
 }
 
 index = index.replace(
@@ -1163,7 +1152,7 @@ function heroFigures() {
     + '</div>'
   ).join('');
   const note = `${escHtml(event.asOfSource || 'Latest bulletin')}, ${escHtml(nptLong(event.asOf))}. `
-    + '<a href="#numbers-title">Every figure and where it came from</a>';
+    + '<a href="#numbers-title">Sources</a>';
   return `<div class="hf-row">${cells}</div><p class="hf-note">${note}</p>`;
 }
 index = index.replace(
@@ -1320,7 +1309,7 @@ function railFigures() {
     + '</div>'
   ).join('');
   const note = `<p class="rail-note">${escHtml(event.asOfSource || 'Latest bulletin')}, `
-    + `${escHtml(nptLong(event.asOf))}. <a href="#numbers-title">Every figure, and where it came from</a></p>`;
+    + `${escHtml(nptLong(event.asOf))}. <a href="#numbers-title">Sources</a></p>`;
   return rows + note;
 }
 index = index.replace(

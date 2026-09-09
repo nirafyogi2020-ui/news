@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-07T04:25:05.000Z",
+  "updated": "2026-09-09T11:00:00+05:45",
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "event": {
     "name": "Rasuwa flood",
@@ -1466,6 +1466,72 @@
           "https://www.openstreetmap.org/copyright",
           "OpenStreetMap contributors",
           "Street basemap data, ODbL."
+        ]
+      ]
+    },
+    {
+      "title": "Response & public records",
+      "note": "",
+      "links": [
+        [
+          "https://rescue.opmcm.gov.np/",
+          "Government rescue portal",
+          ""
+        ],
+        [
+          "https://udb.nepalpolice.gov.np/disaster",
+          "Nepal Police identification",
+          ""
+        ],
+        [
+          "https://www.mofa.gov.np/",
+          "Ministry of Foreign Affairs",
+          ""
+        ],
+        [
+          "https://www.nepalarmy.mil.np/",
+          "Nepali Army",
+          ""
+        ],
+        [
+          "https://heoc.mohp.gov.np/",
+          "Health Emergency Operation Centre",
+          ""
+        ],
+        [
+          "https://mapping.emergency.copernicus.eu/activations/EMSR927/",
+          "Copernicus EMSR927",
+          ""
+        ],
+        [
+          "https://nesraspace.org/floodwatch/rasuwa-2026/",
+          "NESRA FloodWatch",
+          ""
+        ],
+        [
+          "https://www.dhm.gov.np/",
+          "DHM",
+          ""
+        ],
+        [
+          "https://floodforecasting.gov.np/",
+          "Flood forecasting",
+          ""
+        ],
+        [
+          "https://www.hydrology.gov.np/",
+          "Hydrology",
+          ""
+        ],
+        [
+          "https://donate.gov.np/",
+          "Government relief fund",
+          ""
+        ],
+        [
+          "https://nirajbhusal.github.io/rasuwa-flood-bulletin/?lang=en",
+          "Niraj Bhusal · Rasuwa flood bulletin",
+          ""
         ]
       ]
     }

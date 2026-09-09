@@ -5,31 +5,27 @@
   "started": "2026-08-26T09:00:00+05:45",
   "status": "active",
   "headline": "Rasuwa flood, live",
-  "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
+  "lede": "The Bhote Koshi flood struck Rasuwa on 26 August. Search and recovery continue along the Trishuli and Narayani rivers.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-09-07T01:14:42.000Z",
-  "asOfSource": "Nepalnews",
+  "asOf": "2026-09-09T11:00:00+05:45",
+  "asOfSource": "NDRRMA · Nepal Police",
   "stats": [
     {
       "icon": "dead",
-      "value": "1,381",
+      "value": "1,367",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepalnews: 1,381. Up from 1,344. Source: https://english.nepalnews.com/s/main-left/nepal-news-evening-briefing-sunday-september-06-2026/ Earlier note, 14:00 NPT, 30 August, describing a previous figure: Onlinekhabar: 1,114. Up from 768. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
-      "priorDetail": "Onlinekhabar: 1,114. Up from 768. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
-      "priorAsOf": "2026-08-30T14:00:00+05:45"
+      "detail": "NDRRMA and Nepal Police reported 1,367 deaths as of 11:00 NPT on 9 September 2026. Eight recovery districts account for 1,365; two people died after transfer to hospitals in Kathmandu. Source: https://nirajbhusal.github.io/rasuwa-flood-bulletin/"
     },
     {
       "icon": "missing",
-      "value": "8,898",
+      "value": "5,132",
       "tone": "critical",
       "label": "listed missing in Nepal",
       "bar": 100,
-      "detail": "Khabarhub: 8,898. Up from 5,083. Source: https://khabarhub.com/2026/04/1020594/ Earlier note, 10:00 NPT, 3 September, describing a previous figure: Nepalnews: 4,216 still unaccounted for, alongside 1,204 bodies recovered, in the same 2 September bulletin as the current toll. Source: https://nepalnews.com/ An earlier figure of 5,015 was published here; no bulletin supports it and it has been withdrawn.",
-      "priorDetail": "Nepalnews: 4,216 still unaccounted for, alongside 1,204 bodies recovered, in the same 2 September bulletin as the current toll. Source: https://nepalnews.com/ An earlier figure of 5,015 was published here; no bulletin supports it and it has been withdrawn.",
-      "priorAsOf": "2026-09-03T10:00:00+05:45"
+      "detail": "NDRRMA, 9 September, 11:00 NPT: about 5,132 people remained unaccounted for. The list remains under verification. Source: https://nirajbhusal.github.io/rasuwa-flood-bulletin/"
     },
     {
       "icon": "missing",
@@ -40,12 +36,10 @@
     },
     {
       "icon": "people",
-      "value": "13,399",
+      "value": "13,646",
       "label": "rescued so far",
       "bar": 100,
-      "detail": "Nepalnews: 13,399. Up from 13,098. Source: https://english.nepalnews.com/s/nation/240901/ Earlier note, 19:59 NPT, 2 September, describing a previous figure: NDRRMA's 1pm Sunday situation update reported 8,730 people rescued, Onlinekhabar reported. The report did not publish a current agency or location breakdown for that total, so no sub-rows are inferred.",
-      "priorDetail": "NDRRMA's 1pm Sunday situation update reported 8,730 people rescued, Onlinekhabar reported. The report did not publish a current agency or location breakdown for that total, so no sub-rows are inferred.",
-      "priorAsOf": "2026-09-02T14:14:38.000Z"
+      "detail": "NDRRMA, 9 September, 11:00 NPT: 13,646 people rescued. Source: https://nirajbhusal.github.io/rasuwa-flood-bulletin/"
     },
     {
       "icon": "power",
@@ -84,40 +78,100 @@
     "rows": [
       {
         "district": "Chitwan",
-        "value": 362
+        "value": 363
       },
       {
         "district": "Nawalparasi East",
-        "value": 222
+        "value": 226
       },
       {
         "district": "Nawalparasi West",
-        "value": 221
+        "value": 222
       },
       {
         "district": "Nuwakot",
-        "value": 196
+        "value": 197
       },
       {
         "district": "Rasuwa",
-        "value": 169
+        "value": 174
       },
       {
         "district": "Gorkha",
-        "value": 74
+        "value": 75
       },
       {
         "district": "Dhading",
-        "value": 69
+        "value": 70
       },
       {
         "district": "Tanahun",
         "value": 38
+      },
+      {
+        "district": "Kathmandu hospitals",
+        "value": 2
       }
     ],
-    "total": 1351,
-    "source": "Nepal Police",
-    "url": "https://nepalpolice.gov.np/news/10341/",
-    "time": "2026-09-06T20:00:00+05:45"
+    "total": 1367,
+    "source": "NDRRMA · Nepal Police",
+    "url": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
+    "time": "2026-09-09T11:00:00+05:45"
+  },
+  "figures": {
+    "dead": {
+      "metric": "dead",
+      "value": 1367,
+      "source": "NDRRMA · Nepal Police",
+      "url": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
+      "time": "2026-09-09T11:00:00+05:45",
+      "scope": "total",
+      "sentence": "NDRRMA and Nepal Police: 1,367 deaths, including two after hospital transfer."
+    },
+    "missing": {
+      "metric": "missing",
+      "value": 5132,
+      "source": "NDRRMA · Rasuwa Flood Bulletin",
+      "url": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
+      "time": "2026-09-09T11:00:00+05:45",
+      "scope": "total",
+      "sentence": "NDRRMA: about 5,132 people remained unaccounted for."
+    },
+    "rescued": {
+      "metric": "rescued",
+      "value": 13646,
+      "source": "NDRRMA · Rasuwa Flood Bulletin",
+      "url": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
+      "time": "2026-09-09T11:00:00+05:45",
+      "scope": "total",
+      "sentence": "NDRRMA: 13,646 people rescued."
+    }
+  },
+  "response": {
+    "time": "2026-09-09T11:00:00+05:45",
+    "url": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
+    "source": "NDRRMA · Rasuwa Flood Bulletin",
+    "injured": 7151,
+    "discharged": 252,
+    "sheltered": 3628,
+    "personnel": 21185,
+    "army": 9007,
+    "police": 7975,
+    "apf": 4203,
+    "identified": 102,
+    "electricity": [
+      {
+        "place": "Rasuwa",
+        "value": 78
+      },
+      {
+        "place": "Nuwakot",
+        "value": 96.7
+      },
+      {
+        "place": "Dhading",
+        "value": 99.8
+      }
+    ]
   }
 }

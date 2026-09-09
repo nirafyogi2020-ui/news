@@ -8,8 +8,8 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-09-06T19:56:38+05:45';
-export const TOLL_SOURCE = 'Nepalnews';
+export const TOLL_AS_OF = '2026-09-09T11:00:00+05:45';
+export const TOLL_SOURCE = 'NDRRMA · Nepal Police';
 export const TOLL_EARLIER_SOURCE = 'Nepalnews, 11AM';
 
 /* When the bulletin one step before TOLL_AS_OF was published. Used only for
@@ -20,17 +20,17 @@ export const TOLL_EARLIER_AS_OF = '2026-09-05T19:00:36+05:45';
 
 /* The district breakdown now comes from the same 2pm police bulletin as the
    national toll. */
-export const BODIES_AS_OF = '2026-09-06T19:56:38+05:45';
-export const BODIES_SOURCE = 'Nepalnews';
+export const BODIES_AS_OF = '2026-09-09T11:00:00+05:45';
+export const BODIES_SOURCE = 'NDRRMA · Nepal Police';
 
 /* The missing figure comes from the same Nepalnews bulletin as the newest
    toll: 1,204 recovered, 4,216 still unaccounted for. An earlier automatic
    read had put this at 5,015, which no bulletin supports. */
-export const MISSING_AS_OF = '2026-09-04T22:05:21+05:45';
-export const MISSING_SOURCE = 'Khabarhub';
+export const MISSING_AS_OF = '2026-09-09T11:00:00+05:45';
+export const MISSING_SOURCE = 'NDRRMA · Rasuwa Flood Bulletin';
 
-export const RESCUE_AS_OF = '2026-09-07T06:59:42+05:45';
-export const RESCUE_SOURCE = 'Nepalnews';
+export const RESCUE_AS_OF = '2026-09-09T11:00:00+05:45';
+export const RESCUE_SOURCE = 'NDRRMA · Rasuwa Flood Bulletin';
 
 /* Who those people are was last broken down in the morning police bulletin,
    when the list stood at 826. The groups below still describe that list. */
@@ -54,14 +54,42 @@ export const EVENT = {
 
 /** Bodies recovered, by the district where they were found. */
 export const BODIES_BY_DISTRICT = [
-  ['Chitwan', 264],
-  ['Nawalparasi East', 194],
-  ['Nawalparasi West', 100],
-  ['Gorkha', 58],
-  ['Nuwakot', 52],
-  ['Dhading', 50],
-  ['Tanahun', 37],
-  ['Rasuwa', 13],
+  [
+    "Chitwan",
+    363
+  ],
+  [
+    "Nawalparasi East",
+    226
+  ],
+  [
+    "Nawalparasi West",
+    222
+  ],
+  [
+    "Nuwakot",
+    197
+  ],
+  [
+    "Rasuwa",
+    174
+  ],
+  [
+    "Gorkha",
+    75
+  ],
+  [
+    "Dhading",
+    70
+  ],
+  [
+    "Tanahun",
+    38
+  ],
+  [
+    "Kathmandu hospitals",
+    2
+  ]
 ];
 
 /** Who the 826 on the morning list were, as Nepal Police broke it down. */
@@ -94,15 +122,15 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 1381,
+  deadNepal: 1367,
   deadNepalEarlier: 1344,
   deadChina: 16,
-  missing: 8898,
+  missing: 5132,
   missingChina: 546,
   missingChinaForeign: 261,
   missingIndian: 133,
   injured: 242,
-  rescued: 13399,
+  rescued: 13646,
   rescuedBreakdown: [],
   narayaniRecovered: 121,
 };
@@ -651,3 +679,20 @@ export const HAZARD_PAGES = {
     ],
   },
 };
+
+
+// Official sources and public tools linked by the reference bulletin.
+SOURCE_GROUPS.push({title: 'Response & public records', note: '', links: [
+ ['https://rescue.opmcm.gov.np/', 'Government rescue portal', ''],
+ ['https://udb.nepalpolice.gov.np/disaster', 'Nepal Police identification', ''],
+ ['https://www.mofa.gov.np/', 'Ministry of Foreign Affairs', ''],
+ ['https://www.nepalarmy.mil.np/', 'Nepali Army', ''],
+ ['https://heoc.mohp.gov.np/', 'Health Emergency Operation Centre', ''],
+ ['https://mapping.emergency.copernicus.eu/activations/EMSR927/', 'Copernicus EMSR927', ''],
+ ['https://nesraspace.org/floodwatch/rasuwa-2026/', 'NESRA FloodWatch', ''],
+ ['https://www.dhm.gov.np/', 'DHM', ''],
+ ['https://floodforecasting.gov.np/', 'Flood forecasting', ''],
+ ['https://www.hydrology.gov.np/', 'Hydrology', ''],
+ ['https://donate.gov.np/', 'Government relief fund', ''],
+ ['https://nirajbhusal.github.io/rasuwa-flood-bulletin/?lang=en', 'Niraj Bhusal · Rasuwa flood bulletin', '']
+]});
