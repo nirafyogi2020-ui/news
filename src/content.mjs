@@ -20,8 +20,8 @@ export const TOLL_EARLIER_AS_OF = '2026-09-08T19:57:41+05:45';
 
 /* The district breakdown now comes from the same 2pm police bulletin as the
    national toll. */
-export const BODIES_AS_OF = '2026-09-09T11:00:00+05:45';
-export const BODIES_SOURCE = 'NDRRMA · Nepal Police';
+export const BODIES_AS_OF = '2026-09-09T17:00:00+05:45';
+export const BODIES_SOURCE = 'Nepal Police';
 
 /* The missing figure comes from the same Nepalnews bulletin as the newest
    toll: 1,204 recovered, 4,216 still unaccounted for. An earlier automatic
@@ -60,7 +60,7 @@ export const BODIES_BY_DISTRICT = [
   ],
   [
     "Nawalparasi East",
-    226
+    227
   ],
   [
     "Nawalparasi West",
@@ -76,7 +76,7 @@ export const BODIES_BY_DISTRICT = [
   ],
   [
     "Gorkha",
-    75
+    76
   ],
   [
     "Dhading",
@@ -85,10 +85,6 @@ export const BODIES_BY_DISTRICT = [
   [
     "Tanahun",
     38
-  ],
-  [
-    "Kathmandu hospitals",
-    2
   ]
 ];
 
