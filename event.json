@@ -8,16 +8,18 @@
   "lede": "The Bhote Koshi flood struck Rasuwa on 26 August. Search and recovery continue along the Trishuli and Narayani rivers.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-09-09T17:00:00+05:45",
+  "asOf": "2026-09-09T20:00:00+05:45",
   "asOfSource": "Nepal Police",
   "stats": [
     {
       "icon": "dead",
-      "value": "1,367",
+      "value": "1,372",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "NDRRMA and Nepal Police reported 1,367 deaths as of 11:00 NPT on 9 September 2026. Eight recovery districts account for 1,365; two people died after transfer to hospitals in Kathmandu. Source: https://nirajbhusal.github.io/rasuwa-flood-bulletin/"
+      "detail": "Nepal Police: 1,372. Up from 1,367. Source: https://nepalpolice.gov.np/news/10375/ Earlier note, 17:00 NPT, 9 September, describing a previous figure: NDRRMA and Nepal Police reported 1,367 deaths as of 11:00 NPT on 9 September 2026. Eight recovery districts account for 1,365; two people died after transfer to hospitals in Kathmandu. Source: https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
+      "priorDetail": "NDRRMA and Nepal Police reported 1,367 deaths as of 11:00 NPT on 9 September 2026. Eight recovery districts account for 1,365; two people died after transfer to hospitals in Kathmandu. Source: https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
+      "priorAsOf": "2026-09-09T17:00:00+05:45"
     },
     {
       "icon": "missing",
@@ -94,11 +96,11 @@
       },
       {
         "district": "Rasuwa",
-        "value": 174
+        "value": 178
       },
       {
         "district": "Gorkha",
-        "value": 76
+        "value": 77
       },
       {
         "district": "Dhading",
@@ -109,20 +111,30 @@
         "value": 38
       }
     ],
-    "total": 1367,
+    "total": 1372,
     "source": "Nepal Police",
-    "url": "https://nepalpolice.gov.np/news/10374/",
-    "time": "2026-09-09T17:00:00+05:45"
+    "url": "https://nepalpolice.gov.np/news/10375/",
+    "time": "2026-09-09T20:00:00+05:45"
   },
   "figures": {
     "dead": {
       "metric": "dead",
-      "value": 1367,
-      "source": "NDRRMA · Nepal Police",
-      "url": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
-      "time": "2026-09-09T11:00:00+05:45",
+      "value": 1372,
       "scope": "total",
-      "sentence": "NDRRMA and Nepal Police: 1,367 deaths, including two after hospital transfer."
+      "source": "Nepal Police",
+      "url": "https://nepalpolice.gov.np/news/10375/",
+      "time": "2026-09-09T20:00:00+05:45",
+      "statedTime": null,
+      "sentence": "भोटेकोशी बाढी अपडेट : १ हजार ३ सय ७२ जनाको शव फेला",
+      "others": [
+        {
+          "value": 1372,
+          "source": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10375/",
+          "time": "2026-09-09T20:00:00+05:45",
+          "scope": "total"
+        }
+      ]
     },
     "missing": {
       "metric": "missing",
