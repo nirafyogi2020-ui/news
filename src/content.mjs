@@ -8,20 +8,20 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-09-08T19:57:41+05:45';
-export const TOLL_SOURCE = 'Nepalnews, 6:00';
-export const TOLL_EARLIER_SOURCE = 'Nepalnews';
+export const TOLL_AS_OF = '2026-09-09T14:31:03+05:45';
+export const TOLL_SOURCE = 'The Rising Nepal';
+export const TOLL_EARLIER_SOURCE = 'Nepalnews, 6:00';
 
 /* When the bulletin one step before TOLL_AS_OF was published. Used only for
    the "how the toll has moved" table, so that row's timestamp always matches
    TOLL.deadNepalEarlier instead of drifting out of date as later runs move
    both TOLL_AS_OF and deadNepalEarlier forward. */
-export const TOLL_EARLIER_AS_OF = '2026-09-06T19:56:38+05:45';
+export const TOLL_EARLIER_AS_OF = '2026-09-08T19:57:41+05:45';
 
 /* The district breakdown now comes from the same 2pm police bulletin as the
    national toll. */
-export const BODIES_AS_OF = '2026-09-08T19:57:41+05:45';
-export const BODIES_SOURCE = 'Nepalnews, 6:00';
+export const BODIES_AS_OF = '2026-09-09T14:31:03+05:45';
+export const BODIES_SOURCE = 'The Rising Nepal';
 
 /* The missing figure comes from the same Nepalnews bulletin as the newest
    toll: 1,204 recovered, 4,216 still unaccounted for. An earlier automatic
@@ -94,8 +94,8 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 1358,
-  deadNepalEarlier: 1381,
+  deadNepal: 1367,
+  deadNepalEarlier: 1358,
   deadChina: 16,
   missing: 8898,
   missingChina: 546,
@@ -249,6 +249,7 @@ export const TIMELINE = [
   ['19:00 NPT, 5 September', "Nepal's confirmed death toll is reported at 1,344, up from 1,342, by Nepalnews."],
   ['19:56 NPT, 6 September', "Nepal's confirmed death toll is reported at 1,381, up from 1,344, by Nepalnews."],
   ['19:57 NPT, 8 September', "Nepal's confirmed death toll is reported at 1,358, up from 1,381, by Nepalnews."],
+  ['14:31 NPT, 9 September', "Nepal's confirmed death toll is reported at 1,367, up from 1,358, by The Rising Nepal."],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */

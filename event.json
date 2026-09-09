@@ -8,16 +8,16 @@
   "lede": "A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. Here is what is confirmed, what is still unknown, and who to call.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-09-08T14:12:41.000Z",
-  "asOfSource": "Nepalnews, 6:00",
+  "asOf": "2026-09-09T08:46:03.000Z",
+  "asOfSource": "The Rising Nepal",
   "stats": [
     {
       "icon": "dead",
-      "value": "1,358",
+      "value": "1,367",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepalnews at 6:00: 1,358. Corrected down from 1,381. Source: https://english.nepalnews.com/s/main-left/nepal-news-evening-briefing-tuesday-september-08-2026/ Earlier note, 14:00 NPT, 30 August, describing a previous figure: Onlinekhabar: 1,114. Up from 768. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
+      "detail": "The Rising Nepal: 1,367. Up from 1,358. Source: https://risingnepaldaily.com/news/86318 Earlier note, 14:00 NPT, 30 August, describing a previous figure: Onlinekhabar: 1,114. Up from 768. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
       "priorDetail": "Onlinekhabar: 1,114. Up from 768. Source: https://english.onlinekhabar.com/house-of-representatives-passes-special-resolution-on-rasuwa-floods.html",
       "priorAsOf": "2026-08-30T14:00:00+05:45"
     },
