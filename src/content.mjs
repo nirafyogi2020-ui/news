@@ -8,19 +8,19 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-09-09T20:00:00+05:45';
+export const TOLL_AS_OF = '2026-09-10T17:00:00+05:45';
 export const TOLL_SOURCE = 'Nepal Police';
-export const TOLL_EARLIER_SOURCE = 'NDRRMA · Nepal Police';
+export const TOLL_EARLIER_SOURCE = 'Nepal Police';
 
 /* When the bulletin one step before TOLL_AS_OF was published. Used only for
    the "how the toll has moved" table, so that row's timestamp always matches
    TOLL.deadNepalEarlier instead of drifting out of date as later runs move
    both TOLL_AS_OF and deadNepalEarlier forward. */
-export const TOLL_EARLIER_AS_OF = '2026-09-09T11:00:00+05:45';
+export const TOLL_EARLIER_AS_OF = '2026-09-09T20:00:00+05:45';
 
 /* The district breakdown now comes from the same 2pm police bulletin as the
    national toll. */
-export const BODIES_AS_OF = '2026-09-09T20:00:00+05:45';
+export const BODIES_AS_OF = '2026-09-10T17:00:00+05:45';
 export const BODIES_SOURCE = 'Nepal Police';
 
 /* The missing figure comes from the same Nepalnews bulletin as the newest
@@ -56,11 +56,11 @@ export const EVENT = {
 export const BODIES_BY_DISTRICT = [
   [
     "Chitwan",
-    363
+    364
   ],
   [
     "Nawalparasi East",
-    227
+    228
   ],
   [
     "Nawalparasi West",
@@ -68,11 +68,11 @@ export const BODIES_BY_DISTRICT = [
   ],
   [
     "Nuwakot",
-    197
+    198
   ],
   [
     "Rasuwa",
-    178
+    185
   ],
   [
     "Gorkha",
@@ -118,8 +118,8 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 1372,
-  deadNepalEarlier: 1367,
+  deadNepal: 1382,
+  deadNepalEarlier: 1372,
   deadChina: 16,
   missing: 5132,
   missingChina: 546,
@@ -275,6 +275,7 @@ export const TIMELINE = [
   ['19:57 NPT, 8 September', "Nepal's confirmed death toll is reported at 1,358, up from 1,381, by Nepalnews."],
   ['14:31 NPT, 9 September', "Nepal's confirmed death toll is reported at 1,367, up from 1,358, by The Rising Nepal."],
   ['20:00 NPT, 9 September', "Nepal's confirmed death toll is reported at 1,372, up from 1,367, by Nepal Police."],
+  ['17:00 NPT, 10 September', "Nepal's confirmed death toll is reported at 1,382, up from 1,372, by Nepal Police."],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */

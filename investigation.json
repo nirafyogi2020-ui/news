@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-09T20:00:00+05:45",
+  "updated": "2026-09-10T17:00:00+05:45",
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "event": {
     "name": "Rasuwa flood",
@@ -1221,6 +1221,12 @@
       "value": 1381,
       "source": "Nepalnews",
       "when": "19:56 NPT, 6 September"
+    },
+    {
+      "at": 1789038900000,
+      "value": 1382,
+      "source": "Nepal Police",
+      "when": "17:00 NPT, 10 September"
     }
   ],
   "places": [
