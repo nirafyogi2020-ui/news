@@ -8,8 +8,8 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-09T14:15:00.000Z</news:publication_date>
-      <news:title>Nepal Flood Live: 1,372 dead, 5,132 missing in Rasuwa, 9 Sep</news:title>
+      <news:publication_date>2026-09-10T11:15:00.000Z</news:publication_date>
+      <news:title>Nepal Flood Live: 1,382 dead, 5,132 missing in Rasuwa, 10 Sep</news:title>
     </news:news>
   </url>
   <url>
@@ -19,8 +19,41 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-09T14:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-10T11:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-10-auto-2026-09-10/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-10T13:34:32.000Z</news:publication_date>
+      <news:title>यस्तो छ देवीघाटमा पाँच दिनमा तयार एक्रो ब्रिज (तस्बिरहरू)</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-10-auto-2026-09-10-nepal-does-not-need-another-disaster-portal/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-10T13:15:00.000Z</news:publication_date>
+      <news:title>Nepal does not need another disaster portal</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-10-latest-reported-figures/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-10T11:15:00.000Z</news:publication_date>
+      <news:title>Latest reported figures: 1,382 confirmed dead</news:title>
     </news:news>
   </url>
   <url>
@@ -65,39 +98,6 @@
       </news:publication>
       <news:publication_date>2026-09-08T14:12:41.000Z</news:publication_date>
       <news:title>Latest reported figures: 1,358 confirmed dead</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-08-auto-2026-09-08/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-08T04:15:35.000Z</news:publication_date>
-      <news:title>अस्ट्रेलियाकी विदेशमन्त्री वोङले गरिन् नेपाली दूतावास पुगेर शोक पुस्तिकामा हस्ताक्षर</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-08-auto-2026-09-08-landslide-blocks-mahakali-highway/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-08T03:47:05.000Z</news:publication_date>
-      <news:title>Landslide blocks Mahakali Highway</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-08-auto-2026-09-08-engineer-goes-missing-since-bhotes-koshi-floods-spouse/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-08T02:55:00.000Z</news:publication_date>
-      <news:title>Engineer goes missing since Bhotes Koshi floods, spouse’s plea for rescue</news:title>
     </news:news>
   </url>
 </urlset>
