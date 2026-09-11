@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-11T07:59:45.000Z",
+  "updated": "2026-09-11T20:00:00+05:45",
   "posts": [
     {
       "id": "auto-2026-09-11-",
@@ -51,16 +51,16 @@
     },
     {
       "id": "latest-reported-figures",
-      "title": "Latest reported figures: 1,383 confirmed dead",
-      "time": "2026-09-10T20:00:00+05:45",
+      "title": "Latest reported figures: 1,384 confirmed dead",
+      "time": "2026-09-11T20:00:00+05:45",
       "image": "",
       "body": [
-        "The confirmed death toll in Nepal has risen to 1,383, from 1,382, Nepal Police reports."
+        "The confirmed death toll in Nepal has risen to 1,384, from 1,383, Nepal Police reports."
       ],
       "sources": [
         {
           "name": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10387/"
+          "url": "https://nepalpolice.gov.np/news/10397/"
         }
       ],
       "revised": true
