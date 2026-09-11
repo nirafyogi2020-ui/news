@@ -8,8 +8,8 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-10T14:15:00.000Z</news:publication_date>
-      <news:title>Nepal Flood Live: 1,383 dead, 5,132 missing in Rasuwa, 10 Sep</news:title>
+      <news:publication_date>2026-09-11T02:15:00.000Z</news:publication_date>
+      <news:title>Nepal Flood Live: 1,383 dead, 5,132 missing in Rasuwa, 11 Sep</news:title>
     </news:news>
   </url>
   <url>
@@ -19,8 +19,30 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-10T14:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-11T02:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-11-auto-2026-09-11/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-11T03:13:15.000Z</news:publication_date>
+      <news:title>विपत्तिमा दोष होइन, समाधानको राष्ट्रिय अभियान आवश्यक</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-11-auto-2026-09-11-tibet-jolted-by-3-7-magnitude-quake-following-catastro/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-11T02:39:38.000Z</news:publication_date>
+      <news:title>Tibet jolted by 3.7 magnitude quake following catastrophic flash floods in Nepal</news:title>
     </news:news>
   </url>
   <url>
@@ -76,17 +98,6 @@
       </news:publication>
       <news:publication_date>2026-09-09T04:58:26.000Z</news:publication_date>
       <news:title>Teenager swept away by river in Bajura, search operation underway</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-09-auto-2026-09-09/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-09T00:21:36.000Z</news:publication_date>
-      <news:title>किम्रुङ खोलाको बहाव रोकिएपछि कास्की र पर्वतमा उच्च सतर्कता : कस्तो छ जोखिम ?</news:title>
     </news:news>
   </url>
 </urlset>
