@@ -8,16 +8,16 @@
   "lede": "The Bhote Koshi flood struck Rasuwa on 26 August. Search and recovery continue along the Trishuli and Narayani rivers.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-09-11T08:00:00+05:45",
+  "asOf": "2026-09-11T20:00:00+05:45",
   "asOfSource": "Nepal Police",
   "stats": [
     {
       "icon": "dead",
-      "value": "1,383",
+      "value": "1,384",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepal Police: 1,383. Up from 1,382. Source: https://nepalpolice.gov.np/news/10387/ Earlier note, 17:00 NPT, 9 September, describing a previous figure: NDRRMA and Nepal Police reported 1,367 deaths as of 11:00 NPT on 9 September 2026. Eight recovery districts account for 1,365; two people died after transfer to hospitals in Kathmandu. Source: https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
+      "detail": "Nepal Police: 1,384. Up from 1,383. Source: https://nepalpolice.gov.np/news/10397/ Earlier note, 17:00 NPT, 9 September, describing a previous figure: NDRRMA and Nepal Police reported 1,367 deaths as of 11:00 NPT on 9 September 2026. Eight recovery districts account for 1,365; two people died after transfer to hospitals in Kathmandu. Source: https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
       "priorDetail": "NDRRMA and Nepal Police reported 1,367 deaths as of 11:00 NPT on 9 September 2026. Eight recovery districts account for 1,365; two people died after transfer to hospitals in Kathmandu. Source: https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
       "priorAsOf": "2026-09-09T17:00:00+05:45"
     },
@@ -84,7 +84,7 @@
       },
       {
         "district": "Nawalparasi East",
-        "value": 228
+        "value": 229
       },
       {
         "district": "Nawalparasi West",
@@ -111,42 +111,28 @@
         "value": 38
       }
     ],
-    "total": 1383,
+    "total": 1384,
     "source": "Nepal Police",
-    "url": "https://nepalpolice.gov.np/news/10387/",
-    "time": "2026-09-10T20:00:00+05:45"
+    "url": "https://nepalpolice.gov.np/news/10397/",
+    "time": "2026-09-11T20:00:00+05:45"
   },
   "figures": {
     "dead": {
       "metric": "dead",
-      "value": 1383,
+      "value": 1384,
       "scope": "total",
       "source": "Nepal Police",
-      "url": "https://nepalpolice.gov.np/news/10387/",
-      "time": "2026-09-10T20:00:00+05:45",
+      "url": "https://nepalpolice.gov.np/news/10397/",
+      "time": "2026-09-11T20:00:00+05:45",
       "statedTime": null,
-      "sentence": "भोटेकोशी बाढी अपडेट : १ हजार ३ सय ८३ जनाको शव फेला",
+      "sentence": "भोटेकोशी बाढी अपडेट : १ हजार ३ सय ८४ जनाको शव फेला",
       "others": [
         {
-          "value": 1382,
+          "value": 1384,
           "source": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10387/",
-          "time": "2026-09-10T20:00:00+05:45",
-          "scope": "local"
-        },
-        {
-          "value": 1383,
-          "source": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10387/",
-          "time": "2026-09-10T20:00:00+05:45",
+          "url": "https://nepalpolice.gov.np/news/10397/",
+          "time": "2026-09-11T20:00:00+05:45",
           "scope": "total"
-        },
-        {
-          "value": 1382,
-          "source": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10387/",
-          "time": "2026-09-10T20:00:00+05:45",
-          "scope": "local"
         }
       ]
     },
