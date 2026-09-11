@@ -89,15 +89,4 @@
       <news:title>Latest reported figures: 1,372 confirmed dead</news:title>
     </news:news>
   </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-09-auto-2026-09-09-teenager-swept-away-by-river-in-bajura-search-operatio/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-09T04:58:26.000Z</news:publication_date>
-      <news:title>Teenager swept away by river in Bajura, search operation underway</news:title>
-    </news:news>
-  </url>
 </urlset>
