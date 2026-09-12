@@ -1,6 +1,38 @@
 {
-  "updated": "2026-09-12T01:09:15.000Z",
+  "updated": "2026-09-12T06:10:27.000Z",
   "posts": [
+    {
+      "id": "auto-2026-09-12-",
+      "title": "पुनर्निर्माण र पुनःस्थापनामा ध्यान केन्द्रित गर्नुपर्छः दाहाल",
+      "time": "2026-09-12T06:10:27.000Z",
+      "image": "https://images.nagariknewscdn.com/2026/third-party/1789193398_PUSHPA%20KAMAL.jpg",
+      "body": [
+        "नेपाली कम्युनिष्ट पार्टी (नेकपा)का संयोजक पुष्पकमल दाहालले बाढी प्रभावित क्षेत्रमा अस्थायी व्यवस्थापनसँगै स्थायी पुनर्निर्माण र पुनःस्थापनाको कामलाई प्राथमिकता दिनुपर्ने बताएका छन्।"
+      ],
+      "sources": [
+        {
+          "name": "Nagarik News",
+          "url": "https://nagariknews.nagariknetwork.com/politics/focus-should-be-on-reconstruction-and-rehabilitation-dahal-23-22.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-09-12-besisahar-chame-road-to-remain-closed-during-day-today",
+      "title": "Besisahar-Chame road to remain closed during day today",
+      "time": "2026-09-12T04:34:52.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/09/besisahar-chame-sadak.jpg",
+      "body": [
+        "LAMJUNG: The Besisahar–Chame road linking Lamjung and Manang will remain completely closed today from 9:00 am to 5:00 pm."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/besisahar-chame-road-to-remain-closed-during-day-today/"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-09-12-",
       "title": "बाढी प्रभावितको संरक्षणमा सरकारको तीव्रता : ५ हजार ५७८ जनालाई मनोसामाजिक सेवा",

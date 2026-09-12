@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-11T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-12T05:15:00.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,384 dead, 5,132 missing in Rasuwa, 12 Sep</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-11T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-12T05:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-12-auto-2026-09-12-besisahar-chame-road-to-remain-closed-during-day-today/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-12T04:34:52.000Z</news:publication_date>
+      <news:title>Besisahar-Chame road to remain closed during day today</news:title>
     </news:news>
   </url>
   <url>
