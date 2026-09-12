@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-12T05:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-12T11:15:00.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,384 dead, 5,132 missing in Rasuwa, 12 Sep</news:title>
     </news:news>
   </url>
@@ -19,7 +19,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-12T05:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-12T11:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
     </news:news>
   </url>
@@ -87,28 +87,6 @@
       </news:publication>
       <news:publication_date>2026-09-10T14:15:00.000Z</news:publication_date>
       <news:title>Latest reported figures: 1,383 confirmed dead</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-10-auto-2026-09-10/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-10T13:34:32.000Z</news:publication_date>
-      <news:title>यस्तो छ देवीघाटमा पाँच दिनमा तयार एक्रो ब्रिज (तस्बिरहरू)</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-10-auto-2026-09-10-nepal-does-not-need-another-disaster-portal/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-10T13:15:00.000Z</news:publication_date>
-      <news:title>Nepal does not need another disaster portal</news:title>
     </news:news>
   </url>
 </urlset>
