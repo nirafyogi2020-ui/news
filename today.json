@@ -1,18 +1,34 @@
 {
-  "updated": "2026-09-13T20:00:00+05:45",
+  "updated": "2026-09-14T01:36:26.000Z",
   "posts": [
     {
-      "id": "auto-2026-09-13-bhotekoshi-floods-damage-to-18-schools-rs-4-23-billion-estim",
-      "title": "Bhotekoshi floods: Damage to 18 schools; Rs 4.23 billion estimated for recovery",
-      "time": "2026-09-13T05:50:26.000Z",
-      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/09/Nilkanth-School-1.jpg",
+      "id": "auto-2026-09-14-india-faces-growing-himalayan-risk-as-glaciers-melt-faster",
+      "title": "India faces growing Himalayan risk as glaciers melt faster",
+      "time": "2026-09-14T01:36:26.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/09/7fae1aa0-adad-11f1-8ac2-99a6f36b284a.jpg",
       "body": [
-        "File Kathmandu, September 13 A total of 18 schools from Rasuwa, Nuwakot and Dhading districts were damaged in the Bhotekoshi flash floods that occurred on August 26."
+        "NEW DELHI: India’s Himalayan region is facing rising risks from faster glacier melt, expanding glacial lakes and unstable mountain slopes, while large parts of the region remain under-monitored, according to new research."
       ],
       "sources": [
         {
-          "name": "Onlinekhabar",
-          "url": "https://english.onlinekhabar.com/bhotekoshi-floods-damage-to-18-schools-rs-4-23-billion-estimated-for-recovery.html"
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/climate/india-faces-growing-himalayan-risk-as-glaciers-melt-faster/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-09-14-",
+      "title": "कृष्णभीर पहिरो: नयाँ ट्याकबाट ५० सवारी पास, सोमबारदेखि ग्राभेलिङ हुने",
+      "time": "2026-09-14T01:11:43.000Z",
+      "image": "https://www.khabarhub.com/wp-content/uploads/2026/09/krishna-vir-1-400x220.jpg",
+      "body": [
+        "काठमाडौँ – पृथ्वी राजमार्गअन्तर्गत कृष्णभीरमा पहिरो खसेर सडक पूर्ण रूपमा अवरुद्ध भएपछि निर्माण गरिएको नयाँ ट्याकको आइतबार सफल परीक्षण गरिएको छ।"
+      ],
+      "sources": [
+        {
+          "name": "Khabarhub",
+          "url": "https://khabarhub.com/2026/14/1024157/"
         }
       ],
       "auto": true
@@ -32,6 +48,22 @@
         }
       ],
       "revised": true
+    },
+    {
+      "id": "auto-2026-09-13-bhotekoshi-floods-damage-to-18-schools-rs-4-23-billion-estim",
+      "title": "Bhotekoshi floods: Damage to 18 schools; Rs 4.23 billion estimated for recovery",
+      "time": "2026-09-13T05:50:26.000Z",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/09/Nilkanth-School-1.jpg",
+      "body": [
+        "File Kathmandu, September 13 A total of 18 schools from Rasuwa, Nuwakot and Dhading districts were damaged in the Bhotekoshi flash floods that occurred on August 26."
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/bhotekoshi-floods-damage-to-18-schools-rs-4-23-billion-estimated-for-recovery.html"
+        }
+      ],
+      "auto": true
     },
     {
       "id": "auto-2026-09-13-",

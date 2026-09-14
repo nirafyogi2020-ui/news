@@ -8,8 +8,8 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-13T14:15:00.000Z</news:publication_date>
-      <news:title>Nepal Flood Live: 1,390 dead, 5,132 missing in Rasuwa, 13 Sep</news:title>
+      <news:publication_date>2026-09-13T23:15:00.000Z</news:publication_date>
+      <news:title>Nepal Flood Live: 1,390 dead, 5,132 missing in Rasuwa, 14 Sep</news:title>
     </news:news>
   </url>
   <url>
@@ -19,8 +19,30 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-13T14:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-13T23:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-14-auto-2026-09-14-india-faces-growing-himalayan-risk-as-glaciers-melt-fa/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-14T01:36:26.000Z</news:publication_date>
+      <news:title>India faces growing Himalayan risk as glaciers melt faster</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-14-auto-2026-09-14/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-14T01:11:43.000Z</news:publication_date>
+      <news:title>कृष्णभीर पहिरो: नयाँ ट्याकबाट ५० सवारी पास, सोमबारदेखि ग्राभेलिङ हुने</news:title>
     </news:news>
   </url>
   <url>
@@ -65,17 +87,6 @@
       </news:publication>
       <news:publication_date>2026-09-12T04:34:52.000Z</news:publication_date>
       <news:title>Besisahar-Chame road to remain closed during day today</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-12-auto-2026-09-12/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-12T01:09:15.000Z</news:publication_date>
-      <news:title>बाढी प्रभावितको संरक्षणमा सरकारको तीव्रता : ५ हजार ५७८ जनालाई मनोसामाजिक सेवा</news:title>
     </news:news>
   </url>
 </urlset>
