@@ -1,6 +1,38 @@
 {
-  "updated": "2026-09-15T00:45:31.000Z",
+  "updated": "2026-09-15T08:00:00+05:45",
   "posts": [
+    {
+      "id": "auto-2026-09-15-woman-swept-away-while-bathing-in-syangja-river-found-dead",
+      "title": "Woman swept away while bathing in Syangja river found dead",
+      "time": "2026-09-15T05:25:12.000Z",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/09/dddd-1024x683-1.jpg",
+      "body": [
+        "Syangja, September 15 A 53-year-old woman who went missing after being swept away while bathing in the Aandhikhola River in Waling, Syangja, on Tuesday morning has been found dead."
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/woman-swept-away-while-bathing-in-syangja-river-found-dead.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "latest-reported-figures",
+      "title": "Latest reported figures: 1,397 confirmed dead",
+      "time": "2026-09-15T08:00:00+05:45",
+      "image": "",
+      "body": [
+        "The confirmed death toll in Nepal has risen to 1,397, from 1,396, Nepal Police reports."
+      ],
+      "sources": [
+        {
+          "name": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10430/"
+        }
+      ],
+      "revised": true
+    },
     {
       "id": "auto-2026-09-15-",
       "title": "बाढीपीडितलाई निजी विद्यालयद्वारा सहयोग",
@@ -16,22 +48,6 @@
         }
       ],
       "auto": true
-    },
-    {
-      "id": "latest-reported-figures",
-      "title": "Latest reported figures: 1,396 confirmed dead",
-      "time": "2026-09-14T20:00:00+05:45",
-      "image": "",
-      "body": [
-        "The confirmed death toll in Nepal has risen to 1,396, from 1,395, Nepal Police reports."
-      ],
-      "sources": [
-        {
-          "name": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10429/"
-        }
-      ],
-      "revised": true
     },
     {
       "id": "auto-2026-09-14-india-faces-growing-himalayan-risk-as-glaciers-melt-faster",

@@ -8,7 +8,7 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-09-14T20:00:00+05:45';
+export const TOLL_AS_OF = '2026-09-15T08:00:00+05:45';
 export const TOLL_SOURCE = 'Nepal Police';
 export const TOLL_EARLIER_SOURCE = 'Nepal Police';
 
@@ -16,11 +16,11 @@ export const TOLL_EARLIER_SOURCE = 'Nepal Police';
    the "how the toll has moved" table, so that row's timestamp always matches
    TOLL.deadNepalEarlier instead of drifting out of date as later runs move
    both TOLL_AS_OF and deadNepalEarlier forward. */
-export const TOLL_EARLIER_AS_OF = '2026-09-14T17:00:00+05:45';
+export const TOLL_EARLIER_AS_OF = '2026-09-14T20:00:00+05:45';
 
 /* The district breakdown now comes from the same 2pm police bulletin as the
    national toll. */
-export const BODIES_AS_OF = '2026-09-14T20:00:00+05:45';
+export const BODIES_AS_OF = '2026-09-15T08:00:00+05:45';
 export const BODIES_SOURCE = 'Nepal Police';
 
 /* The missing figure comes from the same Nepalnews bulletin as the newest
@@ -80,7 +80,7 @@ export const BODIES_BY_DISTRICT = [
   ],
   [
     "Dhading",
-    71
+    72
   ],
   [
     "Tanahun",
@@ -118,8 +118,8 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 1396,
-  deadNepalEarlier: 1395,
+  deadNepal: 1397,
+  deadNepalEarlier: 1396,
   deadChina: 16,
   missing: 5132,
   missingChina: 546,
@@ -283,6 +283,7 @@ export const TIMELINE = [
   ['11:00 NPT, 14 September', "Nepal's confirmed death toll is reported at 1,392, up from 1,390, by Nepal Police."],
   ['17:00 NPT, 14 September', "Nepal's confirmed death toll is reported at 1,395, up from 1,392, by Nepal Police."],
   ['20:00 NPT, 14 September', "Nepal's confirmed death toll is reported at 1,396, up from 1,395, by Nepal Police."],
+  ['08:00 NPT, 15 September', "Nepal's confirmed death toll is reported at 1,397, up from 1,396, by Nepal Police."],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */
