@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-15T02:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-15T08:15:00.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,397 dead, 5,132 missing in Rasuwa, 15 Sep</news:title>
     </news:news>
   </url>
@@ -19,7 +19,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-15T02:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-15T08:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
     </news:news>
   </url>
@@ -98,17 +98,6 @@
       </news:publication>
       <news:publication_date>2026-09-13T14:15:00.000Z</news:publication_date>
       <news:title>Latest reported figures: 1,390 confirmed dead</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-13-auto-2026-09-13-bhotekoshi-floods-damage-to-18-schools-rs-4-23-billion/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-13T05:50:26.000Z</news:publication_date>
-      <news:title>Bhotekoshi floods: Damage to 18 schools; Rs 4.23 billion estimated for recovery</news:title>
     </news:news>
   </url>
 </urlset>
