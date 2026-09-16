@@ -8,16 +8,16 @@
   "lede": "The Bhote Koshi flood struck Rasuwa on 26 August. Search and recovery continue along the Trishuli and Narayani rivers.",
   "numbersTitle": "Where the numbers stand",
   "numbersNote": "Rasuwa flash flood, 26 August 2026",
-  "asOf": "2026-09-16T08:00:00+05:45",
+  "asOf": "2026-09-16T20:00:00+05:45",
   "asOfSource": "Nepal Police",
   "stats": [
     {
       "icon": "dead",
-      "value": "1,401",
+      "value": "1,407",
       "tone": "critical",
       "label": "confirmed dead",
       "bar": 100,
-      "detail": "Nepal Police: 1,401. Up from 1,397. Source: https://nepalpolice.gov.np/news/10441/ Earlier note, 17:00 NPT, 9 September, describing a previous figure: NDRRMA and Nepal Police reported 1,367 deaths as of 11:00 NPT on 9 September 2026. Eight recovery districts account for 1,365; two people died after transfer to hospitals in Kathmandu. Source: https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
+      "detail": "Nepal Police: 1,407. Up from 1,401. Source: https://nepalpolice.gov.np/news/10454/ Earlier note, 17:00 NPT, 9 September, describing a previous figure: NDRRMA and Nepal Police reported 1,367 deaths as of 11:00 NPT on 9 September 2026. Eight recovery districts account for 1,365; two people died after transfer to hospitals in Kathmandu. Source: https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
       "priorDetail": "NDRRMA and Nepal Police reported 1,367 deaths as of 11:00 NPT on 9 September 2026. Eight recovery districts account for 1,365; two people died after transfer to hospitals in Kathmandu. Source: https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
       "priorAsOf": "2026-09-09T17:00:00+05:45"
     },
@@ -96,7 +96,7 @@
       },
       {
         "district": "Rasuwa",
-        "value": 193
+        "value": 199
       },
       {
         "district": "Gorkha",
@@ -111,41 +111,41 @@
         "value": 38
       }
     ],
-    "total": 1401,
+    "total": 1407,
     "source": "Nepal Police",
-    "url": "https://nepalpolice.gov.np/news/10441/",
-    "time": "2026-09-15T20:00:00+05:45"
+    "url": "https://nepalpolice.gov.np/news/10454/",
+    "time": "2026-09-16T20:00:00+05:45"
   },
   "figures": {
     "dead": {
       "metric": "dead",
-      "value": 1401,
+      "value": 1407,
       "scope": "total",
       "source": "Nepal Police",
-      "url": "https://nepalpolice.gov.np/news/10441/",
-      "time": "2026-09-15T20:00:00+05:45",
+      "url": "https://nepalpolice.gov.np/news/10454/",
+      "time": "2026-09-16T20:00:00+05:45",
       "statedTime": null,
-      "sentence": "जसमध्ये रसुवामा १ सय ९३ जना, नुवाकोटमा २ सय २ जना, धादिङमा ७२ जना, चितवनमा ३ सय ६४ जना, गोरखामा ७८ जना, तनहुँमा ३८ जना, नवलपरासी पूर्वमा २ सय ३२ जना र नवलपरासी पश्‍चिममा २ सय २२ जना गरी १ हजार ४ सय १ जनाको शव फेला परेको हो",
+      "sentence": "जसमध्ये रसुवामा १ सय ९९ जना, नुवाकोटमा २ सय २ जना, धादिङमा ७२ जना, चितवनमा ३ सय ६४ जना, गोरखामा ७८ जना, तनहुँमा ३८ जना, नवलपरासी पूर्वमा २ सय ३२ जना र नवलपरासी पश्‍चिममा २ सय २२ जना गरी १ हजार ४ सय ७ जनाको शव फेला परेको हो",
       "others": [
         {
-          "value": 1403,
+          "value": 1409,
           "source": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10441/",
-          "time": "2026-09-15T20:00:00+05:45",
+          "url": "https://nepalpolice.gov.np/news/10454/",
+          "time": "2026-09-16T20:00:00+05:45",
           "scope": "local"
         },
         {
-          "value": 1403,
+          "value": 1409,
           "source": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10441/",
-          "time": "2026-09-15T20:00:00+05:45",
+          "url": "https://nepalpolice.gov.np/news/10454/",
+          "time": "2026-09-16T20:00:00+05:45",
           "scope": "local"
         },
         {
-          "value": 1401,
+          "value": 1407,
           "source": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10441/",
-          "time": "2026-09-15T20:00:00+05:45",
+          "url": "https://nepalpolice.gov.np/news/10454/",
+          "time": "2026-09-16T20:00:00+05:45",
           "scope": "total"
         }
       ]
