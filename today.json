@@ -1,18 +1,50 @@
 {
-  "updated": "2026-09-15T20:00:00+05:45",
+  "updated": "2026-09-16T03:51:28.000Z",
   "posts": [
     {
-      "id": "auto-2026-09-15-woman-swept-away-while-bathing-in-syangja-river-found-dead",
-      "title": "Woman swept away while bathing in Syangja river found dead",
-      "time": "2026-09-15T05:25:12.000Z",
-      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/09/dddd-1024x683-1.jpg",
+      "id": "auto-2026-09-16-",
+      "title": "चाडपर्व नजिकिँदै गर्दा मूल्यवृद्धि नियन्त्रणमा सरकार असफल भएको एमालेको आरोप",
+      "time": "2026-09-16T03:51:28.000Z",
+      "image": "https://www.khabarhub.com/wp-content/uploads/2025/12/uml-party-office-7-400x220.jpg",
       "body": [
-        "Syangja, September 15 A 53-year-old woman who went missing after being swept away while bathing in the Aandhikhola River in Waling, Syangja, on Tuesday morning has been found dead."
+        "काठमाडौँ – नेकपा (एमाले) ले चाडपर्व नजिकिँदै गर्दा दैनिक उपभोग्य वस्तुको मूल्यवृद्धि नियन्त्रण गर्न सरकार असफल भएको आरोप लगाएको छ।"
       ],
       "sources": [
         {
-          "name": "Onlinekhabar",
-          "url": "https://english.onlinekhabar.com/woman-swept-away-while-bathing-in-syangja-river-found-dead.html"
+          "name": "Khabarhub",
+          "url": "https://khabarhub.com/2026/16/1024906/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-09-16-all-party-meeting-taking-place-today",
+      "title": "All-party meeting taking place today",
+      "time": "2026-09-16T03:14:09.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/08/Rabi-Lamichhane.jpg",
+      "body": [
+        "KATHMANDU: An all-party meeting of the top leaders is taking place today at the call of Rastriya Swatantra Party (RSP) President Rabi Lamichhane."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/politics/all-party-meeting-taking-place-today/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-09-16-floods-and-landslides-block-multiple-highways-across-nation",
+      "title": "Floods and landslides block multiple highways across nation",
+      "time": "2026-09-16T02:06:14.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/05/pahiro-sadak-1727502779_2IfnOqbizt.jpg",
+      "body": [
+        "KATHMANDU: Floods, landslides, and road maintenance works have completely or partially blocked several major highways across the country."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/floods-and-landslides-block-multiple-highways-across-nation/"
         }
       ],
       "auto": true
@@ -32,6 +64,22 @@
         }
       ],
       "revised": true
+    },
+    {
+      "id": "auto-2026-09-15-woman-swept-away-while-bathing-in-syangja-river-found-dead",
+      "title": "Woman swept away while bathing in Syangja river found dead",
+      "time": "2026-09-15T05:25:12.000Z",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/09/dddd-1024x683-1.jpg",
+      "body": [
+        "Syangja, September 15 A 53-year-old woman who went missing after being swept away while bathing in the Aandhikhola River in Waling, Syangja, on Tuesday morning has been found dead."
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/woman-swept-away-while-bathing-in-syangja-river-found-dead.html"
+        }
+      ],
+      "auto": true
     },
     {
       "id": "auto-2026-09-15-",
