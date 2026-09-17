@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-16T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-17T05:15:00.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,407 dead, 5,132 missing in Rasuwa, 17 Sep</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-16T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-17T05:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-17-auto-2026-09-17-nepal-collects-rs-184-58-billion-in-revenue-in-first-t/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-17T06:15:18.000Z</news:publication_date>
+      <news:title>Nepal collects Rs 184.58 billion in revenue in first two months of fiscal year</news:title>
     </news:news>
   </url>
   <url>
@@ -98,17 +109,6 @@
       </news:publication>
       <news:publication_date>2026-09-15T14:15:00.000Z</news:publication_date>
       <news:title>Latest reported figures: 1,401 confirmed dead</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-15-auto-2026-09-15-woman-swept-away-while-bathing-in-syangja-river-found-/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-15T05:25:12.000Z</news:publication_date>
-      <news:title>Woman swept away while bathing in Syangja river found dead</news:title>
     </news:news>
   </url>
 </urlset>
