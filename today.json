@@ -1,6 +1,54 @@
 {
-  "updated": "2026-09-16T20:00:00+05:45",
+  "updated": "2026-09-17T01:21:27.000Z",
   "posts": [
+    {
+      "id": "auto-2026-09-17-",
+      "title": "भोटेकोशी बाढी प्रभावितलाई काठमाडौँ विश्वविद्यालयको ८५ लाख सहयोग",
+      "time": "2026-09-17T01:21:27.000Z",
+      "image": "https://www.khabarhub.com/wp-content/uploads/2019/08/kathmandu-Univercity-700x300.jpg",
+      "body": [
+        "काभ्रे– भोटेकोशी बाढीबाट प्रभावितको राहत तथा उद्धारका लागि काठमाडौँ विश्वविद्यालयले ८५ लाख रुपैयाँ सहयोग गरेको छ । काठमाडौँ विश्वविद्यालयका रजिस्ट्रार डा."
+      ],
+      "sources": [
+        {
+          "name": "Khabarhub",
+          "url": "https://khabarhub.com/2026/17/1025295/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-09-17-prithvi-highway-reopens-today-as-landslides-keep-other-key-r",
+      "title": "Prithvi Highway reopens today as landslides keep other key routes blocked",
+      "time": "2026-09-17T01:16:15.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-16-at-10.16.16.jpeg",
+      "body": [
+        "KATHMANDU: Nepal Police have issued a national traffic advisory confirming the full reopening of the Prithvi Highway at Krishna Bhir in Dhading following emergency repairs, even as severe road blockages, full highway closures, and route…"
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/prithvi-highway-reopens-today-as-landslides-keep-other-key-routes-blocked/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "latest-reported-figures",
+      "title": "Latest reported figures: 1,407 confirmed dead",
+      "time": "2026-09-16T20:00:00+05:45",
+      "image": "",
+      "body": [
+        "The confirmed death toll in Nepal has risen to 1,407, from 1,401, Nepal Police reports."
+      ],
+      "sources": [
+        {
+          "name": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10454/"
+        }
+      ],
+      "revised": true
+    },
     {
       "id": "auto-2026-09-16-",
       "title": "चाडपर्व नजिकिँदै गर्दा मूल्यवृद्धि नियन्त्रणमा सरकार असफल भएको एमालेको आरोप",
@@ -48,22 +96,6 @@
         }
       ],
       "auto": true
-    },
-    {
-      "id": "latest-reported-figures",
-      "title": "Latest reported figures: 1,407 confirmed dead",
-      "time": "2026-09-16T20:00:00+05:45",
-      "image": "",
-      "body": [
-        "The confirmed death toll in Nepal has risen to 1,407, from 1,401, Nepal Police reports."
-      ],
-      "sources": [
-        {
-          "name": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10454/"
-        }
-      ],
-      "revised": true
     },
     {
       "id": "auto-2026-09-15-woman-swept-away-while-bathing-in-syangja-river-found-dead",
