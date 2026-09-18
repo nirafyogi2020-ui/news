@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-17T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-18T02:15:00.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,408 dead, 5,132 missing in Rasuwa, 18 Sep</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-17T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-18T02:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-18-auto-2026-09-18-landslide-restricts-muglin-narayangadh-road-to-one-way/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-18T04:08:13.000Z</news:publication_date>
+      <news:title>Landslide restricts Muglin–Narayangadh road to one-way traffic</news:title>
     </news:news>
   </url>
   <url>
@@ -87,39 +98,6 @@
       </news:publication>
       <news:publication_date>2026-09-16T14:15:00.000Z</news:publication_date>
       <news:title>Latest reported figures: 1,407 confirmed dead</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-16-auto-2026-09-16/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-16T03:51:28.000Z</news:publication_date>
-      <news:title>चाडपर्व नजिकिँदै गर्दा मूल्यवृद्धि नियन्त्रणमा सरकार असफल भएको एमालेको आरोप</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-16-auto-2026-09-16-all-party-meeting-taking-place-today/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-16T03:14:09.000Z</news:publication_date>
-      <news:title>All-party meeting taking place today</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-16-auto-2026-09-16-floods-and-landslides-block-multiple-highways-across-n/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-16T02:06:14.000Z</news:publication_date>
-      <news:title>Floods and landslides block multiple highways across nation</news:title>
     </news:news>
   </url>
 </urlset>
