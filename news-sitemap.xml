@@ -8,8 +8,8 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-17T14:15:00.000Z</news:publication_date>
-      <news:title>Nepal Flood Live: 1,408 dead, 5,132 missing in Rasuwa, 17 Sep</news:title>
+      <news:publication_date>2026-09-17T23:15:00.000Z</news:publication_date>
+      <news:title>Nepal Flood Live: 1,408 dead, 5,132 missing in Rasuwa, 18 Sep</news:title>
     </news:news>
   </url>
   <url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-17T14:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-17T23:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-18-auto-2026-09-18/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-18T00:39:47.000Z</news:publication_date>
+      <news:title>कालीगण्डीको कटानबाट जोगाउन घरापमा कम्पोजिट पर्खाल</news:title>
     </news:news>
   </url>
   <url>
