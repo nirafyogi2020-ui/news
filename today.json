@@ -1,6 +1,38 @@
 {
-  "updated": "2026-09-17T17:00:00+05:45",
+  "updated": "2026-09-18T00:39:47.000Z",
   "posts": [
+    {
+      "id": "auto-2026-09-18-",
+      "title": "कालीगण्डीको कटानबाट जोगाउन घरापमा कम्पोजिट पर्खाल",
+      "time": "2026-09-18T00:39:47.000Z",
+      "image": "https://images.nagariknewscdn.com/2025/third-party/1789692038_katan.jpg",
+      "body": [
+        "कालीगण्डकीको कटानबाट जोगाउनका लागि म्याग्दीको अन्नपूर्ण गाउँपालिका–४ घरापमा बस्ती संरक्षण योजना अगाडि बढेपछि स्थानीयले राहत महसुस गरेका छन्।"
+      ],
+      "sources": [
+        {
+          "name": "Nagarik News",
+          "url": "https://nagariknews.nagariknetwork.com/social-affairs/composite-wall-in-gharap-to-protect-from-erosion-of-kaligandi-23-12.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "latest-reported-figures",
+      "title": "Latest reported figures: 1,408 confirmed dead",
+      "time": "2026-09-17T17:00:00+05:45",
+      "image": "",
+      "body": [
+        "The confirmed death toll in Nepal has risen to 1,408, from 1,407, Nepal Police reports."
+      ],
+      "sources": [
+        {
+          "name": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10470/"
+        }
+      ],
+      "revised": true
+    },
     {
       "id": "auto-2026-09-17-nepal-collects-rs-184-58-billion-in-revenue-in-first-two-mon",
       "title": "Nepal collects Rs 184.58 billion in revenue in first two months of fiscal year",
@@ -32,22 +64,6 @@
         }
       ],
       "auto": true
-    },
-    {
-      "id": "latest-reported-figures",
-      "title": "Latest reported figures: 1,408 confirmed dead",
-      "time": "2026-09-17T17:00:00+05:45",
-      "image": "",
-      "body": [
-        "The confirmed death toll in Nepal has risen to 1,408, from 1,407, Nepal Police reports."
-      ],
-      "sources": [
-        {
-          "name": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10470/"
-        }
-      ],
-      "revised": true
     },
     {
       "id": "auto-2026-09-16-",
