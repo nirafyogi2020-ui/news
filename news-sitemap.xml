@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-18T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-19T02:15:00.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,408 dead, 5,132 missing in Rasuwa, 19 Sep</news:title>
     </news:news>
   </url>
@@ -19,8 +19,41 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-18T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-19T02:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-19-auto-2026-09-19/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T04:37:52.000Z</news:publication_date>
+      <news:title>जलविद्युत् आयोजनाको सहयोगमा दुखुखोला सडक पुल संरक्षण</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-19-auto-2026-09-19-infectious-disease-risks-rise-in-rasuwa-flood-hit-area/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T04:15:00.000Z</news:publication_date>
+      <news:title>Infectious disease risks rise in Rasuwa flood-hit areas</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-19-auto-2026-09-19-bhotekoshi-flood-reveals-the-growing-danger-of-himalay/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T03:15:00.000Z</news:publication_date>
+      <news:title>Bhotekoshi flood reveals the growing danger of Himalayan cascading hazards</news:title>
     </news:news>
   </url>
   <url>
@@ -65,28 +98,6 @@
       </news:publication>
       <news:publication_date>2026-09-17T06:15:18.000Z</news:publication_date>
       <news:title>Nepal collects Rs 184.58 billion in revenue in first two months of fiscal year</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-17-auto-2026-09-17/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-17T01:21:27.000Z</news:publication_date>
-      <news:title>भोटेकोशी बाढी प्रभावितलाई काठमाडौँ विश्वविद्यालयको ८५ लाख सहयोग</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-17-auto-2026-09-17-prithvi-highway-reopens-today-as-landslides-keep-other/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-17T01:16:15.000Z</news:publication_date>
-      <news:title>Prithvi Highway reopens today as landslides keep other key routes blocked</news:title>
     </news:news>
   </url>
 </urlset>
