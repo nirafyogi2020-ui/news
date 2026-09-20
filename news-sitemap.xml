@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-19T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-20T02:15:00.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,434 dead, 5,132 missing in Rasuwa, 20 Sep</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-19T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-20T02:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-20-auto-2026-09-20-floods-and-landslides-block-major-highways-across-bagm/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-20T04:44:41.000Z</news:publication_date>
+      <news:title>Floods and landslides block major highways across Bagmati and Koshi provinces</news:title>
     </news:news>
   </url>
   <url>
@@ -76,28 +87,6 @@
       </news:publication>
       <news:publication_date>2026-09-19T03:15:00.000Z</news:publication_date>
       <news:title>Bhotekoshi flood reveals the growing danger of Himalayan cascading hazards</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-18-auto-2026-09-18-landslide-restricts-muglin-narayangadh-road-to-one-way/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-18T04:08:13.000Z</news:publication_date>
-      <news:title>Landslide restricts Muglin–Narayangadh road to one-way traffic</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-18-auto-2026-09-18/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-18T00:39:47.000Z</news:publication_date>
-      <news:title>कालीगण्डीको कटानबाट जोगाउन घरापमा कम्पोजिट पर्खाल</news:title>
     </news:news>
   </url>
 </urlset>
