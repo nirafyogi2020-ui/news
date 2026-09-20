@@ -1,6 +1,38 @@
 {
-  "updated": "2026-09-19T20:00:00+05:45",
+  "updated": "2026-09-20T00:11:52.000Z",
   "posts": [
+    {
+      "id": "auto-2026-09-20-",
+      "title": "छारेभिरमा पहिरो खसेपछि कर्णाली करिडोर ठप्प",
+      "time": "2026-09-20T00:11:52.000Z",
+      "image": "https://www.khabarhub.com/wp-content/uploads/2026/09/Karnali-koridor-400x220.jpg",
+      "body": [
+        "हुम्ला – कर्णाली करिडोरअन्तर्गत सर्केगाड गाउँपालिका–२ रिप नजिकैको छारेभिरमा पहिरो खस्दा सडक अवरुद्ध भएको छ । शनिबार पहिरोसँगै ठूला ढुङ्गा खसेपछि करिब १०० मिटर सडक अवरुद्ध हुँदा करिडोरमा सवारी आवागमन ठप्प भएको हो ।"
+      ],
+      "sources": [
+        {
+          "name": "Khabarhub",
+          "url": "https://khabarhub.com/2026/20/1026464/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "latest-reported-figures",
+      "title": "Latest reported figures: 1,434 confirmed dead",
+      "time": "2026-09-19T20:00:00+05:45",
+      "image": "",
+      "body": [
+        "The confirmed death toll in Nepal has risen to 1,434, from 1,409, Nepal Police reports."
+      ],
+      "sources": [
+        {
+          "name": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10495/"
+        }
+      ],
+      "revised": true
+    },
     {
       "id": "auto-2026-09-19-",
       "title": "जलविद्युत् आयोजनाको सहयोगमा दुखुखोला सडक पुल संरक्षण",
@@ -96,22 +128,6 @@
         }
       ],
       "auto": true
-    },
-    {
-      "id": "latest-reported-figures",
-      "title": "Latest reported figures: 1,434 confirmed dead",
-      "time": "2026-09-19T20:00:00+05:45",
-      "image": "",
-      "body": [
-        "The confirmed death toll in Nepal has risen to 1,434, from 1,409, Nepal Police reports."
-      ],
-      "sources": [
-        {
-          "name": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10495/"
-        }
-      ],
-      "revised": true
     },
     {
       "id": "auto-2026-09-17-nepal-collects-rs-184-58-billion-in-revenue-in-first-two-mon",
