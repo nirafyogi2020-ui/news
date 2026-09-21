@@ -1,6 +1,54 @@
 {
-  "updated": "2026-09-20T14:00:00+05:45",
+  "updated": "2026-09-21T01:14:16.000Z",
   "posts": [
+    {
+      "id": "auto-2026-09-21-floods-and-landslides-continue-to-block-highways-across-nepa",
+      "title": "Floods and landslides continue to block highways across Nepal",
+      "time": "2026-09-21T01:14:16.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/09/Pahiro-panchhaudai-0c058ef0-d85f-4c55-86b4-cba0792d6b30.jpg",
+      "body": [
+        "KATHMANDU: Several highways across the country remain obstructed today due to flooding and landslides triggered by heavy rainfall."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/floods-and-landslides-continue-to-block-highways-across-nepal/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-09-21-",
+      "title": "'ठूलो बाढी आउँदैछ' भन्ने सूचना पत्याउन नसक्दा धेरै क्षति",
+      "time": "2026-09-21T01:06:15.000Z",
+      "image": "https://images.nagariknewscdn.com/2025/third-party/1788065714_badhi%20pic.jpg",
+      "body": [
+        "बिहानको खाना खाइसकेपछि विदुर नगरपालिका–१ ढुङ्गेका छत्र प्याकुरेल नियमित काममा जाने तयारीमा थिए। त्रिशूली नदीको किनारबाट केही दूरीमा घर भएकाले नदीमा ठूलो बाढी आए पनि आफ्नो घरसम्म त्यसको असर पुग्ला भन्ने उनलाई लागेको थिएन।"
+      ],
+      "sources": [
+        {
+          "name": "Nagarik News",
+          "url": "https://nagariknews.nagariknetwork.com/social-affairs/many-damages-caused-by-not-believing-the-information-that-a-major-flood-is-coming-74-95.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "latest-reported-figures",
+      "title": "Latest reported figures: 1,449 confirmed dead",
+      "time": "2026-09-20T14:00:00+05:45",
+      "image": "",
+      "body": [
+        "The confirmed death toll in Nepal has risen to 1,449, from 1,434, Nepal Police reports."
+      ],
+      "sources": [
+        {
+          "name": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10497/"
+        }
+      ],
+      "revised": true
+    },
     {
       "id": "auto-2026-09-20-floods-and-landslides-block-major-highways-across-bagmati-an",
       "title": "Floods and landslides block major highways across Bagmati and Koshi provinces",
@@ -48,22 +96,6 @@
         }
       ],
       "auto": true
-    },
-    {
-      "id": "latest-reported-figures",
-      "title": "Latest reported figures: 1,449 confirmed dead",
-      "time": "2026-09-20T14:00:00+05:45",
-      "image": "",
-      "body": [
-        "The confirmed death toll in Nepal has risen to 1,449, from 1,434, Nepal Police reports."
-      ],
-      "sources": [
-        {
-          "name": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10497/"
-        }
-      ],
-      "revised": true
     },
     {
       "id": "auto-2026-09-19-",
