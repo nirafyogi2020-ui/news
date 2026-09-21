@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-20T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-21T06:46:26.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,449 dead, 5,132 missing in Rasuwa, 21 Sep</news:title>
     </news:news>
   </url>
@@ -19,7 +19,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-20T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-21T06:46:26.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
     </news:news>
   </url>
@@ -87,39 +87,6 @@
       </news:publication>
       <news:publication_date>2026-09-19T14:15:00.000Z</news:publication_date>
       <news:title>Latest reported figures: 1,434 confirmed dead</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-19-auto-2026-09-19/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-19T04:37:52.000Z</news:publication_date>
-      <news:title>जलविद्युत् आयोजनाको सहयोगमा दुखुखोला सडक पुल संरक्षण</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-19-auto-2026-09-19-infectious-disease-risks-rise-in-rasuwa-flood-hit-area/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-19T04:15:00.000Z</news:publication_date>
-      <news:title>Infectious disease risks rise in Rasuwa flood-hit areas</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-19-auto-2026-09-19-bhotekoshi-flood-reveals-the-growing-danger-of-himalay/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-19T03:15:00.000Z</news:publication_date>
-      <news:title>Bhotekoshi flood reveals the growing danger of Himalayan cascading hazards</news:title>
     </news:news>
   </url>
 </urlset>
