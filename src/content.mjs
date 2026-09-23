@@ -8,7 +8,7 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-09-22T20:00:00+05:45';
+export const TOLL_AS_OF = '2026-09-23T20:00:00+05:45';
 export const TOLL_SOURCE = 'Nepal Police';
 export const TOLL_EARLIER_SOURCE = 'Nepal Police';
 
@@ -16,11 +16,11 @@ export const TOLL_EARLIER_SOURCE = 'Nepal Police';
    the "how the toll has moved" table, so that row's timestamp always matches
    TOLL.deadNepalEarlier instead of drifting out of date as later runs move
    both TOLL_AS_OF and deadNepalEarlier forward. */
-export const TOLL_EARLIER_AS_OF = '2026-09-20T14:00:00+05:45';
+export const TOLL_EARLIER_AS_OF = '2026-09-22T20:00:00+05:45';
 
 /* The district breakdown now comes from the same 2pm police bulletin as the
    national toll. */
-export const BODIES_AS_OF = '2026-09-22T20:00:00+05:45';
+export const BODIES_AS_OF = '2026-09-23T20:00:00+05:45';
 export const BODIES_SOURCE = 'Nepal Police';
 
 /* The missing figure comes from the same Nepalnews bulletin as the newest
@@ -56,7 +56,7 @@ export const EVENT = {
 export const BODIES_BY_DISTRICT = [
   [
     "Chitwan",
-    367
+    368
   ],
   [
     "Rasuwa",
@@ -118,8 +118,8 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 1450,
-  deadNepalEarlier: 1449,
+  deadNepal: 1451,
+  deadNepalEarlier: 1450,
   deadChina: 16,
   missing: 5132,
   missingChina: 546,
@@ -291,6 +291,7 @@ export const TIMELINE = [
   ['20:00 NPT, 19 September', "Nepal's confirmed death toll is reported at 1,434, up from 1,409, by Nepal Police."],
   ['14:00 NPT, 20 September', "Nepal's confirmed death toll is reported at 1,449, up from 1,434, by Nepal Police."],
   ['20:00 NPT, 22 September', "Nepal's confirmed death toll is reported at 1,450, up from 1,449, by Nepal Police."],
+  ['20:00 NPT, 23 September', "Nepal's confirmed death toll is reported at 1,451, up from 1,450, by Nepal Police."],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */
