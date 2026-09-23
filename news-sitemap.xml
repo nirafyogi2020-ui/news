@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-22T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-23T02:15:00.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,450 dead, 5,132 missing in Rasuwa, 23 Sep</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-22T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-23T02:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-23-auto-2026-09-23-floods-block-pasang-lhamu-highway-bp-highway-and-tokha/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-23T03:59:07.000Z</news:publication_date>
+      <news:title>Floods block Pasang Lhamu Highway; BP Highway and Tokha-Chhahare road operate under time limits</news:title>
     </news:news>
   </url>
   <url>
@@ -76,28 +87,6 @@
       </news:publication>
       <news:publication_date>2026-09-21T13:43:25.000Z</news:publication_date>
       <news:title>Dashain advance ticket booking decision to follow weather, disaster assessment</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-21-auto-2026-09-21-floods-and-landslides-continue-to-block-highways-acros/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-21T01:14:16.000Z</news:publication_date>
-      <news:title>Floods and landslides continue to block highways across Nepal</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-21-auto-2026-09-21/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-21T01:06:15.000Z</news:publication_date>
-      <news:title>&apos;ठूलो बाढी आउँदैछ&apos; भन्ने सूचना पत्याउन नसक्दा धेरै क्षति</news:title>
     </news:news>
   </url>
 </urlset>
