@@ -1,6 +1,70 @@
 {
-  "updated": "2026-09-23T20:00:00+05:45",
+  "updated": "2026-09-24T04:18:29.000Z",
   "posts": [
+    {
+      "id": "auto-2026-09-24-",
+      "title": "भारी वर्षाको सम्भावनापछि स्याङ्जामा उच्च सतर्कता अपनाउन आग्रह",
+      "time": "2026-09-24T04:18:29.000Z",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/07/DAO-Syangja-1024x722.jpg",
+      "body": [
+        "८ असोज, स्याङ्जा । स्याङ्जामा भारीदेखि अति भारी वर्षाको सम्भावना रहेकाले जिल्ला प्रशासन कार्यालयले उच्च सतर्कता अपनाउन आग्रह गरेको छ ।"
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar (Nepali)",
+          "url": "https://www.onlinekhabar.com/2026/09/2024507/high-alert-urged-in-syangja-after-possibility-of-heavy-rain"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-09-24-butwal-schools-to-remain-closed-for-two-days-amid-heavy-rain",
+      "title": "Butwal schools to remain closed for two days amid heavy rain risk",
+      "time": "2026-09-24T04:15:47.000Z",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2025/06/Raining-6-1-1024x683-1.jpg",
+      "body": [
+        "Butwal, September 24 Butwal Sub-Metropolitan City has decided to suspend classes at all community and institutional schools in the city for two days amid the risk of flooding and inundation due to the forecast of heavy rainfall."
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/butwal-school-closed-heavy-rain.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-09-24-landslide-cleared-prithvi-highway-reopens-for-two-way-traffi",
+      "title": "Landslide cleared; Prithvi Highway reopens for two-way traffic in Dhading",
+      "time": "2026-09-24T03:55:48.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/09/pahirosadak.jpeg",
+      "body": [
+        "DHADING: Two-way traffic has resumed on the Prithvi Highway after clearance of landslides that fell at Krishnabhir in Ward 7 and Jyamire in Ward 9 of Benighat Rorang Rural Municipality, Dhading."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/landslide-cleared-prithvi-highway-reopens-for-two-way-traffic-in-dhading/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "latest-reported-figures",
+      "title": "Latest reported figures: 1,451 confirmed dead",
+      "time": "2026-09-23T20:00:00+05:45",
+      "image": "",
+      "body": [
+        "The confirmed death toll in Nepal has risen to 1,451, from 1,450, Nepal Police reports."
+      ],
+      "sources": [
+        {
+          "name": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10539/"
+        }
+      ],
+      "revised": true
+    },
     {
       "id": "auto-2026-09-23-floods-block-pasang-lhamu-highway-bp-highway-and-tokha-chhah",
       "title": "Floods block Pasang Lhamu Highway; BP Highway and Tokha-Chhahare road operate under time limits",
@@ -48,22 +112,6 @@
         }
       ],
       "auto": true
-    },
-    {
-      "id": "latest-reported-figures",
-      "title": "Latest reported figures: 1,451 confirmed dead",
-      "time": "2026-09-23T20:00:00+05:45",
-      "image": "",
-      "body": [
-        "The confirmed death toll in Nepal has risen to 1,451, from 1,450, Nepal Police reports."
-      ],
-      "sources": [
-        {
-          "name": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10539/"
-        }
-      ],
-      "revised": true
     },
     {
       "id": "auto-2026-09-22-",
