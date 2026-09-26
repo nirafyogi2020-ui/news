@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-25T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-26T02:15:00.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,451 dead, 5,132 missing in Rasuwa, 26 Sep</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-25T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-26T02:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-26-auto-2026-09-26-landslides-block-main-highways-in-6-districts-of-karna/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-26T04:54:45.000Z</news:publication_date>
+      <news:title>Landslides block main highways in 6 districts of Karnali</news:title>
     </news:news>
   </url>
   <url>
@@ -65,39 +76,6 @@
       </news:publication>
       <news:publication_date>2026-09-24T23:54:32.000Z</news:publication_date>
       <news:title>संयुक्त राष्ट्रसंघको महासभामा केहीबेरमा प्रधानमन्त्री बालेनले सम्बोधन गर्दै (लाइभ)</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-24-auto-2026-09-24/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-24T04:18:29.000Z</news:publication_date>
-      <news:title>भारी वर्षाको सम्भावनापछि स्याङ्जामा उच्च सतर्कता अपनाउन आग्रह</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-24-auto-2026-09-24-butwal-schools-to-remain-closed-for-two-days-amid-heav/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-24T04:15:47.000Z</news:publication_date>
-      <news:title>Butwal schools to remain closed for two days amid heavy rain risk</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-24-auto-2026-09-24-landslide-cleared-prithvi-highway-reopens-for-two-way-/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-24T03:55:48.000Z</news:publication_date>
-      <news:title>Landslide cleared; Prithvi Highway reopens for two-way traffic in Dhading</news:title>
     </news:news>
   </url>
 </urlset>
