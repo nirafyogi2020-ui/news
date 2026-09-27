@@ -1,6 +1,38 @@
 {
-  "updated": "2026-09-27T00:55:26.000Z",
+  "updated": "2026-09-27T06:32:00.000Z",
   "posts": [
+    {
+      "id": "auto-2026-09-27-",
+      "title": "मनकामना केबलकारमा जाने सडक भासियो, केबलकार बन्द (तस्बिरहरू)",
+      "time": "2026-09-27T06:32:00.000Z",
+      "image": "https://www.khabarhub.com/wp-content/uploads/2026/09/manakamana-ma-sadak-vasiyo-1-400x220.jpg",
+      "body": [
+        "काठमाडौं– चितवनको इच्छाकामना गाउँपालिका–४ स्थित मनकामना केबलकारको गेटभित्रको सडक भासिएको छ ।"
+      ],
+      "sources": [
+        {
+          "name": "Khabarhub",
+          "url": "https://khabarhub.com/2026/27/1029761/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-09-27-four-killed-in-myagdi-landslides",
+      "title": "Four killed in Myagdi landslides",
+      "time": "2026-09-27T06:21:00.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/09/pahiro-pahad.jpg",
+      "body": [
+        "BENI: Landslides triggered by heavy rains have killed four people in Annapurna Rural Municipality, Myagdi. Two victims died after a house was buried in Dana (Ward 3), while two others lost their lives in Ward 5."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/four-killed-in-myagdi-landslides/"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-09-27-",
       "title": "लालबकैया खोला खतरा तह नजिक, साँझसम्म सतर्कता अपनाउन आग्रह",
