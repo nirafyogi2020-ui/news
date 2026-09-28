@@ -1,6 +1,38 @@
 {
-  "updated": "2026-09-27T06:32:00.000Z",
+  "updated": "2026-09-28T00:55:00.000Z",
   "posts": [
+    {
+      "id": "auto-2026-09-28-myagdi-landslide-death-toll-reaches-six-three-remain-missing",
+      "title": "Myagdi landslide death toll reaches six, three remain missing",
+      "time": "2026-09-28T00:55:00.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/09/Pahiro-photo-e1783334021839.webp",
+      "body": [
+        "MYAGDI: The death toll from landslides in Myagdi has reached six, while three people remain missing. Four bodies were recovered in Annapurna Rural Municipality and two in Malika Rural Municipality."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/myagdi-landslide-death-toll-reaches-six-three-remain-missing/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-09-28-",
+      "title": "वर्षा रोकिएपछि राजमार्ग खुलाउन तीव्रता, पृथ्वी राजमार्ग आजै सञ्चालनमा ल्याउने तयारी",
+      "time": "2026-09-28T00:53:02.000Z",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/09/pahiro-2-1024x500.jpg",
+      "body": [
+        "पृथ्वी राजमार्ग अन्तर्गत मुग्लिन–काठमाडौं खण्डमा एक ठाउँको पहिरो पन्छाउन बाँकी छ । अन्य पहिरो पन्छाइसकिएको धादिङ प्रहरीले जनाएको छ ।"
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar (Nepali)",
+          "url": "https://www.onlinekhabar.com/2026/09/2027297/highway-reopening-in-a-hurry-after-rains-stop-prithvi-highway-to-be-operational-today"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-09-27-",
       "title": "मनकामना केबलकारमा जाने सडक भासियो, केबलकार बन्द (तस्बिरहरू)",

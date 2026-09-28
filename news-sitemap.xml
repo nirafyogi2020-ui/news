@@ -8,8 +8,8 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-27T14:15:00.000Z</news:publication_date>
-      <news:title>Nepal Flood Live: 1,451 dead, 5,132 missing in Rasuwa, 27 Sep</news:title>
+      <news:publication_date>2026-09-27T23:15:00.000Z</news:publication_date>
+      <news:title>Nepal Flood Live: 1,451 dead, 5,132 missing in Rasuwa, 28 Sep</news:title>
     </news:news>
   </url>
   <url>
@@ -19,8 +19,30 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-27T14:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-27T23:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-28-auto-2026-09-28-myagdi-landslide-death-toll-reaches-six-three-remain-m/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-28T00:55:00.000Z</news:publication_date>
+      <news:title>Myagdi landslide death toll reaches six, three remain missing</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-28-auto-2026-09-28/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-28T00:53:02.000Z</news:publication_date>
+      <news:title>वर्षा रोकिएपछि राजमार्ग खुलाउन तीव्रता, पृथ्वी राजमार्ग आजै सञ्चालनमा ल्याउने तयारी</news:title>
     </news:news>
   </url>
   <url>
@@ -54,17 +76,6 @@
       </news:publication>
       <news:publication_date>2026-09-26T04:54:45.000Z</news:publication_date>
       <news:title>Landslides block main highways in 6 districts of Karnali</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-26-auto-2026-09-26/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-26T00:19:17.000Z</news:publication_date>
-      <news:title>खुम्बु क्षेत्रमा हिमपात,सात विदेशी पर्यटकको उद्धार</news:title>
     </news:news>
   </url>
 </urlset>
