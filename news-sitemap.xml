@@ -8,8 +8,8 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-28T14:15:00.000Z</news:publication_date>
-      <news:title>Nepal Flood Live: 1,452 dead, 5,132 missing in Rasuwa, 28 Sep</news:title>
+      <news:publication_date>2026-09-28T23:15:00.000Z</news:publication_date>
+      <news:title>Nepal Flood Live: 1,452 dead, 5,132 missing in Rasuwa, 29 Sep</news:title>
     </news:news>
   </url>
   <url>
@@ -19,8 +19,30 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-28T14:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-09-28T23:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-29-auto-2026-09-29-prithvi-bp-and-siddhartha-highways-blocked-by-landslid/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T00:56:03.000Z</news:publication_date>
+      <news:title>Prithvi, BP, and Siddhartha highways blocked by landslides</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-29-auto-2026-09-29/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T00:32:50.000Z</news:publication_date>
+      <news:title>बाढीले पाइपलाइन बगाउँदा बागलुङ बजारमा खानेपानी समस्या</news:title>
     </news:news>
   </url>
   <url>
@@ -65,17 +87,6 @@
       </news:publication>
       <news:publication_date>2026-09-27T06:21:00.000Z</news:publication_date>
       <news:title>Four killed in Myagdi landslides</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-09-27-auto-2026-09-27/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-27T00:55:26.000Z</news:publication_date>
-      <news:title>लालबकैया खोला खतरा तह नजिक, साँझसम्म सतर्कता अपनाउन आग्रह</news:title>
     </news:news>
   </url>
 </urlset>
