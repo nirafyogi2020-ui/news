@@ -1,6 +1,54 @@
 {
-  "updated": "2026-09-28T20:00:00+05:45",
+  "updated": "2026-09-29T00:56:03.000Z",
   "posts": [
+    {
+      "id": "auto-2026-09-29-prithvi-bp-and-siddhartha-highways-blocked-by-landslides",
+      "title": "Prithvi, BP, and Siddhartha highways blocked by landslides",
+      "time": "2026-09-29T00:56:03.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/09/bp_rajmarga_BAsfVWsei5.jpg",
+      "body": [
+        "KATHMANDU: Incessant rainfall across Nepal has triggered widespread landslides, debris flows, and severe flood damage, bringing traffic to a standstill on several primary highway networks and critical regional corridors, according to a…"
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/prithvi-bp-and-siddhartha-highways-blocked-by-landslides/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-09-29-",
+      "title": "बाढीले पाइपलाइन बगाउँदा बागलुङ बजारमा खानेपानी समस्या",
+      "time": "2026-09-29T00:32:50.000Z",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2016/06/water_tap.jpg",
+      "body": [
+        "बजारका करिब चार हजार ५०० उपभोक्ताले आइतबारदेखि समस्या व्यहोर्नु परेको छ ।"
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar (Nepali)",
+          "url": "https://www.onlinekhabar.com/2026/09/2028108/water-supply-problem-in-baglung-bazaar-as-flood-washes-away-pipeline"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "latest-reported-figures",
+      "title": "Latest reported figures: 1,452 confirmed dead",
+      "time": "2026-09-28T20:00:00+05:45",
+      "image": "",
+      "body": [
+        "The confirmed death toll in Nepal has risen to 1,452, from 1,451, Nepal Police reports."
+      ],
+      "sources": [
+        {
+          "name": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10586/"
+        }
+      ],
+      "revised": true
+    },
     {
       "id": "auto-2026-09-28-",
       "title": "यी विषयमा रास्वपा सचेतक धितालले गरिन् सरकारको प्रशंसा",
@@ -240,22 +288,6 @@
         }
       ],
       "auto": true
-    },
-    {
-      "id": "latest-reported-figures",
-      "title": "Latest reported figures: 1,452 confirmed dead",
-      "time": "2026-09-28T20:00:00+05:45",
-      "image": "",
-      "body": [
-        "The confirmed death toll in Nepal has risen to 1,452, from 1,451, Nepal Police reports."
-      ],
-      "sources": [
-        {
-          "name": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10586/"
-        }
-      ],
-      "revised": true
     },
     {
       "id": "auto-2026-09-23-floods-block-pasang-lhamu-highway-bp-highway-and-tokha-chhah",
