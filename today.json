@@ -1,6 +1,54 @@
 {
-  "updated": "2026-09-30T07:17:45.000Z",
+  "updated": "2026-10-01T01:42:08.000Z",
   "posts": [
+    {
+      "id": "auto-2026-10-01-traffic-resumes-in-kaligandaki-corridor",
+      "title": "Traffic resumes in Kaligandaki Corridor",
+      "time": "2026-10-01T01:42:08.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/10/kaligandaki-karidor-gulmi.jpg",
+      "body": [
+        "GULMI: The Kaligandaki Corridor, which had been obstructed due to landslides triggered by continuous rainfall, has opened for traffic."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/traffic-resumes-in-kaligandaki-corridor/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-01-",
+      "title": "पहिरोले अवरुद्ध चेपाङ मार्ग आंशिक सञ्चालन",
+      "time": "2026-10-01T01:35:23.000Z",
+      "image": "https://images.nagariknewscdn.com/2025/third-party/1790818492_New%20Project%20(3).jpg",
+      "body": [
+        "पूर्व-पश्चिम राजमार्गको चितवनस्थित भण्डारादेखि पहाडी बाटो हुँदै धादिङको मलेखु पुगेर टुङ्गिने चेपाङ मार्ग पहिरोका कारण अवरुद्ध भएको छ।"
+      ],
+      "sources": [
+        {
+          "name": "Nagarik News",
+          "url": "https://nagariknews.nagariknetwork.com/sports/chepang-road-partially-operational-due-to-landslide-36-72.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-01-displaced-syabrubesi-residents-seek-a-way-home-after-bhoteko",
+      "title": "Displaced Syabrubesi residents seek a way home after Bhotekoshi floods",
+      "time": "2026-10-01T01:15:00.000Z",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/09/syaphrubesi-rasuwa-flood-6.jpg",
+      "body": [
+        "Aerial view of Syabrubesi after the Bhotekoshi flood. Kathmandu, October 1 It has been more than a month since Singi Dhindup Tamang, 58, of Syabrubesi in Gosainkunda Rural Municipality-5, Rasuwa, arrived at Yellow Gumba in Swayambhu,…"
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/displaced-syabrubesi-people-want-home.html"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-09-30-ghising-urges-government-to-prioritise-energy-security-infra",
       "title": "Ghising urges government to prioritise energy security, infrastructure reconstruction",
