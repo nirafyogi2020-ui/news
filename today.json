@@ -1,6 +1,38 @@
 {
-  "updated": "2026-10-03T00:15:00.000Z",
+  "updated": "2026-10-03T04:55:00.000Z",
   "posts": [
+    {
+      "id": "auto-2026-10-03-",
+      "title": "छ दिनदेखि अवरुद्ध बेँसीसहर–चामे सडक सञ्चालनमा",
+      "time": "2026-10-03T04:55:00.000Z",
+      "image": "https://images.nagariknewscdn.com/2025/third-party/1791003290_1719980536_chame-1200x560.jpg",
+      "body": [
+        "बाढीपहिरोका कारण छ दिनदेखि अवरुद्ध बेँसीसहर-चामे सडक सञ्चालनमा आएको छ।"
+      ],
+      "sources": [
+        {
+          "name": "Nagarik News",
+          "url": "https://nagariknews.nagariknetwork.com/sports/besisahar-chame-road-blocked-for-six-days-now-operational-85-84.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-03-floods-and-landslides-obstruct-multiple-highways-across-nepa",
+      "title": "Floods and landslides obstruct multiple highways across Nepal",
+      "time": "2026-10-03T02:02:44.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/05/pahiro-sadak-1727502779_2IfnOqbizt.jpg",
+      "body": [
+        "KATHMANDU: Continuous rains triggering floods and landslides have led to severe disruptions and closures along several major highway corridors across Bagmati, Gandaki, and Karnali provinces, according to an official update released by the…"
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/floods-and-landslides-obstruct-multiple-highways-across-nepal/"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-10-03-after-weeks-of-searching-focus-shifts-to-recovery-of-missing",
       "title": "After weeks of searching, focus shifts to recovery of missing workers and hydropower projects",
