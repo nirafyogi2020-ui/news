@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-03T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-10-04T05:15:00.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,454 dead, 5,132 missing in Rasuwa, 4 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,41 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-03T23:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-10-04T05:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-04-auto-2026-10-04-phidim-municipality-contributes-rs-4-7-million-to-disa/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-04T04:59:37.000Z</news:publication_date>
+      <news:title>Phidim Municipality contributes Rs 4.7 million to disaster relief fund</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-04-auto-2026-10-04-lamichhane-foundation-donates-over-51-000-for-flood-re/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-04T04:51:36.000Z</news:publication_date>
+      <news:title>Lamichhane Foundation donates over £51,000 for flood relief</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-04-auto-2026-10-04-63-houses-damaged-by-natural-disasters-in-galkot/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-04T04:42:30.000Z</news:publication_date>
+      <news:title>63 houses damaged by natural disasters in Galkot</news:title>
     </news:news>
   </url>
   <url>
@@ -65,39 +98,6 @@
       </news:publication>
       <news:publication_date>2026-10-03T00:15:00.000Z</news:publication_date>
       <news:title>After weeks of searching, focus shifts to recovery of missing workers and hydropower projects</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-02-auto-2026-10-02/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-02T05:23:02.000Z</news:publication_date>
-      <news:title>सीमा जोगाउने दोधारा चाँदनीको झोलुङ्गे पुल कहिले होला मर्मत ?</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-02-auto-2026-10-02-landslides-block-multiple-highways-across-nation/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-02T04:15:33.000Z</news:publication_date>
-      <news:title>Landslides block multiple highways across nation</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-02-auto-2026-10-02-flooding-in-relekhola-dam-halts-power-production/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-02T04:08:39.000Z</news:publication_date>
-      <news:title>Flooding in Relekhola dam halts power production</news:title>
     </news:news>
   </url>
 </urlset>
