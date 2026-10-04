@@ -1,6 +1,70 @@
 {
-  "updated": "2026-10-03T14:00:00+05:45",
+  "updated": "2026-10-04T04:59:37.000Z",
   "posts": [
+    {
+      "id": "auto-2026-10-04-phidim-municipality-contributes-rs-4-7-million-to-disaster-r",
+      "title": "Phidim Municipality contributes Rs 4.7 million to disaster relief fund",
+      "time": "2026-10-04T04:59:37.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/10/phidim-nagarpalika.jpg",
+      "body": [
+        "PANCHTHAR: The Phidim Municipality has deposited Rs 4.7 million into the Prime Minister Disaster Relief Fund to assist the survivors of the recent devastating floods that struck the Bhotekoshi-Trishuli river system."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/phidim-municipality-contributes-rs-4-7-million-to-disaster-relief-fund/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-04-lamichhane-foundation-donates-over-51-000-for-flood-relief",
+      "title": "Lamichhane Foundation donates over £51,000 for flood relief",
+      "time": "2026-10-04T04:51:36.000Z",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/10/0_107-1024x769.jpeg",
+      "body": [
+        "London, October 4 The Lamichhane Foundation has donated NPR 1.07 crore (£51,727) to support victims of the recent floods in Nepal’s Bhote Koshi region."
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/lamichhane-foundation-flood-relief.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-04-63-houses-damaged-by-natural-disasters-in-galkot",
+      "title": "63 houses damaged by natural disasters in Galkot",
+      "time": "2026-10-04T04:42:30.000Z",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2020/07/landslide-in-nepal-1.jpg",
+      "body": [
+        "Representational sketch: A landslide in Nepal Baglung, October 4 A total of 63 residential structures have been damaged by floods, landslides and severe weather conditions in Galkot Municipality over the past week."
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/63-houses-damaged-by-natural-disasters-in-galkot.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "latest-reported-figures",
+      "title": "Latest reported figures: 1,454 confirmed dead",
+      "time": "2026-10-03T14:00:00+05:45",
+      "image": "",
+      "body": [
+        "The confirmed death toll in Nepal has risen to 1,454, from 1,453, Nepal Police reports."
+      ],
+      "sources": [
+        {
+          "name": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10635/"
+        }
+      ],
+      "revised": true
+    },
     {
       "id": "auto-2026-10-03-",
       "title": "छ दिनदेखि अवरुद्ध बेँसीसहर–चामे सडक सञ्चालनमा",
@@ -96,22 +160,6 @@
         }
       ],
       "auto": true
-    },
-    {
-      "id": "latest-reported-figures",
-      "title": "Latest reported figures: 1,454 confirmed dead",
-      "time": "2026-10-03T14:00:00+05:45",
-      "image": "",
-      "body": [
-        "The confirmed death toll in Nepal has risen to 1,454, from 1,453, Nepal Police reports."
-      ],
-      "sources": [
-        {
-          "name": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10635/"
-        }
-      ],
-      "revised": true
     },
     {
       "id": "auto-2026-10-01-traffic-resumes-in-kaligandaki-corridor",
