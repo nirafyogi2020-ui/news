@@ -8,8 +8,8 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-04T14:15:00.000Z</news:publication_date>
-      <news:title>Nepal Flood Live: 1,455 dead, 5,132 missing in Rasuwa, 4 Oct</news:title>
+      <news:publication_date>2026-10-04T23:15:00.000Z</news:publication_date>
+      <news:title>Nepal Flood Live: 1,455 dead, 5,132 missing in Rasuwa, 5 Oct</news:title>
     </news:news>
   </url>
   <url>
@@ -19,8 +19,30 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-04T14:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-10-04T23:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-05-auto-2026-10-05-why-climate-security-must-matter-to-nepal-s-diplomacy/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-05T00:15:00.000Z</news:publication_date>
+      <news:title>Why climate security must matter to Nepal’s diplomacy</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-05-auto-2026-10-05/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-05T00:14:50.000Z</news:publication_date>
+      <news:title>म्याग्दीका २६ पहिरो अध्ययन : बेनीको न्युरोडमा बढ्यो जोखिम</news:title>
     </news:news>
   </url>
   <url>
@@ -98,17 +120,6 @@
       </news:publication>
       <news:publication_date>2026-10-03T02:02:44.000Z</news:publication_date>
       <news:title>Floods and landslides obstruct multiple highways across Nepal</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-03-auto-2026-10-03-after-weeks-of-searching-focus-shifts-to-recovery-of-m/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-03T00:15:00.000Z</news:publication_date>
-      <news:title>After weeks of searching, focus shifts to recovery of missing workers and hydropower projects</news:title>
     </news:news>
   </url>
 </urlset>
