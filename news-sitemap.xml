@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-06T01:27:20.000Z</news:publication_date>
+      <news:publication_date>2026-10-06T08:33:48.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,455 dead, 5,132 missing in Rasuwa, 5 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-06T01:27:20.000Z</news:publication_date>
+      <news:publication_date>2026-10-06T08:33:48.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-06-auto-2026-10-06-world-bank-projects-nepal-economic-growth-to-slow-to-3/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-06T08:33:48.000Z</news:publication_date>
+      <news:title>World Bank projects Nepal economic growth to slow to 3.7 percent</news:title>
     </news:news>
   </url>
   <url>
@@ -87,39 +98,6 @@
       </news:publication>
       <news:publication_date>2026-10-04T14:15:00.000Z</news:publication_date>
       <news:title>Latest reported figures: 1,455 confirmed dead</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-04-auto-2026-10-04-phidim-municipality-contributes-rs-4-7-million-to-disa/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-04T04:59:37.000Z</news:publication_date>
-      <news:title>Phidim Municipality contributes Rs 4.7 million to disaster relief fund</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-04-auto-2026-10-04-lamichhane-foundation-donates-over-51-000-for-flood-re/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-04T04:51:36.000Z</news:publication_date>
-      <news:title>Lamichhane Foundation donates over £51,000 for flood relief</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-04-auto-2026-10-04-63-houses-damaged-by-natural-disasters-in-galkot/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-04T04:42:30.000Z</news:publication_date>
-      <news:title>63 houses damaged by natural disasters in Galkot</news:title>
     </news:news>
   </url>
 </urlset>
