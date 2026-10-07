@@ -8,8 +8,8 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-06T14:15:00.000Z</news:publication_date>
-      <news:title>Nepal Flood Live: 1,455 dead, 5,132 missing in Rasuwa, 6 Oct</news:title>
+      <news:publication_date>2026-10-07T00:15:00.000Z</news:publication_date>
+      <news:title>Nepal Flood Live: 1,455 dead, 5,132 missing in Rasuwa, 7 Oct</news:title>
     </news:news>
   </url>
   <url>
@@ -19,8 +19,41 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-06T14:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-10-07T00:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-07-auto-2026-10-07-relief-materials-provided-to-bhotekoshi-flood-hit-fami/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T05:33:29.000Z</news:publication_date>
+      <news:title>Relief materials provided to Bhotekoshi flood hit families</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-07-auto-2026-10-07-repairs-intensified-on-flood-damaged-beni-jomsom-koral/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T05:33:23.000Z</news:publication_date>
+      <news:title>Repairs intensified on flood-damaged Beni-Jomsom-Korala road</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-07-auto-2026-10-07-early-weather-warnings-ease-paddy-harvesting-for-kanch/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T05:30:22.000Z</news:publication_date>
+      <news:title>Early weather warnings ease paddy harvesting for Kanchanpur farmers</news:title>
     </news:news>
   </url>
   <url>
@@ -54,39 +87,6 @@
       </news:publication>
       <news:publication_date>2026-10-06T01:15:00.000Z</news:publication_date>
       <news:title>PM Balen Shah’s UN speech and the missing link in Nepal’s climate response</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-05-auto-2026-10-05-chitwan-national-park-preparing-to-reopen-jeep-safari-/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-05T04:08:57.000Z</news:publication_date>
-      <news:title>Chitwan National Park preparing to reopen jeep safari from Friday</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-05-auto-2026-10-05-why-climate-security-must-matter-to-nepal-s-diplomacy/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-05T00:15:00.000Z</news:publication_date>
-      <news:title>Why climate security must matter to Nepal’s diplomacy</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-05-auto-2026-10-05/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-05T00:14:50.000Z</news:publication_date>
-      <news:title>म्याग्दीका २६ पहिरो अध्ययन : बेनीको न्युरोडमा बढ्यो जोखिम</news:title>
     </news:news>
   </url>
 </urlset>
