@@ -1,6 +1,54 @@
 {
-  "updated": "2026-10-06T08:33:48.000Z",
+  "updated": "2026-10-07T05:33:29.000Z",
   "posts": [
+    {
+      "id": "auto-2026-10-07-relief-materials-provided-to-bhotekoshi-flood-hit-families",
+      "title": "Relief materials provided to Bhotekoshi flood hit families",
+      "time": "2026-10-07T05:33:29.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/10/nepal-redcross-society.gif",
+      "body": [
+        "KATHMANDU: Relief materials have been provided to the families at the risk located at Dandagaun of Uttargaya rural municipality-2 in the Bhotekoshi flood-affected Rasuwa district."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/relief-materials-provided-to-bhotekoshi-flood-hit-families/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-07-repairs-intensified-on-flood-damaged-beni-jomsom-korala-road",
+      "title": "Repairs intensified on flood-damaged Beni-Jomsom-Korala road",
+      "time": "2026-10-07T05:33:23.000Z",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/09/Korala-2.jpg",
+      "body": [
+        "Myagdi, October 7 Repair and reconstruction work has been intensified along several sections of the Beni-Jomsom-Korala road under the Kaligandaki Corridor after floods and landslides triggered by heavy rainfall disrupted the route."
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/repairs-intensified-on-flood-damaged-beni-jomsom-korala-road.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-07-early-weather-warnings-ease-paddy-harvesting-for-kanchanpur-",
+      "title": "Early weather warnings ease paddy harvesting for Kanchanpur farmers",
+      "time": "2026-10-07T05:30:22.000Z",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2023/12/Paddy-Harvesting.jpg",
+      "body": [
+        "Kanchanpur, October 7 Early weather warnings have made it easier for farmers in Kanchanpur to decide when to harvest paddy and protect their crops from rain and floods."
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/early-weather-warnings-ease-paddy-harvesting-for-kanchanpur-farmers.html"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-10-06-world-bank-projects-nepal-economic-growth-to-slow-to-3-7-per",
       "title": "World Bank projects Nepal economic growth to slow to 3.7 percent",
