@@ -8,8 +8,8 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-07T12:15:00.000Z</news:publication_date>
-      <news:title>Nepal Flood Live: 1,455 dead, 5,132 missing in Rasuwa, 7 Oct</news:title>
+      <news:publication_date>2026-10-08T00:15:00.000Z</news:publication_date>
+      <news:title>Nepal Flood Live: 1,455 dead, 5,132 missing in Rasuwa, 8 Oct</news:title>
     </news:news>
   </url>
   <url>
@@ -19,8 +19,30 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-07T12:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-10-08T00:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-08-auto-2026-10-08-training-children-and-students-against-future-disaster/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-08T02:15:00.000Z</news:publication_date>
+      <news:title>Training children and students against future disasters</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-08-auto-2026-10-08/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-08T01:37:08.000Z</news:publication_date>
+      <news:title>आईपीयू महासभामा नेपालको आपत्कालीन प्रस्ताव दुईतिहाइ बहुमतले चयन</news:title>
     </news:news>
   </url>
   <url>
@@ -65,28 +87,6 @@
       </news:publication>
       <news:publication_date>2026-10-06T08:33:48.000Z</news:publication_date>
       <news:title>World Bank projects Nepal economic growth to slow to 3.7 percent</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-06-auto-2026-10-06/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-06T01:27:20.000Z</news:publication_date>
-      <news:title>अर्थमन्त्री वाग्ले र विश्व बैंक समूहका अध्यक्ष बाङ्गाबीच भेटवार्ता</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-06-auto-2026-10-06-pm-balen-shah-s-un-speech-and-the-missing-link-in-nepa/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-06T01:15:00.000Z</news:publication_date>
-      <news:title>PM Balen Shah’s UN speech and the missing link in Nepal’s climate response</news:title>
     </news:news>
   </url>
 </urlset>
