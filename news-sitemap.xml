@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-08T00:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-10-08T06:15:00.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,455 dead, 5,132 missing in Rasuwa, 8 Oct</news:title>
     </news:news>
   </url>
@@ -19,7 +19,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-08T00:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-10-08T06:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
     </news:news>
   </url>
@@ -76,17 +76,6 @@
       </news:publication>
       <news:publication_date>2026-10-07T05:30:22.000Z</news:publication_date>
       <news:title>Early weather warnings ease paddy harvesting for Kanchanpur farmers</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-06-auto-2026-10-06-world-bank-projects-nepal-economic-growth-to-slow-to-3/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-06T08:33:48.000Z</news:publication_date>
-      <news:title>World Bank projects Nepal economic growth to slow to 3.7 percent</news:title>
     </news:news>
   </url>
 </urlset>
