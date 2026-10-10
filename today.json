@@ -1,6 +1,38 @@
 {
-  "updated": "2026-10-10T02:35:35.000Z",
+  "updated": "2026-10-10T09:01:25.000Z",
   "posts": [
+    {
+      "id": "auto-2026-10-10-",
+      "title": "बाढीपहिरोले क्षतिग्रस्त बेँसीसहर-चामे सडक स्तरोन्नति गर्न एक अर्ब लाग्ने",
+      "time": "2026-10-10T09:01:25.000Z",
+      "image": "https://www.khabarhub.com/wp-content/uploads/2024/03/Chame-besisahar-400x220.jpg",
+      "body": [
+        "लमजुङ– बाढीपहिरोले क्षति पुर्‍याएको बेँसीसहर-चामे खण्डका संरचना, पक्की सडक तथा पुल निर्माणका लागि रु एक अर्ब आवश्यक पर्ने भएको छ । बेँसीसहरबाट चामेसम्मको सडकको समग्र स्तरोन्नतिका लागि भने रु तीन अर्ब लागत अनुमान गरिएको छ ।"
+      ],
+      "sources": [
+        {
+          "name": "Khabarhub",
+          "url": "https://khabarhub.com/2026/10/1035858/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-10-bp-highway-obstructed",
+      "title": "BP Highway obstructed",
+      "time": "2026-10-10T04:11:42.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/05/BP-Highway-Open_Kavre.jpg",
+      "body": [
+        "KAVRE: The BP Highway has been completely blocked after a landslide with debris occurred in Roshi Rural Municipality-9, Pinthalibesi."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/bp-highway-obstructed/"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-10-10-",
       "title": "त्रिभुवन राजपथमा सवारी आवागमनको नयाँ समय तालिका लागू",
