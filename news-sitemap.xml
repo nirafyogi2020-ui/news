@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-11T06:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-10-11T12:15:00.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,455 dead, 5,132 missing in Rasuwa, 11 Oct</news:title>
     </news:news>
   </url>
@@ -19,7 +19,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-11T06:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-10-11T12:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
     </news:news>
   </url>
@@ -76,17 +76,6 @@
       </news:publication>
       <news:publication_date>2026-10-10T02:35:35.000Z</news:publication_date>
       <news:title>त्रिभुवन राजपथमा सवारी आवागमनको नयाँ समय तालिका लागू</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-09-auto-2026-10-09-over-rs-3-547-million-donation-handed-over-to-minister/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-09T07:26:50.000Z</news:publication_date>
-      <news:title>Over Rs 3.547 million donation handed over to Minister Dr Wagle</news:title>
     </news:news>
   </url>
 </urlset>
