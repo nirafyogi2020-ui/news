@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-12T00:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-10-12T12:15:00.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,456 dead, 5,132 missing in Rasuwa, 12 Oct</news:title>
     </news:news>
   </url>
@@ -19,7 +19,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-12T00:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-10-12T12:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
     </news:news>
   </url>
@@ -87,28 +87,6 @@
       </news:publication>
       <news:publication_date>2026-10-11T00:54:20.000Z</news:publication_date>
       <news:title>गोरखाको चुमनुम्ब्रीमा आकस्मिक बाढी, खोला थुनिएको आशंका</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-10-auto-2026-10-10-bp-highway-obstructed/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-10T04:11:42.000Z</news:publication_date>
-      <news:title>BP Highway obstructed</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-10-auto-2026-10-10/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-10T02:35:35.000Z</news:publication_date>
-      <news:title>त्रिभुवन राजपथमा सवारी आवागमनको नयाँ समय तालिका लागू</news:title>
     </news:news>
   </url>
 </urlset>
