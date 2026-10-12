@@ -1,6 +1,54 @@
 {
-  "updated": "2026-10-11T07:07:23.000Z",
+  "updated": "2026-10-12T06:00:00+05:45",
   "posts": [
+    {
+      "id": "auto-2026-10-12-",
+      "title": "बूढीगण्डकीमा बाढी : इसिमोडको प्रारम्भिक आकलन के छ ?",
+      "time": "2026-10-12T01:35:26.000Z",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/10/budhigandaki-badhi1248-1024x500.jpg",
+      "body": [
+        "रसुवा–भोटेकोशी बाढीपछि बूढीगण्डकीमा आएको बाढीले हिमाली क्षेत्रमा एउटा प्राकृतिक प्रक्रियाले अर्को विपद् निम्त्याउन सक्ने र त्यसबाट जनधन तथा पूर्वाधारमा हुने क्षति थप बढ्न सक्ने जोखिमलाई उजागर गरेको छ ।"
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar (Nepali)",
+          "url": "https://www.onlinekhabar.com/2026/10/2037287/floods-in-budhigandaki-what-is-icimods-initial-assessment"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-12-dashain-meat-supply-hit-by-floods-and-road-blockages-prices-",
+      "title": "Dashain meat supply hit by floods and road blockages, prices soar in Kathmandu",
+      "time": "2026-10-12T01:15:00.000Z",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2023/12/goat.jpg",
+      "body": [
+        "Kathmandu, October 11 Floods and landslides triggered by incessant rainfall have disrupted Dashain meat supplies in Kathmandu Valley, raising concerns that prices of goats and sheep could rise further as major highways remain blocked."
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/dashain-meat-supply-hit-floods.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "latest-reported-figures",
+      "title": "Latest reported figures: 1,456 confirmed dead",
+      "time": "2026-10-12T06:00:00+05:45",
+      "image": "",
+      "body": [
+        "The confirmed death toll in Nepal has risen to 1,456, from 1,455, Nepal Police reports."
+      ],
+      "sources": [
+        {
+          "name": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10719/"
+        }
+      ],
+      "revised": true
+    },
     {
       "id": "auto-2026-10-11-prithvi-highway-reopens-after-road-cutting-at-galaundi",
       "title": "Prithvi Highway reopens after road cutting at Galaundi",
@@ -336,22 +384,6 @@
         }
       ],
       "auto": true
-    },
-    {
-      "id": "latest-reported-figures",
-      "title": "Latest reported figures: 1,455 confirmed dead",
-      "time": "2026-10-04T20:00:00+05:45",
-      "image": "",
-      "body": [
-        "The confirmed death toll in Nepal has risen to 1,455, from 1,454, Nepal Police reports."
-      ],
-      "sources": [
-        {
-          "name": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10648/"
-        }
-      ],
-      "revised": true
     },
     {
       "id": "auto-2026-10-04-phidim-municipality-contributes-rs-4-7-million-to-disaster-r",
