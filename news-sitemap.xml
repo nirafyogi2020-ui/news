@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-13T00:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-10-13T06:15:00.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,456 dead, 5,132 missing in Rasuwa, 13 Oct</news:title>
     </news:news>
   </url>
@@ -19,7 +19,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-13T00:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-10-13T06:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
     </news:news>
   </url>
@@ -87,28 +87,6 @@
       </news:publication>
       <news:publication_date>2026-10-12T00:15:00.000Z</news:publication_date>
       <news:title>Latest reported figures: 1,456 confirmed dead</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-11-auto-2026-10-11-prithvi-highway-reopens-after-road-cutting-at-galaundi/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-11T07:07:23.000Z</news:publication_date>
-      <news:title>Prithvi Highway reopens after road cutting at Galaundi</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-11-auto-2026-10-11-acrow-bridge-over-falaku-khola-in-betrawati-now-operat/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-11T07:06:57.000Z</news:publication_date>
-      <news:title>Acrow bridge over Falaku Khola in Betrawati now operational</news:title>
     </news:news>
   </url>
 </urlset>
