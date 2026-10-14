@@ -8,8 +8,8 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-13T12:15:00.000Z</news:publication_date>
-      <news:title>Nepal Flood Live: 1,456 dead, 5,132 missing in Rasuwa, 13 Oct</news:title>
+      <news:publication_date>2026-10-14T00:15:00.000Z</news:publication_date>
+      <news:title>Nepal Flood Live: 1,456 dead, 5,132 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
   <url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-13T12:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-10-14T00:15:00.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-14-auto-2026-10-14/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-14T00:33:01.000Z</news:publication_date>
+      <news:title>मुस्ताङ र अन्नपूर्णमा विद्युत् आपूर्ति पुनः नियमित</news:title>
     </news:news>
   </url>
   <url>
@@ -54,39 +65,6 @@
       </news:publication>
       <news:publication_date>2026-10-13T03:15:00.000Z</news:publication_date>
       <news:title>Govt introduces special price adjustment for public construction contracts</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-12-auto-2026-10-12/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-12T01:35:26.000Z</news:publication_date>
-      <news:title>बूढीगण्डकीमा बाढी : इसिमोडको प्रारम्भिक आकलन के छ ?</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-12-auto-2026-10-12-dashain-meat-supply-hit-by-floods-and-road-blockages-p/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-12T01:15:00.000Z</news:publication_date>
-      <news:title>Dashain meat supply hit by floods and road blockages, prices soar in Kathmandu</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-12-latest-reported-figures/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-12T00:15:00.000Z</news:publication_date>
-      <news:title>Latest reported figures: 1,456 confirmed dead</news:title>
     </news:news>
   </url>
 </urlset>
