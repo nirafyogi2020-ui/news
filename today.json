@@ -1,6 +1,22 @@
 {
-  "updated": "2026-10-17T01:24:18.000Z",
+  "updated": "2026-10-17T06:39:15.000Z",
   "posts": [
+    {
+      "id": "auto-2026-10-17-",
+      "title": "भोटेकोशी बाढी : ३ हजार ६१० परिवारको ५०७ हेक्टर जमिनमा क्षति",
+      "time": "2026-10-17T06:39:15.000Z",
+      "image": "https://images.nagariknewscdn.com/2026/third-party/1788088896_rasuwa%20nuwakot%20trishuli%20badi.jpg",
+      "body": [
+        "भोटेकोशी नदीमा आएको विनाशकारी बाढीबाट प्रभावित ७९७ परिवारले बाढीअघिकै स्थानमा बस्ने इच्छा व्यक्त गरेका छन्।"
+      ],
+      "sources": [
+        {
+          "name": "Nagarik News",
+          "url": "https://nagariknews.nagariknetwork.com/economy/bhotekoshi-flood-507-hectares-of-land-belonging-to-3-610-families-damaged-br-51-55.html"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-10-17-light-rain-and-snowfall-likely-in-parts-of-nepal",
       "title": "Light Rain and Snowfall Likely in Parts of Nepal",
