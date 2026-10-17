@@ -1,6 +1,38 @@
 {
-  "updated": "2026-10-16T09:41:24.000Z",
+  "updated": "2026-10-17T01:24:18.000Z",
   "posts": [
+    {
+      "id": "auto-2026-10-17-light-rain-and-snowfall-likely-in-parts-of-nepal",
+      "title": "Light Rain and Snowfall Likely in Parts of Nepal",
+      "time": "2026-10-17T01:24:18.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/09/rain-1-scaled.jpg",
+      "body": [
+        "KATHMANDU: The Department of Hydrology and Meteorology has reported that the Himalayan regions of Koshi, Bagmati, and Gandaki provinces will experience generally cloudy conditions today."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/weather/light-rain-and-snowfall-likely-in-parts-of-nepal/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-17-",
+      "title": "चाडपर्वले अर्थतन्त्र चलायमान",
+      "time": "2026-10-17T00:52:45.000Z",
+      "image": "https://images.nagariknewscdn.com/2026/third-party/1792198608_hidu%2098%20hidu%2098.jpg",
+      "body": [
+        "बाढीपहिरो, प्राकृतिक विपत्तिले अर्थतन्त्र सुस्ताएका बेला दसैंलगायत चाडपर्व सुरु भएसँगै बजारमा आर्थिक गतिविधि बढेको छ। बजारमा किनमेल गर्नेको भिड छ। सहर बस्ने धमाधम गाउँ फर्किएका छन्। विदेशमा रहेकाले घरमा दसैं मनाउन पैसा पठाएका छन्।"
+      ],
+      "sources": [
+        {
+          "name": "Nagarik News",
+          "url": "https://nagariknews.nagariknetwork.com/economy/festivals-keep-the-economy-moving-br-19-43.html"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-10-16-",
       "title": "बाढीले थपियो चुनौती, काभ्रेका खानी तथा क्रसरको नियमन कमजोर",
