@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-16T09:41:24.000Z</news:publication_date>
+      <news:publication_date>2026-10-17T01:24:18.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,456 dead, 5,132 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,30 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-16T09:41:24.000Z</news:publication_date>
+      <news:publication_date>2026-10-17T01:24:18.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-17-auto-2026-10-17-light-rain-and-snowfall-likely-in-parts-of-nepal/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-17T01:24:18.000Z</news:publication_date>
+      <news:title>Light Rain and Snowfall Likely in Parts of Nepal</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-17-auto-2026-10-17/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-17T00:52:45.000Z</news:publication_date>
+      <news:title>चाडपर्वले अर्थतन्त्र चलायमान</news:title>
     </news:news>
   </url>
   <url>
@@ -54,17 +76,6 @@
       </news:publication>
       <news:publication_date>2026-10-15T06:34:09.000Z</news:publication_date>
       <news:title>25 children being taken to India to learn Tibetan language rescued at Banbasa</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-15-auto-2026-10-15/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-15T00:37:07.000Z</news:publication_date>
-      <news:title>घिरिङ र डेढगाउँ जोड्ने कालीगण्डकीको पुल सञ्चालन</news:title>
     </news:news>
   </url>
 </urlset>
