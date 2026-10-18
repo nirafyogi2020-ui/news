@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-18T01:12:21.000Z</news:publication_date>
+      <news:publication_date>2026-10-18T06:15:54.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,456 dead, 5,132 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-18T01:12:21.000Z</news:publication_date>
+      <news:publication_date>2026-10-18T06:15:54.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-18-auto-2026-10-18-flood-displaced-settlements-at-risk-from-toxic-liquor/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-18T06:15:54.000Z</news:publication_date>
+      <news:title>Flood-displaced settlements at risk from “toxic liquor”</news:title>
     </news:news>
   </url>
   <url>
