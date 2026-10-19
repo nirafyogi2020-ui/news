@@ -1,6 +1,38 @@
 {
-  "updated": "2026-10-19T00:47:40.000Z",
+  "updated": "2026-10-19T05:35:50.000Z",
   "posts": [
+    {
+      "id": "auto-2026-10-19-",
+      "title": "बाढीपहिरोबाट जलजलाका तीन सय घरपरिवार प्रभावित",
+      "time": "2026-10-19T05:35:50.000Z",
+      "image": "https://www.khabarhub.com/wp-content/uploads/2023/09/jaljala-400x220.jpg",
+      "body": [
+        "म्याग्दी– पछिल्लो मनसुनजन्य विपद्बाट म्याग्दीको सदरमुकाम बेनी बजारसँगै रहेको पर्वतको जलजला गाउँपालिकामा ३०० भन्दाबढी घरपरिवार प्रभावित भएका छन् ।"
+      ],
+      "sources": [
+        {
+          "name": "Khabarhub",
+          "url": "https://khabarhub.com/2026/19/1038990/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-19-floods-and-landslides-disrupt-major-roads-in-three-districts",
+      "title": "Floods and landslides disrupt major roads in three districts",
+      "time": "2026-10-19T02:23:21.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/09/Pahiro-panchhaudai-0c058ef0-d85f-4c55-86b4-cba0792d6b30.jpg",
+      "body": [
+        "KATHMANDU: Major highways in Gandaki and Karnali provinces have been disrupted due to floods and landslides. According to reports received as of 6:30 a.m."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/floods-and-landslides-disrupt-major-roads-in-three-districts/"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-10-19-",
       "title": "लगातार ६ खेलसम्म जितविहीन बन्यो म्यानचेस्टर युनाइटेड",
