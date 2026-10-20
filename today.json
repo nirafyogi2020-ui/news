@@ -1,6 +1,22 @@
 {
-  "updated": "2026-10-19T05:35:50.000Z",
+  "updated": "2026-10-20T01:29:16.000Z",
   "posts": [
+    {
+      "id": "auto-2026-10-20-",
+      "title": "छुम्सुरको पहिरो पन्छाएपछि खाँदबारी–किमाथाङ्का सडक पुनः सञ्चालन",
+      "time": "2026-10-20T01:29:16.000Z",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/10/khadbari-kimathanka.jpg",
+      "body": [
+        "३ कात्तिक, सङ्खुवासभा । नेपाली सेनाको अथक प्रयासपछि अवरुद्ध खाँदबारी–किमाथाङ्का सडकखण्ड सोमबार साँझदेखि पुनः सञ्चालनमा आएको छ । नेपाल –चीन जोड्ने ‘लाइफलाइन’ सो सडकखण्ड विगत तीन महिनादेखि अवरुद्ध भएको थियो ।"
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar (Nepali)",
+          "url": "https://www.onlinekhabar.com/2026/10/2041776/khandbari-kimathanka-road-reopens-after-chhumsur-landslide-cleared"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-10-19-",
       "title": "बाढीपहिरोबाट जलजलाका तीन सय घरपरिवार प्रभावित",
