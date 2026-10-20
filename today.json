@@ -1,6 +1,38 @@
 {
-  "updated": "2026-10-20T01:29:16.000Z",
+  "updated": "2026-10-20T07:17:16.000Z",
   "posts": [
+    {
+      "id": "auto-2026-10-20-",
+      "title": "सडक सम्पर्क विच्छेद भएका बस्तीमा ड्रोनबाट राहत सामग्री",
+      "time": "2026-10-20T07:17:16.000Z",
+      "image": "https://images.nagariknewscdn.com/2025/third-party/1765205030_dron.jpg",
+      "body": [
+        "बाढीका कारण सडक सम्पर्क विच्छेद भएका गोरखाका दुर्गम बस्तीमा ड्रोनमार्फत राहत सामग्री पुर्‍याइएको छ।"
+      ],
+      "sources": [
+        {
+          "name": "Nagarik News",
+          "url": "https://nagariknews.nagariknetwork.com/social-affairs/relief-supplies-delivered-by-drone-to-settlements-with-road-connectivity-cut-off-73-60.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-20-beni-jomsom-korala-road-damage-is-about-one-billion-rupees",
+      "title": "Beni-Jomsom-Korala road damage is about one billion rupees",
+      "time": "2026-10-20T05:33:27.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/10/Beni-Jomsome-korola-raod-loss.jpg",
+      "body": [
+        "MYAGDI: It is estimated that the damage to physical structures worth around one billion rupees in Beni-Jomsong Korala road sections."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/beni-jomsom-korala-road-damage-is-about-one-billion-rupees/"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-10-20-",
       "title": "छुम्सुरको पहिरो पन्छाएपछि खाँदबारी–किमाथाङ्का सडक पुनः सञ्चालन",
