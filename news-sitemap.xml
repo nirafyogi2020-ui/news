@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-20T07:17:16.000Z</news:publication_date>
+      <news:publication_date>2026-10-21T05:17:46.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,456 dead, 5,132 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,41 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-20T07:17:16.000Z</news:publication_date>
+      <news:publication_date>2026-10-21T05:17:46.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-21-auto-2026-10-21-nepal-police-offers-free-bus-services-on-three-routes-/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-21T05:17:46.000Z</news:publication_date>
+      <news:title>Nepal Police offers free bus services on three routes for Dashain</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-21-auto-2026-10-21/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-21T04:41:17.000Z</news:publication_date>
+      <news:title>यातायात सहजसँगै लाङटाङमा पर्यटक बढे</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-21-auto-2026-10-21-dashain-will-inspire-a-shift-from-disaster-to-reconstr/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-21T04:07:32.000Z</news:publication_date>
+      <news:title>Dashain will inspire a shift from disaster to reconstruction, says President Lamichhane</news:title>
     </news:news>
   </url>
   <url>
@@ -43,28 +76,6 @@
       </news:publication>
       <news:publication_date>2026-10-20T01:29:16.000Z</news:publication_date>
       <news:title>छुम्सुरको पहिरो पन्छाएपछि खाँदबारी–किमाथाङ्का सडक पुनः सञ्चालन</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-19-auto-2026-10-19-floods-and-landslides-disrupt-major-roads-in-three-dis/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-19T02:23:21.000Z</news:publication_date>
-      <news:title>Floods and landslides disrupt major roads in three districts</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-19-auto-2026-10-19/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-19T00:47:40.000Z</news:publication_date>
-      <news:title>लगातार ६ खेलसम्म जितविहीन बन्यो म्यानचेस्टर युनाइटेड</news:title>
     </news:news>
   </url>
 </urlset>
