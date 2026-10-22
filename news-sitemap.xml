@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-21T05:17:46.000Z</news:publication_date>
+      <news:publication_date>2026-10-22T02:28:22.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,456 dead, 5,132 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-21T05:17:46.000Z</news:publication_date>
+      <news:publication_date>2026-10-22T02:28:22.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-22-auto-2026-10-22/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-22T02:28:22.000Z</news:publication_date>
+      <news:title>बाजुराको अम्कोट पहिरो नियन्त्रण र सडक सुधारका लागि ५२ करोड बजेट</news:title>
     </news:news>
   </url>
   <url>
@@ -65,17 +76,6 @@
       </news:publication>
       <news:publication_date>2026-10-20T05:33:27.000Z</news:publication_date>
       <news:title>Beni-Jomsom-Korala road damage is about one billion rupees</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-20-auto-2026-10-20/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-20T01:29:16.000Z</news:publication_date>
-      <news:title>छुम्सुरको पहिरो पन्छाएपछि खाँदबारी–किमाथाङ्का सडक पुनः सञ्चालन</news:title>
     </news:news>
   </url>
 </urlset>
