@@ -1,6 +1,38 @@
 {
-  "updated": "2026-10-22T02:28:22.000Z",
+  "updated": "2026-10-22T07:34:00.000Z",
   "posts": [
+    {
+      "id": "auto-2026-10-22-",
+      "title": "यसरी मर्मत हुँदैछ बूढीगण्डकीको बाढीले प्रभावित चुमभ्याली जाने पदमार्ग",
+      "time": "2026-10-22T07:34:00.000Z",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/10/chum-valley-padmarga-3-1024x624.jpg",
+      "body": [
+        "कुल चारवटा काठे पुल राख्न लागिएको छ । काठे पुल बनेसँगै चुमभ्याली जाने पदमार्ग खुल्नेछ ।"
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar (Nepali)",
+          "url": "https://www.onlinekhabar.com/2026/10/2042529/this-is-how-the-flood-affected-chum-valley-hiking-trail-in-budhigandaki-is-being-repaired"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-22-floods-and-landslides-disrupt-roads-in-gandaki-and-karnali-p",
+      "title": "Floods and Landslides Disrupt Roads in Gandaki and Karnali Provinces",
+      "time": "2026-10-22T05:19:57.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2025/08/pahiro-8.gif",
+      "body": [
+        "KATHMANDU: Road transport has been disrupted across various locations in Gandaki and Karnali provinces due to floods and landslides."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/floods-and-landslides-disrupt-roads-in-gandaki-and-karnali-provinces/"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-10-22-",
       "title": "बाजुराको अम्कोट पहिरो नियन्त्रण र सडक सुधारका लागि ५२ करोड बजेट",
