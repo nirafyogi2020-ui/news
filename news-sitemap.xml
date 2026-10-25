@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-24T04:13:01.000Z</news:publication_date>
+      <news:publication_date>2026-10-25T01:05:01.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,456 dead, 5,132 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-24T04:13:01.000Z</news:publication_date>
+      <news:publication_date>2026-10-25T01:05:01.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-25-auto-2026-10-25/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-25T01:05:01.000Z</news:publication_date>
+      <news:title>फापरखेत पहिरो र सिङ्गा–तातोपानी कुण्ड संरक्षणमा मन्त्री पुनको चासो</news:title>
     </news:news>
   </url>
   <url>
@@ -87,17 +98,6 @@
       </news:publication>
       <news:publication_date>2026-10-23T02:51:21.000Z</news:publication_date>
       <news:title>Loss and Damage Fund approves $20 million grant for Nepal’s flood recovery</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-22-auto-2026-10-22-floods-and-landslides-disrupt-roads-in-gandaki-and-kar/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-22T05:19:57.000Z</news:publication_date>
-      <news:title>Floods and Landslides Disrupt Roads in Gandaki and Karnali Provinces</news:title>
     </news:news>
   </url>
 </urlset>
