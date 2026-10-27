@@ -1,6 +1,38 @@
 {
-  "updated": "2026-10-27T01:32:43.000Z",
+  "updated": "2026-10-27T07:46:12.000Z",
   "posts": [
+    {
+      "id": "auto-2026-10-27-deposits-in-prime-minister-s-disaster-relief-funds-exceed-rs",
+      "title": "Deposits in Prime Minister’s disaster relief funds exceed Rs 18.13 billion",
+      "time": "2026-10-27T07:46:12.000Z",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/08/donate.jpg",
+      "body": [
+        "Kathmandu, October 27 Deposits in the Prime Minister’s Natural Disaster Rescue Fund and the Prime Minister’s Relief Fund have exceeded Rs 18.13 billion following the devastating floods that struck the Bhotekoshi-Trishuli river system on…"
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/deposits-in-prime-ministers-disaster-relief-funds-exceed-rs-18-13-billion.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-27-flood-landslide-trigger-water-shortage-in-beni-myagdi",
+      "title": "Flood, landslide trigger water shortage in Beni, Myagdi",
+      "time": "2026-10-27T07:29:08.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/10/beni-1.jpg",
+      "body": [
+        "MYAGDI: Residents of Beni Bazaar, the district headquarters of Myagdi, are facing a shortage of drinking water after floods and landslides damaged the supply pipeline earlier this month."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/flood-landslide-trigger-water-shortage-in-beni-myagdi/"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-10-27-",
       "title": "बाढीपहिरोले पाइपलाइन बगाएपछि बेनीमा खानेपानीको समस्या",

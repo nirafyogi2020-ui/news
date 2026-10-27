@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-27T01:32:43.000Z</news:publication_date>
+      <news:publication_date>2026-10-27T07:46:12.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,456 dead, 5,132 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,30 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-27T01:32:43.000Z</news:publication_date>
+      <news:publication_date>2026-10-27T07:46:12.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-27-auto-2026-10-27-deposits-in-prime-minister-s-disaster-relief-funds-exc/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-27T07:46:12.000Z</news:publication_date>
+      <news:title>Deposits in Prime Minister’s disaster relief funds exceed Rs 18.13 billion</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-27-auto-2026-10-27-flood-landslide-trigger-water-shortage-in-beni-myagdi/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-27T07:29:08.000Z</news:publication_date>
+      <news:title>Flood, landslide trigger water shortage in Beni, Myagdi</news:title>
     </news:news>
   </url>
   <url>
@@ -54,17 +76,6 @@
       </news:publication>
       <news:publication_date>2026-10-26T00:33:35.000Z</news:publication_date>
       <news:title>दशैंपछि मुक्तिनाथमा बढ्यो चहलपहल, तीन दिनमै १२ हजार बढीले गरे दर्शन</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-25-auto-2026-10-25-electricity-worth-rs-5-92-billion-exported-to-india-fr/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-25T06:26:49.000Z</news:publication_date>
-      <news:title>Electricity worth Rs 5.92 billion exported to India from mid-September to mid-October</news:title>
     </news:news>
   </url>
 </urlset>
