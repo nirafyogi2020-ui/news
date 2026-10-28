@@ -1,6 +1,22 @@
 {
-  "updated": "2026-10-27T07:46:12.000Z",
+  "updated": "2026-10-27T23:45:32.000Z",
   "posts": [
+    {
+      "id": "auto-2026-10-28-",
+      "title": "खतरनाक बन्यो चक्रवात ‘अर्नब’, नेपालमा पनि उच्च सतर्कता",
+      "time": "2026-10-27T23:45:32.000Z",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/10/Cyclone-Arnab-High-alert-in-Nepal-1024x501.jpg",
+      "body": [
+        "११ कात्तिक, काठमाडौं । बंगालको खाडीमा विकसित चक्रवात ‘अर्नब’ले खतरनाक रुप लिएपछि नेपालमा पनि उच्च सतर्कता अपनाइएको छ । यसको असर हिमालदेखि तराईसम्मै पर्ने सम्भावना भएकाले सरकारले सुरक्षा अंगहरुलाई हाई अलर्टमा राखेको छ ।"
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar (Nepali)",
+          "url": "https://www.onlinekhabar.com/2026/10/2045350/cyclone-arnab-becomes-dangerous-high-alert-in-nepal-too"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-10-27-deposits-in-prime-minister-s-disaster-relief-funds-exceed-rs",
       "title": "Deposits in Prime Minister’s disaster relief funds exceed Rs 18.13 billion",
