@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-28T07:56:55.000Z</news:publication_date>
+      <news:publication_date>2026-10-29T05:02:57.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,456 dead, 5,132 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,41 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-28T07:56:55.000Z</news:publication_date>
+      <news:publication_date>2026-10-29T05:02:57.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-29-auto-2026-10-29/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-29T05:02:57.000Z</news:publication_date>
+      <news:title>मनाङमा वर्षा र हिमपातको सम्भावना, माइकिङ गरी स्थानीयलाई सचेत गराइयो</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-29-auto-2026-10-29-apples-produced-in-manaslu-region-confined-to-warehous/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-29T04:40:29.000Z</news:publication_date>
+      <news:title>Apples produced in Manaslu Region confined to warehouses</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-29-auto-2026-10-29-mustang-produces-apples-worth-over-rs-1-14-billion/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-29T00:51:52.000Z</news:publication_date>
+      <news:title>Mustang produces apples worth over Rs 1.14 billion</news:title>
     </news:news>
   </url>
   <url>
@@ -65,17 +98,6 @@
       </news:publication>
       <news:publication_date>2026-10-27T07:29:08.000Z</news:publication_date>
       <news:title>Flood, landslide trigger water shortage in Beni, Myagdi</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-27-auto-2026-10-27/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-27T01:32:43.000Z</news:publication_date>
-      <news:title>बाढीपहिरोले पाइपलाइन बगाएपछि बेनीमा खानेपानीको समस्या</news:title>
     </news:news>
   </url>
 </urlset>

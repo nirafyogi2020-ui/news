@@ -1,6 +1,54 @@
 {
-  "updated": "2026-10-28T07:56:55.000Z",
+  "updated": "2026-10-29T05:02:57.000Z",
   "posts": [
+    {
+      "id": "auto-2026-10-29-",
+      "title": "मनाङमा वर्षा र हिमपातको सम्भावना, माइकिङ गरी स्थानीयलाई सचेत गराइयो",
+      "time": "2026-10-29T05:02:57.000Z",
+      "image": "https://images.nagariknewscdn.com/2025/third-party/1793250214_manang.jpg",
+      "body": [
+        "सम्भावित वर्षा र हिमपातका कारण विपद्जन्य घटना हुन सक्ने भन्दै मनाङ प्रहरीले स्थानीय बासिन्दालाई सतर्क रहन आग्रह गरेको छ।"
+      ],
+      "sources": [
+        {
+          "name": "Nagarik News",
+          "url": "https://nagariknews.nagariknetwork.com/social-affairs/locals-warned-of-possibility-of-rain-and-snowfall-in-manang-through-miking-78-86.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-29-apples-produced-in-manaslu-region-confined-to-warehouses",
+      "title": "Apples produced in Manaslu Region confined to warehouses",
+      "time": "2026-10-29T04:40:29.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/10/apple.jpg",
+      "body": [
+        "GORKHA: Apples produced in the Manaslu region of northern Gorkha remain stranded in warehouses after floods in the Budhigandaki River washed away bridges and roads."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/apples-produced-in-manaslu-region-confined-to-warehouses/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-29-mustang-produces-apples-worth-over-rs-1-14-billion",
+      "title": "Mustang produces apples worth over Rs 1.14 billion",
+      "time": "2026-10-29T00:51:52.000Z",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2017/07/manang-apples2.jpg",
+      "body": [
+        "File: Apples stored in Jumla Mustang, October 29 Apples worth Rs 1.1496 billion have been produced in the Himalayan district of Mustang this year, according to preliminary estimates."
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/mustang-produces-apples.html"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-10-28-",
       "title": "संसदीय विशेष समितिः बाढी प्रभावित क्षेत्रमा भएको क्षतिको तथ्याङ्क माग",
