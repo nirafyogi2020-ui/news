@@ -23,11 +23,11 @@
     },
     {
       "icon": "missing",
-      "value": "5,132",
+      "value": "5,285",
       "tone": "critical",
       "label": "listed missing in Nepal",
       "bar": 100,
-      "detail": "NDRRMA, 9 September, 11:00 NPT: about 5,132 people remained unaccounted for. The list remains under verification. Source: https://nirajbhusal.github.io/rasuwa-flood-bulletin/"
+      "detail": "NDRRMA: 5,285 people remained missing as of 3 October, Bernama reported. Up from 5,132 on 9 September. Reuters reported the same figure on 5 October, when the government ended the formal search. Missing does not mean confirmed dead. Source: https://bernama.com/en/news.php?id=2615902"
     },
     {
       "icon": "missing",
@@ -38,10 +38,10 @@
     },
     {
       "icon": "people",
-      "value": "13,646",
+      "value": "13,795",
       "label": "rescued so far",
       "bar": 100,
-      "detail": "NDRRMA, 9 September, 11:00 NPT: 13,646 people rescued. Source: https://nirajbhusal.github.io/rasuwa-flood-bulletin/"
+      "detail": "Reuters, 5 October: 13,795 people were rescued by the time the formal search ended, citing officials. Up from 13,646 on 9 September. Source: https://www.thestar.com.my/aseanplus/aseanplus-news/2026/10/06/nepal-ends-search-and-rescue-after-flood-focuses-on-rehabilitation"
     },
     {
       "icon": "power",
@@ -64,16 +64,16 @@
       "small": true,
       "label": "damage, early estimate",
       "bar": 8,
-      "detail": "Physical Infrastructure Minister Sunil Lamsal put damage to roads and bridges at about Rs 200 billion on 26 August, and called it preliminary. Hydropower and private property are not in that figure. The whole 42 km road from Betrawati to the Rasuwagadhi border crossing was destroyed at multiple points."
+      "detail": "Physical Infrastructure Minister Sunil Lamsal put damage to roads and bridges at about Rs 200 billion on 26 August, and called it preliminary. Hydropower and private property are not in that figure. The whole 42 km road from Betrawati to the Rasuwagadhi border crossing was destroyed at multiple points. A separate preliminary National Planning Commission survey, reported by Nepalnews on 26 October, put losses to households and businesses at Rs 79.17 billion. That covers a different part of the damage, so the two are not added together. Source: https://english.nepalnews.com/s/nation/rasuwa-bhote-koshi-floods-cause-over-rs-79-billion-in-damages/"
     },
     {
       "icon": "relief",
       "id": "relief-fund",
-      "value": "Rs 5.04bn",
+      "value": "Rs 18.14bn",
       "small": true,
       "label": "relief fund deposited",
       "bar": 60,
-      "detail": "Prime Minister Balen Shah said Rs 5.04 billion had been deposited in nine commercial bank accounts for flood rescue and relief, Onlinekhabar reported at 9:04pm Saturday. The same report said another US$1.8 million was deposited at Himalayan Bank and Laxmi Bank. This is money deposited in the fund, not the separate Rs 1 billion released by the government."
+      "detail": "The Office of the Prime Minister said the Prime Minister's Natural Disaster Rescue Fund and Relief Fund together held Rs 18.136 billion at 9am on 26 October, Onlinekhabar reported. Up from Rs 5.04 billion on 29 August. This is money deposited, not money spent, and it is not the cost of the damage. Source: https://english.onlinekhabar.com/deposits-in-prime-ministers-disaster-relief-funds-exceed-rs-18-13-billion.html"
     }
   ],
   "districts": {
@@ -152,21 +152,21 @@
     },
     "missing": {
       "metric": "missing",
-      "value": 5132,
-      "source": "NDRRMA · Rasuwa Flood Bulletin",
-      "url": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
-      "time": "2026-09-09T11:00:00+05:45",
+      "value": 5285,
+      "source": "NDRRMA",
+      "url": "https://bernama.com/en/news.php?id=2615902",
+      "time": "2026-10-03T12:00:00+05:45",
       "scope": "total",
-      "sentence": "NDRRMA: about 5,132 people remained unaccounted for."
+      "sentence": "As many as 1,455 people have been confirmed dead and 5,285 remain missing as of Oct 3, according to the NDRRMA."
     },
     "rescued": {
       "metric": "rescued",
-      "value": 13646,
-      "source": "NDRRMA · Rasuwa Flood Bulletin",
-      "url": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
-      "time": "2026-09-09T11:00:00+05:45",
+      "value": 13795,
+      "source": "Reuters",
+      "url": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/10/06/nepal-ends-search-and-rescue-after-flood-focuses-on-rehabilitation",
+      "time": "2026-10-05T12:00:00+05:45",
       "scope": "total",
-      "sentence": "NDRRMA: 13,646 people rescued."
+      "sentence": "Another 13,795 people were rescued."
     }
   },
   "response": {
