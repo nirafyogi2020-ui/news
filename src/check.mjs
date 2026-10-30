@@ -25,7 +25,8 @@ function walk(dir, out = []) {
     if (SKIP_DIRS.has(name)) continue;
     const full = join(dir, name);
     if (statSync(full).isDirectory()) walk(full, out);
-    else if (name.endsWith('.html')) out.push(full);
+    /* Google Search Console ownership files are bare text, not pages. */
+    else if (name.endsWith('.html') && !/^google[0-9a-f]+\.html$/.test(name)) out.push(full);
   }
   return out;
 }
