@@ -6,8 +6,9 @@
    ever published, and writes real crawlable HTML at real URLs plus a sitemap.
 
    Run it with `npm run build`, or let `./deploy.sh` run it for you. It has no
-   dependencies and never touches index.html's own content — the dashboard
-   stays exactly as it is.
+   dependencies. The front page at / and the Rasuwa dashboard at
+   /nepal-flood/rasuwa/ are both written by it: the dashboard from the
+   hand-written src/rasuwa-dashboard.html, the front from src/pages.mjs.
    ========================================================================= */
 
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync, rmSync } from 'node:fs';
@@ -163,271 +164,15 @@ async function loadGlobalItems() {
 }
 const ctx = { posts, event, today, modified, buildDay: nptDay(modified) };
 
-const pages = [
-  P.nepalFloodHub(ctx),
-  P.rasuwaEvent(ctx),
-  P.liveUpdates(ctx),
-  P.casualties(ctx),
-  P.missingPersons(ctx),
-  P.timeline(ctx),
-  P.cause(ctx),
-  P.damage(ctx),
-  P.mapPage(ctx),
-  P.emergencyNumbers(ctx),
-  P.relief(ctx),
-  P.hazardGuide(ctx),
-  ...P.hazardPages(ctx),
-  P.hydropower(ctx),
-  P.foreignNationals(ctx),
-  P.updateIndex(ctx),
-  P.about(ctx),
-  P.sources(ctx),
-  P.contact(ctx),
-  ...posts.map(p => P.updateArticle(p, ctx)),
-
-  /* Nepali edition. Four hand-written pages, not a machine translation of the
-     whole site — see src/pages-ne.mjs for why. */
-  NE.neEvent(ctx),
-  NE.neEmergency(ctx),
-  NE.neMissing(ctx),
-  NE.neRelief(ctx),
-];
-
-/* -- guard rails ----------------------------------------------------------- */
-const seenPath = new Map();
-const seenTitle = new Map();
-const problems = [];
-for (const pg of pages) {
-  if (seenPath.has(pg.path)) problems.push(`duplicate path: ${pg.path}`);
-  seenPath.set(pg.path, pg);
-  if (seenTitle.has(pg.title)) problems.push(`duplicate <title> on ${pg.path} and ${seenTitle.get(pg.title)}`);
-  seenTitle.set(pg.title, pg.path);
-  if (pg.title.length > 75) problems.push(`title over 75 chars (${pg.title.length}): ${pg.path}`);
-  if (pg.description.length > 200) problems.push(`description over 200 chars (${pg.description.length}): ${pg.path}`);
-  if (pg.description.length < 70) problems.push(`description under 70 chars: ${pg.path}`);
-  if (!pg.path.endsWith('/')) problems.push(`path must end in a slash: ${pg.path}`);
-}
-
-/* -- write ------------------------------------------------------------------ */
-/* Remove generated directories first so a deleted page cannot linger. */
-for (const dir of ['nepal-flood', 'nepal-disasters', 'updates', 'about', 'sources', 'contact', 'global', 'ne']) {
-  rmSync(join(ROOT, dir), { recursive: true, force: true });
-}
-
-let count = 0;
-for (const pg of pages) {
-  write(`${pg.path.replace(/^\//, '')}index.html`, pg.html);
-  count++;
-}
-write('404.html', P.notFound());
-
-/* -- sitemap ---------------------------------------------------------------- */
-const sitemapEntries = [
-  {
-    loc: `${SITE}/`,
-    lastmod: nptDay(modified),
-    changefreq: 'hourly',
-    priority: '1.0',
-    image: {
-      loc: `${SITE}/og-image.png`,
-      title: 'Nepal Disaster Update Live: Rasuwa flood updates, map and helplines',
-    },
-  },
-  ...pages.map(pg => ({
-    loc: SITE + pg.path,
-    lastmod: pg.lastmod,
-    changefreq: pg.changefreq,
-    priority: pg.priority,
-    /* Sitemap hreflang carries the same pairs as the <link> tags. Declaring
-       them in both places is what Google's own documentation recommends. */
-    alternates: pg.alternates || null,
-  })),
-];
-
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${sitemapEntries.map(e => `  <url>
-    <loc>${e.loc}</loc>
-    <lastmod>${e.lastmod}</lastmod>
-    <changefreq>${e.changefreq}</changefreq>
-    <priority>${e.priority}</priority>${(e.alternates || []).map(a =>
-      `\n    <xhtml:link rel="alternate" hreflang="${a.hreflang}" href="${SITE}${a.path}"/>`).join('')}${e.image ? `
-    <image:image>
-      <image:loc>${e.image.loc}</image:loc>
-      <image:title>${e.image.title}</image:title>
-    </image:image>` : ''}
-  </url>`).join('\n')}
-</urlset>
-`;
-write('sitemap.xml', sitemap);
-
-/* -- machine-readable index of this site's own briefings ---------------------
-   /feed.xml reads this so the RSS feed leads with original content that has a
-   real page here, rather than only linking out to other newsrooms. */
-write('updates.json', JSON.stringify({
-  updated: modified,
-  figures: event.figures,
-  districts: event.districts,
-  response: event.response,
-  site: SITE,
-  updates: posts.map(p => ({
-    url: p.url,
-    title: p.title,
-    time: p.time,
-    summary: (p.body[0] || '').slice(0, 300),
-    sources: (p.sources || []).map(s => s.name),
-  })),
-}, null, 2) + '\n');
-
-
-/* -- the Investigation tab's ledgers ----------------------------------------
-   src/investigation.mjs states each figure once and names the briefing it
-   came from by slug. This resolves those slugs against the archive that has
-   just been loaded, so every row in the ledger carries the headline, the
-   timestamp and the outward source links the briefing itself carries — and a
-   correction to a briefing corrects the ledger with it.
-
-   A slug that no longer resolves is a build error worth seeing rather than a
-   citation that quietly prints nothing, so it is reported and the row is
-   published with `source: null`, which the page renders as "citation missing"
-   instead of as a fact with nothing behind it. */
-function citeRows(rows) {
-  const bySlug = new Map(posts.map(p => [p.slug, p]));
-  const missing = [];
-  const out = rows.map(row => {
-    const post = bySlug.get(row.from);
-    if (!post) { missing.push(row.from); return { ...row, source: null }; }
-    return {
-      ...row,
-      source: {
-        title: post.title,
-        url: post.url,
-        time: post.time,
-        outlets: (post.sources || []).map(s => ({ name: s.name, url: s.url }))
-      }
-    };
-  });
-  if (missing.length) {
-    console.log(`  investigation: ${missing.length} citation(s) do not resolve: ${missing.join(', ')}`);
-  }
-  return out;
-}
-
-/* How the confirmed toll moved, read out of the timeline the site already
-   keeps rather than typed again. Every row in C.TIMELINE that states a
-   national figure is stamped with the hour it applies to; those are the
-   points, and the chart is drawn from them. A row that states no figure, or
-   states one for a single district, contributes nothing. */
-function tollSeries() {
-  const MONTHS = ['January','February','March','April','May','June','July',
-    'August','September','October','November','December'];
-  const YEAR = new Date(C.EVENT && C.EVENT.started ? C.EVENT.started : Date.now())
-    .getUTCFullYear();
-
-  const points = [];
-  for (const [when, text] of C.TIMELINE) {
-    /* "17:00 NPT, 28 August" / "Evening, 26 August" / "Friday, 28 August" */
-    const day = /(\d{1,2})\s+([A-Z][a-z]+)/.exec(when);
-    if (!day) continue;
-    const month = MONTHS.indexOf(day[2]);
-    if (month < 0) continue;
-    const clock = /(\d{1,2}):(\d{2})/.exec(when);
-    const hour = clock ? Number(clock[1]) : 12;
-    const minute = clock ? Number(clock[2]) : 0;
-    /* Nepal is UTC+5:45. Stored as an instant so the page can format it in
-       whatever zone it is showing. */
-    const at = Date.UTC(YEAR, month, Number(day[1]), hour - 5, minute - 45);
-
-    /* Only sentences that state a national count of the dead in Nepal.
-
-       Tibet keeps its own toll and the timeline records it — "China's state
-       media raise the Tibet side death toll to 5" — which is a real figure
-       for a different country, and reading it as a point on Nepal's curve
-       drew the line down to 5 in the middle of the week. */
-    if (/tibet side|china side|in tibet|xizang/i.test(text)) continue;
-
-    /* Order matters. "alongside the 489 toll" puts the figure before the
-       word, and a rule that reads forward from "toll" would take the first
-       number of the district list that follows it instead — 186, not 489.
-       Every capture starts with a digit, or "toll further, to 547" captures
-       the comma. */
-    const m =
-      /\bthe\s+(\d[\d,]*)\s+toll\b/i.exec(text)
-      || /(?:confirmed\s+)?toll[^.\d]{0,40}?(\d[\d,]*)/i.exec(text)
-      || /(\d[\d,]*)\s+bodies(?:\s+and\s+human\s+remains)?\s+(?:found|recovered)/i.exec(text);
-    if (!m) continue;
-    const value = Number(m[1].replace(/,/g, ''));
-    if (!Number.isFinite(value) || value <= 0 || value > 100000) continue;
-
-    /* Who said so, where the sentence names them. */
-    const who = /(Nepal Police|NDRRMA|Nepalnews|Nepal News|Onlinekhabar|Nagarik News|ABC News|Kathmandu Post|Prime Minister’s Office)/i.exec(text);
-    points.push({ at, value, source: who ? who[1] : null, when });
-  }
-
-  /* One point per instant, highest wins where two bodies published different
-     figures for the same hour — the page says so in the note under the chart
-     rather than silently averaging them. */
-  const byInstant = new Map();
-  for (const p of points) {
-    const seen = byInstant.get(p.at);
-    if (!seen || p.value > seen.value) byInstant.set(p.at, p);
-  }
-  /* This is a count of bodies recovered, so it cannot fall. A point below the
-     running maximum is a figure from a body that had not caught up yet, not a
-     drop in the toll, and plotting it puts a notch in a line that never
-     notched. The chart's caption says this is what it is showing. */
-  let high = 0;
-  return [...byInstant.values()]
-    .sort((a, b) => a.at - b.at)
-    .filter(p => { if (p.value < high) return false; high = p.value; return true; });
-}
-
-const investigation = {
-  updated: modified,
-  site: SITE,
-  /* Stated once here so the page can say what it is looking at without
-     repeating the event's name in four places. */
-  event: { name: event.name, started: event.started, where: event.where },
-  aid: citeRows(I.AID),
-  destroyed: citeRows(I.DESTROYED),
-  unaccounted: citeRows(I.UNACCOUNTED),
-  unknowns: I.UNKNOWNS,
-  causes: C.CAUSES,
-  hydropower: C.DAMAGE.hydropower.map(([name, where, note]) => ({ name, where, note })),
-  reliefReleased: C.DAMAGE.reliefBreakdown.map(([where, amount]) => ({ where, amount })),
-  tollSeries: tollSeries(),
-  places: C.PLACES,
-  sourceGroups: C.SOURCE_GROUPS
-};
-write('investigation.json', JSON.stringify(investigation, null, 2) + '\n');
-console.log(`investigation.json: ${investigation.aid.length} aid rows, `
-  + `${investigation.destroyed.length} damage rows, `
-  + `${investigation.unaccounted.length} unaccounted groups, `
-  + `${investigation.tollSeries.length} toll points`);
-
-/* -- robots ----------------------------------------------------------------- */
-write('robots.txt', `# ${SITE}
-# Everything here is public information about disasters in Nepal.
-# Crawl it. Nothing is blocked: CSS, JavaScript and images all have to be
-# fetchable or the pages cannot be rendered correctly.
-
-User-agent: *
-Allow: /
-Disallow: /api/
-
-# The JSON endpoints under /api/ are live aggregation of other people's feeds.
-# They are public and usable, but they are data, not pages, so they are kept
-# out of the index rather than crawled as thin content.
-
-Sitemap: ${SITE}/sitemap.xml
-Sitemap: ${SITE}/news-sitemap.xml
-Sitemap: ${SITE}/sitemap-index.xml
-`);
-
 /* ---------------------------------------------------------------------------
-   index.html post-processing.
+   The Rasuwa dashboard, served at /nepal-flood/rasuwa/.
+
+   Its source is src/rasuwa-dashboard.html, hand-written, with every counter
+   polling /api/figures in the browser. Everything between an ssr marker is
+   rewritten here from event.json and the archive on every build, so what a
+   crawler reads and what a reader with JavaScript off sees is the same figure
+   the counters show. The result is pushed into the page list below and written
+   like any other page; / is the national front page, built in src/pages.mjs.
 
    The dashboard fetches today.json in the browser. That is fine for a reader
    with JavaScript, and useless to anything reading the HTML as served, so the
@@ -608,8 +353,10 @@ const escHtml = (v) => String(v == null ? '' : v)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const escAttr = (v) => escHtml(v).replace(/"/g, '&quot;');
 
-let index = read('index.html');
-const before = index;
+const DASH_PATH = '/nepal-flood/rasuwa/';
+const DASH_URL = SITE + DASH_PATH;
+const dash = P.rasuwaDashboard(ctx);
+let index = read('src/rasuwa-dashboard.html');
 for (const file of ['dashboard.css','dashboard.js']) {
   const version=createHash('sha256').update(read('assets/'+file)).digest('hex').slice(0,12);
   index=index.replace(new RegExp('/assets/'+file.replace('.', '\\.')+'(?:\\?v=[^"\\s]+)?','g'), '/assets/'+file+'?v='+version);
@@ -991,7 +738,7 @@ function invSources(groups) {
 }
 
 function ssrInvestigation() {
-  return renderInvestigation(event, investigation.sourceGroups);
+  return renderInvestigation(event, C.SOURCE_GROUPS);
 }
 
 index = index.replace(
@@ -1160,45 +907,12 @@ index = index.replace(
   () => `<!--ssr:herofig-->${heroFigures()}<!--/ssr:herofig-->`
 );
 
-/* ---------------------------------------------------------------------------
-   The homepage title and description.
-
-   These are what a reader actually sees in a search result, and they are the
-   whole of the decision to click or to click the BBC instead. A fixed title
-   like "Rasuwa Flood 2026 Toll, Map & Helplines" promises a number without
-   giving one, so it loses to any headline that has the number in it.
-
-   So they are written from event.json on every build, the same file the
-   figures on the page come from. They cannot go stale relative to the page,
-   because they are the page's own numbers.
-   ------------------------------------------------------------------------- */
-const statBy = (icon) => (event.stats || []).find(st => st.icon === icon) || null;
-const dead = statBy('dead');
-const missing = (event.stats || []).find(st => st.icon === 'missing');
+/* The title and description are written from event.json on every build, by
+   src/pages.mjs (rasuwaDashboard), so og-build, the sitemap and this page
+   describe the same thing and none of them can go stale against the figures. */
+const homeTitle = dash.title;
+const homeDesc = dash.description;
 const asOfShort = nptLong(event.asOf);
-
-/* Google truncates a title around 60-65 characters. The figures go first
-   because that is the part that survives the truncation. */
-const headParts = [];
-if (dead) headParts.push(`${dead.value} dead`);
-if (missing) headParts.push(`${missing.value} missing`);
-/* "27 August 2026, 5:00 pm NPT" cut back to "27 Aug", which is as much date
-   as fits in a title and as much as a reader needs to see it is today's. */
-const asOfDay = asOfShort.replace(/^(\d+)\s+(\w{3})\w*.*$/, '$1 $2');
-const homeTitle = headParts.length
-  ? `Nepal Flood Live: ${headParts.join(', ')} in Rasuwa, ${asOfDay}`
-  : `Nepal Disaster Update Live: ${event.headline}`;
-
-/* The description is the snippet. It answers the question the searcher typed
-   rather than describing the website, and it says when it was last checked,
-   because on a running disaster recency is the reason to pick one result. */
-const homeDesc = [
-  dead && missing
-    ? `${event.asOfSource || 'Officials'}: ${dead.value} confirmed dead and ${missing.value} listed missing after the ${event.name}.`
-    : event.lede,
-  'Toll by district, rescue and helpline numbers, an interactive map of the valley, and the official relief fund.',
-  `Updated ${asOfShort}.`,
-].filter(Boolean).join(' ');
 
 index = index.replace(/<title>[\s\S]*?<\/title>/i, () => `<title>${escHtml(homeTitle)}</title>`);
 index = index.replace(
@@ -1223,8 +937,8 @@ index = index.replace(
 /* The share card. It is redrawn with the current figures on it, so the URL
    carries a version and Facebook stops serving a cached card with an old
    death toll. Both the og: and twitter: tags point at the same picture. */
-const homeCard = ogFor('/');
-const homeStory = ogStoryFor('/');
+const homeCard = ogFor(DASH_PATH);
+const homeStory = ogStoryFor(DASH_PATH);
 index = index.replace(
   /(<meta (?:property="og:image"|property="og:image:secure_url"|name="twitter:image") content=")[^"]*(")/g,
   (_m, a, b) => a + homeCard + b
@@ -1283,6 +997,13 @@ function ssrTicker(list) {
 index = index.replace(
   /<!--ssr:ticker-->[\s\S]*?<!--\/ssr:ticker-->/,
   () => `<!--ssr:ticker-->${ssrTicker(posts.slice(0, 5))}<!--/ssr:ticker-->`
+);
+
+/* The written briefing that used to be its own page at this address, folded
+   into the Overview tab so nothing a reader could find there is lost. */
+index = index.replace(
+  /<!--ssr:briefing-->[\s\S]*?<!--\/ssr:briefing-->/,
+  () => `<!--ssr:briefing-->${P.rasuwaBriefing(ctx)}<!--/ssr:briefing-->`
 );
 
 /* ---------------------------------------------------------------------------
@@ -1364,10 +1085,10 @@ const coverageEnd = new Date(new Date(modified).getTime() + 3 * 86400 * 1000).to
 const liveBlog = {
   '@context': 'https://schema.org',
   '@type': 'LiveBlogPosting',
-  '@id': `${SITE}/#liveblog`,
+  '@id': `${DASH_URL}#liveblog`,
   headline: homeTitle,
   description: homeDesc,
-  url: `${SITE}/`,
+  url: DASH_URL,
   inLanguage: 'en',
   isAccessibleForFree: true,
   datePublished: '2026-08-26T12:00:00+05:45',
@@ -1377,11 +1098,11 @@ const liveBlog = {
   /* The one-paragraph "what is this event" that Google asks live coverage to
      carry, so an update read on its own still makes sense. */
   backstory: event.lede || '',
-  image: [`${SITE}${ogFor('/').replace(SITE, '')}`],
+  image: [ogFor(DASH_PATH)],
   author: ORG_REF,
   publisher: ORG_REF,
-  mainEntityOfPage: { '@id': `${SITE}/#webpage` },
-  about: [{ '@id': `${SITE}/#event` }],
+  mainEntityOfPage: { '@id': `${DASH_URL}#webpage` },
+  about: [{ '@id': `${DASH_URL}#event` }],
   liveBlogUpdate: posts.slice(0, 25).map(p => ({
     '@type': 'BlogPosting',
     '@id': SITE + p.url + '#post',
@@ -1452,10 +1173,10 @@ const NEWS_WINDOW_HOURS = 48;
 const newsCutoff = Date.now() - NEWS_WINDOW_HOURS * 3600 * 1000;
 
 const newsItems = [
-  /* The live front page counts as a news item in its own right: it is the URL
+  /* The live dashboard counts as a news item in its own right: it is the URL
      that carries the running coverage and the one people search for. */
   {
-    loc: `${SITE}/`,
+    loc: DASH_URL,
     title: homeTitle,
     date: modified,
   },
@@ -1498,12 +1219,295 @@ write('sitemap-index.xml', `<?xml version="1.0" encoding="UTF-8"?>
 </sitemapindex>
 `);
 
-if (index !== before) {
-  writeFileSync(join(ROOT, 'index.html'), index);
-  console.log('index.html: server-rendered briefings + dateModified refreshed');
-} else {
-  console.log('index.html: already current');
+const dashboardHtml = index;
+
+/* The newsroom feed, fetched once per build so the front page carries real
+   headlines for a crawler and for a reader with JavaScript off; the page
+   refreshes them in the browser. Same fallback rule as the world feed: never
+   fail a build on a slow feed, fall back to the last snapshot on disk. */
+const NEWS_SNAPSHOT = join(ROOT, 'data', 'news-snapshot.json');
+const NEWS_FEED_URL = process.env.NEPAL_NEWS_FEED_URL ||
+  'https://nepaldisasterupdatelive.nxtimaginelabs.com/api/news';
+async function loadNewsItems() {
+  try {
+    const res = await fetch(NEWS_FEED_URL, { signal: AbortSignal.timeout(12000) });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const json = await res.json();
+    const items = (json.items || []).filter(i => i && i.title && i.url && i.kind !== 'video').slice(0, 60)
+      .map(({ title, url, source, time, kind, region, image }) => ({ title, url, source, time, kind, region, image }));
+    if (items.length) {
+      writeFileSync(NEWS_SNAPSHOT, JSON.stringify({ updated: json.updated, items }, null, 2) + '\n');
+      return items;
+    }
+  } catch (e) {
+    console.log(`news snapshot: live fetch failed (${e.message}), using the last one`);
+  }
+  if (existsSync(NEWS_SNAPSHOT)) {
+    try { return JSON.parse(readFileSync(NEWS_SNAPSHOT, 'utf8')).items || []; } catch { return []; }
+  }
+  return [];
 }
+const wireItems = await loadNewsItems();
+
+
+const pages = [
+  /* The national front page, and the Rasuwa dashboard it leads to. */
+  P.frontPage(ctx, { news: wireItems, photos: PHOTO_INDEX, events: [event] }),
+  { ...dash, html: dashboardHtml },
+  P.nepalFloodHub(ctx),
+  P.liveUpdates(ctx),
+  P.casualties(ctx),
+  P.missingPersons(ctx),
+  P.timeline(ctx),
+  P.cause(ctx),
+  P.damage(ctx),
+  P.mapPage(ctx),
+  P.emergencyNumbers(ctx),
+  P.relief(ctx),
+  P.hazardGuide(ctx),
+  ...P.hazardPages(ctx),
+  P.hydropower(ctx),
+  P.foreignNationals(ctx),
+  P.updateIndex(ctx),
+  P.about(ctx),
+  P.sources(ctx),
+  P.contact(ctx),
+  ...posts.map(p => P.updateArticle(p, ctx)),
+
+  /* Nepali edition. Four hand-written pages, not a machine translation of the
+     whole site — see src/pages-ne.mjs for why. */
+  NE.neEvent(ctx),
+  NE.neEmergency(ctx),
+  NE.neMissing(ctx),
+  NE.neRelief(ctx),
+];
+
+/* -- guard rails ----------------------------------------------------------- */
+const seenPath = new Map();
+const seenTitle = new Map();
+const problems = [];
+for (const pg of pages) {
+  if (seenPath.has(pg.path)) problems.push(`duplicate path: ${pg.path}`);
+  seenPath.set(pg.path, pg);
+  if (seenTitle.has(pg.title)) problems.push(`duplicate <title> on ${pg.path} and ${seenTitle.get(pg.title)}`);
+  seenTitle.set(pg.title, pg.path);
+  if (pg.title.length > 75) problems.push(`title over 75 chars (${pg.title.length}): ${pg.path}`);
+  if (pg.description.length > 200) problems.push(`description over 200 chars (${pg.description.length}): ${pg.path}`);
+  if (pg.description.length < 70) problems.push(`description under 70 chars: ${pg.path}`);
+  if (!pg.path.endsWith('/')) problems.push(`path must end in a slash: ${pg.path}`);
+}
+
+/* -- write ------------------------------------------------------------------ */
+/* Remove generated directories first so a deleted page cannot linger. */
+for (const dir of ['nepal-flood', 'nepal-disasters', 'updates', 'about', 'sources', 'contact', 'global', 'ne']) {
+  rmSync(join(ROOT, dir), { recursive: true, force: true });
+}
+
+let count = 0;
+for (const pg of pages) {
+  write(`${pg.path.replace(/^\//, '')}index.html`, pg.html);
+  count++;
+}
+write('404.html', P.notFound());
+
+/* -- sitemap ---------------------------------------------------------------- */
+const sitemapEntries = [
+  ...pages.map(pg => ({
+    loc: SITE + pg.path,
+    lastmod: pg.lastmod,
+    changefreq: pg.changefreq,
+    priority: pg.priority,
+    image: pg.path === '/' || pg.path === DASH_PATH ? {
+      loc: `${SITE}/og-image.png`,
+      title: 'Nepal Disaster Update Live: Rasuwa flood updates, map and helplines',
+    } : null,
+    /* Sitemap hreflang carries the same pairs as the <link> tags. Declaring
+       them in both places is what Google's own documentation recommends. */
+    alternates: pg.alternates || null,
+  })),
+];
+
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${sitemapEntries.map(e => `  <url>
+    <loc>${e.loc}</loc>
+    <lastmod>${e.lastmod}</lastmod>
+    <changefreq>${e.changefreq}</changefreq>
+    <priority>${e.priority}</priority>${(e.alternates || []).map(a =>
+      `\n    <xhtml:link rel="alternate" hreflang="${a.hreflang}" href="${SITE}${a.path}"/>`).join('')}${e.image ? `
+    <image:image>
+      <image:loc>${e.image.loc}</image:loc>
+      <image:title>${e.image.title}</image:title>
+    </image:image>` : ''}
+  </url>`).join('\n')}
+</urlset>
+`;
+write('sitemap.xml', sitemap);
+
+/* -- machine-readable index of this site's own briefings ---------------------
+   /feed.xml reads this so the RSS feed leads with original content that has a
+   real page here, rather than only linking out to other newsrooms. */
+write('updates.json', JSON.stringify({
+  updated: modified,
+  figures: event.figures,
+  districts: event.districts,
+  response: event.response,
+  site: SITE,
+  updates: posts.map(p => ({
+    url: p.url,
+    title: p.title,
+    time: p.time,
+    summary: (p.body[0] || '').slice(0, 300),
+    sources: (p.sources || []).map(s => s.name),
+  })),
+}, null, 2) + '\n');
+
+
+/* -- the Investigation tab's ledgers ----------------------------------------
+   src/investigation.mjs states each figure once and names the briefing it
+   came from by slug. This resolves those slugs against the archive that has
+   just been loaded, so every row in the ledger carries the headline, the
+   timestamp and the outward source links the briefing itself carries — and a
+   correction to a briefing corrects the ledger with it.
+
+   A slug that no longer resolves is a build error worth seeing rather than a
+   citation that quietly prints nothing, so it is reported and the row is
+   published with `source: null`, which the page renders as "citation missing"
+   instead of as a fact with nothing behind it. */
+function citeRows(rows) {
+  const bySlug = new Map(posts.map(p => [p.slug, p]));
+  const missing = [];
+  const out = rows.map(row => {
+    const post = bySlug.get(row.from);
+    if (!post) { missing.push(row.from); return { ...row, source: null }; }
+    return {
+      ...row,
+      source: {
+        title: post.title,
+        url: post.url,
+        time: post.time,
+        outlets: (post.sources || []).map(s => ({ name: s.name, url: s.url }))
+      }
+    };
+  });
+  if (missing.length) {
+    console.log(`  investigation: ${missing.length} citation(s) do not resolve: ${missing.join(', ')}`);
+  }
+  return out;
+}
+
+/* How the confirmed toll moved, read out of the timeline the site already
+   keeps rather than typed again. Every row in C.TIMELINE that states a
+   national figure is stamped with the hour it applies to; those are the
+   points, and the chart is drawn from them. A row that states no figure, or
+   states one for a single district, contributes nothing. */
+function tollSeries() {
+  const MONTHS = ['January','February','March','April','May','June','July',
+    'August','September','October','November','December'];
+  const YEAR = new Date(C.EVENT && C.EVENT.started ? C.EVENT.started : Date.now())
+    .getUTCFullYear();
+
+  const points = [];
+  for (const [when, text] of C.TIMELINE) {
+    /* "17:00 NPT, 28 August" / "Evening, 26 August" / "Friday, 28 August" */
+    const day = /(\d{1,2})\s+([A-Z][a-z]+)/.exec(when);
+    if (!day) continue;
+    const month = MONTHS.indexOf(day[2]);
+    if (month < 0) continue;
+    const clock = /(\d{1,2}):(\d{2})/.exec(when);
+    const hour = clock ? Number(clock[1]) : 12;
+    const minute = clock ? Number(clock[2]) : 0;
+    /* Nepal is UTC+5:45. Stored as an instant so the page can format it in
+       whatever zone it is showing. */
+    const at = Date.UTC(YEAR, month, Number(day[1]), hour - 5, minute - 45);
+
+    /* Only sentences that state a national count of the dead in Nepal.
+
+       Tibet keeps its own toll and the timeline records it — "China's state
+       media raise the Tibet side death toll to 5" — which is a real figure
+       for a different country, and reading it as a point on Nepal's curve
+       drew the line down to 5 in the middle of the week. */
+    if (/tibet side|china side|in tibet|xizang/i.test(text)) continue;
+
+    /* Order matters. "alongside the 489 toll" puts the figure before the
+       word, and a rule that reads forward from "toll" would take the first
+       number of the district list that follows it instead — 186, not 489.
+       Every capture starts with a digit, or "toll further, to 547" captures
+       the comma. */
+    const m =
+      /\bthe\s+(\d[\d,]*)\s+toll\b/i.exec(text)
+      || /(?:confirmed\s+)?toll[^.\d]{0,40}?(\d[\d,]*)/i.exec(text)
+      || /(\d[\d,]*)\s+bodies(?:\s+and\s+human\s+remains)?\s+(?:found|recovered)/i.exec(text);
+    if (!m) continue;
+    const value = Number(m[1].replace(/,/g, ''));
+    if (!Number.isFinite(value) || value <= 0 || value > 100000) continue;
+
+    /* Who said so, where the sentence names them. */
+    const who = /(Nepal Police|NDRRMA|Nepalnews|Nepal News|Onlinekhabar|Nagarik News|ABC News|Kathmandu Post|Prime Minister’s Office)/i.exec(text);
+    points.push({ at, value, source: who ? who[1] : null, when });
+  }
+
+  /* One point per instant, highest wins where two bodies published different
+     figures for the same hour — the page says so in the note under the chart
+     rather than silently averaging them. */
+  const byInstant = new Map();
+  for (const p of points) {
+    const seen = byInstant.get(p.at);
+    if (!seen || p.value > seen.value) byInstant.set(p.at, p);
+  }
+  /* This is a count of bodies recovered, so it cannot fall. A point below the
+     running maximum is a figure from a body that had not caught up yet, not a
+     drop in the toll, and plotting it puts a notch in a line that never
+     notched. The chart's caption says this is what it is showing. */
+  let high = 0;
+  return [...byInstant.values()]
+    .sort((a, b) => a.at - b.at)
+    .filter(p => { if (p.value < high) return false; high = p.value; return true; });
+}
+
+const investigation = {
+  updated: modified,
+  site: SITE,
+  /* Stated once here so the page can say what it is looking at without
+     repeating the event's name in four places. */
+  event: { name: event.name, started: event.started, where: event.where },
+  aid: citeRows(I.AID),
+  destroyed: citeRows(I.DESTROYED),
+  unaccounted: citeRows(I.UNACCOUNTED),
+  unknowns: I.UNKNOWNS,
+  causes: C.CAUSES,
+  hydropower: C.DAMAGE.hydropower.map(([name, where, note]) => ({ name, where, note })),
+  reliefReleased: C.DAMAGE.reliefBreakdown.map(([where, amount]) => ({ where, amount })),
+  tollSeries: tollSeries(),
+  places: C.PLACES,
+  sourceGroups: C.SOURCE_GROUPS
+};
+write('investigation.json', JSON.stringify(investigation, null, 2) + '\n');
+console.log(`investigation.json: ${investigation.aid.length} aid rows, `
+  + `${investigation.destroyed.length} damage rows, `
+  + `${investigation.unaccounted.length} unaccounted groups, `
+  + `${investigation.tollSeries.length} toll points`);
+
+/* -- robots ----------------------------------------------------------------- */
+write('robots.txt', `# ${SITE}
+# Everything here is public information about disasters in Nepal.
+# Crawl it. Nothing is blocked: CSS, JavaScript and images all have to be
+# fetchable or the pages cannot be rendered correctly.
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# The JSON endpoints under /api/ are live aggregation of other people's feeds.
+# They are public and usable, but they are data, not pages, so they are kept
+# out of the index rather than crawled as thin content.
+
+Sitemap: ${SITE}/sitemap.xml
+Sitemap: ${SITE}/news-sitemap.xml
+Sitemap: ${SITE}/sitemap-index.xml
+`);
 
 /* -- report ----------------------------------------------------------------- */
 console.log(`built ${count} pages + 404 + sitemap (${sitemapEntries.length} urls)`);

@@ -12,6 +12,8 @@ import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { hasBannedWord, hasDash } from './front-rules.mjs';
+
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://nepaldisasterupdatelive.nxtimaginelabs.com';
 
@@ -208,8 +210,8 @@ for (const bad of ['Disallow: /\n', 'Disallow: /assets', 'Disallow: /*.js', 'Dis
 
 
 /* -- live coverage ----------------------------------------------------------
-   The front page is the URL that ranks for this event, and it earns that place
-   by being live. Three things have to hold or it quietly stops reading as live
+   The Rasuwa dashboard is the URL that ranks for this event, and it earns that
+   place by being live. Three things have to hold or it quietly stops reading as live
    coverage to a crawler, with nothing on the page looking wrong:
 
    - a LiveBlogPosting is present at all,
@@ -230,7 +232,8 @@ function liveBlogNodes(html) {
   return out;
 }
 
-const LIVE_PAGES = ['/', '/nepal-flood/rasuwa/live-updates/'];
+const DASH = '/nepal-flood/rasuwa/';
+const LIVE_PAGES = [DASH, '/nepal-flood/rasuwa/live-updates/'];
 for (const path of LIVE_PAGES) {
   const page = pages.find(p => p.path === path);
   if (!page) { errors.push(`${path}: expected to exist and does not`); continue; }
@@ -258,31 +261,88 @@ for (const path of LIVE_PAGES) {
   }
 }
 
-/* The front page's own freshness tags have to agree with its structured data.
+/* The dashboard's own freshness tags have to agree with its structured data.
    Two different "last updated" times on one page is worse than one. */
-const home = pages.find(p => p.path === '/');
+const home = pages.find(p => p.path === DASH);
 if (home) {
   const ogUpdated = pick(home.html, /<meta property="og:updated_time" content="([^"]*)"/);
   const nodeMod = (liveBlogNodes(home.html)[0] || {}).dateModified;
-  if (!ogUpdated) warnings.push('/: no og:updated_time');
+  if (!ogUpdated) warnings.push(`${DASH}: no og:updated_time`);
   else if (nodeMod && new Date(ogUpdated).getTime() !== new Date(nodeMod).getTime()) {
-    errors.push(`/: og:updated_time (${ogUpdated}) disagrees with the live coverage dateModified (${nodeMod})`);
+    errors.push(`${DASH}: og:updated_time (${ogUpdated}) disagrees with the live coverage dateModified (${nodeMod})`);
   }
   const kw = pick(home.html, /<meta name="news_keywords" content="([^"]*)"/);
-  if (!kw) warnings.push('/: no news_keywords');
+  if (!kw) warnings.push(`${DASH}: no news_keywords`);
 
   /* The title is the whole of the click decision on a breaking query. Google
      cuts it around 65 characters, so anything longer loses its own tail. */
   const t = pick(home.html, /<title>([\s\S]*?)<\/title>/i) || '';
-  if (t.length > 65) warnings.push(`/: <title> is ${t.length} chars and will be truncated in search results`);
-  if (!/\d/.test(t)) warnings.push('/: <title> carries no figure, which loses the click to a headline that has one');
+  if (t.length > 65) warnings.push(`${DASH}: <title> is ${t.length} chars and will be truncated in search results`);
+  if (!/\d/.test(t)) errors.push(`${DASH}: <title> carries no figure, which loses the click to a headline that has one`);
 
   /* A live ticker that stopped rendering is invisible: the page still looks
      fine and has simply stopped being timestamped. */
   const ticker = home.html.match(/<!--ssr:ticker-->([\s\S]*?)<!--\/ssr:ticker-->/);
   if (!ticker || !/<time datetime=/.test(ticker[1])) {
-    errors.push('/: the live ticker rendered empty, so the page carries no visible timestamps');
+    errors.push(`${DASH}: the live ticker rendered empty, so the page carries no visible timestamps`);
   }
+
+  /* The counters are what the page is for. Their fallback markup and their
+     og:image have to be there, or a crawler and a shared link both get a page
+     with no figures on it. */
+  if (!/<!--ssr:numgrid-->[\s\S]*?class="stat"[\s\S]*?<!--\/ssr:numgrid-->/.test(home.html)) {
+    errors.push(`${DASH}: the counter grid rendered empty`);
+  }
+  if (!/fetch\('\/api\/figures'/.test(home.html)) {
+    errors.push(`${DASH}: the page no longer polls /api/figures, so the counters would not stay live`);
+  }
+  const og = pick(home.html, /<meta property="og:image" content="([^"]*)"/);
+  if (!og || !/^https:\/\//.test(og)) errors.push(`${DASH}: no og:image`);
+  /* The briefing that used to be its own page at this address has to be in
+     the Overview tab, or moving the dashboard here lost a page's worth of
+     text. */
+  if (!/<!--ssr:briefing-->[\s\S]*?<h3>What happened<\/h3>[\s\S]*?<!--\/ssr:briefing-->/.test(home.html)) {
+    errors.push(`${DASH}: the written briefing is missing from the Overview tab`);
+  }
+}
+
+/* -- the front page -----------------------------------------------------------
+   / is a newspaper front built from the same files as everything else. It is
+   held to the house rules on text it reprints from other newsrooms as well as
+   its own: no em or en dash, no sentence about the tooling behind the site,
+   one h1, a canonical, and every event card pointing at a page that exists. */
+const front = pages.find(p => p.path === '/');
+if (!front) {
+  errors.push('/: the front page was not built');
+} else {
+  const markup = front.html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '');
+  const visible = markup.replace(/<[^>]+>/g, ' ').replace(/&[a-z#0-9]+;/g, ' ');
+  const title = pick(front.html, /<title>([\s\S]*?)<\/title>/i) || '';
+  const desc = pick(front.html, /<meta name="description" content="([^"]*)"/i) || '';
+  if (!title) errors.push('/: no <title>');
+  else if (title.length >= 75) errors.push(`/: <title> is ${title.length} chars, must be under 75`);
+  if (!/\d/.test(title)) errors.push('/: <title> carries no figure');
+  if (!front.html.includes(`<link rel="canonical" href="${SITE}/">`)) errors.push('/: canonical must be the site root');
+  const og = pick(front.html, /<meta property="og:image" content="([^"]*)"/);
+  if (!og || !/^https:\/\//.test(og)) errors.push('/: no og:image');
+  for (const [what, text] of [['visible text', visible], ['title', title], ['description', desc]]) {
+    if (hasDash(text)) errors.push(`/: an em or en dash in the ${what}, against house style`);
+    if (hasBannedWord(text)) {
+      const m = text.match(/\b(?:AI|A\.I\.|artificial intelligence|machine learning|LLMs?|chatbots?|generated|generative|models?)\b/i);
+      errors.push(`/: the ${what} says "${m ? m[0] : ''}", which the front page never does`);
+    }
+  }
+  const cards = [...front.html.matchAll(/<a data-event-card href="([^"]*)"/g)].map(m => m[1]);
+  if (!cards.length) errors.push('/: no event card links to a dashboard');
+  for (const href of cards) {
+    if (!known.has(href)) errors.push(`/: event card links to ${href} which does not exist`);
+  }
+  if (!/data-live="dead"/.test(front.html)) errors.push('/: the figure strip has no live counter to repaint');
+  if (!/fetch\('\/api\/figures'/.test(front.html)) errors.push('/: the front page does not poll /api/figures');
+  /* Every figure tile names where it came from. */
+  const tiles = (front.html.match(/<article class="fp-fig/g) || []).length;
+  const sourced = (front.html.match(/class="fp-fig-s"/g) || []).length;
+  if (tiles && sourced < tiles - 1) errors.push(`/: ${tiles - sourced} figure tile(s) carry no source line`);
 }
 
 /* -- news sitemap -----------------------------------------------------------

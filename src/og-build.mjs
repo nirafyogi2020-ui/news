@@ -231,7 +231,7 @@ story('home-story', {
 });
 
 const pages = [
-  P.nepalFloodHub(ctx), P.rasuwaEvent(ctx), P.liveUpdates(ctx), P.casualties(ctx),
+  P.nepalFloodHub(ctx), P.rasuwaDashboard(ctx), P.liveUpdates(ctx), P.casualties(ctx),
   P.missingPersons(ctx), P.timeline(ctx), P.cause(ctx), P.damage(ctx), P.mapPage(ctx),
   P.emergencyNumbers(ctx), P.relief(ctx), P.hazardGuide(ctx), P.updateIndex(ctx),
   P.hydropower(ctx), P.foreignNationals(ctx), ...P.hazardPages(ctx),
