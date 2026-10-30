@@ -1,5 +1,5 @@
 {
   "version": 1,
-  "include": ["/api/*", "/feed.xml", "/global", "/google31bf6cebb680a77c3.html"],
+  "include": ["/api/*", "/feed.xml", "/global", "/google31bf6ceb680a77c3.html"],
   "exclude": ["/assets/*", "/robots.txt", "/sitemap*.xml", "/news-sitemap.xml", "/*.png", "/*.ico", "/*.svg", "/*.webmanifest", "/*.txt"]
 }

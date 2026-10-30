@@ -1,5 +1,5 @@
 /**
- * GET /google31bf6cebb680a77c3.html
+ * GET /google31bf6ceb680a77c3.html
  *
  * Google Search Console ownership check. Pages serves the static copy of this
  * file only behind a 308 to the extensionless URL, and Google's verifier does
@@ -8,7 +8,7 @@
  */
 
 export function onRequestGet() {
-  return new Response('google-site-verification: google31bf6cebb680a77c3.html', {
+  return new Response('google-site-verification: google31bf6ceb680a77c3.html', {
     headers: { 'content-type': 'text/html; charset=utf-8' },
   });
 }
