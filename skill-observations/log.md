@@ -37,3 +37,18 @@ Observations captured during task-oriented work.
 **Suggested improvement:** Add an atomic publisher lock or a pre-build ownership check that aborts when tracked or generated files change during source verification; never claim the concurrent files as this run's edits.
 
 **Principle:** A shared publisher checkout must remain stable from initial inspection through deployment, or publication stops.
+
+### Observation 3: Verify the counted entity before ranking fresh figures
+
+**Status:** OPEN
+**Date:** 2026-09-08
+**Session context:** Correcting disaster counters and testing the redesigned dashboard against a live official bulletin.
+**Skill:** task-observer
+**Type:** open-source
+**Phase/Area:** Data parsing and regression verification
+
+**Issue:** A death-count parser also matched DNA samples from deceased people. A duplicate headline discarded a later sentence establishing national scope. Removing a numerical floor exposed both faults during browser verification.
+
+**Suggested improvement:** Test what each number counts, its population, bulletin date and duplicate handling before testing freshness ordering. Require a reconciled breakdown where available.
+
+**Principle:** Source authority and recency do not establish that two figures count the same entity or population.
