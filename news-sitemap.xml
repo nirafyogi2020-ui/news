@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-29T05:02:57.000Z</news:publication_date>
+      <news:publication_date>2026-10-30T01:37:08.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,456 dead, 5,132 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-29T05:02:57.000Z</news:publication_date>
+      <news:publication_date>2026-10-30T01:37:08.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-30-auto-2026-10-30/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-30T01:37:08.000Z</news:publication_date>
+      <news:title>स्याफ्रुबेँसी–खाम्जिङ जोड्ने अस्थायी काठेपुल सञ्चालन</news:title>
     </news:news>
   </url>
   <url>
@@ -65,39 +76,6 @@
       </news:publication>
       <news:publication_date>2026-10-28T07:34:33.000Z</news:publication_date>
       <news:title>Energy Minister urges regional action on cascading Himalayan disasters at Bangkok conference</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-28-auto-2026-10-28/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-27T23:45:32.000Z</news:publication_date>
-      <news:title>खतरनाक बन्यो चक्रवात ‘अर्नब’, नेपालमा पनि उच्च सतर्कता</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-27-auto-2026-10-27-deposits-in-prime-minister-s-disaster-relief-funds-exc/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-27T07:46:12.000Z</news:publication_date>
-      <news:title>Deposits in Prime Minister’s disaster relief funds exceed Rs 18.13 billion</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-27-auto-2026-10-27-flood-landslide-trigger-water-shortage-in-beni-myagdi/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-27T07:29:08.000Z</news:publication_date>
-      <news:title>Flood, landslide trigger water shortage in Beni, Myagdi</news:title>
     </news:news>
   </url>
 </urlset>
