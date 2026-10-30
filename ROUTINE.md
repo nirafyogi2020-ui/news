@@ -345,11 +345,14 @@ Then commit and push everything the run changed:
 Run this every hour, including hours where nothing changed. Fetch the live site
 and confirm:
 
-- `/` returns 200 and the toll in its hero counters matches `src/content.mjs`.
-- The home page HTML contains `LiveBlogPosting`, and the live ticker block
-  under the hero carries the newest bulletin's timestamp. If the ticker is
-  empty, say so loudly: the page has stopped reading as live coverage.
-- The home page `<title>` carries the current toll, not a stale one.
+- `/` returns 200 and is the national front page; its title carries the
+  current toll. `/nepal-flood/rasuwa/` returns 200 and the toll in its hero
+  counters matches `src/content.mjs`.
+- The dashboard HTML at `/nepal-flood/rasuwa/` contains `LiveBlogPosting`,
+  and the live ticker block under its hero carries the newest bulletin's
+  timestamp. If the ticker is empty, say so loudly: the page has stopped
+  reading as live coverage.
+- The dashboard `<title>` carries the current toll, not a stale one.
 - `/sitemap.xml`, `/news-sitemap.xml`, `/sitemap-index.xml`, `/robots.txt`,
   `/feed.xml` and `/today.json` all return 200, and every entry in
   `/news-sitemap.xml` is dated within the last 48 hours.
@@ -375,7 +378,8 @@ that in one line.
 
 `today.json`, `event.json`, `src/content.mjs`, `src/content-ne.mjs`.
 
-Do not edit `index.html`, `src/pages.mjs`, `src/template.mjs`, `src/build.mjs`,
+Do not edit `src/rasuwa-dashboard.html` (the Rasuwa dashboard, served at
+`/nepal-flood/rasuwa/`), `index.html` (the generated front page), `src/pages.mjs`, `src/template.mjs`, `src/build.mjs`,
 `src/check.mjs`, `src/og*.mjs`, `functions/`, `PROMPT.md` or this file unless a
 page is actually broken, and if you do, say so clearly in the report.
 

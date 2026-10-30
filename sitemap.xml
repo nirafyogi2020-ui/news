@@ -4,9 +4,21 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-10-30T07:16:21.000Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/og-image.png</image:loc>
+      <image:title>Nepal Disaster Update Live: Rasuwa flood updates, map and helplines</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/</loc>
+    <lastmod>2026-10-30T07:16:21.000Z</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/"/>
+    <xhtml:link rel="alternate" hreflang="ne" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/ne/"/>
     <image:image>
       <image:loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/og-image.png</image:loc>
       <image:title>Nepal Disaster Update Live: Rasuwa flood updates, map and helplines</image:title>
@@ -17,14 +29,6 @@
     <lastmod>2026-10-30T07:16:21.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/</loc>
-    <lastmod>2026-10-30T07:16:21.000Z</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/"/>
-    <xhtml:link rel="alternate" hreflang="ne" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/ne/"/>
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/live-updates/</loc>

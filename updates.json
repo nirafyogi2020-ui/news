@@ -1,0 +1,2189 @@
+{
+  "updated": "2026-10-30T07:16:21.000Z",
+  "figures": {
+    "dead": {
+      "metric": "dead",
+      "value": 1456,
+      "scope": "total",
+      "source": "Nepal Police",
+      "url": "https://nepalpolice.gov.np/news/10719/",
+      "time": "2026-10-12T06:00:00+05:45",
+      "statedTime": null,
+      "sentence": "जसमध्ये रसुवामा २ सय ३७ जना, नुवाकोटमा २ सय ५ जना, धादिङमा ७३ जना, चितवनमा ३ सय ६९ जना, गोरखामा ८० जना, तनहुँमा ३८ जना, नवलपरासी पूर्वमा २ सय ३२ जना र नवलपरासी पश्‍चिममा २ सय २२ जना गरी १ हजार ४ सय ५६ जनाको शव फेला परेको हो",
+      "others": [
+        {
+          "value": 1458,
+          "source": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10719/",
+          "time": "2026-10-12T06:00:00+05:45",
+          "scope": "local"
+        },
+        {
+          "value": 1458,
+          "source": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10719/",
+          "time": "2026-10-12T06:00:00+05:45",
+          "scope": "local"
+        },
+        {
+          "value": 1456,
+          "source": "Nepal Police",
+          "url": "https://nepalpolice.gov.np/news/10719/",
+          "time": "2026-10-12T06:00:00+05:45",
+          "scope": "total"
+        }
+      ]
+    },
+    "missing": {
+      "metric": "missing",
+      "value": 5285,
+      "source": "NDRRMA",
+      "url": "https://bernama.com/en/news.php?id=2615902",
+      "time": "2026-10-03T12:00:00+05:45",
+      "scope": "total",
+      "sentence": "As many as 1,455 people have been confirmed dead and 5,285 remain missing as of Oct 3, according to the NDRRMA."
+    },
+    "rescued": {
+      "metric": "rescued",
+      "value": 13795,
+      "source": "Reuters",
+      "url": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/10/06/nepal-ends-search-and-rescue-after-flood-focuses-on-rehabilitation",
+      "time": "2026-10-05T12:00:00+05:45",
+      "scope": "total",
+      "sentence": "Another 13,795 people were rescued."
+    }
+  },
+  "districts": {
+    "rows": [
+      {
+        "district": "Chitwan",
+        "value": 369
+      },
+      {
+        "district": "Rasuwa",
+        "value": 237
+      },
+      {
+        "district": "Nawalparasi East",
+        "value": 232
+      },
+      {
+        "district": "Nawalparasi West",
+        "value": 222
+      },
+      {
+        "district": "Nuwakot",
+        "value": 205
+      },
+      {
+        "district": "Gorkha",
+        "value": 80
+      },
+      {
+        "district": "Dhading",
+        "value": 73
+      },
+      {
+        "district": "Tanahun",
+        "value": 38
+      }
+    ],
+    "total": 1456,
+    "source": "Nepal Police",
+    "url": "https://nepalpolice.gov.np/news/10719/",
+    "time": "2026-10-12T06:00:00+05:45"
+  },
+  "response": {
+    "time": "2026-09-09T11:00:00+05:45",
+    "url": "https://nirajbhusal.github.io/rasuwa-flood-bulletin/",
+    "source": "NDRRMA · Rasuwa Flood Bulletin",
+    "injured": 7151,
+    "discharged": 252,
+    "sheltered": 3628,
+    "personnel": 21185,
+    "army": 9007,
+    "police": 7975,
+    "apf": 4203,
+    "identified": 102,
+    "electricity": [
+      {
+        "place": "Rasuwa",
+        "value": 78
+      },
+      {
+        "place": "Nuwakot",
+        "value": 96.7
+      },
+      {
+        "place": "Dhading",
+        "value": 99.8
+      }
+    ]
+  },
+  "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
+  "updates": [
+    {
+      "url": "/updates/2026-10-30-auto-2026-10-30-lumbini-cm-calls-for-better-coordination-and-preparedn/",
+      "title": "Lumbini CM calls for better coordination and preparedness in disaster management",
+      "time": "2026-10-30T07:16:21.000Z",
+      "summary": "Arghakhanchi, October 30 Lumbini Province Chief Minister Chet Narayan Acharya has said effective coordination and preparedness among all three tiers of government and concerned agencies are essential for disaster risk reduction and…",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-30-auto-2026-10-30/",
+      "title": "स्याफ्रुबेँसी–खाम्जिङ जोड्ने अस्थायी काठेपुल सञ्चालन",
+      "time": "2026-10-30T01:37:08.000Z",
+      "summary": "रसुवा– भोटेकोशी बाढीले सडक सञ्जाल टुटेपछि अवरुद्ध रसुवाको स्याफ्रुबेँसीबाट गोसाइँकुण्ड गाउँपालिकाका विभिन्न वडालाई जोड्ने काठेपुल सञ्चालनमा आएका छन् ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-29-auto-2026-10-29/",
+      "title": "मनाङमा वर्षा र हिमपातको सम्भावना, माइकिङ गरी स्थानीयलाई सचेत गराइयो",
+      "time": "2026-10-29T05:02:57.000Z",
+      "summary": "सम्भावित वर्षा र हिमपातका कारण विपद्जन्य घटना हुन सक्ने भन्दै मनाङ प्रहरीले स्थानीय बासिन्दालाई सतर्क रहन आग्रह गरेको छ।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-29-auto-2026-10-29-apples-produced-in-manaslu-region-confined-to-warehous/",
+      "title": "Apples produced in Manaslu Region confined to warehouses",
+      "time": "2026-10-29T04:40:29.000Z",
+      "summary": "GORKHA: Apples produced in the Manaslu region of northern Gorkha remain stranded in warehouses after floods in the Budhigandaki River washed away bridges and roads.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-29-auto-2026-10-29-mustang-produces-apples-worth-over-rs-1-14-billion/",
+      "title": "Mustang produces apples worth over Rs 1.14 billion",
+      "time": "2026-10-29T00:51:52.000Z",
+      "summary": "File: Apples stored in Jumla Mustang, October 29 Apples worth Rs 1.1496 billion have been produced in the Himalayan district of Mustang this year, according to preliminary estimates.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-28-auto-2026-10-28-energy-minister-urges-regional-action-on-cascading-him/",
+      "title": "Energy Minister urges regional action on cascading Himalayan disasters at Bangkok conference",
+      "time": "2026-10-28T07:34:33.000Z",
+      "summary": "BANGKOK: The Energy, Water Resources and Irrigation Minister Biraj Bhakta Shrestha has called for stronger regional cooperation, satellite data sharing and improved early warning systems to help countries prepare for increasingly complex…",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-28-auto-2026-10-28/",
+      "title": "खतरनाक बन्यो चक्रवात ‘अर्नब’, नेपालमा पनि उच्च सतर्कता",
+      "time": "2026-10-27T23:45:32.000Z",
+      "summary": "११ कात्तिक, काठमाडौं । बंगालको खाडीमा विकसित चक्रवात ‘अर्नब’ले खतरनाक रुप लिएपछि नेपालमा पनि उच्च सतर्कता अपनाइएको छ । यसको असर हिमालदेखि तराईसम्मै पर्ने सम्भावना भएकाले सरकारले सुरक्षा अंगहरुलाई हाई अलर्टमा राखेको छ ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-27-auto-2026-10-27-deposits-in-prime-minister-s-disaster-relief-funds-exc/",
+      "title": "Deposits in Prime Minister’s disaster relief funds exceed Rs 18.13 billion",
+      "time": "2026-10-27T07:46:12.000Z",
+      "summary": "Kathmandu, October 27 Deposits in the Prime Minister’s Natural Disaster Rescue Fund and the Prime Minister’s Relief Fund have exceeded Rs 18.13 billion following the devastating floods that struck the Bhotekoshi-Trishuli river system on…",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-27-auto-2026-10-27-flood-landslide-trigger-water-shortage-in-beni-myagdi/",
+      "title": "Flood, landslide trigger water shortage in Beni, Myagdi",
+      "time": "2026-10-27T07:29:08.000Z",
+      "summary": "MYAGDI: Residents of Beni Bazaar, the district headquarters of Myagdi, are facing a shortage of drinking water after floods and landslides damaged the supply pipeline earlier this month.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-27-auto-2026-10-27/",
+      "title": "बाढीपहिरोले पाइपलाइन बगाएपछि बेनीमा खानेपानीको समस्या",
+      "time": "2026-10-27T01:32:43.000Z",
+      "summary": "म्याग्दीको सदरमुकाम बेनी बजारमा खानेपानीको अभाव हुन थालेको छ। गत असोज दोस्रो साता आएको बाढीपहिरोका कारण खानेपानी आपूर्ति गर्ने पाइपलाइनमा क्षति पुगेपछि बजारमा पानीको आपूर्ति घटेको हो।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-26-auto-2026-10-26-rasuwa-bhote-koshi-floods-cause-over-rs-79-billion-in-/",
+      "title": "Rasuwa-Bhote Koshi floods cause over Rs 79 billion in damages",
+      "time": "2026-10-26T05:45:32.000Z",
+      "summary": "KATHMANDU: The devastating floods in the Rasuwa-Bhote Koshi rivers on Aug. 26, 2026, have caused damages estimated at Rs 79.17 billion.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-26-auto-2026-10-26/",
+      "title": "दशैंपछि मुक्तिनाथमा बढ्यो चहलपहल, तीन दिनमै १२ हजार बढीले गरे दर्शन",
+      "time": "2026-10-26T00:33:35.000Z",
+      "summary": "हिन्दु तथा बौद्ध धर्मावलम्बीहरूको धार्मिक साझा तीर्थस्थल मुक्तिनाथ मन्दिरमा दशैंपछि भक्तजनको संख्या बढेको छ। दशैं अगाडि प्रायः सुनसान जस्तै रहेको मुक्तिनाथ मन्दिरमा अहिले भने पर्यटकको चहलपहल बाक्लो भएको हो।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-25-auto-2026-10-25-electricity-worth-rs-5-92-billion-exported-to-india-fr/",
+      "title": "Electricity worth Rs 5.92 billion exported to India from mid-September to mid-October",
+      "time": "2026-10-25T06:26:49.000Z",
+      "summary": "KATHMANDU: The Nepal Electricity Authority (NEA) generated over Rs 5.92 billion in revenue from power exports to India between mid-September and mid-October.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-25-auto-2026-10-25/",
+      "title": "फापरखेत पहिरो र सिङ्गा–तातोपानी कुण्ड संरक्षणमा मन्त्री पुनको चासो",
+      "time": "2026-10-25T01:05:01.000Z",
+      "summary": "विज्ञान, प्रविधि तथा नवप्रर्वतन मन्त्री महावीर पुनले म्याग्दीको पश्चिमी क्षेत्रका तीन वटा स्थानीय तहलाई जिल्ला सदरमुकाम बेनीसँग जोड्ने बेनी–दरबाङ सडकको मुख्य चुनौती बनेको फापरखेत पहिरोको समस्या समाधानमा चासो देखाएका छन्।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-24-auto-2026-10-24/",
+      "title": "जलवायु न्यायको मागलाई गम्भीरतापूर्वक लिन विश्व समुदायलाई पूर्वराष्ट्रपति भण्डारीको आग्रह",
+      "time": "2026-10-24T04:13:01.000Z",
+      "summary": "काठमाडौँ– पूर्वराष्ट्रपति विद्यादेवी भण्डारीले नेपालका हालैका अकल्पनीय प्राकृतिक विपद्का घटनाले नेपालमा जलवायुको असरको अवस्थालाई पुनः उजागर गरेकाले नेपालको जलवायु न्यायको मागलाई गम्भीर रुपमा लिन विश्व समुदायसमक्ष आग्रह गरेकी छन् ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-24-auto-2026-10-24-makawanpur-sees-52-road-accidents-in-september-six-per/",
+      "title": "Makawanpur sees 52 road accidents in September; Six persons dead",
+      "time": "2026-10-24T03:00:37.000Z",
+      "summary": "BAGMATI: At least 52 vehicle accidents occurred in Makawanpur district during the month of 17 September to 17 October.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-24-auto-2026-10-24-beni-darbang-muna-road-reconstruction-estimated-to-cos/",
+      "title": "Beni-Darbang-Muna road reconstruction estimated to cost Rs 70 million",
+      "time": "2026-10-24T02:45:37.000Z",
+      "summary": "MYAGDI: It is estimated to cost around Rs 70 million to reconstruct the Beni–Darbang–Muna road in Myagdi that was damaged by floods, landslides, and river erosion.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-23-auto-2026-10-23/",
+      "title": "यस वर्षको दसैँमा सौराहामा आन्तरिक पर्यटक घटे",
+      "time": "2026-10-23T03:36:43.000Z",
+      "summary": "चितवन – भोटेकोशी र बूढीगण्डकीको बाढीपछि मुख्य राजमार्गमा भएको अवरोध हटे पनि सम्भावित त्रासका कारण यस वर्षको दसैँमा आन्तरिक पर्यटकको चहलपहल कम भएको छ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-23-auto-2026-10-23-manaslu-larke-pass-langtang-and-gosaikunda-treks-reope/",
+      "title": "Manaslu Larke Pass, Langtang and Gosaikunda treks reopen with safety advisories",
+      "time": "2026-10-23T03:10:47.000Z",
+      "summary": "KATHMANDU: Issuing a notice today, the Trekking Agencies’ Association of Nepal (TAAN) announced that the Manaslu Larke Pass trekking route has partially resumed after the Dharche and Chumnuwri rural municipalities jointly repaired the…",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-23-auto-2026-10-23-loss-and-damage-fund-approves-20-million-grant-for-nep/",
+      "title": "Loss and Damage Fund approves $20 million grant for Nepal’s flood recovery",
+      "time": "2026-10-23T02:51:21.000Z",
+      "summary": "Kathmandu, October 23 The Loss and Damage Fund , established to address climate-related losses and damages, has approved a $20 million grant for Nepal to support relief, rehabilitation and reconstruction in communities affected by…",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-22-auto-2026-10-22-floods-and-landslides-disrupt-roads-in-gandaki-and-kar/",
+      "title": "Floods and Landslides Disrupt Roads in Gandaki and Karnali Provinces",
+      "time": "2026-10-22T05:19:57.000Z",
+      "summary": "KATHMANDU: Road transport has been disrupted across various locations in Gandaki and Karnali provinces due to floods and landslides.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-22-auto-2026-10-22/",
+      "title": "बाजुराको अम्कोट पहिरो नियन्त्रण र सडक सुधारका लागि ५२ करोड बजेट",
+      "time": "2026-10-22T02:28:22.000Z",
+      "summary": "अम्कोट पहिरोले सडक मात्रै जोखिममा छैन, गाउँका बासिन्दासमेत असुरक्षित छन् ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-21-auto-2026-10-21-nepal-police-offers-free-bus-services-on-three-routes-/",
+      "title": "Nepal Police offers free bus services on three routes for Dashain",
+      "time": "2026-10-21T05:17:46.000Z",
+      "summary": "KATHMANDU: Nepal Police has launched a free bus service within the Kathmandu Valley to assist passengers during the Dashain festival.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-21-auto-2026-10-21/",
+      "title": "यातायात सहजसँगै लाङटाङमा पर्यटक बढे",
+      "time": "2026-10-21T04:41:17.000Z",
+      "summary": "यातायात सहज भएसँगै रसुवाको प्रसिद्ध पर्यटकीयस्थल लाङटाङ क्षेत्रमा पर्यटकको चहलपहल बढ्न थालेको छ। फलाखु खोलामा अस्थायी बेलिब्रिज सञ्चालनमा आएपछि लाङटाङ क्षेत्र घुम्नका लागि पर्यटक आउने क्रम सुरु भएको हो।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-21-auto-2026-10-21-dashain-will-inspire-a-shift-from-disaster-to-reconstr/",
+      "title": "Dashain will inspire a shift from disaster to reconstruction, says President Lamichhane",
+      "time": "2026-10-21T04:07:32.000Z",
+      "summary": "KATHMANDU: Rastriya Swatantra Party (RSP) President Rabi Lamichhane has expressed his belief that Bada Dashain, which is being celebrated amidst disaster and grief, will bind Nepali society together in a stronger bond of unity.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-20-auto-2026-10-20-beni-jomsom-korala-road-damage-is-about-one-billion-ru/",
+      "title": "Beni-Jomsom-Korala road damage is about one billion rupees",
+      "time": "2026-10-20T05:33:27.000Z",
+      "summary": "MYAGDI: It is estimated that the damage to physical structures worth around one billion rupees in Beni-Jomsong Korala road sections.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-20-auto-2026-10-20/",
+      "title": "छुम्सुरको पहिरो पन्छाएपछि खाँदबारी–किमाथाङ्का सडक पुनः सञ्चालन",
+      "time": "2026-10-20T01:29:16.000Z",
+      "summary": "३ कात्तिक, सङ्खुवासभा । नेपाली सेनाको अथक प्रयासपछि अवरुद्ध खाँदबारी–किमाथाङ्का सडकखण्ड सोमबार साँझदेखि पुनः सञ्चालनमा आएको छ । नेपाल –चीन जोड्ने ‘लाइफलाइन’ सो सडकखण्ड विगत तीन महिनादेखि अवरुद्ध भएको थियो ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-19-auto-2026-10-19-floods-and-landslides-disrupt-major-roads-in-three-dis/",
+      "title": "Floods and landslides disrupt major roads in three districts",
+      "time": "2026-10-19T02:23:21.000Z",
+      "summary": "KATHMANDU: Major highways in Gandaki and Karnali provinces have been disrupted due to floods and landslides. According to reports received as of 6:30 a.m.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-19-auto-2026-10-19/",
+      "title": "लगातार ६ खेलसम्म जितविहीन बन्यो म्यानचेस्टर युनाइटेड",
+      "time": "2026-10-19T00:47:40.000Z",
+      "summary": "काठमाडौँ – म्यानचेस्टर युनाइटेडको जितविहीन यात्राले निरन्तरता पाएको छ। इङ्लिस प्रिमियर लिगअन्तर्गत एलान रोर्डमा आइतबार राति सम्पन्न खेलमा युनाइटेड लिड्स युनाइटेडसँग १–१ गोलको बराबरीमा रोकिएको हो।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-18-auto-2026-10-18-flood-displaced-settlements-at-risk-from-toxic-liquor/",
+      "title": "Flood-displaced settlements at risk from “toxic liquor”",
+      "time": "2026-10-18T06:15:54.000Z",
+      "summary": "Residents of Uttargaya Rural Municipality-1 in Rasuwa, displaced by the Bhotekoshi flood and living temporarily in Nuwakot, now face the added danger of “toxic” homemade liquor.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-18-auto-2026-10-18/",
+      "title": "कालीगण्डकी बाढी : दाना–खुर्कोट प्रसारणलाइन सञ्चालनमा",
+      "time": "2026-10-18T01:12:21.000Z",
+      "summary": "कालीगण्डकी बाढी र कटानका कारण क्षतिग्रस्त बनेको २२० केभी क्षमताको कालीगण्डकी कोरिडोरको दाना–खुर्कोट प्रसारणलाइन मर्मत गरिएको छ।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-17-auto-2026-10-17-light-rain-and-snowfall-likely-in-parts-of-nepal/",
+      "title": "Light Rain and Snowfall Likely in Parts of Nepal",
+      "time": "2026-10-17T01:24:18.000Z",
+      "summary": "KATHMANDU: The Department of Hydrology and Meteorology has reported that the Himalayan regions of Koshi, Bagmati, and Gandaki provinces will experience generally cloudy conditions today.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-17-auto-2026-10-17/",
+      "title": "चाडपर्वले अर्थतन्त्र चलायमान",
+      "time": "2026-10-17T00:52:45.000Z",
+      "summary": "बाढीपहिरो, प्राकृतिक विपत्तिले अर्थतन्त्र सुस्ताएका बेला दसैंलगायत चाडपर्व सुरु भएसँगै बजारमा आर्थिक गतिविधि बढेको छ। बजारमा किनमेल गर्नेको भिड छ। सहर बस्ने धमाधम गाउँ फर्किएका छन्। विदेशमा रहेकाले घरमा दसैं मनाउन पैसा पठाएका छन्।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-16-auto-2026-10-16-cabinet-makes-13-decisions-on-disaster-relief-wheat-pr/",
+      "title": "Cabinet makes 13 decisions on disaster relief, wheat prices and new bills",
+      "time": "2026-10-16T09:36:36.000Z",
+      "summary": "KATHMANDU: The Council of Ministers made 13 decisions at its meeting on Friday, including declaring flood- and landslide-affected areas in Gorkha, Dhading and Baglung disaster crisis-affected zones, setting the minimum support price of…",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-16-auto-2026-10-16/",
+      "title": "पहिरो प्रभावितलाई श्रमदानबाट अस्थायी आवास",
+      "time": "2026-10-16T00:29:58.000Z",
+      "summary": "म्याग्दीको बेनी नगरपालिका–९ ढोल्ठानमा स्वयंसेवकहरूले श्रमदान गरेर पहिरो प्रभावितहरूका लागि अस्थायी आवास निर्माण गरेका छन्।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-15-auto-2026-10-15-25-children-being-taken-to-india-to-learn-tibetan-lang/",
+      "title": "25 children being taken to India to learn Tibetan language rescued at Banbasa",
+      "time": "2026-10-15T06:34:09.000Z",
+      "summary": "Kanchanpur, October 15 The checkpoint at Banbasa, on the Indian side of the border, has sent back to Nepal 25 children under 10 who were being taken to Dehradun, India, to study the Tibetan language.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-15-auto-2026-10-15/",
+      "title": "घिरिङ र डेढगाउँ जोड्ने कालीगण्डकीको पुल सञ्चालन",
+      "time": "2026-10-15T00:37:07.000Z",
+      "summary": "तनहुँ– कालीगण्डकी नदीमा आएको बाढीले पहुँचसडक बगाएको घिरिङ र डेढगाउँ जोड्ने पक्की पुल १८ दिनपछि सञ्चालनमा आएको छ ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-14-auto-2026-10-14-more-than-2-500-evs-stranded-in-mustang/",
+      "title": "More than 2,500 EVs stranded in Mustang",
+      "time": "2026-10-14T06:07:42.000Z",
+      "summary": "File Mustang, October 14 More than 2,500 electric vehicles (EVs) have entered Nepal through the Korala Pass over the past two weeks.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-14-auto-2026-10-14/",
+      "title": "मुस्ताङ र अन्नपूर्णमा विद्युत् आपूर्ति पुनः नियमित",
+      "time": "2026-10-14T00:33:01.000Z",
+      "summary": "२८ असोज, म्याग्दी । पछिल्लो झरि र बाढी पहिरोबाट प्रभावित बनेको म्याग्दीको अन्नपूर्ण गाउँपालिका र मुस्ताङमा विद्युत् आपूर्ति पुनः नियमित गरिएको छ ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-13-auto-2026-10-13-flood-aftermath-disrupts-highways-in-five-districts/",
+      "title": "Flood aftermath disrupts highways in five districts",
+      "time": "2026-10-13T03:39:45.000Z",
+      "summary": "Kathmandu, October 13 Floods and landslides have disrupted major highways and road sections in several districts across Nepal, affecting traffic in Bagmati and Gandaki provinces.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-13-auto-2026-10-13-dna-tests-show-preliminary-matches-for-around-250-rasu/",
+      "title": "DNA tests show preliminary matches for around 250 Rasuwa flood victims",
+      "time": "2026-10-13T03:35:17.000Z",
+      "summary": "Site where bodies of the Rasuwa flood victims have been buried. Kathmandu, October 13 DNA tests have shown preliminary matches between the remains of around 250 people killed in the Rasuwa floods and samples provided by their relatives.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-13-auto-2026-10-13-govt-introduces-special-price-adjustment-for-public-co/",
+      "title": "Govt introduces special price adjustment for public construction contracts",
+      "time": "2026-10-13T03:15:00.000Z",
+      "summary": "It takes over six hours to get to Butwal from Narayangadh. Kathmandu, October 13 The government has introduced a special mechanism to adjust the prices of public construction contracts amid abnormal cost increases caused by disruptions to…",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-12-auto-2026-10-12/",
+      "title": "बूढीगण्डकीमा बाढी : इसिमोडको प्रारम्भिक आकलन के छ ?",
+      "time": "2026-10-12T01:35:26.000Z",
+      "summary": "रसुवा–भोटेकोशी बाढीपछि बूढीगण्डकीमा आएको बाढीले हिमाली क्षेत्रमा एउटा प्राकृतिक प्रक्रियाले अर्को विपद् निम्त्याउन सक्ने र त्यसबाट जनधन तथा पूर्वाधारमा हुने क्षति थप बढ्न सक्ने जोखिमलाई उजागर गरेको छ ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-12-auto-2026-10-12-dashain-meat-supply-hit-by-floods-and-road-blockages-p/",
+      "title": "Dashain meat supply hit by floods and road blockages, prices soar in Kathmandu",
+      "time": "2026-10-12T01:15:00.000Z",
+      "summary": "Kathmandu, October 11 Floods and landslides triggered by incessant rainfall have disrupted Dashain meat supplies in Kathmandu Valley, raising concerns that prices of goats and sheep could rise further as major highways remain blocked.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-12-latest-reported-figures/",
+      "title": "Latest reported figures: 1,456 confirmed dead",
+      "time": "2026-10-12T06:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,456, from 1,455, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-11-auto-2026-10-11-prithvi-highway-reopens-after-road-cutting-at-galaundi/",
+      "title": "Prithvi Highway reopens after road cutting at Galaundi",
+      "time": "2026-10-11T07:07:23.000Z",
+      "summary": "Kathmandu, October 12 The Prithvi Highway, which was blocked after a section of the road subsided at Galaundi in Dhading, has been reopened to traffic. The road subsided after erosion by the Trishuli River along the highway at Galaundi.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-11-auto-2026-10-11-acrow-bridge-over-falaku-khola-in-betrawati-now-operat/",
+      "title": "Acrow bridge over Falaku Khola in Betrawati now operational",
+      "time": "2026-10-11T07:06:57.000Z",
+      "summary": "Kathmandu, October 11 The Acrow bridge built over the Falaku Khola at Betrawati, on the Nuwakot-Rasuwa border, has come into operation.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-11-auto-2026-10-11/",
+      "title": "गोरखाको चुमनुम्ब्रीमा आकस्मिक बाढी, खोला थुनिएको आशंका",
+      "time": "2026-10-11T00:54:20.000Z",
+      "summary": "२५ असोज, काठमाडौं । गोर्खाको चुमनुम्ब्री गाउँपालिका ६ मा आकस्मिक बाढी आएको छ । गोरखाका प्रमुख जिल्ला अधिकारी धरेन्द्र कुमार मिश्रले आज बिहान चार बजेर ३५ मिनेटमा ठूलो बाढी आएको खबर पाएको बताए ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-10-auto-2026-10-10-bp-highway-obstructed/",
+      "title": "BP Highway obstructed",
+      "time": "2026-10-10T04:11:42.000Z",
+      "summary": "KAVRE: The BP Highway has been completely blocked after a landslide with debris occurred in Roshi Rural Municipality-9, Pinthalibesi.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-10-auto-2026-10-10/",
+      "title": "त्रिभुवन राजपथमा सवारी आवागमनको नयाँ समय तालिका लागू",
+      "time": "2026-10-10T02:35:35.000Z",
+      "summary": "मुग्लिङ–काठमाडौं सडकखण्ड पहिरोका कारण पूर्ण रूपमा अवरुद्ध भएपछि जिल्ला प्रशासन कार्यालय मकवानपुरले त्रिभुवन राजपथमा सवारी आवागमन व्यवस्थित गर्न नयाँ समयतालिका निर्धारण गरेको छ।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-09-auto-2026-10-09-over-rs-3-547-million-donation-handed-over-to-minister/",
+      "title": "Over Rs 3.547 million donation handed over to Minister Dr Wagle",
+      "time": "2026-10-09T07:26:50.000Z",
+      "summary": "KATHMANDU: The three organisations the Japan Nepal Society (JNS), Tokyo, the JICA Alumni Association of Nepal (JAAN) and the Institution for Suitable Actions for Prosperity (ISAP) have donated total Rs 3,547,536 with the objective of…",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-09-auto-2026-10-09/",
+      "title": "विपद् प्रभावित बेनी-जोमसोम कोरला सडकमा यातायात सञ्चालनमा चुनौती",
+      "time": "2026-10-09T01:12:08.000Z",
+      "summary": "म्याग्दी– कोरलानाका जोड्ने बेनी–जोमसोम–कोरला सडक मर्मतको काम अन्तिम चरणमा पुगे पनि नियमित, सहज र सुरक्षित यातायात सञ्चालनमा चुनौती देखिएको छ ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-08-auto-2026-10-08-training-children-and-students-against-future-disaster/",
+      "title": "Training children and students against future disasters",
+      "time": "2026-10-08T02:15:00.000Z",
+      "summary": "Mudslides and floods disrupted Central Nepal on August 26, 2026, with children being one of the most affected ones. The devastating flood served as an alarming reminder of Nepal’s evolving disaster scenario.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-08-auto-2026-10-08/",
+      "title": "आईपीयू महासभामा नेपालको आपत्कालीन प्रस्ताव दुईतिहाइ बहुमतले चयन",
+      "time": "2026-10-08T01:37:08.000Z",
+      "summary": "तान्जानिया– तान्जानियाको अरुसामा जारी अन्तर–संसदीय संघ (आईपीयू) को १५३औँ महासभामा नेपालले प्रस्तुत गरेको जलवायुजन्य विपद्सम्बन्धी आपत्कालीन प्रस्ताव दुईतिहाइ बहुमतसहित चयन भएको छ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-07-auto-2026-10-07-relief-materials-provided-to-bhotekoshi-flood-hit-fami/",
+      "title": "Relief materials provided to Bhotekoshi flood hit families",
+      "time": "2026-10-07T05:33:29.000Z",
+      "summary": "KATHMANDU: Relief materials have been provided to the families at the risk located at Dandagaun of Uttargaya rural municipality-2 in the Bhotekoshi flood-affected Rasuwa district.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-07-auto-2026-10-07-repairs-intensified-on-flood-damaged-beni-jomsom-koral/",
+      "title": "Repairs intensified on flood-damaged Beni-Jomsom-Korala road",
+      "time": "2026-10-07T05:33:23.000Z",
+      "summary": "Myagdi, October 7 Repair and reconstruction work has been intensified along several sections of the Beni-Jomsom-Korala road under the Kaligandaki Corridor after floods and landslides triggered by heavy rainfall disrupted the route.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-07-auto-2026-10-07-early-weather-warnings-ease-paddy-harvesting-for-kanch/",
+      "title": "Early weather warnings ease paddy harvesting for Kanchanpur farmers",
+      "time": "2026-10-07T05:30:22.000Z",
+      "summary": "Kanchanpur, October 7 Early weather warnings have made it easier for farmers in Kanchanpur to decide when to harvest paddy and protect their crops from rain and floods.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-06-auto-2026-10-06-world-bank-projects-nepal-economic-growth-to-slow-to-3/",
+      "title": "World Bank projects Nepal economic growth to slow to 3.7 percent",
+      "time": "2026-10-06T08:33:48.000Z",
+      "summary": "KATHMANDU: The World Bank has projected that Nepal’s economic growth will slow to 3.7 percent this year due to the devastating floods in Rasuwa.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-06-auto-2026-10-06/",
+      "title": "अर्थमन्त्री वाग्ले र विश्व बैंक समूहका अध्यक्ष बाङ्गाबीच भेटवार्ता",
+      "time": "2026-10-06T01:27:20.000Z",
+      "summary": "काठमाडौँ– अर्थमन्त्री डा. स्वर्णिम वाग्ले र विश्व बैंक समूहका अध्यक्ष अजय बाङ्गाबीच द्विपक्षीय भेटवार्ता भएको छ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-06-auto-2026-10-06-pm-balen-shah-s-un-speech-and-the-missing-link-in-nepa/",
+      "title": "PM Balen Shah’s UN speech and the missing link in Nepal’s climate response",
+      "time": "2026-10-06T01:15:00.000Z",
+      "summary": "PM Balen Shah addressing the UN General Assembly. Prime Minister Balendra Shah’s address to the United Nations makes a legitimate case for climate justice, grant-based recovery and stronger Himalayan cooperation.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-05-auto-2026-10-05-chitwan-national-park-preparing-to-reopen-jeep-safari-/",
+      "title": "Chitwan National Park preparing to reopen jeep safari from Friday",
+      "time": "2026-10-05T04:08:57.000Z",
+      "summary": "Jeep safari is Chitwan National Park’s major cash cow. Photo: Nirmal Dulal Chitawan, October 5 Chitwan National Park is preparing to reopen the jungle safari, which was closed inside the park because of the monsoon, from Friday, October 9.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-05-auto-2026-10-05-why-climate-security-must-matter-to-nepal-s-diplomacy/",
+      "title": "Why climate security must matter to Nepal’s diplomacy",
+      "time": "2026-10-05T00:15:00.000Z",
+      "summary": "The state of flood-ravaged Syabrubesi. The Trishuli valley has been a trade and pilgrimage route for centuries, linking Nepal with China. On August 26, it became the path of one of the most devastating mountain disasters in recent years.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-05-auto-2026-10-05/",
+      "title": "म्याग्दीका २६ पहिरो अध्ययन : बेनीको न्युरोडमा बढ्यो जोखिम",
+      "time": "2026-10-05T00:14:50.000Z",
+      "summary": "पछिल्लोपटक बेनीको न्युरोडमा खसेको पहिरो सक्रिय हुनसक्ने, त्यसमाथि पनि थप जमिन चर्किएर बग्नलाई तयार भएर बसेको हुँदा सावधानी अपनाउन, अल्पकालीन र दीर्घकालीन उपाय अपनाउन अध्ययन टोलीका संयोजक खतिवडाले सुझाव दिए ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-04-latest-reported-figures/",
+      "title": "Latest reported figures: 1,455 confirmed dead",
+      "time": "2026-10-04T20:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,455, from 1,454, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-04-auto-2026-10-04-phidim-municipality-contributes-rs-4-7-million-to-disa/",
+      "title": "Phidim Municipality contributes Rs 4.7 million to disaster relief fund",
+      "time": "2026-10-04T04:59:37.000Z",
+      "summary": "PANCHTHAR: The Phidim Municipality has deposited Rs 4.7 million into the Prime Minister Disaster Relief Fund to assist the survivors of the recent devastating floods that struck the Bhotekoshi-Trishuli river system.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-04-auto-2026-10-04-lamichhane-foundation-donates-over-51-000-for-flood-re/",
+      "title": "Lamichhane Foundation donates over £51,000 for flood relief",
+      "time": "2026-10-04T04:51:36.000Z",
+      "summary": "London, October 4 The Lamichhane Foundation has donated NPR 1.07 crore (£51,727) to support victims of the recent floods in Nepal’s Bhote Koshi region.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-04-auto-2026-10-04-63-houses-damaged-by-natural-disasters-in-galkot/",
+      "title": "63 houses damaged by natural disasters in Galkot",
+      "time": "2026-10-04T04:42:30.000Z",
+      "summary": "Representational sketch: A landslide in Nepal Baglung, October 4 A total of 63 residential structures have been damaged by floods, landslides and severe weather conditions in Galkot Municipality over the past week.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-03-latest-reported-figures/",
+      "title": "Latest reported figures: 1,454 confirmed dead",
+      "time": "2026-10-03T14:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,454, from 1,453, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-03-auto-2026-10-03/",
+      "title": "छ दिनदेखि अवरुद्ध बेँसीसहर–चामे सडक सञ्चालनमा",
+      "time": "2026-10-03T04:55:00.000Z",
+      "summary": "बाढीपहिरोका कारण छ दिनदेखि अवरुद्ध बेँसीसहर-चामे सडक सञ्चालनमा आएको छ।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-03-auto-2026-10-03-floods-and-landslides-obstruct-multiple-highways-acros/",
+      "title": "Floods and landslides obstruct multiple highways across Nepal",
+      "time": "2026-10-03T02:02:44.000Z",
+      "summary": "KATHMANDU: Continuous rains triggering floods and landslides have led to severe disruptions and closures along several major highway corridors across Bagmati, Gandaki, and Karnali provinces, according to an official update released by the…",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-03-auto-2026-10-03-after-weeks-of-searching-focus-shifts-to-recovery-of-m/",
+      "title": "After weeks of searching, focus shifts to recovery of missing workers and hydropower projects",
+      "time": "2026-10-03T00:15:00.000Z",
+      "summary": "Kathmandu, October 2 More than a month after the Bhotekoshi flood swept through hydropower projects in Rasuwa and neighbouring districts, the search for missing workers and employees has entered a new phase.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-02-auto-2026-10-02/",
+      "title": "सीमा जोगाउने दोधारा चाँदनीको झोलुङ्गे पुल कहिले होला मर्मत ?",
+      "time": "2026-10-02T05:23:02.000Z",
+      "summary": "एक प्रकारले दोधारा चाँदनीवासीका लागि मेरुदण्ड जस्तै थियो झोलुङ्गे पुल । त्यो पुल यही असोज १४ गतेको महाकाली बाढीले चुँडियो ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-02-auto-2026-10-02-landslides-block-multiple-highways-across-nation/",
+      "title": "Landslides block multiple highways across nation",
+      "time": "2026-10-02T04:15:33.000Z",
+      "summary": "KATHMANDU: Continuous floods and landslides in various parts of the country have disrupted traffic on several major highways.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-02-auto-2026-10-02-flooding-in-relekhola-dam-halts-power-production/",
+      "title": "Flooding in Relekhola dam halts power production",
+      "time": "2026-10-02T04:08:39.000Z",
+      "summary": "MYAGDI: The Relekholā Hydropower Project in Annapurna Rural Municipality-4, Narchyang, Myagdi, has been shut down after floodwaters entered into its dam.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-01-latest-reported-figures/",
+      "title": "Latest reported figures: 1,453 confirmed dead",
+      "time": "2026-10-01T14:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,453, from 1,452, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-01-auto-2026-10-01-traffic-resumes-in-kaligandaki-corridor/",
+      "title": "Traffic resumes in Kaligandaki Corridor",
+      "time": "2026-10-01T01:42:08.000Z",
+      "summary": "GULMI: The Kaligandaki Corridor, which had been obstructed due to landslides triggered by continuous rainfall, has opened for traffic.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-01-auto-2026-10-01/",
+      "title": "पहिरोले अवरुद्ध चेपाङ मार्ग आंशिक सञ्चालन",
+      "time": "2026-10-01T01:35:23.000Z",
+      "summary": "पूर्व-पश्चिम राजमार्गको चितवनस्थित भण्डारादेखि पहाडी बाटो हुँदै धादिङको मलेखु पुगेर टुङ्गिने चेपाङ मार्ग पहिरोका कारण अवरुद्ध भएको छ।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-01-auto-2026-10-01-displaced-syabrubesi-residents-seek-a-way-home-after-b/",
+      "title": "Displaced Syabrubesi residents seek a way home after Bhotekoshi floods",
+      "time": "2026-10-01T01:15:00.000Z",
+      "summary": "Aerial view of Syabrubesi after the Bhotekoshi flood. Kathmandu, October 1 It has been more than a month since Singi Dhindup Tamang, 58, of Syabrubesi in Gosainkunda Rural Municipality-5, Rasuwa, arrived at Yellow Gumba in Swayambhu,…",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-30-auto-2026-09-30-ghising-urges-government-to-prioritise-energy-security/",
+      "title": "Ghising urges government to prioritise energy security, infrastructure reconstruction",
+      "time": "2026-09-30T07:17:45.000Z",
+      "summary": "Kathmandu, September 30 Ujyalo Nepal Party Chairperson Kulman Ghising has urged the government to expedite the restoration of electricity and road infrastructure damaged by floods and landslides.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-30-auto-2026-09-30/",
+      "title": "भोटेकोशी बाढीपछिको अनुभव समेट्दै नयाँ जलवायु नीति बनाउन सुझाव",
+      "time": "2026-09-30T01:33:43.000Z",
+      "summary": "काठमाडौँ– कृषि, वन तथा पर्यावरण मन्त्रालयद्वारा प्रस्तावित ‘राष्ट्रिय जलवायु नीति, २०८३’ लाई समयसापेक्ष, समावेशी, सहभागितामूलक, अधिकारमुखी बनाउन सरोकारवाला विज्ञले सुझाव दिएका छन् ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-30-auto-2026-09-30-all-vehicles-to-operate-on-prithvi-highway-from-1pm-to/",
+      "title": "All vehicles to operate on Prithvi Highway from 1pm today",
+      "time": "2026-09-30T00:59:53.000Z",
+      "summary": "Kathmandu, September 30 Traffic along the Prithvi Highway is expected to return to normal from 1pm Wednesday, provided there are no further landslides or road obstructions.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-29-auto-2026-09-29-one-injured-as-dry-landslide-buries-house-in-parbat/",
+      "title": "One injured as dry landslide buries house in Parbat",
+      "time": "2026-09-29T06:35:57.000Z",
+      "summary": "Kathmandu, September 29 One person has been injured after a dry landslide buried a house in Parbat. The house buried in the dry landslide was in Lamabagar, Jaljala Rural Municipality-7. It injured 65-year-old Atmaram Acharya.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-29-auto-2026-09-29-prithvi-bp-and-siddhartha-highways-blocked-by-landslid/",
+      "title": "Prithvi, BP, and Siddhartha highways blocked by landslides",
+      "time": "2026-09-29T00:56:03.000Z",
+      "summary": "KATHMANDU: Incessant rainfall across Nepal has triggered widespread landslides, debris flows, and severe flood damage, bringing traffic to a standstill on several primary highway networks and critical regional corridors, according to a…",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-29-auto-2026-09-29/",
+      "title": "बाढीले पाइपलाइन बगाउँदा बागलुङ बजारमा खानेपानी समस्या",
+      "time": "2026-09-29T00:32:50.000Z",
+      "summary": "बजारका करिब चार हजार ५०० उपभोक्ताले आइतबारदेखि समस्या व्यहोर्नु परेको छ ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-28-latest-reported-figures/",
+      "title": "Latest reported figures: 1,452 confirmed dead",
+      "time": "2026-09-28T20:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,452, from 1,451, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-28-auto-2026-09-28-myagdi-landslide-death-toll-reaches-six-three-remain-m/",
+      "title": "Myagdi landslide death toll reaches six, three remain missing",
+      "time": "2026-09-28T00:55:00.000Z",
+      "summary": "MYAGDI: The death toll from landslides in Myagdi has reached six, while three people remain missing. Four bodies were recovered in Annapurna Rural Municipality and two in Malika Rural Municipality.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-28-auto-2026-09-28/",
+      "title": "वर्षा रोकिएपछि राजमार्ग खुलाउन तीव्रता, पृथ्वी राजमार्ग आजै सञ्चालनमा ल्याउने तयारी",
+      "time": "2026-09-28T00:53:02.000Z",
+      "summary": "पृथ्वी राजमार्ग अन्तर्गत मुग्लिन–काठमाडौं खण्डमा एक ठाउँको पहिरो पन्छाउन बाँकी छ । अन्य पहिरो पन्छाइसकिएको धादिङ प्रहरीले जनाएको छ ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-27-auto-2026-09-27-four-killed-in-myagdi-landslides/",
+      "title": "Four killed in Myagdi landslides",
+      "time": "2026-09-27T06:21:00.000Z",
+      "summary": "BENI: Landslides triggered by heavy rains have killed four people in Annapurna Rural Municipality, Myagdi. Two victims died after a house was buried in Dana (Ward 3), while two others lost their lives in Ward 5.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-27-auto-2026-09-27/",
+      "title": "लालबकैया खोला खतरा तह नजिक, साँझसम्म सतर्कता अपनाउन आग्रह",
+      "time": "2026-09-27T00:55:26.000Z",
+      "summary": "११ असोज, काठमाडौं । मकवानपुरको लालबकैया खोलामा बाढी बढिरहेको र जलसतह खतरा तह नजिक पुगेको बाढी पूर्वानुमान महाशाखाले जनाएको छ । त्यसैले आसपासका बासिन्दालाई उच्च सतर्कता अपनाउन महाशाखाले आग्रह गरेको छ ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-26-auto-2026-09-26-landslides-block-main-highways-in-6-districts-of-karna/",
+      "title": "Landslides block main highways in 6 districts of Karnali",
+      "time": "2026-09-26T04:54:45.000Z",
+      "summary": "SURKHET: Landslides caused by continuous rain since Saturday have blocked roads across six districts in Karnali Province.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-26-auto-2026-09-26/",
+      "title": "खुम्बु क्षेत्रमा हिमपात,सात विदेशी पर्यटकको उद्धार",
+      "time": "2026-09-26T00:19:17.000Z",
+      "summary": "सोलुखुम्बु- सोलुखुम्बुको खुम्बु क्षेत्रमा भारी हिमपात भएपछि उच्च हिमाली क्षेत्रमा पुगेका पर्यटकको आवागमन प्रभावित भएको छ । निरन्तरको वर्षापछि खुम्बुको माथिल्लो भेगमा हिमपात सुरु भएको हो ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-25-auto-2026-09-25-australian-pm-albanese-pledges-support-to-nepal-after-/",
+      "title": "Australian PM Albanese pledges support to Nepal after devastating floods",
+      "time": "2026-09-25T04:42:56.000Z",
+      "summary": "Australian PM Anthony Albanese with PM Balen Shah New York, September 25 Australian Prime Minister Anthony Albanese has expressed deep sorrow over the devastation caused by the recent floods in Nepal and pledged continued Australian…",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-25-auto-2026-09-25-landslide-blocks-bp-highway/",
+      "title": "Landslide blocks BP Highway",
+      "time": "2026-09-25T03:57:00.000Z",
+      "summary": "KATHMANDU: Landslides triggered by continuous rainfall blocked the BP Highway at Charsayabesi and Gimdi in Roshi Rural Municipality early Friday morning.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-25-auto-2026-09-25/",
+      "title": "संयुक्त राष्ट्रसंघको महासभामा केहीबेरमा प्रधानमन्त्री बालेनले सम्बोधन गर्दै (लाइभ)",
+      "time": "2026-09-24T23:54:32.000Z",
+      "summary": "८ असोज, काठमाडौं । संयुक्त राष्ट्रसंघको महासभामा प्रधानमन्त्री वालेन्द्र शाहले केहीबेरमा सम्बोधन गर्दैछन् ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-24-auto-2026-09-24/",
+      "title": "भारी वर्षाको सम्भावनापछि स्याङ्जामा उच्च सतर्कता अपनाउन आग्रह",
+      "time": "2026-09-24T04:18:29.000Z",
+      "summary": "८ असोज, स्याङ्जा । स्याङ्जामा भारीदेखि अति भारी वर्षाको सम्भावना रहेकाले जिल्ला प्रशासन कार्यालयले उच्च सतर्कता अपनाउन आग्रह गरेको छ ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-24-auto-2026-09-24-butwal-schools-to-remain-closed-for-two-days-amid-heav/",
+      "title": "Butwal schools to remain closed for two days amid heavy rain risk",
+      "time": "2026-09-24T04:15:47.000Z",
+      "summary": "Butwal, September 24 Butwal Sub-Metropolitan City has decided to suspend classes at all community and institutional schools in the city for two days amid the risk of flooding and inundation due to the forecast of heavy rainfall.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-24-auto-2026-09-24-landslide-cleared-prithvi-highway-reopens-for-two-way-/",
+      "title": "Landslide cleared; Prithvi Highway reopens for two-way traffic in Dhading",
+      "time": "2026-09-24T03:55:48.000Z",
+      "summary": "DHADING: Two-way traffic has resumed on the Prithvi Highway after clearance of landslides that fell at Krishnabhir in Ward 7 and Jyamire in Ward 9 of Benighat Rorang Rural Municipality, Dhading.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-23-latest-reported-figures/",
+      "title": "Latest reported figures: 1,451 confirmed dead",
+      "time": "2026-09-23T20:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,451, from 1,450, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-23-auto-2026-09-23-floods-block-pasang-lhamu-highway-bp-highway-and-tokha/",
+      "title": "Floods block Pasang Lhamu Highway; BP Highway and Tokha-Chhahare road operate under time limits",
+      "time": "2026-09-23T03:59:07.000Z",
+      "summary": "KATHMANDU: Nepal Police has issued an updated traffic advisory detailing major highway blockages and altered vehicular movements across key highway corridors following recent devastating floods and landslides.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-23-auto-2026-09-23/",
+      "title": "कांग्रेसले आज देशभर पालिका अधिवेशन गर्दै",
+      "time": "2026-09-23T00:30:58.000Z",
+      "summary": "काठमाडौँ– नेपाली कांग्रेसले आज देशभर पालिका तहको अधिवेशन गर्दैछ । पार्टीको १५औँ महाधिवेशनअन्तर्गत स्थानीय तहको सांगठनिक संरचना निर्माण गर्ने क्रममा पालिका अधिवेशन हुन लागेको हो ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-22-latest-reported-figures/",
+      "title": "Latest reported figures: 1,450 confirmed dead",
+      "time": "2026-09-22T20:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,450, from 1,449, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-22-auto-2026-09-22-landslides-block-bp-koshi-and-pasang-lhamu-highways/",
+      "title": "Landslides block BP, Koshi and Pasang Lhamu highways",
+      "time": "2026-09-22T00:59:16.000Z",
+      "summary": "KATHMANDU: Severe highway damage caused by monsoon floods, riverbank erosion, and landslides has forced the Nepal Police Headquarters to issue an emergency traffic advisory implementing strict travel hours, complete night-time bans, and…",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-22-auto-2026-09-22/",
+      "title": "राष्ट्रसंघ महासभामा भाग लिन प्रधानमन्त्री बालेन न्युयोर्क जाँदै",
+      "time": "2026-09-22T00:44:34.000Z",
+      "summary": "६ असोज, काठमाडौं । प्रधानमन्त्री बालेन शाह संयुक्त राष्ट्रसंघको महासभामा भाग लिन आज न्युयोर्क जाँदैछन् ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-21-auto-2026-09-21-dashain-advance-ticket-booking-decision-to-follow-weat/",
+      "title": "Dashain advance ticket booking decision to follow weather, disaster assessment",
+      "time": "2026-09-21T13:43:25.000Z",
+      "summary": "KATHMANDU: The Department of Transport Management will decide when to open advance ticket bookings for Dashain travel after assessing weather conditions and the disaster situation over the next few days.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-21-auto-2026-09-21-floods-and-landslides-continue-to-block-highways-acros/",
+      "title": "Floods and landslides continue to block highways across Nepal",
+      "time": "2026-09-21T01:14:16.000Z",
+      "summary": "KATHMANDU: Several highways across the country remain obstructed today due to flooding and landslides triggered by heavy rainfall.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-21-auto-2026-09-21/",
+      "title": "'ठूलो बाढी आउँदैछ' भन्ने सूचना पत्याउन नसक्दा धेरै क्षति",
+      "time": "2026-09-21T01:06:15.000Z",
+      "summary": "बिहानको खाना खाइसकेपछि विदुर नगरपालिका–१ ढुङ्गेका छत्र प्याकुरेल नियमित काममा जाने तयारीमा थिए। त्रिशूली नदीको किनारबाट केही दूरीमा घर भएकाले नदीमा ठूलो बाढी आए पनि आफ्नो घरसम्म त्यसको असर पुग्ला भन्ने उनलाई लागेको थिएन।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-20-latest-reported-figures/",
+      "title": "Latest reported figures: 1,449 confirmed dead",
+      "time": "2026-09-20T14:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,449, from 1,434, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-20-auto-2026-09-20-floods-and-landslides-block-major-highways-across-bagm/",
+      "title": "Floods and landslides block major highways across Bagmati and Koshi provinces",
+      "time": "2026-09-20T04:44:41.000Z",
+      "summary": "KATHMANDU: Floods and landslides triggered by heavy rainfall have disrupted vehicular movement along key highway corridors across Bagmati and Koshi provinces, leaving several critical road sections completely blocked while others operate…",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-20-auto-2026-09-20/",
+      "title": "छारेभिरमा पहिरो खसेपछि कर्णाली करिडोर ठप्प",
+      "time": "2026-09-20T00:11:52.000Z",
+      "summary": "हुम्ला – कर्णाली करिडोरअन्तर्गत सर्केगाड गाउँपालिका–२ रिप नजिकैको छारेभिरमा पहिरो खस्दा सडक अवरुद्ध भएको छ । शनिबार पहिरोसँगै ठूला ढुङ्गा खसेपछि करिब १०० मिटर सडक अवरुद्ध हुँदा करिडोरमा सवारी आवागमन ठप्प भएको हो ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-19-latest-reported-figures/",
+      "title": "Latest reported figures: 1,434 confirmed dead",
+      "time": "2026-09-19T20:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,434, from 1,409, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-19-auto-2026-09-19/",
+      "title": "जलविद्युत् आयोजनाको सहयोगमा दुखुखोला सडक पुल संरक्षण",
+      "time": "2026-09-19T04:37:52.000Z",
+      "summary": "म्याग्दी– बाढी र कटानको उच्च जोखिममा परेको म्याग्दीको बेनी-दरवाङ सडकअन्तर्गत मंगला गाउँपालिका-२ र मालिका गाउँपालिका-६ को सिमानामा रहेको दुखुखोलाको सडक पुल जलविद्युत् आयोजनाको सहयोगमा संरक्षण गरिएको छ ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-19-auto-2026-09-19-infectious-disease-risks-rise-in-rasuwa-flood-hit-area/",
+      "title": "Infectious disease risks rise in Rasuwa flood-hit areas",
+      "time": "2026-09-19T04:15:00.000Z",
+      "summary": "Betrawati after the flood. Kathmandu, September 18 The risk of infectious diseases has increased in areas affected by the Rasuwa floods , with 81 people diagnosed with diarrhoea at various holding centres over the past three weeks.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-19-auto-2026-09-19-bhotekoshi-flood-reveals-the-growing-danger-of-himalay/",
+      "title": "Bhotekoshi flood reveals the growing danger of Himalayan cascading hazards",
+      "time": "2026-09-19T03:15:00.000Z",
+      "summary": "The state of Devighat after the Bhotekoshi flood. The catastrophic flood which took place in the Bhote Koshi–Trishuli river area in August 26 has left Nepal facing one of the worst mountain disasters in recent times.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-18-auto-2026-09-18-landslide-restricts-muglin-narayangadh-road-to-one-way/",
+      "title": "Landslide restricts Muglin–Narayangadh road to one-way traffic",
+      "time": "2026-09-18T04:08:13.000Z",
+      "summary": "CHITWAN: Traffic along the Muglin–Narayangadh road section has been restricted to one-way movement after a landslide deposited mud and debris near the Pandhra Kilo area on Friday morning.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-18-auto-2026-09-18/",
+      "title": "कालीगण्डीको कटानबाट जोगाउन घरापमा कम्पोजिट पर्खाल",
+      "time": "2026-09-18T00:39:47.000Z",
+      "summary": "कालीगण्डकीको कटानबाट जोगाउनका लागि म्याग्दीको अन्नपूर्ण गाउँपालिका–४ घरापमा बस्ती संरक्षण योजना अगाडि बढेपछि स्थानीयले राहत महसुस गरेका छन्।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-17-latest-reported-figures/",
+      "title": "Latest reported figures: 1,408 confirmed dead",
+      "time": "2026-09-17T17:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,408, from 1,407, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-17-auto-2026-09-17-nepal-collects-rs-184-58-billion-in-revenue-in-first-t/",
+      "title": "Nepal collects Rs 184.58 billion in revenue in first two months of fiscal year",
+      "time": "2026-09-17T06:15:18.000Z",
+      "summary": "Ministry of Finance Kathmandu, September 17 Nepal collected Rs 184.58 billion in revenue during the first two months of the current fiscal year despite the devastating September 25 floods and disruptions along the northern border points.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-17-auto-2026-09-17/",
+      "title": "भोटेकोशी बाढी प्रभावितलाई काठमाडौँ विश्वविद्यालयको ८५ लाख सहयोग",
+      "time": "2026-09-17T01:21:27.000Z",
+      "summary": "काभ्रे– भोटेकोशी बाढीबाट प्रभावितको राहत तथा उद्धारका लागि काठमाडौँ विश्वविद्यालयले ८५ लाख रुपैयाँ सहयोग गरेको छ । काठमाडौँ विश्वविद्यालयका रजिस्ट्रार डा.",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-17-auto-2026-09-17-prithvi-highway-reopens-today-as-landslides-keep-other/",
+      "title": "Prithvi Highway reopens today as landslides keep other key routes blocked",
+      "time": "2026-09-17T01:16:15.000Z",
+      "summary": "KATHMANDU: Nepal Police have issued a national traffic advisory confirming the full reopening of the Prithvi Highway at Krishna Bhir in Dhading following emergency repairs, even as severe road blockages, full highway closures, and route…",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-16-latest-reported-figures/",
+      "title": "Latest reported figures: 1,407 confirmed dead",
+      "time": "2026-09-16T20:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,407, from 1,401, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-16-auto-2026-09-16/",
+      "title": "चाडपर्व नजिकिँदै गर्दा मूल्यवृद्धि नियन्त्रणमा सरकार असफल भएको एमालेको आरोप",
+      "time": "2026-09-16T03:51:28.000Z",
+      "summary": "काठमाडौँ – नेकपा (एमाले) ले चाडपर्व नजिकिँदै गर्दा दैनिक उपभोग्य वस्तुको मूल्यवृद्धि नियन्त्रण गर्न सरकार असफल भएको आरोप लगाएको छ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-16-auto-2026-09-16-all-party-meeting-taking-place-today/",
+      "title": "All-party meeting taking place today",
+      "time": "2026-09-16T03:14:09.000Z",
+      "summary": "KATHMANDU: An all-party meeting of the top leaders is taking place today at the call of Rastriya Swatantra Party (RSP) President Rabi Lamichhane.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-16-auto-2026-09-16-floods-and-landslides-block-multiple-highways-across-n/",
+      "title": "Floods and landslides block multiple highways across nation",
+      "time": "2026-09-16T02:06:14.000Z",
+      "summary": "KATHMANDU: Floods, landslides, and road maintenance works have completely or partially blocked several major highways across the country.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-15-latest-reported-figures/",
+      "title": "Latest reported figures: 1,401 confirmed dead",
+      "time": "2026-09-15T20:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,401, from 1,397, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-15-auto-2026-09-15-woman-swept-away-while-bathing-in-syangja-river-found-/",
+      "title": "Woman swept away while bathing in Syangja river found dead",
+      "time": "2026-09-15T05:25:12.000Z",
+      "summary": "Syangja, September 15 A 53-year-old woman who went missing after being swept away while bathing in the Aandhikhola River in Waling, Syangja, on Tuesday morning has been found dead.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-15-auto-2026-09-15/",
+      "title": "बाढीपीडितलाई निजी विद्यालयद्वारा सहयोग",
+      "time": "2026-09-15T00:45:31.000Z",
+      "summary": "भोटेकोशी बाढीपीडितलाई बागलुङका निजी विद्यालयले रु १२ लाख बढी रकम सहयोग गरेका छन्।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-14-latest-reported-figures/",
+      "title": "Latest reported figures: 1,396 confirmed dead",
+      "time": "2026-09-14T20:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,396, from 1,395, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-14-auto-2026-09-14-india-faces-growing-himalayan-risk-as-glaciers-melt-fa/",
+      "title": "India faces growing Himalayan risk as glaciers melt faster",
+      "time": "2026-09-14T01:36:26.000Z",
+      "summary": "NEW DELHI: India’s Himalayan region is facing rising risks from faster glacier melt, expanding glacial lakes and unstable mountain slopes, while large parts of the region remain under-monitored, according to new research.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-14-auto-2026-09-14/",
+      "title": "कृष्णभीर पहिरो: नयाँ ट्याकबाट ५० सवारी पास, सोमबारदेखि ग्राभेलिङ हुने",
+      "time": "2026-09-14T01:11:43.000Z",
+      "summary": "काठमाडौँ – पृथ्वी राजमार्गअन्तर्गत कृष्णभीरमा पहिरो खसेर सडक पूर्ण रूपमा अवरुद्ध भएपछि निर्माण गरिएको नयाँ ट्याकको आइतबार सफल परीक्षण गरिएको छ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-13-latest-reported-figures/",
+      "title": "Latest reported figures: 1,390 confirmed dead",
+      "time": "2026-09-13T20:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,390, from 1,386, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-13-auto-2026-09-13-bhotekoshi-floods-damage-to-18-schools-rs-4-23-billion/",
+      "title": "Bhotekoshi floods: Damage to 18 schools; Rs 4.23 billion estimated for recovery",
+      "time": "2026-09-13T05:50:26.000Z",
+      "summary": "File Kathmandu, September 13 A total of 18 schools from Rasuwa, Nuwakot and Dhading districts were damaged in the Bhotekoshi flash floods that occurred on August 26.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-13-auto-2026-09-13/",
+      "title": "मुस्ताङ भन्सारमा १५ दिनमै पौने दुई अर्ब राजस्व",
+      "time": "2026-09-13T00:52:59.000Z",
+      "summary": "मुस्ताङ – नेपाल–चीन उत्तरी कोरलानाकास्थित लोमान्थाङ–४ न्हेचुङमा रहेको मुस्ताङ भन्सार कार्यालयले १५ दिनमै १ अर्ब ७८ करोड ४४ लाख रुपैयाँ राजस्व सङ्कलन गरेको छ ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-12-auto-2026-09-12-besisahar-chame-road-to-remain-closed-during-day-today/",
+      "title": "Besisahar-Chame road to remain closed during day today",
+      "time": "2026-09-12T04:34:52.000Z",
+      "summary": "LAMJUNG: The Besisahar–Chame road linking Lamjung and Manang will remain completely closed today from 9:00 am to 5:00 pm.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-12-auto-2026-09-12/",
+      "title": "बाढी प्रभावितको संरक्षणमा सरकारको तीव्रता : ५ हजार ५७८ जनालाई मनोसामाजिक सेवा",
+      "time": "2026-09-12T01:09:15.000Z",
+      "summary": "बाढी तथा मानवीय संकटबाट प्रभावित नागरिकको संरक्षण र पुनर्स्थापनाका लागि सरकारले राहत, अस्थायी संरक्षण, मनोसामाजिक सहयोग तथा पुनर्स्थापनाका कार्यक्रमलाई तीव्रता दिएको छ।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-11-latest-reported-figures/",
+      "title": "Latest reported figures: 1,384 confirmed dead",
+      "time": "2026-09-11T20:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,384, from 1,383, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-11-auto-2026-09-11/",
+      "title": "विपत्तिमा दोष होइन, समाधानको राष्ट्रिय अभियान आवश्यक",
+      "time": "2026-09-11T03:13:15.000Z",
+      "summary": "हालको विनाशकारी बाढीले नेपाललाई गहिरो शोकमा डुबाएको छ। समस्याको परिमाण स्पष्ट छ- यो सामान्य सरसफाइ वा केही दिनको राहत वितरणबाट समाधान हुने सङ्कट होइन।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-11-auto-2026-09-11-tibet-jolted-by-3-7-magnitude-quake-following-catastro/",
+      "title": "Tibet jolted by 3.7 magnitude quake following catastrophic flash floods in Nepal",
+      "time": "2026-09-11T02:39:38.000Z",
+      "summary": "TIBET: An earthquake of magnitude 3.7 on the Richter scale struck the Tibet region early Friday morning, according to the National Centre for Seismology (NCS).",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-10-latest-reported-figures/",
+      "title": "Latest reported figures: 1,383 confirmed dead",
+      "time": "2026-09-10T20:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,383, from 1,382, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-10-auto-2026-09-10/",
+      "title": "यस्तो छ देवीघाटमा पाँच दिनमा तयार एक्रो ब्रिज (तस्बिरहरू)",
+      "time": "2026-09-10T13:34:32.000Z",
+      "summary": "काठमाडौं– नुवाकोटको विदुर नगरपालिका–५ देवीघाटस्थित तादी नदीमा नेपाली सेनाले एक्रो ब्रिज तयार पारेको छ । भोटेकोशी बाढीले गत भदौ १० मा पक्की पुल बगाएपछि नदी वारपार आवतजावत प्रभावित भएको थियो ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-10-auto-2026-09-10-nepal-does-not-need-another-disaster-portal/",
+      "title": "Nepal does not need another disaster portal",
+      "time": "2026-09-10T13:15:00.000Z",
+      "summary": "Betrawati’s famous Ghanta Ghar. Nepal’s experience with the 2015 earthquake reconstruction, the Earthquake Housing Reconstruction Program (EHRP) Management Information System (MIS), and the disaster information systems developed by the…",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-09-latest-reported-figures/",
+      "title": "Latest reported figures: 1,372 confirmed dead",
+      "time": "2026-09-09T20:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,372, from 1,367, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-09-auto-2026-09-09-teenager-swept-away-by-river-in-bajura-search-operatio/",
+      "title": "Teenager swept away by river in Bajura, search operation underway",
+      "time": "2026-09-09T04:58:26.000Z",
+      "summary": "BAJURA: A teenager has gone missing after being swept away by a river in Bajura. Anuj Singh, aged around 16–17, from Jagannath Rural Municipality-3, went missing while attempting to cross the river.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-09-auto-2026-09-09/",
+      "title": "किम्रुङ खोलाको बहाव रोकिएपछि कास्की र पर्वतमा उच्च सतर्कता : कस्तो छ जोखिम ?",
+      "time": "2026-09-09T00:21:36.000Z",
+      "summary": "काठमाडौँ – कास्कीको अन्नपूर्ण गाउँपालिका–११ स्थित किम्रुङ खोलाको बहाव एक्कासि घटेपछि पहिरो खसेर थुनिएको हुनसक्ने आशङ्कामा तल्लो तटीय क्षेत्रमा उच्च सतर्कता अपनाइएको छ ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-08-latest-reported-figures/",
+      "title": "Latest reported figures: 1,358 confirmed dead",
+      "time": "2026-09-08T14:12:41.000Z",
+      "summary": "The confirmed death toll in Nepal has been corrected down to 1,358, from 1,381, Nepalnews reports. The number of people rescued has risen to 13,583, from 13,399, Nepalnews reports.",
+      "sources": [
+        "Nepalnews",
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-08-auto-2026-09-08/",
+      "title": "अस्ट्रेलियाकी विदेशमन्त्री वोङले गरिन् नेपाली दूतावास पुगेर शोक पुस्तिकामा हस्ताक्षर",
+      "time": "2026-09-08T04:15:35.000Z",
+      "summary": "२३ भदौ, काठमाडौं । भोटेकोशी बाढीका कारण भएको ठूलो मानवीय क्षतिप्रति दुःख व्यक्त गर्दै अस्ट्रेलियाकी विदेशमन्त्री पेनी वोङले क्यानबेरास्थित नेपाली राजदूतावास पुगेर शोक पुस्तिकामा हस्ताक्षर गरेकी छन्।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-08-auto-2026-09-08-landslide-blocks-mahakali-highway/",
+      "title": "Landslide blocks Mahakali Highway",
+      "time": "2026-09-08T03:47:05.000Z",
+      "summary": "BAITADI: A landslide occurred at Bitakam of Dogadakedar Rural Municipality-5 in the district has blocked the Mahakali Highway. It blockage obstructed vehicles entering the district.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-08-auto-2026-09-08-engineer-goes-missing-since-bhotes-koshi-floods-spouse/",
+      "title": "Engineer goes missing since Bhotes Koshi floods, spouse’s plea for rescue",
+      "time": "2026-09-08T02:55:00.000Z",
+      "summary": "JANAKPURDHAM: It has been nearly two weeks the devastative Bhote Koshi flood struck Nepal from Rasuwa district, but the whereabouts of an engineer working in a hydropower project of Rasuwa is still unknown.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-07-auto-2026-09-07/",
+      "title": "भोटेकाेशी बाढी : जलवायुको मूल्य कसले चुकाउने ?",
+      "time": "2026-09-07T04:25:05.000Z",
+      "summary": "भदौ १० गते रसुवाको भोटेकोशीमा आएको विनाशकारी बाढीले पानीको सतह मात्र बढाएन, नेपालसामु एउटा असहज तर अपरिहार्य प्रश्न पनि उभ्यायो- जलवायु परिवर्तनको जोखिम बढ्दै जाँदा त्यसको मूल्य कसले चुकाउने?",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-07-auto-2026-09-07-rs-11-billion-in-flood-relief-funds-remains-unspent-in/",
+      "title": "Rs 11 billion in flood relief funds remains unspent in government coffers",
+      "time": "2026-09-07T03:53:10.000Z",
+      "summary": "KATHMANDU: Billions of rupees collected from domestic and international sources for flood victims remain unspent in government coffers.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-07-latest-reported-figures/",
+      "title": "Latest reported figures",
+      "time": "2026-09-07T01:14:42.000Z",
+      "summary": "The number of people rescued has risen to 13,399, from 13,098, Nepalnews reports.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-06-auto-2026-09-06/",
+      "title": "भोटेकोशी बाढी : वीर अस्पतालमा उपचाररत १७ जना डिस्चार्ज",
+      "time": "2026-09-06T15:59:15.000Z",
+      "summary": "काठमाडौं – रसुवाको भोटेकोशी नदीमा भदौ १० गते बुधबार बिहान आएको बाढीमा परी घाइते भएर उद्धार गरी वीर अस्पताल उपचारका लागि ल्याइएका २० जनामध्ये १७ जना डिस्चार्ज भएका छन् ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-06-auto-2026-09-06-food-supply-begins-thru-drone-in-rasuwa/",
+      "title": "Food supply begins thru drone in Rasuwa",
+      "time": "2026-09-06T15:58:48.000Z",
+      "summary": "RASUWA: Food supply has begun through drone at the Bhotekoshi flood-affected villages and settlements in Rasuwa district.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-06-latest-reported-figures/",
+      "title": "Latest reported figures: 1,381 confirmed dead",
+      "time": "2026-09-06T14:11:38.000Z",
+      "summary": "The confirmed death toll in Nepal has risen to 1,381, from 1,344, Nepalnews reports.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-05-latest-reported-figures/",
+      "title": "Latest reported figures: 1,344 confirmed dead",
+      "time": "2026-09-05T13:15:36.000Z",
+      "summary": "The confirmed death toll in Nepal has risen to 1,344, from 1,342, Nepalnews reports.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-05-auto-2026-09-05/",
+      "title": "जलवायु परिवर्तनको क्षतिपूर्तिका लागि विश्व समुदायले नेपाललाई साथ दिनुपर्छ: महासचिव पोखरेल",
+      "time": "2026-09-05T05:21:32.000Z",
+      "summary": "काठमाडौँ – नेकपा एमालेका महासचिव शंकर पोखरेलले भोटेकोशी बाढीको समस्या उत्पन्न गराउनेले नेपाललाई क्षतिपूर्ति तिर्नुपर्ने बताएका छन्।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-05-auto-2026-09-05-the-geotechnical-trap-inside-nepal-s-hydropower-tunnel/",
+      "title": "The geotechnical trap inside Nepal’s hydropower tunnels",
+      "time": "2026-09-05T05:15:00.000Z",
+      "summary": "Nepal Army team at the Rasuwagadhi Hydropower tunnel. On August 26, catastrophic debris flows swept down the Bhotekoshi and Trishuli river corridors , exposing severe vulnerabilities in Himalayan hydropower infrastructure.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-04-latest-reported-figures/",
+      "title": "Latest reported figures: 1,294 confirmed dead",
+      "time": "2026-09-04T16:20:21.000Z",
+      "summary": "The confirmed death toll in Nepal has risen to 1,294, from 1,290, Onlinekhabar reports. The number of people listed missing has risen to 8,898, from 5,083, Khabarhub reports.",
+      "sources": [
+        "Onlinekhabar",
+        "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-04-auto-2026-09-04/",
+      "title": "सुरुङबाट १० दिनपछि निकालिएका साहको स्वास्थ्य अवस्था सामान्य",
+      "time": "2026-09-04T04:36:56.000Z",
+      "summary": "१९ भदौ, काठमाडौं । त्रिशूली थ्री 'ए'को सुरुङबाट जीवित्तै उद्धार गरिएका सञ्जय साहको स्वास्थ्य अवस्था सामान्य रहेको पाइएको छ । उद्धार गरिपछि नेपाली सेनाले उनको स्वास्थ्य जाँच गराउँदा सामान्य रहेको देखिएको हो ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-04-auto-2026-09-04-minister-rawal-for-carrying-out-exemplary-works-in-pos/",
+      "title": "Minister Rawal for carrying out exemplary works in post-disaster recovery as well",
+      "time": "2026-09-04T04:35:15.000Z",
+      "summary": "NUWAKOT: Minister for Land Management, Cooperatives, Federal Affairs and General Administration, Pratibha Rawal, has underscored on carrying out exemplary works in the post-disaster recovery phase as well.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-03-latest-reported-figures/",
+      "title": "Latest reported figures: 1,259 confirmed dead",
+      "time": "2026-09-03T16:36:37.000Z",
+      "summary": "The confirmed death toll in Nepal has risen to 1,259, from 1,252, Nepalnews reports. The number of people listed missing has risen to 5,083, from 4,875, Nepalnews reports. The number of people rescued has risen to 12,038, from 11,993, Nepalnews reports.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-03-auto-2026-09-03-missing-flood-victims-families-called-for-dna-testing/",
+      "title": "Missing flood victims’ families called for DNA testing",
+      "time": "2026-09-03T05:03:06.000Z",
+      "summary": "September 3, Kathmandu Nepal Police has begun a DNA testing process to search for citizens who went missing in the Bhotekoshi River flood in Rasuwa, and to identify unclaimed bodies and human remains that have been recovered.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-03-auto-2026-09-03-locals-risk-lives-crossing-taksugad-after-flood-washes/",
+      "title": "Locals risk lives crossing Taksugad after flood washes away bridge",
+      "time": "2026-09-03T05:01:28.000Z",
+      "summary": "Surkhet, September 3 Residents and travellers have been forced to risk their lives to cross the Taksugad stream after floods washed away a bridge and a temporary causeway between wards 10 and 11 of Nalgad Municipality in Jajarkot along the…",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-02-auto-2026-09-02-bhotekoshi-flood-leaves-1-204-dead-4-216-still-unaccou/",
+      "title": "Bhotekoshi flood leaves 1,204 dead; 4,216 still unaccounted for",
+      "time": "2026-09-02T15:14:29.000Z",
+      "summary": "Unidentified bodies from the Bhotekoshi flood being managed. Kathmandu, September 2 At least 1,204 bodies have been recovered following the devastating floods in Rasuwa, according to the National Disaster Risk Reduction and Management…",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-02-auto-2026-09-02-multinational-rescue-operations-underway-in-bhote-kosh/",
+      "title": "Multinational rescue operations underway in Bhote Koshi flood zone: MoFA",
+      "time": "2026-09-02T15:13:58.000Z",
+      "summary": "KATHMANDU: Specialized international tunnel rescue and forensic teams from India, China, South Korea, and Singapore have joined Nepali security forces in a massive search, rescue, and identification operation following catastrophic…",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-02-latest-reported-figures/",
+      "title": "Latest reported figures: 1,222 confirmed dead",
+      "time": "2026-09-02T20:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,222, from 1,204, Nepal Police reports. The number of people rescued has risen to 11,993, from 8,730, Nepalnews reports.",
+      "sources": [
+        "Nepal Police",
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-01-auto-2026-09-01/",
+      "title": "बाढी प्रभावितका लागि डब्ल्यूएचओद्वारा २ करोड बढीको स्वास्थ्य सामग्री सहयोग",
+      "time": "2026-09-01T11:29:35.000Z",
+      "summary": "विश्व स्वास्थ्य संगठन (डब्ल्यूएचओ) दक्षिण–पूर्वी एसिया क्षेत्रीय स्वास्थ्य आपत्कालीन कोषमार्फत नेपाललाई बाढी प्रभावित समुदायका लागि करिब २ करोड २८ लाख रुपैयाँ बराबरको आपत्कालीन स्वास्थ्य सामग्री उपलब्ध गराइएको छ।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-01-auto-2026-09-01-tatopani-route-hit-again-as-zhangmu-closed-over-flood-/",
+      "title": "Tatopani route hit again as Zhangmu closed over flood concerns",
+      "time": "2026-09-01T10:17:43.000Z",
+      "summary": "Key Takeaways: Zhangmu Port closed indefinitely, customs operations suspended, staff relocated Closure follows Rasuwagadhi flood damage and Tatopani's limited reopening 60...",
+      "sources": [
+        "The Himalayan Times"
+      ]
+    },
+    {
+      "url": "/updates/2026-09-01-auto-2026-09-01-nepal-liquors-donates-rs-10-1-million-to-flood-relief-/",
+      "title": "Nepal Liquors donates Rs 10.1 million to flood relief fund",
+      "time": "2026-09-01T06:51:18.000Z",
+      "summary": "KATHMANDU, SEPTEMBER 1Nepal Liquors Pvt Ltd, producer of brands including Signature Whisky and Smirnoff Vodka, has donated Rs 10.1 million to the Prime Minister's Disaster Rel...",
+      "sources": [
+        "The Himalayan Times"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-31-auto-2026-08-31-padma-jyoti-group-contributes-rs-10-million-to-disaste/",
+      "title": "Padma Jyoti Group contributes Rs 10 million to disaster relief fund",
+      "time": "2026-08-31T07:53:42.000Z",
+      "summary": "KATHMANDU, AUGUST 31Syakar Trading Company Pvt Ltd, a member of the Padma Jyoti Group, has contributed Rs 10 million to the Prime Minister's Disaster Relief Fund for relief an...",
+      "sources": [
+        "The Himalayan Times"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-31-auto-2026-08-31-ncell-extends-free-voice-data-and-sms-services-in-floo/",
+      "title": "Ncell extends free voice, data and SMS services in flood-hit areas",
+      "time": "2026-08-31T07:50:58.000Z",
+      "summary": "KATHMANDU, AUGUST 31Ncell has extended free voice, data and SMS services in flood-affected areas by seven days to support communication, search and rescue, and relief efforts.The e...",
+      "sources": [
+        "The Himalayan Times"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-31-auto-2026-08-31/",
+      "title": "पूर्वसूचना प्रणालीमाथि प्रश्न",
+      "time": "2026-08-31T00:15:27.000Z",
+      "summary": "भोटेकोसी–त्रिशूली तटीय क्षेत्रमा बुधबार आएको विनाशकारी बाढीले जनधनको ठुलो क्षति पुर्‍याएको छ। मानवीय र भौतिक नोक्सानीको अझै आकलन गर्न कठिन छ।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-30-rasuwa-flood/",
+      "title": "Nepal Police put the Nepal count at 768 at 2pm Sunday",
+      "time": "2026-08-30T14:00:00+05:45",
+      "summary": "Nepal Police bulletin 10275 said the number of bodies found in Nepal had reached 768 by 2pm Sunday, the figure at that hour. Its district count was Chitwan 264, Nawalparasi East 194, Nawalparasi West 100, Gorkha 58, Nuwakot 52, Dhading 50, Tanahun 37 and Rasuwa 13, which added exactly to that figure",
+      "sources": [
+        "Nepal Police",
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-30-china-relief-supplies/",
+      "title": "China sends 50 tonnes of emergency supplies to Nepal",
+      "time": "2026-08-30T11:11:00+05:45",
+      "summary": "China sent 50 tonnes of emergency relief supplies to Nepal on Sunday, The Kathmandu Post reports. Two Chinese military transport aircraft carried 13,200 items to Kathmandu at around 7am.",
+      "sources": [
+        "The Kathmandu Post"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-30-trishuli-flood-alert-fresh-warning/",
+      "title": "Fresh flood warning issued as Bhotekoshi rises",
+      "time": "2026-08-30T10:22:00+05:45",
+      "summary": "Authorities in Nepal warned of possible fresh flooding on Sunday after water levels rose in the Bhotekoshi River, the Associated Press reports. Warning notices reached people's phones through Sunday morning.",
+      "sources": [
+        "The Associated Press"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-30-foreign-rescue-experts-accepted/",
+      "title": "Foreign tunnel-rescue teams now working in flood zone",
+      "time": "2026-08-30T09:37:00+05:45",
+      "summary": "The Kathmandu Post reports that Indian, Chinese and South Korean teams reached flood-hit areas Saturday to support specialised tunnel rescue. The 11-member Indian reconnaissance team flew to Chilime and Langtang with Nepali Army and Armed Police Force personnel.",
+      "sources": [
+        "The Kathmandu Post"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-29-relief-fund-504bn/",
+      "title": "PM says more than Rs 5bn deposited for flood relief",
+      "time": "2026-08-29T21:04:13+05:45",
+      "summary": "Prime Minister Balen Shah said Rs 5.04 billion has been deposited in nine commercial bank accounts for flood rescue and relief, Onlinekhabar reports.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-29-barrier-lake-burst/",
+      "title": "Experts say immediate lake-burst risk has fallen, caution remains",
+      "time": "2026-08-29T20:54:29+05:45",
+      "summary": "The Department of Hydrology and Meteorology says the immediate risk of a sudden lake burst has fallen after water began flowing out naturally, Onlinekhabar reports.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-29-hydropower-sites-898-missing/",
+      "title": "IPPAN says 898 people remain missing at hydropower sites",
+      "time": "2026-08-29T19:47:47+05:45",
+      "summary": "The Independent Power Producers’ Association, Nepal says 898 people remain unaccounted for at 11 hydropower projects in Rasuwa and Nuwakot, Onlinekhabar reports.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-29-rasuwa-flood/",
+      "title": "Nepal Police reports 669 bodies, 2,362 still missing",
+      "time": "2026-08-29T16:00:00+05:45",
+      "summary": "Nepal Police's 4pm Saturday update says 669 bodies have been recovered in Nepal, Nepal News reports. Nepal News gives the district count as Chitwan 248, Nawalparasi East 158, Nawalparasi West 75, Gorkha 54, Dhading 49, Nuwakot 41, Tanahun 31 and Rasuwa 13.",
+      "sources": [
+        "Nepal News",
+        "The Kathmandu Post",
+        "The Rising Nepal",
+        "NDRRMA"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-29-tourists-rescued-accounted/",
+      "title": "Tourism Board says 187 tourists rescued or accounted for",
+      "time": "2026-08-29T14:44:56+05:45",
+      "summary": "The Nepal Tourism Board's latest update says 184 foreign tourists have been rescued from flood-affected areas and three others have come back into contact, Onlinekhabar reports.",
+      "sources": [
+        "Onlinekhabar",
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-29-power-restoration-nuwakot/",
+      "title": "Ministry says power is back in five Nuwakot areas as repairs continue",
+      "time": "2026-08-29T13:53:00+05:45",
+      "summary": "The Ministry of Energy, Water Resources and Irrigation says electricity has been restored in Kharanitar, Samundratar, Chaugada, Likhu and Panchkanya in Nuwakot by pulling lines from Sindhupalchok, Nepal News reports.",
+      "sources": [
+        "Nepal News"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-29-pm-shah-4451-rescued/",
+      "title": "NDRRMA says 4,451 rescued, with 15,224 security personnel deployed",
+      "time": "2026-08-29T10:00:00+05:45",
+      "summary": "NDRRMA's 10am Saturday situation update says 4,451 people have been rescued in the flood response, the Kathmandu Post reports. The authority's earlier named nationality list totals 113, so it is not a full breakdown of the current total.",
+      "sources": [
+        "NDRRMA",
+        "The Kathmandu Post"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-29-foreign-journalist-rules/",
+      "title": "Nepal tells foreign journalists covering the flood to get formal clearance",
+      "time": "2026-08-29T07:50:00+05:45",
+      "summary": "Nepal's Department of Information has told foreign journalists covering the Bhotekoshi flood to get formal clearance before reporting from the field, the Kathmandu Post reports.",
+      "sources": [
+        "The Kathmandu Post"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-29-apf-4800-personnel/",
+      "title": "Armed Police Force says it has now sent over 4,800 personnel to the flood zone",
+      "time": "2026-08-29T06:41:00+05:45",
+      "summary": "The Armed Police Force said Saturday morning it has now mobilised more than 4,800 personnel for search and rescue, with base camps set up across Rasuwa, Nuwakot, Dhading, Tanahu, Gorkha, Chitwan and both Nawalparasi districts, Onlinekhabar reports.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-29-mobile-service-restored/",
+      "title": "Nepal Telecom restores mobile service at 80 of 120 flood-hit sites",
+      "time": "2026-08-29T06:22:00+05:45",
+      "summary": "Nepal Telecom said Saturday it has restored mobile service at 80 of the 120 towers and sites knocked out by the flood in Rasuwa, Nuwakot and Dhading, The Rising Nepal reports. Technicians were flown in by helicopter to reach some of the most remote sites, including towers in Gosainkunda, Suryagadhi ",
+      "sources": [
+        "The Rising Nepal"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-29-damage-cost/",
+      "title": "Damage put at Rs 200 billion, ADB approves $5m emergency grant",
+      "time": "2026-08-29T05:56:00+05:45",
+      "summary": "The Asian Development Bank has approved a US$5 million, about Rs 750 million, emergency grant for the flood response, the finance ministry said in an update reported by The Rising Nepal on Saturday. The Prime Minister's Disaster Relief Fund's balance has separately reached Rs 4.091 billion, up from ",
+      "sources": [
+        "Onlinekhabar",
+        "The Kathmandu Post",
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "The Rising Nepal",
+        "UNICEF"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-29-australia-missing-aid/",
+      "title": "Australia's missing count rises to 41 after Friday evening dip to 38",
+      "time": "2026-08-29T03:20:00+05:45",
+      "summary": "Australia's Department of Foreign Affairs and Trade put the number of Australians unaccounted for in the flood at 41 by Saturday morning, ABC News reports, its highest count yet. DFAT said the number could still move as officials work through the list. Most of the missing Australians were on separat",
+      "sources": [
+        "ABC News Australia",
+        "The Standard"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-eu-aid-2m/",
+      "title": "European Union pledges 2 million euros in flood aid for Nepal",
+      "time": "2026-08-28T23:55:00+05:45",
+      "summary": "The European Union has allocated 2 million euros in humanitarian aid for Nepal's flood victims, the EU Delegation to Nepal said in a Friday statement reported by the Rising Nepal.",
+      "sources": [
+        "The Rising Nepal"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-trishuli-flood-alert-fresh-warning/",
+      "title": "Nepal issues fresh flood alert for the Trishuli riverbank down to Muglin",
+      "time": "2026-08-28T22:30:00+05:45",
+      "summary": "Nepal's Flood Forecasting Division, under NDRRMA, issued a fresh high alert Friday night for communities along the Trishuli River as far as Muglin, after Chinese officials told the District Police Office in Rasuwa that water levels in the Bhote Koshi had spiked again, Nepal News reports. The Prime M",
+      "sources": [
+        "Nepal News",
+        "ABC News Australia"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-india-mea-320-uncontactable/",
+      "title": "India's foreign ministry says 320 of its nationals still uncontactable",
+      "time": "2026-08-28T21:15:00+05:45",
+      "summary": "India's Ministry of External Affairs said Friday that 320 Indian nationals remain uncontactable in the flood, and that about 100 more people of Indian origin have also not been reached, ministry spokesperson Randhir Jaiswal said, the Tribune reports. Jaiswal said the figures are still moving as offi",
+      "sources": [
+        "The Tribune"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-canada-missing-aid/",
+      "title": "Canada pledges $5 million as 32 Canadians remain unaccounted for",
+      "time": "2026-08-28T21:00:00+05:45",
+      "summary": "Canada's Foreign Affairs Minister Anita Anand said at a Friday briefing that 32 Canadians and permanent residents remain unaccounted for in the flood, up from 30 named a day earlier, the Canadian Press reports. Anand said the figures are likely to keep changing as officials work through the lists. N",
+      "sources": [
+        "Medicine Hat News",
+        "Abbotsford News"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-prithvi-highway-blocked/",
+      "title": "Prithvi Highway fully reopens after two days blocked by flood debris",
+      "time": "2026-08-28T21:00:00+05:45",
+      "summary": "The Prithvi Highway, the main road between Kathmandu and Pokhara, had been blocked since Wednesday evening after Bhotekoshi floodwater dumped mud across it in Gajuri and Galchhi, in Dhading, Onlinekhabar reports.",
+      "sources": [
+        "Onlinekhabar",
+        "The Kathmandu Post",
+        "Nepal News"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-schools-swept-students-unaccounted/",
+      "title": "Two schools swept up in the flood, hundreds of students still being traced",
+      "time": "2026-08-28T21:00:00+05:45",
+      "summary": "More than 370 students were at Uttargaya Public School in Bidur Municipality, Nuwakot, when the flood hit on Wednesday morning. Vice principal Pawan Sharma told Onlinekhabar the school has only been able to contact around 40 percent of them so far, and that 25 to 30 percent have been handed over to ",
+      "sources": [
+        "Onlinekhabar",
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-foreign-rescue-experts-accepted/",
+      "title": "Nepal reverses itself, accepts foreign tunnel rescue and DNA experts",
+      "time": "2026-08-28T20:55:00+05:45",
+      "summary": "Nepal's government has reversed an earlier decision and will let India, China, Australia and South Korea send in specialists to help with tunnel rescues and to identify bodies, the Kathmandu Post reports.",
+      "sources": [
+        "The Kathmandu Post"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-rasuwa-flood/",
+      "title": "Nepal Police raise toll to 553 in new Friday evening bulletin",
+      "time": "2026-08-28T20:55:00+05:45",
+      "summary": "Nepal Police raised the confirmed toll again, to 553 dead, in a bulletin posted on the force's own website as of 5pm Friday. That is up from the 547 the force had given minutes earlier, which itself came within minutes of Nepal's disaster authority NDRRMA's separate figure of 538. Nepal Police repor",
+      "sources": [
+        "Nepal Police",
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "Khabarhub",
+        "ABC News Australia",
+        "The Kathmandu Post",
+        "ICIMOD",
+        "Business Standard",
+        "ANI",
+        "The Kathmandu Post",
+        "The Associated Press"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-pm-shah-4451-rescued/",
+      "title": "PM Shah says 4,451 rescued so far, 15,431 security personnel now in the flood zone",
+      "time": "2026-08-28T20:30:00+05:45",
+      "summary": "Prime Minister Balendra Shah said in a Facebook post Friday evening that Nepal has rescued 4,451 people so far in the flood response, Khabarhub reports. That includes people brought out by helicopter and from flooded hydropower tunnels. Nepali Army and private sector helicopters have flown 99 shuttl",
+      "sources": [
+        "Khabarhub",
+        "The Tribune"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-cause-theory-icerock-langtang/",
+      "title": "Researcher says an ice-rock fall off Langtang Lirung, not a lake burst, may have caused the flood",
+      "time": "2026-08-28T20:00:00+05:45",
+      "summary": "Santosh Nepal, a water resources and climate change researcher, told Onlinekhabar on Friday that the flood may have started with a huge ice and rock fall off Langtang Lirung rather than a glacial lake bursting, which was the earlier working theory.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-chitwan-morgue-storage/",
+      "title": "Bharatpur Hospital runs out of freezer space as bodies near 200",
+      "time": "2026-08-28T20:00:00+05:45",
+      "summary": "Chitwan's hospitals are struggling to keep up with the bodies the flood has brought them. Bharatpur Hospital's freezers hold only 24 bodies, and most of that space was already taken by unclaimed bodies before the flood, chief medical superintendent Dr Bishwabandhu Bagale told Onlinekhabar. By Thursd",
+      "sources": [
+        "The Kathmandu Post",
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-barrier-lake-burst/",
+      "title": "Nepal says no dam collapse confirmed, as barrier lake accounts diverge and volume keeps rising",
+      "time": "2026-08-28T19:35:00+05:45",
+      "summary": "Nepal Police issued an alert on Friday saying Chinese authorities reported that the barrier lake near the Chhochen Khola and the Purepu Tsangpo, just across the border from Rasuwa, had burst. Rasuwa's Chief District Officer said a circular went out telling people along the riverbanks to stay safe, a",
+      "sources": [
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "The Kathmandu Post",
+        "The Kathmandu Post",
+        "ABC News Australia",
+        "CBS News"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-container-trucks-workers-unaccounted/",
+      "title": "Trucking group says over 1,000 drivers, helpers and traders unaccounted for near the border",
+      "time": "2026-08-28T19:00:00+05:45",
+      "summary": "More than 400 container trucks are missing along the Rasuwagadhi-Kerung and Trishuli corridor, and the people who worked with them, drivers, helpers, labourers and traders, could number more than 1,000 out of contact, Arjun Bahadur Sapkota, president of the Nepal Truck Container Transportation Servi",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-hydropower-workers-out-of-contact/",
+      "title": "NDRRMA says 933 hydropower workers are among Nepal's missing",
+      "time": "2026-08-28T19:00:00+05:45",
+      "summary": "The Nepali Army has pulled more than 350 workers and local villagers out of a flooded access tunnel at the under construction Upper Trishuli-1 hydropower project, rescuers rappelling from a hovering helicopter to reach the entrance, Bloomberg reports, citing Nepal's Prime Minister's Office. More tha",
+      "sources": [
+        "Bloomberg",
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "The Kathmandu Post",
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "Euronews"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-missing-977/",
+      "title": "Nepal's missing count nearly doubles to 1,924 as NDRRMA widens who it counts",
+      "time": "2026-08-28T19:00:00+05:45",
+      "summary": "Nepal's disaster authority NDRRMA said in a Friday evening Search, Rescue and Relief update that 1,924 people are now listed out of contact in Nepal, nearly double the 977 it had given that same afternoon. NDRRMA said the jump came from adding more local residents to the tally, not from a new wave o",
+      "sources": [
+        "The Associated Press",
+        "ANI",
+        "CBS News",
+        "Onlinekhabar",
+        "ABC News Australia"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-red-cross-93000-affected/",
+      "title": "Red Cross says at least 93,000 people affected by the flood",
+      "time": "2026-08-28T18:15:00+05:45",
+      "summary": "David Fisher, head of delegation for the International Federation of Red Cross and Red Crescent Societies in Nepal, said Friday that at least 93,000 people have been affected by the flood and are in great need, the Jerusalem Post reports.",
+      "sources": [
+        "The Jerusalem Post",
+        "ABC News Australia"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-damage-cost/",
+      "title": "Damage put at Rs 200 billion, relief fund donations pass Rs 4 billion",
+      "time": "2026-08-28T18:00:00+05:45",
+      "summary": "The Prime Minister's Disaster Relief Fund's balance has reached Rs 4.091 billion, the finance ministry said in a Friday update reported by Onlinekhabar, up from Rs 2.172 billion before the latest round of deposits, which added Rs 1.918 billion between noon Wednesday and midnight Thursday. The fund h",
+      "sources": [
+        "Onlinekhabar",
+        "The Kathmandu Post",
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "UNICEF"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-meta-tiktok-misinformation/",
+      "title": "Government asks Meta and TikTok to remove flood misinformation and scam QR codes",
+      "time": "2026-08-28T17:30:00+05:45",
+      "summary": "Nepal's government has asked Meta and TikTok to remove graphic flood content, AI-generated videos and scam donation QR codes that have been circulating since the disaster, the Kathmandu Post reports.",
+      "sources": [
+        "The Kathmandu Post"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-rasuwa-isolation/",
+      "title": "Rasuwa reconnected by a light-vehicle road, but still short of almost everything",
+      "time": "2026-08-28T17:30:00+05:45",
+      "summary": "Rasuwa was reconnected to the road network on Friday, when an alternative route reopened for small, four-wheeled vehicles between Kathmandu and Dhunche, via Tokha, Gadkhar Bridge, Narja, Lachyang, Saramthali and Kalikasthan, the Ministry of Physical Infrastructure and Transport said, Onlinekhabar re",
+      "sources": [
+        "Onlinekhabar",
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-container-drivers-stranded-kerung/",
+      "title": "Eighty Nepali truck drivers stranded in Kerung plead to come home",
+      "time": "2026-08-28T16:40:00+05:45",
+      "summary": "About 80 Nepali container truck drivers have been stranded for three days in Kerung, the Chinese border town across from Rasuwagadhi, since the flood wrecked the road home, the Kathmandu Post reports.",
+      "sources": [
+        "The Kathmandu Post"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-australia-missing-aid/",
+      "title": "Australia's missing count eases to 38 as one hiker makes contact",
+      "time": "2026-08-28T15:10:00+05:45",
+      "summary": "Australian Foreign Minister Penny Wong said on Friday that 39 Australians were unaccounted for in the flood, up from the 35 that Nepal's tourism board had listed a day earlier. Australia's Department of Foreign Affairs and Trade said on Friday evening that count has since eased to 38, after one of t",
+      "sources": [
+        "ABC News Australia",
+        "The Standard"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-bailey-bridges/",
+      "title": "Nepal asks India and China to build 42 Bailey bridges in flood zone",
+      "time": "2026-08-28T14:50:00+05:45",
+      "summary": "Nepal has asked India and China for help building 42 Bailey bridges in Rasuwa, Nuwakot and Dhading, after most bridges there were destroyed by the flood and cut off two way road traffic, Onlinekhabar reports. NDRRMA assessed that number as urgently needed.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-cabinet-relief-package/",
+      "title": "Cabinet orders relief package, ministers to give a month's pay",
+      "time": "2026-08-28T14:00:00+05:45",
+      "summary": "Nepal's Cabinet made three flood relief decisions at its Thursday meeting, government spokesperson and Education Minister Sasmita Pokharel said on Friday, Onlinekhabar reports.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-india-seven-bodies-downstream/",
+      "title": "Seven bodies believed to be flood victims recovered downstream in India",
+      "time": "2026-08-28T14:00:00+05:45",
+      "summary": "Authorities in India's Uttar Pradesh state have recovered seven bodies believed to have been swept downstream from Nepal's flood, district officials said Friday, AFP reports.",
+      "sources": [
+        "The Standard",
+        "Arab News"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-28-universities-suspend-exams/",
+      "title": "Universities told to postpone exams from Friday because of the floods",
+      "time": "2026-08-28T08:00:00+05:45",
+      "summary": "Education and Sports Minister Sasmit Pokharel has directed university vice-chancellors to postpone all examinations scheduled from 29 August because of the floods, Onlinekhabar reports.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-27-damage-cost/",
+      "title": "Damage put at Rs 200 billion, hydropower losses still being counted",
+      "time": "2026-08-27T23:30:00+05:45",
+      "summary": "Physical Infrastructure Minister Sunil Lamsal said damage to roads and bridges is around Rs 200 billion. He called it preliminary information.",
+      "sources": [
+        "Onlinekhabar",
+        "The Kathmandu Post",
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "Onlinekhabar",
+        "UNICEF"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-27-rasuwa-flood/",
+      "title": "Toll passes 389 as China warns lake may burst within days",
+      "time": "2026-08-27T22:30:00+05:45",
+      "summary": "Nepal Police put the confirmed toll at 389 dead as of a 9pm bulletin on Thursday, up from 359 at 5pm. Police also said 466 people are injured. The flood hit Timure in Rasuwa on Wednesday morning and ran down the Bhote Koshi into the Trishuli and the Narayani.",
+      "sources": [
+        "Nepal Police",
+        "Review Nepal",
+        "Onlinekhabar",
+        "The Kathmandu Post",
+        "ICIMOD",
+        "Business Standard",
+        "ANI",
+        "The Kathmandu Post"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-27-hydropower-workers-out-of-contact/",
+      "title": "Over 200 hydropower staff still out of contact, IPPAN says",
+      "time": "2026-08-27T19:00:00+05:45",
+      "summary": "The Independent Power Producers' Association Nepal, IPPAN, says 215 staff from five hydropower projects have not been reached since Wednesday's flood. Worst hit is the under construction Upper Trishuli-1 project, where IPPAN counts 94 people out of contact, among them 8 Korean nationals working for ",
+      "sources": [
+        "Onlinekhabar",
+        "The Rising Nepal"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-27-toll-289/",
+      "title": "289 confirmed dead in the Rasuwa flood as searches reach cut-off areas",
+      "time": "2026-08-27T14:30:00+05:45",
+      "summary": "Nepal Police put the confirmed toll at 289 in their 2:30pm bulletin on Thursday. It was 270 at 1:30pm and 165 that morning. The jumps are search teams reaching settlements that had been cut off since Wednesday, not new casualties happening.",
+      "sources": [
+        "Nepal Police",
+        "UN OCHA / ReliefWeb",
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-27-barrier-lake/",
+      "title": "China reports a new lake forming upstream and warns it could break",
+      "time": "2026-08-27T11:00:00+05:45",
+      "summary": "China's Ministry of Water Resources says a barrier lake, meaning a river blocked by debris into an artificial lake, has formed near the confluence of the Chhochen Khola and the Purepu Tsangpo, inside Tibet close to the Nepal border.",
+      "sources": [
+        "Onlinekhabar (Global Times)",
+        "Khabarhub",
+        "Setopati"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-27-cause-usgs/",
+      "title": "USGS: the tremor was a glacial collapse, not an earthquake",
+      "time": "2026-08-27T10:00:00+05:45",
+      "summary": "The US Geological Survey first logged a magnitude 4.4 earthquake at 08:37 on Wednesday, minutes before the river rose. It has now revised that analysis.",
+      "sources": [
+        "UN OCHA / ReliefWeb",
+        "ICIMOD",
+        "France 24"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-27-damage-infra/",
+      "title": "14 hydropower projects hit and the whole border road destroyed",
+      "time": "2026-08-27T09:30:00+05:45",
+      "summary": "The Nepal Electricity Authority reports 14 hydropower projects damaged with a combined capacity of about 748 megawatts: nine operating plants totalling 354 MW and five under construction totalling 394 MW.",
+      "sources": [
+        "UN OCHA / ReliefWeb",
+        "The Kathmandu Post",
+        "Onlinekhabar"
+      ]
+    },
+    {
+      "url": "/updates/2026-08-26-auto-2026-08-26/",
+      "title": "भोटेकोशी बाढीपीडितका लागि डब्ल्युएचओले औषधि र स्वास्थ्य उपकरण पठाउने",
+      "time": "2026-08-26T07:45:37.000Z",
+      "summary": "विश्व स्वास्थ्य सङ्गठन (डब्ल्युएचओ)ले रसुवाको भोटेकोशी नदीमा आज बिहान आएको बाढीबाट प्रभावितका लागि आवश्यक औषधि तथा स्वास्थ्य उपकरण पठाउने भएको छ।",
+      "sources": [
+        "Nagarik News"
+      ]
+    }
+  ]
+}

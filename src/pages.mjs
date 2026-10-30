@@ -5,9 +5,12 @@
 
 import {
   SITE, SITE_NAME, CONTACT_EMAIL, page, esc, related, faqBlock, stripTags,
-  nptLong, nptDay, ogFor,
+  nptLong, nptDay, ogFor, ogSlug, siteAsset,
 } from './template.mjs';
 import * as C from './content.mjs';
+import {
+  BANNED_WORDS, DISASTER_WORDS_SOURCE, cleanHeadline, isNepalDisasterHeadline, frontNews, roadNews, frontTitle, tldrLines, daysSince,
+} from './front-rules.mjs';
 
 const ORG = { '@id': `${SITE}/#organization` };
 
@@ -278,56 +281,68 @@ ${faq.html}
   };
 }
 
-/* -- 2. /nepal-flood/rasuwa/ ------------------------------------------------ */
+/* -- 2. /nepal-flood/rasuwa/ ------------------------------------------------
+   The dashboard's address since 30 October 2026. src/build.mjs renders
+   src/rasuwa-dashboard.html there, with every counter polling /api/figures,
+   and folds the written briefing below into its Overview tab between the
+   <!--ssr:briefing--> markers. This module supplies the page's title and
+   description (so og-build, the sitemap and the build describe one page) and
+   the briefing's prose. The html itself is the dashboard's, not a template. */
 
-export function rasuwaEvent(ctx) {
+export function rasuwaDashboard(ctx) {
   const path = '/nepal-flood/rasuwa/';
-  const faq = faqBlock([
-    {
-      q: 'What happened in Rasuwa, Nepal?',
-      a: `<p>On the morning of 26 August 2026 a flash flood came down the Bhote Koshi river from the Tibet side of the border into Rasuwa district. Timure, Syabrubesi, the Rasuwagadhi border crossing and around a dozen riverside settlements took the heaviest impact, and the water carried on down the Trishuli into the Narayani. ${C.DAMAGE.hydropowerProjects} hydropower projects were damaged. As of ${esc(AS_OF_TOLL)}, Nepal Police confirm ${C.TOLL.deadNepal} dead in Nepal.</p>`,
-    },
-    {
-      q: 'What caused the Nepal flood of August 2026?',
-      a: '<p>No government has confirmed a cause. The leading explanation, from Nepal’s Department of Hydrology and Meteorology and independent glaciologists working with satellite imagery shared through ICIMOD, is an ice-and-rock avalanche that blocked the Lhende Khola inside Tibet about 20 km upstream of the Miteri Bridge, forming a temporary debris-dammed lake that then burst. The seismic signal recorded minutes earlier, first logged by the USGS as a magnitude 4.4 earthquake, has since been reassessed as a magnitude 5.2 glacial collapse rather than a tectonic quake. Heavy local rainfall in Rasuwa is ruled out.</p>',
-    },
-    {
-      q: 'Which districts of Nepal were affected?',
-      a: '<p>Rasuwa took the first and heaviest impact, especially Timure, Syabrubesi and the Rasuwagadhi border crossing. The surge then moved through Betrawati and Trishuli Bazar in Nuwakot, Galchhi and Dhunge Bazaar in Dhading, and past Muglin into the Narayani. Bodies have been recovered in Chitwan, Nawalparasi East and West, Gorkha and Tanahun as well. Three deaths are confirmed on the Chinese side near Gyirong.</p>',
-    },
-    {
-      q: 'Is Kathmandu affected by the Rasuwa flood?',
-      a: '<p>Kathmandu itself was not flooded. The damage runs along the Bhote Koshi and Trishuli valleys in Rasuwa and Nuwakot, north-west of the capital. Road links to the Chinese border through Rasuwagadhi have been badly disrupted.</p>',
-    },
-    {
-      q: 'How many people are still missing?',
-      a: `<p>NDRRMA reported ${C.TOLL.missing} people missing in its ${esc(AS_OF_MISSING)} update. The last detailed Nepal Police list is older: 579 travellers (466 of them foreign nationals), 161 Rasuwa residents, 85 security personnel and one Nuwakot resident. Chinese state media separately report ${C.TOLL.missingChina} missing around Gyirong Port on the Tibet side, ${C.TOLL.missingChinaForeign} of them foreign nationals. Combined, that is ${C.TOLL.missing + C.TOLL.missingChina} people unaccounted for, though the two countries’ counts may overlap. Out of contact does not mean dead. Phone lines, power and internet are down across the valley.</p>`,
-    },
-    {
-      q: 'Is it safe to travel to Langtang or Syabrubesi now?',
-      a: '<p>Syabrubesi is the main gateway to the Langtang trek and was directly hit, including the loss of its helipad. Roads along the river valley are damaged and a second surge has not been ruled out. Check with Nepal Police, the Tourist Police on 1144, and your trekking operator before travelling.</p>',
-    },
-    {
-      q: 'How can I donate to Rasuwa flood relief?',
-      a: '<p>The Government of Nepal’s own channel is the Prime Minister’s Natural Disaster Relief Fund, run by the Office of the Prime Minister. Bank account details and the official QR code are on the <a href="/nepal-flood/relief/">relief and donations page</a>. Fake appeals appear within hours of any disaster, so check the account name before sending anything.</p>',
-    },
-  ]);
+  const event = ctx.event || {};
+  const stats = (event.stats || []).filter(Boolean);
+  const dead = stats.find(s => s.icon === 'dead');
+  const missing = stats.find(s => s.icon === 'missing');
+  const asOfShort = nptLong(event.asOf);
 
+  /* Google truncates a title around 60-65 characters. The figures go first
+     because that is the part that survives the truncation; "14 Oct" is as
+     much date as fits and as much as a reader needs to see it is current. */
+  const headParts = [];
+  if (dead) headParts.push(`${dead.value} dead`);
+  if (missing) headParts.push(`${missing.value} missing`);
+  const asOfDay = asOfShort.replace(/^(\d+)\s+(\w{3})\w*.*$/, '$1 $2');
+  const title = headParts.length
+    ? `Nepal Flood Live: ${headParts.join(', ')} in Rasuwa, ${asOfDay}`
+    : `Nepal Disaster Update Live: ${event.headline || 'Rasuwa flood'}`;
+
+  /* The description is the snippet. It answers the question the searcher
+     typed and says when it was last checked, because on a running disaster
+     recency is the reason to pick one result over another. */
+  const description = [
+    dead && missing
+      ? `${event.asOfSource || 'Officials'}: ${dead.value} confirmed dead and ${missing.value} listed missing after the ${event.name || 'flood'}.`
+      : event.lede,
+    'Toll by district, map, helplines and the official relief fund.',
+    `Updated ${asOfShort}.`,
+  ].filter(Boolean).join(' ');
+
+  return {
+    path, title, description, ogTitle: title,
+    lastmod: ctx.modified, priority: '1.0', changefreq: 'hourly',
+    alternates: [{ hreflang: 'en', path }, { hreflang: 'ne', path: '/ne/' }],
+    /* Filled in by src/build.mjs from src/rasuwa-dashboard.html. */
+    html: null,
+  };
+}
+
+/** The written briefing, folded into the dashboard's Overview tab. Headings
+ *  start at h3 because the section that holds it carries the h2. */
+export function rasuwaBriefing(ctx) {
   const body = `
-${EMERGENCY_STRIP}
-
-<h2>Where the numbers stand</h2>
-${numbersGrid()}
-
-${SECOND_FLOOD_WARNING}
-
-<h2>What happened</h2>
+<p class="eyebrow">05. The briefing</p>
+<h2>Rasuwa flood 2026, the full briefing</h2>
+<p class="measure lede">A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. This is what is confirmed, what is still unknown, and where each figure comes from.</p>
+<div class="briefing-body">
+<h3>What happened</h3>
 <p>At about <strong>09:00 Nepal time on 26 August 2026</strong>, the Bhote Koshi rose suddenly where it crosses into Nepal at Rasuwagadhi. It was not raining in the Rasuwa catchment. Within minutes the water was through Timure, the nearest Nepali settlement, taking nine bank branches and the customs post with it. Syabrubesi, downstream and the gateway to the Langtang trek, lost its helipad, which slowed rescue flights into the upper valley on the first day, when they mattered most. Around a dozen riverside settlements in northern Rasuwa were hit in that first hour.</p>
 <p>The flood did not stop at the district line. The Bhote Koshi joins the Trishuli at Syabrubesi, and the Trishuli runs on into the Narayani. The surge moved through Betrawati and Trishuli Bazar in Nuwakot, Galchhi and Dhunge Bazaar in Dhading, and past Muglin. Bodies have since been recovered as far as Chitwan and Nawalparasi. The Armed Police Force alone recovered ${C.TOLL.narayaniRecovered} from the Narayani by Thursday afternoon.</p>
 <p>Counts rose sharply and repeatedly through the first two days as search teams reached areas that had been cut off. The Prime Minister’s Office reported 95 dead on Wednesday evening and NDRRMA 72; by ${esc(AS_OF_TOLL_EARLIER)} ${esc(C.TOLL_EARLIER_SOURCE)} reported ${C.TOLL.deadNepalEarlier}, and by ${esc(AS_OF_TOLL)} ${esc(C.TOLL_SOURCE)} reported <strong>${C.TOLL.deadNepal}</strong>. Every figure on this page is provisional for that reason.</p>
 <p><a href="/nepal-flood/rasuwa/timeline/">See the full hour-by-hour timeline</a>.</p>
 
-<h3>The route the water took</h3>
+<h4>The route the water took</h4>
 ${table(['Place', 'Elevation', 'What happened'], C.PLACES.map(p => [
     `<strong>${esc(p.name)}</strong><br><span class="faint">${esc(p.country)}</span>`,
     `<span class="num">${esc(p.elev)}</span>`,
@@ -335,122 +350,32 @@ ${table(['Place', 'Elevation', 'What happened'], C.PLACES.map(p => [
   ]), 'From the suspected break-off point in Tibet down to the furthest reported damage in Nuwakot, a drop of roughly 4,500 metres.')}
 <p><a href="/nepal-flood/rasuwa/map/">Open the interactive map of the flood path</a>, with the coordinates for each point.</p>
 
-<h2>What may have caused it</h2>
+<h3>What may have caused it</h3>
 <p><strong>No government has confirmed the cause.</strong> Ordinary rainfall is ruled out. It was not raining in the catchment that morning. These are the explanations under examination, ranked by how strongly they are currently supported:</p>
 <ol>
 ${C.CAUSES.filter(c => c.rank !== 'Ruled out').map(c => `<li><strong>${esc(c.title)}</strong> <span class="faint">(${esc(c.rank)})</span><br>${esc(c.text)}</li>`).join('\n')}
 </ol>
 <p><a href="/nepal-flood/rasuwa/cause/">Read the full explanation of what caused the flood</a>, including what a GLOF is and why the distinction matters for the districts downstream.</p>
 
-<h2>Damage</h2>
+<h3>Damage</h3>
 <p>The Nepal Electricity Authority reports <strong>${C.DAMAGE.hydropowerProjects} hydropower projects damaged</strong> along the corridor, with a combined capacity of about <strong>${C.DAMAGE.hydropowerMW} MW</strong>: ${C.DAMAGE.hydropowerOperational} operating plants (${C.DAMAGE.hydropowerOperationalMW} MW) and ${C.DAMAGE.hydropowerUnderConstruction} under construction (${C.DAMAGE.hydropowerUnderConstructionMW} MW). The Department of Roads confirms the entire <strong>${C.DAMAGE.roadDestroyedKm} km road from Betrawati to the Rasuwagadhi crossing</strong> was destroyed at multiple points, including several concrete bridges, cutting Nepal’s main overland trade and pilgrimage route to Tibet.</p>
 <p><a href="/nepal-flood/rasuwa/hydropower/">The hydropower damage in detail</a>, project by project, and what it means for supply.</p>
 <p>Physical Infrastructure Minister Sunil Lamsal put road and bridge damage alone at about <strong>${esc(C.DAMAGE.costEstimate)}</strong> on 26 August, and called the figure preliminary. Hydropower and private property are not in it.</p>
 <p><a href="/nepal-flood/rasuwa/damage/">See the full damage assessment</a>, project by project.</p>
 
-<h2>Who is missing, and what that number means</h2>
+<h3>Who is missing, and what that number means</h3>
 <p>Nepal Police reported <strong>${C.TOLL.missing} people out of contact</strong> in its ${esc(AS_OF_MISSING)} update. That figure is a contact list, not a casualty list: phone lines, power and internet are down across the valley and are coming back slowly, so being out of contact does not mean dead.</p>
 ${table(['Group', 'Listed missing'], C.MISSING_BREAKDOWN.map(([k, v]) => [esc(k), v]), `Nepal Police breakdown of the ${C.MISSING_BREAKDOWN_TOTAL} on the list at ${esc(AS_OF_MISSING_BREAKDOWN)}. The current police total of ${C.TOLL.missing} is later and has not been broken down.`)}
 <p>Most of the missing foreign travellers were moving toward the Kailash Mansarovar pilgrimage route through Tibet. Chinese state media separately report ${C.TOLL.missingChina} people missing around Gyirong Port on the Tibet side, ${C.TOLL.missingChinaForeign} of them foreign nationals.</p>
 <p><a href="/nepal-flood/rasuwa/missing-persons/">How to report someone missing</a>, including the cross-border and foreign-national routes.</p>
 
-<h2>Common questions about the Rasuwa flood</h2>
-${faq.html}
-
-<h2>How this page is put together</h2>
+<h3>How this briefing is put together</h3>
 <p>Casualty figures come from Nepal Police and NDRRMA situation reports. Damage, rescue and response figures come from the ${esc(C.SITREP_SHORT)} and the latest NDRRMA update, which draw on NDRRMA, Nepal Police, the Department of Roads and the Nepal Electricity Authority. Different bulletins published at different hours give different counts; where two sources disagree, the lower confirmed figure is shown, with the source and the time named next to it. Every figure carries the time of the bulletin it came from, because a casualty count without a timestamp is not usable during an event.</p>
 <p>If a number here is wrong, <a href="/contact/">tell us</a> and it gets corrected or removed. <a href="/sources/">Every source this site uses is listed publicly</a>.</p>
+</div>
 `;
-
-  return {
-    path,
-    alternates: [{ hreflang: 'en', path: '/nepal-flood/rasuwa/' }, { hreflang: 'ne', path: '/ne/' }],
-    title: `Rasuwa Flood 2026: ${C.TOLL.deadNepal} Dead | Latest Updates, Map and Cause`,
-    description: `Rasuwa flood, Nepal: ${C.TOLL.deadNepal} confirmed dead after the 26 August 2026 Bhote Koshi flash flood, with hundreds missing. Timeline, suspected cause, damage, affected districts and emergency numbers.`,
-    lastmod: ctx.modified,
-    priority: '1.0',
-    changefreq: 'hourly',
-    html: page({
-      rail: liveRail(ctx),
-      path,
-      title: `Rasuwa Flood 2026: ${C.TOLL.deadNepal} Dead | Latest Updates, Map and Cause`,
-      ogTitle: `Rasuwa Flood 2026: ${C.TOLL.deadNepal} dead, ${C.TOLL.missing} missing`,
-      description: `Rasuwa flood, Nepal: ${C.TOLL.deadNepal} confirmed dead after the 26 August 2026 Bhote Koshi flash flood, with hundreds missing. Timeline, suspected cause, damage, affected districts and emergency numbers.`,
-      h1: 'Rasuwa flood, 2026',
-      lede: 'A flash flood came down the Bhote Koshi from Tibet into Rasuwa on 26 August 2026. This is what is confirmed, what is still unknown, and who to call.',
-      crumbs: [{ label: 'Home', href: '/' }, { label: 'Nepal floods', href: '/nepal-flood/' }, { label: 'Rasuwa flood 2026' }],
-      statusPill: 'live',
-      updatedNote: bylineLive(ctx.modified),
-      published: '2026-08-26T12:00:00+05:45',
-      modified: ctx.modified,
-      ogImageAlt: 'Rasuwa flood, Nepal: live updates, map, casualty figures and helplines',
-      alternates: [
-        { hreflang: 'en', path: '/nepal-flood/rasuwa/' },
-        { hreflang: 'ne', path: '/ne/' },
-      ],
-      extraPills: '<a class="pill" href="/ne/" hreflang="ne" lang="ne">नेपालीमा पढ्नुहोस्</a>',
-      body: body + related('More on this event', [
-        { href: '/nepal-flood/rasuwa/live-updates/', title: 'Live updates', text: 'Everything as it comes in, newest first, with the source on every line.', verb: 'the feed' },
-        { href: '/nepal-flood/rasuwa/casualties/', title: 'Casualties, district by district', text: `Where the ${C.TOLL.deadNepal} confirmed dead were recovered, and how the count is compiled.`, verb: 'the figures' },
-        { href: '/nepal-flood/rasuwa/map/', title: 'Map of the flood path', text: 'Seven points from the suspected break-off in Tibet to Devighat in Nuwakot.', verb: 'the map' },
-        { href: '/nepal-flood/relief/', title: 'How to help safely', text: 'The government’s own relief fund, the bank details, and how to spot a fake appeal.', verb: 'how to help' },
-      ]),
-      schema: [
-        {
-          '@type': 'NewsArticle',
-          '@id': `${SITE}${path}#article`,
-          headline: `Rasuwa flood 2026: ${C.TOLL.deadNepal} confirmed dead in Nepal`,
-          description: 'Live briefing on the 26 August 2026 Rasuwa flash flood in Nepal: casualties, cause, damage, map and emergency contacts.',
-          inLanguage: 'en',
-          isAccessibleForFree: true,
-          datePublished: '2026-08-26T12:00:00+05:45',
-          dateModified: ctx.modified,
-          author: ORG,
-          publisher: ORG,
-          mainEntityOfPage: { '@id': `${SITE}${path}#webpage` },
-          image: [`${SITE}/og-image.png`],
-          about: EVENT_ABOUT,
-        },
-        {
-          '@type': 'Event',
-          '@id': `${SITE}${path}#event`,
-          name: '2026 Rasuwa flash flood',
-          alternateName: 'Bhote Koshi-Trishuli flash flood',
-          /* Recommended by Google for an Event; without it the item is valid
-             but reported as incomplete. */
-          image: [`${SITE}/og-image.png`],
-          startDate: '2026-08-26T09:00:00+05:45',
-          eventStatus: 'https://schema.org/EventScheduled',
-          eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-          description: 'Flash flood along the Bhote Koshi and Trishuli rivers in Rasuwa and Nuwakot districts, Nepal, on 26 August 2026, following a suspected ice-and-rock avalanche that dammed and then released the Lende Khola inside Tibet.',
-          location: {
-            '@type': 'Place',
-            name: 'Rasuwa District, Bagmati Province, Nepal',
-            address: { '@type': 'PostalAddress', addressRegion: 'Bagmati Province', addressCountry: 'NP' },
-            geo: { '@type': 'GeoCoordinates', latitude: 28.15, longitude: 85.35 },
-          },
-          organizer: { '@type': 'GovernmentOrganization', name: 'Government of Nepal' },
-        },
-        {
-          '@type': 'SpecialAnnouncement',
-          '@id': `${SITE}${path}#announcement`,
-          name: 'Rasuwa flash flood, Nepal, active emergency',
-          text: 'A flash flood struck the Bhote Koshi and Trishuli valleys in Rasuwa and Nuwakot districts on 26 August 2026. Search and rescue continues. The Department of Hydrology and Meteorology says the immediate risk from a new barrier lake upstream inside Tibet has fallen as water flows out naturally, but fresh landslides could still trigger renewed flooding. Keep off the banks of the Bhote Koshi, Trishuli and Narayani until officials say it is clear.',
-          category: 'https://www.wikidata.org/wiki/Q8068',
-          datePosted: '2026-08-26T12:00:00+05:45',
-          expires: '2026-12-31',
-          announcementLocation: {
-            '@type': 'Place',
-            name: 'Rasuwa and Nuwakot Districts, Nepal',
-            geo: { '@type': 'GeoCoordinates', latitude: 28.15, longitude: 85.35 },
-          },
-          publisher: ORG,
-          url: `${SITE}${path}`,
-        },
-        faq.node,
-      ],
-    }),
-  };
+  /* The dashboard styles its tables as .data-table. */
+  return body.replace(/<table>/g, '<table class="data-table">');
 }
 
 /* -- 3. /nepal-flood/rasuwa/casualties/ ------------------------------------- */
@@ -1032,7 +957,7 @@ ${SECOND_FLOOD_WARNING}
 
 <h2>How this feed is verified</h2>
 <p>An item is marked <strong>verified</strong> when it comes from an official alerting source, ReliefWeb (UN OCHA), GDACS (UN and European Commission) or the USGS, or when two or more independent newsrooms are reporting the same thing. Everything else is left unmarked rather than guessed at. Diplomatic condolence statements are filtered out entirely, because they carry no rescue, casualty or damage information.</p>
-<p>Nothing on this page is written by an automated system pretending to be a reporter. The briefings at the top are typed by a person from named bulletins; the newswire below is a link list, and it says which newsroom each link belongs to.</p>
+<p>The briefings at the top are written from named bulletins; the newswire below is a link list, and it says which newsroom each link belongs to.</p>
 `;
 
   const tail = `<script>
@@ -1741,7 +1666,7 @@ export function about(ctx) {
 <h3>The live newswire</h3>
 <p>The feed on the live updates page is collected automatically by this site’s own server from UN disaster alerts (ReliefWeb, GDACS), the US Geological Survey, and a fixed list of named newsrooms in Nepal and abroad. It is a headline-and-link list: stories are read at the source, not copied here. An item is marked verified only when it comes from an official alerting source, or when two or more independent newsrooms report the same thing.</p>
 <h3>Written briefings</h3>
-<p>The dated briefings in the <a href="/updates/">update archive</a> are written by a person from named sources, with the source list printed under each one. They are not model-generated news.</p>
+<p>The dated briefings in the <a href="/updates/">update archive</a> are written from named sources, with the source list printed under each one. The counters are read from the official bulletins by a scheduled program, and each one names the bulletin it came from.</p>
 <h3>Maps</h3>
 <p>Map points come from published reporting and satellite imagery and are marked approximate where they are approximate. Basemaps are credited to their providers on <a href="/sources/">the sources page</a>.</p>
 
@@ -1760,7 +1685,7 @@ export function about(ctx) {
 <p>The current story is the 2026 Rasuwa flood. The site is built to cover whatever the next major event in Nepal is, be that an earthquake, a landslide or another flood, without deleting what came before. Past events stay online as archived pages with the "archived" label rather than continuing to present themselves as live. <a href="/nepal-disasters/">The hazard guide</a> is deliberately event-independent, because helplines and safety advice do not change between disasters.</p>
 
 <h2>Technology and privacy</h2>
-<p>The site is a static page served from Cloudflare’s edge network, with a small server-side layer that fetches public feeds so your browser does not have to. There are no advertising trackers and no third-party analytics scripts collecting your browsing across other sites. Map tiles are loaded from Esri, OpenTopoMap and OpenStreetMap, and embedded videos are served by YouTube, so those providers see the requests their own content needs.</p>
+<p>There are no advertising trackers and no third-party analytics scripts collecting your browsing across other sites. Map tiles are loaded from Esri, OpenTopoMap and OpenStreetMap, and embedded videos are served by YouTube, so those providers see the requests their own content needs.</p>
 `;
   const t = `About ${SITE_NAME}: Who Runs This and How It Is Sourced`;
   const d = 'Nepal Disaster Update Live is an independent volunteer project, not a government site and not a news agency. How its figures are sourced, and how to send a correction.';
@@ -1806,7 +1731,7 @@ ${g.links.map(([u, n, d]) => `<li><a href="${esc(u)}" target="_blank" rel="noope
   <li><strong>Figures.</strong> Casualty, damage and rescue numbers come only from Nepal Police bulletins and NDRRMA situation reports, with the bulletin time printed next to the figure.</li>
   <li><strong>The newswire.</strong> Headlines and links only, collected on a schedule by this site’s own server. Stories are read at the publisher, not reproduced here.</li>
   <li><strong>Verification.</strong> An item is marked verified when it comes from an official alerting source (ReliefWeb, GDACS, USGS) or when two or more independent newsrooms report the same thing. Everything else is left unmarked.</li>
-  <li><strong>Photographs.</strong> Openly licensed images only, with credit, mostly from Wikimedia Commons. No AI-generated images are used anywhere on this site.</li>
+  <li><strong>Photographs.</strong> Real photographs only, each credited to the newsroom or agency that published it. Nothing is drawn or made up.</li>
 </ul>
 
 <h2>Machine-readable feed</h2>
@@ -1866,7 +1791,7 @@ export function contact(ctx) {
 <p>This site does not maintain a missing-persons register and cannot search for anyone. The register that matters is the one held by Nepal Police and the ward offices. <a href="/nepal-flood/rasuwa/missing-persons/">How to report someone missing</a> explains the exact steps, including the route for foreign nationals.</p>
 
 <h2>Press and researchers</h2>
-<p>Everything on this site is either sourced from a public bulletin or generated from public feeds, and the sources are listed in full on <a href="/sources/">the sources page</a>. The live feed is available as RSS at <a href="${SITE}/feed.xml"><span class="num">${SITE}/feed.xml</span></a>, and the underlying JSON endpoints are public.</p>
+<p>Everything on this site traces back to a public bulletin or a named newsroom feed, and the sources are listed in full on <a href="/sources/">the sources page</a>. The live feed is available as RSS at <a href="${SITE}/feed.xml"><span class="num">${SITE}/feed.xml</span></a>, and the underlying JSON endpoints are public.</p>
 <p>If you want to reuse a table or figure, cite the original bulletin rather than this site. That is what it is attributed to here.</p>
 `;
   const t = 'Contact and Corrections';
@@ -1900,8 +1825,8 @@ export function notFound() {
 ${EMERGENCY_STRIP}
 <h2>Where you probably meant to go</h2>
 <ul class="linklist">
-  <li><a href="/"><b>Live dashboard</b><span>Home</span></a></li>
-  <li><a href="/nepal-flood/rasuwa/"><b>Rasuwa flood 2026, full briefing</b><span>Current event</span></a></li>
+  <li><a href="/"><b>Front page</b><span>Home</span></a></li>
+  <li><a href="/nepal-flood/rasuwa/"><b>Rasuwa flood 2026, live dashboard</b><span>Current event</span></a></li>
   <li><a href="/nepal-flood/rasuwa/live-updates/"><b>Live updates</b><span>Newest first</span></a></li>
   <li><a href="/nepal-flood/emergency-numbers/"><b>Nepal emergency numbers</b><span>Reference</span></a></li>
   <li><a href="/nepal-flood/relief/"><b>Relief and donations</b><span>Give</span></a></li>
@@ -1913,7 +1838,7 @@ ${EMERGENCY_STRIP}
   return page({
     path: '/404.html',
     title: 'Page not found',
-    description: 'That page does not exist on Nepal Disaster Update Live. Links to the live dashboard, current event coverage and Nepal emergency numbers.',
+    description: 'That page does not exist on Nepal Disaster Update Live. Links to the front page, the Rasuwa flood dashboard and Nepal emergency numbers.',
     h1: 'Page not found',
     crumbs: [{ label: 'Home', href: '/' }, { label: 'Not found' }],
     body,
@@ -2136,5 +2061,572 @@ ${faq.html}
         faq.node,
       ],
     }),
+  };
+}
+
+/* ===========================================================================
+   0. The front page, /.
+
+   A newspaper front, not a dashboard. One centred column and one rail, built
+   mobile first from the same event.json, the same archive and the same news
+   feed as everything else, so nothing on it can disagree with the dashboard
+   it links to. The order is the order a reader needs: what happened in three
+   lines, the figures and who stated them, what the newsrooms are reporting,
+   the pictures, the map, the roads, who to call, how to give, and the record
+   of every event covered.
+
+   Rules it is built to: an empty slot is left out rather than filled, every
+   number names its source in the same breath, red is used only on a figure
+   that means someone died, no em or en dash appears in visible text, and no
+   sentence describes the tooling behind the site. src/check.mjs holds the
+   page to each of those.
+   ======================================================================== */
+
+/* Where each covered event lives. A later event adds a row here, or carries a
+   `path` of its own in its event file. */
+const EVENT_PATHS = {
+  'rasuwa-flood-2026': {
+    path: '/nepal-flood/rasuwa/',
+    links: [
+      ['/nepal-flood/rasuwa/live-updates/', 'Live updates'],
+      ['/nepal-flood/rasuwa/casualties/', 'Casualties'],
+      ['/nepal-flood/rasuwa/map/', 'Map'],
+      ['/ne/', 'नेपालीमा'],
+    ],
+  },
+};
+
+/* The counter labels that the live board repaints, as the dashboard has them. */
+const FRONT_LIVE = {
+  'confirmed dead': 'dead',
+  'listed missing in Nepal': 'missing',
+  'rescued so far': 'rescued',
+};
+
+/* Lead photograph, in order of preference: the picture that shows the event,
+   not the newest briefing's press-conference frame. Every option is a real,
+   credited news photograph already on this site; the first one present wins. */
+const LEAD_PHOTO_ORDER = [
+  'updates-2026-08-27-rasuwa-flood',
+  'updates-2026-08-27-cause-usgs',
+  'updates-2026-08-27-damage-cost',
+];
+
+const EARLIER_NOTE = /Earlier (?:detail|note)\b/;
+
+/** A counter's live sentence: the archived earlier text and bare URLs cut. */
+function statSentence(stat) {
+  const text = String((stat && stat.detail) || '');
+  const at = text.search(EARLIER_NOTE);
+  const live = (at === -1 ? text : text.slice(0, at)).replace(/\s*Source:\s*https?:\S+/g, '').trim();
+  return live.length > 180 ? live.slice(0, 180).replace(/\s+\S*$/, '') + '…' : live;
+}
+
+function statUrl(stat) {
+  const m = /Source:\s*(https?:\/\/\S+)/.exec(String((stat && stat.detail) || ''));
+  return m ? m[1] : '';
+}
+
+/** Who stated the figure, read off the front of the counter's own sentence:
+ *  "Nepal Police: 1,456." or "The Nepal Electricity Authority reports 14".
+ *  Nothing when the sentence does not open with its source. */
+function statSource(stat) {
+  const text = String((stat && stat.detail) || '');
+  const colon = /^([A-Z][^.:\n]{1,45}?):\s/.exec(text);
+  if (colon) return colon[1].trim();
+  const verb = /^(?:The )?([A-Z][A-Za-z\u2019' ]{2,70}?) (?:reports?|said|says|put|puts|estimates?|confirms?|counts?)\b/.exec(text);
+  return verb ? verb[1].trim() : '';
+}
+
+function hostOf(url) {
+  try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return ''; }
+}
+
+function fpTime(iso) {
+  return nptLong(iso)
+    .replace(/^(\d+) ([A-Za-z]{3})[a-z]* (\d{4}), /, '$1 $2 $3, ');
+}
+
+function figureTile(st, event, day) {
+  const metric = FRONT_LIVE[st.label] || '';
+  const fig = metric && event.figures && event.figures[metric];
+  const value = st.value === 'auto:day' ? `Day ${day || 1}` : st.value;
+  const source = fig && fig.source ? fig.source : statSource(st);
+  const when = fig && fig.time ? fpTime(fig.time) : '';
+  const url = fig && fig.url ? fig.url : statUrl(st);
+  const sentence = statSentence(st);
+  /* Every tile says where its number came from. When the sentence does not
+     open with the source's name, the sentence's own first clause stands in,
+     because it names the source itself; the day counter alone has none. */
+  const firstClause = sentence.split(/(?<=[.])\s/)[0] || '';
+  const srcLine = st.value === 'auto:day' ? ''
+    : [source || hostOf(url) || (firstClause.length <= 110 ? firstClause : ''), when].filter(Boolean).join(', ');
+  const critical = st.icon === 'dead';
+  return `<article class="fp-fig${critical ? ' is-critical' : ''}${st.small ? ' is-small' : ''}"${metric ? ` data-metric="${esc(metric)}"` : ''}>`
+    + `<span class="fp-fig-n"${metric ? ` data-live="${esc(metric)}"` : ''}>${esc(value)}</span>`
+    + `<span class="fp-fig-l">${esc(st.label || '')}</span>`
+    + (srcLine ? `<span class="fp-fig-s"${metric ? ` data-live-src="${esc(metric)}"` : ''}>${esc(srcLine)}</span>` : '')
+    + (sentence && st.value !== 'auto:day'
+      ? `<details class="fp-fig-d"><summary>What the source said</summary><p>${esc(sentence)}</p>`
+        + (url ? `<a href="${esc(url)}" target="_blank" rel="noopener nofollow">${esc(hostOf(url) || 'Source')}</a>` : '')
+        + '</details>'
+      : '')
+    + '</article>';
+}
+
+function newsItem(item, i, withPhoto) {
+  const photo = withPhoto && item.image;
+  return `<li class="fp-news-item${photo ? ' has-photo' : ''}">`
+    + `<a href="${esc(item.url)}" target="_blank" rel="noopener nofollow"><span class="t">${esc(item.title)}</span></a>`
+    + `<p class="m">${item.time ? `<time datetime="${esc(item.time)}">${esc(fpTime(item.time))}</time>` : ''}`
+    + (item.source ? `${item.time ? ' · ' : ''}${esc(item.source)}` : '')
+    + (photo ? ` · Photo: ${esc(item.source || hostOf(item.image))}` : '') + '</p>'
+    + (photo
+      ? `<img src="${esc(item.image)}" alt="" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.classList.remove('has-photo');this.remove();">`
+      : '')
+    + '</li>';
+}
+
+/** Photographs from the briefings' own sources, newest first, with credit. */
+function frontPhotos(posts, index, skipKey, limit = 6) {
+  const out = [];
+  for (const p of posts || []) {
+    const key = ogSlug(p.url);
+    const shot = index[key];
+    if (!shot || !shot.file || !shot.credit || key === skipKey) continue;
+    /* A newsroom feed carries everything it prints; the pictures here are
+       of the disaster, not of whatever else the briefings picked up. */
+    const title = cleanHeadline(p.title);
+    if (!title || !isNepalDisasterHeadline(title)) continue;
+    out.push({ file: shot.file, credit: shot.credit, title, url: p.url });
+    if (out.length === limit) break;
+  }
+  return out;
+}
+
+function eventCard(ev, i) {
+  const meta = EVENT_PATHS[ev.id] || {};
+  const path = ev.path || meta.path;
+  if (!path) return '';
+  const stats = (ev.stats || []).filter(Boolean);
+  const dead = stats.find(s => s.icon === 'dead');
+  const missing = stats.find(s => s.icon === 'missing');
+  const active = ev.status === 'active';
+  const started = ev.started ? nptLong(ev.started, false) : '';
+  const figs = [dead, missing].filter(Boolean).map(s =>
+    `<span class="fp-ev-fig"><b${s.icon === 'dead' ? ' class="crit"' : ''}>${esc(s.value)}</b> ${esc(s.label)}</span>`).join('');
+  const links = (ev.links || meta.links || []).map(([href, label]) =>
+    `<a href="${esc(href)}">${esc(label)}</a>`).join('');
+  return `<article class="fp-event${active ? ' is-active' : ''}">`
+    + `<p class="fp-ev-k">${active ? '<span class="live"><i aria-hidden="true"></i>Live coverage</span>' : 'Archived'}${started ? ` · from ${esc(started)}` : ''}</p>`
+    + `<h3><a data-event-card href="${esc(path)}">${esc(ev.name || 'Event')}</a></h3>`
+    + (ev.where ? `<p class="fp-ev-w">${esc(ev.where)}</p>` : '')
+    + (figs ? `<p class="fp-ev-figs">${figs}</p>` : '')
+    + (ev.asOf ? `<p class="fp-ev-s">${esc(ev.asOfSource || 'Latest bulletin')}, ${esc(fpTime(ev.asOf))}</p>` : '')
+    + (links ? `<p class="fp-ev-links">${links}</p>` : '')
+    + '</article>';
+}
+
+/** The front page's own rail: the toll, the newest briefings, who to call. */
+function frontRail(ctx, dashPath) {
+  const event = ctx.event || {};
+  const stats = (event.stats || []).filter(Boolean);
+  const picked = ['dead', 'missing', 'people']
+    .map(icon => stats.find(s => s.icon === icon)).filter(Boolean);
+  const figs = picked.map(st =>
+    `<div class="rail-fig"><span class="rf-n${st.icon === 'dead' ? ' critical' : ''}"${FRONT_LIVE[st.label] ? ` data-live="${esc(FRONT_LIVE[st.label])}"` : ''}>${esc(st.value)}</span>`
+    + `<span class="rf-l">${esc(st.label)}</span></div>`).join('');
+  const figCard = figs ? `
+<section class="rail-card is-pinned">
+  <p class="rail-head"><span class="rail-tick" aria-hidden="true"></span>Where it stands</p>
+  ${figs}
+  <p class="rail-note">${esc(event.asOfSource || 'Latest bulletin')}, ${esc(nptLong(event.asOf))}. <a href="${esc(dashPath)}">The full board, every counter with its source</a></p>
+</section>` : '';
+
+  const latest = (ctx.posts || [])
+    .map(p => ({ ...p, clean: cleanHeadline(p.title) }))
+    .filter(p => p.clean && isNepalDisasterHeadline(p.clean))
+    .slice(0, 5)
+    .map(p => `<li><time datetime="${esc(p.time)}">${esc(fpTime(p.time))}</time><a href="${esc(p.url)}">${esc(p.clean)}</a></li>`)
+    .join('');
+  const latestCard = latest ? `
+<section class="rail-card">
+  <p class="rail-head"><span class="rail-dot" aria-hidden="true"></span>Briefings<span class="rail-when">${esc(fpTime(ctx.modified))}</span></p>
+  <ol class="rail-list">${latest}</ol>
+  <p class="rail-note"><a href="/updates/">Every briefing, newest first</a></p>
+</section>` : '';
+
+  const helpCard = `
+<section class="rail-card">
+  <p class="rail-head"><span class="rail-tick" aria-hidden="true"></span>If you need help</p>
+  <div class="rail-body">
+    <p class="rail-lede">Nepal Police is 100 from any phone, 112 from a mobile. Donations to the government fund go through its own card gateway.</p>
+    <a class="rail-btn is-alert" href="tel:100">Call 100, Nepal Police</a>
+    <a class="rail-btn" href="/nepal-flood/relief/">How to give, and what to avoid</a>
+  </div>
+</section>`;
+
+  return [figCard, latestCard, helpCard].join('\n');
+}
+
+const FRONT_CSS = `
+<style>
+.fp .shell.has-rail{max-width:1180px;}
+.fp .pagehead{padding:22px 0 4px;}
+.fp .pagehead h1{font-size:clamp(2.05rem, 1.3rem + 3.3vw, 3.5rem); font-weight:500; line-height:1.04; letter-spacing:-0.02em; margin:0 0 .4em; max-width:22ch;}
+.fp .pagehead h1 b{font-weight:600;}
+.fp .status-row{display:flex; flex-wrap:wrap; gap:6px 10px; align-items:center; font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-faint); margin:0 0 14px;}
+.fp .status-row .live{display:inline-flex; align-items:center; gap:6px; color:var(--critical); font-weight:500;}
+.fp .status-row .live i{width:7px; height:7px; border-radius:50%; background:var(--critical); animation:pulse 2s ease-in-out infinite;}
+.fp .status-row .sep{width:3px; height:3px; border-radius:50%; background:var(--border-strong);}
+.fp-tldr{list-style:none; margin:4px 0 24px; padding:0; border-left:3px solid var(--critical);}
+.fp-tldr li{margin:0; display:grid; grid-template-columns:minmax(0,1fr); gap:3px; padding:11px 0 11px 16px; border-bottom:1px solid var(--border);}
+.fp-tldr li:last-child{border-bottom:0;}
+@media (min-width:640px){ .fp-tldr li{grid-template-columns:132px minmax(0,1fr); gap:16px;} }
+.fp-tldr .k{font-family:var(--font-mono); font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-faint); padding-top:5px;}
+.fp-tldr .t{font-family:var(--font-display); font-size:1.14rem; line-height:1.4; color:var(--text); margin:0;}
+.fp-lead-media{margin:0 0 8px;}
+.fp-lead-media img{width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:14px; border:1px solid var(--border); background:var(--surface-2);}
+.fp-lead-media figcaption{font-family:var(--font-mono); font-size:0.66rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-faint); margin-top:8px;}
+.fp-sec{margin:36px 0 0;}
+.fp-sec-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; border-bottom:2px solid var(--text); padding-bottom:8px; margin:0 0 14px;}
+.fp-sec-head h2{margin:0; font-size:1.32rem; line-height:1.15;}
+.fp-sec-head a{font-size:0.8rem; color:var(--text-muted); text-decoration:none; white-space:nowrap; flex-shrink:0;}
+.fp-sec-head a:hover{color:var(--critical); text-decoration:underline;}
+.fp-sec-sub{font-size:0.82rem; color:var(--text-faint); margin:-6px 0 14px; line-height:1.5;}
+.fp-sec-sub .checked{color:var(--text-muted);}
+.fp-figs{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:14px; overflow:hidden;}
+@media (min-width:640px){ .fp-figs{grid-template-columns:repeat(4,minmax(0,1fr));} }
+.fp-fig{background:var(--surface); padding:14px 14px 12px; min-width:0; display:flex; flex-direction:column; gap:4px;}
+.fp-fig-n{font-family:var(--font-mono); font-size:1.72rem; line-height:1; letter-spacing:-0.04em; font-variant-numeric:tabular-nums; font-weight:600; overflow-wrap:anywhere;}
+.fp-fig.is-small .fp-fig-n{font-size:1.28rem; padding-top:6px;}
+.fp-fig.is-critical .fp-fig-n{color:var(--critical);}
+.fp-fig-l{font-size:0.8rem; color:var(--text-muted); line-height:1.3;}
+.fp-fig-s{font-size:0.68rem; color:var(--text-faint); line-height:1.4; margin-top:auto; padding-top:6px;}
+.fp-fig-d{font-size:0.7rem; color:var(--text-faint);}
+.fp-fig-d summary{cursor:pointer; color:var(--text-muted); list-style:none;}
+.fp-fig-d summary::-webkit-details-marker{display:none;}
+.fp-fig-d summary::after{content:" +"; color:var(--text-faint);}
+.fp-fig-d[open] summary::after{content:" \\2212";}
+.fp-fig-d p{margin:6px 0 4px; font-size:0.74rem; line-height:1.45; color:var(--text-muted);}
+.fp-fig-d a{color:var(--text-muted); font-family:var(--font-mono); font-size:0.66rem;}
+.fp-news{list-style:none; margin:0; padding:0;}
+.fp-news li{margin:0; padding:12px 0; border-bottom:1px solid var(--border); display:grid; grid-template-columns:minmax(0,1fr); gap:2px 14px; align-items:start;}
+.fp-news li.has-photo{grid-template-columns:minmax(0,1fr) 108px;}
+@media (min-width:640px){ .fp-news li.has-photo{grid-template-columns:minmax(0,1fr) 168px;} }
+.fp-news li:last-child{border-bottom:0;}
+.fp-news a{text-decoration:none; color:var(--text);}
+.fp-news a:hover .t{text-decoration:underline; text-decoration-color:var(--border-strong); text-underline-offset:3px;}
+.fp-news .t{display:block; font-family:var(--font-display); font-size:1.1rem; line-height:1.3; font-weight:600;}
+.fp-news li:first-child .t{font-size:1.36rem; line-height:1.22;}
+.fp-news .m{margin:0; font-size:0.72rem; color:var(--text-faint); font-family:var(--font-mono); line-height:1.5;}
+.fp-news img{width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:8px; border:1px solid var(--border); background:var(--surface-2); grid-column:2; grid-row:1 / span 2;}
+.fp-photos{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px 12px; margin:0;}
+@media (min-width:640px){ .fp-photos{grid-template-columns:repeat(3,minmax(0,1fr));} }
+.fp-photos figure{margin:0;}
+.fp-photos a{text-decoration:none; color:var(--text); display:block;}
+.fp-photos img{width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; border-radius:10px; border:1px solid var(--border); background:var(--surface-2);}
+.fp-photos figcaption{font-size:0.8rem; line-height:1.35; margin-top:7px; font-weight:500;}
+.fp-photos .c{display:block; font-family:var(--font-mono); font-size:0.62rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-faint); margin-top:3px; font-weight:400;}
+.fp-two{display:grid; gap:14px; grid-template-columns:minmax(0,1fr);}
+@media (min-width:640px){ .fp-two{grid-template-columns:1fr 1fr;} }
+.fp-card{border:1px solid var(--border); border-radius:14px; background:var(--surface); padding:16px 17px; box-shadow:var(--shadow); min-width:0;}
+.fp-card h3{margin:0 0 .4em; font-size:1.08rem;}
+.fp-card p{font-size:0.9rem; color:var(--text-muted); margin:0 0 .7em; line-height:1.5;}
+.fp-card p:last-child{margin-bottom:0;}
+.fp-card .go{display:inline-block; font-size:0.82rem; font-weight:600; color:var(--critical); text-decoration:none;}
+.fp-card .go:hover{text-decoration:underline;}
+a.fp-card{display:block; text-decoration:none; color:var(--text);}
+a.fp-card:hover{border-color:var(--border-strong);}
+.fp-roads{list-style:none; margin:0; padding:0;}
+.fp-roads li{margin:0; padding:9px 0; border-top:1px solid var(--border); font-size:0.9rem; line-height:1.4;}
+.fp-roads li:first-child{border-top:0; padding-top:0;}
+.fp-roads a{text-decoration:none; font-weight:500;}
+.fp-roads a:hover{text-decoration:underline;}
+.fp-roads .m{display:block; font-family:var(--font-mono); font-size:0.66rem; color:var(--text-faint); margin-top:2px;}
+.fp-dials{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin:0 0 12px;}
+@media (min-width:480px){ .fp-dials{grid-template-columns:repeat(4,minmax(0,1fr));} }
+.fp-dial{display:flex; flex-direction:column; gap:2px; text-decoration:none; border:1px solid var(--border); background:var(--bg); border-radius:12px; padding:10px 12px; min-width:0;}
+.fp-dial b{font-family:var(--font-mono); font-size:1.3rem; letter-spacing:-0.02em; color:var(--text);}
+.fp-dial span{font-size:0.72rem; color:var(--text-muted); line-height:1.3;}
+.fp-dial:hover{border-color:var(--border-strong);}
+.fp-fund{display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 12px; margin:0 0 6px;}
+.fp-fund b{font-family:var(--font-mono); font-size:1.5rem; letter-spacing:-0.03em; font-variant-numeric:tabular-nums;}
+.fp-fund span{font-size:0.82rem; color:var(--text-muted);}
+.fp-events{display:grid; gap:12px; grid-template-columns:minmax(0,1fr);}
+@media (min-width:640px){ .fp-events{grid-template-columns:repeat(2,minmax(0,1fr));} }
+.fp-event{border:1px solid var(--border); border-radius:14px; background:var(--surface); padding:16px 17px; box-shadow:var(--shadow); min-width:0;}
+.fp-event.is-active{border-color:color-mix(in srgb, var(--critical) 40%, var(--border));}
+.fp-ev-k{font-family:var(--font-mono); font-size:0.64rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-faint); margin:0 0 8px; display:flex; flex-wrap:wrap; gap:6px; align-items:center;}
+.fp-ev-k .live{display:inline-flex; align-items:center; gap:5px; color:var(--critical);}
+.fp-ev-k .live i{width:6px; height:6px; border-radius:50%; background:var(--critical); animation:pulse 2s ease-in-out infinite;}
+.fp-event h3{margin:0 0 .25em; font-size:1.25rem;}
+.fp-event h3 a{text-decoration:none;}
+.fp-event h3 a:hover{text-decoration:underline;}
+.fp-ev-w{margin:0 0 10px; font-size:0.86rem; color:var(--text-muted);}
+.fp-ev-figs{display:flex; flex-wrap:wrap; gap:4px 16px; margin:0 0 6px; font-size:0.84rem; color:var(--text-muted);}
+.fp-ev-fig b{font-family:var(--font-mono); font-size:1.1rem; font-variant-numeric:tabular-nums; letter-spacing:-0.02em; color:var(--text);}
+.fp-ev-fig b.crit{color:var(--critical);}
+.fp-ev-s{margin:0 0 10px; font-size:0.72rem; color:var(--text-faint);}
+.fp-ev-links{margin:0; display:flex; flex-wrap:wrap; gap:6px 14px; font-size:0.84rem;}
+.fp-ev-links a{text-decoration:none; color:var(--text-muted); font-weight:500;}
+.fp-ev-links a:hover{color:var(--critical); text-decoration:underline;}
+.fp .rail .rf-n[data-live]{transition:color .3s;}
+@media (prefers-reduced-motion: reduce){ .fp .status-row .live i, .fp-ev-k .live i{animation:none;} }
+</style>`;
+
+export function frontPage(ctx, extra = {}) {
+  const path = '/';
+  const event = ctx.event || {};
+  const stats = (event.stats || []).filter(Boolean);
+  const dead = stats.find(s => s.icon === 'dead');
+  const missing = stats.find(s => s.icon === 'missing');
+  const relief = stats.find(s => s.id === 'relief-fund');
+  const dashPath = (EVENT_PATHS[event.id] || {}).path || '/nepal-flood/rasuwa/';
+  const asOf = nptLong(event.asOf);
+  const day = daysSince(event.started);
+  const title = frontTitle(event);
+  const description = [
+    `Nepal disaster news. ${event.asOfSource || 'Officials'}: `
+      + (dead ? `${dead.value} confirmed dead` : '') + (dead && missing ? ' and ' : '')
+      + (missing ? `${missing.value} listed missing` : '') + ` after the ${event.name || 'flood'}.`,
+    'Latest reports, photographs, the map, roads, emergency numbers and the official relief fund.',
+  ].join(' ').slice(0, 200).replace(/\s+\S*$/, (m, off, s) => s.length > 199 ? '' : m);
+
+  const photoIndex = extra.photos || {};
+  const leadKey = LEAD_PHOTO_ORDER.find(k => photoIndex[k] && photoIndex[k].file) || '';
+  const lead = leadKey ? photoIndex[leadKey] : null;
+  const news = frontNews(extra.news || []);
+  const roads = roadNews(news);
+  const photos = frontPhotos(ctx.posts, photoIndex, leadKey);
+  const events = (extra.events && extra.events.length ? extra.events : [event]).filter(e => e && e.name);
+
+  /* -- the lead ------------------------------------------------------------- */
+  const h1 = dead && missing
+    ? `${esc(event.name || 'Nepal disaster')}: <b data-live="dead">${esc(dead.value)}</b> confirmed dead, <b data-live="missing">${esc(missing.value)}</b> still missing`
+    : esc(event.headline || event.name || 'Nepal disaster update');
+  const tldr = tldrLines(event, asOf);
+  const kicker = ''
+    + (event.status === 'active' ? '<span class="live"><i aria-hidden="true"></i>Live</span><span class="sep" aria-hidden="true"></span>' : '')
+    + `<span>Nepal</span><span class="sep" aria-hidden="true"></span><span>${esc(event.name || 'Disaster')}</span>`
+    + (day ? `<span class="sep" aria-hidden="true"></span><span>Day ${day}</span>` : '')
+    ;
+  const leadHtml = `
+${tldr.length ? `<ol class="fp-tldr" aria-label="In short">${tldr.map(l => `<li><span class="k">${esc(l.k)}</span><p class="t">${esc(l.t)}</p></li>`).join('')}</ol>` : ''}
+${lead ? `<figure class="fp-lead-media"><a href="${esc(dashPath)}"><img src="${esc(siteAsset('/assets/photos/' + lead.file))}" alt="${esc(event.name || 'The event')}: the river in flood through Rasuwa district, Nepal" width="1200" height="675" fetchpriority="high" decoding="async"></a><figcaption>Photograph: ${esc(lead.credit)}</figcaption></figure>` : ''}
+<p class="fp-sec-sub"><a href="${esc(dashPath)}">Open the live dashboard</a>: every counter, the district table, the map, the videos and the Investigation board.</p>`;
+
+  /* -- the figures ---------------------------------------------------------- */
+  const figHtml = stats.length ? `
+<section class="fp-sec" id="figures" aria-labelledby="fp-fig-h">
+  <div class="fp-sec-head"><h2 id="fp-fig-h">${esc(event.numbersTitle || 'Where the numbers stand')}</h2><a href="${esc(dashPath)}#numbers-title">Every source</a></div>
+  <p class="fp-sec-sub">${esc(event.numbersNote || '')}${event.numbersNote ? '. ' : ''}Last moved ${esc(asOf)}, ${esc(event.asOfSource || 'latest bulletin')}. <span class="checked" id="fp-checked"></span></p>
+  <div class="fp-figs" id="fp-figs">${stats.map(st => figureTile(st, event, day)).join('')}</div>
+</section>` : '';
+
+  /* -- the news ------------------------------------------------------------- */
+  const newsHtml = news.length ? `
+<section class="fp-sec" id="latest" aria-labelledby="fp-news-h">
+  <div class="fp-sec-head"><h2 id="fp-news-h">Latest from the newsrooms</h2><a href="${esc(dashPath)}live-updates/">Every update</a></div>
+  <p class="fp-sec-sub">Headlines as the newsrooms wrote them, newest first. Each one opens at its source.</p>
+  <ol class="fp-news" id="fp-news">${news.map((n, i) => newsItem(n, i, i < 3)).join('')}</ol>
+</section>` : '';
+
+  /* -- the pictures --------------------------------------------------------- */
+  const photoHtml = photos.length ? `
+<section class="fp-sec" id="photos" aria-labelledby="fp-photo-h">
+  <div class="fp-sec-head"><h2 id="fp-photo-h">From the area</h2><a href="/updates/">All briefings</a></div>
+  <p class="fp-sec-sub">Photographs published by the newsrooms the briefings cite, credited to each one.</p>
+  <div class="fp-photos">${photos.map(p =>
+    `<figure><a href="${esc(p.url)}"><img src="${esc(siteAsset('/assets/photos/' + p.file))}" alt="${esc(p.title)}" width="800" height="600" loading="lazy" decoding="async">`
+    + `<figcaption>${esc(p.title)}<span class="c">Photograph: ${esc(p.credit)}</span></figcaption></a></figure>`).join('')}</div>
+</section>` : '';
+
+  /* -- map, roads and access ------------------------------------------------ */
+  const roadsHtml = roads.length ? `
+  <div class="fp-card">
+    <h3>Roads and access</h3>
+    <ul class="fp-roads">${roads.map(r =>
+      `<li><a href="${esc(r.url)}" target="_blank" rel="noopener nofollow">${esc(r.title)}</a>`
+      + `<span class="m">${r.time ? esc(fpTime(r.time)) : ''}${r.source ? `${r.time ? ' · ' : ''}${esc(r.source)}` : ''}</span></li>`).join('')}</ul>
+  </div>` : '';
+  const mapHtml = `
+<section class="fp-sec" id="map" aria-labelledby="fp-map-h">
+  <div class="fp-sec-head"><h2 id="fp-map-h">Map, roads and access</h2></div>
+  <div class="fp-two">
+    <a class="fp-card" href="${esc(dashPath)}map/">
+      <h3>Map of the flood path</h3>
+      <p>Seven points from the suspected break-off in Tibet to Devighat in Nuwakot, with the coordinates for each one, on satellite and terrain layers.</p>
+      <span class="go">Open the map &rsaquo;</span>
+    </a>${roadsHtml}
+  </div>
+</section>`;
+
+  /* -- who to call, how to give --------------------------------------------- */
+  const dials = C.EMERGENCY_NUMBERS.slice(0, 4).map(([n, who]) =>
+    `<a class="fp-dial" href="tel:${esc(n)}"><b>${esc(n)}</b><span>${esc(who)}</span></a>`).join('');
+  const reliefSentence = relief ? statSentence(relief) : '';
+  const helpHtml = `
+<section class="fp-sec" id="help" aria-labelledby="fp-help-h">
+  <div class="fp-sec-head"><h2 id="fp-help-h">Who to call, how to give</h2><a href="/nepal-flood/emergency-numbers/">Every number</a></div>
+  <div class="fp-two">
+    <div class="fp-card">
+      <h3>Emergency numbers</h3>
+      <div class="fp-dials">${dials}</div>
+      <p>National numbers, dialled without an area code anywhere in Nepal. They do not change between disasters. <a href="/nepal-flood/rasuwa/missing-persons/">How to report someone missing</a>.</p>
+    </div>
+    <div class="fp-card">
+      <h3>The official relief fund</h3>
+      ${relief ? `<p class="fp-fund"><b>${esc(relief.value)}</b><span>${esc(relief.label)}</span></p>` : ''}
+      ${reliefSentence ? `<p>${esc(reliefSentence)}</p>` : ''}
+      <p>The Prime Minister’s Natural Disaster Relief Fund is the one channel this site points to, because its accounts can be checked against the government’s own published graphic. Card payments from abroad go through <a href="${esc(C.RELIEF_PORTAL.url)}" target="_blank" rel="noopener">${esc(C.RELIEF_PORTAL.host)}</a>.</p>
+      <a class="go" href="/nepal-flood/relief/">Bank details, QR code and how to spot a fake appeal &rsaquo;</a>
+    </div>
+  </div>
+</section>`;
+
+  /* -- the record ----------------------------------------------------------- */
+  const cards = events.map(eventCard).filter(Boolean);
+  const archiveHtml = cards.length ? `
+<section class="fp-sec" id="events" aria-labelledby="fp-ev-h">
+  <div class="fp-sec-head"><h2 id="fp-ev-h">Disasters covered</h2><a href="/nepal-disasters/">Hazard guide</a></div>
+  <p class="fp-sec-sub">Every event this site has covered keeps its dashboard and every page under it. Nothing is taken down when the next one comes.</p>
+  <div class="fp-events">${cards.join('')}</div>
+</section>` : '';
+
+  const body = leadHtml + figHtml + newsHtml + photoHtml + mapHtml + helpHtml + archiveHtml;
+
+  /* -- the live layer ------------------------------------------------------- */
+  const client = `
+<script>
+(function(){
+  var ROOT = document.getElementById('fp-figs');
+  var checkedAt = 0;
+  function num(n){ var v = Number(n); return isNaN(v) ? String(n) : v.toLocaleString('en-US'); }
+  function npt(iso){
+    var d = new Date(iso); if(isNaN(d.getTime())) return '';
+    try{ return d.toLocaleString('en-GB', { timeZone:'Asia/Kathmandu', day:'numeric', month:'short', year:'numeric', hour:'numeric', minute:'2-digit', hour12:true }).replace(',', ',') + ' NPT'; }catch(e){ return ''; }
+  }
+  function paint(data){
+    if(!data || !data.board) return;
+    Object.keys(data.board).forEach(function(metric){
+      var fig = data.board[metric];
+      if(!fig || typeof fig.value !== 'number') return;
+      document.querySelectorAll('[data-live="' + metric + '"]').forEach(function(el){ el.textContent = num(fig.value); });
+      var src = document.querySelector('[data-live-src="' + metric + '"]');
+      if(src){
+        var line = [fig.source, fig.time ? npt(fig.time) : ''].filter(Boolean).join(', ');
+        if(line) src.textContent = line;
+      }
+    });
+  }
+  function freshness(){
+    var el = document.getElementById('fp-checked');
+    if(!el || !checkedAt) return;
+    var s = Math.max(0, Math.round((Date.now() - checkedAt) / 1000));
+    el.textContent = s < 2 ? 'Sources checked just now' : s < 60 ? 'Sources checked ' + s + 's ago' : 'Sources checked ' + Math.round(s / 60) + ' min ago';
+  }
+  var busy = false;
+  function poll(){
+    if(busy || document.hidden || !ROOT) return;
+    busy = true;
+    fetch('/api/figures').then(function(r){ return r.ok ? r.json() : null; }).then(function(data){
+      if(!data) return;
+      checkedAt = Date.parse(data.checkedAt || data.updated) || Date.now();
+      paint(data); freshness();
+    }).catch(function(){}).then(function(){ busy = false; });
+  }
+  poll();
+  setInterval(poll, 30000);
+  setInterval(freshness, 1000);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) poll(); });
+
+  /* The newsroom list refreshes itself from the same feed the build read.
+     Items are built as nodes, never as markup, because the headlines are
+     other people's text. The rules are the build's own, handed over below. */
+  var list = document.getElementById('fp-news');
+  var RULES = ${JSON.stringify({ banned: BANNED_WORDS.source, disaster: DISASTER_WORDS_SOURCE })};
+  var banned = new RegExp(RULES.banned, 'i'), disaster = new RegExp(RULES.disaster, 'i');
+  function clean(t){
+    t = String(t || '').replace(/\\s+[\\u2013\\u2014]\\s+/g, ', ').replace(/[\\u2013\\u2014]/g, '-').replace(/\\s+/g, ' ').trim();
+    return (!t || banned.test(t) || !disaster.test(t)) ? '' : t;
+  }
+  function refreshNews(){
+    if(!list || document.hidden) return;
+    fetch('/api/news').then(function(r){ return r.ok ? r.json() : null; }).then(function(data){
+      if(!data || !Array.isArray(data.items)) return;
+      var seen = {}, rows = [];
+      data.items.forEach(function(it){
+        if(!it || !it.title || !it.url || it.kind === 'video') return;
+        if(it.region && it.region !== 'nepal') return;
+        if(!/^https:\\/\\//.test(it.url) || seen[it.url]) return;
+        var t = clean(it.title); if(!t) return;
+        seen[it.url] = 1;
+        rows.push({ title:t, url:it.url, source:String(it.source || ''), time:it.time || '', image:/^https:\\/\\//.test(it.image || '') ? it.image : '' });
+      });
+      rows.sort(function(a, b){ return new Date(b.time || 0) - new Date(a.time || 0); });
+      rows = rows.slice(0, 12);
+      if(!rows.length) return;
+      var frag = document.createDocumentFragment();
+      rows.forEach(function(row, i){
+        var li = document.createElement('li'); li.className = 'fp-news-item';
+        var a = document.createElement('a'); a.href = row.url; a.target = '_blank'; a.rel = 'noopener nofollow';
+        var t = document.createElement('span'); t.className = 't'; t.textContent = row.title; a.appendChild(t); li.appendChild(a);
+        var m = document.createElement('p'); m.className = 'm';
+        if(row.time){ var tm = document.createElement('time'); tm.dateTime = row.time; tm.textContent = npt(row.time); m.appendChild(tm); }
+        var tail = (row.source ? (row.time ? ' · ' : '') + row.source : '');
+        if(i < 3 && row.image){ tail += ' · Photo: ' + (row.source || 'source'); }
+        if(tail) m.appendChild(document.createTextNode(tail));
+        li.appendChild(m);
+        if(i < 3 && row.image){
+          li.className += ' has-photo';
+          var img = document.createElement('img'); img.src = row.image; img.alt = ''; img.width = 320; img.height = 180; img.loading = 'lazy'; img.referrerPolicy = 'no-referrer';
+          img.onerror = function(){ li.classList.remove('has-photo'); img.remove(); };
+          li.appendChild(img);
+        }
+        frag.appendChild(li);
+      });
+      list.textContent = ''; list.appendChild(frag);
+    }).catch(function(){});
+  }
+  setInterval(refreshNews, 300000);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) refreshNews(); });
+})();
+</script>`;
+
+  return {
+    path, title, description,
+    lastmod: ctx.modified, priority: '1.0', changefreq: 'hourly',
+    html: page({
+      rail: frontRail(ctx, dashPath),
+      path, title, description,
+      h1,
+      extraPills: kicker,
+      crumbs: [{ label: 'Home' }],
+      published: '2026-08-26T12:00:00+05:45',
+      modified: ctx.modified,
+      ogImageAlt: `${event.name || 'Nepal disaster'}: the figures as they stand, with their sources`,
+      head: FRONT_CSS,
+      tail: client,
+      body,
+      schema: [
+        {
+          '@type': 'CollectionPage',
+          '@id': `${SITE}/#front`,
+          name: title,
+          description,
+          url: `${SITE}/`,
+          inLanguage: 'en',
+          isPartOf: { '@id': `${SITE}/#website` },
+          dateModified: ctx.modified,
+          about: EVENT_ABOUT,
+          hasPart: events.map(ev => ({
+            '@type': 'WebPage',
+            name: `${ev.name}: live dashboard`,
+            url: SITE + ((EVENT_PATHS[ev.id] || {}).path || ev.path || dashPath),
+          })),
+        },
+      ],
+    }).replace('<body>', '<body class="fp">'),
   };
 }

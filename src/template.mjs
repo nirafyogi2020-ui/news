@@ -126,8 +126,8 @@ const FLAG_SVG = `<svg viewBox="-4 -4 96 106" aria-hidden="true" focusable="fals
 
 /** Top navigation. Plain <a href> so crawlers follow it without running JS. */
 const NAV = [
-  { href: '/', label: 'Live dashboard', home: true },
-  { href: '/nepal-flood/rasuwa/', label: 'Rasuwa flood' },
+  { href: '/', label: 'Front page', home: true },
+  { href: '/nepal-flood/rasuwa/', label: 'Rasuwa dashboard' },
   { href: '/nepal-flood/rasuwa/live-updates/', label: 'Live updates' },
   { href: '/nepal-flood/rasuwa/map/', label: 'Map' },
   { href: '/nepal-flood/emergency-numbers/', label: 'Emergency numbers' },
@@ -135,7 +135,7 @@ const NAV = [
 ];
 
 const NAV_NE = [
-  { href: '/', label: 'लाइभ ड्यासबोर्ड', home: true },
+  { href: '/', label: 'मुख्य पृष्ठ', home: true },
   { href: '/ne/', label: 'रसुवा बाढी' },
   { href: '/ne/aapatkalin-number/', label: 'आपतकालीन नम्बर' },
   { href: '/ne/bepatta/', label: 'बेपत्ता' },
@@ -147,8 +147,8 @@ const FOOTER_NAV_NE = [
   { href: '/ne/aapatkalin-number/', label: 'आपतकालीन नम्बर' },
   { href: '/ne/bepatta/', label: 'बेपत्ता व्यक्ति कसरी जनाउने' },
   { href: '/ne/rahat/', label: 'राहत र सहयोग' },
-  { href: '/', label: 'English dashboard' },
-  { href: '/nepal-flood/rasuwa/', label: 'Full briefing in English' },
+  { href: '/', label: 'English front page' },
+  { href: '/nepal-flood/rasuwa/', label: 'Rasuwa dashboard in English' },
 ];
 
 /* Strings that appear in the page shell itself. */
@@ -182,9 +182,9 @@ const CHROME = {
 };
 
 const FOOTER_NAV = [
-  { href: '/', label: 'Live dashboard' },
+  { href: '/', label: 'Front page' },
   { href: '/nepal-flood/', label: 'Nepal floods' },
-  { href: '/nepal-flood/rasuwa/', label: 'Rasuwa flood 2026' },
+  { href: '/nepal-flood/rasuwa/', label: 'Rasuwa flood 2026, live dashboard' },
   { href: '/nepal-flood/rasuwa/foreign-nationals/', label: 'Foreign nationals missing' },
   { href: '/nepal-flood/rasuwa/hydropower/', label: 'Hydropower damage' },
   { href: '/nepal-disasters/glof/', label: 'What a GLOF is' },
