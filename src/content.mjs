@@ -23,14 +23,13 @@ export const TOLL_EARLIER_AS_OF = '2026-10-04T20:00:00+05:45';
 export const BODIES_AS_OF = '2026-10-12T06:00:00+05:45';
 export const BODIES_SOURCE = 'Nepal Police';
 
-/* The missing figure comes from the same Nepalnews bulletin as the newest
-   toll: 1,204 recovered, 4,216 still unaccounted for. An earlier automatic
-   read had put this at 5,015, which no bulletin supports. */
-export const MISSING_AS_OF = '2026-09-09T11:00:00+05:45';
-export const MISSING_SOURCE = 'NDRRMA · Rasuwa Flood Bulletin';
+/* The missing figure is the NDRRMA count of 3 October, reported by Bernama,
+   the last one published before the formal search ended on 5 October. */
+export const MISSING_AS_OF = '2026-10-03T12:00:00+05:45';
+export const MISSING_SOURCE = 'NDRRMA';
 
-export const RESCUE_AS_OF = '2026-09-09T11:00:00+05:45';
-export const RESCUE_SOURCE = 'NDRRMA · Rasuwa Flood Bulletin';
+export const RESCUE_AS_OF = '2026-10-05T12:00:00+05:45';
+export const RESCUE_SOURCE = 'Reuters';
 
 /* Who those people are was last broken down in the morning police bulletin,
    when the list stood at 826. The groups below still describe that list. */
@@ -121,12 +120,12 @@ export const TOLL = {
   deadNepal: 1456,
   deadNepalEarlier: 1455,
   deadChina: 16,
-  missing: 5132,
+  missing: 5285,
   missingChina: 546,
   missingChinaForeign: 261,
   missingIndian: 133,
   injured: 242,
-  rescued: 13646,
+  rescued: 13795,
   rescuedBreakdown: [],
   narayaniRecovered: 121,
 };
@@ -296,7 +295,10 @@ export const TIMELINE = [
   ['14:00 NPT, 1 October', "Nepal's confirmed death toll is reported at 1,453, up from 1,452, by Nepal Police."],
   ['14:00 NPT, 3 October', "Nepal's confirmed death toll is reported at 1,454, up from 1,453, by Nepal Police."],
   ['20:00 NPT, 4 October', "Nepal's confirmed death toll is reported at 1,455, up from 1,454, by Nepal Police."],
+  ['5 October', 'The government ends the formal search and moves to rehabilitation. NDRRMA puts the missing at 5,285 as of 3 October, Bernama reports, and Reuters reports 13,795 people rescued.'],
   ['06:00 NPT, 12 October', "Nepal's confirmed death toll is reported at 1,456, up from 1,455, by Nepal Police."],
+  ['26 October', 'A preliminary National Planning Commission survey puts losses to households and businesses at Rs 79.17 billion, Nepalnews reports.'],
+  ['09:00 NPT, 26 October', "The Office of the Prime Minister says the two Prime Minister's relief funds hold Rs 18.136 billion, Onlinekhabar reports."],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */
