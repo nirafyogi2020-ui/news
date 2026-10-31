@@ -1,6 +1,54 @@
 {
-  "updated": "2026-10-30T07:16:21.000Z",
+  "updated": "2026-10-31T07:45:49.000Z",
   "posts": [
+    {
+      "id": "auto-2026-10-31-",
+      "title": "होर्मुज जलमार्गमा तनाव चर्कियो, इरानद्वारा तीन तेल ट्याङ्कर अवरुद्ध",
+      "time": "2026-10-31T07:45:49.000Z",
+      "image": "https://www.khabarhub.com/wp-content/uploads/2026/10/hormuz-400x220.jpg",
+      "body": [
+        "एजेन्सी – ओमानले आक्रमणबाट आगलागी भएको व्यापारिक जहाजबाट २५ जना चालक दलका सदस्यको उद्धार गरेको छ । यसैबीच, इरानले स्ट्रेट अफ होर्मुज पार गर्ने प्रयासमा रहेका तीनवटा तेल ट्याङ्कर रोकेको जनाएको छ ।"
+      ],
+      "sources": [
+        {
+          "name": "Khabarhub",
+          "url": "https://khabarhub.com/2026/31/1042500/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-31-kulekhani-reservoir-filling-up-downstream-residents-urged-to",
+      "title": "Kulekhani reservoir filling up; downstream residents urged to exercise caution",
+      "time": "2026-10-31T06:58:21.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/10/Kulekhani-Power-Badhi-768x461-1.jpg",
+      "body": [
+        "HETAUDA: As the Kulekhani reservoir nears its maximum holding capacity due to continuous rainfall residents in the downstream have been urged to exercise caution. The water level in the reservoir has reached 1,527.93 meters."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/kulekhani-reservoir-filling-up-downstream-residents-urged-to-exercise-caution/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-10-31-over-12-roads-networks-across-the-country-obstructed",
+      "title": "Over 12 roads networks across the country obstructed",
+      "time": "2026-10-31T06:26:37.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/09/pahirosadak.jpeg",
+      "body": [
+        "KATHMANDU: More than 12 road sections across the country, including the Prithvi Highway, have been obstructed due to floods and landslides triggered by continuous rainfall taking place since the past three days."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/over-12-roads-networks-across-the-country-obstructed/"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-10-30-lumbini-cm-calls-for-better-coordination-and-preparedness-in",
       "title": "Lumbini CM calls for better coordination and preparedness in disaster management",
