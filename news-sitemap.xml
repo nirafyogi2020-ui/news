@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-30T07:16:21.000Z</news:publication_date>
+      <news:publication_date>2026-10-31T07:45:49.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,456 dead, 5,285 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,41 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-10-30T07:16:21.000Z</news:publication_date>
+      <news:publication_date>2026-10-31T07:45:49.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-31-auto-2026-10-31/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-31T07:45:49.000Z</news:publication_date>
+      <news:title>होर्मुज जलमार्गमा तनाव चर्कियो, इरानद्वारा तीन तेल ट्याङ्कर अवरुद्ध</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-31-auto-2026-10-31-kulekhani-reservoir-filling-up-downstream-residents-ur/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-31T06:58:21.000Z</news:publication_date>
+      <news:title>Kulekhani reservoir filling up; downstream residents urged to exercise caution</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-31-auto-2026-10-31-over-12-roads-networks-across-the-country-obstructed/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-31T06:26:37.000Z</news:publication_date>
+      <news:title>Over 12 roads networks across the country obstructed</news:title>
     </news:news>
   </url>
   <url>
@@ -43,39 +76,6 @@
       </news:publication>
       <news:publication_date>2026-10-30T01:37:08.000Z</news:publication_date>
       <news:title>स्याफ्रुबेँसी–खाम्जिङ जोड्ने अस्थायी काठेपुल सञ्चालन</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-29-auto-2026-10-29/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-29T05:02:57.000Z</news:publication_date>
-      <news:title>मनाङमा वर्षा र हिमपातको सम्भावना, माइकिङ गरी स्थानीयलाई सचेत गराइयो</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-29-auto-2026-10-29-apples-produced-in-manaslu-region-confined-to-warehous/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-29T04:40:29.000Z</news:publication_date>
-      <news:title>Apples produced in Manaslu Region confined to warehouses</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-29-auto-2026-10-29-mustang-produces-apples-worth-over-rs-1-14-billion/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-29T00:51:52.000Z</news:publication_date>
-      <news:title>Mustang produces apples worth over Rs 1.14 billion</news:title>
     </news:news>
   </url>
 </urlset>
