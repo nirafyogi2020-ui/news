@@ -69,6 +69,21 @@ export const DISASTER_WORDS_SOURCE = DISASTER_WORDS.source;
    flood started in Tibet and bodies were recovered across the Indian border. */
 const FOREIGN_WORDS = /\b(?:Spain|Spanish|Italy|Italian|France|French|German[y]?|Britain|British|UK|United States|US|American|Japan(?:ese)?|Philippines?|Indonesia[n]?|Pakistan[i]?|Bangladesh[i]?|Sri Lanka[n]?|Afghan(?:istan)?|Brazil(?:ian)?|Mexic(?:o|an)|Australia[n]?|Africa[n]?|Europe(?:an)?|Turk(?:ey|ish)|Iran(?:ian)?|Vietnam(?:ese)?|Thai(?:land)?|Myanmar|Taiwan(?:ese)?|Korea[n]?|Russia[n]?|Ukrain(?:e|ian)|Canad(?:a|ian)|Chile(?:an)?|Peru(?:vian)?|Greece|Greek|Portug(?:al|uese))\b/;
 
+/* Subjects the disaster feeds carry by accident: a newsroom's general desk
+   writes about them with a district's name in the story. Roads, weather and
+   rivers are deliberately absent, because those are this site's business. */
+const OFF_SUBJECT = new RegExp([
+  'Hormuz', 'होर्मुज', 'Manchester United', 'म्यानचेस्टर', 'football', 'cricket', 'apples?', 'स्याउ',
+  'World Bank', 'विश्व बैंक', 'economic growth', 'अर्थतन्त्र', 'भ्याट', 'exported to India', 'विद्युत निर्यात',
+  'पर्यटक', 'पर्यटन', 'tourism', 'festival', 'दशैं', 'दसैँ',
+].join('|'), 'i');
+
+/** Off subject, unless the headline itself ties it to a disaster. */
+export function isOffSubject(title) {
+  const t = String(title || '');
+  return OFF_SUBJECT.test(t) && !DISASTER_WORDS.test(t);
+}
+
 export function isNepalDisasterHeadline(title) {
   const t = String(title || '');
   return DISASTER_WORDS.test(t) && !FOREIGN_WORDS.test(t);
@@ -139,8 +154,8 @@ export function frontTitle(event) {
   if (dead) parts.push(`${dead.value} dead`);
   if (missing) parts.push(`${missing.value} missing`);
   const t = parts.length
-    ? `Nepal Disaster Update Live: ${parts.join(', ')} in the ${name}`
-    : `Nepal Disaster Update Live: ${name}`;
+    ? `Nepal Disaster News Today: ${parts.join(', ')} in the ${name}`
+    : `Nepal Disaster News Today: ${name}`;
   return t.length > 74 ? t.slice(0, 74).replace(/[\s,]+\S*$/, '') : t;
 }
 

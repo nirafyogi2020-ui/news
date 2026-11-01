@@ -120,6 +120,13 @@ jobs:
       # Pages: Edit" permission. Until that secret exists the step is skipped
       # rather than failed, so the rest of the workflow keeps working and the
       # reason is visible in the run log.
+      # Bing and Yandex hear about a change straight away. Google reads the sitemap.
+      - name: Tell search engines
+        if: steps.figures.outputs.changed == 'true' || steps.briefings.outputs.changed == 'true'
+        run: |
+          sleep 120
+          node src/indexnow.mjs || true
+
       - name: Publish to Cloudflare Pages
         if: (steps.figures.outputs.changed == 'true' || steps.briefings.outputs.changed == 'true') && env.CLOUDFLARE_API_TOKEN != ''
         run: |

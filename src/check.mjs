@@ -79,7 +79,9 @@ for (const p of pages) {
   if (!is404) {
     if (!canonical) errors.push(`${p.path}: no canonical`);
     else if (canonical !== SITE + p.path) errors.push(`${p.path}: canonical is ${canonical}, expected ${SITE + p.path}`);
-    if (robots && /noindex/i.test(robots)) errors.push(`${p.path}: has noindex — it will never rank`);
+    if (robots && /noindex/i.test(robots) && !/^\/updates\/\d{4}-\d{2}-\d{2}-auto-/.test(p.path)) {
+      errors.push(`${p.path}: has noindex — it will never rank`);
+    }
 
     if (title && titles.has(title)) errors.push(`duplicate <title> on ${p.path} and ${titles.get(title)}`);
     if (title) titles.set(title, p.path);
@@ -198,6 +200,7 @@ for (const loc of locs) {
 }
 for (const p of pages) {
   if (p.path === '/404.html') continue;
+  if (/<meta name="robots" content="noindex/.test(p.html)) continue;
   if (!locs.includes(SITE + p.path)) errors.push(`${p.path} exists but is missing from the sitemap (orphan)`);
 }
 

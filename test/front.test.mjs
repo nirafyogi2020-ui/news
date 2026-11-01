@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
 import {
-  cleanHeadline, hasBannedWord, hasDash, isNepalDisasterHeadline, isRoadHeadline,
+  cleanHeadline, isOffSubject, hasBannedWord, hasDash, isNepalDisasterHeadline, isRoadHeadline,
   frontNews, roadNews, frontTitle, tldrLines, daysSince, figureNumber,
 } from '../src/front-rules.mjs';
 import { frontPage, rasuwaDashboard, rasuwaBriefing } from '../src/pages.mjs';
@@ -58,7 +58,7 @@ test('the front title carries the toll and stays under 75 characters', () => {
   const t = frontTitle(event);
   assert.ok(t.length < 75, t);
   assert.match(t, /\d/);
-  assert.match(t, /^Nepal Disaster Update Live: /);
+  assert.match(t, /^Nepal Disaster News Today: /);
   const long = { ...event, name: 'An absurdly long event name that should never fit inside a search result title' };
   assert.ok(frontTitle(long).length < 75);
 });
@@ -145,4 +145,12 @@ test('the dashboard metadata and the folded briefing describe the same page', ()
   assert.match(b, /<h3>What happened<\/h3>/);
   assert.match(b, /<table class="data-table">/);
   assert.doesNotMatch(b, /<h1|<h2>What happened/);
+});
+
+test('off-subject stories are dropped, road and weather reports are not', () => {
+  assert.ok(isOffSubject('Mustang produces apples worth over Rs 1.14 billion'));
+  assert.ok(isOffSubject('World Bank projects Nepal economic growth to slow'));
+  assert.ok(!isOffSubject('100,000 kg of Manaslu apples stranded after floods wash away transport'));
+  assert.ok(!isOffSubject('BP Highway obstructed'));
+  assert.ok(!isOffSubject('Light Rain and Snowfall Likely in Parts of Nepal'));
 });

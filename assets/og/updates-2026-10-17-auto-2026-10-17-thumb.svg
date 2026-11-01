@@ -39,8 +39,9 @@
     font-size="16" letter-spacing="0.6" fill="rgba(255,255,255,0.82)"
     >Photo: nagariknews.nagariknetwork.com</text>
 
-  <text x="34" y="362" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
-    font-size="34" font-weight="600" fill="#FFFFFF" word-spacing="7">चाडपर्वले अर्थतन्त्र चलायमान</text>
+  <text x="34" y="320" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
+    font-size="34" font-weight="600" fill="#FFFFFF" word-spacing="7">भोटेकोशी बाढी : ३ हजार ६१० परिवारको ५०७</text><text x="34" y="362" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
+    font-size="34" font-weight="600" fill="#FFFFFF" word-spacing="7">हेक्टर जमिनमा क्षति</text>
 
   <rect x="0" y="443" width="800" height="7" fill="#D8404B"/>
   <rect x="0.75" y="0.75" width="798.5" height="448.5" fill="none"

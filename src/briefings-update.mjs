@@ -29,6 +29,7 @@
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { isOffSubject } from './front-rules.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const TODAY = join(ROOT, 'today.json');
@@ -160,6 +161,7 @@ export function planCards(items, { today, archive, now = Date.now(), startedAt =
     .filter(item => !used.has(String(item.url).split('#')[0]))
     .filter(item => oneSentence(item.summary).length >= 60)
     .filter(item => !statesAToll(item.title))
+    .filter(item => !isOffSubject(item.title))
     .sort((a, b) => Date.parse(b.time) - Date.parse(a.time));
 
   const added = [];
@@ -226,7 +228,7 @@ export function pruneStaleAutoCards(today) {
   const kept = posts.filter(post => {
     if (!post || !post.auto) return true;
     const text = [post.title, ...(Array.isArray(post.body) ? post.body : [])].join(' ');
-    return !statesAToll(text);
+    return !statesAToll(text) && !isOffSubject(post.title);
   });
   if (kept.length === posts.length) return 0;
   const dropped = posts.length - kept.length;

@@ -41,9 +41,11 @@
 
   <text x="66" y="250"
     font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="60" font-weight="600" fill="#FFFFFF" word-spacing="12"
-    >चाडपर्वले अर्थतन्त्र</text><text x="66" y="318"
+    >भोटेकोशी बाढी : ३ हजार</text><text x="66" y="318"
     font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="60" font-weight="600" fill="#FFFFFF" word-spacing="12"
-    >चलायमान</text>
+    >६१० परिवारको ५०७</text><text x="66" y="386"
+    font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="60" font-weight="600" fill="#FFFFFF" word-spacing="12"
+    >हेक्टर जमिनमा क्षति</text>
   
 
   <text x="1134" y="514" text-anchor="end" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif"
@@ -53,7 +55,7 @@
     >nepaldisasterupdatelive.nxtimaginelabs.com</text>
   <text x="1134" y="574" text-anchor="end" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20"
     font-weight="700" letter-spacing="1.2" fill="#F4F0E6"
-    >PUBLISHED 17 OCT, 6:37 AM NPT</text>
+    >PUBLISHED 17 OCT, 12:24 PM NPT</text>
 
   <rect x="0" y="622" width="1200" height="8" fill="#D8404B"/>
 </svg>

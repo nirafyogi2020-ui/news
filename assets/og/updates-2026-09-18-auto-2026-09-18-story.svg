@@ -35,13 +35,14 @@
   
 
   <text x="90" y="760" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
-      font-weight="600" fill="#F4F0E6" word-spacing="17">कालीगण्डीको कटानबाट</text><text x="90" y="860" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
-      font-weight="600" fill="#F4F0E6" word-spacing="17">जोगाउन घरापमा</text><text x="90" y="960" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
-      font-weight="600" fill="#F4F0E6" word-spacing="17">कम्पोजिट पर्खाल</text>
-  <text x="90" y="1036" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
-      fill="#B9B4A6" word-spacing="8">कालीगण्डकीको कटानबाट जोगाउनका लागि म्याग्दीको</text><text x="90" y="1084" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
-      fill="#B9B4A6" word-spacing="8">अन्नपूर्ण गाउँपालिका–४ घरापमा बस्ती संरक्षण योजना</text><text x="90" y="1132" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
-      fill="#B9B4A6" word-spacing="8">अगाडि बढेपछि स्थानीयले राहत महसुस</text>
+      font-weight="600" fill="#F4F0E6" word-spacing="17">तीव्र रूपमा तातिँदो</text><text x="90" y="860" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
+      font-weight="600" fill="#F4F0E6" word-spacing="17">हिमालय : बढ्दो जटिल</text><text x="90" y="960" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
+      font-weight="600" fill="#F4F0E6" word-spacing="17">विपद् र अनुकूलनका</text><text x="90" y="1060" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
+      font-weight="600" fill="#F4F0E6" word-spacing="17">सीमा</text>
+  <text x="90" y="1136" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
+      fill="#B9B4A6" word-spacing="8">हामीले अब &#39;विपद् किन, कहाँ र कहिले हुन्छ ?&#39; भनेर</text><text x="90" y="1184" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
+      fill="#B9B4A6" word-spacing="8">मात्र होइन, बदलिँदो जलवायुमा हिमालय स्वयं कसरी</text><text x="90" y="1232" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
+      fill="#B9B4A6" word-spacing="8">बदलिँदै छ भनेर पनि बुझ्नुपर्छ।</text>
   
 
   <rect x="90" y="1670" width="900" height="2" fill="rgba(244,240,230,0.16)"/>

@@ -1409,11 +1409,17 @@ ${sources}
   const t = post.title.length > 46
     ? (post.title.length > 75 ? post.title.slice(0, 74).replace(/\s+\S*$/, '') + '\u2026' : post.title)
     : `${post.title} | ${SITE_NAME}`;
+  /* An automatic card is one sentence relaying a newsroom. It earns its place
+     while it is news; after that the page stays online as the record and is
+     left out of search, so the site is judged on its written pages. */
+  const relay = String(post.id || post.slug || '').includes('auto-');
+  const noindex = relay && Date.now() - new Date(post.time).getTime() > ARCHIVE_NOINDEX_DAYS * 86400000;
   return {
     path, title: t, description: d, lastmod: nptDay(post.time), priority: '0.7', changefreq: 'weekly',
+    noindex,
     html: page({
       rail: liveRail(ctx),
-      path, title: t, ogTitle: post.title, description: d,
+      path, title: t, ogTitle: post.title, description: d, noindex,
       h1: esc(post.title),
       crumbs: [{ label: 'Home', href: '/' }, { label: 'Update archive', href: '/updates/' }, { label: post.title }],
       published: post.time,
@@ -1649,6 +1655,7 @@ export function about(ctx) {
   const path = '/about/';
   const body = `
 <h2>What this is</h2>
+<p>Built and run by Diamond Yogi, a Nepali student in New York, who started it on 26 August 2026, the day the Rasuwa flood struck.</p>
 <p><strong>${esc(SITE_NAME)}</strong> is an independent volunteer project. It collects public information about disasters in Nepal: official bulletins, live news, maps, emergency contacts. It puts that on one page that loads fast on a phone.</p>
 <p>It exists because during the first days of an emergency the information that matters is scattered: a police bulletin on one site, a situation report as a PDF on another, a helpline number buried three clicks into a ministry page, and a hundred news stories repeating each other. Someone looking for a relative should not have to assemble that themselves.</p>
 
@@ -2106,6 +2113,8 @@ const FRONT_LIVE = {
 /* Lead photograph, in order of preference: the picture that shows the event,
    not the newest briefing's press-conference frame. Every option is a real,
    credited news photograph already on this site; the first one present wins. */
+const ARCHIVE_NOINDEX_DAYS = 7;
+
 const LEAD_PHOTO_ORDER = [
   'updates-2026-08-27-rasuwa-flood',
   'updates-2026-08-27-cause-usgs',
@@ -2182,7 +2191,7 @@ function newsItem(item, i, withPhoto) {
     + (item.source ? `${item.time ? ' · ' : ''}${esc(item.source)}` : '')
     + (photo ? ` · Photo: ${esc(item.source || hostOf(item.image))}` : '') + '</p>'
     + (photo
-      ? `<img src="${esc(item.image)}" alt="" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.classList.remove('has-photo');this.remove();">`
+      ? `<img src="${esc(item.image)}" alt="${esc(item.title)}" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.classList.remove('has-photo');this.remove();">`
       : '')
     + '</li>';
 }
@@ -2387,15 +2396,16 @@ export function frontPage(ctx, extra = {}) {
   const day = daysSince(event.started);
   const title = frontTitle(event);
   const description = [
-    `Nepal disaster news. ${event.asOfSource || 'Officials'}: `
+    `${event.asOfSource || 'Officials'}: `
       + (dead ? `${dead.value} confirmed dead` : '') + (dead && missing ? ' and ' : '')
       + (missing ? `${missing.value} listed missing` : '') + ` after the ${event.name || 'flood'}.`,
-    'Latest reports, photographs, the map, roads, emergency numbers and the official relief fund.',
-  ].join(' ').slice(0, 200).replace(/\s+\S*$/, (m, off, s) => s.length > 199 ? '' : m);
+    'Latest news, map, road status and emergency numbers.',
+  ].join(' ').slice(0, 160).replace(/\s+\S*$/, (m, off, s) => s.length > 159 ? '' : m);
 
   const photoIndex = extra.photos || {};
   const leadKey = LEAD_PHOTO_ORDER.find(k => photoIndex[k] && photoIndex[k].file) || '';
   const lead = leadKey ? photoIndex[leadKey] : null;
+  const preload = lead ? `<link rel="preload" as="image" href="${esc(siteAsset('/assets/photos/' + lead.file))}" fetchpriority="high">` : '';
   const news = frontNews(extra.news || []);
   const roads = roadNews(news);
   const photos = frontPhotos(ctx.posts, photoIndex, leadKey);
@@ -2605,7 +2615,7 @@ ${lead ? `<figure class="fp-lead-media"><a href="${esc(dashPath)}"><img src="${e
       published: '2026-08-26T12:00:00+05:45',
       modified: ctx.modified,
       ogImageAlt: `${event.name || 'Nepal disaster'}: the figures as they stand, with their sources`,
-      head: FRONT_CSS,
+      head: preload + FRONT_CSS,
       tail: client,
       body,
       schema: [

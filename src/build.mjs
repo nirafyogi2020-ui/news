@@ -226,7 +226,7 @@ function ssrTodayCards(list) {
         ? '<div class="tc-media">'
           + `<a class="post-photo-link" href="${escAttr(post.url)}" tabindex="-1" aria-hidden="true">`
           + `<img class="post-photo" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="800" height="450"`
-          + ` src="${escAttr(photo)}" alt=""`
+          + ` src="${escAttr(photo)}" alt="${escAttr(post.title)}"`
           + ` onerror="this.closest('.tc-media').classList.add('tc-media-blank');this.remove()"></a>`
           + '</div>'
         : '')
@@ -1315,8 +1315,15 @@ for (const pg of pages) {
 write('404.html', P.notFound());
 
 /* -- sitemap ---------------------------------------------------------------- */
+/* A briefing's own photograph, so it can be found in image search too. */
+function storyImage(pg) {
+  const key = pg.path.replace(/^\/|\/$/g, '').replace(/\//g, '-');
+  const shot = pg.path.startsWith('/updates/') && PHOTO_INDEX[key];
+  return shot && shot.file ? { loc: `${SITE}/assets/photos/${shot.file}`, title: pg.title } : null;
+}
+
 const sitemapEntries = [
-  ...pages.map(pg => ({
+  ...pages.filter(pg => !pg.noindex).map(pg => ({
     loc: SITE + pg.path,
     lastmod: pg.lastmod,
     changefreq: pg.changefreq,
@@ -1324,7 +1331,7 @@ const sitemapEntries = [
     image: pg.path === '/' || pg.path === DASH_PATH ? {
       loc: `${SITE}/og-image.png`,
       title: 'Nepal Disaster Update Live: Rasuwa flood updates, map and helplines',
-    } : null,
+    } : storyImage(pg),
     /* Sitemap hreflang carries the same pairs as the <link> tags. Declaring
        them in both places is what Google's own documentation recommends. */
     alternates: pg.alternates || null,

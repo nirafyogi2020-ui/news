@@ -41,11 +41,13 @@
 
   <text x="66" y="250"
     font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="52" font-weight="600" fill="#FFFFFF" word-spacing="12"
-    >राष्ट्रसंघ महासभामा भाग</text><text x="66" y="310"
+    >४ युरोपेली देशमा</text><text x="66" y="310"
     font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="52" font-weight="600" fill="#FFFFFF" word-spacing="12"
-    >लिन प्रधानमन्त्री बालेन</text><text x="66" y="370"
+    >गुञ्जिँदै ‘मंगोलियन</text><text x="66" y="370"
     font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="52" font-weight="600" fill="#FFFFFF" word-spacing="12"
-    >न्युयोर्क जाँदै</text>
+    >हार्ट’, संकलित रकम बाढी</text><text x="66" y="430"
+    font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="52" font-weight="600" fill="#FFFFFF" word-spacing="12"
+    >प्रभावितलाई</text>
   
 
   <text x="1134" y="514" text-anchor="end" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif"
@@ -55,7 +57,7 @@
     >nepaldisasterupdatelive.nxtimaginelabs.com</text>
   <text x="1134" y="574" text-anchor="end" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20"
     font-weight="700" letter-spacing="1.2" fill="#F4F0E6"
-    >PUBLISHED 22 SEP, 6:29 AM NPT</text>
+    >PUBLISHED 22 SEP, 11:24 AM NPT</text>
 
   <rect x="0" y="622" width="1200" height="8" fill="#D8404B"/>
 </svg>

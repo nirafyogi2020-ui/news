@@ -35,12 +35,14 @@
   
 
   <text x="90" y="760" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
-      font-weight="600" fill="#F4F0E6" word-spacing="17">चाडपर्वले अर्थतन्त्र</text><text x="90" y="860" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
-      font-weight="600" fill="#F4F0E6" word-spacing="17">चलायमान</text>
-  <text x="90" y="936" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
-      fill="#B9B4A6" word-spacing="8">बाढीपहिरो, प्राकृतिक विपत्तिले अर्थतन्त्र</text><text x="90" y="984" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
-      fill="#B9B4A6" word-spacing="8">सुस्ताएका बेला दसैंलगायत चाडपर्व सुरु भएसँगै बजारमा</text><text x="90" y="1032" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
-      fill="#B9B4A6" word-spacing="8">आर्थिक गतिविधि बढेको छ। बजारमा किनमे</text>
+      font-weight="600" fill="#F4F0E6" word-spacing="17">भोटेकोशी बाढी : ३</text><text x="90" y="860" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
+      font-weight="600" fill="#F4F0E6" word-spacing="17">हजार ६१० परिवारको</text><text x="90" y="960" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
+      font-weight="600" fill="#F4F0E6" word-spacing="17">५०७ हेक्टर जमिनमा</text><text x="90" y="1060" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
+      font-weight="600" fill="#F4F0E6" word-spacing="17">क्षति</text>
+  <text x="90" y="1136" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
+      fill="#B9B4A6" word-spacing="8">भोटेकोशी नदीमा आएको विनाशकारी बाढीबाट प्रभावित ७९७</text><text x="90" y="1184" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
+      fill="#B9B4A6" word-spacing="8">परिवारले बाढीअघिकै स्थानमा बस्ने इच्छा व्यक्त गरेका</text><text x="90" y="1232" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
+      fill="#B9B4A6" word-spacing="8">छन्।</text>
   
 
   <rect x="90" y="1670" width="900" height="2" fill="rgba(244,240,230,0.16)"/>

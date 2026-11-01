@@ -8096,7 +8096,7 @@ var PostCards = (function(){
       var photoSrc = item.image.replace('/ace/standard/240/', '/ace/standard/800/');
       media = '<div class="tc-media">' +
         '<a class="post-photo-link" href="' + escapeHtml(item.url) + '" target="_blank" rel="noopener nofollow" tabindex="-1" aria-hidden="true">' +
-        '<img class="post-photo" loading="lazy" referrerpolicy="no-referrer" src="' + escapeHtml(photoSrc) + '" alt="" width="800" height="450" ' +
+        '<img class="post-photo" loading="lazy" referrerpolicy="no-referrer" src="' + escapeHtml(photoSrc) + '" alt="' + escapeHtml(item.title) + '" width="800" height="450" ' +
         'onerror="var m=this.closest(\'.tc-media\'); m.classList.add(\'tc-media-blank\'); this.closest(\'a\').remove();">' +
       '</a></div>';
     }
@@ -10410,7 +10410,7 @@ var LiveFeed = (function(){
     var media = '';
     if(img){
       var tag = '<img class="post-photo" loading="lazy" decoding="async" referrerpolicy="no-referrer" ' +
-        'src="' + esc(img) + '" alt="" width="800" height="450" ' +
+        'src="' + esc(img) + '" alt="' + esc(post.title || '') + '" width="800" height="450" ' +
         'data-backup="' + esc(backup) + '" ' +
         'onerror="var b=this.getAttribute(\'data-backup\'); ' +
           'if(b){ this.removeAttribute(\'data-backup\'); this.src=b; return; } ' +

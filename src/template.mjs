@@ -209,7 +209,7 @@ const FOOTER_NAV = [
 function orgGraph() {
   return [
     {
-      '@type': 'Organization',
+      '@type': 'NewsMediaOrganization',
       '@id': `${SITE}/#organization`,
       name: PUBLISHER,
       alternateName: 'Nepal Disaster Update',
@@ -233,6 +233,10 @@ function orgGraph() {
         'An independent volunteer project that collects and cross-checks public information about disasters in Nepal: official bulletins, live news, maps and emergency contacts.',
       knowsLanguage: ['en', 'ne'],
       areaServed: { '@type': 'Country', name: 'Nepal' },
+      foundingDate: '2026-08-26',
+      founder: { '@type': 'Person', name: 'Diamond Yogi' },
+      publishingPrinciples: `${SITE}/about/`,
+      correctionsPolicy: `${SITE}/contact/`,
     },
     {
       '@type': 'WebSite',
@@ -354,7 +358,7 @@ export function page(o) {
 <meta name="description" content="${esc(o.description)}">
 <link rel="canonical" href="${url}">
 ${alt}
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="robots" content="${o.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}">
 <!-- The phone paints its address bar with this, so a dark-mode reader does not
      get a white bar above a near-black page. -->
 <meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">

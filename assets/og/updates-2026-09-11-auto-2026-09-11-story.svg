@@ -35,13 +35,14 @@
   
 
   <text x="90" y="760" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
-      font-weight="600" fill="#F4F0E6" word-spacing="17">विपत्तिमा दोष होइन,</text><text x="90" y="860" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
-      font-weight="600" fill="#F4F0E6" word-spacing="17">समाधानको राष्ट्रिय</text><text x="90" y="960" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
-      font-weight="600" fill="#F4F0E6" word-spacing="17">अभियान आवश्यक</text>
-  <text x="90" y="1036" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
-      fill="#B9B4A6" word-spacing="8">हालको विनाशकारी बाढीले नेपाललाई गहिरो शोकमा डुबाएको</text><text x="90" y="1084" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
-      fill="#B9B4A6" word-spacing="8">छ। समस्याको परिमाण स्पष्ट छ- यो सामान्य सरसफाइ वा</text><text x="90" y="1132" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
-      fill="#B9B4A6" word-spacing="8">केही दिनको राहत वितरणबाट समा</text>
+      font-weight="600" fill="#F4F0E6" word-spacing="17">रसुवा बाढी : डेढ लाख</text><text x="90" y="860" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
+      font-weight="600" fill="#F4F0E6" word-spacing="17">नागरिक प्रभावित,</text><text x="90" y="960" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
+      font-weight="600" fill="#F4F0E6" word-spacing="17">होल्डिङ सेन्टरका २५</text><text x="90" y="1060" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
+      font-weight="600" fill="#F4F0E6" word-spacing="17">जनामा झाडापखाला</text>
+  <text x="90" y="1136" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
+      fill="#B9B4A6" word-spacing="8">गत भदौ १० गते रसुवाको भोटेकोशी र त्रिशूली नदीमा आएको</text><text x="90" y="1184" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
+      fill="#B9B4A6" word-spacing="8">विनाशकारी बाढीबाट रसुवा, नुवाकोट र धादिङलगायतका</text><text x="90" y="1232" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
+      fill="#B9B4A6" word-spacing="8">जिल्लामा करिब डेढ लाख नागरिक</text>
   
 
   <rect x="90" y="1670" width="900" height="2" fill="rgba(244,240,230,0.16)"/>
