@@ -8,7 +8,7 @@
    ========================================================================= */
 
 /* The bulletin the casualty figures come from. Change together, never apart. */
-export const TOLL_AS_OF = '2026-10-12T06:00:00+05:45';
+export const TOLL_AS_OF = '2026-10-14T12:00:00+05:45';
 export const TOLL_SOURCE = 'Nepal Police';
 export const TOLL_EARLIER_SOURCE = 'Nepal Police';
 
@@ -16,11 +16,11 @@ export const TOLL_EARLIER_SOURCE = 'Nepal Police';
    the "how the toll has moved" table, so that row's timestamp always matches
    TOLL.deadNepalEarlier instead of drifting out of date as later runs move
    both TOLL_AS_OF and deadNepalEarlier forward. */
-export const TOLL_EARLIER_AS_OF = '2026-10-04T20:00:00+05:45';
+export const TOLL_EARLIER_AS_OF = '2026-10-12T06:00:00+05:45';
 
 /* The district breakdown now comes from the same 2pm police bulletin as the
    national toll. */
-export const BODIES_AS_OF = '2026-10-12T06:00:00+05:45';
+export const BODIES_AS_OF = '2026-10-14T12:00:00+05:45';
 export const BODIES_SOURCE = 'Nepal Police';
 
 /* The missing figure is the NDRRMA count of 3 October, reported by Bernama,
@@ -84,6 +84,10 @@ export const BODIES_BY_DISTRICT = [
   [
     "Tanahun",
     38
+  ],
+  [
+    "Died in treatment",
+    2
   ]
 ];
 
@@ -117,8 +121,8 @@ export const OUT_OF_CONTACT = [
 ];
 
 export const TOLL = {
-  deadNepal: 1456,
-  deadNepalEarlier: 1455,
+  deadNepal: 1458,
+  deadNepalEarlier: 1456,
   deadChina: 16,
   missing: 5285,
   missingChina: 546,
@@ -299,6 +303,7 @@ export const TIMELINE = [
   ['06:00 NPT, 12 October', "Nepal's confirmed death toll is reported at 1,456, up from 1,455, by Nepal Police."],
   ['26 October', 'A preliminary National Planning Commission survey puts losses to households and businesses at Rs 79.17 billion, Nepalnews reports.'],
   ['09:00 NPT, 26 October', "The Office of the Prime Minister says the two Prime Minister's relief funds hold Rs 18.136 billion, Onlinekhabar reports."],
+  ['12:00 NPT, 14 October', "Nepal's confirmed death toll is reported at 1,458, up from 1,456, by Nepal Police."],
 ];
 
 /** What the response looks like, from the UN OCHA overview of 27 August. */

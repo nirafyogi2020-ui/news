@@ -33,7 +33,7 @@ import { verifiedBoard, consistentDistricts } from './_verified-board.js';
  *   }
  */
 
-import { resolveBoard, METRICS, inBounds, readDistricts, isPrimary } from './_figures-core.js';
+import { resolveBoard, METRICS, inBounds, readDistricts, diedInTreatment, isPrimary } from './_figures-core.js';
 import { loadPoliceNews } from './police.js';
 
 /* The board is the fastest-moving thing on the site, so it gets the shortest
@@ -113,8 +113,11 @@ export function latestDistricts(items) {
     .filter(item => item && isPrimary(item.source))
     .sort((a, b) => (Date.parse(b.time) || 0) - (Date.parse(a.time) || 0));
   for (const item of bulletins) {
-    const rows = readDistricts([item.title, item.summary, item.body].filter(Boolean).join(' '));
+    const text = [item.title, item.summary, item.body].filter(Boolean).join(' ');
+    const rows = readDistricts(text);
     if (rows.length < 2) continue;
+    const treated = diedInTreatment(text);
+    if (treated) rows.push({ district: 'Died in treatment', value: treated });
     return {
       rows,
       total: rows.reduce((sum, row) => sum + row.value, 0),

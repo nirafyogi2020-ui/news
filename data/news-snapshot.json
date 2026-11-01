@@ -1,14 +1,68 @@
 {
-  "updated": "2026-11-01T06:55:03.005Z",
+  "updated": "2026-11-01T09:04:32.971Z",
   "items": [
     {
-      "title": "Army helicopter to rescue six Indian tourists stranded by snow in Dolpa",
-      "url": "https://kathmandupost.com/karnali-province/2026/11/01/army-helicopter-to-rescue-six-indian-tourists-stranded-by-snow-in-dolpa",
-      "source": "Kathmandu Post",
-      "time": "2026-11-01T06:15:00.000Z",
+      "title": "७ वर्षको तथ्यांकबाट सिकाइयो पहिरो अनुमान गर्न, त्यसपछिका २ वर्षमा लिइयो परीक्षा",
+      "url": "https://www.setopati.com/social/401752",
+      "source": "Setopati",
+      "time": "2026-11-01T09:00:49.000Z",
       "kind": "press",
       "region": "nepal",
-      "image": "https://assets-cdn.kathmandupost.com/uploads/source/news/2026/news/simkothumla228120260704241000x0-1793507772.jpg"
+      "image": "https://www.setopati.com/uploads/posts/krishna-bhir-(3)-ink-1789708943.jpeg"
+    },
+    {
+      "title": "Rescue of six Indian tourists stranded in Upper Dolpa delayed",
+      "url": "https://english.onlinekhabar.com/rescue-indian-tourists-stranded.html",
+      "source": "Onlinekhabar",
+      "time": "2026-11-01T08:02:32.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/11/himpat_dolpa.jpg"
+    },
+    {
+      "title": "उपल्लो डोल्पामा फसेका ६ भारतीय पर्यटकको उद्धारमा ढिलाइ",
+      "url": "https://www.onlinekhabar.com/2026/11/2048429/rescue-of-6-indian-tourists-stranded-in-upper-dolpa-delayed-due-to-lack-of-helicopter",
+      "source": "Onlinekhabar (Nepali)",
+      "time": "2026-11-01T07:57:56.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/himpat_dolpa.jpg"
+    },
+    {
+      "title": "ANTUF volunteer team engaged in cleaning flood-affected homes",
+      "url": "https://english.onlinekhabar.com/antuf-volunteer-team-engaged-in-cleaning-flood-affected-homes.html",
+      "source": "Onlinekhabar",
+      "time": "2026-11-01T07:41:50.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/11/nuwakot-1-1024x500-1.png"
+    },
+    {
+      "title": "Govt plans to lower water levels in four glacial lakes, expand flood early warning systems",
+      "url": "https://english.onlinekhabar.com/govt-lower-water-glacial-lake.html",
+      "source": "Onlinekhabar",
+      "time": "2026-11-01T07:35:19.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/08/glacial-lake-Rhindi-Cho-lake.jpg"
+    },
+    {
+      "title": "Roads obstructed in Kavre, Khotang, and Lalitpur due to rainfall, landslides",
+      "url": "https://risingnepaldaily.com/news/88287",
+      "source": "The Rising Nepal",
+      "time": "2026-11-01T07:09:50.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://risingnepaldaily.com/storage/media/111867/Obstructed-road-in-BP-Highway-being-cleared.jpg"
+    },
+    {
+      "title": "बाढीपीडितको घर सरसफाइमा खटियो अन्टुफको श्रमदान टोली",
+      "url": "https://www.onlinekhabar.com/2026/11/2048371/antufs-shramdan-team-mobilized-to-clean-flood-victims-homes",
+      "source": "Onlinekhabar (Nepali)",
+      "time": "2026-11-01T07:01:30.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/nuwakot-1-1024x500.png"
     },
     {
       "title": "Nepal and Bhutan propose dedicated COP31 agenda on 1.5°C warming in mountain regions",
@@ -29,15 +83,6 @@
       "image": "https://english.nepalnews.com/wp-content/uploads/2026/11/Mangala-Effective-2.jpg"
     },
     {
-      "title": "बाढीपहिरोबाट मङ्गलाका १६६ परिवार प्रभावित",
-      "url": "https://nagariknews.nagariknetwork.com/social-affairs/166-families-in-mangala-affected-by-floods-and-landslides-br-78-75.html",
-      "source": "Nagarik News",
-      "time": "2026-11-01T05:43:50.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://images.nagariknewscdn.com/2025/third-party/1793512012_pahiro%2015.jpg"
-    },
-    {
       "title": "Disaster-hit six local bodies in Baglung receive grants",
       "url": "https://risingnepaldaily.com/news/88285",
       "source": "The Rising Nepal",
@@ -54,33 +99,6 @@
       "kind": "press",
       "region": "nepal",
       "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/Himtal1248-1024x500.jpg"
-    },
-    {
-      "title": "Six Indian tourists missing in Dolpa after heavy snowfall; helicopter requested for rescue",
-      "url": "https://english.onlinekhabar.com/six-indian-tourists-missing-in-dolpa.html",
-      "source": "Onlinekhabar",
-      "time": "2026-11-01T01:53:04.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/11/himpat_dolpa.jpg"
-    },
-    {
-      "title": "वर्षा र पहिरोले काभ्रे, खोटाङ र ललितपुरका सडक अवरुद्ध",
-      "url": "https://www.onlinekhabar.com/2026/11/2048208/rain-and-landslides-block-roads-in-kavre-khotang-and-lalitpur",
-      "source": "Onlinekhabar (Nepali)",
-      "time": "2026-11-01T01:49:10.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/10/bp-highwaya-1024x671.jpg"
-    },
-    {
-      "title": "हिमपातले डोल्पामा ६ भारतीय पर्यटक सम्पर्कविहीन, उद्धारका लागि हेलिकप्टर माग",
-      "url": "https://www.onlinekhabar.com/2026/11/2048191/6-indian-tourists-missing-in-dolpa-due-to-snowfall-helicopter-requested-for-rescue",
-      "source": "Onlinekhabar (Nepali)",
-      "time": "2026-11-01T01:23:36.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/himpat_dolpa.jpg"
     },
     {
       "title": "Rising Kulekhani reservoir prompts flood alert along Bagmati river",
@@ -117,6 +135,15 @@
       "kind": "press",
       "region": "nepal",
       "image": "https://thehimalayantimes.com/thehimalayantimes/uploads/images/2026/10/30/51641.jpg"
+    },
+    {
+      "title": "दशैंपछि मुक्तिनाथमा बढ्यो चहलपहल, तीन दिनमै १२ हजार बढीले गरे दर्शन",
+      "url": "https://nagariknews.nagariknetwork.com/Dharma-Saskriti/muktinath-sees-increased-activity-after-dashain-over-12-000-people-visited-in-three-days-97-84.html",
+      "source": "Nagarik News",
+      "time": "2026-10-26T00:33:35.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://images.nagariknewscdn.com/2026/third-party/1792974730_Muktinath.jpg"
     },
     {
       "title": "Nepal exports electricity worth Rs 5.92 billion to India in Ashoj",

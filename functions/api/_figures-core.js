@@ -570,6 +570,16 @@ function withoutTheNationalTotal(rows) {
  * a bulletin that states only a national total leaves the previous breakdown
  * standing instead of blanking the table.
  */
+/**
+ * People a bulletin counts as dead who were not found in a district: "२ जनाको
+ * काठमाडौंमा उपचारको क्रममा मृत्यु". They are in the national total and in no
+ * district row, so the eight districts sum to less than the headline.
+ */
+export function diedInTreatment(text) {
+  const m = latinDigits(String(text || '')).match(/(\d{1,3})\s*जनाको[^।]{0,40}उपचारको\s*क्रममा\s*मृत्यु/);
+  return m ? Number(m[1]) : 0;
+}
+
 export function readDistricts(text) {
   const flat = flatten(text);
   let best = [];

@@ -1353,6 +1353,12 @@
       "value": 1456,
       "source": "Nepal Police",
       "when": "06:00 NPT, 12 October"
+    },
+    {
+      "at": 1791958500000,
+      "value": 1458,
+      "source": "Nepal Police",
+      "when": "12:00 NPT, 14 October"
     }
   ],
   "places": [

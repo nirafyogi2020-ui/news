@@ -379,7 +379,8 @@ export function syncToday(applied, figures) {
     .sort()
     .pop() || new Date().toISOString();
 
-  today.updated = newest;
+  /* A late-found bulletin can be older than the newest story. Never go back. */
+  if (!(Date.parse(today.updated) >= Date.parse(newest))) today.updated = newest;
 
   const posts = today.posts || (today.posts = []);
   /* Written as sentences, not as a colon-separated list. This card is the
@@ -530,7 +531,7 @@ async function fetchBoard() {
 
   const [news, police] = await Promise.all([
     fetchJson(`${SITE}/api/news`).catch(e => { console.log('  news: ' + e.message); return null; }),
-    loadPoliceNews().catch(e => { console.log('  police: ' + e.message); return null; })
+    loadPoliceNews({ deep: true }).catch(e => { console.log('  police: ' + e.message); return null; })
   ]);
 
   const items = [];

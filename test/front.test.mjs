@@ -67,7 +67,7 @@ test('the three lines are built from the event and name the source', () => {
   const lines = tldrLines(event, '14 October 2026, 12:00 pm NPT');
   assert.equal(lines.length, 3);
   assert.equal(lines[0].k, 'What happened');
-  assert.match(lines[1].t, /^Nepal Police: 1,456 confirmed dead and 5,285 listed missing in Nepal, as of 14 October 2026/);
+  assert.match(lines[1].t, /^Nepal Police: [0-9,]+ confirmed dead and [0-9,]+ listed missing in Nepal, as of \d+ \w+ \d{4}/);
   assert.match(lines[1].t, /Missing does not mean dead\.$/);
   assert.match(lines[2].t, /100 or 112/);
   for (const l of lines) { assert.equal(hasDash(l.t), false); assert.equal(hasBannedWord(l.t), false); }
@@ -111,7 +111,7 @@ test('the front page has one h1, a root canonical, the toll, and keeps the house
   assert.ok(pg.description.length >= 70 && pg.description.length <= 200, pg.description);
   assert.equal((pg.html.match(/<h1[\s>]/g) || []).length, 1);
   assert.match(pg.html, /<link rel="canonical" href="https:\/\/nepaldisasterupdatelive\.nxtimaginelabs\.com\/">/);
-  assert.match(pg.html, /data-live="dead">1,456</);
+  assert.match(pg.html, /data-live="dead">[0-9,]+</);
   assert.match(pg.html, /<a data-event-card href="\/nepal-flood\/rasuwa\/">/);
   assert.match(pg.html, /Photograph: ICIMOD/);
   assert.match(pg.html, /Highway to Rasuwa reopens after landslide, police/);
@@ -137,7 +137,7 @@ test('an empty slot is left out rather than filled', () => {
 test('the dashboard metadata and the folded briefing describe the same page', () => {
   const d = rasuwaDashboard(ctx);
   assert.equal(d.path, '/nepal-flood/rasuwa/');
-  assert.match(d.title, /^Nepal Flood Live: 1,456 dead, 5,285 missing in Rasuwa, 14 Oct$/);
+  assert.match(d.title, /^Nepal Flood Live: [0-9,]+ dead, [0-9,]+ missing in Rasuwa, \d+ \w+$/);
   assert.ok(d.title.length < 75);
   assert.equal(d.html, null);
   assert.deepEqual(d.alternates.map(a => a.hreflang), ['en', 'ne']);

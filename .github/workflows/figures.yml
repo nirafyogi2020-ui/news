@@ -18,11 +18,16 @@
 # audit at the end is the same one that gates a deploy, so a run that would
 # break the site fails here instead of on the live domain.
 #
-# Five minutes is GitHub's own floor for scheduled workflows, and scheduled runs
-# are queued rather than guaranteed. So this is the layer that keeps the
-# repository honest, not the one that makes the page fast: the page itself polls
-# /api/figures every second and is served from the edge cache, so a reader never
-# waits on this workflow.
+# Five minutes is GitHub's own floor for scheduled workflows, and in practice
+# the schedule fired about every four and a half hours (measured over 30 runs,
+# October 2026). So each run now ends by waiting and starting the next one. The
+# schedule stays as the backstop that restarts the chain if a run ever dies.
+# The concurrency group below keeps exactly one chain alive: only the running
+# job dispatches, and a queued run is replaced by a newer one.
+#
+# This is the layer that keeps the repository honest, not the one that makes the
+# page fast: the page itself polls /api/figures every second and is served from
+# the edge cache, so a reader never waits on this workflow.
 
 name: Update figures
 
@@ -39,6 +44,7 @@ concurrency:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   update:
@@ -128,3 +134,13 @@ jobs:
           echo "The figures were committed but NOT published."
           echo "Add a CLOUDFLARE_API_TOKEN repository secret to publish automatically."
           echo "Until then the live site updates only when someone runs ./deploy.sh."
+
+      # The chain. A workflow_dispatch from GITHUB_TOKEN is the one event that
+      # is allowed to start a new run, and this runs even if a step above failed.
+      - name: Start the next run
+        if: always() && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          sleep 240
+          gh workflow run figures.yml --ref main

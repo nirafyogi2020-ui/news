@@ -1,4 +1,4 @@
-import { candidatesFrom, pickFigure, METRICS, readDistricts } from './_figures-core.js';
+import { candidatesFrom, diedInTreatment, pickFigure, METRICS, readDistricts } from './_figures-core.js';
 
 // A named feed is not enough: automatic official corrections must come from
 // the issuing government's own HTTPS host and a newer published bulletin.
@@ -14,10 +14,19 @@ export function verifiedBoard(items, published = {}) {
   // A full eight-district recovery bulletin establishes the national scope.
   for (const item of items || []) {
     if (!officialUrl(item.url)) continue;
-    const rows = readDistricts([item.title,item.summary,item.body].filter(Boolean).join(' '));
+    const text = [item.title,item.summary,item.body].filter(Boolean).join(' ');
+    const rows = readDistricts(text);
     if (rows.length !== 8) continue;
-    const total = rows.reduce((n,r)=>n+r.value,0);
-    for (const c of candidates) if(c.metric==='dead' && c.url===item.url && c.value===total){c.scope='total';recoveryUrls.add(c.url);}
+    const bodies = rows.reduce((n,r)=>n+r.value,0);
+    // The national toll is the bodies found plus anyone who died in treatment.
+    // The arithmetic has to come out exactly, or the district sum stands.
+    const national = bodies + diedInTreatment(text);
+    const own = candidates.filter(c => c.metric==='dead' && c.url===item.url);
+    const total = own.some(c => c.value===national) ? national : bodies;
+    for (const c of own) {
+      if (c.value===total) { c.scope='total'; recoveryUrls.add(c.url); }
+      else if (c.value===bodies) c.scope='local';
+    }
   }
   const result = {};
   for (const metric of METRICS) {

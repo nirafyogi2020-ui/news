@@ -66,16 +66,37 @@ export async function onRequestGet(context) {
   return response;
 }
 
-export async function loadPoliceNews({ withBodies = true } = {}) {
-  const html = await getText('https://nepalpolice.gov.np/');
+/* Where the police list their news. The home page shows only the newest three
+   items of any subject, so a flood bulletin leaves it within hours; the filtered
+   lists hold it for longer. `deep` is for the scheduled job, which has no CPU
+   limit. A page view reads only the short lists. The unfiltered list is 30 MB
+   and is never read. */
+const LIST_BASE = 'https://nepalpolice.gov.np/ne/news/latest-news/?filter=';
+const LISTS = ['https://nepalpolice.gov.np/', LIST_BASE + 'this-week'];
+const DEEP_LISTS = [...LISTS, LIST_BASE + 'this-month', LIST_BASE + 'last-month'];
 
-  const pattern = /<li>\s*<div class="textbox-02">\s*<a href="(\/news\/\d+\/)">\s*<h6[^>]*>(.*?)<\/h6>\s*<\/a>\s*<span[^>]*>([^<]*)<\/span>\s*<p[^>]*>(.*?)<\/p>/gs;
+/* A flood bulletin, as opposed to any item that merely names a flood district. */
+const BULLETIN = /बाढी|शव\s*फेला|flood/i;
+
+/* "Arrested in Rasuwa" names the district and has nothing to do with the flood. */
+const NOT_THE_EVENT = /पक्राउ/;
+
+/**
+ * The topical items in one listing page.
+ *
+ * Accepts any language prefix on the path: the site moved /news/10739/ to
+ * /ne/news/10739/ and the old pattern then matched nothing while reporting no
+ * error, which silently took the police out of the figures for weeks.
+ */
+export function parseListing(html) {
+  const pattern = /<div class="textbox-0\d[^"]*">\s*<a href="(\/(?:[a-z]{2}\/)?news\/\d+\/)">\s*<h6[^>]*>(.*?)<\/h6>\s*(?:<\/a>\s*)?<span[^>]*>([^<]*)<\/span>\s*<p[^>]*>(.*?)<\/p>/gs;
 
   const items = [];
   let match;
-  while ((match = pattern.exec(html))) {
+  while ((match = pattern.exec(String(html || '')))) {
     const [, path, title, bsDate, summary] = match;
     const cleanedTitle = cleanText(title);
+    if (NOT_THE_EVENT.test(cleanedTitle)) continue;
     if (!matches(cleanedTitle + ' ' + summary, TOPIC)) continue;
     items.push({
       title: cleanedTitle,
@@ -92,6 +113,26 @@ export async function loadPoliceNews({ withBodies = true } = {}) {
       body: null
     });
   }
+  return items;
+}
+
+const newsId = item => Number((item.url.match(/news\/(\d+)\//) || [])[1]) || 0;
+
+export async function loadPoliceNews({ withBodies = true, deep = false } = {}) {
+  const pages = await Promise.allSettled((deep ? DEEP_LISTS : LISTS).map(url => getText(url)));
+  const read = pages.filter(page => page.status === 'fulfilled');
+  if (!read.length) throw pages[0].reason;
+
+  const byUrl = new Map();
+  for (const page of read) {
+    for (const item of parseListing(page.value)) {
+      if (!byUrl.has(item.url)) byUrl.set(item.url, item);
+    }
+  }
+
+  /* Flood bulletins first, so a passing mention never uses up a body read. */
+  const items = [...byUrl.values()].sort((a, b) =>
+    (BULLETIN.test(b.title) - BULLETIN.test(a.title)) || (newsId(b) - newsId(a)));
 
   const top = items.slice(0, 10);
 

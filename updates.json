@@ -3,34 +3,20 @@
   "figures": {
     "dead": {
       "metric": "dead",
-      "value": 1456,
+      "value": 1458,
       "scope": "total",
       "source": "Nepal Police",
-      "url": "https://nepalpolice.gov.np/news/10719/",
-      "time": "2026-10-12T06:00:00+05:45",
+      "url": "https://nepalpolice.gov.np/ne/news/10739/",
+      "time": "2026-10-14T12:00:00+05:45",
       "statedTime": null,
-      "sentence": "जसमध्ये रसुवामा २ सय ३७ जना, नुवाकोटमा २ सय ५ जना, धादिङमा ७३ जना, चितवनमा ३ सय ६९ जना, गोरखामा ८० जना, तनहुँमा ३८ जना, नवलपरासी पूर्वमा २ सय ३२ जना र नवलपरासी पश्‍चिममा २ सय २२ जना गरी १ हजार ४ सय ५६ जनाको शव फेला परेको हो",
+      "sentence": "भोटेकोशी बाढी अपडेट : १ हजार ४ सय ५८ जनाको शव फेला",
       "others": [
-        {
-          "value": 1458,
-          "source": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10719/",
-          "time": "2026-10-12T06:00:00+05:45",
-          "scope": "local"
-        },
-        {
-          "value": 1458,
-          "source": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10719/",
-          "time": "2026-10-12T06:00:00+05:45",
-          "scope": "local"
-        },
         {
           "value": 1456,
           "source": "Nepal Police",
-          "url": "https://nepalpolice.gov.np/news/10719/",
-          "time": "2026-10-12T06:00:00+05:45",
-          "scope": "total"
+          "url": "https://nepalpolice.gov.np/ne/news/10739/",
+          "time": "2026-10-14T12:00:00+05:45",
+          "scope": "local"
         }
       ]
     },
@@ -86,12 +72,16 @@
       {
         "district": "Tanahun",
         "value": 38
+      },
+      {
+        "district": "Died in treatment",
+        "value": 2
       }
     ],
-    "total": 1456,
+    "total": 1458,
     "source": "Nepal Police",
-    "url": "https://nepalpolice.gov.np/news/10719/",
-    "time": "2026-10-12T06:00:00+05:45"
+    "url": "https://nepalpolice.gov.np/ne/news/10739/",
+    "time": "2026-10-14T12:00:00+05:45"
   },
   "response": {
     "time": "2026-09-09T11:00:00+05:45",
@@ -507,6 +497,15 @@
       "summary": "तनहुँ– कालीगण्डकी नदीमा आएको बाढीले पहुँचसडक बगाएको घिरिङ र डेढगाउँ जोड्ने पक्की पुल १८ दिनपछि सञ्चालनमा आएको छ ।",
       "sources": [
         "Khabarhub"
+      ]
+    },
+    {
+      "url": "/updates/2026-10-14-latest-reported-figures/",
+      "title": "Latest reported figures: 1,458 confirmed dead",
+      "time": "2026-10-14T12:00:00+05:45",
+      "summary": "The confirmed death toll in Nepal has risen to 1,458, from 1,456, Nepal Police reports.",
+      "sources": [
+        "Nepal Police"
       ]
     },
     {

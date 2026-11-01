@@ -6,7 +6,8 @@ import {
   nepaliNumber, readFigures, scopeOf, canSetCounter, pickFigure,
   resolveBoard, inBounds
 } from '../functions/api/_figures-core.js';
-import { bsDateToIso, extractBody, statedClock } from '../functions/api/police.js';
+import { bsDateToIso, extractBody, parseListing, statedClock } from '../functions/api/police.js';
+import { latestDistricts } from '../functions/api/figures.js';
 import { sumLosses } from '../functions/api/bipad.js';
 
 /* --------------------------------------------------------------------------
@@ -404,4 +405,43 @@ test('police missing list cannot overwrite the broader NDRRMA list',()=>{
  const previous={figures:{missing:{value:5326,source:'NDRRMA · Onlinekhabar',time:'2026-09-08T07:15:00Z'}}};
  const board=verifiedBoard([{title:'4,077 people remain unaccounted for.',source:'Nepal Police',url:'https://nepalpolice.gov.np/news/10365/',time:'2026-09-08T14:15:00Z'}],previous);
  assert.equal(board.missing.value,5326);
+});
+
+const BULLETIN_14_OCT = 'काठमाडौं, रसुवाको भोटेकोशीमा आएको विनाशकारी बाढीका कारण बुधबार १२:०० बजे सम्म १ हजार ४ सय ५८ जनाको शव फेला परेको छ । जसमध्ये रसुवामा २ सय ३७ जना, नुवाकोटमा २ सय ५ जना, धादिङमा ७३ जना, चितवनमा ३ सय ६९ जना, गोरखामा ८० जना, तनहुँमा ३८ जना, नवलपरासी पूर्वमा २ सय ३२ जना र नवलपरासी पश्चिममा २ सय २२ जना गरी १ हजार ४ सय ५६ जनाको शव फेला परेको हो । साथै २ जनाको काठमाडौंमा उपचारको क्रममा मृत्यु भएको हो ।';
+
+test('the police listing is read under its language prefix', () => {
+  const items = parseListing(`<div class="textbox-04 mt-4 more-news d-none">
+    <a href="/ne/news/10739/">
+      <h6 class="f1 fit-content">भोटेकोशी बाढी अपडेट : १ हजार ४ सय ५८ जनाको शव फेला</h6>
+      <span>२०८३-०६-२८</span>
+      <p class="f1">काठमाडौं, बाढी</p>
+    </a></div>`);
+  assert.equal(items.length, 1);
+  assert.equal(items[0].url, 'https://nepalpolice.gov.np/ne/news/10739/');
+  assert.equal(items[0].time, '2026-10-14T12:00:00+05:45');
+});
+
+test('an arrest in a flood district is not a flood item', () => {
+  const items = parseListing(`<li><div class="textbox-02"><a href="/ne/news/10815/">
+    <h6 class="f1">जबरजस्ती करणी गरेको अभियोगमा पक्राउ</h6></a>
+    <span>२०८३-०७-१३</span><p class="f1">रसुवा, पक्राउ</p></div></li>`);
+  assert.equal(items.length, 0);
+});
+
+test('the national toll counts deaths in treatment beside the districts', () => {
+  const item = { title: 'भोटेकोशी बाढी अपडेट : १ हजार ४ सय ५८ जनाको शव फेला', body: BULLETIN_14_OCT, source: 'Nepal Police', url: 'https://nepalpolice.gov.np/ne/news/10739/', time: '2026-10-14T12:00:00+05:45' };
+  const published = { asOf: '2026-10-12T06:00:00+05:45', figures: { dead: { metric: 'dead', value: 1456, time: '2026-10-12T06:00:00+05:45' } } };
+  const board = verifiedBoard([item], published);
+  assert.equal(board.dead.value, 1458);
+  const districts = latestDistricts([item]);
+  assert.equal(districts.total, 1458);
+  assert.equal(districts.rows.find(r => r.district === 'Died in treatment').value, 2);
+  assert.ok(consistentDistricts(districts, null, board.dead));
+});
+
+test('a treatment count that does not add up leaves the district sum standing', () => {
+  const body = BULLETIN_14_OCT.replace('साथै २ जनाको', 'साथै ५ जनाको');
+  const item = { title: 'बाढी अपडेट', body, source: 'Nepal Police', url: 'https://nepalpolice.gov.np/ne/news/1/', time: '2026-10-14T12:00:00+05:45' };
+  const board = verifiedBoard([item], { asOf: '2026-10-12T06:00:00+05:45', figures: { dead: { metric: 'dead', value: 1400, time: '2026-10-12T06:00:00+05:45' } } });
+  assert.equal(board.dead.value, 1456);
 });
