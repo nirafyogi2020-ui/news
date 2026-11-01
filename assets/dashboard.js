@@ -73,11 +73,19 @@
     if(!river)return;
     const cards=[...river.querySelectorAll(':scope > .post-card')];
     if(cards.length<3)return;
+    // Newest first within each group, and a story with a photograph always
+    // beats one without for the places at the top.
+    const pictured=card=>!!card.querySelector('img.post-photo');
+    // The same picture twice in a row reads as a mistake: repeats wait their turn.
+    const seen=new Set();
+    const fresh=card=>{const src=card.querySelector('img.post-photo')?.getAttribute('src').split('?')[0].split('/').pop();if(!src||seen.has(src))return false;seen.add(src);return true;};
+    const firsts=cards.filter(pictured).filter(fresh);
+    const ordered=[...firsts,...cards.filter(card=>!firsts.includes(card))];
+    const top=ordered.slice(0,5);
+    top[0].classList.add('is-lead');
     const pack=document.createElement('div');pack.className='news-package';
-    const lead=document.createElement('div');lead.className='news-package-lead';lead.append(cards[0]);
-    const left=document.createElement('div');left.className='news-package-side';left.append(...cards.filter((_,index)=>index>0 && index%2===1).slice(0,2));
-    const right=document.createElement('div');right.className='news-package-side';right.append(...cards.filter((_,index)=>index>0 && index%2===0).slice(0,2));
-    pack.append(left,lead,right);container.insertBefore(pack,river);
+    pack.append(...top);container.insertBefore(pack,river);
+    river.append(...ordered.slice(5));
     if(!river.children.length)river.remove();
   }
   ['today-general-grid','today-grid','feed-tab-grid'].forEach(id=>{

@@ -206,24 +206,28 @@ function ssrTodayCards(list) {
     /* Versioned, so the day a drawn placeholder is replaced by a real
        photograph the readers who already have the placeholder cached see the
        photograph too. */
-    const thumb = assetVersioned(`${ogName}-thumb.png`);
+    const saved = PHOTO_INDEX[ogName] && PHOTO_INDEX[ogName].file;
+    const remote = /^https:\/\//.test(post.image || '') ? post.image : '';
+    /* A real photograph only. The drawn tile repeats the headline printed under
+       it, so it stays on shared links and off the cards. */
+    const photo = saved ? `/assets/photos/${saved}` : remote;
     const story = assetVersioned(`${ogName}-story.png`);
-    const shot = PHOTO_INDEX[ogName] && PHOTO_INDEX[ogName].credit;
+    const named = PHOTO_INDEX[ogName] && PHOTO_INDEX[ogName].credit;
+    const shot = named && !named.includes('.') ? named : (sourceNames[0] || named);
     /* The photographer's name, and nothing else. It used to read "Photograph:
        Nepal News · via Nepal Disaster Update", which credits this site under a
        picture on this site, on every card in the river: two lines of grey
        small-caps to say one thing a reader already knows. */
-    const credit = !thumb ? ''
-      : shot ? `Photograph: ${shot}`
-      : `Graphic${sourceNames[0] ? `: figures from ${sourceNames[0]}` : ''}`;
-    return `<article class="post-card today-card${thumb ? '' : ' no-photo'}" data-title="${escAttr(post.title)}"`
+    const credit = photo && shot ? `Photograph: ${shot}` : '';
+    return `<article class="post-card today-card${photo ? '' : ' no-photo'}" data-title="${escAttr(post.title)}"`
       + ` data-permalink="${escAttr(post.url)}"`
       + (story ? ` data-story="${escAttr(story)}"` : '') + '>'
-      + (thumb
+      + (photo
         ? '<div class="tc-media">'
           + `<a class="post-photo-link" href="${escAttr(post.url)}" tabindex="-1" aria-hidden="true">`
-          + `<img class="post-photo" loading="lazy" decoding="async" width="800" height="450"`
-          + ` src="${escAttr(thumb)}" alt=""></a>`
+          + `<img class="post-photo" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="800" height="450"`
+          + ` src="${escAttr(photo)}" alt=""`
+          + ` onerror="this.closest('.tc-media').classList.add('tc-media-blank');this.remove()"></a>`
           + '</div>'
         : '')
       + '<div class="post-body">'

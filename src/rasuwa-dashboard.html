@@ -8092,10 +8092,12 @@ var PostCards = (function(){
         '</button>' +
       '</div></div>';
     } else if(item.image){
+      /* The BBC feed hands out a 240px thumbnail; the same path serves 800px. */
+      var photoSrc = item.image.replace('/ace/standard/240/', '/ace/standard/800/');
       media = '<div class="tc-media">' +
         '<a class="post-photo-link" href="' + escapeHtml(item.url) + '" target="_blank" rel="noopener nofollow" tabindex="-1" aria-hidden="true">' +
-        '<img class="post-photo" loading="lazy" referrerpolicy="no-referrer" src="' + escapeHtml(item.image) + '" alt="" width="800" height="450" ' +
-        'onerror="this.closest(\'.post-card\').classList.add(\'no-photo\'); this.closest(\'.tc-media\').remove();">' +
+        '<img class="post-photo" loading="lazy" referrerpolicy="no-referrer" src="' + escapeHtml(photoSrc) + '" alt="" width="800" height="450" ' +
+        'onerror="var m=this.closest(\'.tc-media\'); m.classList.add(\'tc-media-blank\'); this.closest(\'a\').remove();">' +
       '</a></div>';
     }
 
@@ -8464,11 +8466,23 @@ var LiveFeed = (function(){
     if(section) section.hidden = !items.length;
   }
 
+  function worldDisaster(i){
+    return !!i && i.source !== 'U.S. National Weather Service' &&
+      /earthquake|quake|tsunami|volcan|flood|landslide|avalanche|cyclone|typhoon|hurricane|wildfire|drought|disaster|death toll/i.test(i.title || '');
+  }
+
   function renderTodayGeneral(){
     if(!todayGeneralGrid) return;
-    var items = globalItems.filter(function(i){ return i && i.kind !== 'quake' && i.kind !== 'video'; });
-    /* The newest report is the lead. A photograph is useful only after time,
-       source and headline have decided what deserves the lead position. */
+    /* Nepal's reporting first, then disasters elsewhere. Sport and politics from
+       the world feed stay on the Live tab and off a disaster front page. */
+    var seen = {};
+    var items = latest.concat(globalItems.filter(worldDisaster)).filter(function(i){
+      if(!i || i.kind === 'quake' || i.kind === 'video') return false;
+      var key = i.url || i.title;
+      if(!key || seen[key]) return false;
+      seen[key] = true;
+      return true;
+    });
     items.sort(function(a, b){ return new Date(b.time || 0) - new Date(a.time || 0); });
     /* One lead with related reporting either side. This is deliberately a
        source-led brief, not an automatic rewrite of the reporting: a reader
@@ -8479,7 +8493,7 @@ var LiveFeed = (function(){
       items.slice(0, 11).forEach(function(item){ if(item.source) sources[item.source] = true; });
       var names = Object.keys(sources);
       todayGeneralStatus.textContent = names.length
-        ? names.length + ' named sources · newest report in the centre'
+        ? names.length + ' named sources · newest first'
         : 'Waiting for verified reports';
     }
     var section = todayGeneralGrid.closest('.today-general');
@@ -8608,6 +8622,7 @@ var LiveFeed = (function(){
         renderVideoFreshness();
         renderOverviewVideos(videos);
         renderFeedTab();
+        renderTodayGeneral();
 
         if(quakeEl && !latest.some(function(i){ return i.kind === 'quake'; })){
           quakeEl.innerHTML = '<p style="font-size:0.88rem; color:var(--text-faint);">No earthquakes above magnitude 3.5 recorded in the Nepal region in this window. That is good news.</p>';
@@ -10330,18 +10345,23 @@ var LiveFeed = (function(){
      credited to this site, with the newsroom that published the figures
      named beside it. Nothing on a card is left uncredited. */
   var PHOTO_CREDITS = {};
+  var PHOTO_FILES = {};
   fetch('/assets/photos/index.json', { cache:'force-cache' })
     .then(function(r){ return r.ok ? r.json() : null; })
     .then(function(j){
       if(!j) return;
-      Object.keys(j).forEach(function(k){ PHOTO_CREDITS[k] = j[k] && j[k].credit; });
+      Object.keys(j).forEach(function(k){
+        PHOTO_CREDITS[k] = j[k] && j[k].credit;
+        PHOTO_FILES[k] = j[k] && j[k].file;
+      });
       repaint();
     })
     .catch(function(){});
 
   function creditLine(ogSlug, usedRemote, post){
-    var shot = PHOTO_CREDITS[ogSlug];
     var outlet = post.sources && post.sources[0] && post.sources[0].name;
+    var shot = PHOTO_CREDITS[ogSlug];
+    if(shot && shot.indexOf('.') !== -1 && outlet) shot = outlet;
     /* The photographer's name, and nothing else. Crediting this site under a
        picture on this site, on every card, was two lines of grey type saying
        something the reader already knew. */
@@ -10378,14 +10398,13 @@ var LiveFeed = (function(){
     var perma = permalink(post);
     var ogSlug = perma ? perma.replace(/^\/|\/$/g, '').replace(/\//g, '-') : '';
 
-    /* The newsroom's own photograph first, the tile drawn here as the safety
-       net: the tile has the headline burnt into it and the card prints the
-       same words underneath. Only when neither loads does the frame come off,
-       so a card is never left holding an empty grey rectangle. */
-    var tile = ogAsset(ogSlug + '-thumb.png');
-    var img = post.image || tile;
-    var backup = tile && tile !== img ? tile : '';
-    var credit = img ? creditLine(ogSlug, !!post.image, post) : '';
+    /* A real photograph only: the copy saved here, then the newsroom's own. The
+       drawn tile has the headline burnt into it, so it belongs on a shared link
+       and never on a card that prints the same words underneath. */
+    var saved = PHOTO_FILES[ogSlug] ? '/assets/photos/' + PHOTO_FILES[ogSlug] : '';
+    var img = saved || post.image || '';
+    var backup = saved && post.image ? post.image : '';
+    var credit = img ? creditLine(ogSlug, !saved, post) : '';
     var ago = agoText(post.time);
 
     var media = '';
@@ -10395,7 +10414,7 @@ var LiveFeed = (function(){
         'data-backup="' + esc(backup) + '" ' +
         'onerror="var b=this.getAttribute(\'data-backup\'); ' +
           'if(b){ this.removeAttribute(\'data-backup\'); this.src=b; return; } ' +
-          'this.closest(\'.post-card\').classList.add(\'no-photo\'); this.remove();">';
+          'this.closest(\'.tc-media\').classList.add(\'tc-media-blank\'); this.remove();">';
       media = '<div class="tc-media">' +
         (perma ? '<a class="post-photo-link" href="' + esc(perma) + '" tabindex="-1" aria-hidden="true">' + tag + '</a>' : tag) +
       '</div>';
