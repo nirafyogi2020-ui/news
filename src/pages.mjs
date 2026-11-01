@@ -1688,6 +1688,10 @@ export function about(ctx) {
 <h2>Corrections</h2>
 <p>Errors get corrected or removed, not quietly edited around. If a figure, a date, a name or a source here is wrong, write to <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> and say what is wrong and, if you can, what the correct source is. <a href="/contact/">The contact page</a> explains what to include.</p>
 
+<h2>Use these figures on your site</h2>
+<p>Newsrooms, schools and community sites are welcome to show the latest figures. Paste this into any page. The box updates itself and credits the source.</p>
+<pre><code>&lt;iframe src="${SITE}/embed" title="Nepal disaster live figures" width="100%" height="150" style="border:0;max-width:520px" loading="lazy"&gt;&lt;/iframe&gt;</code></pre>
+
 <h2>Beyond this event</h2>
 <p>The current story is the 2026 Rasuwa flood. The site is built to cover whatever the next major event in Nepal is, be that an earthquake, a landslide or another flood, without deleting what came before. Past events stay online as archived pages with the "archived" label rather than continuing to present themselves as live. <a href="/nepal-disasters/">The hazard guide</a> is deliberately event-independent, because helplines and safety advice do not change between disasters.</p>
 

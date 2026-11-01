@@ -154,3 +154,15 @@ test('off-subject stories are dropped, road and weather reports are not', () => 
   assert.ok(!isOffSubject('BP Highway obstructed'));
   assert.ok(!isOffSubject('Light Rain and Snowfall Likely in Parts of Nepal'));
 });
+
+test('the embed box credits its source and escapes what it prints', async () => {
+  const { embedHtml } = await import('../functions/embed.js');
+  const html = embedHtml({
+    name: 'Rasuwa <flood>', asOf: '2026-10-14T12:00:00+05:45', asOfSource: 'Nepal Police',
+    stats: [{ label: 'confirmed dead', value: '1,458' }],
+  });
+  assert.match(html, /1,458/);
+  assert.match(html, /Nepal Police, 14 October 2026/);
+  assert.match(html, /Rasuwa &lt;flood&gt;/);
+  assert.doesNotMatch(html, /<flood>/);
+});
