@@ -15,7 +15,7 @@ node_modules/
 # it needs to travel over the wire.
 #
 # Sources that must stay tracked: src/, index.html, event.json, today.json,
-# data/updates/, PROMPT.md, deploy.sh, functions/, _headers, _redirects and
+# data/updates/, deploy.sh, functions/, _headers, _redirects and
 # the root icons.
 # ---------------------------------------------------------------------------
 # The share and card pictures were left out of Git because deploy.sh uploaded
@@ -48,3 +48,5 @@ node_modules/
 # in the repository is a dead link on the live domain. It is 60KB of text.
 !investigation.json
 
+# Stray numbered copies a synced folder leaves beside a file.
+* [0-9].*

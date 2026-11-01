@@ -25,7 +25,7 @@ const BLUE = '#3D74C4';
 
 /* The site's own two typefaces. The rasteriser is handed the actual font files
    from assets/fonts, so a card drawn on the cloud machine that runs the hourly
-   routine comes out identical to one drawn here, rather than falling back to
+   job comes out identical to one drawn here, rather than falling back to
    whatever happens to be installed there. Devanagari is listed after each so
    the Nepali pages' cards are not blank. */
 const SERIF = "Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif";

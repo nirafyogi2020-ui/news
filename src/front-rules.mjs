@@ -7,12 +7,12 @@
 
    The front page at / carries headlines written by other newsrooms, so two
    house rules have to be applied to text the site did not write: no em or en
-   dash anywhere in visible text, and no sentence that mentions the tooling
-   behind the site. A headline that cannot be made to comply is left out; the
-   page is never padded with a line it cannot stand behind.
+   dash anywhere in visible text, and no technology stories, which are not
+   disaster reporting. A headline that cannot be made to comply is left out;
+   the page is never padded with a line it cannot stand behind.
    ========================================================================= */
 
-/** Words the site never prints in its own voice, or in a line it reprints. */
+/** Technology stories: off subject on a disaster front page. */
 export const BANNED_WORDS = /\b(?:AI|A\.I\.|artificial intelligence|machine learning|LLMs?|chatbots?|generated|generative|models?)\b/i;
 
 export function hasBannedWord(text) {

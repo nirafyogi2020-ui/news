@@ -341,11 +341,10 @@ else if((t==='system'||!t)&&window.matchMedia&&matchMedia('(prefers-color-scheme
      Items are built as nodes, never as markup, because the headlines are
      other people's text. The rules are the build's own, handed over below. */
   var list = document.getElementById('fp-news');
-  var RULES = {"banned":"\\b(?:AI|A\\.I\\.|artificial intelligence|machine learning|LLMs?|chatbots?|generated|generative|models?)\\b","disaster":"flood|flash flood|landslide|mudslide|earthquake|quake|tremor|aftershock|avalanche|glacier|glacial|GLOF|barrier lake|monsoon|heavy rain|rainfall|storm|cyclone|lightning|hailstorm|windstorm|cold wave|heatwave|drought|wildfire|forest fire|fire|disaster|hazard|rescue|rescued|missing|death toll|dead|killed|bodies|relief|evacuat|displaced|shelter|NDRRMA|NEOC|Nepal Police|Nepali Army|Armed Police|Red Cross|ReliefWeb|Rasuwa|Bhote ?Koshi|Trishuli|Narayani|Syabrubesi|Rasuwagadhi|highway blocked|road blocked|bridge|washed away|swept away|inundat|बाढी|पहिरो|भूकम्प|भुइँचालो|विपद्|विपद|उद्धार|बेपत्ता|मृत्यु|ज्यान|शव|राहत|वर्षा|हिमपात|हिमताल|हिमपहिरो|चक्रवात|आगलागी|डुबान|चट्याङ|सडक अवरुद्ध|राजमार्ग अवरुद्ध|पुल|रसुवा|भोटेकोशी|त्रिशूली|नारायणी"};
-  var banned = new RegExp(RULES.banned, 'i'), disaster = new RegExp(RULES.disaster, 'i');
+  var disaster = new RegExp("flood|flash flood|landslide|mudslide|earthquake|quake|tremor|aftershock|avalanche|glacier|glacial|GLOF|barrier lake|monsoon|heavy rain|rainfall|storm|cyclone|lightning|hailstorm|windstorm|cold wave|heatwave|drought|wildfire|forest fire|fire|disaster|hazard|rescue|rescued|missing|death toll|dead|killed|bodies|relief|evacuat|displaced|shelter|NDRRMA|NEOC|Nepal Police|Nepali Army|Armed Police|Red Cross|ReliefWeb|Rasuwa|Bhote ?Koshi|Trishuli|Narayani|Syabrubesi|Rasuwagadhi|highway blocked|road blocked|bridge|washed away|swept away|inundat|बाढी|पहिरो|भूकम्प|भुइँचालो|विपद्|विपद|उद्धार|बेपत्ता|मृत्यु|ज्यान|शव|राहत|वर्षा|हिमपात|हिमताल|हिमपहिरो|चक्रवात|आगलागी|डुबान|चट्याङ|सडक अवरुद्ध|राजमार्ग अवरुद्ध|पुल|रसुवा|भोटेकोशी|त्रिशूली|नारायणी", 'i');
   function clean(t){
     t = String(t || '').replace(/\s+[\u2013\u2014]\s+/g, ', ').replace(/[\u2013\u2014]/g, '-').replace(/\s+/g, ' ').trim();
-    return (!t || banned.test(t) || !disaster.test(t)) ? '' : t;
+    return (!t || !disaster.test(t)) ? '' : t;
   }
   function refreshNews(){
     if(!list || document.hidden) return;

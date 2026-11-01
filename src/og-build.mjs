@@ -7,14 +7,14 @@
    rasterised to PNG because Facebook and X will not read an SVG.
 
    Rasterising uses macOS `sips`, which is on the author's machine and not on
-   the cloud machine the scheduled job runs on. That is deliberate:
+   the machine the scheduled job runs on. That is deliberate:
 
      - SVGs are rewritten on every build, anywhere.
      - PNGs are only rebuilt where a rasteriser exists, and are committed.
      - template.mjs uses a page's own PNG when the file is there and falls
        back to /og-image.png when it is not.
 
-   So the routine can never publish a page pointing at a picture that does not
+   So the job can never publish a page pointing at a picture that does not
    exist, and it never needs a rasteriser of its own.
 
    Run: node src/og-build.mjs        (called by ./deploy.sh before the build)

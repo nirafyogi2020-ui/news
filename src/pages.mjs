@@ -9,7 +9,7 @@ import {
 } from './template.mjs';
 import * as C from './content.mjs';
 import {
-  BANNED_WORDS, DISASTER_WORDS_SOURCE, cleanHeadline, isNepalDisasterHeadline, frontNews, roadNews, frontTitle, tldrLines, daysSince,
+  DISASTER_WORDS_SOURCE, cleanHeadline, isNepalDisasterHeadline, frontNews, roadNews, frontTitle, tldrLines, daysSince,
 } from './front-rules.mjs';
 
 const ORG = { '@id': `${SITE}/#organization` };
@@ -2545,11 +2545,10 @@ ${lead ? `<figure class="fp-lead-media"><a href="${esc(dashPath)}"><img src="${e
      Items are built as nodes, never as markup, because the headlines are
      other people's text. The rules are the build's own, handed over below. */
   var list = document.getElementById('fp-news');
-  var RULES = ${JSON.stringify({ banned: BANNED_WORDS.source, disaster: DISASTER_WORDS_SOURCE })};
-  var banned = new RegExp(RULES.banned, 'i'), disaster = new RegExp(RULES.disaster, 'i');
+  var disaster = new RegExp(${JSON.stringify(DISASTER_WORDS_SOURCE)}, 'i');
   function clean(t){
     t = String(t || '').replace(/\\s+[\\u2013\\u2014]\\s+/g, ', ').replace(/[\\u2013\\u2014]/g, '-').replace(/\\s+/g, ' ').trim();
-    return (!t || banned.test(t) || !disaster.test(t)) ? '' : t;
+    return (!t || !disaster.test(t)) ? '' : t;
   }
   function refreshNews(){
     if(!list || document.hidden) return;
