@@ -1,6 +1,54 @@
 {
-  "updated": "2026-10-31T06:58:21.000Z",
+  "updated": "2026-11-01T06:13:31.000Z",
   "posts": [
+    {
+      "id": "auto-2026-11-01-disaster-affects-166-households-at-mangala-of-myagdi",
+      "title": "Disaster affects 166 households at Mangala of Myagdi",
+      "time": "2026-11-01T06:13:31.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/11/Mangala-Effective-2.jpg",
+      "body": [
+        "MYAGDI: Total 166 households were affected by the recent rain-induced floods and landslides at Mangala Rural Municipality in Myagdi."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/nation/disaster-affects-166-households-at-mangala-of-myagdi/"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-11-01-",
+      "title": "बाढीपहिरोबाट मङ्गलाका १६६ परिवार प्रभावित",
+      "time": "2026-11-01T05:43:50.000Z",
+      "image": "https://images.nagariknewscdn.com/2025/third-party/1793512012_pahiro%2015.jpg",
+      "body": [
+        "बाढीपहिरोबाट मङ्गला गाउँपालिकामा १६६ घरपरिवार प्रभावित भएका छन्। बाढीपहिरोले १७ घरमा पूर्ण क्षति भएको छ भने ७७ घर उच्च जोखिममा र ७२ घर जोखिममा छन्। गाउँपालिकाका अनुसार विपद्बाट ५७२ रोपनी खेतबारीमा क्षति पुगेको छ।"
+      ],
+      "sources": [
+        {
+          "name": "Nagarik News",
+          "url": "https://nagariknews.nagariknetwork.com/social-affairs/166-families-in-mangala-affected-by-floods-and-landslides-br-78-75.html"
+        }
+      ],
+      "auto": true
+    },
+    {
+      "id": "auto-2026-11-01-six-indian-tourists-missing-in-dolpa-after-heavy-snowfall-he",
+      "title": "Six Indian tourists missing in Dolpa after heavy snowfall; helicopter requested for rescue",
+      "time": "2026-11-01T01:53:04.000Z",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/11/himpat_dolpa.jpg",
+      "body": [
+        "Six Indian tourists, including two women, have lost contact after heavy snowfall while travelling from Dolpo Buddha Rural Municipality in Dolpa toward Shey Phoksundo Lake."
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar",
+          "url": "https://english.onlinekhabar.com/six-indian-tourists-missing-in-dolpa.html"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-10-31-kulekhani-reservoir-filling-up-downstream-residents-urged-to",
       "title": "Kulekhani reservoir filling up; downstream residents urged to exercise caution",

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-31T07:45:49.000Z",
+  "updated": "2026-11-01T06:13:31.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -122,6 +122,33 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-01-auto-2026-11-01-disaster-affects-166-households-at-mangala-of-myagdi/",
+      "title": "Disaster affects 166 households at Mangala of Myagdi",
+      "time": "2026-11-01T06:13:31.000Z",
+      "summary": "MYAGDI: Total 166 households were affected by the recent rain-induced floods and landslides at Mangala Rural Municipality in Myagdi.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
+    {
+      "url": "/updates/2026-11-01-auto-2026-11-01/",
+      "title": "बाढीपहिरोबाट मङ्गलाका १६६ परिवार प्रभावित",
+      "time": "2026-11-01T05:43:50.000Z",
+      "summary": "बाढीपहिरोबाट मङ्गला गाउँपालिकामा १६६ घरपरिवार प्रभावित भएका छन्। बाढीपहिरोले १७ घरमा पूर्ण क्षति भएको छ भने ७७ घर उच्च जोखिममा र ७२ घर जोखिममा छन्। गाउँपालिकाका अनुसार विपद्बाट ५७२ रोपनी खेतबारीमा क्षति पुगेको छ।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
+    {
+      "url": "/updates/2026-11-01-auto-2026-11-01-six-indian-tourists-missing-in-dolpa-after-heavy-snowf/",
+      "title": "Six Indian tourists missing in Dolpa after heavy snowfall; helicopter requested for rescue",
+      "time": "2026-11-01T01:53:04.000Z",
+      "summary": "Six Indian tourists, including two women, have lost contact after heavy snowfall while travelling from Dolpo Buddha Rural Municipality in Dolpa toward Shey Phoksundo Lake.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
     {
       "url": "/updates/2026-10-31-auto-2026-10-31/",
       "title": "होर्मुज जलमार्गमा तनाव चर्कियो, इरानद्वारा तीन तेल ट्याङ्कर अवरुद्ध",
