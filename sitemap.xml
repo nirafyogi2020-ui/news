@@ -363,16 +363,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-26-auto-2026-10-26/</loc>
-    <lastmod>2026-10-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/assets/photos/updates-2026-10-26-auto-2026-10-26.jpg</image:loc>
-      <image:title>उत्तरगयाका बाढी प्रभावितलाई होल्डिङ सेन्टरमै नागरिकताको प्रतिलिपि दिइँदै</image:title>
-    </image:image>
-  </url>
-  <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-26-auto-2026-10-26-rasuwa-bhote-koshi-floods-cause-over-rs-79-billion-in-/</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -380,6 +370,16 @@
     <image:image>
       <image:loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/assets/photos/updates-2026-10-26-auto-2026-10-26-rasuwa-bhote-koshi-floods-cause-over-rs-79-billion-in-.jpg</image:loc>
       <image:title>Rasuwa-Bhote Koshi floods cause over Rs 79 billion in damages</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-26-auto-2026-10-26/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/assets/photos/updates-2026-10-26-auto-2026-10-26.jpg</image:loc>
+      <image:title>हिमाली बाढीले मानव स्वास्थ्यमा जोखिम | Nepal Disaster Update Live</image:title>
     </image:image>
   </url>
   <url>
