@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-02T01:15:00.000Z",
+  "updated": "2026-11-02T01:27:38.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-02-auto-2026-11-02-mid-april-to-1st-november-17-688-disaster-incidents-ac/",
+      "title": "Mid-April to 1st November: 17,688 disaster incidents across Nation",
+      "time": "2026-11-02T01:27:38.000Z",
+      "summary": "KATHMANDU: Between mid-April and November 1, a total of 7,688 disaster incidents have occurred throughout the country. Sadly, 402 people have died, and 17 are still missing in these incidents.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
     {
       "url": "/updates/2026-11-02-auto-2026-11-02-flood-displaced-families-in-rasuwa-nuwakot-yet-to-rece/",
       "title": "Flood-displaced families in Rasuwa, Nuwakot yet to receive promised house rent support",
