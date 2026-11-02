@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-02T00:51:39.000Z",
+  "updated": "2026-11-02T01:15:00.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-02-auto-2026-11-02-flood-displaced-families-in-rasuwa-nuwakot-yet-to-rece/",
+      "title": "Flood-displaced families in Rasuwa, Nuwakot yet to receive promised house rent support",
+      "time": "2026-11-02T01:15:00.000Z",
+      "summary": "People look on at the flood-ravaged Betrawati. Kathmandu, November 1 More than two months after floods displaced their homes, many families in Rasuwa and Nuwakot are still waiting for the monthly rent assistance promised by the government.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
     {
       "url": "/updates/2026-11-02-auto-2026-11-02/",
       "title": "विपद प्रभावित जलजलामा क्षतिको विवरण सङ्कलन अन्तिम चरणमा",
