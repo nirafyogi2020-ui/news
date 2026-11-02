@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-01T06:13:31.000Z",
+  "updated": "2026-11-02T00:51:39.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-02-auto-2026-11-02/",
+      "title": "विपद प्रभावित जलजलामा क्षतिको विवरण सङ्कलन अन्तिम चरणमा",
+      "time": "2026-11-02T00:51:39.000Z",
+      "summary": "म्याग्दी– मनसुनजन्य विपदबाट प्रभावित बनेको म्याग्दीको सदरमुकाम बेनी बजारसँगै रहेको पर्वतको जलजला गाउँपालिकामा क्षतिको विवरण सङ्कलन र मूल्याङ्कन कार्य अन्तिम चरणमा पुगेको छ ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
     {
       "url": "/updates/2026-11-01-auto-2026-11-01-disaster-affects-166-households-at-mangala-of-myagdi/",
       "title": "Disaster affects 166 households at Mangala of Myagdi",

@@ -39,10 +39,9 @@
     font-size="16" letter-spacing="0.6" fill="rgba(255,255,255,0.82)"
     >Photo: Khabarhub</text>
 
-  <text x="34" y="278" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
-    font-size="34" font-weight="600" fill="#FFFFFF" word-spacing="7">रसुवा बाढीले निम्त्याएको भौतिक क्षति र</text><text x="34" y="320" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
-    font-size="34" font-weight="600" fill="#FFFFFF" word-spacing="7">आवश्यकता मूल्याङ्कन यथार्थपरक बनाउन</text><text x="34" y="362" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
-    font-size="34" font-weight="600" fill="#FFFFFF" word-spacing="7">अर्थमन्त्रीको निर्देशन</text>
+  <text x="34" y="320" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
+    font-size="34" font-weight="600" fill="#FFFFFF" word-spacing="7">किम्रुङ खोलाको बहाव रोकिएपछि कास्की र</text><text x="34" y="362" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
+    font-size="34" font-weight="600" fill="#FFFFFF" word-spacing="7">पर्वतमा उच्च सतर्कता : कस्तो छ जोखिम ?</text>
 
   <rect x="0" y="443" width="800" height="7" fill="#D8404B"/>
   <rect x="0.75" y="0.75" width="798.5" height="448.5" fill="none"

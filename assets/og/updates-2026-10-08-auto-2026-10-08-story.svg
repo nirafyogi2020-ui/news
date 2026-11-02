@@ -35,13 +35,14 @@
   
 
   <text x="90" y="760" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
-      font-weight="600" fill="#F4F0E6" word-spacing="17">विपद् अध्ययन समितिका</text><text x="90" y="860" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
-      font-weight="600" fill="#F4F0E6" word-spacing="17">सभापति पौडेलले लिंए</text><text x="90" y="960" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
-      font-weight="600" fill="#F4F0E6" word-spacing="17">शपथ</text>
-  <text x="90" y="1036" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
-      fill="#B9B4A6" word-spacing="8">काठमाडौँ- राष्ट्रियसभाका अध्यक्ष नारायणप्रसाद</text><text x="90" y="1084" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
-      fill="#B9B4A6" word-spacing="8">दाहालले ‘भोटेकोशी तथा कालीगण्डकी करिडोर</text><text x="90" y="1132" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
-      fill="#B9B4A6" word-spacing="8">विपद्सम्बन्धी अध्ययन तथा अनुगमन संसदीय विशेष</text>
+      font-weight="600" fill="#F4F0E6" word-spacing="17">आईपीयू महासभामा</text><text x="90" y="860" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
+      font-weight="600" fill="#F4F0E6" word-spacing="17">नेपालको आपत्कालीन</text><text x="90" y="960" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
+      font-weight="600" fill="#F4F0E6" word-spacing="17">प्रस्ताव दुईतिहाइ</text><text x="90" y="1060" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
+      font-weight="600" fill="#F4F0E6" word-spacing="17">बहुमतले चयन</text>
+  <text x="90" y="1136" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
+      fill="#B9B4A6" word-spacing="8">तान्जानिया– तान्जानियाको अरुसामा जारी अन्तर–संसदीय</text><text x="90" y="1184" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
+      fill="#B9B4A6" word-spacing="8">संघ (आईपीयू) को १५३औँ महासभामा नेपालले प्रस्तुत</text><text x="90" y="1232" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
+      fill="#B9B4A6" word-spacing="8">गरेको जलवायुजन्य विपद्सम्बन्धी</text>
   
 
   <rect x="90" y="1670" width="900" height="2" fill="rgba(244,240,230,0.16)"/>
