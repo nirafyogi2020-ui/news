@@ -35,14 +35,12 @@
   
 
   <text x="90" y="760" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
-      font-weight="600" fill="#F4F0E6" word-spacing="17">उत्तरगयाका बाढी</text><text x="90" y="860" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
-      font-weight="600" fill="#F4F0E6" word-spacing="17">प्रभावितलाई होल्डिङ</text><text x="90" y="960" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
-      font-weight="600" fill="#F4F0E6" word-spacing="17">सेन्टरमै नागरिकताको</text><text x="90" y="1060" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
-      font-weight="600" fill="#F4F0E6" word-spacing="17">प्रतिलिपि दिइँदै</text>
-  <text x="90" y="1136" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
-      fill="#B9B4A6" word-spacing="8">रसुवा– नुवाकोटमा अस्थायी रुपमा बसोबास गर्दै आएका</text><text x="90" y="1184" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
-      fill="#B9B4A6" word-spacing="8">रसुवाको उत्तरगया गाउँपालिकाका बाढी प्रभावितलाई</text><text x="90" y="1232" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
-      fill="#B9B4A6" word-spacing="8">होल्डिङ सेन्टरबाटै नागरिकताको प्रत</text>
+      font-weight="600" fill="#F4F0E6" word-spacing="17">हिमाली बाढीले मानव</text><text x="90" y="860" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif" font-size="84"
+      font-weight="600" fill="#F4F0E6" word-spacing="17">स्वास्थ्यमा जोखिम</text>
+  <text x="90" y="936" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
+      fill="#B9B4A6" word-spacing="8">नेपाल–चीन सीमावर्ती रसुवामा गत भदौ १० गते आएको</text><text x="90" y="984" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
+      fill="#B9B4A6" word-spacing="8">विनाशकारी बाढीले हिमाली क्षेत्रमा बढ्दो विपद्</text><text x="90" y="1032" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="34"
+      fill="#B9B4A6" word-spacing="8">जोखिमसँगै मानव स्वास्थ्यमा पर्न सक्ने</text>
   
 
   <rect x="90" y="1670" width="900" height="2" fill="rgba(244,240,230,0.16)"/>

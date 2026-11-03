@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-02T01:27:38.000Z</news:publication_date>
+      <news:publication_date>2026-11-03T00:28:20.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,458 dead, 5,285 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-02T01:27:38.000Z</news:publication_date>
+      <news:publication_date>2026-11-03T00:28:20.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-03-auto-2026-11-03/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-03T00:28:20.000Z</news:publication_date>
+      <news:title>हिमाली आवाज स्थापित गर्ने अवसर</news:title>
     </news:news>
   </url>
   <url>
@@ -87,39 +98,6 @@
       </news:publication>
       <news:publication_date>2026-11-01T01:53:04.000Z</news:publication_date>
       <news:title>Six Indian tourists missing in Dolpa after heavy snowfall; helicopter requested for rescue</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-31-auto-2026-10-31/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-31T07:45:49.000Z</news:publication_date>
-      <news:title>होर्मुज जलमार्गमा तनाव चर्कियो, इरानद्वारा तीन तेल ट्याङ्कर अवरुद्ध</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-31-auto-2026-10-31-kulekhani-reservoir-filling-up-downstream-residents-ur/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-31T06:58:21.000Z</news:publication_date>
-      <news:title>Kulekhani reservoir filling up; downstream residents urged to exercise caution</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-31-auto-2026-10-31-over-12-roads-networks-across-the-country-obstructed/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-31T06:26:37.000Z</news:publication_date>
-      <news:title>Over 12 roads networks across the country obstructed</news:title>
     </news:news>
   </url>
 </urlset>

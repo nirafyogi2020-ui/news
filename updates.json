@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-02T01:27:38.000Z",
+  "updated": "2026-11-03T00:28:20.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-03-auto-2026-11-03/",
+      "title": "हिमाली आवाज स्थापित गर्ने अवसर",
+      "time": "2026-11-03T00:28:20.000Z",
+      "summary": "हिमाल पग्लिँदै छन्, हिमतालको जोखिम बढ्दै छ र हिमाली विपद्ले बर्सेनि ठुलो मानवीय तथा आर्थिक क्षति निम्त्याइरहेका छन्। तर, विश्व जलवायु वार्तामा हिमालको संकट अझै प्राथमिकतामा पर्न सकेको छैन।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
     {
       "url": "/updates/2026-11-02-auto-2026-11-02-mid-april-to-1st-november-17-688-disaster-incidents-ac/",
       "title": "Mid-April to 1st November: 17,688 disaster incidents across Nation",
