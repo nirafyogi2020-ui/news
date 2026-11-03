@@ -4,7 +4,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/</loc>
-    <lastmod>2026-11-03T00:28:20.000Z</lastmod>
+    <lastmod>2026-11-03T02:21:37.000Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/</loc>
-    <lastmod>2026-11-03T00:28:20.000Z</lastmod>
+    <lastmod>2026-11-03T02:21:37.000Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/"/>
@@ -26,25 +26,25 @@
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/</loc>
-    <lastmod>2026-11-03T00:28:20.000Z</lastmod>
+    <lastmod>2026-11-03T02:21:37.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/live-updates/</loc>
-    <lastmod>2026-11-03T00:28:20.000Z</lastmod>
+    <lastmod>2026-11-03T02:21:37.000Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/casualties/</loc>
-    <lastmod>2026-11-03T00:28:20.000Z</lastmod>
+    <lastmod>2026-11-03T02:21:37.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/missing-persons/</loc>
-    <lastmod>2026-11-03T00:28:20.000Z</lastmod>
+    <lastmod>2026-11-03T02:21:37.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/missing-persons/"/>
@@ -52,25 +52,25 @@
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/timeline/</loc>
-    <lastmod>2026-11-03T00:28:20.000Z</lastmod>
+    <lastmod>2026-11-03T02:21:37.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/cause/</loc>
-    <lastmod>2026-11-03T00:28:20.000Z</lastmod>
+    <lastmod>2026-11-03T02:21:37.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/damage/</loc>
-    <lastmod>2026-11-03T00:28:20.000Z</lastmod>
+    <lastmod>2026-11-03T02:21:37.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/map/</loc>
-    <lastmod>2026-11-03T00:28:20.000Z</lastmod>
+    <lastmod>2026-11-03T02:21:37.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -140,7 +140,7 @@
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/</loc>
-    <lastmod>2026-11-03T00:28:20.000Z</lastmod>
+    <lastmod>2026-11-03T02:21:37.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
@@ -163,10 +163,20 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-03-auto-2026-11-03-rs-1-7-million-distributed-to-disaster-victims-as-reli/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-03-auto-2026-11-03/</loc>
     <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/assets/photos/updates-2026-11-03-auto-2026-11-03.jpg</image:loc>
+      <image:title>हिमाली आवाज स्थापित गर्ने अवसर | Nepal Disaster Update Live</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-02-auto-2026-11-02-mid-april-to-1st-november-17-688-disaster-incidents-ac/</loc>
@@ -356,16 +366,6 @@
     <image:image>
       <image:loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/assets/photos/updates-2026-10-27-auto-2026-10-27-flood-landslide-trigger-water-shortage-in-beni-myagdi.jpg</image:loc>
       <image:title>Flood, landslide trigger water shortage in Beni, Myagdi</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-27-auto-2026-10-27/</loc>
-    <lastmod>2026-10-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/assets/photos/updates-2026-10-27-auto-2026-10-27.jpg</image:loc>
-      <image:title>बाढीपहिरोले पाइपलाइन बगाएपछि बेनीमा खानेपानीको समस्या</image:title>
     </image:image>
   </url>
   <url>
@@ -1024,7 +1024,7 @@
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/ne/</loc>
-    <lastmod>2026-11-03T00:28:20.000Z</lastmod>
+    <lastmod>2026-11-03T02:21:37.000Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/"/>
@@ -1040,7 +1040,7 @@
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/ne/bepatta/</loc>
-    <lastmod>2026-11-03T00:28:20.000Z</lastmod>
+    <lastmod>2026-11-03T02:21:37.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/missing-persons/"/>
