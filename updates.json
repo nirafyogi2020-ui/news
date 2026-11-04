@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-03T02:35:08.000Z",
+  "updated": "2026-11-04T00:04:08.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-04-auto-2026-11-04/",
+      "title": "‘जलवायु परिवर्तनको असर न्यूनीकरण, विपद् व्यवस्थापन क्षेत्रमा अर्थपूर्ण युवा सहभागिता चाहिन्छ’",
+      "time": "2026-11-04T00:04:08.000Z",
+      "summary": "मैले युवा र क्लाइमेट चेन्जमा आजसम्म बोलेको छैन, पहिलो पटक बोल्दै छु । जलवायु परिवर्तन र वातावरण सुरक्षाका क्षेत्रमा लामो समयदेखि प्राध्यापन र अनुसन्धान गर्दै आएको छु।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
     {
       "url": "/updates/2026-11-03-auto-2026-11-03-rs-1-7-million-distributed-to-disaster-victims-as-reli/",
       "title": "Rs 1.7 million distributed to disaster victims as relief",
