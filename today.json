@@ -1,6 +1,22 @@
 {
-  "updated": "2026-11-04T00:04:08.000Z",
+  "updated": "2026-11-04T00:19:02.000Z",
   "posts": [
+    {
+      "id": "auto-2026-11-04-",
+      "title": "कोषमा अर्ब पीडितको बेहाल",
+      "time": "2026-11-04T00:19:02.000Z",
+      "image": "https://images.nagariknewscdn.com/2026/third-party/1767658562_Sampadakiya.jpg",
+      "body": [
+        "भोटेकोसी बाढीले घर, परिवार, जीविकोपार्जन मात्र होइन, सयौं नागरिकको भविष्यसमेत सँगै बगाएको छ।"
+      ],
+      "sources": [
+        {
+          "name": "Nagarik News",
+          "url": "https://nagariknews.nagariknetwork.com/editorial/billions-of-victims-in-the-fund-are-in-distress-br-41-94.html"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-11-04-",
       "title": "‘जलवायु परिवर्तनको असर न्यूनीकरण, विपद् व्यवस्थापन क्षेत्रमा अर्थपूर्ण युवा सहभागिता चाहिन्छ’",
