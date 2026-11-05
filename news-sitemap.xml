@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-04T02:01:34.000Z</news:publication_date>
+      <news:publication_date>2026-11-05T00:43:35.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,458 dead, 5,285 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-04T02:01:34.000Z</news:publication_date>
+      <news:publication_date>2026-11-05T00:43:35.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-05-auto-2026-11-05/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-05T00:43:35.000Z</news:publication_date>
+      <news:title>बाढीले बगर बनाएको खेतमा बदामखेती</news:title>
     </news:news>
   </url>
   <url>
@@ -43,17 +54,6 @@
       </news:publication>
       <news:publication_date>2026-11-03T02:21:37.000Z</news:publication_date>
       <news:title>Rs 1.7 million distributed to disaster victims as relief</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-03-auto-2026-11-03/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-03T00:28:20.000Z</news:publication_date>
-      <news:title>हिमाली आवाज स्थापित गर्ने अवसर</news:title>
     </news:news>
   </url>
 </urlset>
