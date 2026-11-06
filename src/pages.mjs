@@ -11,6 +11,20 @@ import * as C from './content.mjs';
 import {
   DISASTER_WORDS_SOURCE, cleanHeadline, isNepalDisasterHeadline, frontNews, roadNews, frontTitle, tldrLines, daysSince,
 } from './front-rules.mjs';
+import { photoSrcset } from './photo.mjs';
+
+/* A card photograph's srcset and sizes, versioned like every other asset.
+   `sizes` is how wide the picture is drawn, so the browser can pick the
+   card-sized copy on anything narrower than 800 device pixels. */
+function photoSet(rec, sizes) {
+  const set = photoSrcset(rec, name => siteAsset('/assets/photos/' + name));
+  return set ? ` srcset="${esc(set)}" sizes="${sizes}"` : '';
+}
+/* The lead runs the full column: the page less its 20 px gutters, or 780 px
+   beside the rail. The "From the area" grid is two across on a phone and
+   three across from 640 px. */
+const LEAD_SIZES = '(min-width:1100px) 780px, calc(100vw - 40px)';
+const AREA_SIZES = '(max-width:639px) calc(50vw - 26px), (min-width:1100px) 252px, calc(33vw - 20px)';
 
 const ORG = { '@id': `${SITE}/#organization` };
 
@@ -2217,7 +2231,7 @@ function frontPhotos(posts, index, skipKey, limit = 6) {
        of the disaster, not of whatever else the briefings picked up. */
     const title = cleanHeadline(p.title);
     if (!title || !isNepalDisasterHeadline(title)) continue;
-    out.push({ file: shot.file, credit: shot.credit, title, url: p.url });
+    out.push({ rec: shot, file: shot.file, credit: shot.credit, title, url: p.url });
     if (out.length === limit) break;
   }
   return out;
@@ -2418,7 +2432,11 @@ export function frontPage(ctx, extra = {}) {
   const photoIndex = extra.photos || {};
   const leadKey = LEAD_PHOTO_ORDER.find(k => photoIndex[k] && photoIndex[k].file) || '';
   const lead = leadKey ? photoIndex[leadKey] : null;
-  const preload = lead ? `<link rel="preload" as="image" href="${esc(siteAsset('/assets/photos/' + lead.file))}" fetchpriority="high">` : '';
+  const leadSet = lead ? photoSrcset(lead, name => siteAsset('/assets/photos/' + name)) : '';
+  const preload = lead
+    ? `<link rel="preload" as="image" href="${esc(siteAsset('/assets/photos/' + lead.file))}"`
+      + (leadSet ? ` imagesrcset="${esc(leadSet)}" imagesizes="${LEAD_SIZES}"` : '') + ` fetchpriority="high">`
+    : '';
   const news = frontNews(extra.news || []);
   const roads = roadNews(news);
   const photos = frontPhotos(ctx.posts, photoIndex, leadKey);
@@ -2436,7 +2454,7 @@ export function frontPage(ctx, extra = {}) {
     ;
   const leadHtml = `
 ${tldr.length ? `<ol class="fp-tldr" aria-label="In short">${tldr.map(l => `<li><span class="k">${esc(l.k)}</span><p class="t">${esc(l.t)}</p></li>`).join('')}</ol>` : ''}
-${lead ? `<figure class="fp-lead-media"><a href="${esc(dashPath)}"><img src="${esc(siteAsset('/assets/photos/' + lead.file))}" alt="${esc(event.name || 'The event')}: the river in flood through Rasuwa district, Nepal" width="1200" height="675" fetchpriority="high" decoding="async"></a><figcaption>Photograph: ${esc(lead.credit)}</figcaption></figure>` : ''}
+${lead ? `<figure class="fp-lead-media"><a href="${esc(dashPath)}"><img src="${esc(siteAsset('/assets/photos/' + lead.file))}"${photoSet(lead, LEAD_SIZES)} alt="${esc(event.name || 'The event')}: the river in flood through Rasuwa district, Nepal" width="1200" height="675" fetchpriority="high" decoding="async"></a><figcaption>Photograph: ${esc(lead.credit)}</figcaption></figure>` : ''}
 <p class="fp-sec-sub"><a href="${esc(dashPath)}">Open the live dashboard</a>: every counter, the district table, the map, the videos and the Investigation board.</p>`;
 
   /* -- the figures ---------------------------------------------------------- */
@@ -2461,7 +2479,7 @@ ${lead ? `<figure class="fp-lead-media"><a href="${esc(dashPath)}"><img src="${e
   <div class="fp-sec-head"><h2 id="fp-photo-h">From the area</h2><a href="/updates/">All briefings</a></div>
   <p class="fp-sec-sub">Photographs published by the newsrooms the briefings cite, credited to each one.</p>
   <div class="fp-photos">${photos.map(p =>
-    `<figure><a href="${esc(p.url)}"><img src="${esc(siteAsset('/assets/photos/' + p.file))}" alt="${esc(p.title)}" width="800" height="600" loading="lazy" decoding="async">`
+    `<figure><a href="${esc(p.url)}"><img src="${esc(siteAsset('/assets/photos/' + p.file))}"${photoSet(p.rec, AREA_SIZES)} alt="${esc(p.title)}" width="800" height="600" loading="lazy" decoding="async">`
     + `<figcaption>${esc(p.title)}<span class="c">Photograph: ${esc(p.credit)}</span></figcaption></a></figure>`).join('')}</div>
 </section>` : '';
 

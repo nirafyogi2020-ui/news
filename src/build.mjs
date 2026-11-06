@@ -24,6 +24,7 @@ import * as C from './content.mjs';
 import * as I from './investigation.mjs';
 import { renderInvestigation } from './dashboard.mjs';
 import { isDisasterWireHeadline } from '../functions/api/global.js';
+import { ensureCardVariants, photoSrcset } from './photo.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const ARCHIVE = join(ROOT, 'data', 'updates');
@@ -188,9 +189,17 @@ const ctx = { posts, event, today, modified, buildDay: nptDay(modified) };
    page is a picture with no name against it. */
 const PHOTO_INDEX = (() => {
   try {
+    /* The card-sized copies first, so the manifest read below names them.
+       Nothing to do on an ordinary build; og-build has usually just run. */
+    try { ensureCardVariants(join(ROOT, 'assets', 'photos')); } catch { /* the full files still serve */ }
     return JSON.parse(readFileSync(join(ROOT, 'assets', 'photos', 'index.json'), 'utf8'));
   } catch { return {}; }
 })();
+
+/* How wide a card picture is drawn, for the browser's srcset choice: the full
+   width less the page padding on a phone, the 640 px single column to 999 px,
+   and about half the grid (the lead story's picture column) above that. */
+const CARD_SIZES = '(min-width:1000px) 520px, (min-width:672px) 640px, calc(100vw - 32px)';
 
 function ssrTodayCards(list) {
   if (!list.length) {
@@ -212,6 +221,11 @@ function ssrTodayCards(list) {
     /* A real photograph only. The drawn tile repeats the headline printed under
        it, so it stays on shared links and off the cards. */
     const photo = saved ? `/assets/photos/${saved}` : remote;
+    /* The card-sized copy beside the full file; the browser takes the smaller
+       one on every card narrower than 800 device pixels. The widths match the
+       dashboard's grid: one column to 1000 px (at most 640 wide), then two. */
+    const srcset = saved ? photoSrcset(PHOTO_INDEX[ogName]) : '';
+    const sizes = srcset ? ` srcset="${escAttr(srcset)}" sizes="${CARD_SIZES}"` : '';
     const story = assetVersioned(`${ogName}-story.png`);
     const named = PHOTO_INDEX[ogName] && PHOTO_INDEX[ogName].credit;
     const shot = named && !named.includes('.') ? named : (sourceNames[0] || named);
@@ -227,7 +241,7 @@ function ssrTodayCards(list) {
         ? '<div class="tc-media">'
           + `<a class="post-photo-link" href="${escAttr(post.url)}" tabindex="-1" aria-hidden="true">`
           + `<img class="post-photo" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="800" height="450"`
-          + ` src="${escAttr(photo)}" alt="${escAttr(post.title)}"`
+          + ` src="${escAttr(photo)}"${sizes} alt="${escAttr(post.title)}"`
           + ` onerror="this.closest('.tc-media').classList.add('tc-media-blank');this.remove()"></a>`
           + '</div>'
         : '')
@@ -791,6 +805,16 @@ index = index.replace(
   /<!--ssr:ogv-->[\s\S]*?<!--\/ssr:ogv-->/,
   () => `<!--ssr:ogv-->${JSON.stringify(ogVersions)}<!--/ssr:ogv-->`
 );
+
+/* The hero photograph is written into the source by hand. Its card-sized copy
+   is added here from the manifest, so the source never names a file that the
+   build might not have made. */
+const HERO_SIZES = '(min-width:1081px) 620px, calc(100vw - 32px)';
+const BY_FILE = Object.fromEntries(Object.values(PHOTO_INDEX).filter(r => r && r.file).map(r => [r.file, r]));
+index = index.replace(/<img src="\/assets\/photos\/([^"?]+)"(?![^>]*srcset)/g, (m, file) => {
+  const set = photoSrcset(BY_FILE[file]);
+  return set ? `${m} srcset="${escAttr(set)}" sizes="${HERO_SIZES}"` : m;
+});
 
 /* dateModified must track the newest bulletin, not the time the build ran. */
 index = index.replace(/"dateModified"\s*:\s*"[^"]*"/g, `"dateModified": "${modified}"`);

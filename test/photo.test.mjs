@@ -1,9 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync, existsSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync, writeFileSync, mkdtempSync, utimesSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-import { imageSize, shrinkPhoto, MAX_PHOTO_WIDTH } from '../src/photo.mjs';
+import { imageSize, shrinkPhoto, ensureCardVariants, cardVariantName, photoSrcset, MAX_PHOTO_WIDTH, CARD_PHOTO_WIDTH } from '../src/photo.mjs';
 
 let Resvg = null;
 try { ({ Resvg } = await import('@resvg/resvg-js')); } catch { Resvg = null; }
@@ -70,4 +71,60 @@ test('every card photograph the site points at is within the width limit', () =>
       return s && s.width > MAX_PHOTO_WIDTH;
     });
   assert.deepEqual(wide, []);
+});
+
+test('the card-sized copy is written once, named in the manifest, and left alone when up to date', { skip: !Resvg && 'resvg not installed' }, () => {
+  const dir = mkdtempSync(join(tmpdir(), 'photos-'));
+  try {
+    writeFileSync(join(dir, 'wide.jpg'), shrinkPhoto(testPng(1400, 700), 'image/png').buf);
+    writeFileSync(join(dir, 'small.jpg'), shrinkPhoto(testPng(600, 400), 'image/png').buf);
+    writeFileSync(join(dir, 'index.json'), JSON.stringify({
+      wide: { file: 'wide.jpg', type: 'image/jpeg', credit: 'Test' },
+      small: { file: 'small.jpg', type: 'image/jpeg', credit: 'Test' },
+      gone: { file: 'missing.jpg', type: 'image/jpeg', credit: 'Test' },
+    }));
+
+    assert.equal(ensureCardVariants(dir), 1, 'one copy for the one wide picture');
+    const manifest = JSON.parse(readFileSync(join(dir, 'index.json'), 'utf8'));
+    assert.equal(manifest.wide.card, 'wide-800.jpg');
+    assert.deepEqual([manifest.wide.width, manifest.wide.height], [1400, 700]);
+    assert.deepEqual(imageSize(readFileSync(join(dir, 'wide-800.jpg'))), { width: CARD_PHOTO_WIDTH, height: 400 });
+    assert.equal(manifest.small.card, undefined, 'a picture already at card size gets no copy');
+    assert.deepEqual([manifest.small.width, manifest.small.height], [600, 400]);
+    assert.equal(manifest.gone.card, undefined);
+
+    assert.equal(ensureCardVariants(dir), 0, 'nothing to do the second time');
+
+    /* A source replaced later gets a fresh copy. */
+    const later = new Date(Date.now() + 60000);
+    utimesSync(join(dir, 'wide.jpg'), later, later);
+    assert.equal(ensureCardVariants(dir), 1);
+
+    assert.equal(cardVariantName('a.webp'), 'a-800.jpg');
+    assert.equal(photoSrcset(manifest.wide), '/assets/photos/wide-800.jpg 800w, /assets/photos/wide.jpg 1400w');
+    assert.equal(photoSrcset(manifest.small), '');
+    assert.equal(photoSrcset(manifest.wide, n => '/x/' + n + '?v=1'), '/x/wide-800.jpg?v=1 800w, /x/wide.jpg?v=1 1400w');
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('every referenced photograph wider than the card has its card-sized copy filed', () => {
+  const manifest = JSON.parse(readFileSync(join(PHOTOS, 'index.json'), 'utf8'));
+  const problems = [];
+  for (const [slug, rec] of Object.entries(manifest)) {
+    if (!rec.file || !existsSync(join(PHOTOS, rec.file))) continue;
+    const size = imageSize(readFileSync(join(PHOTOS, rec.file)));
+    if (!size) continue;
+    if (rec.width !== size.width || rec.height !== size.height) problems.push(`${slug}: manifest size differs from the file`);
+    if (size.width > CARD_PHOTO_WIDTH && rec.type !== 'image/webp') {
+      if (rec.card !== cardVariantName(rec.file)) { problems.push(`${slug}: no card copy named`); continue; }
+      if (!existsSync(join(PHOTOS, rec.card))) { problems.push(`${slug}: ${rec.card} missing`); continue; }
+      const small = imageSize(readFileSync(join(PHOTOS, rec.card)));
+      if (!small || small.width !== CARD_PHOTO_WIDTH) problems.push(`${slug}: ${rec.card} is ${small && small.width} wide`);
+    } else if (rec.card) {
+      problems.push(`${slug}: names a card copy it does not need`);
+    }
+  }
+  assert.deepEqual(problems, []);
 });

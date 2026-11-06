@@ -9050,11 +9050,16 @@ var LiveFeed = (function(){
     return tail.charAt(0).toUpperCase() + tail.slice(1);
   }
 
+  /* Four frames across the column, two on a phone. */
+  var STRIP_SIZES = '(max-width:640px) calc(50vw - 54px), (min-width:1081px) 290px, calc(25vw - 50px)';
+
   function paintStrip(items){
     if(!strip || !items.length) return false;
     strip.innerHTML = items.slice(0, 4).map(function(it){
       var inner =
-        '<img src="' + esc(it.src) + '" alt="' + esc(it.caption) + '" loading="lazy" decoding="async">' +
+        '<img src="' + esc(it.src) + '" ' +
+        (it.srcset ? 'srcset="' + esc(it.srcset) + '" sizes="' + STRIP_SIZES + '" ' : '') +
+        'alt="' + esc(it.caption) + '" loading="lazy" decoding="async">' +
         '<span class="cap"><b>' + esc(it.caption) + '</b>' +
         (it.credit ? '<i>' + esc(it.credit) + '</i>' : '') + '</span>';
       if(!it.href) return '<span class="ph">' + inner + '</span>';
@@ -9099,6 +9104,9 @@ var LiveFeed = (function(){
         var post = byKey[slug];
         return {
           src: '/assets/photos/' + entry.file,
+          srcset: entry.card && entry.width
+            ? '/assets/photos/' + entry.card + ' 800w, /assets/photos/' + entry.file + ' ' + entry.width + 'w'
+            : '',
           href: post ? post.url : (entry.article || null),
           credit: entry.credit || null,
           caption: post && post.title ? post.title : captionOfSlug(slug)
@@ -10415,6 +10423,14 @@ var LiveFeed = (function(){
      named beside it. Nothing on a card is left uncredited. */
   var PHOTO_CREDITS = {};
   var PHOTO_FILES = {};
+  var PHOTO_RECORDS = {};
+  /* How wide a card picture is drawn: the full width less the page padding on
+     a phone, the 640 px single column to 999 px, then about half the grid. */
+  var CARD_SIZES = '(min-width:1000px) 520px, (min-width:672px) 640px, calc(100vw - 32px)';
+  function photoSrcset(rec){
+    if(!rec || !rec.card || !rec.width) return '';
+    return '/assets/photos/' + rec.card + ' 800w, /assets/photos/' + rec.file + ' ' + rec.width + 'w';
+  }
   fetch('/assets/photos/index.json', { cache:'no-cache' })
     .then(function(r){ return r.ok ? r.json() : null; })
     .then(function(j){
@@ -10422,6 +10438,7 @@ var LiveFeed = (function(){
       Object.keys(j).forEach(function(k){
         PHOTO_CREDITS[k] = j[k] && j[k].credit;
         PHOTO_FILES[k] = j[k] && j[k].file;
+        PHOTO_RECORDS[k] = j[k];
       });
       repaint();
     })
@@ -10472,6 +10489,10 @@ var LiveFeed = (function(){
        and never on a card that prints the same words underneath. */
     var saved = PHOTO_FILES[ogSlug] ? '/assets/photos/' + PHOTO_FILES[ogSlug] : '';
     var img = saved || post.image || '';
+    /* The card-sized copy beside the full file, as the server-rendered cards
+       carry it; the browser takes the smaller one on every card narrower
+       than 800 device pixels. */
+    var set = saved ? photoSrcset(PHOTO_RECORDS[ogSlug]) : '';
     var backup = saved && post.image ? post.image : '';
     var credit = img ? creditLine(ogSlug, !saved, post) : '';
     var ago = agoText(post.time);
@@ -10479,7 +10500,8 @@ var LiveFeed = (function(){
     var media = '';
     if(img){
       var tag = '<img class="post-photo" loading="lazy" decoding="async" referrerpolicy="no-referrer" ' +
-        'src="' + esc(img) + '" alt="' + esc(post.title || '') + '" width="800" height="450" ' +
+        'src="' + esc(img) + '" ' + (set ? 'srcset="' + esc(set) + '" sizes="' + CARD_SIZES + '" ' : '') +
+        'alt="' + esc(post.title || '') + '" width="800" height="450" ' +
         'data-backup="' + esc(backup) + '" ' +
         'onerror="var b=this.getAttribute(\'data-backup\'); ' +
           'if(b){ this.removeAttribute(\'data-backup\'); this.src=b; return; } ' +

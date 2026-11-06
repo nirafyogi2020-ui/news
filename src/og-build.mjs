@@ -26,7 +26,7 @@ import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 
 import { ogCard, ogStory, ogPhotoCard, ogPhotoThumb } from './og.mjs';
-import { photoForSources, loadPhoto, photoDataUri } from './photo.mjs';
+import { photoForSources, loadPhoto, photoDataUri, ensureCardVariants } from './photo.mjs';
 import { ogSlug } from './template.mjs';
 import * as C from './content.mjs';
 
@@ -324,9 +324,13 @@ for (const p of posts) {
   });
 }
 
+/* The card-sized copies, for any photograph fetched above or filed since. */
+const variants = ensureCardVariants(PHOTOS);
+
 console.log(
   `og: ${pages.length + posts.length + 1} cards, ${posts.length + 1} stories, ${posts.length} tiles` +
   ` · ${withPhoto}/${posts.length} briefings with a source photograph` +
+  (variants ? ` · ${variants} card-sized cop${variants === 1 ? 'y' : 'ies'} written` : '') +
   ` · ${written} svg rewritten · ` +
   (rasteriser ? `${rastered} png rasterised by ${rasteriser}` : 'no rasteriser here, png left as committed')
 );

@@ -14,7 +14,7 @@
    fetches a given article once and never again.
    ========================================================================= */
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 /* The pictures are shown 400 px wide on a card, yet newsrooms publish them at
@@ -30,6 +30,13 @@ try { jpeg = (await import('jpeg-js')).default; } catch { jpeg = null; }
 
 export const MAX_PHOTO_WIDTH = 1400;
 export const PHOTO_QUALITY = 82;
+
+/* A second, card-sized copy of each photograph. The cards are 300 to 640 CSS
+   pixels wide, so a 1,400 px file is three to four times the bytes a phone
+   can show; the 800 px copy covers a 400 px card on a 2x screen and a 640 px
+   card on a laptop, and the browser picks between the two through srcset.
+   The full-size file stays for the wide lead pictures and the share images. */
+export const CARD_PHOTO_WIDTH = 800;
 
 const UA = 'Mozilla/5.0 (compatible; NepalDisasterUpdateLive/1.0; +https://nepaldisasterupdatelive.nxtimaginelabs.com/about/)';
 
@@ -263,6 +270,70 @@ export async function photoForSources(sources, slug, photoDir) {
   }
 
   return null;
+}
+
+/** The card-sized copy's filename: "name.jpg" -> "name-800.jpg". */
+export function cardVariantName(file) {
+  return String(file).replace(/\.(jpe?g|png|webp)$/i, '') + `-${CARD_PHOTO_WIDTH}.jpg`;
+}
+
+/**
+ * Write the card-sized copy of every photograph the manifest names, and
+ * record its name and the original's size in the manifest, so the renderers
+ * can write a srcset without opening the files.
+ *
+ * Skipped when the copy exists and is at least as new as its source, so a
+ * routine build does no picture work. A photograph already at or under the
+ * card width, or a WebP (resvg does not decode it), gets no copy and the
+ * card shows the file as it is. Returns the number of copies written.
+ */
+export function ensureCardVariants(photoDir) {
+  const manifestPath = join(photoDir, 'index.json');
+  if (!existsSync(manifestPath)) return 0;
+  let manifest;
+  try { manifest = JSON.parse(readFileSync(manifestPath, 'utf8')); } catch { return 0; }
+  let changed = false;
+  let written = 0;
+  for (const rec of Object.values(manifest)) {
+    if (!rec || !rec.file) continue;
+    const src = join(photoDir, rec.file);
+    if (!existsSync(src)) continue;
+    const buf = readFileSync(src);
+    const size = imageSize(buf);
+    if (!size || !size.width) continue;
+    if (rec.width !== size.width || rec.height !== size.height) {
+      rec.width = size.width; rec.height = size.height; changed = true;
+    }
+    const wants = size.width > CARD_PHOTO_WIDTH && rec.type !== 'image/webp' && Resvg && jpeg;
+    if (!wants) {
+      if (rec.card) { delete rec.card; changed = true; }
+      continue;
+    }
+    const name = cardVariantName(rec.file);
+    const out = join(photoDir, name);
+    /* A fresh checkout writes every file within the same second, so a copy
+       only counts as stale when its source is clearly newer. */
+    const stale = !existsSync(out) || statSync(src).mtimeMs > statSync(out).mtimeMs + 5000;
+    if (stale) {
+      const small = shrinkPhoto(buf, rec.type, CARD_PHOTO_WIDTH);
+      if (small.buf === buf) continue;
+      writeFileSync(out, small.buf);
+      written++;
+    }
+    if (rec.card !== name) { rec.card = name; changed = true; }
+  }
+  if (changed) writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
+  return written;
+}
+
+/**
+ * The srcset for a card picture: the card-sized copy and the full file, each
+ * with its width, or an empty string when there is only one file. `url`
+ * turns a filename into the address the page uses (versioned or not).
+ */
+export function photoSrcset(rec, url = name => '/assets/photos/' + name) {
+  if (!rec || !rec.card || !rec.width) return '';
+  return `${url(rec.card)} ${CARD_PHOTO_WIDTH}w, ${url(rec.file)} ${rec.width}w`;
 }
 
 export function loadPhoto(slug, photoDir) {
