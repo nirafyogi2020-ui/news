@@ -12,6 +12,7 @@
    ========================================================================= */
 
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync, rmSync } from 'node:fs';
+import vm from 'node:vm';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
@@ -759,10 +760,15 @@ index = index.replace(
   () => `<!--ssr:official-->${ssrOfficial()}<!--/ssr:official-->`
 );
 
+/* The marker sits twice in the dashboard: first under the Overview tab, which
+   shows eight cards and links to the rest, then in the Today tab, which runs
+   the day. Eighteen cards in both was the same 35 KB served twice. */
 const cards = ssrTodayCards(posts.slice(0, 18));
+const homeCards = ssrTodayCards(posts.slice(0, 8));
+let todaySlot = 0;
 index = index.replace(
   /<!--ssr:today-->[\s\S]*?<!--\/ssr:today-->/g,
-  () => `<!--ssr:today-->${cards}<!--/ssr:today-->`
+  () => `<!--ssr:today-->${todaySlot++ === 0 ? homeCards : cards}<!--/ssr:today-->`
 );
 
 /* The same versioned picture URLs the cards above use, handed to the client
@@ -1223,7 +1229,25 @@ write('sitemap-index.xml', `<?xml version="1.0" encoding="UTF-8"?>
 </sitemapindex>
 `);
 
-const dashboardHtml = index;
+/* The dashboard source is written to be read: a fifth of its stylesheet and
+   a sixth of its script are explanatory comments. They stay in src/ and come
+   out of the served page, which nobody reads as text. Only comments go, and
+   the indentation inside <style>; a script block is only touched when what
+   is left still parses, so a comment that hid an odd string can never break
+   the page. */
+function lighten(html) {
+  html = html.replace(/(<style[^>]*>)([\s\S]*?)(<\/style>)/g, (_m, open, css, close) => {
+    const out = css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\n[ \t]+/g, '\n').replace(/\n{2,}/g, '\n');
+    return open + out + close;
+  });
+  html = html.replace(/(<script(?![^>]*type=["']application)[^>]*>)([\s\S]*?)(<\/script>)/g, (m, open, js, close) => {
+    const out = js.replace(/^[ \t]*\/\*[\s\S]*?\*\/[ \t]*\n?/gm, '').replace(/\n{3,}/g, '\n\n');
+    try { new vm.Script(out); } catch { return m; }
+    return open + out + close;
+  });
+  return html;
+}
+const dashboardHtml = lighten(index);
 
 /* The newsroom feed, fetched once per build so the front page carries real
    headlines for a crawler and for a reader with JavaScript off; the page
