@@ -29,7 +29,7 @@
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { isOffSubject } from './front-rules.mjs';
+import { isOffSubject, hasBannedWord } from './front-rules.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const TODAY = join(ROOT, 'today.json');
@@ -162,6 +162,9 @@ export function planCards(items, { today, archive, now = Date.now(), startedAt =
     .filter(item => oneSentence(item.summary).length >= 60)
     .filter(item => !statesAToll(item.title))
     .filter(item => !isOffSubject(item.title))
+    /* A newsroom's summary can open with its own picture caption. One that
+       reads "AI-generated image ..." is not a sentence this site prints. */
+    .filter(item => !hasBannedWord(item.title) && !hasBannedWord(item.summary))
     .sort((a, b) => Date.parse(b.time) - Date.parse(a.time));
 
   const added = [];
@@ -228,7 +231,7 @@ export function pruneStaleAutoCards(today) {
   const kept = posts.filter(post => {
     if (!post || !post.auto) return true;
     const text = [post.title, ...(Array.isArray(post.body) ? post.body : [])].join(' ');
-    return !statesAToll(text) && !isOffSubject(post.title);
+    return !statesAToll(text) && !isOffSubject(post.title) && !hasBannedWord(text);
   });
   if (kept.length === posts.length) return 0;
   const dropped = posts.length - kept.length;
@@ -264,7 +267,7 @@ export async function main() {
     return;
   }
 
-  if (pruned) console.log(`  - ${pruned} automatic card(s) dropped for stating a figure`);
+  if (pruned) console.log(`  - ${pruned} automatic card(s) dropped for stating a figure or being off subject`);
   today.posts = (today.posts || []).concat(cards)
     .sort((a, b) => Date.parse(b.time || 0) - Date.parse(a.time || 0));
   const newest = today.posts.map(p => p.time).filter(Boolean).sort().pop();

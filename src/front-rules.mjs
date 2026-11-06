@@ -76,11 +76,20 @@ const OFF_SUBJECT = new RegExp([
   'Hormuz', 'होर्मुज', 'Manchester United', 'म्यानचेस्टर', 'football', 'cricket', 'apples?', 'स्याउ',
   'World Bank', 'विश्व बैंक', 'economic growth', 'अर्थतन्त्र', 'भ्याट', 'exported to India', 'विद्युत निर्यात',
   'पर्यटक', 'पर्यटन', 'tourism', 'festival', 'दशैं', 'दसैँ',
+  'election', 'candidates?', 'निर्वाचन', 'चुनाव', 'उम्मेदवार', 'मतदान',
+  'shooting', 'shot dead', 'गोली प्रहार', 'digital wealth', 'cryptocurrency', 'bitcoin',
 ].join('|'), 'i');
+
+/* Money-market stories borrow disaster words as figures of speech: a share
+   index "collapses", tech stocks suffer a "landslide" (पहिरो). The disaster
+   word does not rescue these, or a trading floor ends up as the story of the
+   day on a flood site. */
+const MARKET_WORDS = /\b(?:stock market|share market|stocks?|shares|Nasdaq|Wall Street)\b|सेयर बजार|सेयरमा|सेयरको|स्टक/i;
 
 /** Off subject, unless the headline itself ties it to a disaster. */
 export function isOffSubject(title) {
   const t = String(title || '');
+  if (MARKET_WORDS.test(t)) return true;
   return OFF_SUBJECT.test(t) && !DISASTER_WORDS.test(t);
 }
 

@@ -125,10 +125,12 @@ test('a card that already stated a figure is dropped, a hand-written one is kept
     posts: [
       { auto: true, title: 'Toll reaches 1,204', body: [] },
       { title: 'A person wrote this about 1,204 dead', body: [] },
-      { auto: true, title: 'Ncell extends free data', body: ['No figures here.'] }
+      { auto: true, title: 'Ncell extends free data', body: ['No figures here.'] },
+      { auto: true, title: 'Should Nepal turn its hydropower surplus into digital wealth?', body: ['AI-generated image Nepal has long been...'] },
+      { auto: true, title: 'विश्वभरिका टेक कम्पनीको सेयरमा किन गयो पहिरो ?', body: ['...'] }
     ]
   };
-  assert.equal(pruneStaleAutoCards(today), 1);
+  assert.equal(pruneStaleAutoCards(today), 3);
   assert.equal(today.posts.length, 2);
   assert.equal(pruneStaleAutoCards(today), 0, 'a pruned feed is left alone next time');
 });

@@ -153,6 +153,13 @@ test('off-subject stories are dropped, road and weather reports are not', () => 
   assert.ok(!isOffSubject('100,000 kg of Manaslu apples stranded after floods wash away transport'));
   assert.ok(!isOffSubject('BP Highway obstructed'));
   assert.ok(!isOffSubject('Light Rain and Snowfall Likely in Parts of Nepal'));
+  // A figurative "landslide" in the share market is still a market story.
+  assert.ok(isOffSubject('विश्वभरिका टेक कम्पनीको सेयरमा किन गयो पहिरो ?'));
+  assert.ok(isOffSubject('Tech stocks slide as Wall Street sells off'));
+  assert.ok(isOffSubject('सञ्जाल र क्याफेमा उम्मेदवारको घुइँचो, एजेन्डा गयल'));
+  assert.ok(isOffSubject('रौतहटमा अज्ञात समूहको गोली प्रहारबाट एक जना घाइते'));
+  assert.ok(isOffSubject('Should Nepal turn its hydropower surplus into digital wealth?'));
+  assert.ok(!isOffSubject('Election postponed in flood-hit Rasuwa villages'));
 });
 
 test('the embed box credits its source and escapes what it prints', async () => {
