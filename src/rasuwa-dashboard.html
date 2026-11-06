@@ -908,7 +908,9 @@
   .tabbar button[aria-selected="true"]{font-weight:700;}
   .tabbar button[aria-selected="true"]::after{transform:scaleX(1);}
   .tabbar button .badge{
-    font-family:var(--font-mono); font-size:0.6rem; background:var(--critical);
+    /* --alert, not --critical: the dark theme's salmon red leaves white text
+       at 2.8:1; the fixed alert red carries white at 6.5:1 in both themes. */
+    font-family:var(--font-mono); font-size:0.6rem; background:var(--alert);
     color:#fff; border-radius:20px; padding:1px 6px; font-weight:600;
   }
 
@@ -958,6 +960,9 @@
     font-family:var(--font-body); font-size:0.95rem; color:var(--text);
     background:var(--surface); border:2px solid var(--text); border-right:0; outline:none;
   }
+  /* The field has no ring of its own, so the keyboard reader could not tell
+     it had landed there. */
+  .drawer-search input:focus-visible{outline:2px solid var(--critical); outline-offset:-2px;}
   .drawer-search input::placeholder{color:var(--text-faint);}
   .drawer-search button{
     width:52px; height:46px; display:grid; place-items:center; cursor:pointer;
@@ -1388,6 +1393,8 @@
   .chip[aria-pressed="true"]{background:var(--text); color:var(--bg); border-color:var(--text); font-weight:600;}
   #flood-map{width:100%; height:clamp(340px, 56vw, 540px); background:var(--surface-2);}
   .leaflet-container{font-family:var(--font-body); background:var(--surface-2);}
+  /* Leaflet's default link blue sits at 3.2:1 on its translucent strip. */
+  .leaflet-container .leaflet-control-attribution a{color:#005f87;}
   .leaflet-popup-content-wrapper{border-radius:10px;}
   .leaflet-popup-content{margin:12px 14px; font-size:0.86rem; line-height:1.5;}
   .leaflet-popup-content h4{font-family:var(--font-display); font-size:1rem; margin-bottom:4px;}
@@ -2134,6 +2141,9 @@
     display:flex; align-items:stretch; gap:0; width:100%; margin-top:38px; padding:0;
     background:var(--surface); border:1px solid var(--border); border-radius:14px; overflow:hidden;
     cursor:pointer; font-family:inherit; text-align:left; transition:border-color .14s, box-shadow .14s;
+    /* A <button> takes the browser's black button text unless told
+       otherwise, which in the dark theme put black on navy. */
+    color:var(--text);
   }
   .mapteaser:hover{border-color:var(--border-strong); box-shadow:var(--shadow);}
   .mapteaser-art{width:180px; flex-shrink:0; display:block;}
@@ -2161,7 +2171,7 @@
     background:var(--surface); text-align:left;
   }
   .hf-stat .hf-n{display:block; font-size:1.9rem; line-height:1.05; font-weight:700; letter-spacing:-0.02em;}
-  .hf-stat .hf-n.critical{color:var(--danger, #b3261e);}
+  .hf-stat .hf-n.critical{color:var(--critical);}
   .hf-stat .hf-l{display:block; margin-top:4px; font-size:0.82rem; line-height:1.25; color:var(--text-muted);}
   .hf-note{margin:9px 0 0; font-size:0.8rem; color:var(--text-muted);}
   .hf-note a{color:inherit; text-decoration:underline; text-underline-offset:2px;}
@@ -5194,7 +5204,7 @@
 <!-- The index drawer. Every tab, and every section inside every tab, on one
      sheet. This is the column that used to sit permanently down the left. -->
 <div class="drawer-scrim" id="drawer-scrim" hidden></div>
-<aside class="drawer" id="drawer" hidden aria-label="Site index">
+<aside class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-label="Site index">
   <div class="drawer-head">
     <button class="drawer-close" id="drawer-close" type="button" aria-label="Close">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
@@ -5231,12 +5241,12 @@
 
     <!-- language popover -->
     <div class="lang-pop" id="lang-pop" hidden role="menu" aria-label="Language">
-      <div class="set-head"><b>Language &middot; भाषा &middot; 语言</b></div>
+      <div class="set-head"><b>Language &middot; <span lang="ne">भाषा</span> &middot; <span lang="zh">语言</span></b></div>
       <div class="lang-list">
         <button type="button" data-lang-choice="en" aria-pressed="true"><b>English</b><span>English</span></button>
-        <button type="button" data-lang-choice="ne" aria-pressed="false"><b>नेपाली</b><span>Nepali</span></button>
-        <button type="button" data-lang-choice="hi" aria-pressed="false"><b>हिन्दी</b><span>Hindi</span></button>
-        <button type="button" data-lang-choice="zh" aria-pressed="false"><b>中文</b><span>Chinese</span></button>
+        <button type="button" data-lang-choice="ne" aria-pressed="false"><b lang="ne">नेपाली</b><span>Nepali</span></button>
+        <button type="button" data-lang-choice="hi" aria-pressed="false"><b lang="hi">हिन्दी</b><span>Hindi</span></button>
+        <button type="button" data-lang-choice="zh" aria-pressed="false"><b lang="zh">中文</b><span>Chinese</span></button>
       </div>
       <p class="lang-note">Headings, buttons and answers change language. News cards stay in the language the source published them in.</p>
     </div>
@@ -6440,8 +6450,10 @@
     }, 260);
   });
 
+  var lastFocus = null;
   function open(){
     build();
+    lastFocus = document.activeElement;
     panel.hidden = false; scrim.hidden = false;
     /* Force a layout read so the browser has a "before" to animate from.
        requestAnimationFrame is throttled in a background tab, and a drawer
@@ -6451,15 +6463,33 @@
     panel.classList.add('is-open'); scrim.classList.add('is-open');
     btn.setAttribute('aria-expanded','true');
     document.body.style.overflow = 'hidden';
+    /* Keyboard and screen-reader users land inside the drawer, on its close
+       button, and go back to where they were when it shuts. */
+    closeB.focus();
   }
   function close(){
+    var wasOpen = panel.classList.contains('is-open');
     panel.classList.remove('is-open'); scrim.classList.remove('is-open');
     btn.setAttribute('aria-expanded','false');
     document.body.style.overflow = '';
+    if(wasOpen && panel.contains(document.activeElement)){
+      (lastFocus && lastFocus.focus ? lastFocus : btn).focus();
+    }
     setTimeout(function(){
       if(!panel.classList.contains('is-open')){ panel.hidden = true; scrim.hidden = true; }
     }, 240);
   }
+  /* Tab stays inside the drawer while it is open. */
+  panel.addEventListener('keydown', function(e){
+    if(e.key !== 'Tab') return;
+    var items = Array.prototype.slice.call(panel.querySelectorAll('button, a[href], input')).filter(function(el){
+      return !el.disabled && el.offsetParent !== null;
+    });
+    if(!items.length) return;
+    var first = items[0], last = items[items.length - 1];
+    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  });
 
   btn.addEventListener('click', function(){
     if(panel.classList.contains('is-open')) close(); else open();
@@ -7529,6 +7559,27 @@ var Tabs = (function(){
       if(window.closeHeaderPopovers) window.closeHeaderPopovers();
     });
   });
+  /* Left and Right arrows (Home and End too) move along the strip and open
+     the tab they land on, which is what a role="tablist" promises a keyboard
+     user. Only the selected tab sits in the Tab order. */
+  var strip = Array.prototype.slice.call(document.querySelectorAll('#tabbar [role="tab"][data-tab]'));
+  function roving(){
+    strip.forEach(function(b){ b.setAttribute('tabindex', b.getAttribute('aria-selected') === 'true' ? '0' : '-1'); });
+  }
+  strip.forEach(function(b){
+    b.addEventListener('keydown', function(e){
+      var i = strip.indexOf(b), next = null;
+      if(e.key === 'ArrowRight') next = strip[(i + 1) % strip.length];
+      else if(e.key === 'ArrowLeft') next = strip[(i - 1 + strip.length) % strip.length];
+      else if(e.key === 'Home') next = strip[0];
+      else if(e.key === 'End') next = strip[strip.length - 1];
+      if(!next) return;
+      e.preventDefault();
+      show(next.getAttribute('data-tab'), { keepScroll:true });
+      next.focus();
+    });
+  });
+  listeners.push(roving);
   /* Delegated, because the feeds write more of these links after load. */
   document.addEventListener('click', function(e){
     var el = e.target.closest && e.target.closest('[data-tab-link]');
@@ -8205,9 +8256,9 @@ var PostCards = (function(){
         '<div class="post-body">' +
           '<p class="tc-kicker">' + escapeHtml(item.source || 'Source') + verifiedMark +
             '<span class="tc-when">' + escapeHtml(whenLabel(item)) + '</span></p>' +
-          '<p class="tc-title"><a href="' + escapeHtml(item.url) + '" target="_blank" rel="noopener nofollow">' +
+          '<p class="tc-title"' + (/[\u0900-\u097F]/.test(item.title) ? ' lang="ne"' : '') + '><a href="' + escapeHtml(item.url) + '" target="_blank" rel="noopener nofollow">' +
             escapeHtml(item.title) + '</a></p>' +
-          (summary ? '<p class="post-summary clamped" id="' + uid + '" data-expand="' + uid + '">' + escapeHtml(summary) + '</p>' : '') +
+          (summary ? '<p class="post-summary clamped" id="' + uid + '" data-expand="' + uid + '"' + (/[\u0900-\u097F]/.test(summary) ? ' lang="ne"' : '') + '>' + escapeHtml(summary) + '</p>' : '') +
           (credit ? '<p class="tc-credit">' + credit + '</p>' : '') +
           (corrob ? '<div class="tc-sources">' + escapeHtml(corrob) + '</div>' : '') +
         '</div>' +
@@ -9074,7 +9125,7 @@ var LiveFeed = (function(){
         '<img src="' + esc(it.src) + '" ' +
         (it.srcset ? 'srcset="' + esc(it.srcset) + '" sizes="' + STRIP_SIZES + '" ' : '') +
         'alt="' + esc(it.caption) + '" loading="lazy" decoding="async">' +
-        '<span class="cap"><b>' + esc(it.caption) + '</b>' +
+        '<span class="cap"><b' + (/[\u0900-\u097F]/.test(it.caption || '') ? ' lang="ne"' : '') + '>' + esc(it.caption) + '</b>' +
         (it.credit ? '<i>' + esc(it.credit) + '</i>' : '') + '</span>';
       if(!it.href) return '<span class="ph">' + inner + '</span>';
       /* A picture filed with one of this site's own briefings opens that
@@ -10485,10 +10536,15 @@ var LiveFeed = (function(){
     return days + ' d ago';
   }
 
+  /* The same list is drawn on the Overview and on the Today tab, so an id
+     built from the post alone appeared twice on the page and the expand
+     control pointed at whichever came first. Each render gets its own run. */
+  var renderRun = 0;
   function card(post, i){
-    var uid = 'today-' + (post.id ? String(post.id).replace(/[^\w-]/g, '') : i) + '-' + i;
+    var uid = 'today-' + renderRun + '-' + (post.id ? String(post.id).replace(/[^\w-]/g, '') : i) + '-' + i;
     var paras = Array.isArray(post.body) ? post.body : (post.body ? [post.body] : []);
-    var bodyHtml = paras.map(function(p){ return '<p>' + esc(p) + '</p>'; }).join('');
+    var ne = function(t){ return /[\u0900-\u097F]/.test(String(t || '')) ? ' lang="ne"' : ''; };
+    var bodyHtml = paras.map(function(p){ return '<p' + ne(p) + '>' + esc(p) + '</p>'; }).join('');
     var url = post.sources && post.sources[0] && post.sources[0].url ? post.sources[0].url : (post.url || '');
 
     var srcHtml = (post.sources || []).map(function(s){
@@ -10539,7 +10595,7 @@ var LiveFeed = (function(){
           '<p class="tc-kicker">' + esc(stamp(post.time)) + rev +
             (ago ? '<span class="tc-when">' + esc(ago) + '</span>' : '') + '</p>' +
           (post.title
-            ? '<p class="tc-title">' + (perma
+            ? '<p class="tc-title"' + ne(post.title) + '>' + (perma
                 ? '<a href="' + esc(perma) + '">' + esc(post.title) + '</a>'
                 : esc(post.title)) + '</p>'
             : '') +
@@ -10585,6 +10641,7 @@ var LiveFeed = (function(){
      the page instead of reserving blank side columns for a centre lead. */
   function river(list){
     if(!list.length) return '';
+    renderRun++;
     return '<div class="river">' + list.map(card).join('') + '</div>';
   }
 
@@ -10762,11 +10819,13 @@ var LiveFeed = (function(){
       link.target = '_blank';
       link.rel = 'noopener';
       link.textContent = item.title;
+      if(/[\u0900-\u097F]/.test(item.title)) link.lang = 'ne';
       li.append(time, link);
       if(item.summary){
         var summary = document.createElement('p');
         summary.className = 'tk-sum';
         summary.textContent = item.summary;
+        if(/[\u0900-\u097F]/.test(item.summary)) summary.lang = 'ne';
         li.appendChild(summary);
       }
       list.appendChild(li);

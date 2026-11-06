@@ -247,8 +247,8 @@ function ssrTodayCards(list) {
         : '')
       + '<div class="post-body">'
       + `<p class="tc-kicker">${escHtml(stamp)}${post.revised ? ' <span class="rev">updated</span>' : ''}</p>`
-      + `<p class="tc-title"><a href="${escAttr(post.url)}">${escHtml(post.title)}</a></p>`
-      + `<div class="post-summary clamped" id="${uid}" data-expand="${uid}">${post.body.map(b => `<p>${escHtml(b)}</p>`).join('')}</div>`
+      + `<p class="tc-title"><a href="${escAttr(post.url)}"${langAttr(post.title)}>${escHtml(post.title)}</a></p>`
+      + `<div class="post-summary clamped" id="${uid}" data-expand="${uid}">${post.body.map(b => `<p${langAttr(b)}>${escHtml(b)}</p>`).join('')}</div>`
       + (credit ? `<p class="tc-credit">${escHtml(credit)}</p>` : '')
       + (sources ? `<div class="tc-sources"><b>Sources:</b> ${sources}</div>` : '')
       + '</div>'
@@ -1022,8 +1022,8 @@ function ssrTicker(list) {
     const first = (p.body && p.body[0]) || '';
     const sum = first.length > 155 ? first.slice(0, 155).replace(/\s+\S*$/, '') + '…' : first;
     return `<li><time datetime="${escAttr(p.time)}">${escHtml(nptCompact(p.time))}</time>`
-      + `<a href="${escAttr(p.url)}">${escHtml(p.title)}</a>`
-      + (sum ? `<p class="tk-sum">${escHtml(sum)}</p>` : '')
+      + `<a href="${escAttr(p.url)}"${langAttr(p.title)}>${escHtml(p.title)}</a>`
+      + (sum ? `<p class="tk-sum"${langAttr(sum)}>${escHtml(sum)}</p>` : '')
       + '</li>';
   }).join('');
   return head + `<ol>${items}</ol>`
@@ -1077,7 +1077,7 @@ index = index.replace(
 function railLatest(list) {
   return list.map(p =>
     `<li><time datetime="${escAttr(p.time)}">${escHtml(nptLong(p.time))}</time>`
-    + `<a href="${escAttr(p.url)}">${escHtml(p.title)}</a></li>`
+    + `<a href="${escAttr(p.url)}"${langAttr(p.title)}>${escHtml(p.title)}</a></li>`
   ).join('');
 }
 index = index.replace(

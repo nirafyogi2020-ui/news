@@ -9,9 +9,16 @@
 
 :root{
   --bg:#f9f9f7; --surface:#fcfcfb; --surface-2:#f1f0eb;
-  --text:#0b0b0b; --text-muted:#52514e; --text-faint:#898781;
+  --text:#0b0b0b; --text-muted:#52514e;
+  /* Faint text is small text: captions, bylines, timestamps. #898781 sat at
+     3.4:1 on the page and 3.15:1 on a grey surface, under the 4.5:1 small
+     text needs. #6b6a65 clears it on every surface (5.1, 4.75, 5.3). The
+     dark palette keeps its own value, which already passes. */
+  --text-faint:#6b6a65;
   --border:#e1e0d9; --border-strong:#c3c2b7;
-  --critical:#d03b3b; --crimson:#DC143C; --navy:#003893;
+  /* Red is also a text colour (the Front page link, the live pill), so it
+     has to carry small type on the grey surface: #c23333 is 4.8:1 there. */
+  --critical:#c23333; --crimson:#DC143C; --navy:#003893;
   --alert:#b5271f;
   --shadow: 0 1px 2px rgba(11,11,11,0.05), 0 4px 16px rgba(11,11,11,0.04);
   --font-display:'Newsreader', 'Newsreader Fallback', Georgia, 'Times New Roman', serif;
@@ -112,7 +119,7 @@ strong{font-weight:600;}
 .brand-live{display:inline-flex; align-items:center; gap:5px; font-family:var(--font-mono); font-size:0.57rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--critical); font-weight:500;}
 .brand-live i{width:6px; height:6px; border-radius:50%; background:var(--critical); animation:pulse 2s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
-@media (prefers-reduced-motion: reduce){ .brand-live i{animation:none;} }
+@media (prefers-reduced-motion: reduce){ .brand-live i, .pill-live i{animation:none;} a.card{transition:none;} }
 
 .headnav{margin-left:auto; display:flex; gap:2px; align-items:center; overflow-x:auto; scrollbar-width:none;}
 .headnav::-webkit-scrollbar{display:none;}
@@ -243,6 +250,8 @@ a.card .go{display:inline-block; margin-top:.6em; font-size:0.8rem; font-weight:
 /* ---- map ---------------------------------------------------------------- */
 #route-map{height:min(60vh, 460px); width:100%; border:1px solid var(--border); border-radius:14px; background:var(--surface-2); overflow:hidden;}
 .map-note{font-size:0.76rem; color:var(--text-faint); margin:8px 0 22px;}
+/* Leaflet's default link blue is 3.2:1 on its translucent attribution strip. */
+.leaflet-container .leaflet-control-attribution a{color:#005f87;}
 
 /* ---- live feed on the updates page -------------------------------------- */
 .feedlist{display:grid; gap:10px; margin:0 0 12px;}

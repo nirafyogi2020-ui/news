@@ -5,7 +5,7 @@
 
 import {
   SITE, SITE_NAME, CONTACT_EMAIL, page, esc, related, faqBlock, stripTags,
-  nptLong, nptDay, ogFor, ogSlug, siteAsset,
+  nptLong, nptDay, ogFor, ogSlug, siteAsset, langAttr,
 } from './template.mjs';
 import * as C from './content.mjs';
 import {
@@ -119,7 +119,7 @@ export function liveRail(ctx, opts = {}) {
 
   const latest = (ctx.posts || []).slice(0, 5).map(p =>
     `<li><time datetime="${esc(p.time)}">${esc(nptLong(p.time))}</time>`
-    + `<a href="${esc(p.url)}">${esc(p.title)}</a></li>`
+    + `<a href="${esc(p.url)}"${langAttr(p.title)}>${esc(p.title)}</a></li>`
   ).join('');
 
   const latestCard = latest ? `
@@ -958,8 +958,8 @@ ${EMERGENCY_STRIP}
 <ul class="postlist">
 ${posts.map(p => `<li><a class="postcard" href="${esc(p.url)}">
   <time datetime="${esc(p.time)}">${esc(nptLong(p.time))}</time>
-  <h2>${esc(p.title)}</h2>
-  <p>${esc((p.body[0] || '').slice(0, 190))}${(p.body[0] || '').length > 190 ? '…' : ''}</p>
+  <h2${langAttr(p.title)}>${esc(p.title)}</h2>
+  <p${langAttr(p.body[0])}>${esc((p.body[0] || '').slice(0, 190))}${(p.body[0] || '').length > 190 ? '…' : ''}</p>
 </a></li>`).join('\n')}
 </ul>
 <p><a href="/updates/">Browse the full update archive</a>.</p>
@@ -1001,7 +1001,7 @@ ${SECOND_FLOOD_WARNING}
     }
     state.hidden = true;
     wrap.innerHTML = items.map(function(i){
-      return '<div class="feeditem"><a href="' + esc(i.url) + '" target="_blank" rel="noopener nofollow">' + esc(i.title) + '</a>' +
+      return '<div class="feeditem"><a href="' + esc(i.url) + '" target="_blank" rel="noopener nofollow"' + (/[\u0900-\u097F]/.test(i.title) ? ' lang="ne"' : '') + '>' + esc(i.title) + '</a>' +
         '<div class="meta"><span>' + esc(i.source || '') + '</span>' +
         (ago(i.time) ? '<span>' + ago(i.time) + '</span>' : '') +
         (i.verified ? '<span>verified</span>' : '') + '</div></div>';
@@ -1350,8 +1350,8 @@ export function updateIndex(ctx) {
 <ul class="postlist">
 ${posts.map(p => `<li><a class="postcard" href="${esc(p.url)}">
   <time datetime="${esc(p.time)}">${esc(nptLong(p.time))}</time>
-  <h2>${esc(p.title)}</h2>
-  <p>${esc((p.body[0] || '').slice(0, 200))}${(p.body[0] || '').length > 200 ? '…' : ''}</p>
+  <h2${langAttr(p.title)}>${esc(p.title)}</h2>
+  <p${langAttr(p.body[0])}>${esc((p.body[0] || '').slice(0, 200))}${(p.body[0] || '').length > 200 ? '…' : ''}</p>
 </a></li>`).join('\n')}
 </ul>
 
@@ -1403,7 +1403,7 @@ export function updateArticle(post, ctx) {
     ? `<div class="callout callout-alert">
         <p class="callout-title">This briefing has been overtaken</p>
         <p>It was published at ${esc(nptLong(post.time))} and is kept online as the record of what was confirmed at that hour. Figures in it are no longer current.</p>
-        <p style="margin-bottom:0;"><strong><a href="${esc(newest.url)}">Read the latest briefing: ${esc(newest.title)}</a></strong> &middot; <a href="/nepal-flood/rasuwa/">Current event summary</a></p>
+        <p style="margin-bottom:0;"><strong><a href="${esc(newest.url)}">Read the latest briefing: <span${langAttr(newest.title)}>${esc(newest.title)}</span></a></strong> &middot; <a href="/nepal-flood/rasuwa/">Current event summary</a></p>
       </div>`
     : '';
 
@@ -1415,7 +1415,7 @@ export function updateArticle(post, ctx) {
   const body = `
 ${supersededNote}
 ${post.revised && !newest ? '<div class="callout"><p class="callout-title">Revised</p><p>This briefing was updated after publication as newer figures were confirmed. The time above is the time of the bulletin it is built on.</p></div>' : ''}
-${post.body.map(p => `<p>${esc(p)}</p>`).join('\n')}
+${post.body.map(p => `<p${langAttr(p)}>${esc(p)}</p>`).join('\n')}
 ${sources}
 `;
 
@@ -1872,6 +1872,7 @@ ${EMERGENCY_STRIP}
   <li><a href="/nepal-flood/relief/"><b>Relief and donations</b><span>Give</span></a></li>
   <li><a href="/nepal-disasters/"><b>Nepal disaster guide</b><span>Reference</span></a></li>
   <li><a href="/updates/"><b>Update archive</b><span>All briefings</span></a></li>
+  <li><a href="/ne/" hreflang="ne"><b lang="ne">नेपालीमा पढ्नुहोस्</b><span>In Nepali</span></a></li>
 </ul>
 <p>If you followed a link on this site to get here, <a href="/contact/">tell us</a> and it gets fixed.</p>
 `;
@@ -2219,7 +2220,7 @@ function figureTile(st, event, day) {
 function newsItem(item, i, withPhoto) {
   const photo = withPhoto && item.image;
   return `<li class="fp-news-item${photo ? ' has-photo' : ''}">`
-    + `<a href="${esc(item.url)}" target="_blank" rel="noopener nofollow"><span class="t">${esc(item.title)}</span></a>`
+    + `<a href="${esc(item.url)}" target="_blank" rel="noopener nofollow"><span class="t"${langAttr(item.title)}>${esc(item.title)}</span></a>`
     + `<p class="m">${item.time ? `<time datetime="${esc(item.time)}">${esc(fpTime(item.time))}</time>` : ''}`
     + (item.source ? `${item.time ? ' · ' : ''}${esc(item.source)}` : '')
     + (photo ? ` · Photo: ${esc(item.source || hostOf(item.image))}` : '') + '</p>'
@@ -2258,7 +2259,7 @@ function eventCard(ev, i) {
   const figs = [dead, missing].filter(Boolean).map(s =>
     `<span class="fp-ev-fig"><b${s.icon === 'dead' ? ' class="crit"' : ''}>${esc(s.value)}</b> ${esc(s.label)}</span>`).join('');
   const links = (ev.links || meta.links || []).map(([href, label]) =>
-    `<a href="${esc(href)}">${esc(label)}</a>`).join('');
+    `<a href="${esc(href)}"${langAttr(label)}${href.startsWith('/ne/') ? ' hreflang="ne"' : ''}>${esc(label)}</a>`).join('');
   return `<article class="fp-event${active ? ' is-active' : ''}">`
     + `<p class="fp-ev-k">${active ? '<span class="live"><i aria-hidden="true"></i>Live coverage</span>' : 'Archived'}${started ? ` · from ${esc(started)}` : ''}</p>`
     + `<h3><a data-event-card href="${esc(path)}">${esc(ev.name || 'Event')}</a></h3>`
@@ -2289,7 +2290,7 @@ function frontRail(ctx, dashPath) {
     .map(p => ({ ...p, clean: cleanHeadline(p.title) }))
     .filter(p => p.clean && isNepalDisasterHeadline(p.clean))
     .slice(0, 5)
-    .map(p => `<li><time datetime="${esc(p.time)}">${esc(fpTime(p.time))}</time><a href="${esc(p.url)}">${esc(p.clean)}</a></li>`)
+    .map(p => `<li><time datetime="${esc(p.time)}">${esc(fpTime(p.time))}</time><a href="${esc(p.url)}"${langAttr(p.clean)}>${esc(p.clean)}</a></li>`)
     .join('');
   const latestCard = latest ? `
 <section class="rail-card">
@@ -2495,7 +2496,7 @@ ${lead ? `<figure class="fp-lead-media"><a href="${esc(dashPath)}"><img src="${e
   <p class="fp-sec-sub">Photographs published by the newsrooms the briefings cite, credited to each one.</p>
   <div class="fp-photos">${photos.map(p =>
     `<figure><a href="${esc(p.url)}"><img src="${esc(siteAsset('/assets/photos/' + p.file))}"${photoSet(p.rec, AREA_SIZES)} alt="${esc(p.title)}" width="800" height="600" loading="lazy" decoding="async">`
-    + `<figcaption>${esc(p.title)}<span class="c">Photograph: ${esc(p.credit)}</span></figcaption></a></figure>`).join('')}</div>
+    + `<figcaption><span${langAttr(p.title)}>${esc(p.title)}</span><span class="c">Photograph: ${esc(p.credit)}</span></figcaption></a></figure>`).join('')}</div>
 </section>` : '';
 
   /* -- map, roads and access ------------------------------------------------ */
@@ -2503,7 +2504,7 @@ ${lead ? `<figure class="fp-lead-media"><a href="${esc(dashPath)}"><img src="${e
   <div class="fp-card">
     <h3>Roads and access</h3>
     <ul class="fp-roads">${roads.map(r =>
-      `<li><a href="${esc(r.url)}" target="_blank" rel="noopener nofollow">${esc(r.title)}</a>`
+      `<li><a href="${esc(r.url)}" target="_blank" rel="noopener nofollow"${langAttr(r.title)}>${esc(r.title)}</a>`
       + `<span class="m">${r.time ? esc(fpTime(r.time)) : ''}${r.source ? `${r.time ? ' · ' : ''}${esc(r.source)}` : ''}</span></li>`).join('')}</ul>
   </div>` : '';
   const mapHtml = `
@@ -2626,7 +2627,7 @@ ${lead ? `<figure class="fp-lead-media"><a href="${esc(dashPath)}"><img src="${e
       rows.forEach(function(row, i){
         var li = document.createElement('li'); li.className = 'fp-news-item';
         var a = document.createElement('a'); a.href = row.url; a.target = '_blank'; a.rel = 'noopener nofollow';
-        var t = document.createElement('span'); t.className = 't'; t.textContent = row.title; a.appendChild(t); li.appendChild(a);
+        var t = document.createElement('span'); t.className = 't'; t.textContent = row.title; if(/[\u0900-\u097F]/.test(row.title)) t.lang = 'ne'; a.appendChild(t); li.appendChild(a);
         var m = document.createElement('p'); m.className = 'm';
         if(row.time){ var tm = document.createElement('time'); tm.dateTime = row.time; tm.textContent = npt(row.time); m.appendChild(tm); }
         var tail = (row.source ? (row.time ? ' · ' : '') + row.source : '');

@@ -21,6 +21,17 @@ export function esc(s) {
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
+/* A Nepali headline printed on an English page (or the other way round) is
+   read aloud in the wrong language and hyphenated by the wrong rules unless
+   the element says which language it is in. Returns the attribute to add,
+   or nothing when the text is in the page's own language. */
+const DEVANAGARI = /[\u0900-\u097F]/;
+export function langAttr(text, pageLang = 'en') {
+  const ne = DEVANAGARI.test(String(text || ''));
+  if (pageLang === 'ne') return ne ? '' : (/[A-Za-z]{3,}/.test(String(text || '')) ? ' lang="en"' : '');
+  return ne ? ' lang="ne"' : '';
+}
+
 /* ---------------------------------------------------------------------------
    Social preview pictures.
 
@@ -321,9 +332,10 @@ export function page(o) {
   const crumbHtml = o.crumbs && o.crumbs.length > 1
     ? `<nav class="crumbs" aria-label="${esc(t.crumbLabel)}"><ol>${o.crumbs.map((c, i) => {
         const last = i === o.crumbs.length - 1;
+        const la = langAttr(c.label, lang);
         return `<li>${last
-          ? `<span aria-current="page">${esc(c.label)}</span>`
-          : `<a href="${esc(c.href)}">${esc(c.label)}</a>`}</li>`;
+          ? `<span aria-current="page"${la}>${esc(c.label)}</span>`
+          : `<a href="${esc(c.href)}"${la}>${esc(c.label)}</a>`}</li>`;
       }).join('')}</ol></nav>`
     : '';
 
@@ -452,7 +464,7 @@ ${crumbHtml}
 <article>
 <header class="pagehead">
   ${pill ? `<p class="status-row">${pill}${o.extraPills || ''}</p>` : (o.extraPills ? `<p class="status-row">${o.extraPills}</p>` : '')}
-  <h1>${o.h1}</h1>
+  <h1${langAttr(stripTags(o.h1), lang)}>${o.h1}</h1>
   ${o.lede ? `<p class="lede measure">${o.lede}</p>` : ''}
 </header>
 ${o.updatedNote ? `<p class="byline">${o.updatedNote}</p>` : ''}
@@ -482,7 +494,7 @@ ${o.tail || ''}
 export function related(title, items) {
   if (!items.length) return '';
   return `<section class="related"><h2>${esc(title)}</h2><div class="cards">${items.map(i =>
-    `<a class="card" href="${esc(i.href)}"><h3>${esc(i.title)}</h3><p>${esc(i.text)}</p><span class="go">Read ${esc(i.verb || 'more')} &rsaquo;</span></a>`
+    `<a class="card" href="${esc(i.href)}"><h3${langAttr(i.title)}>${esc(i.title)}</h3><p${langAttr(i.text)}>${esc(i.text)}</p><span class="go">Read ${esc(i.verb || 'more')} &rsaquo;</span></a>`
   ).join('')}</div></section>`;
 }
 
