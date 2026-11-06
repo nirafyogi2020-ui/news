@@ -14,10 +14,28 @@
   --critical:#d03b3b; --crimson:#DC143C; --navy:#003893;
   --alert:#b5271f;
   --shadow: 0 1px 2px rgba(11,11,11,0.05), 0 4px 16px rgba(11,11,11,0.04);
-  --font-display:'Newsreader', Georgia, 'Times New Roman', serif;
-  --font-body:'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display:'Newsreader', 'Newsreader Fallback', Georgia, 'Times New Roman', serif;
+  --font-body:'Public Sans', 'Public Sans Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 }
+/* The web fonts arrive after the first paint. Until they do, the text is set
+   in Georgia and Arial, which run narrower or wider than Newsreader and Public
+   Sans, so the headline took a different number of lines before and after the
+   swap and the whole page jumped by one line of the h1 (a layout shift of
+   0.19 on the front page). These fallback faces are the local fonts scaled so
+   a line of text is the same length in either, which keeps the line breaks,
+   and therefore the layout, where they are. The ratios were measured in the
+   browser against the real fonts; Georgia's bold is far wider than
+   Newsreader's, so the two weights need their own figure. */
+@font-face{font-family:'Newsreader Fallback'; src:local('Georgia'); font-weight:400 500; size-adjust:98%; ascent-override:74%; descent-override:26%; line-gap-override:0%;}
+@font-face{font-family:'Newsreader Fallback'; src:local('Georgia Bold'), local('Georgia-Bold'); font-weight:600 800; size-adjust:90%; ascent-override:74%; descent-override:26%; line-gap-override:0%;}
+/* Newsreader's bold figures are wide where its bold letters are narrow, so
+   a headline made of figures gets a fallback of its own (the front page). */
+@font-face{font-family:'Newsreader Figures Fallback'; src:local('Georgia Bold'), local('Georgia-Bold'); font-weight:600 800; size-adjust:98.6%; ascent-override:74%; descent-override:26%; line-gap-override:0%;}
+@font-face{font-family:'Public Sans Fallback'; src:local('Arial'), local('Helvetica'); font-weight:400; size-adjust:103.8%; ascent-override:95%; descent-override:23%; line-gap-override:0%;}
+@font-face{font-family:'Public Sans Fallback'; src:local('Arial'), local('Helvetica'); font-weight:500; size-adjust:105.1%; ascent-override:95%; descent-override:23%; line-gap-override:0%;}
+@font-face{font-family:'Public Sans Fallback'; src:local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Bold'); font-weight:600; size-adjust:97.3%; ascent-override:95%; descent-override:23%; line-gap-override:0%;}
+@font-face{font-family:'Public Sans Fallback'; src:local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Bold'); font-weight:700 800; size-adjust:98.6%; ascent-override:95%; descent-override:23%; line-gap-override:0%;}
 /* The dark palette is defined twice on purpose.
 
    [data-theme="dark"] is the reader's explicit choice, carried over from the
@@ -252,6 +270,12 @@ a.card .go{display:inline-block; margin-top:.6em; font-size:0.8rem; font-weight:
 .page-related{margin-top:4px;}
 @media (min-width:1100px){
   .page-layout > .page-related{grid-column:1 / -1;}
+  /* A briefing is a few paragraphs beside a rail three screens tall. Lifted
+     to the full width, its "More updates" waited for the rail to end and left
+     a blank half-page under the words. On those pages the cards stay in the
+     article column and the rail runs down beside both. */
+  .page-layout.is-brief > .page-related{grid-column:1;}
+  .page-layout.is-brief > .rail{grid-row:1 / span 2;}
 }
 
 /* ---- footer ------------------------------------------------------------- */

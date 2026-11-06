@@ -67,7 +67,7 @@
 /og-image.png
   Cache-Control: public, max-age=86400
 
-/qr-pmo-nepal.png
+/qr-pmo-nepal.jpg
   Cache-Control: public, max-age=86400
 
 # Data files the dashboard fetches. Short cache: these carry casualty figures.

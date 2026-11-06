@@ -54,7 +54,7 @@ for (const p of pages) {
 for (const extra of ['/feed.xml', '/sitemap.xml', '/robots.txt', '/favicon.svg',
   '/favicon.ico', '/apple-touch-icon.png', '/favicon-96x96.png', '/icon-192.png',
   '/icon-512.png', '/logo.png', '/site.webmanifest',
-  '/og-image.png', '/qr-pmo-nepal.png', '/today.json', '/event.json', '/updates.json',
+  '/og-image.png', '/qr-pmo-nepal.jpg', '/today.json', '/event.json', '/updates.json',
   '/assets/site.css', '/news-sitemap.xml', '/sitemap-index.xml']) {
   known.add(extra);
 }

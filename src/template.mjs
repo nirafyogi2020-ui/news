@@ -441,7 +441,7 @@ else if((t==='system'||!t)&&window.matchMedia&&matchMedia('(prefers-color-scheme
 
 <div class="shell${o.rail ? ' has-rail' : ''}">
 ${crumbHtml}
-<div class="${o.rail ? 'page-layout' : 'page-plain'}">
+<div class="${o.rail ? 'page-layout' : 'page-plain'}${o.brief ? ' is-brief' : ''}">
 <main id="main">
 <article>
 <header class="pagehead">

@@ -362,9 +362,11 @@ const DASH_PATH = '/nepal-flood/rasuwa/';
 const DASH_URL = SITE + DASH_PATH;
 const dash = P.rasuwaDashboard(ctx);
 let index = read('src/rasuwa-dashboard.html');
-for (const file of ['dashboard.css','dashboard.js']) {
-  const version=createHash('sha256').update(read('assets/'+file)).digest('hex').slice(0,12);
-  index=index.replace(new RegExp('/assets/'+file.replace('.', '\\.')+'(?:\\?v=[^"\\s]+)?','g'), '/assets/'+file+'?v='+version);
+/* Files the dashboard links by a fixed name get a content stamp, so a
+   replaced file reaches readers through the edge cache. */
+for (const file of ['assets/dashboard.css','assets/dashboard.js','qr-pmo-nepal.jpg']) {
+  const version=createHash('sha256').update(read(file)).digest('hex').slice(0,12);
+  index=index.replace(new RegExp('/'+file.replace('.', '\\.')+'(?:\\?v=[^"\\s]+)?','g'), '/'+file+'?v='+version);
 }
 
 /* ---------------------------------------------------------------------------
@@ -1247,7 +1249,21 @@ function lighten(html) {
   });
   return html;
 }
-const dashboardHtml = lighten(index);
+/* The dashboard's stylesheet is 165 KB, and it rode inside every copy of a
+   page the edge revalidates every minute. It is written out to its own file
+   under a content stamp, which the browser keeps for an hour and the edge
+   for a day (see _headers), so a returning reader fetches the page and not
+   the styles. The link stays in the head, where it blocks rendering exactly
+   as the inline block did, so nothing paints unstyled. */
+function externalStyles(html) {
+  const m = html.match(/<style>([\s\S]*?)<\/style>/);
+  if (!m || m[1].length < 50000) return html;
+  const css = m[1].replace(/^\n+/, '');
+  const stamp = createHash('sha256').update(css).digest('hex').slice(0, 12);
+  write('assets/dashboard-main.css', css);
+  return html.replace(m[0], `<link rel="stylesheet" href="/assets/dashboard-main.css?v=${stamp}">`);
+}
+const dashboardHtml = externalStyles(lighten(index));
 
 /* The newsroom feed, fetched once per build so the front page carries real
    headlines for a crawler and for a reader with JavaScript off; the page

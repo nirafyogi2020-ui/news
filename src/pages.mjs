@@ -1186,7 +1186,7 @@ ${bankTable(C.RELIEF_BANKS)}
 ${bankTable(C.RELIEF_BANKS_GENERAL)}
 
 <h3>Official QR code</h3>
-<p><img src="/qr-pmo-nepal.png" alt="Official donation QR code published by the Office of the Prime Minister of Nepal for the Natural Disaster Relief Fund" width="556" height="472" loading="lazy" decoding="async" style="max-width:340px;height:auto;border:1px solid var(--border);border-radius:14px;padding:10px;background:#fff;"></p>
+<p><img src="${siteAsset('/qr-pmo-nepal.jpg')}" alt="Official donation QR code published by the Office of the Prime Minister of Nepal for the Natural Disaster Relief Fund" width="556" height="472" loading="lazy" decoding="async" style="max-width:340px;height:auto;border:1px solid var(--border);border-radius:14px;padding:10px;background:#fff;"></p>
 <p class="faint">Published by the Office of the Prime Minister of Nepal. Sourced 26 August 2026.</p>
 
 <h2>What the government has released so far</h2>
@@ -1419,6 +1419,9 @@ ${sources}
     noindex,
     html: page({
       rail: liveRail(ctx),
+      /* A few paragraphs beside a tall rail: the related cards stay under the
+         words instead of waiting below the rail (see .is-brief in site.css). */
+      brief: true,
       path, title: t, ogTitle: post.title, description: d, noindex,
       h1: esc(post.title),
       crumbs: [{ label: 'Home', href: '/' }, { label: 'Update archive', href: '/updates/' }, { label: post.title }],
@@ -2286,8 +2289,11 @@ const FRONT_CSS = `
 <style>
 .fp .shell.has-rail{max-width:1180px;}
 .fp .pagehead{padding:22px 0 4px;}
-.fp .pagehead h1{font-size:clamp(2.05rem, 1.3rem + 3.3vw, 3.5rem); font-weight:500; line-height:1.04; letter-spacing:-0.02em; margin:0 0 .4em; max-width:22ch;}
-.fp .pagehead h1 b{font-weight:600;}
+/* 13.2em is 22ch in Newsreader. In ch the width came from whichever font
+   was on screen, so the headline wrapped differently before and after the
+   web font arrived and the page jumped a line. */
+.fp .pagehead h1{font-size:clamp(2.05rem, 1.3rem + 3.3vw, 3.5rem); font-weight:500; line-height:1.04; letter-spacing:-0.02em; margin:0 0 .4em; max-width:13.2em;}
+.fp .pagehead h1 b{font-weight:600; font-family:'Newsreader', 'Newsreader Figures Fallback', Georgia, 'Times New Roman', serif;}
 .fp .status-row{display:flex; flex-wrap:wrap; gap:6px 10px; align-items:center; font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-faint); margin:0 0 14px;}
 .fp .status-row .live{display:inline-flex; align-items:center; gap:6px; color:var(--critical); font-weight:500;}
 .fp .status-row .live i{width:7px; height:7px; border-radius:50%; background:var(--critical); animation:pulse 2s ease-in-out infinite;}

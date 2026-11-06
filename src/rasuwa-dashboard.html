@@ -60,7 +60,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://server.arcgisonline.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<!-- Leaflet's stylesheet and script are fetched by FloodMap the first time
+     the Map tab opens; see section 6 of the page script. -->
 
 <!-- Structured data. One @graph so every node shares the same Organization
      and WebSite identity as the rest of the site. dateModified is rewritten
@@ -6045,7 +6046,7 @@
         </a>
       </div>
       <figure class="ht-qr">
-        <img src="/qr-pmo-nepal.png" alt="Official donation QR code published by the Office of the Prime Minister of Nepal" width="556" height="472" decoding="async">
+        <img src="/qr-pmo-nepal.jpg" alt="Official donation QR code published by the Office of the Prime Minister of Nepal" width="556" height="472" decoding="async">
         <figcaption>
           <b>Scan to give</b>
           <span>The official QR, published by the Office of the Prime Minister. Any Nepali banking or wallet app reads it.</span>
@@ -6160,7 +6161,7 @@
           </div>
           <div class="qr-slot">
             <div class="qr-box">
-              <img src="/qr-pmo-nepal.png" alt="Official donation QR code from the Prime Minister's Office of Nepal" width="556" height="472" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain;">
+              <img src="/qr-pmo-nepal.jpg" alt="Official donation QR code from the Prime Minister's Office of Nepal" width="556" height="472" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain;">
             </div>
             <p class="qr-caption">Official QR, from PMO Nepal directly.</p>
           </div>
@@ -6838,7 +6839,6 @@ window.BriefCard = (function(){
   </div>
 </footer>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
 /* =========================================================================
    0. Site configuration.
@@ -7665,9 +7665,57 @@ var Tabs = (function(){
 /* =========================================================================
    6. The flood corridor map
    ========================================================================= */
+/* Leaflet, 150 KB of script and its stylesheet, used to load in the head of
+   every visit, and the map was built while the page was still parsing, on a
+   tab most readers never open. Now the two files are fetched the first time
+   the Map tab is shown and the map is built when both have arrived. A call to
+   flyTo before then is kept and honoured once the map exists. */
 var FloodMap = (function(){
-  if(typeof L === 'undefined') return { flyTo: function(){} };
+  var LEAFLET_JS  = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  var LEAFLET_JS_SRI  = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+  var LEAFLET_CSS = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+  var LEAFLET_CSS_SRI = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
+  var el = document.getElementById('flood-map');
+  var real = null, pending = null, started = false, waiting = 0;
 
+  function fail(){
+    if(el) el.innerHTML = '<p style="padding:24px 18px; font-size:0.9rem; line-height:1.5;">The map could not load. ' +
+      '<a href="/nepal-flood/rasuwa/map/">Every point it shows is listed on the map page</a>.</p>';
+  }
+  function ready(){
+    if(--waiting > 0) return;
+    if(typeof L === 'undefined'){ fail(); return; }
+    if(el) el.textContent = '';
+    try { real = buildFloodMap(); } catch(e){ fail(); return; }
+    if(pending){ real.flyTo(pending); pending = null; }
+  }
+  function start(){
+    if(started || !el) return;
+    started = true;
+    if(typeof L !== 'undefined'){ waiting = 1; ready(); return; }
+    el.textContent = 'Loading the map…';
+    waiting = 2;
+    /* The stylesheet goes before the page's own styles, so the page's
+       .leaflet-* rules keep winning as they did when it sat in the head. */
+    var css = document.createElement('link');
+    css.rel = 'stylesheet'; css.href = LEAFLET_CSS; css.integrity = LEAFLET_CSS_SRI; css.crossOrigin = '';
+    css.onload = ready; css.onerror = ready;
+    document.head.insertBefore(css, document.head.firstChild);
+    var s = document.createElement('script');
+    s.src = LEAFLET_JS; s.integrity = LEAFLET_JS_SRI; s.crossOrigin = '';
+    s.onload = ready; s.onerror = function(){ waiting = 0; fail(); };
+    document.head.appendChild(s);
+  }
+  Tabs.onChange(function(name){ if(name === 'map') start(); });
+  if(Tabs.current === 'map') start();
+
+  return {
+    flyTo: function(id){ if(real) real.flyTo(id); else pending = id; },
+    load: start
+  };
+})();
+
+function buildFloodMap(){
   var PLACES = [
     {
       id:'source', name:'Glacial source', step:'Step 1', lat:28.4402, lng:85.4432, elev:'~5,000 m',
@@ -8003,7 +8051,7 @@ var FloodMap = (function(){
   return {
     flyTo: function(id){ select(id, true); }
   };
-})();
+}
 
 /* =========================================================================
    7. Live news feed, served by this site's own /api/news function.

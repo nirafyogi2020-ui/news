@@ -6,7 +6,7 @@
    the number once and both languages move together.
    ========================================================================= */
 
-import { SITE, SITE_NAME, CONTACT_EMAIL, page, esc, faqBlock, nptLong } from './template.mjs';
+import { SITE, SITE_NAME, CONTACT_EMAIL, page, esc, faqBlock, nptLong, siteAsset } from './template.mjs';
 import * as C from './content.mjs';
 import { ne, NE_DISTRICTS, NE_MISSING_GROUPS, NE_EMERGENCY, NE_MISSING_STEPS, NE_HAZARD_STEPS } from './content-ne.mjs';
 
@@ -410,7 +410,7 @@ ${bankTable(C.RELIEF_BANKS)}
 ${bankTable(C.RELIEF_BANKS_GENERAL)}
 
 <h3>आधिकारिक QR</h3>
-<p><img src="/qr-pmo-nepal.png" alt="नेपाल सरकारको प्रधानमन्त्री तथा मन्त्रिपरिषद्को कार्यालयले प्रकाशित गरेको प्राकृतिक विपद् उद्धार कोषको आधिकारिक दान QR" width="556" height="472" loading="lazy" decoding="async" style="max-width:340px;height:auto;border:1px solid var(--border);border-radius:14px;padding:10px;background:#fff;"></p>
+<p><img src="${siteAsset('/qr-pmo-nepal.jpg')}" alt="नेपाल सरकारको प्रधानमन्त्री तथा मन्त्रिपरिषद्को कार्यालयले प्रकाशित गरेको प्राकृतिक विपद् उद्धार कोषको आधिकारिक दान QR" width="556" height="472" loading="lazy" decoding="async" style="max-width:340px;height:auto;border:1px solid var(--border);border-radius:14px;padding:10px;background:#fff;"></p>
 <p class="faint">प्रधानमन्त्री तथा मन्त्रिपरिषद्को कार्यालयबाट, २६ अगस्ट २०२६ मा लिइएको।</p>
 
 <h2>सरकारले अहिलेसम्म निकासा गरेको</h2>
