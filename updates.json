@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-05T02:15:36.000Z",
+  "updated": "2026-11-06T01:30:48.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,24 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-06-auto-2026-11-06/",
+      "title": "भोटेकोशी-त्रिशूली विपद्सम्बन्धी संसदीय विशेष समितिको बैठक बस्दै",
+      "time": "2026-11-06T01:30:48.000Z",
+      "summary": "२० कात्तिक, काठमाडौं । हिमालमा जलवायु परिवर्तनको प्रभाव, जलवायु न्याय तथा भोटेकोशी-त्रिशूली विपद्सम्बन्धी संसदीय विशेष समितिको बैठक आज बस्दै छ । संसद् सचिवालयका अनुसार आजको बैठक पूर्वाधार विकास समितिको हलमा बिहान साढे ९ बजे बस्ने छ ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
+      "url": "/updates/2026-11-06-auto-2026-11-06-should-nepal-turn-its-hydropower-surplus-into-digital-/",
+      "title": "Should Nepal turn its hydropower surplus into digital wealth?",
+      "time": "2026-11-06T00:15:00.000Z",
+      "summary": "AI-generated image Nepal’s vast hydropower potential has long been regarded as one of the country’s most important economic assets—and one that remains significantly underutilised.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
     {
       "url": "/updates/2026-11-05-auto-2026-11-05/",
       "title": "बाढीले बगर बनाएको खेतमा बदामखेती",
