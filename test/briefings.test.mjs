@@ -8,7 +8,7 @@ import { readFileSync } from 'node:fs';
 import { readDistricts } from '../functions/api/_figures-core.js';
 import { latestDistricts } from '../functions/api/figures.js';
 import { firstEarlierDetail, repairDetails } from '../src/figures-update.mjs';
-import { planCards, coveredDays, usedUrls, nptDay, oneSentence, statesAToll, pruneStaleAutoCards, pruneArchivedAutoCards } from '../src/briefings-update.mjs';
+import { planCards, coveredDays, usedUrls, nptDay, oneSentence, statesAToll, pruneStaleAutoCards, pruneArchivedAutoCards, cardId } from '../src/briefings-update.mjs';
 
 const BULLETIN = 'जसमध्ये रसुवामा ४५ जना, नुवाकोटमा १ सय ५५ जना, धादिङमा ५९ जना, ' +
   'चितवनमा ३ सय ४८ जना, गोरखामा ६८ जना, तनहुँमा ३८ जना, नवलपरासी पूर्वमा २ सय १७ जना र ' +
@@ -155,4 +155,13 @@ test('a card that already stated a figure is dropped, a hand-written one is kept
   assert.equal(pruneStaleAutoCards(today), 3);
   assert.equal(today.posts.length, 2);
   assert.equal(pruneStaleAutoCards(today), 0, 'a pruned feed is left alone next time');
+});
+
+test('two Nepali headlines on one day get two different ids, and the same headline the same id', () => {
+  const a = cardId('2026-11-05', 'बाढीले बगर बनाएको खेतमा बदामखेती');
+  const b = cardId('2026-11-05', '‘पहिला हिमाल देख्दा गौरव लाग्थ्यो, आजकल खतरा महसुस हुन्छ’');
+  assert.notEqual(a, b);
+  assert.match(a, /^auto-2026-11-05-[0-9a-f]{8}$/);
+  assert.equal(cardId('2026-11-05', 'बाढीले बगर बनाएको खेतमा बदामखेती'), a);
+  assert.equal(cardId('2026-11-06', 'Dry landslide blocks Kaligandaki corridor in Gulmi'), 'auto-2026-11-06-dry-landslide-blocks-kaligandaki-corridor-in-gulmi');
 });

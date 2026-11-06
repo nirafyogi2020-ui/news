@@ -29,6 +29,7 @@
 import { readFileSync, writeFileSync, existsSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 import { isOffSubject, hasBannedWord } from './front-rules.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -140,6 +141,18 @@ function readArchive() {
 }
 
 /**
+ * The id a card is filed under, which is also its permalink and the key its
+ * photograph is kept by. A Nepali headline has no Latin letters, so the slug
+ * came out empty and every Nepali card of a day shared one id: one page for
+ * two or three stories, and one photograph credited to all of them. A short
+ * hash of the headline stands in for the slug when the letters give nothing.
+ */
+export function cardId(day, title) {
+  const slug = slugify(title) || createHash('sha1').update(String(title || '')).digest('hex').slice(0, 8);
+  return `auto-${day}-${slug}`.slice(0, 80);
+}
+
+/**
  * Turn feed items into the cards a gap needs.
  *
  * Deliberately dull: it picks, it does not write. The headline is the
@@ -185,7 +198,7 @@ export function planCards(items, { today, archive, now = Date.now(), startedAt =
 
     perDay.set(day, (perDay.get(day) || 0) + 1);
     added.push({
-      id: `auto-${day}-${slugify(item.title)}`.slice(0, 80),
+      id: cardId(day, item.title),
       title: item.title,
       time: item.time,
       image: item.image || '',
