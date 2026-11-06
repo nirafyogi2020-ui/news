@@ -36,7 +36,7 @@ const BODIES_NE = neTime(C.BODIES_AS_OF);
 const MISSING_BREAKDOWN_NE = neTime(C.MISSING_BREAKDOWN_AS_OF);
 
 function table(head, rows, caption) {
-  return `<div class="table-scroll"><table>${caption ? `<caption>${caption}</caption>` : ''}<thead><tr>${
+  return `<div class="table-scroll"><table${head.length <= 2 ? ' class="narrow"' : ''}>${caption ? `<caption>${caption}</caption>` : ''}<thead><tr>${
     head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${
     rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 }

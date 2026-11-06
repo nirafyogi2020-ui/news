@@ -106,6 +106,9 @@ strong{font-weight:600;}
   .brand-name{font-size:.98rem;}
   .headnav{gap:0; margin-left:auto;}
   .headnav a{padding:7px 8px; font-size:.8rem;}
+  /* The row scrolls sideways here and nothing said so: the last link was cut
+     off mid-word at the edge. A fade over the last few points is the hint. */
+  .headnav{padding-right:18px; -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent); mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);}
 }
 
 /* ---- breadcrumbs -------------------------------------------------------- */
@@ -165,6 +168,9 @@ a.pill:hover{border-color:var(--critical); color:var(--critical);}
 /* ---- tables ------------------------------------------------------------- */
 .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:0 0 10px; border:1px solid var(--border); border-radius:14px; background:var(--surface);}
 table{border-collapse:collapse; width:100%; font-size:0.92rem; min-width:420px;}
+/* A two-column table fits a phone as it is; the floor above made it scroll
+   sideways and cut the numbers column off at the edge. */
+table.narrow{min-width:0;}
 caption{caption-side:top; text-align:left; font-size:0.82rem; color:var(--text-faint); padding:12px 15px 0;}
 th,td{text-align:left; padding:10px 15px; border-bottom:1px solid var(--border); vertical-align:top;}
 thead th{font-family:var(--font-mono); font-size:0.7rem; letter-spacing:.07em; text-transform:uppercase; color:var(--text-faint); font-weight:500; background:var(--surface-2);}

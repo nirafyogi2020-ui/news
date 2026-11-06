@@ -43,7 +43,7 @@ const EVENT_ID = `${SITE}/nepal-flood/rasuwa/#event`;
 const EVENT_ABOUT = [{ '@id': EVENT_ID }];
 
 function table(head, rows, caption) {
-  return `<div class="table-scroll"><table>${caption ? `<caption>${caption}</caption>` : ''}<thead><tr>${
+  return `<div class="table-scroll"><table${head.length <= 2 ? ' class="narrow"' : ''}>${caption ? `<caption>${caption}</caption>` : ''}<thead><tr>${
     head.map(h => `<th${h.n ? ' class="n"' : ''}>${esc(h.t !== undefined ? h.t : h)}</th>`).join('')
   }</tr></thead><tbody>${
     rows.map(r => `<tr>${r.map(c => typeof c === 'number'
