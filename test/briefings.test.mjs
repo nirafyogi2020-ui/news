@@ -1,11 +1,14 @@
 import { test } from 'node:test';
+import { mkdtempSync, writeFileSync, readdirSync, rmSync } from 'node:fs';
+import { join } from 'node:path';
+import { tmpdir } from 'node:os';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
 import { readDistricts } from '../functions/api/_figures-core.js';
 import { latestDistricts } from '../functions/api/figures.js';
 import { firstEarlierDetail, repairDetails } from '../src/figures-update.mjs';
-import { planCards, coveredDays, usedUrls, nptDay, oneSentence, statesAToll, pruneStaleAutoCards } from '../src/briefings-update.mjs';
+import { planCards, coveredDays, usedUrls, nptDay, oneSentence, statesAToll, pruneStaleAutoCards, pruneArchivedAutoCards } from '../src/briefings-update.mjs';
 
 const BULLETIN = 'जसमध्ये रसुवामा ४५ जना, नुवाकोटमा १ सय ५५ जना, धादिङमा ५९ जना, ' +
   'चितवनमा ३ सय ४८ जना, गोरखामा ६८ जना, तनहुँमा ३८ जना, नवलपरासी पूर्वमा २ सय १७ जना र ' +
@@ -118,6 +121,25 @@ test('an automatic card never carries a figure that will move', () => {
     url: 'https://example.com/toll', time: '2026-08-31T10:00:00+05:45', summary: 'k'.repeat(80)
   }];
   assert.equal(planCards(items, { today: { posts: [] }, archive: [], now: Date.parse('2026-09-02T12:00:00Z') }).length, 0);
+});
+
+test('an archived automatic card that is off subject is removed, the rest of the archive is kept', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'archive-'));
+  try {
+    const file = (slug, post) => writeFileSync(join(dir, slug + '.json'), JSON.stringify({ slug, ...post }));
+    file('2026-11-06-auto-crypto', { id: 'auto-2026-11-06-crypto', title: 'Should Nepal turn its hydropower surplus into digital wealth?', body: ['AI-generated image Nepal has...'] });
+    file('2026-11-06-auto-mining', { id: 'auto-2026-11-06-mining', title: 'Bitcoin mining at the flood-hit Rasuwa hydropower plant', body: ['A column.'] });
+    file('2026-11-06-auto-ok', { id: 'auto-2026-11-06-ok', title: 'Dry landslide blocks Kaligandaki corridor in Gulmi', body: ['Traffic was halted.'] });
+    file('2026-11-06-hand', { id: 'hand-written', title: 'Share market slides on flood fears', body: ['A person chose to write this.'] });
+    file('2026-09-02-auto-toll', { id: 'auto-2026-09-02-toll', title: 'Bhotekoshi flood leaves 1,204 dead', body: ['A dated figure stays in the archive.'] });
+    writeFileSync(join(dir, 'notes.txt'), 'not a card');
+
+    assert.deepEqual(pruneArchivedAutoCards(dir).sort(), ['2026-11-06-auto-crypto', '2026-11-06-auto-mining']);
+    assert.deepEqual(readdirSync(dir).sort(), ['2026-09-02-auto-toll.json', '2026-11-06-auto-ok.json', '2026-11-06-hand.json', 'notes.txt']);
+    assert.deepEqual(pruneArchivedAutoCards(dir), [], 'a pruned archive is left alone next time');
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });
 
 test('a card that already stated a figure is dropped, a hand-written one is kept', () => {

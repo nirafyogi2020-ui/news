@@ -162,6 +162,12 @@ test('off-subject stories are dropped, road and weather reports are not', () => 
   assert.ok(isOffSubject('रौतहटमा अज्ञात समूहको गोली प्रहारबाट एक जना घाइते'));
   assert.ok(isOffSubject('Should Nepal turn its hydropower surplus into digital wealth?'));
   assert.ok(!isOffSubject('Election postponed in flood-hit Rasuwa villages'));
+  // Crypto stories stay out even when they stand next to a disaster word.
+  assert.ok(isOffSubject('Bitcoin mining at the flood-hit Rasuwa hydropower plant'));
+  assert.ok(isOffSubject('Crypto mining with Nepal\'s surplus hydropower after the monsoon'));
+  assert.ok(isOffSubject('Cryptocurrency exchange opens in Kathmandu despite the disaster'));
+  assert.ok(isOffSubject('Should Nepal turn its hydropower surplus into digital wealth after the flood?'));
+  assert.ok(!isOffSubject('Hydropower plant swept away in Rasuwa flood'));
 });
 
 test('the embed box credits its source and escapes what it prints', async () => {

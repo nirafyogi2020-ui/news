@@ -77,7 +77,7 @@ const OFF_SUBJECT = new RegExp([
   'World Bank', 'विश्व बैंक', 'economic growth', 'अर्थतन्त्र', 'भ्याट', 'exported to India', 'विद्युत निर्यात',
   'पर्यटक', 'पर्यटन', 'tourism', 'festival', 'दशैं', 'दसैँ',
   'election', 'candidates?', 'निर्वाचन', 'चुनाव', 'उम्मेदवार', 'मतदान',
-  'shooting', 'shot dead', 'गोली प्रहार', 'digital wealth', 'cryptocurrency', 'bitcoin',
+  'shooting', 'shot dead', 'गोली प्रहार',
 ].join('|'), 'i');
 
 /* Money-market stories borrow disaster words as figures of speech: a share
@@ -87,10 +87,15 @@ const OFF_SUBJECT = new RegExp([
    "stocks" also reads "police shares missing list" or "relief stocks". */
 const MARKET_WORDS = /\b(?:stock markets?|share markets?|stock exchange|share index|tech stocks|share prices?|stock prices?|NEPSE|Nasdaq|Wall Street)\b|सेयर बजार|सेयरमा|सेयरको|नेप्से/i;
 
+/* Crypto stories are the other kind that borrow this site's words: a column
+   on mining bitcoin with surplus hydropower is about hydropower and money,
+   not about a dam or a flood. Always off subject, disaster word or not. */
+const CRYPTO_WORDS = /\b(?:digital wealth|cryptocurrenc(?:y|ies)|bitcoin|crypto(?:[- ]?(?:mining|currency|assets?|exchange))?|blockchain)\b|क्रिप्टो|बिटकोइन/i;
+
 /** Off subject, unless the headline itself ties it to a disaster. */
 export function isOffSubject(title) {
   const t = String(title || '');
-  if (MARKET_WORDS.test(t)) return true;
+  if (MARKET_WORDS.test(t) || CRYPTO_WORDS.test(t)) return true;
   return OFF_SUBJECT.test(t) && !DISASTER_WORDS.test(t);
 }
 

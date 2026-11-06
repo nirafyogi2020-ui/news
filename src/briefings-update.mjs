@@ -26,7 +26,7 @@
  * Exit codes: 0 always. Prints `changed=true|false` for the workflow.
  */
 
-import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isOffSubject, hasBannedWord } from './front-rules.mjs';
@@ -239,6 +239,31 @@ export function pruneStaleAutoCards(today) {
   return dropped;
 }
 
+/**
+ * The subject test over the archive. A card dropped from today.json had
+ * already been copied to data/updates/ by the build, where its page lived on
+ * under /updates/ and in the dashboard's archive. Only automatic cards (an id
+ * this script wrote) that are off subject or carry a banned word go; a
+ * hand-written briefing is never deleted, and an automatic card that states
+ * a figure stays, because a dated figure in the archive is a record rather
+ * than a contradiction of the live counters. Returns the slugs removed.
+ */
+export function pruneArchivedAutoCards(dir = ARCHIVE) {
+  if (!existsSync(dir)) return [];
+  const removed = [];
+  for (const name of readdirSync(dir)) {
+    if (!name.endsWith('.json')) continue;
+    let post;
+    try { post = JSON.parse(readFileSync(join(dir, name), 'utf8')); } catch { continue; }
+    if (!post || !/^auto-/.test(String(post.id || ''))) continue;
+    const text = [post.title, ...(Array.isArray(post.body) ? post.body : [])].join(' ');
+    if (!isOffSubject(post.title) && !hasBannedWord(text)) continue;
+    unlinkSync(join(dir, name));
+    removed.push(post.slug || name.replace(/\.json$/, ''));
+  }
+  return removed;
+}
+
 export async function main() {
   let today;
   try {
@@ -259,11 +284,14 @@ export async function main() {
     return;
   }
 
+  const unfiled = pruneArchivedAutoCards();
+  for (const slug of unfiled) console.log(`  - archived card removed: ${slug}`);
   const archive = readArchive();
   const pruned = pruneStaleAutoCards(today);
   const cards = planCards(items, { today, archive, startedAt });
   if (!cards.length && !pruned) {
-    report(false, `no gap to fill (${items.length} stories read)`);
+    report(unfiled.length > 0, `no gap to fill (${items.length} stories read)`
+      + (unfiled.length ? `, ${unfiled.length} archived card(s) removed` : ''));
     return;
   }
 
