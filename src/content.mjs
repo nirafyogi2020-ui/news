@@ -540,7 +540,7 @@ export const SOURCE_GROUPS = [
    ------------------------------------------------------------------------- */
 export const HAZARD_PAGES = {
   glof: {
-    title: 'Glacial Lake Outburst Flood (GLOF) in Nepal: What It Is and What to Do',
+    title: 'Glacial Lake Outburst Floods in Nepal: What They Are, What to Do',
     description: 'What a glacial lake outburst flood is, why Nepal gets them, the warning signs that come minutes before the water, and what to do when the river rises on a dry day.',
     h1: 'Glacial lake outburst floods in Nepal',
     lede: 'The hazard behind the 2026 Rasuwa flood. A lake that nobody lives near empties in an afternoon and kills people fifty kilometres downstream.',
@@ -576,7 +576,7 @@ export const HAZARD_PAGES = {
     ],
   },
   earthquake: {
-    title: 'Earthquakes in Nepal: Why They Happen and What to Do in the First Minute',
+    title: 'Earthquakes in Nepal: Why They Happen and What to Do',
     description: 'Why Nepal has large earthquakes, what to do during the shaking, what to do in the hours after it stops, and which risks come next: aftershocks, landslides and damaged buildings.',
     h1: 'Earthquakes in Nepal',
     lede: 'The Indian plate is pushing under Asia and the Himalaya is what that collision looks like. The shaking is the strain being released.',
@@ -608,7 +608,7 @@ export const HAZARD_PAGES = {
     ],
   },
   landslide: {
-    title: 'Landslides in Nepal: Warning Signs, What to Do, and Why Roads Make It Worse',
+    title: 'Landslides in Nepal: Warning Signs and What to Do',
     description: 'Landslides and debris flows kill more people in Nepal in a normal year than any single large disaster. The warning signs, what to do at night in heavy rain, and why cut roads fail first.',
     h1: 'Landslides and debris flows in Nepal',
     lede: 'The hazard that kills quietly, a few houses at a time, usually at night, usually in the monsoon, and almost always with no warning at all.',

@@ -11,6 +11,7 @@ import { fileURLToPath } from 'node:url';
 
 export const SITE = 'https://nepaldisasterupdatelive.nxtimaginelabs.com';
 export const SITE_NAME = 'Nepal Disaster Update Live';
+export const SITE_ALT_NAMES = ['Nepal Disaster Update', 'NepalDisasterUpdate', 'Nepal Disaster Live', 'Nepal Disaster Update Live Nepal'];
 export const PUBLISHER = 'Nepal Disaster Update Live';
 export const CONTACT_EMAIL = 'hello@nxtimaginelabs.com';
 
@@ -214,6 +215,7 @@ function orgGraph() {
       name: PUBLISHER,
       alternateName: 'Nepal Disaster Update',
       url: `${SITE}/`,
+      sameAs: ['https://github.com/nirafyogi2020-ui/news'],
       email: CONTACT_EMAIL,
       logo: {
         '@type': 'ImageObject',
@@ -243,6 +245,9 @@ function orgGraph() {
       '@id': `${SITE}/#website`,
       url: `${SITE}/`,
       name: SITE_NAME,
+      /* The ways people type the site's own name. Nothing here may be the
+         name of another outlet. No SearchAction: the site has no search URL. */
+      alternateName: SITE_ALT_NAMES,
       inLanguage: 'en',
       publisher: { '@id': `${SITE}/#organization` },
     },
@@ -391,6 +396,7 @@ ${alt}
 <meta property="og:description" content="${esc(o.description)}">
 <meta property="og:url" content="${url}">
 <meta property="og:site_name" content="${esc(SITE_NAME)}">
+<meta name="application-name" content="${esc(SITE_NAME)}">
 <meta property="og:locale" content="${lang === 'ne' ? 'ne_NP' : 'en_US'}">
 <meta property="og:image" content="${esc(ogImage)}">
 <!-- secure_url and type are what the older scrapers read. WhatsApp in

@@ -154,12 +154,15 @@ const EMERGENCY_STRIP = `<div class="callout callout-alert">
 </div>`;
 
 function numbersGrid() {
+  /* "1,458" with the thousands comma, as the rail beside it and every other
+     counter on the site print it; the raw number read as a different figure. */
+  const n = v => typeof v === 'number' ? v.toLocaleString('en-US') : esc(v);
   return `<div class="numgrid">
-    <div class="statbox"><span class="n crit">${C.TOLL.deadNepal}</span><span class="l">confirmed dead in Nepal</span><span class="src">${esc(C.TOLL_SOURCE)}, ${esc(AS_OF_TOLL)}</span></div>
-    <div class="statbox"><span class="n crit">${C.TOLL.missing}</span><span class="l">listed missing in Nepal</span><span class="src">${esc(C.MISSING_SOURCE)}, ${esc(AS_OF_MISSING)}</span></div>
-    <div class="statbox"><span class="n">${C.TOLL.missingChina}</span><span class="l">missing on the China side</span><span class="src">CCTV, Gyirong Port</span></div>
-    <div class="statbox"><span class="n">${C.TOLL.injured}</span><span class="l">injured</span><span class="src">NDRRMA and Nepal Police</span></div>
-    <div class="statbox"><span class="n">${C.TOLL.rescued}</span><span class="l">rescued so far</span><span class="src">NDRRMA, ${esc(AS_OF_NDRRMA)}</span></div>
+    <div class="statbox"><span class="n crit">${n(C.TOLL.deadNepal)}</span><span class="l">confirmed dead in Nepal</span><span class="src">${esc(C.TOLL_SOURCE)}, ${esc(AS_OF_TOLL)}</span></div>
+    <div class="statbox"><span class="n crit">${n(C.TOLL.missing)}</span><span class="l">listed missing in Nepal</span><span class="src">${esc(C.MISSING_SOURCE)}, ${esc(AS_OF_MISSING)}</span></div>
+    <div class="statbox"><span class="n">${n(C.TOLL.missingChina)}</span><span class="l">missing on the China side</span><span class="src">CCTV, Gyirong Port</span></div>
+    <div class="statbox"><span class="n">${n(C.TOLL.injured)}</span><span class="l">injured</span><span class="src">NDRRMA and Nepal Police</span></div>
+    <div class="statbox"><span class="n">${n(C.TOLL.rescued)}</span><span class="l">rescued so far</span><span class="src">NDRRMA, ${esc(AS_OF_NDRRMA)}</span></div>
     <div class="statbox"><span class="n">${C.DAMAGE.hydropowerProjects}</span><span class="l">hydropower projects damaged, about ${C.DAMAGE.hydropowerMW} MW</span><span class="src">Nepal Electricity Authority</span></div>
     <div class="statbox"><span class="n sm">${esc(C.DAMAGE.costEstimate)}</span><span class="l">road and bridge damage, preliminary</span><span class="src">Minister Sunil Lamsal, 26 Aug</span></div>
     <div class="statbox"><span class="n sm">${esc(C.DAMAGE.reliefReleased)}</span><span class="l">relief money released</span><span class="src">Government of Nepal</span></div>
@@ -540,7 +543,7 @@ ${C.MISSING_STEPS.map((s, i) => `<div class="check-row"><span class="mark">${Str
 <p>Fake "we have located your relative, send money for transport" messages appear after every disaster in Nepal and elsewhere. Nepal Police do not ask for payment to search for a missing person. Neither does any legitimate rescue organisation. If you receive that message, report it to the police office you registered with.</p>
 `;
 
-  const t = 'Rasuwa Flood Missing Persons: How to Report Someone, and Who Is on the List';
+  const t = 'Rasuwa Flood Missing Persons: Who Is Listed and How to Report';
   const d = `${C.TOLL.missing} people are listed out of contact in Nepal after the 2026 Rasuwa flood, plus ${C.TOLL.missingChina} in Tibet. How to report someone missing, including from abroad.`;
   return {
     path, title: t, description: d, lastmod: ctx.modified, priority: '0.8', changefreq: 'daily',
@@ -1125,7 +1128,7 @@ ${C.RIVER_SAFETY.map(s => `<li>${esc(s)}</li>`).join('\n')}
 <h2>Questions people ask</h2>
 ${faq.html}
 `;
-  const t = 'Nepal Emergency Numbers: Police 100, Ambulance 102, Disaster Hotline 1149';
+  const t = 'Nepal Emergency Numbers: Police 100, Ambulance 102, Hotline 1149';
   const d = 'Every national emergency number in Nepal and what each is for: police 100, mobile emergency 112, ambulance 102, fire 101, traffic police 103, disaster hotline 1149, helpline 1155, tourist police 1144.';
   return {
     path, title: t, description: d, lastmod: ctx.buildDay, priority: '0.9', changefreq: 'monthly',
@@ -1295,7 +1298,7 @@ ${C.RIVER_SAFETY.map((s, i) => `<div class="check-row"><span class="mark">${Stri
   <a href="https://drrportal.gov.np/" target="_blank" rel="noopener nofollow">Disaster Risk Reduction Portal &#8599;</a>
 </div>
 `;
-  const t = 'Nepal Natural Disasters Explained: Floods, Earthquakes, Landslides, GLOFs';
+  const t = 'Nepal Natural Disasters: Floods, Earthquakes, Landslides, GLOFs';
   const d = 'A plain-language guide to Nepal’s five main natural hazards: glacial lake outburst floods, earthquakes, landslides, monsoon floods, and fire and lightning: warning signs and what to do.';
   return {
     path, title: t, description: d, lastmod: ctx.buildDay, priority: '0.8', changefreq: 'monthly',
@@ -2051,7 +2054,7 @@ ${C.TOLL.rescuedBreakdown.length ? table(['Agency', 'Rescued'], C.TOLL.rescuedBr
 ${faq.html}
 `;
 
-  const t = 'Rasuwa Flood: Foreign Nationals Missing, and Who Families Should Call';
+  const t = 'Rasuwa Flood: Foreign Nationals Missing and Who to Call';
   const d = 'Most of the people missing in the 2026 Rasuwa flood were travellers, and hundreds are foreign nationals. What Nepal and China each published, and the right first call for a family abroad.';
   return {
     path, title: t, description: d, lastmod: ctx.buildDay, priority: '0.8', changefreq: 'daily',
