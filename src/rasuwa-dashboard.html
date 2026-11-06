@@ -3609,8 +3609,10 @@
     margin-top:auto; padding:11px 0 0; border-top:1px solid var(--rule-hair);
     background:none; gap:14px;
   }
+  /* Padding and matching negative margin: the button looks the same size but
+     answers to a thumb, not just a mouse pointer. */
   .river .post-btn, .pack .post-btn{
-    border:0; background:none; padding:0; font-size:0.78rem; color:var(--text-muted);
+    border:0; background:none; padding:10px 0; margin:-10px 0; font-size:0.78rem; color:var(--text-muted);
   }
   .river .post-btn:hover, .pack .post-btn:hover{color:var(--critical); background:none;}
   .today-card .tc-more{display:none;}
@@ -4758,6 +4760,9 @@
     .ht-icon{width:34px; height:34px;}
     .ht-icon svg{width:19px; height:19px;}
     .ht-pill{width:34px; height:34px;}
+    /* The drawn control stays 34px; the tappable area grows to 44px. */
+    .ht-icon, .ht-pill{position:relative;}
+    .ht-icon::before, .ht-pill::before{content:""; position:absolute; inset:-5px;}
   }
   @media (max-width:360px){
     .brand-name{font-size:0.94rem;}
@@ -10129,7 +10134,7 @@ var LiveFeed = (function(){
       .then(function(){ inFlight = false; });
   }
 
-  fetch('/event.json', { cache:'no-store' })
+  fetch('/event.json', { cache:'no-cache' })
     .then(function(r){ return r.ok ? r.json() : null; })
     .then(function(event){ apply(event); pollFigures(); })
     .catch(function(){ /* fallback markup stays */ });
@@ -10241,7 +10246,7 @@ var LiveFeed = (function(){
     })
     .catch(function(){});
 
-  fetch('/updates.json', { cache:'no-store' })
+  fetch('/updates.json', { cache:'no-cache' })
     .then(function(r){ return r.ok ? r.json() : null; })
     .then(function(a){
       if(a && a.updates && a.updates.length){
@@ -10532,7 +10537,7 @@ var LiveFeed = (function(){
     if(posts.length >= 8) { render(d); return; }
     var have = {};
     posts.forEach(function(p){ var u = permalink(p); if(u) have[u] = 1; });
-    fetch('/updates.json', { cache:'no-store' })
+    fetch('/updates.json', { cache:'no-cache' })
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(a){
         var extra = ((a && a.updates) || [])
@@ -10551,7 +10556,7 @@ var LiveFeed = (function(){
 
   var lastTodayUpdated = '';
   function refreshToday(){
-    fetch('/today.json', { cache:'no-store' })
+    fetch('/today.json', { cache:'no-cache' })
       .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
       .then(function(data){
         if(data && data.updated && data.updated === lastTodayUpdated) return;
