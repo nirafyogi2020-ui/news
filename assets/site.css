@@ -340,3 +340,8 @@ hr{border:0; border-top:1px solid var(--border); margin:36px 0;}
    the line came from a UN alerting body rather than an aggregator. */
 .src-badge{display:inline-flex; align-items:center; gap:5px; font-family:var(--font-mono); font-size:0.66rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--text-faint);}
 .src-badge .vtick{width:12px; height:12px; color:#1d9bf0;}
+
+/* The embed snippet on /about/ is one long line of markup. Wrapped, it can be
+   read and copied on a phone; unwrapped it pushed the whole page sideways. */
+pre{white-space:pre-wrap; word-break:break-all; overflow-x:auto; margin:0 0 16px; padding:12px 14px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2); font-family:var(--font-mono); font-size:0.8rem; line-height:1.55;}
+pre code{font-family:inherit; font-size:inherit;}

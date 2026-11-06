@@ -9009,7 +9009,7 @@ var LiveFeed = (function(){
      puts "Missing flood victims' families called for DNA testing" under a
      frame instead of the slug read back as words. */
   Promise.all([
-    fetch('/assets/photos/index.json', { cache: 'force-cache' })
+    fetch('/assets/photos/index.json', { cache: 'no-cache' })
       .then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }),
     fetch('/updates.json', { cache: 'no-cache' })
       .then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
@@ -10351,7 +10351,7 @@ var LiveFeed = (function(){
      named beside it. Nothing on a card is left uncredited. */
   var PHOTO_CREDITS = {};
   var PHOTO_FILES = {};
-  fetch('/assets/photos/index.json', { cache:'force-cache' })
+  fetch('/assets/photos/index.json', { cache:'no-cache' })
     .then(function(r){ return r.ok ? r.json() : null; })
     .then(function(j){
       if(!j) return;
