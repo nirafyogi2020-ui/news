@@ -17,11 +17,97 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 
+/* The pictures are shown 400 px wide on a card, yet newsrooms publish them at
+   3,000 px and 4 MB. Each download is cut down to MAX_PHOTO_WIDTH and saved as
+   a JPEG. resvg, the same rasteriser that draws the share pictures, decodes
+   the download and scales it; it only writes PNG, so the small pure-JS
+   jpeg-js encoder turns its pixels into a JPEG. If either is missing the
+   picture is kept as it came, which is what happened before. */
+let Resvg = null;
+let jpeg = null;
+try { ({ Resvg } = await import('@resvg/resvg-js')); } catch { Resvg = null; }
+try { jpeg = (await import('jpeg-js')).default; } catch { jpeg = null; }
+
+export const MAX_PHOTO_WIDTH = 1400;
+export const PHOTO_QUALITY = 82;
+
 const UA = 'Mozilla/5.0 (compatible; NepalDisasterUpdateLive/1.0; +https://nepaldisasterupdatelive.nxtimaginelabs.com/about/)';
 
 const TIMEOUT_MS = 12000;
 const MIN_BYTES = 12000;          // anything smaller is a logo or a spacer
 const MAX_BYTES = 6 * 1024 * 1024;
+
+/** Width and height read from the file header, or null when it is not a
+    picture format this understands. */
+export function imageSize(buf) {
+  if (!buf || buf.length < 30) return null;
+  /* PNG: the IHDR chunk is always first. */
+  if (buf[0] === 0x89 && buf[1] === 0x50 && buf[2] === 0x4e && buf[3] === 0x47) {
+    return { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) };
+  }
+  /* JPEG: walk the segments to the first start-of-frame marker. */
+  if (buf[0] === 0xff && buf[1] === 0xd8) {
+    let i = 2;
+    while (i + 9 < buf.length) {
+      if (buf[i] !== 0xff) { i++; continue; }
+      const marker = buf[i + 1];
+      if (marker === 0xd8 || marker === 0x01 || (marker >= 0xd0 && marker <= 0xd7)) { i += 2; continue; }
+      const len = buf.readUInt16BE(i + 2);
+      if (marker >= 0xc0 && marker <= 0xcf && marker !== 0xc4 && marker !== 0xc8 && marker !== 0xcc) {
+        return { height: buf.readUInt16BE(i + 5), width: buf.readUInt16BE(i + 7) };
+      }
+      i += 2 + len;
+    }
+    return null;
+  }
+  /* WebP: RIFF container with one of three bitstream headers. */
+  if (buf.toString('ascii', 0, 4) === 'RIFF' && buf.toString('ascii', 8, 12) === 'WEBP') {
+    const kind = buf.toString('ascii', 12, 16);
+    if (kind === 'VP8 ') return { width: buf.readUInt16LE(26) & 0x3fff, height: buf.readUInt16LE(28) & 0x3fff };
+    if (kind === 'VP8L') {
+      const b = buf.readUInt32LE(21);
+      return { width: (b & 0x3fff) + 1, height: ((b >> 14) & 0x3fff) + 1 };
+    }
+    if (kind === 'VP8X') return { width: buf.readUIntLE(24, 3) + 1, height: buf.readUIntLE(27, 3) + 1 };
+  }
+  return null;
+}
+
+/**
+ * Cut a downloaded picture down to card size.
+ *
+ * Anything wider than MAX_PHOTO_WIDTH is scaled down; a PNG of any size is
+ * re-encoded as a JPEG, since a photograph stored as PNG is several times the
+ * weight for nothing a reader can see. WebP is left alone: resvg does not
+ * decode it. When the tools are not installed the input comes back unchanged.
+ *
+ * @returns {{buf:Buffer,type:string}}
+ */
+export function shrinkPhoto(buf, type, maxWidth = MAX_PHOTO_WIDTH, quality = PHOTO_QUALITY) {
+  const asIs = { buf, type };
+  if (!Resvg || !jpeg) return asIs;
+  if (type !== 'image/jpeg' && type !== 'image/png') return asIs;
+  const size = imageSize(buf);
+  if (!size || !size.width || !size.height) return asIs;
+  if (size.width <= maxWidth && type === 'image/jpeg') return asIs;
+
+  const width = Math.min(size.width, maxWidth);
+  const height = Math.max(1, Math.round(size.height * width / size.width));
+  /* The white rectangle underneath is for transparent PNGs: JPEG has no
+     alpha, and without it the clear parts would come out black. */
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">`
+    + `<rect width="${width}" height="${height}" fill="#fff"/>`
+    + `<image href="data:${type};base64,${buf.toString('base64')}" width="${width}" height="${height}" preserveAspectRatio="none"/>`
+    + '</svg>';
+  try {
+    const rendered = new Resvg(svg).render();
+    const out = jpeg.encode({ data: Buffer.from(rendered.pixels), width: rendered.width, height: rendered.height }, quality);
+    if (!out || !out.data || out.data.length < 1000) return asIs;
+    return { buf: Buffer.from(out.data), type: 'image/jpeg' };
+  } catch {
+    return asIs;
+  }
+}
 
 /* Outlets whose pictures are usually the event itself rather than a stock
    portrait or a studio graphic. Tried first, in this order. */
@@ -163,8 +249,9 @@ export async function photoForSources(sources, slug, photoDir) {
     if (!html) continue;
     const imgUrl = socialImage(html, article);
     if (!imgUrl) continue;
-    const img = await get(imgUrl, true);
-    if (!img) continue;
+    const raw = await get(imgUrl, true);
+    if (!raw) continue;
+    const img = shrinkPhoto(raw.buf, raw.type);
 
     const ext = img.type === 'image/png' ? 'png' : img.type === 'image/webp' ? 'webp' : 'jpg';
     const file = `${slug}.${ext}`;
