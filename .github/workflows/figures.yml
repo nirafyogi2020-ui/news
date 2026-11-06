@@ -144,10 +144,23 @@ jobs:
 
       # The chain. A workflow_dispatch from GITHUB_TOKEN is the one event that
       # is allowed to start a new run, and this runs even if a step above failed.
+      #
+      # One dispatch call is one network request to GitHub, and on 6 November
+      # 2026 a single failed request at 09:04 UTC broke the chain for over an
+      # hour, until the cron backstop picked it up. So the call is tried five
+      # times, twenty seconds apart, and the step only fails once every try has.
       - name: Start the next run
         if: always() && github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           sleep 240
-          gh workflow run figures.yml --ref main
+          for attempt in 1 2 3 4 5; do
+            if gh workflow run figures.yml --ref main; then
+              exit 0
+            fi
+            echo "Dispatch attempt $attempt failed; trying again in 20 s."
+            sleep 20
+          done
+          echo "Could not start the next run after 5 tries. The cron schedule will restart the chain."
+          exit 1
