@@ -418,7 +418,7 @@ ${o.head || ''}
 <script>
 /* Theme is chosen on the dashboard and stored locally; honour it here too so
    moving between the dashboard and these pages does not flash a new colour. */
-(function(){try{var t=localStorage.getItem('nduTheme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}
+(function(){try{var t=localStorage.getItem('theme-choice')||localStorage.getItem('nduTheme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}
 else if((t==='system'||!t)&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches&&t==='system'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();
 </script>
 <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}</script>
