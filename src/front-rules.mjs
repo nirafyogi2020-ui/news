@@ -83,8 +83,9 @@ const OFF_SUBJECT = new RegExp([
 /* Money-market stories borrow disaster words as figures of speech: a share
    index "collapses", tech stocks suffer a "landslide" (पहिरो). The disaster
    word does not rescue these, or a trading floor ends up as the story of the
-   day on a flood site. */
-const MARKET_WORDS = /\b(?:stock market|share market|stocks?|shares|Nasdaq|Wall Street)\b|सेयर बजार|सेयरमा|सेयरको|स्टक/i;
+   day on a flood site. Only market phrases count: a bare "shares" or
+   "stocks" also reads "police shares missing list" or "relief stocks". */
+const MARKET_WORDS = /\b(?:stock markets?|share markets?|stock exchange|share index|tech stocks|share prices?|stock prices?|NEPSE|Nasdaq|Wall Street)\b|सेयर बजार|सेयरमा|सेयरको|नेप्से/i;
 
 /** Off subject, unless the headline itself ties it to a disaster. */
 export function isOffSubject(title) {

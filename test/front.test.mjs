@@ -156,6 +156,8 @@ test('off-subject stories are dropped, road and weather reports are not', () => 
   // A figurative "landslide" in the share market is still a market story.
   assert.ok(isOffSubject('विश्वभरिका टेक कम्पनीको सेयरमा किन गयो पहिरो ?'));
   assert.ok(isOffSubject('Tech stocks slide as Wall Street sells off'));
+  assert.ok(!isOffSubject('Police shares list of missing after Rasuwa flood'));
+  assert.ok(!isOffSubject('Relief stocks run low in flood-hit Rasuwa'));
   assert.ok(isOffSubject('सञ्जाल र क्याफेमा उम्मेदवारको घुइँचो, एजेन्डा गयल'));
   assert.ok(isOffSubject('रौतहटमा अज्ञात समूहको गोली प्रहारबाट एक जना घाइते'));
   assert.ok(isOffSubject('Should Nepal turn its hydropower surplus into digital wealth?'));
