@@ -1916,6 +1916,9 @@
     .map-bar{padding:10px 12px; gap:6px;}
     .map-bar .hint{flex:1 1 100%; margin-right:0; margin-bottom:2px;}
     .chip{font-size:0.75rem; padding:6px 11px;}
+    /* The drawn chip stays 28px tall; the tappable area grows to 44px. */
+    .chip{position:relative;}
+    .chip::after{content:""; position:absolute; left:0; right:0; top:-8px; bottom:-8px;}
     #flood-map{height:clamp(320px, 62vw, 440px);}
     /* Seven full-width rows pushed everything else off the screen. On a
        phone the stops become a single row you swipe sideways. */
@@ -3783,6 +3786,7 @@
     letter-spacing:0.11em; text-transform:uppercase; color:var(--text);
   }
   .today-more{margin:22px 0 0; font-size:0.9rem;}
+  .today-more-btn{font-family:inherit; line-height:inherit; cursor:pointer;}
   .today-updated{
     margin:16px 0 0; font-family:var(--font-mono); font-size:0.68rem;
     letter-spacing:0.05em; color:var(--text-faint);
@@ -6842,6 +6846,15 @@ window.BriefCard = (function(){
    analyticsToken   the token from Cloudflare Web Analytics. Left blank, no
                     measurement script is loaded at all.
    ========================================================================= */
+/* A feed request that never answers used to leave its block shimmering and
+   its status on "Loading…" for as long as the tab stayed open. Every feed
+   fetch now carries a deadline; past it the request fails like any other and
+   the block's own fallback takes over. Older browsers without the API simply
+   get no deadline, as before. */
+function fetchDeadline(ms){
+  return (typeof AbortSignal !== 'undefined' && typeof AbortSignal.timeout === 'function')
+    ? AbortSignal.timeout(ms) : undefined;
+}
 var SITE = {
   analyticsToken: ''
 };
@@ -8506,7 +8519,7 @@ var LiveFeed = (function(){
   }
 
   function loadGlobal(){
-    return fetch('/api/global', { cache:'no-store' })
+    return fetch('/api/global', { cache:'no-store', signal: fetchDeadline(20000) })
       .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)); })
       .then(function(data){
         globalItems = Array.isArray(data.items) ? data.items : [];
@@ -8600,7 +8613,7 @@ var LiveFeed = (function(){
   function load(){
     if(statusEl) statusEl.textContent = 'Refreshing…';
     if(feedTabStatus) feedTabStatus.textContent = 'Refreshing…';
-    return fetch('/api/news', { cache: 'no-store' })
+    return fetch('/api/news', { cache: 'no-store', signal: fetchDeadline(20000) })
       .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)); })
       .then(function(data){
         latest = data.items || [];
@@ -8763,7 +8776,7 @@ var LiveFeed = (function(){
   }
 
   function loadOfficial(){
-    return fetch('/api/official', { cache: 'no-store' })
+    return fetch('/api/official', { cache: 'no-store', signal: fetchDeadline(20000) })
       .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)); })
       .then(function(data){
         var latest = data.latest;
@@ -8908,7 +8921,7 @@ var LiveFeed = (function(){
   }
 
   function load(){
-    return fetch('/api/incidents', { cache:'no-store' })
+    return fetch('/api/incidents', { cache:'no-store', signal: fetchDeadline(20000) })
       .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)); })
       .then(function(data){
         var items = data.items || [];
@@ -10494,6 +10507,32 @@ var LiveFeed = (function(){
   var LAST = null;
   function repaint(){ if(LAST) render(LAST); }
 
+  /* The Today tab used to draw the whole run, two hundred cards and forty
+     thousand pixels, before the reader had scrolled past the first row. It
+     now draws a page of them and adds the next page as the reader nears the
+     end, or on a tap of the button for a browser without the observer. The
+     count already shown is kept across refreshes so the page never shrinks
+     under somebody who is reading. */
+  var PAGE = 24;
+  var shown = PAGE;
+  var moreWatch = null;
+  function watchMore(btn){
+    if(moreWatch){ moreWatch.disconnect(); moreWatch = null; }
+    if(!btn || !('IntersectionObserver' in window)) return;
+    moreWatch = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting) showMore(); });
+    }, { rootMargin:'700px 0px' });
+    moreWatch.observe(btn);
+  }
+  function showMore(){
+    if(moreWatch){ moreWatch.disconnect(); moreWatch = null; }
+    shown += PAGE;
+    repaint();
+  }
+  document.addEventListener('click', function(e){
+    if(e.target.closest('.today-more-btn')) showMore();
+  });
+
   function render(d){
     LAST = d;
     var posts = newestFirst((d && Array.isArray(d.posts)) ? d.posts : []);
@@ -10515,7 +10554,14 @@ var LiveFeed = (function(){
             : '') + stampLine;
         return;
       }
-      g.innerHTML = packHtml(posts) + stampLine;
+      var n = Math.min(posts.length, shown);
+      var left = posts.length - n;
+      g.innerHTML = packHtml(posts.slice(0, n)) +
+        (left > 0
+          ? '<p class="today-more"><button type="button" class="deeplink today-more-btn">' +
+            'Show ' + Math.min(PAGE, left) + ' more of ' + posts.length + ' briefings</button></p>'
+          : '') + stampLine;
+      watchMore(left > 0 ? g.querySelector('.today-more-btn') : null);
     });
   }
 
