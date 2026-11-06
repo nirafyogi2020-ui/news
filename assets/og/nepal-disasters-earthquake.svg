@@ -35,9 +35,10 @@
   
 
   <text x="72" y="214" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
-      font-size="68" font-weight="600" fill="#F4F0E6">Earthquakes in Nepal</text>
-  <text x="72" y="266" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
-      fill="#B9B4A6">Why Nepal has large earthquakes, what to do during the shaking,</text><text x="72" y="304" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
+      font-size="68" font-weight="600" fill="#F4F0E6">Earthquakes in Nepal: Why</text><text x="72" y="292" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
+      font-size="68" font-weight="600" fill="#F4F0E6">They Happen and What to Do</text>
+  <text x="72" y="344" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
+      fill="#B9B4A6">Why Nepal has large earthquakes, what to do during the shaking,</text><text x="72" y="382" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
       fill="#B9B4A6">what to do in the hours after it stops, and which risks come next:…</text>
   
 

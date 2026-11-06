@@ -35,10 +35,10 @@
   
 
   <text x="72" y="214" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
-      font-size="68" font-weight="600" fill="#F4F0E6">Nepal Natural Disasters</text><text x="72" y="292" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
-      font-size="68" font-weight="600" fill="#F4F0E6">Explained</text>
-  <text x="72" y="344" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
-      fill="#B9B4A6">A plain-language guide to Nepal’s five main natural hazards:</text><text x="72" y="382" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
+      font-size="58" font-weight="600" fill="#F4F0E6">Nepal Natural Disasters: Floods,</text><text x="72" y="282" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
+      font-size="58" font-weight="600" fill="#F4F0E6">Earthquakes, Landslides, GLOFs</text>
+  <text x="72" y="334" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
+      fill="#B9B4A6">A plain-language guide to Nepal’s five main natural hazards:</text><text x="72" y="372" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
       fill="#B9B4A6">glacial lake outburst floods, earthquakes, landslides, monsoon…</text>
   
 

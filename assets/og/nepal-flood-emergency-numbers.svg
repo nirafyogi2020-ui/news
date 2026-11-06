@@ -35,9 +35,10 @@
   
 
   <text x="72" y="214" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
-      font-size="68" font-weight="600" fill="#F4F0E6">Nepal Emergency Numbers</text>
-  <text x="72" y="266" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
-      fill="#B9B4A6">Every national emergency number in Nepal and what each is for:</text><text x="72" y="304" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
+      font-size="58" font-weight="600" fill="#F4F0E6">Nepal Emergency Numbers: Police</text><text x="72" y="282" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
+      font-size="58" font-weight="600" fill="#F4F0E6">100, Ambulance 102, Hotline 1149</text>
+  <text x="72" y="334" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
+      fill="#B9B4A6">Every national emergency number in Nepal and what each is for:</text><text x="72" y="372" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
       fill="#B9B4A6">police 100, mobile emergency 112, ambulance 102, fire 101,…</text>
   
 

@@ -35,9 +35,10 @@
   
 
   <text x="72" y="214" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
-      font-size="68" font-weight="600" fill="#F4F0E6">Landslides in Nepal</text>
-  <text x="72" y="266" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
-      fill="#B9B4A6">Landslides and debris flows kill more people in Nepal in a normal</text><text x="72" y="304" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
+      font-size="68" font-weight="600" fill="#F4F0E6">Landslides in Nepal: Warning</text><text x="72" y="292" font-family="Newsreader, 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif"
+      font-size="68" font-weight="600" fill="#F4F0E6">Signs and What to Do</text>
+  <text x="72" y="344" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
+      fill="#B9B4A6">Landslides and debris flows kill more people in Nepal in a normal</text><text x="72" y="382" font-family="'Public Sans', 'Noto Sans Devanagari', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27"
       fill="#B9B4A6">year than any single large disaster. The warning signs, what to do…</text>
   
 
