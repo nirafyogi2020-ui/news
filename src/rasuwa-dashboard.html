@@ -8519,7 +8519,7 @@ var LiveFeed = (function(){
   }
 
   function loadGlobal(){
-    return fetch('/api/global', { cache:'no-store', signal: fetchDeadline(20000) })
+    return fetch('/api/global', { cache:'no-store', signal: fetchDeadline(30000) })
       .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)); })
       .then(function(data){
         globalItems = Array.isArray(data.items) ? data.items : [];
@@ -8613,7 +8613,7 @@ var LiveFeed = (function(){
   function load(){
     if(statusEl) statusEl.textContent = 'Refreshing…';
     if(feedTabStatus) feedTabStatus.textContent = 'Refreshing…';
-    return fetch('/api/news', { cache: 'no-store', signal: fetchDeadline(20000) })
+    return fetch('/api/news', { cache: 'no-store', signal: fetchDeadline(30000) })
       .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)); })
       .then(function(data){
         latest = data.items || [];
@@ -8776,7 +8776,7 @@ var LiveFeed = (function(){
   }
 
   function loadOfficial(){
-    return fetch('/api/official', { cache: 'no-store', signal: fetchDeadline(20000) })
+    return fetch('/api/official', { cache: 'no-store', signal: fetchDeadline(30000) })
       .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)); })
       .then(function(data){
         var latest = data.latest;
@@ -8921,7 +8921,7 @@ var LiveFeed = (function(){
   }
 
   function load(){
-    return fetch('/api/incidents', { cache:'no-store', signal: fetchDeadline(20000) })
+    return fetch('/api/incidents', { cache:'no-store', signal: fetchDeadline(30000) })
       .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)); })
       .then(function(data){
         var items = data.items || [];
