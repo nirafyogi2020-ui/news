@@ -485,7 +485,7 @@
  "@context": "https://schema.org",
  "@graph": [
   {
-   "@type": "Organization",
+   "@type": "NewsMediaOrganization",
    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#organization",
    "name": "Nepal Disaster Update Live",
    "alternateName": "Nepal Disaster Update",
@@ -495,10 +495,14 @@
    "logo": {
     "@type": "ImageObject",
     "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#logo",
-    "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/og-image.png",
-    "width": 1200,
-    "height": 630
+    "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/logo.png",
+    "width": 512,
+    "height": 512,
+    "caption": "Nepal Disaster Update Live"
    },
+   "image": { "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#logo" },
+   "publishingPrinciples": "https://nepaldisasterupdatelive.nxtimaginelabs.com/about/",
+   "correctionsPolicy": "https://nepaldisasterupdatelive.nxtimaginelabs.com/contact/",
    "description": "An independent volunteer project that collects and cross-checks public information about disasters in Nepal: official bulletins, live news, maps and emergency contacts.",
    "knowsLanguage": [
     "en",
@@ -521,10 +525,20 @@
    }
   },
   {
+   "@type": "BreadcrumbList",
+   "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/#breadcrumb",
+   "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nepaldisasterupdatelive.nxtimaginelabs.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Nepal floods", "item": "https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/" },
+    { "@type": "ListItem", "position": 3, "name": "Rasuwa flood 2026", "item": "https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/" }
+   ]
+  },
+  {
    "@type": "WebPage",
    "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/#webpage",
    "url": "https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/",
    "name": "Rasuwa flood 2026: live dashboard",
+   "breadcrumb": { "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/#breadcrumb" },
    "description": "Live Nepal disaster dashboard: the August 2026 Rasuwa flash flood. Confirmed toll, interactive map, cause, emergency helplines and the official relief fund.",
    "isPartOf": {
     "@id": "https://nepaldisasterupdatelive.nxtimaginelabs.com/#website"

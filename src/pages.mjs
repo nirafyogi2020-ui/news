@@ -42,7 +42,7 @@ function articleNode(o) {
     author: ORG,
     publisher: ORG,
     mainEntityOfPage: { '@id': `${SITE}${o.path}#webpage` },
-    image: [`${SITE}/og-image.png`],
+    image: [{ '@type': 'ImageObject', url: ogFor(o.path), width: 1200, height: 630 }],
     ...(o.about ? { about: o.about } : {}),
     ...(o.mentions ? { mentions: o.mentions } : {}),
   };
@@ -1040,6 +1040,7 @@ ${SECOND_FLOOD_WARNING}
           '@id': `${SITE}${path}#liveblog`,
           headline: 'Rasuwa flood live updates',
           description: d,
+          image: [{ '@type': 'ImageObject', url: ogFor(path), width: 1200, height: 630 }],
           inLanguage: 'en',
           isAccessibleForFree: true,
           datePublished: '2026-08-26T12:00:00+05:45',
@@ -1430,6 +1431,7 @@ ${sources}
      while it is news; after that the page stays online as the record and is
      left out of search, so the site is judged on its written pages. */
   const relay = String(post.id || post.slug || '').includes('auto-');
+  const shot = (ctx.photos || {})[ogSlug(path)];
   const noindex = relay && Date.now() - new Date(post.time).getTime() > ARCHIVE_NOINDEX_DAYS * 86400000;
   return {
     path, title: t, description: d, lastmod: nptDay(post.time), priority: '0.7', changefreq: 'weekly',
@@ -1462,7 +1464,14 @@ ${sources}
         author: ORG,
         publisher: ORG,
         mainEntityOfPage: { '@id': `${SITE}${path}#webpage` },
-        image: [ogFor(path)],
+        /* The share card, and the briefing's own photograph when it is wide
+           enough for a search result (Google asks for 1,200 px). */
+        image: [
+          { '@type': 'ImageObject', url: ogFor(path), width: 1200, height: 630 },
+          ...(shot && shot.width >= 1200
+            ? [{ '@type': 'ImageObject', url: `${SITE}/assets/photos/${shot.file}`, width: shot.width, height: shot.height }]
+            : []),
+        ],
         about: EVENT_ABOUT,
         ...(post.sources && post.sources.length
           ? { citation: post.sources.map(s => ({ '@type': 'CreativeWork', name: s.name, url: s.url })) }

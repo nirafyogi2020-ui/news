@@ -17,7 +17,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 
-import { SITE, nptDay, nptLong, ogFor, ogStoryFor, assetVersioned } from './template.mjs';
+import { SITE, SITE_NAME, nptDay, nptLong, ogFor, ogStoryFor, assetVersioned, langAttr } from './template.mjs';
 import * as P from './pages.mjs';
 import * as NE from './pages-ne.mjs';
 import * as C from './content.mjs';
@@ -164,7 +164,7 @@ async function loadGlobalItems() {
   }
   return [];
 }
-const ctx = { posts, event, today, modified, buildDay: nptDay(modified) };
+const ctx = { posts, event, today, modified, buildDay: nptDay(modified), get photos() { return PHOTO_INDEX; } };
 
 /* ---------------------------------------------------------------------------
    The Rasuwa dashboard, served at /nepal-flood/rasuwa/.
@@ -1115,7 +1115,16 @@ index = index.replace(
    ahead of the newest bulletin and moves forward with every build; when the
    briefings stop, it stops moving and the coverage correctly reads as closed.
    ------------------------------------------------------------------------- */
-const ORG_REF = { '@id': `${SITE}/#organization` };
+/* This block stands alone in its own <script>, so the publisher carries its
+   name, address and logo here rather than trusting a reader of structured
+   data to join it with the Organization node in the other block. */
+const ORG_REF = {
+  '@type': 'NewsMediaOrganization',
+  '@id': `${SITE}/#organization`,
+  name: SITE_NAME,
+  url: `${SITE}/`,
+  logo: { '@type': 'ImageObject', url: `${SITE}/logo.png`, width: 512, height: 512 },
+};
 const coverageEnd = new Date(new Date(modified).getTime() + 3 * 86400 * 1000).toISOString();
 
 const liveBlog = {
@@ -1134,7 +1143,7 @@ const liveBlog = {
   /* The one-paragraph "what is this event" that Google asks live coverage to
      carry, so an update read on its own still makes sense. */
   backstory: event.lede || '',
-  image: [ogFor(DASH_PATH)],
+  image: [{ '@type': 'ImageObject', url: ogFor(DASH_PATH), width: 1200, height: 630 }],
   author: ORG_REF,
   publisher: ORG_REF,
   mainEntityOfPage: { '@id': `${DASH_URL}#webpage` },

@@ -102,19 +102,61 @@ for (const p of pages) {
   /* JSON-LD must parse. Invalid JSON-LD is silently ignored by Google. */
   const blocks = p.html.match(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g) || [];
   if (!blocks.length) warnings.push(`${p.path}: no structured data`);
+  const nodes = [];
   for (const b of blocks) {
     const json = b.replace(/^<script type="application\/ld\+json"[^>]*>/, '').replace(/<\/script>$/, '');
     try {
       const parsed = JSON.parse(json);
-      const nodes = parsed['@graph'] || [parsed];
-      for (const n of nodes) {
-        if (!n['@type']) errors.push(`${p.path}: JSON-LD node with no @type`);
-        if (n.dateModified && n.datePublished && new Date(n.dateModified) < new Date(n.datePublished)) {
-          errors.push(`${p.path}: dateModified is before datePublished`);
-        }
-      }
+      for (const n of parsed['@graph'] || [parsed]) nodes.push(n);
     } catch (e) {
       errors.push(`${p.path}: JSON-LD does not parse — ${e.message}`);
+    }
+  }
+  /* What Google's article and live-blog results need, checked here so a
+     generator change cannot quietly drop a field: a headline Google will
+     print whole, a picture at least 1,200 px wide, both dates with a time
+     zone, and a named author and publisher (a bare @id is resolved against
+     the page's own graph). Every page but the front has a breadcrumb trail. */
+  const byId = new Map(nodes.filter(n => n['@id']).map(n => [n['@id'], n]));
+  const resolve = ref => (ref && ref['@id'] && byId.has(ref['@id'])) ? { ...byId.get(ref['@id']), ...ref } : ref;
+  const ISO_TZ = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|[+-]\d{2}:\d{2})$/;
+  if (p.path !== '/' && !nodes.some(n => n['@type'] === 'BreadcrumbList')) errors.push(`${p.path}: no BreadcrumbList`);
+  for (const n of nodes) {
+    if (!n['@type']) { errors.push(`${p.path}: JSON-LD node with no @type`); continue; }
+    if (n.dateModified && n.datePublished && new Date(n.dateModified) < new Date(n.datePublished)) {
+      errors.push(`${p.path}: dateModified is before datePublished`);
+    }
+    for (const k of ['datePublished', 'dateModified', 'coverageStartTime', 'coverageEndTime']) {
+      if (n[k] && !ISO_TZ.test(n[k])) errors.push(`${p.path}: ${k} "${n[k]}" is not an ISO date with a time zone`);
+    }
+    if (['NewsArticle', 'Article', 'LiveBlogPosting', 'BlogPosting'].includes(n['@type'])) {
+      const t = n['@type'];
+      if (!n.headline) errors.push(`${p.path}: ${t} without headline`);
+      else if (n.headline.length > 110) errors.push(`${p.path}: ${t} headline is ${n.headline.length} characters; Google prints up to 110`);
+      if (!n.datePublished || !n.dateModified) errors.push(`${p.path}: ${t} without both dates`);
+      const author = resolve(n.author), publisher = resolve(n.publisher);
+      if (!author || !author.name || !author.url) errors.push(`${p.path}: ${t} author needs name and url`);
+      if (!publisher || !publisher.name || !publisher.logo) errors.push(`${p.path}: ${t} publisher needs name and logo`);
+      if (!n.inLanguage) errors.push(`${p.path}: ${t} without inLanguage`);
+      if (t !== 'BlogPosting') {
+        const images = Array.isArray(n.image) ? n.image : n.image ? [n.image] : [];
+        if (!images.length) errors.push(`${p.path}: ${t} without image`);
+        for (const im of images) {
+          const w = typeof im === 'object' ? im.width : null;
+          if (w != null && w < 1200) errors.push(`${p.path}: ${t} image is ${w} px wide; Google asks for 1,200`);
+        }
+      }
+    }
+    if (n['@type'] === 'BreadcrumbList') {
+      for (const it of n.itemListElement || []) {
+        if (!it.name || !it.item) errors.push(`${p.path}: breadcrumb item without name or item`);
+      }
+    }
+    if (['NewsMediaOrganization', 'Organization'].includes(n['@type']) && n.logo) {
+      const logo = typeof n.logo === 'object' ? n.logo : { url: n.logo };
+      const file = String(logo.url || '').replace(SITE, '');
+      if (!file.startsWith('/') || !existsSync(join(ROOT, file))) errors.push(`${p.path}: Organization logo ${logo.url} is not a file on this site`);
+      if (logo.width && logo.width === 1200 && logo.height === 630) errors.push(`${p.path}: Organization logo is the share picture, not the logo`);
     }
   }
 
