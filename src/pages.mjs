@@ -2309,7 +2309,13 @@ const FRONT_CSS = `
 /* 13.2em is 22ch in Newsreader. In ch the width came from whichever font
    was on screen, so the headline wrapped differently before and after the
    web font arrived and the page jumped a line. */
-.fp .pagehead h1{font-size:clamp(2.05rem, 1.3rem + 3.3vw, 3.5rem); font-weight:500; line-height:1.04; letter-spacing:-0.02em; margin:0 0 .4em; max-width:13.2em;}
+/* 12.4em keeps the headline at three lines in Newsreader and in the Georgia
+   stand-in alike from 640 px up. At 13.2em the first line ("...confirmed
+   dead,") fitted the web font by a few pixels and not the fallback, so the
+   page jumped a headline line when the font arrived (CLS 0.37 at 768 px);
+   Newsreader's optical sizing makes its em width grow with the type size,
+   so no single fallback ratio could close that gap. */
+.fp .pagehead h1{font-size:clamp(2.05rem, 1.3rem + 3.3vw, 3.5rem); font-weight:500; line-height:1.04; letter-spacing:-0.02em; margin:0 0 .4em; max-width:12.4em;}
 .fp .pagehead h1 b{font-weight:600; font-family:'Newsreader', 'Newsreader Figures Fallback', Georgia, 'Times New Roman', serif;}
 .fp .status-row{display:flex; flex-wrap:wrap; gap:6px 10px; align-items:center; font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-faint); margin:0 0 14px;}
 .fp .status-row .live{display:inline-flex; align-items:center; gap:6px; color:var(--critical); font-weight:500;}
