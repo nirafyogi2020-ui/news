@@ -1565,6 +1565,33 @@ console.log(`investigation.json: ${investigation.aid.length} aid rows, `
   + `${investigation.unaccounted.length} unaccounted groups, `
   + `${investigation.tollSeries.length} toll points`);
 
+/* -- redirects ---------------------------------------------------------------
+   The hand-written rules live in src/redirects.txt. Below them go the
+   automatic cards the briefings job has withdrawn (data/withdrawn.json): a
+   withdrawn card's address answers with a permanent redirect to the archive
+   rather than a 404, so a search engine drops it from its index at once and
+   a reader who follows an old link lands somewhere useful. A slug whose page
+   has come back (re-filed under the same name) is left alone. */
+const WITHDRAWN = join(ROOT, 'data', 'withdrawn.json');
+function withdrawnRedirects() {
+  let list = [];
+  try { list = JSON.parse(readFileSync(WITHDRAWN, 'utf8')); } catch { return ''; }
+  const live = new Set(pages.map(pg => pg.path));
+  const lines = [];
+  for (const w of Array.isArray(list) ? list : []) {
+    const slug = String((w && w.slug) || '').replace(/[^\w.-]/g, '');
+    if (!slug) continue;
+    const from = `/updates/${slug}/`;
+    if (live.has(from)) { console.warn(`withdrawn card ${slug} has a live page again; no redirect written`); continue; }
+    lines.push(`${from} /updates/ 301`);
+  }
+  if (!lines.length) return '';
+  return '\n# Automatic cards withdrawn from the archive (data/withdrawn.json). Each\n'
+    + '# address answers with a permanent redirect so search engines drop it.\n'
+    + [...new Set(lines)].sort().join('\n') + '\n';
+}
+write('_redirects', readFileSync(join(ROOT, 'src', 'redirects.txt'), 'utf8').replace(/\s*$/, '\n') + withdrawnRedirects());
+
 /* -- robots ----------------------------------------------------------------- */
 write('robots.txt', `# ${SITE}
 # Everything here is public information about disasters in Nepal.

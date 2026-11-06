@@ -17,3 +17,15 @@
 /timeline            /nepal-flood/rasuwa/timeline/        301
 /casualties          /nepal-flood/rasuwa/casualties/      301
 /disasters           /nepal-disasters/                    301
+
+# Automatic cards withdrawn from the archive (data/withdrawn.json). Each
+# address answers with a permanent redirect so search engines drop it.
+/updates/2026-10-06-auto-2026-10-06-world-bank-projects-nepal-economic-growth-to-slow-to-3/ /updates/ 301
+/updates/2026-10-06-auto-2026-10-06/ /updates/ 301
+/updates/2026-10-21-auto-2026-10-21/ /updates/ 301
+/updates/2026-10-23-auto-2026-10-23/ /updates/ 301
+/updates/2026-10-25-auto-2026-10-25-electricity-worth-rs-5-92-billion-exported-to-india-fr/ /updates/ 301
+/updates/2026-10-29-auto-2026-10-29-apples-produced-in-manaslu-region-confined-to-warehous/ /updates/ 301
+/updates/2026-10-29-auto-2026-10-29-mustang-produces-apples-worth-over-rs-1-14-billion/ /updates/ 301
+/updates/2026-10-31-auto-2026-10-31/ /updates/ 301
+/updates/2026-11-06-auto-2026-11-06-should-nepal-turn-its-hydropower-surplus-into-digital-/ /updates/ 301

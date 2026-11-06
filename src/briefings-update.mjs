@@ -36,6 +36,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const TODAY = join(ROOT, 'today.json');
 const ARCHIVE = join(ROOT, 'data', 'updates');
 const EVENT = join(ROOT, 'event.json');
+const WITHDRAWN = join(ROOT, 'data', 'withdrawn.json');
 
 const SITE = process.env.SITE_ORIGIN ||
   'https://nepaldisasterupdatelive.nxtimaginelabs.com';
@@ -260,8 +261,12 @@ export function pruneStaleAutoCards(today) {
  * hand-written briefing is never deleted, and an automatic card that states
  * a figure stays, because a dated figure in the archive is a record rather
  * than a contradiction of the live counters. Returns the slugs removed.
+ *
+ * Every slug removed is also written to data/withdrawn.json, from which the
+ * build writes a permanent redirect (src/build.mjs), so the page's old
+ * address sends a reader and a search engine to the archive instead of a 404.
  */
-export function pruneArchivedAutoCards(dir = ARCHIVE) {
+export function pruneArchivedAutoCards(dir = ARCHIVE, ledger = WITHDRAWN) {
   if (!existsSync(dir)) return [];
   const removed = [];
   for (const name of readdirSync(dir)) {
@@ -274,7 +279,24 @@ export function pruneArchivedAutoCards(dir = ARCHIVE) {
     unlinkSync(join(dir, name));
     removed.push(post.slug || name.replace(/\.json$/, ''));
   }
+  if (removed.length && ledger) recordWithdrawn(removed, ledger);
   return removed;
+}
+
+/** Append slugs to the withdrawn-card ledger, once each, oldest first. */
+export function recordWithdrawn(slugs, ledger = WITHDRAWN) {
+  let list = [];
+  try { list = JSON.parse(readFileSync(ledger, 'utf8')); } catch { list = []; }
+  if (!Array.isArray(list)) list = [];
+  const have = new Set(list.map(w => w && w.slug));
+  const day = new Date().toISOString().slice(0, 10);
+  for (const slug of slugs) {
+    if (!slug || have.has(slug)) continue;
+    list.push({ slug, withdrawn: day });
+    have.add(slug);
+  }
+  writeFileSync(ledger, JSON.stringify(list, null, 2) + '\n');
+  return list;
 }
 
 export async function main() {

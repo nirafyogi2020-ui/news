@@ -191,6 +191,33 @@ for (const [path, alts] of altMap) {
   }
 }
 
+/* -- redirects --------------------------------------------------------------
+   Every rule in _redirects must send a reader to a page that exists, and
+   must not sit on an address that is a page itself (Cloudflare answers the
+   redirect before the file, so the page would vanish). Every card the
+   briefings job has withdrawn must have its rule. */
+{
+  const redirects = existsSync(join(ROOT, '_redirects')) ? readFileSync(join(ROOT, '_redirects'), 'utf8') : '';
+  const rules = redirects.split('\n').filter(l => l.trim() && !l.trim().startsWith('#'))
+    .map(l => l.trim().split(/\s+/));
+  const from = new Set();
+  for (const [src, dst, code] of rules) {
+    if (!src || !dst) { errors.push(`_redirects: malformed rule "${src} ${dst}"`); continue; }
+    if (from.has(src)) errors.push(`_redirects: ${src} is redirected twice`);
+    from.add(src);
+    if (known.has(src) || existsSync(join(ROOT, src.replace(/^\//, ''), 'index.html'))) errors.push(`_redirects: ${src} is a live page and a redirect at once`);
+    if (dst.startsWith('/') && !known.has(dst)) errors.push(`_redirects: ${src} points at ${dst} which does not exist`);
+    if (code && !/^30[1278]$/.test(code)) errors.push(`_redirects: ${src} has status ${code}; Pages accepts 301, 302, 307 and 308`);
+  }
+  let withdrawn = [];
+  try { withdrawn = JSON.parse(readFileSync(join(ROOT, 'data', 'withdrawn.json'), 'utf8')); } catch { /* no ledger yet */ }
+  for (const w of Array.isArray(withdrawn) ? withdrawn : []) {
+    const src = `/updates/${w.slug}/`;
+    if (!from.has(src) && !known.has(src)) errors.push(`_redirects: withdrawn card ${w.slug} has no redirect; run the build`);
+  }
+  if (rules.length > 2000) errors.push(`_redirects has ${rules.length} rules; Cloudflare Pages stops at 2,000`);
+}
+
 /* -- sitemap ---------------------------------------------------------------- */
 const sitemap = readFileSync(join(ROOT, 'sitemap.xml'), 'utf8');
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);

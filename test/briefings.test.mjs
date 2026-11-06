@@ -8,7 +8,7 @@ import { readFileSync } from 'node:fs';
 import { readDistricts } from '../functions/api/_figures-core.js';
 import { latestDistricts } from '../functions/api/figures.js';
 import { firstEarlierDetail, repairDetails } from '../src/figures-update.mjs';
-import { planCards, coveredDays, usedUrls, nptDay, oneSentence, statesAToll, pruneStaleAutoCards, pruneArchivedAutoCards, cardId } from '../src/briefings-update.mjs';
+import { planCards, coveredDays, usedUrls, nptDay, oneSentence, statesAToll, pruneStaleAutoCards, pruneArchivedAutoCards, recordWithdrawn, cardId } from '../src/briefings-update.mjs';
 
 const BULLETIN = 'जसमध्ये रसुवामा ४५ जना, नुवाकोटमा १ सय ५५ जना, धादिङमा ५९ जना, ' +
   'चितवनमा ३ सय ४८ जना, गोरखामा ६८ जना, तनहुँमा ३८ जना, नवलपरासी पूर्वमा २ सय १७ जना र ' +
@@ -134,9 +134,17 @@ test('an archived automatic card that is off subject is removed, the rest of the
     file('2026-09-02-auto-toll', { id: 'auto-2026-09-02-toll', title: 'Bhotekoshi flood leaves 1,204 dead', body: ['A dated figure stays in the archive.'] });
     writeFileSync(join(dir, 'notes.txt'), 'not a card');
 
-    assert.deepEqual(pruneArchivedAutoCards(dir).sort(), ['2026-11-06-auto-crypto', '2026-11-06-auto-mining']);
-    assert.deepEqual(readdirSync(dir).sort(), ['2026-09-02-auto-toll.json', '2026-11-06-auto-ok.json', '2026-11-06-hand.json', 'notes.txt']);
-    assert.deepEqual(pruneArchivedAutoCards(dir), [], 'a pruned archive is left alone next time');
+    const ledger = join(dir, 'withdrawn.json');
+    assert.deepEqual(pruneArchivedAutoCards(dir, ledger).sort(), ['2026-11-06-auto-crypto', '2026-11-06-auto-mining']);
+    assert.deepEqual(readdirSync(dir).sort(), ['2026-09-02-auto-toll.json', '2026-11-06-auto-ok.json', '2026-11-06-hand.json', 'notes.txt', 'withdrawn.json']);
+    assert.deepEqual(pruneArchivedAutoCards(dir, ledger), [], 'a pruned archive is left alone next time');
+    /* The withdrawn cards are on the ledger the build turns into redirects,
+       each once, and a second prune does not write them again. */
+    const withdrawn = JSON.parse(readFileSync(ledger, 'utf8'));
+    assert.deepEqual(withdrawn.map(w => w.slug).sort(), ['2026-11-06-auto-crypto', '2026-11-06-auto-mining']);
+    assert.ok(withdrawn.every(w => /^\d{4}-\d{2}-\d{2}$/.test(w.withdrawn)));
+    recordWithdrawn(['2026-11-06-auto-crypto', '2026-11-07-auto-late'], ledger);
+    assert.deepEqual(JSON.parse(readFileSync(ledger, 'utf8')).map(w => w.slug), ['2026-11-06-auto-crypto', '2026-11-06-auto-mining', '2026-11-07-auto-late']);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
