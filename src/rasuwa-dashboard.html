@@ -9093,10 +9093,13 @@ var LiveFeed = (function(){
       if(slug) byKey[slug] = u;
     });
 
+    /* Only pictures filed with a briefing that still exists. The manifest
+       keeps a photograph after its briefing is withdrawn (an off-subject card
+       pruned from the archive), and the strip must not show it. */
     var picks = Object.keys(manifest)
       .filter(function(slug){
         var entry = manifest[slug];
-        return entry && entry.file && /^image\//.test(entry.type || 'image/jpeg');
+        return entry && entry.file && /^image\//.test(entry.type || 'image/jpeg') && byKey[slug];
       })
       .sort(function(a, b){ return dateOf(b).localeCompare(dateOf(a)); })
       .map(function(slug){
@@ -9107,9 +9110,9 @@ var LiveFeed = (function(){
           srcset: entry.card && entry.width
             ? '/assets/photos/' + entry.card + ' 800w, /assets/photos/' + entry.file + ' ' + entry.width + 'w'
             : '',
-          href: post ? post.url : (entry.article || null),
+          href: post.url,
           credit: entry.credit || null,
-          caption: post && post.title ? post.title : captionOfSlug(slug)
+          caption: post.title || captionOfSlug(slug)
         };
       });
     if(!paintStrip(picks)) throw new Error('nothing to show');
