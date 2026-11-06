@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06T03:00:38.000Z",
+  "updated": "2026-11-06T08:55:46.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-06-auto-2026-11-06-dry-landslide-blocks-kaligandaki-corridor-in-gulmi/",
+      "title": "Dry landslide blocks Kaligandaki corridor in Gulmi",
+      "time": "2026-11-06T08:55:46.000Z",
+      "summary": "KATHMANDU: A dry landslide has completely blocked the Kaligandaki corridor road in Gulmi. The obstruction occurred this morning at the Rakse section in Kaligandaki rural municipality-2, halting all vehicular movement.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
     {
       "url": "/updates/2026-11-06-auto-2026-11-06/",
       "title": "भोटेकोशी-त्रिशूली विपद्सम्बन्धी संसदीय विशेष समितिको बैठक बस्दै",
