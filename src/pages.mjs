@@ -1923,6 +1923,7 @@ ${faq.html}
 <p class="measure">Police <a href="tel:100">100</a>. Ambulance <a href="tel:102">102</a>. Nepal's disaster hotline <a href="tel:1149">1149</a>. The <a href="/nepal-flood/emergency-numbers/">full list, including district control rooms and embassies</a>, is worth saving before you need it.</p>
 
 <h2>The other four hazards</h2>
+<p class="measure">This page is one chapter of <a href="/nepal-disasters/">the Nepal disaster guide</a>, which covers all five hazards in plain words.</p>
 <ul class="linklist">
 ${siblings.map(h => `  <li><a href="/nepal-disasters/${h.slug}/"><b>${esc(h.name)}</b><span>${esc(h.summary.split('.')[0])}</span></a></li>`).join('\n')}
 </ul>
@@ -2132,6 +2133,7 @@ const EVENT_PATHS = {
       ['/nepal-flood/rasuwa/live-updates/', 'Live updates'],
       ['/nepal-flood/rasuwa/casualties/', 'Casualties'],
       ['/nepal-flood/rasuwa/map/', 'Map'],
+      ['/nepal-flood/', 'All Nepal floods'],
       ['/ne/', 'नेपालीमा'],
     ],
   },
