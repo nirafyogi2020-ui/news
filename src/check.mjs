@@ -25,6 +25,9 @@ const SKIP_DIRS = new Set(['.git', '.wrangler', 'node_modules', 'src', 'data', '
 function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
     if (SKIP_DIRS.has(name)) continue;
+    /* "index 2.html" and the like are copies the Mac's file sync leaves
+       behind. .gitignore keeps them off the site, so they are not pages. */
+    if (/ [0-9]+\.[^.]+$/.test(name)) continue;
     const full = join(dir, name);
     if (statSync(full).isDirectory()) walk(full, out);
     /* Google Search Console ownership files are bare text, not pages. */
