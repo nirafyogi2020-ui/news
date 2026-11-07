@@ -53,6 +53,27 @@ const DIAL_STRIP = `<div class="callout callout-alert">
   <p class="faint" style="margin-top:10px;margin-bottom:0;"><a href="/ne/aapatkalin-number/">सबै आपतकालीन नम्बर र कुन कामका लागि हो</a></p>
 </div>`;
 
+/* The "Related" block at the foot of each Nepali page: the other Nepali pages
+   (link text as the footer and the in-page links already word it) and the two
+   English-only pages a Nepali reader is most likely to want, marked English.
+   Rendered by the shell under the full width, like the English pages'. */
+const RELATED_NE = [
+  { href: '/ne/', label: 'रसुवा बाढी, पूरा विवरण' },
+  { href: '/ne/aapatkalin-number/', label: 'सबै आपतकालीन नम्बर र कुन कामका लागि हो' },
+  { href: '/ne/bepatta/', label: 'बेपत्ता व्यक्तिको खबर कसरी गर्ने' },
+  { href: '/ne/rahat/', label: 'राहत र सहयोग' },
+  { href: '/nepal-flood/rasuwa/map/', label: 'Map of the Rasuwa flood path', en: true },
+  { href: '/nepal-flood/rasuwa/timeline/', label: 'Rasuwa flood: timeline', en: true },
+];
+
+function relatedNe(current) {
+  return `<section class="related"><h2>सम्बन्धित पृष्ठ</h2><ul class="linklist">${
+    RELATED_NE.filter(r => r.href !== current).map(r => r.en
+      ? `<li><a href="${r.href}" lang="en"><b>${esc(r.label)}</b><span>English</span></a></li>`
+      : `<li><a href="${r.href}"><b>${esc(r.label)}</b></a></li>`).join('')
+  }</ul></section>`;
+}
+
 const LAKE_WARNING = `<div class="callout callout-alert">
   <p class="callout-title">ताल फुट्ने तत्काल जोखिम घटेको छ, सावधानी चाहिन्छ</p>
   <p>जलविज्ञान तथा मौसम विज्ञान विभागका अनुसार पानी आफैँ बाहिरिन थालेपछि अचानक ताल फुट्ने तत्काल जोखिम घटेको छ, Onlinekhabar ले जनाएको छ।</p>
@@ -171,7 +192,7 @@ ${faq.html}
         { hreflang: 'en', path: '/nepal-flood/rasuwa/' },
         { hreflang: 'ne', path: '/ne/' },
       ],
-      body,
+      body: body + relatedNe(path),
       schema: [
         {
           '@type': 'NewsArticle',
@@ -299,7 +320,7 @@ ${faq.html}
         { hreflang: 'en', path: '/nepal-flood/emergency-numbers/' },
         { hreflang: 'ne', path: '/ne/aapatkalin-number/' },
       ],
-      body,
+      body: body + relatedNe(path),
       schema: [faq.node],
     }),
   };
@@ -385,7 +406,7 @@ ${NE_FOREIGN}
         { hreflang: 'en', path: '/nepal-flood/rasuwa/missing-persons/' },
         { hreflang: 'ne', path: '/ne/bepatta/' },
       ],
-      body,
+      body: body + relatedNe(path),
       schema: [{
         '@type': 'NewsArticle',
         '@id': `${SITE}${path}#article`,
@@ -485,7 +506,7 @@ ${table(['कहाँ', 'रकम'], [
         { hreflang: 'en', path: '/nepal-flood/relief/' },
         { hreflang: 'ne', path: '/ne/rahat/' },
       ],
-      body,
+      body: body + relatedNe(path),
       schema: [],
     }),
   };
