@@ -368,8 +368,15 @@ if (home) {
   if (!/<!--ssr:numgrid-->[\s\S]*?class="stat"[\s\S]*?<!--\/ssr:numgrid-->/.test(home.html)) {
     errors.push(`${DASH}: the counter grid rendered empty`);
   }
-  if (!/fetch\('\/api\/figures'/.test(home.html)) {
+  /* The page's behaviour lives in a built file since the scripts moved out
+     of the HTML; the poll must be in the page or in every script it links. */
+  const linked = [...home.html.matchAll(/<script src="\/(assets\/[^"?]+)(?:\?v=[^"]*)?"[^>]*>/g)]
+    .map(m => join(ROOT, m[1])).filter(f => existsSync(f)).map(f => readFileSync(f, 'utf8')).join('\n');
+  if (!/fetch\('\/api\/figures'/.test(home.html + linked)) {
     errors.push(`${DASH}: the page no longer polls /api/figures, so the counters would not stay live`);
+  }
+  if (/<script src="\/assets\/dashboard-app\.js/.test(home.html) && !existsSync(join(ROOT, 'assets/dashboard-app.js'))) {
+    errors.push(`${DASH}: links /assets/dashboard-app.js but the file was not built`);
   }
   const og = pick(home.html, /<meta property="og:image" content="([^"]*)"/);
   if (!og || !/^https:\/\//.test(og)) errors.push(`${DASH}: no og:image`);

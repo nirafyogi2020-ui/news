@@ -16,6 +16,11 @@
      first thing that makes a site look like it was not built for the device. -->
 <meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
+<!-- The saved theme, applied before anything paints. The page's dark colours
+     hang off data-theme="dark", and the script that manages the theme runs
+     after the page is parsed; without this line a phone in dark mode, or a
+     reader who chose dark, saw a light page for a moment on every visit. -->
+<script>(function(){try{var c=localStorage.getItem('theme-choice')||'system';if(c==='dark'||(c==='system'&&matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <!-- Google picks the site icon shown beside a search result from these, and

@@ -1296,7 +1296,36 @@ function externalStyles(html) {
   write('assets/dashboard-main.css', css);
   return html.replace(m[0], `<link rel="stylesheet" href="/assets/dashboard-main.css?v=${stamp}">`);
 }
-const dashboardHtml = externalStyles(lighten(index));
+/* The dashboard's behaviour is written as a dozen <script> blocks after
+   </main>, 184 KB of them, and they too rode inside every copy of the page.
+   They are written out to one file under a content stamp, loaded with
+   `defer` from the head so the download starts with the page and the code
+   runs once the page is parsed, before DOMContentLoaded, in the same order
+   as before and still ahead of dashboard.js (deferred scripts run in
+   document order). Each block keeps its own try/catch so one that throws
+   cannot stop the others, which is how separate <script> elements behaved.
+   Nothing in these blocks needs to run while the page is still parsing: the
+   theme is applied by a small script in the head, and the two scripts
+   inside <main> (photo fade-in, ticker times) stay where they are. */
+function externalScripts(html) {
+  const cut = html.indexOf('</main>');
+  if (cut < 0) return html;
+  const blocks = [];
+  const tail = html.slice(cut).replace(/[ \t]*<script>([\s\S]*?)<\/script>\n?/g, (_m, js) => {
+    blocks.push(js.trim());
+    return '';
+  });
+  if (blocks.length < 2) return html;
+  const js = '/* Nepal Disaster Update: the Rasuwa dashboard\'s behaviour. Source: src/rasuwa-dashboard.html. */\n'
+    + blocks.map((b, i) => `\n/* block ${i + 1} */\ntry {\n${b}\n} catch (e) { setTimeout(function () { throw e; }); }\n`).join('');
+  try { new vm.Script(js); } catch (e) { console.log(`dashboard script: kept inline (${e.message})`); return html; }
+  const stamp = createHash('sha256').update(js).digest('hex').slice(0, 12);
+  write('assets/dashboard-app.js', js);
+  const tag = `<script src="/assets/dashboard-app.js?v=${stamp}" defer></script>`;
+  const head = html.slice(0, cut).replace('</head>', `${tag}\n</head>`);
+  return head + tail;
+}
+const dashboardHtml = externalScripts(externalStyles(lighten(index)));
 
 /* The newsroom feed, fetched once per build so the front page carries real
    headlines for a crawler and for a reader with JavaScript off; the page
