@@ -56,13 +56,21 @@ function articleNode(o) {
 const EVENT_ID = `${SITE}/nepal-flood/rasuwa/#event`;
 const EVENT_ABOUT = [{ '@id': EVENT_ID }];
 
-function table(head, rows, caption) {
-  return `<div class="table-scroll"><table${head.length <= 2 ? ' class="narrow"' : ''}>${caption ? `<caption>${caption}</caption>` : ''}<thead><tr>${
-    head.map(h => `<th${h.n ? ' class="n"' : ''}>${esc(h.t !== undefined ? h.t : h)}</th>`).join('')
-  }</tr></thead><tbody>${
-    rows.map(r => `<tr>${r.map(c => typeof c === 'number'
-      ? `<td class="n">${c}</td>`
-      : `<td>${c}</td>`).join('')}</tr>`).join('')
+/* opts.stack: on a phone each row becomes a small block instead of a wide
+   row in a sideways scroller (site.css, table.stack). The roles keep it a
+   table for screen readers once CSS changes the display of its parts. */
+function table(head, rows, caption, opts = {}) {
+  const label = h => esc(h.t !== undefined ? h.t : h);
+  const st = !!opts.stack;
+  const cls = st ? ' class="stack" role="table"' : head.length <= 2 ? ' class="narrow"' : '';
+  const rg = st ? ' role="rowgroup"' : '', rr = st ? ' role="row"' : '';
+  const cell = i => st ? ` role="cell" data-label="${label(head[i])}"` : '';
+  return `<div class="table-scroll"><table${cls}>${caption ? `<caption>${caption}</caption>` : ''}<thead${rg}><tr${rr}>${
+    head.map(h => `<th${h.n ? ' class="n"' : ''}${st ? ' role="columnheader"' : ''}>${label(h)}</th>`).join('')
+  }</tr></thead><tbody${rg}>${
+    rows.map(r => `<tr${rr}>${r.map((c, i) => typeof c === 'number'
+      ? `<td class="n"${cell(i)}>${c}</td>`
+      : `<td${cell(i)}>${c}</td>`).join('')}</tr>`).join('')
   }</tbody></table></div>`;
 }
 
@@ -837,7 +845,7 @@ ${table(['#', 'Place', 'Coordinates', 'Elevation', 'What happened'], C.PLACES.ma
     `<span class="num">${p.lat.toFixed(4)}, ${p.lng.toFixed(4)}</span>`,
     `<span class="num">${esc(p.elev)}</span>`,
     esc(p.text),
-  ]), 'Ordered downstream. Coordinates are approximate, taken from published reporting and satellite imagery.')}
+  ]), 'Ordered downstream. Coordinates are approximate, taken from published reporting and satellite imagery.', { stack: true })}
 
 <h2>Interactive map</h2>
 <div id="route-map" role="application" aria-label="Interactive satellite map of the Bhote Koshi and Trishuli flood corridor">

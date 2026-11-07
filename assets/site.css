@@ -207,6 +207,26 @@ th,td{text-align:left; padding:10px 15px; border-bottom:1px solid var(--border);
 thead th{font-family:var(--font-mono); font-size:0.7rem; letter-spacing:.07em; text-transform:uppercase; color:var(--text-faint); font-weight:500; background:var(--surface-2);}
 tbody tr:last-child td{border-bottom:0;}
 td.n, th.n{font-family:var(--font-mono); font-variant-numeric:tabular-nums; white-space:nowrap;}
+/* A wide table marked "stack" (the flood-path points on the map page): on a
+   phone each row is a block, number on the left, place on top, coordinates
+   and elevation side by side, then the text at full width. The header row
+   stays for screen readers; the two figure cells carry their own label. */
+@media (max-width:600px){
+  table.stack{min-width:0;}
+  table.stack thead{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+  table.stack tbody{display:block;}
+  table.stack tr{display:grid; grid-template-columns:auto auto 1fr; column-gap:14px; row-gap:6px; padding:13px 15px; border-bottom:1px solid var(--border);}
+  table.stack tbody tr:last-child{border-bottom:0;}
+  table.stack td{display:block; padding:0; border:0;}
+  table.stack td:nth-child(1){grid-row:1 / span 3; color:var(--text-faint);}
+  table.stack td:nth-child(2), table.stack td:nth-child(5){grid-column:2 / 4;}
+  table.stack td:nth-child(3){grid-column:2;}
+  table.stack td:nth-child(4){grid-column:3; white-space:nowrap;}
+  table.stack td:nth-child(3)::before, table.stack td:nth-child(4)::before{
+    display:block; font-family:var(--font-mono); font-size:0.66rem; letter-spacing:.07em; text-transform:uppercase; color:var(--text-faint);
+    content:attr(data-label); content:attr(data-label) / "";
+  }
+}
 
 /* ---- cards / link lists ------------------------------------------------- */
 .cards{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:12px; margin:0 0 22px;}
