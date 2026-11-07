@@ -186,6 +186,11 @@ a.pill:hover{border-color:var(--critical); color:var(--critical);}
 .statbox{border:1px solid var(--border); background:var(--surface); border-radius:14px; padding:14px 15px; box-shadow:var(--shadow);}
 .statbox .n{display:block; font-family:var(--font-mono); font-size:1.85rem; line-height:1.1; letter-spacing:-.03em; font-variant-numeric:tabular-nums;}
 .statbox .n.sm{font-size:1.3rem;}
+/* IBM Plex Mono has no Devanagari, so on the Nepali pages the figures fell
+   through to a thin system face. Noto Sans Devanagari (loaded on those pages
+   only) draws them at the weight of the English figures, with the Nepali
+   forms of 5 and 8 under lang="ne". The comma stays Plex Mono's, as in 1,458. */
+:lang(ne) .statbox .n{font-family:'IBM Plex Mono', 'Noto Sans Devanagari', ui-monospace, 'SF Mono', Menlo, monospace;}
 .statbox .n.crit{color:var(--critical);}
 .statbox .l{display:block; font-size:0.8rem; color:var(--text-muted); margin-top:3px;}
 .statbox .src{display:block; font-size:0.7rem; color:var(--text-faint); margin-top:7px; font-family:var(--font-mono);}

@@ -19,6 +19,16 @@ export function ne(n) {
   return String(n).replace(/[0-9]/g, d => '०१२३४५६७८९'[+d]);
 }
 
+/** A count with Nepali digit grouping: the last three digits, then pairs
+    (१,४५८; १३,७९५; १,००,०००), the way Nepali papers print large figures.
+    For counts only: a year or a time goes through ne() ungrouped. */
+export function neCount(n) {
+  const s = String(n);
+  if (!/^\d{4,}$/.test(s)) return ne(s);
+  const head = s.slice(0, -3).replace(/\B(?=(\d{2})+$)/g, ',');
+  return ne(head + ',' + s.slice(-3));
+}
+
 export const NE_MONTHS = ['जनवरी', 'फेब्रुअरी', 'मार्च', 'अप्रिल', 'मे', 'जुन',
   'जुलाई', 'अगस्ट', 'सेप्टेम्बर', 'अक्टोबर', 'नोभेम्बर', 'डिसेम्बर'];
 

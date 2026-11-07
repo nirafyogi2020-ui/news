@@ -430,7 +430,7 @@ ${o.modified ? `<meta property="article:modified_time" content="${esc(o.modified
 <meta name="twitter:image:alt" content="${esc(o.ogImageAlt || SITE_NAME)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500${lang === 'ne' ? '&family=Noto+Sans+Devanagari:wght@400' : ''}&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${siteAsset('/assets/site.css')}">
 ${o.head || ''}
 <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}</script>

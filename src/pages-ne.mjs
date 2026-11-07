@@ -8,7 +8,7 @@
 
 import { SITE, SITE_NAME, CONTACT_EMAIL, page, esc, faqBlock, nptLong, siteAsset, ogFor } from './template.mjs';
 import * as C from './content.mjs';
-import { ne, NE_DISTRICTS, NE_MISSING_GROUPS, NE_EMERGENCY, NE_MISSING_STEPS, NE_HAZARD_STEPS, NE_SOURCES } from './content-ne.mjs';
+import { ne, neCount, NE_DISTRICTS, NE_MISSING_GROUPS, NE_EMERGENCY, NE_MISSING_STEPS, NE_HAZARD_STEPS, NE_SOURCES } from './content-ne.mjs';
 
 const ORG = { '@id': `${SITE}/#organization` };
 
@@ -62,12 +62,12 @@ const LAKE_WARNING = `<div class="callout callout-alert">
 
 function numbersNe() {
   return `<div class="numgrid">
-    <div class="statbox"><span class="n crit">${ne(C.TOLL.deadNepal)}</span><span class="l">नेपालमा मृत्यु पुष्टि</span><span class="src">नेपाल प्रहरी, ${esc(TOLL_NE)}</span></div>
-    <div class="statbox"><span class="n crit">${ne(C.TOLL.missing)}</span><span class="l">नेपालमा बेपत्ता सूचीमा</span><span class="src">नेपाल प्रहरी, ${esc(MISSING_NE)}</span></div>
-    <div class="statbox"><span class="n">${ne(C.TOLL.missingChina)}</span><span class="l">चीनतर्फ बेपत्ता</span><span class="src">सीसीटीभी, ग्याइरोङ बन्दरगाह</span></div>
-    <div class="statbox"><span class="n">${ne(C.TOLL.injured)}</span><span class="l">घाइते</span><span class="src">प्राधिकरण र नेपाल प्रहरी</span></div>
-    <div class="statbox"><span class="n">${ne(C.TOLL.rescued)}</span><span class="l">उद्धार गरिएका</span><span class="src">NDRRMA, ${esc(NDRRMA_NE)}</span></div>
-    <div class="statbox"><span class="n">${ne(C.DAMAGE.hydropowerProjects)}</span><span class="l">जलविद्युत् आयोजना क्षतिग्रस्त, करिब ${ne(C.DAMAGE.hydropowerMW)} मेगावाट</span><span class="src">नेपाल विद्युत् प्राधिकरण</span></div>
+    <div class="statbox"><span class="n crit">${neCount(C.TOLL.deadNepal)}</span><span class="l">नेपालमा मृत्यु पुष्टि</span><span class="src">नेपाल प्रहरी, ${esc(TOLL_NE)}</span></div>
+    <div class="statbox"><span class="n crit">${neCount(C.TOLL.missing)}</span><span class="l">नेपालमा बेपत्ता सूचीमा</span><span class="src">नेपाल प्रहरी, ${esc(MISSING_NE)}</span></div>
+    <div class="statbox"><span class="n">${neCount(C.TOLL.missingChina)}</span><span class="l">चीनतर्फ बेपत्ता</span><span class="src">सीसीटीभी, ग्याइरोङ बन्दरगाह</span></div>
+    <div class="statbox"><span class="n">${neCount(C.TOLL.injured)}</span><span class="l">घाइते</span><span class="src">प्राधिकरण र नेपाल प्रहरी</span></div>
+    <div class="statbox"><span class="n">${neCount(C.TOLL.rescued)}</span><span class="l">उद्धार गरिएका</span><span class="src">NDRRMA, ${esc(NDRRMA_NE)}</span></div>
+    <div class="statbox"><span class="n">${neCount(C.DAMAGE.hydropowerProjects)}</span><span class="l">जलविद्युत् आयोजना क्षतिग्रस्त, करिब ${ne(C.DAMAGE.hydropowerMW)} मेगावाट</span><span class="src">नेपाल विद्युत् प्राधिकरण</span></div>
     <div class="statbox"><span class="n sm">रु २०० अर्ब</span><span class="l">सडक र पुल क्षति, प्रारम्भिक अनुमान</span><span class="src">मन्त्री सुनिल लामसाल, २६ अगस्ट</span></div>
     <div class="statbox"><span class="n sm">रु १ अर्ब</span><span class="l">राहत कोषमा निकासा</span><span class="src">नेपाल सरकार</span></div>
   </div>
