@@ -208,6 +208,12 @@ ${faq.html}
   };
 }
 
+/* What a family abroad does first. Printed on /ne/bepatta/ and again on
+   /ne/aapatkalin-number/, as the English pages do, from this one copy. */
+const NE_FOREIGN = '<p>खोजिएको व्यक्ति नेपाली नागरिक होइन भने सबैभन्दा छिटो बाटो जिल्ला प्रहरी कार्यालय होइन, काठमाडौंस्थित उनीहरूकै देशको दूतावास हो। दूतावाससँग यसैका लागि नेपाल प्रहरीसँग स्थायी माध्यम हुन्छ, र अध्यागमन विभागसँग व्यक्ति साँच्चै त्यो जिल्लामा पसेको थियो कि थिएन भन्ने अभिलेख हुन्छ।</p>';
+const NE_EMBASSY_LINK = '<a href="https://mofa.gov.np/foreign-mission-in-nepal/" target="_blank" rel="noopener nofollow">नेपालका दूतावासहरूको आधिकारिक सूची &#8599;</a>';
+const NE_IMMIGRATION_LINK = '<a href="https://www.immigration.gov.np/" target="_blank" rel="noopener nofollow">अध्यागमन विभाग &#8599;</a>';
+
 /* -- /ne/aapatkalin-number/ ------------------------------------------------- */
 
 export function neEmergency(ctx) {
@@ -250,6 +256,19 @@ ${table(['नम्बर', 'कसले उठाउँछ', 'कुन का
   <a href="https://mohp.gov.np/" target="_blank" rel="noopener nofollow">स्वास्थ्य मन्त्रालय, अस्पताल निर्देशिका &#8599;</a>
   <a href="https://www.aponepal.gov.np/" target="_blank" rel="noopener nofollow">सशस्त्र प्रहरी बल नेपाल &#8599;</a>
   <a href="https://www.nepalarmy.mil.np/" target="_blank" rel="noopener nofollow">नेपाली सेना &#8599;</a>
+</div>
+
+<h2>बेपत्ता व्यक्तिको खबर कसरी गर्ने</h2>
+<div class="checklist">
+${NE_MISSING_STEPS.slice(0, 4).map((s, i) => `<div class="check-row"><span class="mark">${ne(String(i + 1).padStart(2, '0'))}</span><p>${esc(s)}</p></div>`).join('\n')}
+</div>
+<p><a href="/ne/bepatta/">पूरा तरिका यहाँ छ</a>।</p>
+
+<h2>विदेशी नागरिक र विदेशमा भएका परिवार</h2>
+${NE_FOREIGN}
+<div class="sourcelinks">
+  ${NE_EMBASSY_LINK}
+  ${NE_IMMIGRATION_LINK}
 </div>
 
 <h2>आपत् आउनुअघि गर्ने काम</h2>
@@ -331,10 +350,10 @@ ${NE_MISSING_STEPS.map((s, i) => `<div class="check-row"><span class="mark">${ne
 </ul>
 
 <h2>विदेशी नागरिक र विदेशमा भएका परिवार</h2>
-<p>खोजिएको व्यक्ति नेपाली नागरिक होइन भने सबैभन्दा छिटो बाटो जिल्ला प्रहरी कार्यालय होइन, काठमाडौंस्थित उनीहरूकै देशको दूतावास हो। दूतावाससँग यसैका लागि नेपाल प्रहरीसँग स्थायी माध्यम हुन्छ, र अध्यागमन विभागसँग व्यक्ति साँच्चै त्यो जिल्लामा पसेको थियो कि थिएन भन्ने अभिलेख हुन्छ।</p>
+${NE_FOREIGN}
 <div class="sourcelinks">
-  <a href="https://mofa.gov.np/foreign-mission-in-nepal/" target="_blank" rel="noopener nofollow">नेपालका दूतावासहरूको आधिकारिक सूची &#8599;</a>
-  <a href="https://www.immigration.gov.np/" target="_blank" rel="noopener nofollow">अध्यागमन विभाग &#8599;</a>
+  ${NE_EMBASSY_LINK}
+  ${NE_IMMIGRATION_LINK}
   <a href="https://www.nepalpolice.gov.np/index.php/contact-us" target="_blank" rel="noopener nofollow">नेपाल प्रहरी जिल्ला कार्यालय &#8599;</a>
 </div>
 
@@ -440,6 +459,7 @@ ${table(['कहाँ', 'रकम'], [
 </ul>
 <p>नेपाल प्रहरीले बेपत्ता व्यक्ति खोज्न पैसा माग्दैन। कुनै पनि वैध उद्धार संस्थाले माग्दैन।</p>
 
+<h2>आधिकारिक संस्थाहरू</h2>
 <div class="sourcelinks">
   <a href="https://www.opmcm.gov.np/" target="_blank" rel="noopener nofollow">प्रधानमन्त्री तथा मन्त्रिपरिषद्को कार्यालय &#8599;</a>
   <a href="https://ndrrma.gov.np/" target="_blank" rel="noopener nofollow">राष्ट्रिय विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन प्राधिकरण &#8599;</a>
