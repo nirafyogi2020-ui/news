@@ -3702,6 +3702,43 @@ try {
     if(e.target.closest('.today-more-btn')) showMore();
   });
 
+  function tabStops(el){
+    return [].filter.call(el.querySelectorAll('a[href], button, summary, [tabindex]'), function(e){
+      return e.getAttribute('tabindex') !== '-1' && !e.disabled && e.getClientRects().length > 0;
+    });
+  }
+  function storyKey(card){
+    return card.getAttribute('data-permalink') || card.getAttribute('data-title') || '';
+  }
+  function focusPlace(g){
+    var had = document.activeElement;
+    if(!had || had === g || !g.contains(had)) return null;
+    var more = had.classList.contains('today-more-btn');
+    var card = had.closest('.post-card');
+    var key = card ? storyKey(card) : '';
+    var at = card && card !== had ? tabStops(card).indexOf(had) : -1;
+    var before = {};
+    if(more) [].forEach.call(g.querySelectorAll('.post-card'), function(c){ before[storyKey(c)] = 1; });
+    return function(){
+      var now = document.activeElement;
+      if(now && now !== document.body && !g.contains(now)) return;
+      var cards = [].slice.call(g.querySelectorAll('.post-card'));
+      var target = null;
+      if(more){
+        var fresh = cards.filter(function(c){ return !before[storyKey(c)]; })[0];
+        target = fresh ? (tabStops(fresh)[0] || null) : null;
+      } else if(key){
+        var same = cards.filter(function(c){ return storyKey(c) === key; })[0];
+        if(same) target = at >= 0 ? (tabStops(same)[at] || tabStops(same)[0]) : same;
+        if(target === same && !same.hasAttribute('tabindex')){
+          same.setAttribute('tabindex', '0'); same.setAttribute('role', 'button');
+        }
+      }
+      if(!target) target = g.querySelector('.today-more-btn') || tabStops(g)[0];
+      if(target && document.activeElement !== target) target.focus({ preventScroll:true });
+    };
+  }
+
   function render(d){
     LAST = d;
     var posts = newestFirst((d && Array.isArray(d.posts)) ? d.posts : []);
@@ -3722,11 +3759,13 @@ try {
       }
       var n = Math.min(posts.length, shown);
       var left = posts.length - n;
+      var back = focusPlace(g);
       g.innerHTML = packHtml(posts.slice(0, n)) +
         (left > 0
           ? '<p class="today-more"><button type="button" class="deeplink today-more-btn">' +
             'Show ' + Math.min(PAGE, left) + ' more of ' + posts.length + ' briefings</button></p>'
           : '') + stampLine;
+      if(back) setTimeout(back, 0);
       watchMore(left > 0 ? g.querySelector('.today-more-btn') : null);
     });
   }

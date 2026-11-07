@@ -1,6 +1,33 @@
 {
-  "updated": "2026-11-07T11:15:25.988Z",
+  "updated": "2026-11-07T12:30:36.921Z",
   "items": [
+    {
+      "title": "भोटेकोशी बाढीः यकिन बेपत्ता दुई हजार २९४ जनाको सूची सार्वजनिक",
+      "url": "https://www.onlinekhabar.com/2026/11/2053390/bhotekoshi-flood-list-of-2294-confirmed-missing-persons-made-public",
+      "source": "Onlinekhabar (Nepali)",
+      "time": "2026-11-07T11:41:00.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/09/Rasuwa-flood-syaphrubesi-bhotekoshi-12-1024x683.jpg"
+    },
+    {
+      "title": "Nepal’s fight to rebuild after flood disaster",
+      "url": "https://www.aljazeera.com/video/101-east/2026/11/7/nepals-fight-to-rebuild-after-flood-disaster?traffic_source=rss",
+      "source": "Al Jazeera",
+      "time": "2026-11-07T11:30:00.000Z",
+      "kind": "press",
+      "region": "global",
+      "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/image-1793941747.jpg?resize=1920%2C1080&quality=80"
+    },
+    {
+      "title": "भोटेकोशी विपद् : कमजोरलाई झनै पीडा",
+      "url": "https://nagariknews.nagariknetwork.com/social-affairs/bhotekoshi-disaster-more-pain-for-the-weak-99-62.html",
+      "source": "Nagarik News",
+      "time": "2026-11-07T10:40:52.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://images.nagariknewscdn.com/2026/third-party/1794047987_National%20(2).jpg"
+    },
     {
       "title": "मुख्यमन्त्री शाहीका १०० दिन : पुराना योजनाको निरन्तरता नै उपलब्धि",
       "url": "https://www.onlinekhabar.com/2026/11/2053280/chief-minister-shahis-100-days-continuation-of-old-plans-is-the-achievement",
@@ -11,15 +38,6 @@
       "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/Mangal-bahadur-shahi-1-1024x500.jpg"
     },
     {
-      "title": "भोटेकोशी विपद् : कमजोरलाई झनै पीडा",
-      "url": "https://www.onlinekhabar.com/2026/11/2053231/bhotekoshi-disaster-more-pain-for-the-weak",
-      "source": "Onlinekhabar (Nepali)",
-      "time": "2026-11-07T08:36:50.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/bhotekoshi.jpg"
-    },
-    {
       "title": "शारदा नगरपालिकामा न्यूनतम विद्युत् शुल्क निःशुल्क",
       "url": "https://www.onlinekhabar.com/2026/11/2053222/minimum-electricity-fee-free-in-sharda-municipality",
       "source": "Onlinekhabar (Nepali)",
@@ -27,24 +45,6 @@
       "kind": "press",
       "region": "nepal",
       "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/sarada-1024x500.jpg"
-    },
-    {
-      "title": "Thamel Tourism Development Council contributes Rs 1.64 million to Prime Minister’s Relief Fund",
-      "url": "https://english.nepalnews.com/s/business/thamel-tourism-development-council-contributes-rs-1-64-million-to-prime-ministers-relief-fund/",
-      "source": "Nepalnews",
-      "time": "2026-11-07T06:35:02.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://english.nepalnews.com/wp-content/uploads/2026/04/pm-office-singhadarbar.jpg"
-    },
-    {
-      "title": "जलवायु न्याय हाम्रो अधिकार हो, कोप–३१ मा यही आवाज उठाउँछौं : मन्त्री चौधरी",
-      "url": "https://www.onlinekhabar.com/2026/11/2053155/climate-justice-is-our-right-we-will-raise-this-voice-at-cop-31-minister-chaudhary",
-      "source": "Onlinekhabar (Nepali)",
-      "time": "2026-11-07T04:24:41.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/Gita-Chaudhary-7-1024x683.jpg"
     },
     {
       "title": "‘We do not need sympathy; climate finance is our right’",
@@ -324,15 +324,6 @@
       "kind": "quake",
       "region": "global",
       "image": null
-    },
-    {
-      "title": "पुडासैनी आत्महत्या प्रकरणः चितवनमा पाँच पक्राउ",
-      "url": "https://nagariknews.nagariknetwork.com/main-news/187963-1566058140.html",
-      "source": "Nagarik News",
-      "time": "2019-08-17T10:24:00.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://images.nagariknewscdn.com/"
     }
   ]
 }

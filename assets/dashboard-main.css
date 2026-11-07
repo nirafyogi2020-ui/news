@@ -549,6 +549,7 @@ border:1px solid var(--border-strong); background:var(--surface); color:var(--te
 #flood-map{width:100%; height:clamp(340px, 56vw, 540px); background:var(--surface-2);}
 .leaflet-container{font-family:var(--font-body); background:var(--surface-2);}
 .leaflet-container .leaflet-control-attribution a{color:#005f87;}
+.leaflet-bar a:focus-visible{box-shadow:0 0 0 3px var(--bg);}
 @media (pointer:coarse){
 .leaflet-touch .leaflet-top .leaflet-control-zoom{margin-top:12px;}
 .leaflet-bar a{position:relative;}
