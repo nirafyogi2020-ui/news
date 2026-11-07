@@ -433,12 +433,6 @@ ${o.modified ? `<meta property="article:modified_time" content="${esc(o.modified
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${siteAsset('/assets/site.css')}">
 ${o.head || ''}
-<script>
-/* Theme is chosen on the dashboard and stored locally; honour it here too so
-   moving between the dashboard and these pages does not flash a new colour. */
-(function(){try{var t=localStorage.getItem('theme-choice')||localStorage.getItem('nduTheme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}
-else if((t==='system'||!t)&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches&&t==='system'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();
-</script>
 <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}</script>
 </head>
 <body>

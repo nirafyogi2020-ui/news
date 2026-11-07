@@ -1,8 +1,26 @@
 # Cloudflare Pages response headers.
-# No Content-Security-Policy is set here: the page legitimately loads map tiles
-# from Esri/OpenTopoMap/OpenStreetMap, fonts from Google, Leaflet from unpkg and
-# video from YouTube, and a mistake in that list breaks the map or the player
-# during an emergency. Everything below is safe to apply unconditionally.
+#
+# The Content-Security-Policy lists exactly what the pages load, checked in a
+# browser against every page type, every dashboard tab, the Leaflet map, the
+# video player, the Commons gallery and the Google Maps frame:
+#   scripts     own files, the inline blocks and onerror handlers in the pages
+#               ('unsafe-inline' is needed for those), Leaflet from unpkg, the
+#               YouTube player API, Cloudflare's analytics beacon (injected at
+#               the edge) and Cloudflare's own /cdn-cgi/ scripts (same origin)
+#   styles      own, inline, Google Fonts, Leaflet's stylesheet
+#   fonts       own TTFs and fonts.gstatic.com
+#   images      any https host: news thumbnails come from every newsroom, map
+#               tiles from Esri/OpenTopoMap/OpenStreetMap, photographs from
+#               Wikimedia, video stills from ytimg
+#   fetch       own /api and JSON files, the Wikimedia Commons API, the
+#               analytics beacon's endpoint
+#   frames      YouTube embeds and the Google Maps box (maps.google.com
+#               redirects to www.google.com)
+# If a new third-party resource is added to a page, add its host here first,
+# or the browser silently refuses to load it.
+#
+# These rules apply to static files only. /embed is a Pages Function and sets
+# its own `frame-ancestors *`, which is what lets other sites frame it.
 
 # HTML is revalidated at the edge every minute. Article pages were seen being
 # served from cache with an Age of seven hours, which on a live disaster site
@@ -13,7 +31,16 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
-  Strict-Transport-Security: max-age=31536000
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.youtube.com https://s.ytimg.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' https:; connect-src 'self' https://commons.wikimedia.org https://cloudflareinsights.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://maps.google.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests
+
+# The figures box other sites paste in. Served by functions/embed.js, which
+# the rules above do not reach; stated here so that a static copy of it would
+# stay embeddable too.
+/embed
+  ! X-Frame-Options
+  ! Content-Security-Policy
+  Content-Security-Policy: frame-ancestors *
 
 # Stylesheet has no content hash in its name, so it is revalidated hourly and
 # served stale while that happens rather than blocking a page load.

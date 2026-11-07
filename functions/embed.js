@@ -57,6 +57,13 @@ a{color:inherit}
 </html>`;
 }
 
+/* Link checkers and some embed previews ask with HEAD first; without this the
+   function answered 404 to them while GET worked. */
+export async function onRequestHead(context) {
+  const res = await onRequestGet(context);
+  return new Response(null, { status: res.status, headers: res.headers });
+}
+
 export async function onRequestGet(context) {
   const res = await fetch(new URL('/event.json', context.request.url));
   if (!res.ok) return new Response('Figures are not available right now.', { status: 503 });
