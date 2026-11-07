@@ -3285,3 +3285,49 @@ body{font-size:16px;line-height:1.62;font-synthesis:none;}
 .rail-head,.rail-fig,.rail-note,.rail-body,.rail-dist .rd-row{padding-left:16px;padding-right:16px;}
 .today-card .tc-title{line-height:1.32;}
 }
+@media print{
+@page{margin:14mm;}
+:root, :root[data-theme="dark"]{color-scheme:light; --bg:#fff; --surface:#fff; --text:#000; --text-muted:#333; --text-faint:#555; --border:#bbb;}
+html, body{background:#fff !important; color:#000 !important;}
+body{font-size:11pt; line-height:1.4;}
+*{box-shadow:none !important; text-shadow:none !important; animation:none !important; transition:none !important; backdrop-filter:none !important;}
+.tabpanel{display:none !important;}
+#panel-overview[hidden], #panel-overview{display:block !important;}
+.sitehead, .drawer, .drawer-scrim, .search-pop, .lang-pop, .modal-backdrop, .bottomnav, .to-top, .reader,
+.skip-link, .shorts, #shorts, .lead-media, .hero-actions, .hero-brief, .rail, .briefcard, .briefcard ~ *, #today-home ~ *,
+.skeleton, .deeplink, .post-foot, .post-btn, .tc-media, .tc-sources, .today-more, .sec-head .seg, .seg, .chip,
+button, .tk-dot, footer{display:none !important;}
+.shell, .layout, .dash-top, .dash-lead, .dash-side, .today-grid, .river{display:block !important; max-width:none !important; padding:0 !important; margin:0 !important; gap:0 !important;}
+.hero, .hero-card{border:0 !important; padding:0 !important; margin:0 0 6mm !important; background:none !important;}
+.hero-kicker{font-size:9pt; color:#333;}
+.hero h1{font-size:22pt; margin:2mm 0 2mm;}
+.hero .lede{font-size:11pt; max-width:none;}
+.byline{display:block; font-size:9pt; color:#333; margin:2mm 0 0;}
+.byline a{display:none;}
+.byline::after{content:" · nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/";}
+.hero-figures{margin:3mm 0 0;}
+.hf-row{display:flex !important; gap:8mm; border-top:1px solid #000; border-bottom:1px solid #000; padding:3mm 0;}
+.hf-stat{display:block;}
+.hf-n{display:block; font-size:20pt; font-weight:700; color:#000 !important;}
+.hf-n.critical{color:#000 !important;}
+.hf-l{display:block; font-size:8.5pt; letter-spacing:0.04em; text-transform:uppercase; color:#333;}
+.hf-note{font-size:9pt; color:#333;}
+.ticker{border:0 !important; padding:0 !important; margin:0 0 6mm !important; background:none !important; break-inside:avoid;}
+.ticker-head h2{font-size:13pt; margin:0;}
+.tk-when{font-size:9pt; color:#333;}
+.ticker ol{margin:2mm 0 0; padding-left:0; list-style:none;}
+.ticker li{padding:1.5mm 0; border-top:1px solid #ccc; font-size:10pt;}
+.ticker time{font-weight:700;}
+.ticker li *{color:#000 !important;}
+#today-home{margin:0 !important;}
+.sec-head h2{font-size:13pt; margin:0 0 2mm; border-bottom:1px solid #000; padding-bottom:1mm;}
+.post-card{display:block !important; border:0 !important; border-top:1px solid #ccc !important; border-radius:0 !important; padding:2.5mm 0 !important; margin:0 !important; background:none !important; break-inside:avoid;}
+.post-card .post-body{padding:0 !important;}
+.tc-kicker{font-size:8.5pt; color:#333; margin:0 0 1mm;}
+.tc-title{font-size:12.5pt; margin:0 0 1mm; color:#000 !important;}
+.tc-title a{color:#000 !important; text-decoration:none !important;}
+.post-summary, .post-summary.clamped{display:block !important; max-height:none !important; overflow:visible !important; -webkit-line-clamp:unset !important; font-size:10pt; color:#000;}
+.post-summary p{margin:0 0 1mm;}
+.tc-credit{font-size:8.5pt; color:#555;}
+a{color:#000 !important;}
+}

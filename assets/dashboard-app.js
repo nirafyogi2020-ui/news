@@ -2526,6 +2526,11 @@ var LiveFeed = (function(){
   var SEARCHES = ['Lende Khola', 'Kyirong Tsangpo valley', 'Gyirong County landscape',
     'Langtang glacier', 'glacial lake Tibet', 'Rasuwagadhi'];
   var loaded = false;
+  function escapeHtml(text){
+    return String(text == null ? '' : text).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
 
   function strip(html){
     var d = document.createElement('div'); d.innerHTML = html || '';
@@ -2536,14 +2541,18 @@ var LiveFeed = (function(){
     if(!info || (info.mime || '').indexOf('image') !== 0) return '';
     if(/logo|icon|flag of|coat of arms|\.svg$/i.test(page.title)) return '';
     var m = info.extmetadata || {};
-    var author = strip(m.Artist && m.Artist.value) || 'Unknown author';
-    var lic = strip(m.LicenseShortName && m.LicenseShortName.value) || 'See file page';
-    var name = page.title.replace(/^File:/, '').replace(/\.[a-z0-9]+$/i, '').replace(/_/g, ' ');
+    var author = escapeHtml(strip(m.Artist && m.Artist.value) || 'Unknown author');
+    var lic = escapeHtml(strip(m.LicenseShortName && m.LicenseShortName.value) || 'See file page');
+    var name = escapeHtml(page.title.replace(/^File:/, '').replace(/\.[a-z0-9]+$/i, '').replace(/_/g, ' '));
+    var src = String(info.thumburl || info.url);
+    var filePage = String(info.descriptionurl || '');
+    if(!/^https:\/\//.test(src)) return '';
+    if(!/^https:\/\//.test(filePage)) filePage = 'https://commons.wikimedia.org/wiki/' + encodeURIComponent(page.title);
     return '<div class="media-card"><figure>' +
-      '<img src="' + (info.thumburl || info.url) + '" alt="' + name.replace(/"/g, '') + '" loading="lazy" referrerpolicy="no-referrer">' +
+      '<img src="' + escapeHtml(src) + '" alt="' + name + '" loading="lazy" referrerpolicy="no-referrer">' +
       '<figcaption>' + name +
       '<span class="credit">' + author + ' &middot; ' + lic +
-      ' &middot; <a href="' + info.descriptionurl + '" target="_blank" rel="noopener">file page</a></span>' +
+      ' &middot; <a href="' + escapeHtml(filePage) + '" target="_blank" rel="noopener">file page</a></span>' +
       '</figcaption></figure></div>';
   }
 
