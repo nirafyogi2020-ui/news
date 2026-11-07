@@ -56,6 +56,14 @@
       document.querySelectorAll('.hf-note, #rail-figures .rail-note').forEach(el => {
         const a=document.createElement('a');a.href=latest.url;a.target='_blank';a.rel='noopener noreferrer';a.href='#inv-sources';a.removeAttribute('target');a.textContent='Sources';
         el.replaceChildren(a);
+        // The bulletin's date went with the text; print puts it back from data-asof,
+        // restamped from the figure now on screen so paper and screen agree.
+        const t=new Date(latest.time);
+        if(el.classList.contains('hf-note') && latest.source && !isNaN(t)){
+          const p=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Kathmandu',day:'numeric',month:'long',year:'numeric',hour:'numeric',minute:'2-digit',hour12:true}).formatToParts(t).map(x=>[x.type,x.value]));
+          el.dataset.asof=`${latest.source.split(' · ')[0]}, ${p.day} ${p.month} ${p.year}, ${p.hour}:${p.minute} ${(p.dayPeriod||'').toLowerCase()} NPT`;
+        }
+        el.classList.add('hf-note-live');
       });
     }
     // Repaint the running headline strip using the same full metric set.

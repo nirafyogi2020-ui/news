@@ -198,8 +198,13 @@ const PHOTO_INDEX = (() => {
 
 /* How wide a card picture is drawn, for the browser's srcset choice: the full
    width less the page padding on a phone, the 640 px single column to 999 px,
-   and about half the grid (the lead story's picture column) above that. */
-const CARD_SIZES = '(min-width:1000px) 520px, (min-width:672px) 640px, calc(100vw - 32px)';
+   and about half the grid (the lead story's picture column) above that.
+   A 3x phone is told two thirds of the width, so it takes the 800 px copy
+   (2.3 pixels per CSS pixel on a 343 px card) instead of the 1,400 px
+   original; side by side at 3x the two look the same at that size. The card
+   is drawn at its CSS width either way. Same string as CARD_SIZES in
+   src/rasuwa-dashboard.html. */
+const CARD_SIZES = '(min-width:1000px) 520px, (min-width:672px) 640px, (min-resolution:2.5dppx) calc((100vw - 32px) * 2 / 3), calc(100vw - 32px)';
 
 function ssrTodayCards(list) {
   if (!list.length) {
@@ -934,9 +939,12 @@ function heroFigures() {
     + `<span class="hf-l">${escHtml(st.label)}</span>`
     + '</div>'
   ).join('');
-  const note = `${escHtml(event.asOfSource || 'Latest bulletin')}, ${escHtml(nptLong(event.asOf))}. `
-    + '<a href="#numbers-title">Sources</a>';
-  return `<div class="hf-row">${cells}</div><p class="hf-note">${note}</p>`;
+  const asOf = `${event.asOfSource || 'Latest bulletin'}, ${nptLong(event.asOf)}`;
+  const note = `${escHtml(asOf)}. <a href="#numbers-title">Sources</a>`;
+  /* dashboard.js replaces this note with a bare "Sources" link once the
+     figures are in. The attribute keeps the bulletin's date on the element,
+     so the print stylesheet can put it back under the numbers. */
+  return `<div class="hf-row">${cells}</div><p class="hf-note" data-asof="${escAttr(asOf)}">${note}</p>`;
 }
 index = index.replace(
   /<!--ssr:herofig-->[\s\S]*?<!--\/ssr:herofig-->/,

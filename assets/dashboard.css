@@ -143,6 +143,9 @@
   :is(#today-general-grid,#today-grid,#feed-tab-grid,#live-recent-grid) .post-card .tc-title{min-height:0;font-size:.98rem}
   :is(#today-general-grid,#today-grid,#feed-tab-grid,#live-recent-grid) .post-card .post-summary{display:none}
   :is(#today-general-grid,#today-grid,#feed-tab-grid,#live-recent-grid) .post-card.is-lead{display:flex;padding:0 0 16px}
+  /* The lead's picture spans the card. Left at align-self:start it took the
+     width the srcset sizes hint gave it, which is narrower on a 3x phone. */
+  :is(#today-general-grid,#today-grid,#feed-tab-grid,#live-recent-grid) .post-card.is-lead .tc-media{align-self:stretch}
   :is(#today-general-grid,#today-grid,#feed-tab-grid,#live-recent-grid) .post-card.is-lead .post-body{padding-top:12px;gap:7px}
   :is(#today-general-grid,#today-grid,#feed-tab-grid,#live-recent-grid) .post-card.is-lead .post-summary{display:-webkit-box}
 }

@@ -1400,6 +1400,19 @@
   .leaflet-container{font-family:var(--font-body); background:var(--surface-2);}
   /* Leaflet's default link blue sits at 3.2:1 on its translucent strip. */
   .leaflet-container .leaflet-control-attribution a{color:#005f87;}
+  /* Leaflet draws its zoom buttons 30 px square on a touch screen. The drawn
+     buttons stay as they are; each tappable area is 44 px square: 7 px either
+     side, 14 px above the top button and 14 px below the bottom one. The two
+     buttons touch, so the line between them is not widened. The map clips
+     anything outside it, so the control sits 2 px lower (12 px margin) to
+     leave room for the 14 px above. */
+  @media (pointer:coarse){
+    .leaflet-touch .leaflet-top .leaflet-control-zoom{margin-top:12px;}
+    .leaflet-bar a{position:relative;}
+    .leaflet-bar a::before{content:""; position:absolute; inset:-14px -7px;}
+    .leaflet-bar a + a::before{top:0;}
+    .leaflet-bar a:not(:last-child)::before{bottom:0;}
+  }
   .leaflet-popup-content-wrapper{border-radius:10px;}
   .leaflet-popup-content{margin:12px 14px; font-size:0.86rem; line-height:1.5;}
   .leaflet-popup-content h4{font-family:var(--font-display); font-size:1rem; margin-bottom:4px;}
@@ -5100,6 +5113,12 @@
   .shell, .layout, .dash-top, .dash-lead, .dash-side, .today-grid, .river{display:block !important; max-width:none !important; padding:0 !important; margin:0 !important; gap:0 !important;}
   .hero, .hero-card{border:0 !important; padding:0 !important; margin:0 0 6mm !important; background:none !important;}
   .hero-kicker{font-size:9pt; color:#333;}
+  /* "Sources checked 2 minutes ago", or "Checking for new reports…" when the
+     figures have not answered yet, means nothing on paper. The bulletin's
+     date goes under the numbers instead: dashboard.js trims that note to a
+     "Sources" link on screen and keeps the date in data-asof. */
+  .hero-kicker #hero-updated, .hero-kicker .hk-sep{display:none !important;}
+  .hf-note.hf-note-live[data-asof]::before{content:attr(data-asof) ". ";}
   .hero h1{font-size:22pt; margin:2mm 0 2mm;}
   .hero .lede{font-size:11pt; max-width:none;}
   .byline{display:block; font-size:9pt; color:#333; margin:2mm 0 0;}
@@ -10565,8 +10584,12 @@ var LiveFeed = (function(){
   var PHOTO_FILES = {};
   var PHOTO_RECORDS = {};
   /* How wide a card picture is drawn: the full width less the page padding on
-     a phone, the 640 px single column to 999 px, then about half the grid. */
-  var CARD_SIZES = '(min-width:1000px) 520px, (min-width:672px) 640px, calc(100vw - 32px)';
+     a phone, the 640 px single column to 999 px, then about half the grid.
+     A 3x phone is told two thirds of the width, so it takes the 800 px copy
+     (2.3 pixels per CSS pixel on a 343 px card) instead of the 1,400 px
+     original; the two look the same on a card that size. Same string as
+     CARD_SIZES in src/build.mjs. */
+  var CARD_SIZES = '(min-width:1000px) 520px, (min-width:672px) 640px, (min-resolution:2.5dppx) calc((100vw - 32px) * 2 / 3), calc(100vw - 32px)';
   function photoSrcset(rec){
     if(!rec || !rec.card || !rec.width) return '';
     return '/assets/photos/' + rec.card + ' 800w, /assets/photos/' + rec.file + ' ' + rec.width + 'w';
