@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-07T03:35:37.000Z</news:publication_date>
+      <news:publication_date>2026-11-07T04:24:41.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,458 dead, 5,285 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-07T03:35:37.000Z</news:publication_date>
+      <news:publication_date>2026-11-07T04:24:41.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-07-auto-2026-11-07-ae75959f/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-07T04:24:41.000Z</news:publication_date>
+      <news:title>जलवायु न्याय हाम्रो अधिकार हो, कोप–३१ मा यही आवाज उठाउँछौं : मन्त्री चौधरी</news:title>
     </news:news>
   </url>
   <url>
