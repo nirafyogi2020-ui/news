@@ -3528,7 +3528,7 @@ try {
   var PHOTO_CREDITS = {};
   var PHOTO_FILES = {};
   var PHOTO_RECORDS = {};
-  var CARD_SIZES = '(min-width:1000px) 520px, (min-width:672px) 640px, (min-resolution:2.5dppx) calc((100vw - 32px) * 2 / 3), calc(100vw - 32px)';
+  var CARD_SIZES = '(min-width:575px) 400px, (min-resolution:2.5dppx) calc((100vw - 32px) * 2 / 3), calc(100vw - 32px)';
   function photoSrcset(rec){
     if(!rec || !rec.card || !rec.width) return '';
     return '/assets/photos/' + rec.card + ' 800w, /assets/photos/' + rec.file + ' ' + rec.width + 'w';
