@@ -252,6 +252,18 @@ a.card .go{display:inline-block; margin-top:.6em; font-size:0.8rem; font-weight:
 .map-note{font-size:0.76rem; color:var(--text-faint); margin:8px 0 22px;}
 /* Leaflet's default link blue is 3.2:1 on its translucent attribution strip. */
 .leaflet-container .leaflet-control-attribution a{color:#005f87;}
+/* Leaflet's zoom buttons are 30 px square on a touch screen. The drawn
+   buttons stay; each tappable area is 44 px square: 7 px either side, 14 px
+   above the top button and 14 px below the bottom one. The two touch, so the
+   line between them is not widened. The map clips anything outside it, so the
+   control sits 2 px lower (12 px margin) to leave room for the 14 px above. */
+@media (pointer:coarse){
+  .leaflet-touch .leaflet-top .leaflet-control-zoom{margin-top:12px;}
+  .leaflet-bar a{position:relative;}
+  .leaflet-bar a::before{content:""; position:absolute; inset:-14px -7px;}
+  .leaflet-bar a + a::before{top:0;}
+  .leaflet-bar a:not(:last-child)::before{bottom:0;}
+}
 
 /* ---- live feed on the updates page -------------------------------------- */
 .feedlist{display:grid; gap:10px; margin:0 0 12px;}
@@ -284,7 +296,7 @@ a.card .go{display:inline-block; margin-top:.6em; font-size:0.8rem; font-weight:
      a blank half-page under the words. On those pages the cards stay in the
      article column and the rail runs down beside both. */
   .page-layout.is-brief > .page-related{grid-column:1;}
-  .page-layout.is-brief > .rail{grid-row:1 / span 2;}
+  .page-layout.is-brief > .rail{grid-column:2; grid-row:1 / span 2;}
 }
 
 /* ---- footer ------------------------------------------------------------- */
