@@ -2375,6 +2375,12 @@ var LiveFeed = (function(){
         return entry && entry.file && /^image\//.test(entry.type || 'image/jpeg') && byKey[slug];
       })
       .sort(function(a, b){ return dateOf(b).localeCompare(dateOf(a)); })
+      .filter(function(slug){
+        var id = manifest[slug].hash || manifest[slug].file;
+        if(this[id]) return false;
+        this[id] = 1;
+        return true;
+      }, {})
       .map(function(slug){
         var entry = manifest[slug];
         var post = byKey[slug];
@@ -3528,6 +3534,12 @@ try {
   var PHOTO_CREDITS = {};
   var PHOTO_FILES = {};
   var PHOTO_RECORDS = {};
+  var PHOTO_REPEATS = (function(){
+    try {
+      var el = document.getElementById('photo-repeats');
+      return el ? JSON.parse(el.textContent.replace(/<!--\/?ssr:repeats-->/g, '')) || {} : {};
+    } catch(e){ return {}; }
+  })();
   var CARD_SIZES = '(min-width:575px) 400px, (min-resolution:2.5dppx) calc((100vw - 32px) * 2 / 3), calc(100vw - 32px)';
   function photoSrcset(rec){
     if(!rec || !rec.card || !rec.width) return '';
@@ -3585,8 +3597,9 @@ try {
     var perma = permalink(post);
     var ogSlug = perma ? perma.replace(/^\/|\/$/g, '').replace(/\//g, '-') : '';
 
-    var saved = PHOTO_FILES[ogSlug] ? '/assets/photos/' + PHOTO_FILES[ogSlug] : '';
-    var img = saved || post.image || '';
+    var repeat = PHOTO_REPEATS[ogSlug];
+    var saved = !repeat && PHOTO_FILES[ogSlug] ? '/assets/photos/' + PHOTO_FILES[ogSlug] : '';
+    var img = saved || (repeat === 'none' ? '' : post.image) || '';
     var set = saved ? photoSrcset(PHOTO_RECORDS[ogSlug]) : '';
     var backup = saved && post.image ? post.image : '';
     var credit = img ? creditLine(ogSlug, !saved, post) : '';

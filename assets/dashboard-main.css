@@ -1972,36 +1972,6 @@ footer .shell{padding-top:36px; padding-bottom:40px;}
 @media (max-width:1079px){
 .dash-top > .rail{margin-top:26px;}
 }
-@media (min-width:1080px){
-#today-grid-home{grid-template-columns:repeat(4, minmax(0,1fr)); gap:20px;}
-#today-grid-home > .post-card:nth-child(1){grid-column:span 4;}
-#today-grid-home > .post-card:nth-child(2),
-#today-grid-home > .post-card:nth-child(3){grid-column:span 2;}
-#today-grid-home > .post-card:nth-child(2) .tc-title,
-#today-grid-home > .post-card:nth-child(3) .tc-title{font-size:1.32rem; line-height:1.24;}
-#today-grid-home > .post-card:nth-child(2) .post-photo,
-#today-grid-home > .post-card:nth-child(3) .post-photo{
-max-height:280px; object-fit:cover;
-}
-#today-grid-home > .post-card:nth-child(1){
-display:grid; grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);
-grid-template-rows:auto 1fr auto;
-}
-#today-grid-home > .post-card:nth-child(1) .tc-media{
-grid-column:1; grid-row:1 / -1; height:100%; max-height:420px;
-}
-#today-grid-home > .post-card:nth-child(1) .tc-media .post-photo-link{display:block; height:100%;}
-#today-grid-home > .post-card:nth-child(1) .tc-media .post-photo{
-height:100%; max-height:420px; min-height:280px; aspect-ratio:auto; object-fit:cover;
-}
-#today-grid-home > .post-card:nth-child(1) .post-body{grid-column:2; grid-row:1 / 3; padding:22px 24px 0;}
-#today-grid-home > .post-card:nth-child(1) .post-foot{grid-column:2; grid-row:3;}
-#today-grid-home > .post-card:nth-child(1) .tc-title{font-size:1.86rem; line-height:1.16;}
-#today-grid-home > .post-card:nth-child(1) .post-summary.clamped{-webkit-line-clamp:5;}
-#today-grid-home > .post-card.no-photo:nth-child(1){grid-template-columns:minmax(0,1fr);}
-#today-grid-home > .post-card.no-photo:nth-child(1) .post-body{grid-column:1; grid-row:1;}
-#today-grid-home > .post-card.no-photo:nth-child(1) .post-foot{grid-column:1; grid-row:2;}
-}
 @media (min-width:1200px){
 #panel-today .today-grid > .post-card:first-child .tc-media{max-height:440px;}
 #panel-today .today-grid > .post-card:first-child .tc-media .post-photo{
@@ -2252,8 +2222,7 @@ line-height:1.14; -webkit-line-clamp:4;
 .pack-lead .post-card .post-summary{font-size:1rem; line-height:1.62;}
 .pack-lead .post-card .post-summary.clamped{-webkit-line-clamp:5;}
 .pack-lead .post-card .post-body{padding-top:14px; gap:9px;}
-.pack-lead > .post-card,
-#today-grid-home > .post-card:nth-child(1){
+.pack-lead > .post-card{
 background:var(--surface); border:1px solid var(--rule);
 border-radius:8px; overflow:hidden;
 }
