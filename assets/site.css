@@ -207,11 +207,20 @@ th,td{text-align:left; padding:10px 15px; border-bottom:1px solid var(--border);
 thead th{font-family:var(--font-mono); font-size:0.7rem; letter-spacing:.07em; text-transform:uppercase; color:var(--text-faint); font-weight:500; background:var(--surface-2);}
 tbody tr:last-child td{border-bottom:0;}
 td.n, th.n{font-family:var(--font-mono); font-variant-numeric:tabular-nums; white-space:nowrap;}
+/* A figure in a cell ("~5,000 m", "28.4402, 85.4432", "Rs 10 million") broke
+   after its comma or before its unit when the column was narrow. */
+td .num{white-space:nowrap;}
 /* A wide table marked "stack" (the flood-path points on the map page): on a
-   phone each row is a block, number on the left, place on top, coordinates
-   and elevation side by side, then the text at full width. The header row
-   stays for screen readers; the two figure cells carry their own label. */
-@media (max-width:600px){
+   phone or a small tablet each row is a block, number on the left, place on
+   top, coordinates and elevation side by side, then the text at full width.
+   Up to 860 px, and from 1100 px until the article column beside the rail
+   reaches its full 776 px, five columns left the text a strip 180-400 px
+   wide. The header row stays for screen readers; the two figure cells carry
+   their own label. Wider, as a table, the two figure columns give up a little
+   right padding so the text column keeps its width now the figures no longer
+   wrap. */
+table.stack td:nth-child(3), table.stack td:nth-child(4){padding-right:8px;}
+@media screen and (max-width:860px), screen and (min-width:1100px) and (max-width:1179px){
   table.stack{min-width:0;}
   table.stack thead{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
   table.stack tbody{display:block;}
@@ -278,6 +287,10 @@ a.card .go{display:inline-block; margin-top:.6em; font-size:0.8rem; font-weight:
 .map-note{font-size:0.76rem; color:var(--text-faint); margin:8px 0 22px;}
 /* Leaflet's default link blue is 3.2:1 on its translucent attribution strip. */
 .leaflet-container .leaflet-control-attribution a{color:#005f87;}
+/* The focus ring on a zoom button sat straight on the satellite picture, dark
+   on dark terrain in light mode. A band of page colour under it (filling the
+   2 px gap) makes it read on any picture in either mode. */
+.leaflet-bar a:focus-visible{box-shadow:0 0 0 2px var(--bg);}
 /* Leaflet's zoom buttons are 30 px square on a touch screen. The drawn
    buttons stay; each tappable area is 44 px square: 7 px either side, 14 px
    above the top button and 14 px below the bottom one. The two touch, so the
