@@ -31,6 +31,15 @@ export const NE_DISTRICTS = {
   'Rasuwa': 'रसुवा',
   'Tanahun': 'तनहुँ',
   'Nuwakot': 'नुवाकोट',
+  /* Not a district: the police table carries this row for deaths in hospital. */
+  'Died in treatment': 'उपचारका क्रममा मृत्यु',
+};
+
+/** The names of the bulletin sources as the Nepali pages print them. */
+export const NE_SOURCES = {
+  'Nepal Police': 'नेपाल प्रहरी',
+  'NDRRMA': 'NDRRMA',
+  'OCHA': 'OCHA',
 };
 
 export const NE_MISSING_GROUPS = {

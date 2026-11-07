@@ -478,7 +478,7 @@ ${bodyRelated ? `<div class="page-related">${bodyRelated}</div>` : ''}
 
 <footer>
   <div class="shell">
-    <nav aria-label="${esc(t.allPages)}"><ul class="footnav">${footNav.map(n => `<li><a href="${n.href}">${esc(n.label)}</a></li>`).join('')}</ul></nav>
+    <nav aria-label="${esc(t.allPages)}"><ul class="footnav">${footNav.map(n => `<li><a href="${n.href}"${langAttr(n.label, lang)}>${esc(n.label)}</a></li>`).join('')}</ul></nav>
     <p>${t.foot1}</p>
     <p>${t.foot2}</p>
     <p class="faint">${t.foot3}</p>

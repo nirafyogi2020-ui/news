@@ -8,7 +8,7 @@
 
 import { SITE, SITE_NAME, CONTACT_EMAIL, page, esc, faqBlock, nptLong, siteAsset, ogFor } from './template.mjs';
 import * as C from './content.mjs';
-import { ne, NE_DISTRICTS, NE_MISSING_GROUPS, NE_EMERGENCY, NE_MISSING_STEPS, NE_HAZARD_STEPS } from './content-ne.mjs';
+import { ne, NE_DISTRICTS, NE_MISSING_GROUPS, NE_EMERGENCY, NE_MISSING_STEPS, NE_HAZARD_STEPS, NE_SOURCES } from './content-ne.mjs';
 
 const ORG = { '@id': `${SITE}/#organization` };
 
@@ -119,7 +119,7 @@ ${LAKE_WARNING}
 <p>पहिलो दुई दिनमा सङ्ख्या बारम्बार बढ्यो, किनभने खोजी टोली सम्पर्कविहीन भएका ठाउँमा पुग्दै गए। बुधबार साँझ प्रधानमन्त्री कार्यालयले ९५ र प्राधिकरणले ७२ भनेको थियो; ${esc(neTime(C.TOLL_EARLIER_AS_OF))} मा नेपाल प्रहरीको सङ्ख्या ${ne(C.TOLL.deadNepalEarlier)} पुग्यो, र ${esc(TOLL_NE)} को NDRRMA अपडेटमा <strong>${ne(C.TOLL.deadNepal)}</strong> पुग्यो। यही कारण यहाँको हरेक सङ्ख्या अस्थायी हो।</p>
 
 <h3>कुन जिल्लामा कति शव फेला परे</h3>
-${table(['जिल्ला', 'शव फेला परेको'], C.BODIES_BY_DISTRICT.map(([d, n]) => [esc(NE_DISTRICTS[d] || d), `<span class="num">${ne(n)}</span>`]).concat([['<strong>यो सूचीको जम्मा</strong>', `<strong class="num">${ne(C.BODIES_BY_DISTRICT.reduce((a, [, n]) => a + n, 0))}</strong>`]]), `${esc(C.BODIES_SOURCE)}, ${esc(BODIES_NE)}। जिल्लागत विवरणको जम्मा माथिको राष्ट्रिय कुलसँग मिल्छ। तालिकामा भएको जिल्ला शव फेला परेको ठाउँ हो, मृतकको स्थायी ठेगाना होइन।`)}
+${table(['जिल्ला', 'शव फेला परेको'], C.BODIES_BY_DISTRICT.map(([d, n]) => [esc(NE_DISTRICTS[d] || d), `<span class="num">${ne(n)}</span>`]).concat([['<strong>यो सूचीको जम्मा</strong>', `<strong class="num">${ne(C.BODIES_BY_DISTRICT.reduce((a, [, n]) => a + n, 0))}</strong>`]]), `${esc(NE_SOURCES[C.BODIES_SOURCE] || C.BODIES_SOURCE)}, ${esc(BODIES_NE)}। जिल्लागत विवरणको जम्मा माथिको राष्ट्रिय कुलसँग मिल्छ। तालिकामा भएको जिल्ला शव फेला परेको ठाउँ हो, मृतकको स्थायी ठेगाना होइन।`)}
 <p>चीनतर्फ ग्याइरोङ नजिक थप <strong>${ne(C.TOLL.deadChina)} जना</strong>को मृत्यु पुष्टि भएको छ।</p>
 
 <h2>बेपत्ता</h2>
@@ -150,7 +150,7 @@ ${faq.html}
 <h2>यो पृष्ठ कसरी बनेको हो</h2>
 <p>मृत्यु, सम्पर्कविहीन र उद्धारको पछिल्लो सङ्ख्या NDRRMA को ${esc(NDRRMA_NE)} को अपडेटबाट लिइएको हो। क्षति र प्रतिकार्यका पुराना विवरण संयुक्त राष्ट्रसंघीय OCHA को २७ अगस्टको स्थिति विवरणबाट लिइएका हुन्। दुई स्रोत बाझिए कम भएको तर पुष्टि भएको सङ्ख्या राखिन्छ, स्रोत र समयसहित।</p>
 <p>यहाँ केही गलत भेट्नुभयो भने <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> मा लेख्नुहोस्। सच्याइन्छ वा हटाइन्छ।</p>
-<p><a href="/nepal-flood/rasuwa/">This briefing in English, with the map and full damage assessment</a></p>
+<p lang="en"><a href="/nepal-flood/rasuwa/">This briefing in English, with the map and full damage assessment</a></p>
 `;
 
   const title = `रसुवा बाढी: ${ne(C.TOLL.deadNepal)} जनाको मृत्यु, ताजा अपडेट`;
@@ -261,7 +261,7 @@ ${NE_HAZARD_STEPS.map((s, i) => `<div class="check-row"><span class="mark">${ne(
 <h2>प्रायः सोधिने प्रश्न</h2>
 ${faq.html}
 
-<p><a href="/nepal-flood/emergency-numbers/">This page in English</a></p>
+<p lang="en"><a href="/nepal-flood/emergency-numbers/">This page in English</a></p>
 `;
 
   const title = 'नेपालका आपतकालीन नम्बर: प्रहरी १००, एम्बुलेन्स १०२, विपद् ११४९';
@@ -345,7 +345,7 @@ ${NE_MISSING_STEPS.map((s, i) => `<div class="check-row"><span class="mark">${ne
 <h2>ठगीबाट जोगिनुहोस्</h2>
 <p>"तपाईंको आफन्त भेटियो, ओसारपसारका लागि पैसा पठाउनुहोस्" भन्ने नक्कली सन्देश हरेक विपद्पछि आउँछन्। नेपाल प्रहरीले बेपत्ता व्यक्ति खोज्न पैसा माग्दैन। कुनै पनि वैध उद्धार संस्थाले माग्दैन। त्यस्तो सन्देश आए जुन प्रहरी कार्यालयमा दर्ता गर्नुभएको थियो, त्यहीँ जानकारी दिनुहोस्।</p>
 
-<p><a href="/nepal-flood/rasuwa/missing-persons/">This page in English</a></p>
+<p lang="en"><a href="/nepal-flood/rasuwa/missing-persons/">This page in English</a></p>
 `;
 
   const title = `रसुवा बाढी: बेपत्ता व्यक्तिको खबर कसरी गर्ने`;
@@ -446,7 +446,7 @@ ${table(['कहाँ', 'रकम'], [
   <a href="https://www.nrcs.org/" target="_blank" rel="noopener nofollow">नेपाल रेडक्रस सोसाइटी &#8599;</a>
 </div>
 
-<p><a href="/nepal-flood/relief/">This page in English</a></p>
+<p lang="en"><a href="/nepal-flood/relief/">This page in English</a></p>
 `;
 
   const title = 'बाढी राहत: सरकारी कोषमा सुरक्षित तरिकाले सहयोग कसरी गर्ने';
