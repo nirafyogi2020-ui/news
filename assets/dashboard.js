@@ -111,9 +111,21 @@
       if(img.getAttribute('sizes')!==want)img.setAttribute('sizes',want);
     });
   }
+  // A new hint on a picture makes the browser fetch the file it now picks,
+  // even in a hidden tab, so the Overview at 2x was fetching the Today lead
+  // at 1,400 px for a tab nobody had opened. The hint waits for the tab: it
+  // goes on when the panel is shown, before its pictures are laid out.
+  function hintWhenShown(container){
+    const panel=container.closest('.tabpanel');
+    const go=()=>{if(!panel||!panel.hidden)hintSizes(container);};
+    if(panel)new MutationObserver(go).observe(panel,{attributes:true,attributeFilter:['hidden']});
+    go();
+    return go;
+  }
   ['today-general-grid','today-grid','feed-tab-grid'].forEach(id=>{
     const container=document.getElementById(id);if(!container)return;
-    const run=()=>{packageNews(container);hintSizes(container);};
+    const hint=hintWhenShown(container);
+    const run=()=>{packageNews(container);hint();};
     const observer=new MutationObserver(run);observer.observe(container,{childList:true});run();
   });
   const liveRecent=document.getElementById('live-recent-grid');
@@ -123,7 +135,7 @@
       copy.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
       return copy;
     });
-    if(cards.length>=3){const river=document.createElement('div');river.className='river';river.append(...cards);liveRecent.append(river);packageNews(liveRecent);hintSizes(liveRecent);}
+    if(cards.length>=3){const river=document.createElement('div');river.className='river';river.append(...cards);liveRecent.append(river);packageNews(liveRecent);hintWhenShown(liveRecent);}
   }
   const head=$('.sitehead'), top=$('.head-top');
   if(head && top)new ResizeObserver(()=>head.style.setProperty('--masthead-size',top.offsetHeight+'px')).observe(top);
