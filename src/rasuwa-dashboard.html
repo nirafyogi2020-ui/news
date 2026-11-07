@@ -10583,13 +10583,15 @@ var LiveFeed = (function(){
   var PHOTO_CREDITS = {};
   var PHOTO_FILES = {};
   var PHOTO_RECORDS = {};
-  /* How wide a card picture is drawn: the full width less the page padding on
-     a phone, the 640 px single column to 999 px, then about half the grid.
-     A 3x phone is told two thirds of the width, so it takes the 800 px copy
-     (2.3 pixels per CSS pixel on a 343 px card) instead of the 1,400 px
-     original; the two look the same on a card that size. Same string as
-     CARD_SIZES in src/build.mjs. */
-  var CARD_SIZES = '(min-width:1000px) 520px, (min-width:672px) 640px, (min-resolution:2.5dppx) calc((100vw - 32px) * 2 / 3), calc(100vw - 32px)';
+  /* How wide a card picture is drawn on the Overview: one column the full
+     width less the page padding on a phone, and from about 575 px an
+     auto-fill grid whose columns never pass 400 px, so a 1x or 2x screen
+     takes the 800 px copy. A 3x phone is told two thirds of the width, so it
+     takes the 800 px copy (2.3 pixels per CSS pixel on a 343 px card)
+     instead of the 1,400 px original; the two look the same on a card that
+     size. The tabs re-hint their own cards (assets/dashboard.js). Same
+     string as CARD_SIZES in src/build.mjs. */
+  var CARD_SIZES = '(min-width:575px) 400px, (min-resolution:2.5dppx) calc((100vw - 32px) * 2 / 3), calc(100vw - 32px)';
   function photoSrcset(rec){
     if(!rec || !rec.card || !rec.width) return '';
     return '/assets/photos/' + rec.card + ' 800w, /assets/photos/' + rec.file + ' ' + rec.width + 'w';

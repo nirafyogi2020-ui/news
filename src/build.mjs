@@ -196,15 +196,18 @@ const PHOTO_INDEX = (() => {
   } catch { return {}; }
 })();
 
-/* How wide a card picture is drawn, for the browser's srcset choice: the full
-   width less the page padding on a phone, the 640 px single column to 999 px,
-   and about half the grid (the lead story's picture column) above that.
-   A 3x phone is told two thirds of the width, so it takes the 800 px copy
-   (2.3 pixels per CSS pixel on a 343 px card) instead of the 1,400 px
-   original; side by side at 3x the two look the same at that size. The card
-   is drawn at its CSS width either way. Same string as CARD_SIZES in
-   src/rasuwa-dashboard.html. */
-const CARD_SIZES = '(min-width:1000px) 520px, (min-width:672px) 640px, (min-resolution:2.5dppx) calc((100vw - 32px) * 2 / 3), calc(100vw - 32px)';
+/* How wide a card picture is drawn, for the browser's srcset choice. The
+   Overview river is an auto-fill grid of 258 px columns (288 px from
+   1100 px), so once it holds two columns, from about 575 px, no card is
+   drawn wider than 400 px: a 1x or 2x screen takes the 800 px copy. Below
+   that it is one column, the full width less the page padding. A 3x phone
+   is told two thirds of the width, so it takes the 800 px copy (2.3 pixels
+   per CSS pixel on a 343 px card) instead of the 1,400 px original; side by
+   side at 3x the two look the same at that size. The card is drawn at its
+   CSS width either way. The tabs lay the same cards out differently, so
+   assets/dashboard.js gives their pictures their own hint. Same string as
+   CARD_SIZES in src/rasuwa-dashboard.html. */
+const CARD_SIZES = '(min-width:575px) 400px, (min-resolution:2.5dppx) calc((100vw - 32px) * 2 / 3), calc(100vw - 32px)';
 
 function ssrTodayCards(list) {
   if (!list.length) {
@@ -227,8 +230,8 @@ function ssrTodayCards(list) {
        it, so it stays on shared links and off the cards. */
     const photo = saved ? `/assets/photos/${saved}` : remote;
     /* The card-sized copy beside the full file; the browser takes the smaller
-       one on every card narrower than 800 device pixels. The widths match the
-       dashboard's grid: one column to 1000 px (at most 640 wide), then two. */
+       one on every card narrower than 800 device pixels. CARD_SIZES above
+       says how wide the cards are drawn. */
     const srcset = saved ? photoSrcset(PHOTO_INDEX[ogName]) : '';
     const sizes = srcset ? ` srcset="${escAttr(srcset)}" sizes="${CARD_SIZES}"` : '';
     const story = assetVersioned(`${ogName}-story.png`);

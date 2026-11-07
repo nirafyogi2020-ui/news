@@ -96,9 +96,25 @@
     river.append(...ordered.slice(5));
     if(!river.children.length)river.remove();
   }
+  // The tabs draw the same cards as the Overview in another shape: a phone
+  // shows 116 px thumbnails, a tablet two columns of up to 503 px, a desktop
+  // four of up to 394 px, and the lead runs across the column (half the page
+  // from 1100 px, cropped to a taller frame). The cards arrive with the
+  // Overview's hint, so each picture here gets the hint for where it sits,
+  // before the hidden tab is opened and its pictures load. A 3x phone keeps
+  // the two-thirds rule the Overview uses.
+  const TILE_SIZES='(min-width:1100px) 400px, (min-width:601px) calc(50vw - 40px), 120px';
+  const LEAD_SIZES='(min-width:1100px) 50vw, (min-width:601px) calc(100vw - 32px), (min-resolution:2.5dppx) calc((100vw - 32px) * 2 / 3), calc(100vw - 32px)';
+  function hintSizes(container){
+    container.querySelectorAll('img.post-photo[srcset]').forEach(img=>{
+      const want=img.closest('.is-lead')?LEAD_SIZES:TILE_SIZES;
+      if(img.getAttribute('sizes')!==want)img.setAttribute('sizes',want);
+    });
+  }
   ['today-general-grid','today-grid','feed-tab-grid'].forEach(id=>{
     const container=document.getElementById(id);if(!container)return;
-    const observer=new MutationObserver(()=>packageNews(container));observer.observe(container,{childList:true});packageNews(container);
+    const run=()=>{packageNews(container);hintSizes(container);};
+    const observer=new MutationObserver(run);observer.observe(container,{childList:true});run();
   });
   const liveRecent=document.getElementById('live-recent-grid');
   if(liveRecent){
@@ -107,7 +123,7 @@
       copy.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
       return copy;
     });
-    if(cards.length>=3){const river=document.createElement('div');river.className='river';river.append(...cards);liveRecent.append(river);packageNews(liveRecent);}
+    if(cards.length>=3){const river=document.createElement('div');river.className='river';river.append(...cards);liveRecent.append(river);packageNews(liveRecent);hintSizes(liveRecent);}
   }
   const head=$('.sitehead'), top=$('.head-top');
   if(head && top)new ResizeObserver(()=>head.style.setProperty('--masthead-size',top.offsetHeight+'px')).observe(top);
