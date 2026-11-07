@@ -16,6 +16,7 @@
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+import { createHash } from 'node:crypto';
 
 /* The pictures are shown 400 px wide on a card, yet newsrooms publish them at
    3,000 px and 4 MB. Each download is cut down to MAX_PHOTO_WIDTH and saved as
@@ -304,6 +305,11 @@ export function ensureCardVariants(photoDir) {
     if (rec.width !== size.width || rec.height !== size.height) {
       rec.width = size.width; rec.height = size.height; changed = true;
     }
+    /* A fingerprint of the file, so two cards that were handed the same
+       picture by two articles can be told apart from two different pictures
+       (see photoRepeats). */
+    const hash = createHash('sha1').update(buf).digest('hex').slice(0, 12);
+    if (rec.hash !== hash) { rec.hash = hash; changed = true; }
     const wants = size.width > CARD_PHOTO_WIDTH && rec.type !== 'image/webp' && Resvg && jpeg;
     if (!wants) {
       if (rec.card) { delete rec.card; changed = true; }
@@ -334,6 +340,66 @@ export function ensureCardVariants(photoDir) {
 export function photoSrcset(rec, url = name => '/assets/photos/' + name) {
   if (!rec || !rec.card || !rec.width) return '';
   return `${url(rec.card)} ${CARD_PHOTO_WIDTH}w, ${url(rec.file)} ${rec.width}w`;
+}
+
+/* A newsroom's own address for one picture comes in several sizes and
+   re-uploads: "portrait-1024x683.jpg", "portrait-400x220.jpg",
+   "portrait-1024x683-1.jpg". Cut down to the name they share. A plain
+   trailing number ("portrait-7.jpg") stays: that is usually another frame
+   from the same shoot, which is a different photograph. */
+function pictureName(url) {
+  let path = '';
+  try { path = new URL(url).pathname; } catch { return ''; }
+  return path.toLowerCase().replace(/-\d+x\d+(?:-\d{1,2})?(?=\.[a-z0-9]+$)/, '');
+}
+
+/**
+ * Which automatic cards must not show the photograph they were given,
+ * because an earlier automatic card of the same day already shows it.
+ *
+ * Newsrooms reuse one stock portrait across several stories, and two
+ * newsrooms relaying one story carry the same picture, so a day's river
+ * could print one face three times. The first card of the day to carry a
+ * picture keeps it. A later card falls back to the newsroom picture its feed
+ * item named, when that is a different picture, and otherwise to the card
+ * without a photograph. Hand-written briefings are never touched.
+ *
+ * "Same" is decided on what can be known without looking at the pixels: the
+ * saved file's fingerprint, and the newsroom address cut down to the
+ * picture's name. Two different frames from one interview are two
+ * photographs and both stay.
+ *
+ * @param {{key:string,time:string,image?:string}[]} cards  key is the
+ *   briefing's slug as the photo manifest names it ("updates-<day>-auto-...")
+ * @param {Record<string,{file?:string,hash?:string}>} index  the manifest
+ * @returns {Record<string,'remote'|'none'>}  only the cards that change
+ */
+export function photoRepeats(cards, index = {}) {
+  const out = {};
+  const used = new Map();   // day -> Set of picture identities already shown
+  const auto = (cards || [])
+    .filter(c => c && /^updates-\d{4}-\d{2}-\d{2}-auto-/.test(c.key || ''))
+    .sort((a, b) => String(a.time).localeCompare(String(b.time)) || a.key.localeCompare(b.key));
+  for (const c of auto) {
+    const day = c.key.slice(8, 18);
+    if (!used.has(day)) used.set(day, new Set());
+    const seen = used.get(day);
+    const rec = index[c.key];
+    const saved = rec && rec.file ? 'h:' + (rec.hash || rec.file) : '';
+    const name = /^https:\/\//.test(c.image || '') ? pictureName(c.image) : '';
+    const remote = name ? 'u:' + name : '';
+    if (saved && !seen.has(saved)) {
+      seen.add(saved);
+      if (remote) seen.add(remote);
+    } else if (saved) {
+      if (remote && !seen.has(remote)) { out[c.key] = 'remote'; seen.add(remote); }
+      else out[c.key] = 'none';
+    } else if (remote) {
+      if (seen.has(remote)) out[c.key] = 'none';
+      else seen.add(remote);
+    }
+  }
+  return out;
 }
 
 export function loadPhoto(slug, photoDir) {

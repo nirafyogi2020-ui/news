@@ -2237,14 +2237,19 @@ function newsItem(item, i, withPhoto) {
 /** Photographs from the briefings' own sources, newest first, with credit. */
 function frontPhotos(posts, index, skipKey, limit = 6) {
   const out = [];
+  /* One picture once: two briefings filed with the same photograph (or with
+     the lead's) would put it twice on the page. */
+  const seen = new Set(skipKey && index[skipKey] ? [index[skipKey].hash || index[skipKey].file] : []);
   for (const p of posts || []) {
     const key = ogSlug(p.url);
     const shot = index[key];
     if (!shot || !shot.file || !shot.credit || key === skipKey) continue;
+    if (seen.has(shot.hash || shot.file)) continue;
     /* A newsroom feed carries everything it prints; the pictures here are
        of the disaster, not of whatever else the briefings picked up. */
     const title = cleanHeadline(p.title);
     if (!title || !isNepalDisasterHeadline(title)) continue;
+    seen.add(shot.hash || shot.file);
     out.push({ rec: shot, file: shot.file, credit: shot.credit, title, url: p.url });
     if (out.length === limit) break;
   }

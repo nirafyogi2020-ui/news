@@ -4,7 +4,7 @@ import { readFileSync, readdirSync, existsSync, writeFileSync, mkdtempSync, utim
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-import { imageSize, shrinkPhoto, ensureCardVariants, cardVariantName, photoSrcset, MAX_PHOTO_WIDTH, CARD_PHOTO_WIDTH } from '../src/photo.mjs';
+import { imageSize, shrinkPhoto, ensureCardVariants, cardVariantName, photoSrcset, photoRepeats, MAX_PHOTO_WIDTH, CARD_PHOTO_WIDTH } from '../src/photo.mjs';
 
 let Resvg = null;
 try { ({ Resvg } = await import('@resvg/resvg-js')); } catch { Resvg = null; }
@@ -92,6 +92,9 @@ test('the card-sized copy is written once, named in the manifest, and left alone
     assert.equal(manifest.small.card, undefined, 'a picture already at card size gets no copy');
     assert.deepEqual([manifest.small.width, manifest.small.height], [600, 400]);
     assert.equal(manifest.gone.card, undefined);
+    assert.match(manifest.wide.hash, /^[0-9a-f]{12}$/, 'each file gets a fingerprint');
+    assert.notEqual(manifest.wide.hash, manifest.small.hash);
+    assert.equal(manifest.gone.hash, undefined);
 
     assert.equal(ensureCardVariants(dir), 0, 'nothing to do the second time');
 
@@ -109,7 +112,7 @@ test('the card-sized copy is written once, named in the manifest, and left alone
   }
 });
 
-test('every referenced photograph wider than the card has its card-sized copy filed', () => {
+test('every referenced photograph has its fingerprint, and its card-sized copy when wider than the card', () => {
   const manifest = JSON.parse(readFileSync(join(PHOTOS, 'index.json'), 'utf8'));
   const problems = [];
   for (const [slug, rec] of Object.entries(manifest)) {
@@ -117,6 +120,7 @@ test('every referenced photograph wider than the card has its card-sized copy fi
     const size = imageSize(readFileSync(join(PHOTOS, rec.file)));
     if (!size) continue;
     if (rec.width !== size.width || rec.height !== size.height) problems.push(`${slug}: manifest size differs from the file`);
+    if (!/^[0-9a-f]{12}$/.test(rec.hash || '')) problems.push(`${slug}: no fingerprint`);
     if (size.width > CARD_PHOTO_WIDTH && rec.type !== 'image/webp') {
       if (rec.card !== cardVariantName(rec.file)) { problems.push(`${slug}: no card copy named`); continue; }
       if (!existsSync(join(PHOTOS, rec.card))) { problems.push(`${slug}: ${rec.card} missing`); continue; }
@@ -128,3 +132,37 @@ test('every referenced photograph wider than the card has its card-sized copy fi
   }
   assert.deepEqual(problems, []);
 });
+
+test('one photograph on two automatic cards of a day: the first keeps it, the next falls back or goes without', () => {
+  const index = {
+    'updates-2026-11-04-auto-2026-11-04-a': { file: 'a.jpg', hash: 'aaaa' },
+    'updates-2026-11-04-auto-2026-11-04-b': { file: 'b.jpg', hash: 'aaaa' },
+    'updates-2026-11-04-auto-2026-11-04-c': { file: 'c.jpg', hash: 'aaaa' },
+    'updates-2026-11-04-auto-2026-11-04-d': { file: 'd.jpg', hash: 'dddd' },
+    'updates-2026-11-05-auto-2026-11-05-e': { file: 'e.jpg', hash: 'aaaa' },
+    'updates-2026-11-04-hand-written': { file: 'h.jpg', hash: 'aaaa' },
+  };
+  const cards = [
+    /* Newest first, as the river lists them; the earliest still wins. */
+    { key: 'updates-2026-11-04-auto-2026-11-04-c', time: '2026-11-04T09:00:00Z', image: 'https://kh.com/up/portrait-400x220.jpg' },
+    { key: 'updates-2026-11-04-auto-2026-11-04-b', time: '2026-11-04T08:00:00Z', image: 'https://kh.com/up/other-frame.jpg' },
+    { key: 'updates-2026-11-04-auto-2026-11-04-a', time: '2026-11-04T07:00:00Z', image: 'https://kh.com/up/portrait-1024x683.jpg' },
+    { key: 'updates-2026-11-04-auto-2026-11-04-d', time: '2026-11-04T10:00:00Z', image: '' },
+    /* Its own newsroom picture only, the same one as the first card's. */
+    { key: 'updates-2026-11-04-auto-2026-11-04-f', time: '2026-11-04T11:00:00Z', image: 'https://kh.com/up/portrait-1024x683-1.jpg' },
+    /* Another frame from the same shoot is another photograph. */
+    { key: 'updates-2026-11-04-auto-2026-11-04-g', time: '2026-11-04T12:00:00Z', image: 'https://kh.com/up/portrait-7.jpg' },
+    /* The next day starts again. */
+    { key: 'updates-2026-11-05-auto-2026-11-05-e', time: '2026-11-05T07:00:00Z', image: '' },
+    /* Hand-written briefings are not this rule's business. */
+    { key: 'updates-2026-11-04-hand-written', time: '2026-11-04T06:00:00Z', image: '' },
+  ];
+  assert.deepEqual(photoRepeats(cards, index), {
+    'updates-2026-11-04-auto-2026-11-04-b': 'remote',
+    'updates-2026-11-04-auto-2026-11-04-c': 'none',
+    'updates-2026-11-04-auto-2026-11-04-f': 'none',
+  });
+  assert.deepEqual(photoRepeats([], index), {});
+  assert.deepEqual(photoRepeats(null), {});
+});
+

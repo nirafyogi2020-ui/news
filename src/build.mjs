@@ -24,7 +24,7 @@ import * as C from './content.mjs';
 import * as I from './investigation.mjs';
 import { renderInvestigation } from './dashboard.mjs';
 import { isDisasterWireHeadline } from '../functions/api/global.js';
-import { ensureCardVariants, photoSrcset } from './photo.mjs';
+import { ensureCardVariants, photoSrcset, photoRepeats } from './photo.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const ARCHIVE = join(ROOT, 'data', 'updates');
@@ -209,6 +209,16 @@ const PHOTO_INDEX = (() => {
    CARD_SIZES in src/rasuwa-dashboard.html. */
 const CARD_SIZES = '(min-width:575px) 400px, (min-resolution:2.5dppx) calc((100vw - 32px) * 2 / 3), calc(100vw - 32px)';
 
+/* Automatic cards of one day that would print a photograph an earlier card
+   of that day already prints: 'remote' shows the card's own newsroom
+   picture instead, 'none' the card without a photograph. Worked out over the
+   whole archive, so a card keeps the same picture whichever list it is in.
+   Handed to the dashboard's client renderer as well (photo-repeats below). */
+const REPEATS = photoRepeats(
+  posts.map(p => ({ key: p.url.replace(/^\/|\/$/g, '').replace(/\//g, '-'), time: p.time, image: p.image })),
+  PHOTO_INDEX
+);
+
 function ssrTodayCards(list) {
   if (!list.length) {
     return '<p style="font-size:0.92rem; color:var(--text-muted);">No briefing has been published yet today. The <a href="/nepal-flood/rasuwa/live-updates/">live updates page</a> carries the raw newswire.</p>';
@@ -224,8 +234,9 @@ function ssrTodayCards(list) {
     /* Versioned, so the day a drawn placeholder is replaced by a real
        photograph the readers who already have the placeholder cached see the
        photograph too. */
-    const saved = PHOTO_INDEX[ogName] && PHOTO_INDEX[ogName].file;
-    const remote = /^https:\/\//.test(post.image || '') ? post.image : '';
+    const repeat = REPEATS[ogName];
+    const saved = !repeat && PHOTO_INDEX[ogName] && PHOTO_INDEX[ogName].file;
+    const remote = repeat !== 'none' && /^https:\/\//.test(post.image || '') ? post.image : '';
     /* A real photograph only. The drawn tile repeats the headline printed under
        it, so it stays on shared links and off the cards. */
     const photo = saved ? `/assets/photos/${saved}` : remote;
@@ -235,7 +246,7 @@ function ssrTodayCards(list) {
     const srcset = saved ? photoSrcset(PHOTO_INDEX[ogName]) : '';
     const sizes = srcset ? ` srcset="${escAttr(srcset)}" sizes="${CARD_SIZES}"` : '';
     const story = assetVersioned(`${ogName}-story.png`);
-    const named = PHOTO_INDEX[ogName] && PHOTO_INDEX[ogName].credit;
+    const named = saved && PHOTO_INDEX[ogName].credit;
     const shot = named && !named.includes('.') ? named : (sourceNames[0] || named);
     /* The photographer's name, and nothing else. It used to read "Photograph:
        Nepal News · via Nepal Disaster Update", which credits this site under a
@@ -812,6 +823,10 @@ for (const post of posts.slice(0, 12)) {
 index = index.replace(
   /<!--ssr:ogv-->[\s\S]*?<!--\/ssr:ogv-->/,
   () => `<!--ssr:ogv-->${JSON.stringify(ogVersions)}<!--/ssr:ogv-->`
+);
+index = index.replace(
+  /<!--ssr:repeats-->[\s\S]*?<!--\/ssr:repeats-->/,
+  () => `<!--ssr:repeats-->${JSON.stringify(REPEATS)}<!--/ssr:repeats-->`
 );
 
 /* The hero photograph is written into the source by hand. Its card-sized copy
