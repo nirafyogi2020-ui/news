@@ -1457,7 +1457,9 @@ ${sources}
         headline: post.title,
         description: d,
         articleBody: post.body.join('\n\n'),
-        inLanguage: 'en',
+        /* Relayed Nepali-language briefings keep the English page shell but
+           the article itself is Nepali, and the structured data says so. */
+        inLanguage: /[ऀ-ॿ]/.test(post.title + (post.body[0] || '')) ? 'ne-NP' : 'en',
         isAccessibleForFree: true,
         datePublished: post.time,
         dateModified: post.time,

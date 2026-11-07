@@ -6,7 +6,7 @@
    the number once and both languages move together.
    ========================================================================= */
 
-import { SITE, SITE_NAME, CONTACT_EMAIL, page, esc, faqBlock, nptLong, siteAsset } from './template.mjs';
+import { SITE, SITE_NAME, CONTACT_EMAIL, page, esc, faqBlock, nptLong, siteAsset, ogFor } from './template.mjs';
 import * as C from './content.mjs';
 import { ne, NE_DISTRICTS, NE_MISSING_GROUPS, NE_EMERGENCY, NE_MISSING_STEPS, NE_HAZARD_STEPS } from './content-ne.mjs';
 
@@ -185,7 +185,7 @@ ${faq.html}
           author: ORG,
           publisher: ORG,
           mainEntityOfPage: { '@id': `${SITE}${path}#webpage` },
-          image: [`${SITE}/og-image.png`],
+          image: [{ '@type': 'ImageObject', url: ogFor(path), width: 1200, height: 630 }],
           about: [
             {
               '@type': 'Event',
@@ -378,7 +378,7 @@ ${NE_MISSING_STEPS.map((s, i) => `<div class="check-row"><span class="mark">${ne
         dateModified: ctx.modified,
         author: ORG, publisher: ORG,
         mainEntityOfPage: { '@id': `${SITE}${path}#webpage` },
-        image: [`${SITE}/og-image.png`],
+        image: [{ '@type': 'ImageObject', url: ogFor(path), width: 1200, height: 630 }],
       }],
     }),
   };

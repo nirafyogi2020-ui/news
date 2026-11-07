@@ -384,3 +384,60 @@ hr{border:0; border-top:1px solid var(--border); margin:36px 0;}
    read and copied on a phone; unwrapped it pushed the whole page sideways. */
 pre{white-space:pre-wrap; word-break:break-all; overflow-x:auto; margin:0 0 16px; padding:12px 14px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2); font-family:var(--font-mono); font-size:0.8rem; line-height:1.55;}
 pre code{font-family:inherit; font-size:inherit;}
+
+/* The live pill's dot is declared after the reduced-motion rule above and
+   won at equal specificity, so it kept pulsing for readers who asked it not
+   to. Restated here, after every animated rule, so it is the one that holds. */
+@media (prefers-reduced-motion: reduce){
+  .brand-live i, .pill-live i, .rail-head .rail-dot{animation:none !important;}
+  a.card, .dial, .headnav a{transition:none;}
+}
+
+/* ===========================================================================
+   Print.
+
+   People print the emergency numbers and the missing-persons steps to keep
+   by the phone or hand to a relative without data. Black on white, no site
+   chrome, every link followed by its address so the sheet still works on
+   paper. The dashboard carries its own stylesheet and is not covered here.
+   ======================================================================== */
+@media print{
+  /* Same specificity as the dark-scheme rule above, so paper is white
+     whatever the reader's screen theme is. */
+  :root, :root[data-theme="dark"], :root:not([data-theme="light"]){
+    --bg:#fff; --surface:#fff; --surface-2:#fff;
+    --text:#000; --text-muted:#000; --text-faint:#333;
+    --border:#888; --border-strong:#444; --critical:#000; --shadow:none;
+  }
+  html, body{background:#fff !important; color:#000 !important;}
+  body{font-size:11pt; line-height:1.4;}
+  .skip-link, .sitehead, .crumbs, .rail, .page-related, .related, .status-row,
+  .byline, footer nav, .sourcelinks a::before, .map-note, #route-map, iframe, video{display:none !important;}
+  .shell, .shell.has-rail, footer .shell{max-width:none; padding:0;}
+  .page-layout{display:block;}
+  h1{font-size:20pt; margin-top:0;}
+  h2{font-size:14pt; break-after:avoid;}
+  h3{font-size:12pt; break-after:avoid;}
+  p, li{orphans:3; widows:3;}
+  a{color:#000; text-decoration:underline;}
+  /* The address after every link, except the ones whose text already is the
+     address: phone numbers, e-mail, and the bare hostnames on the relief page. */
+  a[href^="http"]:not(.num)::after{content:" (" attr(href) ")"; font-size:9pt; font-weight:400; word-break:break-all;}
+  a[href^="/"]::after{content:" (nepaldisasterupdatelive.nxtimaginelabs.com" attr(href) ")"; font-size:9pt; font-weight:400; word-break:break-all;}
+  .dial::after, .linklist a::after, a.card::after{content:none;}
+  .callout, .callout-alert, .dial, .check-row, .statbox, .table-scroll, .faq, .card, .linklist a{
+    background:#fff !important; border:1px solid #000; border-radius:4px; box-shadow:none; break-inside:avoid;
+  }
+  .dialrow{gap:6px;}
+  .dial b{color:#000;}
+  .callout-alert .callout-title, .check-row .mark, .statbox .n.crit{color:#000;}
+  table{min-width:0; font-size:10pt;}
+  th, td{border-bottom:1px solid #888; padding:5px 8px;}
+  thead th{background:#fff; color:#000;}
+  tr{break-inside:avoid;}
+  /* Closed answers stay closed on paper; the open one prints as it is. */
+  .faq summary::after{content:none;}
+  img{max-width:60mm; height:auto;}
+  footer{border-top:1px solid #000; margin-top:24pt; padding:10pt 0 0; background:#fff;}
+  footer p{color:#000; font-size:9pt;}
+}
