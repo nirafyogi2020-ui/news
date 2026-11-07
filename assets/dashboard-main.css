@@ -549,6 +549,13 @@ border:1px solid var(--border-strong); background:var(--surface); color:var(--te
 #flood-map{width:100%; height:clamp(340px, 56vw, 540px); background:var(--surface-2);}
 .leaflet-container{font-family:var(--font-body); background:var(--surface-2);}
 .leaflet-container .leaflet-control-attribution a{color:#005f87;}
+@media (pointer:coarse){
+.leaflet-touch .leaflet-top .leaflet-control-zoom{margin-top:12px;}
+.leaflet-bar a{position:relative;}
+.leaflet-bar a::before{content:""; position:absolute; inset:-14px -7px;}
+.leaflet-bar a + a::before{top:0;}
+.leaflet-bar a:not(:last-child)::before{bottom:0;}
+}
 .leaflet-popup-content-wrapper{border-radius:10px;}
 .leaflet-popup-content{margin:12px 14px; font-size:0.86rem; line-height:1.5;}
 .leaflet-popup-content h4{font-family:var(--font-display); font-size:1rem; margin-bottom:4px;}
@@ -3300,6 +3307,8 @@ button, .tk-dot, footer{display:none !important;}
 .shell, .layout, .dash-top, .dash-lead, .dash-side, .today-grid, .river{display:block !important; max-width:none !important; padding:0 !important; margin:0 !important; gap:0 !important;}
 .hero, .hero-card{border:0 !important; padding:0 !important; margin:0 0 6mm !important; background:none !important;}
 .hero-kicker{font-size:9pt; color:#333;}
+.hero-kicker #hero-updated, .hero-kicker .hk-sep{display:none !important;}
+.hf-note.hf-note-live[data-asof]::before{content:attr(data-asof) ". ";}
 .hero h1{font-size:22pt; margin:2mm 0 2mm;}
 .hero .lede{font-size:11pt; max-width:none;}
 .byline{display:block; font-size:9pt; color:#333; margin:2mm 0 0;}
