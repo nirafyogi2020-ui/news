@@ -4,7 +4,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/</loc>
-    <lastmod>2026-11-07T00:15:00.000Z</lastmod>
+    <lastmod>2026-11-07T03:35:37.000Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/</loc>
-    <lastmod>2026-11-07T00:15:00.000Z</lastmod>
+    <lastmod>2026-11-07T03:35:37.000Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/"/>
@@ -26,25 +26,25 @@
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/</loc>
-    <lastmod>2026-11-07T00:15:00.000Z</lastmod>
+    <lastmod>2026-11-07T03:35:37.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/live-updates/</loc>
-    <lastmod>2026-11-07T00:15:00.000Z</lastmod>
+    <lastmod>2026-11-07T03:35:37.000Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/casualties/</loc>
-    <lastmod>2026-11-07T00:15:00.000Z</lastmod>
+    <lastmod>2026-11-07T03:35:37.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/missing-persons/</loc>
-    <lastmod>2026-11-07T00:15:00.000Z</lastmod>
+    <lastmod>2026-11-07T03:35:37.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/missing-persons/"/>
@@ -52,25 +52,25 @@
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/timeline/</loc>
-    <lastmod>2026-11-07T00:15:00.000Z</lastmod>
+    <lastmod>2026-11-07T03:35:37.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/cause/</loc>
-    <lastmod>2026-11-07T00:15:00.000Z</lastmod>
+    <lastmod>2026-11-07T03:35:37.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/damage/</loc>
-    <lastmod>2026-11-07T00:15:00.000Z</lastmod>
+    <lastmod>2026-11-07T03:35:37.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/map/</loc>
-    <lastmod>2026-11-07T00:15:00.000Z</lastmod>
+    <lastmod>2026-11-07T03:35:37.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -140,7 +140,7 @@
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/</loc>
-    <lastmod>2026-11-07T00:15:00.000Z</lastmod>
+    <lastmod>2026-11-07T03:35:37.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
@@ -163,10 +163,20 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-07-auto-2026-11-07-08c43b51/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-07-auto-2026-11-07-we-do-not-need-sympathy-climate-finance-is-our-right/</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/assets/photos/updates-2026-11-07-auto-2026-11-07-we-do-not-need-sympathy-climate-finance-is-our-right.jpg</image:loc>
+      <image:title>‘We do not need sympathy; climate finance is our right’</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-06-auto-2026-11-06-d946a46e/</loc>
@@ -366,16 +376,6 @@
     <image:image>
       <image:loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/assets/photos/updates-2026-10-31-auto-2026-10-31-over-12-roads-networks-across-the-country-obstructed.jpg</image:loc>
       <image:title>Over 12 roads networks across the country obstructed</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-10-31-auto-2026-10-31-f1a2c460/</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/assets/photos/updates-2026-10-31-auto-2026-10-31-f1a2c460.jpg</image:loc>
-      <image:title>हिमपातका बेला भुलेर पनि नगर्नुस् यी गल्ती, जोखिमबाट बच्न अपनाउनुस् सावधानी</image:title>
     </image:image>
   </url>
   <url>
@@ -1034,7 +1034,7 @@
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/ne/</loc>
-    <lastmod>2026-11-07T00:15:00.000Z</lastmod>
+    <lastmod>2026-11-07T03:35:37.000Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/"/>
@@ -1050,7 +1050,7 @@
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/ne/bepatta/</loc>
-    <lastmod>2026-11-07T00:15:00.000Z</lastmod>
+    <lastmod>2026-11-07T03:35:37.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/missing-persons/"/>
