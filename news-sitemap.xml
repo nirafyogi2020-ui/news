@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-09T00:19:12.000Z</news:publication_date>
+      <news:publication_date>2026-11-09T00:39:45.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,458 dead, 5,285 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-09T00:19:12.000Z</news:publication_date>
+      <news:publication_date>2026-11-09T00:39:45.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-09-auto-2026-11-09-ac21d34a/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-09T00:39:45.000Z</news:publication_date>
+      <news:title>कोप–३१ सुरु, वास्तविकता देखाउँदै नेपालले खोज्ने छ जलवायु न्याय</news:title>
     </news:news>
   </url>
   <url>
