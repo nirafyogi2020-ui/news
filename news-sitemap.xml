@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-10T00:31:37.000Z</news:publication_date>
+      <news:publication_date>2026-11-10T01:16:35.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,458 dead, 5,285 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-10T00:31:37.000Z</news:publication_date>
+      <news:publication_date>2026-11-10T01:16:35.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-10-auto-2026-11-10-2443c0d0/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-10T01:16:35.000Z</news:publication_date>
+      <news:title>सुख्खा पहिरोले पृथ्वी राजमार्ग दुईतर्फी अवरुद्ध</news:title>
     </news:news>
   </url>
   <url>
@@ -76,28 +87,6 @@
       </news:publication>
       <news:publication_date>2026-11-08T01:46:48.000Z</news:publication_date>
       <news:title>सुरक्षाकर्मीको ‘चारखुट्टे सहकर्मी’ : गन्ध पछ्याउँदै अपराधीदेखि भग्नावशेषभित्रको जीवनसम्म खोज्दै</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-08-auto-2026-11-08-434a5689/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-08T01:12:29.000Z</news:publication_date>
-      <news:title>कुकुर तिहार : किसानको खेतदेखि प्रहरीको अनुसन्धानसम्म, मानिसको सबैभन्दा भरोसायोग्य सारथी</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-08-auto-2026-11-08-9b83fd08/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-08T00:52:22.000Z</news:publication_date>
-      <news:title>बराहतालमा भेटिए १४ थान अवैध भरुवा बन्दुक</news:title>
     </news:news>
   </url>
 </urlset>
