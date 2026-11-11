@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-11T01:19:39.000Z",
+  "updated": "2026-11-11T01:32:34.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-11-auto-2026-11-11-16c5f115/",
+      "title": "विपद्पछिको सञ्चार पूर्वाधार पुनर्निर्माणमा अन्तर्राष्ट्रिय सहयोग आवश्यक : मन्त्री तिमिल्सिना",
+      "time": "2026-11-11T01:32:34.000Z",
+      "summary": "काठमाडौँ– सूचना तथा सञ्चारमन्त्री डा. विक्रम तिमिल्सिनाले विपद्का बेला सञ्चार सेवा अवरुद्ध हुन नदिन उत्थानशील सञ्चार पूर्वाधार निर्माण र अन्तर्राष्ट्रिय सहकार्य आवश्यक रहेको बताएका छन् ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
     {
       "url": "/updates/2026-11-11-auto-2026-11-11-minister-timilsina-calls-for-global-support-to-rebuild/",
       "title": "Minister Timilsina calls for global support to rebuild disaster-hit communication infrastructure",
