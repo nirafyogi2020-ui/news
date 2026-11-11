@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-11T00:52:18.000Z",
+  "updated": "2026-11-11T01:19:39.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-11-auto-2026-11-11-minister-timilsina-calls-for-global-support-to-rebuild/",
+      "title": "Minister Timilsina calls for global support to rebuild disaster-hit communication infrastructure",
+      "time": "2026-11-11T01:19:39.000Z",
+      "summary": "KATHMANDU: Minister for Information and Communications Dr Bikram Timilsina has called for stronger international cooperation and investment in resilient communication infrastructure to ensure uninterrupted services during disasters.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
     {
       "url": "/updates/2026-11-11-auto-2026-11-11-bf27b31e/",
       "title": "जलविद्युत आयोजनाको सहयोगमा बालौटेमा सडक मर्मत सुरु",
