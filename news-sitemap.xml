@@ -35,6 +35,17 @@
     </news:news>
   </url>
   <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-12-auto-2026-11-12-13bb0a44/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-12T00:24:12.000Z</news:publication_date>
+      <news:title>कोप–३१ मा जलवायु प्रतिबद्धता कार्यान्वयनमा जोड</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-11-auto-2026-11-11-16c5f115/</loc>
     <news:news>
       <news:publication>
@@ -87,17 +98,6 @@
       </news:publication>
       <news:publication_date>2026-11-10T01:16:35.000Z</news:publication_date>
       <news:title>सुख्खा पहिरोले पृथ्वी राजमार्ग दुईतर्फी अवरुद्ध</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-10-auto-2026-11-10-c84c16bb/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-10T00:31:37.000Z</news:publication_date>
-      <news:title>कोप–३१ मा नेपालको राष्ट्रिय पेभिलियन उद्घाटन, भोटेकोशी विपदबारे विश्वको ध्यानाकर्षण</news:title>
     </news:news>
   </url>
 </urlset>
