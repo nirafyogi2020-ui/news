@@ -1,77 +1,176 @@
 {
-  "updated": "2026-11-11T01:37:12.959Z",
+  "updated": "2026-11-12T00:29:20.027Z",
   "items": [
     {
-      "title": "विपद्पछिको सञ्चार पूर्वाधार पुनर्निर्माणमा अन्तर्राष्ट्रिय सहयोग आवश्यक : मन्त्री तिमिल्सिना",
-      "url": "https://khabarhub.com/2026/11/1046794/",
-      "source": "Khabarhub",
-      "time": "2026-11-11T01:32:34.000Z",
+      "title": "कोप-३१ : नेपालको बाढीपहिरोको सन्दर्भ जोडेर खोजियो जलवायु प्रतिबद्धता कार्यान्वयन",
+      "url": "https://www.onlinekhabar.com/2026/11/2055815/cop-31-climate-commitment-implementation-sought-in-context-of-nepals-floods-and-landslides",
+      "source": "Onlinekhabar (Nepali)",
+      "time": "2026-11-12T00:24:14.000Z",
       "kind": "press",
       "region": "nepal",
-      "image": "https://www.khabarhub.com/wp-content/uploads/2026/11/mantri-timilsena-400x220.jpg"
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/COP31-1024x487.png"
+    },
+    {
+      "title": "कोप–३१ मा जलवायु प्रतिबद्धता कार्यान्वयनमा जोड",
+      "url": "https://khabarhub.com/2026/12/1046970/",
+      "source": "Khabarhub",
+      "time": "2026-11-12T00:24:12.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://www.khabarhub.com/wp-content/uploads/2026/11/cop-31-1-400x220.jpg"
+    },
+    {
+      "title": "Magnitude 4.6 earthquake: 73 km NNW of Gyalshing, India",
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txpk",
+      "source": "USGS",
+      "time": "2026-11-11T23:00:22.433Z",
+      "kind": "quake",
+      "region": "global",
+      "image": null
+    },
+    {
+      "title": "तिहार मैझारोमा झरी : अनि खुले जुगलदेखि माछापुच्छ्रेसम्म (तस्बिरहरू)",
+      "url": "https://www.onlinekhabar.com/2026/11/2055776/rain-falls-in-maijhar-during-tihar-and-the-mountains-from-jugal-to-machhapuchhre-are-exposed-photos",
+      "source": "Onlinekhabar (Nepali)",
+      "time": "2026-11-11T15:24:49.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/himal-ghamailo-tihar-photo-19-1024x768.jpg"
+    },
+    {
+      "title": "भोटेकोशी विपत्तिले खोस्यो चाडपर्वको खुसी, विस्थापितलाई तिहार पनि अँध्यारो",
+      "url": "https://www.onlinekhabar.com/2026/11/2055502/bhotekoshi-disaster-takes-away-the-joy-of-festivals-even-the-glittering-tihar-is-dark-for-the-displaced",
+      "source": "Onlinekhabar (Nepali)",
+      "time": "2026-11-11T15:22:23.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/rasuwa-badhi-pidit-1024x500.jpg"
+    },
+    {
+      "title": "फिनल्यान्डसँग सहकार्य विस्तार गर्ने विषयमा परराष्ट्रमन्त्रीको छलफल",
+      "url": "https://khabarhub.com/2026/11/1046955/",
+      "source": "Khabarhub",
+      "time": "2026-11-11T15:19:44.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://www.khabarhub.com/wp-content/uploads/2026/11/1000221314-400x220.jpg"
+    },
+    {
+      "title": "‘जलवायु वित्त परिचालन प्रक्रिया सरल र अनुमानयोग्य हुनुपर्छ’",
+      "url": "https://www.onlinekhabar.com/2026/11/2055658/the-process-of-mobilizing-climate-finance-must-be-simple-and-predictable",
+      "source": "Onlinekhabar (Nepali)",
+      "time": "2026-11-11T15:18:17.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/Shishir-khanal-1-1024x500.jpg"
+    },
+    {
+      "title": "टर्कीमा नमिलेको १०० अर्ब डलरको हिसाब!",
+      "url": "https://www.setopati.com/politics/402381",
+      "source": "Setopati",
+      "time": "2026-11-11T14:27:30.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://www.setopati.com/uploads/posts/COP-1794338701.jpg"
+    },
+    {
+      "title": "Nepal News Evening Economic Brief – November 11, 2026",
+      "url": "https://english.nepalnews.com/s/business/nepal-news-evening-economic-brief-november-11-2026/",
+      "source": "Nepalnews",
+      "time": "2026-11-11T13:47:12.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-10-at-09.08.57.jpeg"
+    },
+    {
+      "title": "नेपालजस्ता देशलाई सहयोग गर्न विश्व समुदायको तयारी पर्याप्त छैन : परराष्ट्रमन्त्री खनाल",
+      "url": "https://nagariknews.nagariknetwork.com/politics/the-global-community-s-readiness-to-assist-countries-like-nepal-is-not-sufficient-foreign-minister-khanal-29-77.html",
+      "source": "Nagarik News",
+      "time": "2026-11-11T13:39:04.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://images.nagariknewscdn.com/2026/third-party/1794403971_Khanal.jpg"
+    },
+    {
+      "title": "फिनल्यान्डका वैदेशिक व्यापारमन्त्रीसँग परराष्ट्रमन्त्रीको भेटवार्ता",
+      "url": "https://www.onlinekhabar.com/2026/11/2055753/foreign-minister-meets-with-finnish-minister-of-foreign-trade",
+      "source": "Onlinekhabar (Nepali)",
+      "time": "2026-11-11T13:38:08.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/vet-1.jpg"
+    },
+    {
+      "title": "Nepal: New study strengthens evidence for a more affordable and accessible polio vaccine | GPEI",
+      "url": "https://reliefweb.int/report/nepal/new-study-strengthens-evidence-more-affordable-and-accessible-polio-vaccine-gpei",
+      "source": "ReliefWeb (UN OCHA)",
+      "time": "2026-11-11T13:33:07.000Z",
+      "kind": "official",
+      "region": "global",
+      "image": null
+    },
+    {
+      "title": "Minister Wagle wants special financial package for vulnerable countries",
+      "url": "https://english.nepalnews.com/s/climate/minister-wagle-wants-special-financial-package-for-vulnerable-countries/",
+      "source": "Nepalnews",
+      "time": "2026-11-11T12:52:29.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/11/202611111707-c42c2c26-6425-4c4e-b767-96dd6c8fb947_medium.jpg"
+    },
+    {
+      "title": "विपद्पछिको पुनर्निर्माणका लागि विकास बजेट कटौती गर्नुपरेको छ : अर्थमन्त्री वाग्ले",
+      "url": "https://www.onlinekhabar.com/2026/11/2055677/development-budget-has-to-be-cut-for-post-disaster-reconstruction-finance-minister-wagle",
+      "source": "Onlinekhabar (Nepali)",
+      "time": "2026-11-11T10:52:26.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/Swarnim-wagle-1-1024x500.jpg"
+    },
+    {
+      "title": "Nagthali in Rasuwa emerges as a popular tourist destination",
+      "url": "https://english.nepalnews.com/s/travel-tourism/nagthali-in-rasuwa-emerges-as-a-popular-tourist-destination/",
+      "source": "Nepalnews",
+      "time": "2026-11-11T10:38:43.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/11/202611111201-ab3f1758-49dc-43cb-8601-5447c2a99c7f_medium.jpg"
+    },
+    {
+      "title": "हिउँदमा बेँसी, वर्षामा डाँडा : विपद्‌बाट जोगाउने त्यो चलन",
+      "url": "https://www.onlinekhabar.com/2026/11/2055647/valley-in-winter-mountain-in-rain-the-custom-to-protect-against-disaster",
+      "source": "Onlinekhabar (Nepali)",
+      "time": "2026-11-11T10:33:47.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/Narendra-khanal-1024x500.jpg"
+    },
+    {
+      "title": "रसुवाको नागथली : प्रकृति, संस्कृति र हिमाली दृश्यको आकर्षक गन्तव्य",
+      "url": "https://www.onlinekhabar.com/2026/11/2055630/nagathali-in-rasuwa-an-attractive-destination-of-nature-culture-and-mountainous-scenery",
+      "source": "Onlinekhabar (Nepali)",
+      "time": "2026-11-11T08:32:44.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/nagthali-900px-768x1024.jpg"
+    },
+    {
+      "title": "Nepal’s push for Himalayan climate agenda falls short at COP31",
+      "url": "https://kathmandupost.com/national/2026/11/11/nepal-s-push-for-himalayan-climate-agenda-falls-short-at-cop31",
+      "source": "Kathmandu Post",
+      "time": "2026-11-11T06:15:00.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://assets-cdn.kathmandupost.com/uploads/source/news/2026/third-party/cop31091120260751141000x01111120260606181000x0-1794375096.png"
     },
     {
       "title": "Minister Timilsina calls for global support to rebuild disaster-hit communication infrastructure",
-      "url": "https://english.nepalnews.com/s/diplomacy/minister-timilsina-calls-for-global-support-to-rebuild-disaster-hit-communication-infrastructure/",
-      "source": "Nepalnews",
-      "time": "2026-11-11T01:19:39.000Z",
+      "url": "https://risingnepaldaily.com/news/88544",
+      "source": "The Rising Nepal",
+      "time": "2026-11-11T03:27:10.000Z",
       "kind": "press",
       "region": "nepal",
-      "image": "https://english.nepalnews.com/wp-content/uploads/2026/11/Bikram-Timilsina.jpg"
-    },
-    {
-      "title": "जलविद्युत आयोजनाको सहयोगमा बालौटेमा सडक मर्मत सुरु",
-      "url": "https://khabarhub.com/2026/11/1046787/",
-      "source": "Khabarhub",
-      "time": "2026-11-11T00:52:18.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://www.khabarhub.com/wp-content/uploads/2026/11/balaute-sadak-400x220.jpg"
-    },
-    {
-      "title": "रुखको जरामा अड्किएकी ८४ वर्षीया वृद्धाको यसरी भयो उद्धार",
-      "url": "https://nagariknews.nagariknetwork.com/social-affairs/this-is-how-an-84-year-old-woman-stuck-in-a-tree-root-was-rescued-86-56.html",
-      "source": "Nagarik News",
-      "time": "2026-11-10T16:26:04.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://images.nagariknewscdn.com/2026/third-party/1794327904_Aama.jpg"
-    },
-    {
-      "title": "भोटेकोशी बाढीका २४६५ बेपत्तालाई एकैपटक मृ’त घोषणा गरिँदै",
-      "url": "https://nagariknews.nagariknetwork.com/politics/main-headline-of-the-news-90-81.html",
-      "source": "Nagarik News",
-      "time": "2026-11-10T15:39:29.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://images.nagariknewscdn.com/2025/third-party/1790769724_bhotekoshi.jpg"
-    },
-    {
-      "title": "घोप्टेभीर : पहिरो छिचोलियो, ट्राफिक जाम छिचोल्न घण्टौंको सकस",
-      "url": "https://www.onlinekhabar.com/2026/11/2055449/ghoptebhir-landslide-breaks-out-traffic-jam-takes-hours-to-clear",
-      "source": "Onlinekhabar (Nepali)",
-      "time": "2026-11-10T15:28:26.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/ghopte-bhir-5-1024x500.jpg"
-    },
-    {
-      "title": "जलवायु अनुकूलन प्राविधिक विषय मात्रै होइन, न्यायको विषय पनि हो : परराष्ट्रमन्त्री खनाल",
-      "url": "https://www.onlinekhabar.com/2026/11/2055379/climate-adaptation-is-not-just-a-technical-issue-but-also-a-matter-of-justice-foreign-minister-khanal",
-      "source": "Onlinekhabar (Nepali)",
-      "time": "2026-11-10T13:01:33.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/cope-shishir-khanal.jpg"
-    },
-    {
-      "title": "हिमाली विपद्ले तल्लो तटीय क्षेत्रसमेत जोखिममा, कोप-३१ मा नेपालको प्रसङ्ग",
-      "url": "https://www.onlinekhabar.com/2026/11/2055373/himalayan-disaster-puts-even-lower-coastal-areas-at-risk-nepals-context-at-cop-31",
-      "source": "Onlinekhabar (Nepali)",
-      "time": "2026-11-10T13:00:10.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/cop-1024x500.jpg"
+      "image": "https://risingnepaldaily.com/storage/media/112167/Bikram-timilsina.jpg"
     },
     {
       "title": "Prithvi Highway reopens after Ghoptebhir landslide clearance; traffic congestion persists",
@@ -80,7 +179,7 @@
       "time": "2026-11-10T09:04:28.000Z",
       "kind": "press",
       "region": "nepal",
-      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/11/ghopte-bhir-1.jpg"
+      "image": null
     },
     {
       "title": "Swarnim Wagle named among TIME’s 100 most influential people in climate action for 2026",
@@ -89,16 +188,7 @@
       "time": "2026-11-10T08:43:43.000Z",
       "kind": "press",
       "region": "nepal",
-      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/11/Swarnim-Wagle.jpg"
-    },
-    {
-      "title": "घोप्टेभिरको पहिरो हटाइयो, पृथ्वी राजमार्गमा सवारी जाम (तस्वीरहरू)",
-      "url": "https://www.onlinekhabar.com/2026/11/2055130/landslide-in-ghoptevir-removed-traffic-jam-on-prithvi-highway-photos",
-      "source": "Onlinekhabar (Nepali)",
-      "time": "2026-11-10T08:43:18.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/ghopte-bhir-11-1024x500.jpg"
+      "image": null
     },
     {
       "title": "Nepal urges global community to ensure climate justice for Himalayan region at COP31",
@@ -107,7 +197,7 @@
       "time": "2026-11-10T06:54:38.000Z",
       "kind": "press",
       "region": "nepal",
-      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/11/COP31.jpg"
+      "image": null
     },
     {
       "title": "Traffic resumes on Prithvi Highway after overnight landslide",
@@ -116,7 +206,7 @@
       "time": "2026-11-10T06:15:00.000Z",
       "kind": "press",
       "region": "nepal",
-      "image": "https://assets-cdn.kathmandupost.com/uploads/source/news/2026/news/84980734418378245039208835104216545418357604n101120260151491000x0-1794275133.jpg"
+      "image": null
     },
     {
       "title": "TIME names Finance Minister Wagle among 100 influential climate leaders of 2026",
@@ -125,7 +215,7 @@
       "time": "2026-11-09T06:15:00.000Z",
       "kind": "press",
       "region": "nepal",
-      "image": "https://assets-cdn.kathmandupost.com/uploads/source/news/2019/default/WhatsAppImage20261109at205054-1794237510.jpg"
+      "image": null
     },
     {
       "title": "Landslides block Prithvi Highway, disrupting Tihar travel",
@@ -134,25 +224,7 @@
       "time": "2026-11-09T06:15:00.000Z",
       "kind": "press",
       "region": "nepal",
-      "image": "https://assets-cdn.kathmandupost.com/uploads/source/news/2026/third-party/ghopteveerpahiro091120260518101000x0-1794204547.png"
-    },
-    {
-      "title": "How many Nepalis are one flood away from poverty?",
-      "url": "https://kathmandupost.com/editorial/2026/11/09/one-disaster-away",
-      "source": "Kathmandu Post",
-      "time": "2026-11-09T06:15:00.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://assets-cdn.kathmandupost.com/uploads/source/news/2026/third-party/thumb3-1794199983.jpg"
-    },
-    {
-      "title": "Nepal’s game developers seek tax relief, Google access to scale globally",
-      "url": "https://kathmandupost.com/money/2026/11/09/nepal-s-game-developers-seek-tax-relief-google-access-to-scale-globally",
-      "source": "Kathmandu Post",
-      "time": "2026-11-09T06:15:00.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://assets-cdn.kathmandupost.com/uploads/source/news/2026/third-party/thumb2-1794188305.jpg"
+      "image": null
     },
     {
       "title": "They have gone 10 weeks without answers. Will these families ever know what happened to loved ones missing after Nepal’s floods?",
@@ -330,15 +402,6 @@
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tiz3",
       "source": "USGS",
       "time": "2026-09-15T22:43:11.450Z",
-      "kind": "quake",
-      "region": "global",
-      "image": null
-    },
-    {
-      "title": "Magnitude 4.1 earthquake: 55 km WNW of Jumla, Nepal",
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tiyx",
-      "source": "USGS",
-      "time": "2026-09-15T20:06:11.362Z",
       "kind": "quake",
       "region": "global",
       "image": null
