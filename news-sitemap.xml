@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-12T00:36:58.000Z</news:publication_date>
+      <news:publication_date>2026-11-13T00:12:37.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,458 dead, 5,285 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-12T00:36:58.000Z</news:publication_date>
+      <news:publication_date>2026-11-13T00:12:37.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-13-auto-2026-11-13-3c955c89/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-13T00:12:37.000Z</news:publication_date>
+      <news:title>झोलुङ्गे पुल निर्माणपछिस्थानीयलाई आवतजावतमा सहज</news:title>
     </news:news>
   </url>
   <url>
@@ -87,28 +98,6 @@
       </news:publication>
       <news:publication_date>2026-11-11T00:52:18.000Z</news:publication_date>
       <news:title>जलविद्युत आयोजनाको सहयोगमा बालौटेमा सडक मर्मत सुरु</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-10-auto-2026-11-10-e5890bb7/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-10T01:47:13.000Z</news:publication_date>
-      <news:title>घोप्टेभीरमा फेरि पहिरो, मलेखु–मुग्लिङ सडकखण्ड बन्द</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-10-auto-2026-11-10-2443c0d0/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-10T01:16:35.000Z</news:publication_date>
-      <news:title>सुख्खा पहिरोले पृथ्वी राजमार्ग दुईतर्फी अवरुद्ध</news:title>
     </news:news>
   </url>
 </urlset>
