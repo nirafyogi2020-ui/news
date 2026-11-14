@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-14T03:15:00.000Z",
+  "updated": "2026-11-14T03:21:12.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-14-auto-2026-11-14-76e7766e/",
+      "title": "शोकलाई शक्तिमा बदल्ने बुटीमाया",
+      "time": "2026-11-14T03:21:12.000Z",
+      "summary": "कल्पना र बुटीमायाजस्ता एक्लाएक्ला महिलाहरू मिलेर त्यत्रो व्यक्तिको जिम्मा लिँदै २७३ जनाको गाँस र बासको तर्जुमा गरिरहेका छन् भने पूरै देश चलाउन बनेको सरकारको दायित्व र जिम्मेवारीको अनुभव बाढीपीडित र सम्पूर्ण जनमानसले कहिले गर्न पाउने ?",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
     {
       "url": "/updates/2026-11-14-auto-2026-11-14-what-two-decades-of-photographs-might-tell-us-about-th/",
       "title": "What two decades of photographs might tell us about the Himalayas",
