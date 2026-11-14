@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-14T00:56:58.000Z",
+  "updated": "2026-11-14T03:15:00.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-14-auto-2026-11-14-what-two-decades-of-photographs-might-tell-us-about-th/",
+      "title": "What two decades of photographs might tell us about the Himalayas",
+      "time": "2026-11-14T03:15:00.000Z",
+      "summary": "The eastern ridge of Ama Dablam, with glaciers, ice formations, rock face and high-altitude terrain extending across the mountain’s eastern side. Everest peeking in the background, far centre.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
     {
       "url": "/updates/2026-11-14-auto-2026-11-14-254b8e08/",
       "title": "बाँकेमा धान खरिददेखि प्रशोधनसम्म सहकारीको साथ, किसानलाई राहत",
