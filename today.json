@@ -1,6 +1,22 @@
 {
-  "updated": "2026-11-15T03:29:41.000Z",
+  "updated": "2026-11-16T00:44:02.000Z",
   "posts": [
+    {
+      "id": "auto-2026-11-16-weather-update-western-low-brings-patchy-clouds-to-himalayas",
+      "title": "Weather update: Western low brings patchy clouds to Himalayas",
+      "time": "2026-11-16T00:44:02.000Z",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2025/09/mausam-weather_R3jpNr7cXf.jpg",
+      "body": [
+        "KATHMANDU: A western low-pressure system is currently having a partial effect on the country."
+      ],
+      "sources": [
+        {
+          "name": "Nepalnews",
+          "url": "https://english.nepalnews.com/s/weather/weather-update-western-low-brings-patchy-clouds-to-himalayas/"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-11-15-nepal-pitches-budhigandaki-hydropower-project-to-uae-investo",
       "title": "Nepal pitches Budhigandaki hydropower project to UAE investors",
