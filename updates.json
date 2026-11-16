@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-16T01:44:39.000Z",
+  "updated": "2026-11-16T03:01:55.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-16-auto-2026-11-16-56c093d7/",
+      "title": "पूर्वसूचनालाई विपद् पूर्वतयारीसँग जोड्न महासचिव चापागाईंको आह्वान",
+      "time": "2026-11-16T03:01:55.000Z",
+      "summary": "काठमाडौँ- रेडक्रस तथा रेडक्रिसेन्ट सोसाइटीहरूको अन्तर्राष्ट्रिय महासङ्घका महासचिव जगन चापागाईंले प्राकृतिक विपद्बाट नागरिकको ज्यान र जीविकोपार्जन जोगाउन पूर्वसूचना प्रणालीलाई समयमै प्रभावकारी पूर्वतयारीसँग जोड्न आह्वान गरेका छन् ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
     {
       "url": "/updates/2026-11-16-auto-2026-11-16-water-supply-resumes-in-beni-after-a-month-halt/",
       "title": "Water supply resumes in Beni after a month halt",
