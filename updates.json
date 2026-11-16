@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-16T00:44:02.000Z",
+  "updated": "2026-11-16T01:44:39.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-16-auto-2026-11-16-water-supply-resumes-in-beni-after-a-month-halt/",
+      "title": "Water supply resumes in Beni after a month halt",
+      "time": "2026-11-16T01:44:39.000Z",
+      "summary": "MYAGDI: Drinking water supply from the Dandakhark resumed in Beni Bazaar on November 13 after a month and a half, following repairs to a 14-kilometer main pipeline and installation of temporary routes around landslide-damaged sections.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
     {
       "url": "/updates/2026-11-16-auto-2026-11-16-weather-update-western-low-brings-patchy-clouds-to-him/",
       "title": "Weather update: Western low brings patchy clouds to Himalayas",
