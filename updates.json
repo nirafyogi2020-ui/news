@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-16T03:01:55.000Z",
+  "updated": "2026-11-17T00:15:00.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-17-auto-2026-11-17-sailung-where-rolling-hills-meet-breathtaking-himalaya/",
+      "title": "Sailung, where rolling hills meet breathtaking Himalayan views",
+      "time": "2026-11-17T00:15:00.000Z",
+      "summary": "Sailung, November 17 Situated on the border of Dolakha and Ramechhap districts at an altitude of 3,150 metres above sea level, Sailung is a picturesque destination known for its rolling hilltops and spectacular mountain views.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
     {
       "url": "/updates/2026-11-16-auto-2026-11-16-56c093d7/",
       "title": "पूर्वसूचनालाई विपद् पूर्वतयारीसँग जोड्न महासचिव चापागाईंको आह्वान",

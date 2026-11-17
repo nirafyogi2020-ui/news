@@ -1,59 +1,86 @@
 {
-  "updated": "2026-11-16T03:06:56.331Z",
+  "updated": "2026-11-17T00:22:07.782Z",
   "items": [
     {
-      "title": "पूर्वसूचनालाई विपद् पूर्वतयारीसँग जोड्न महासचिव चापागाईंको आह्वान",
-      "url": "https://khabarhub.com/2026/16/1048156/",
-      "source": "Khabarhub",
-      "time": "2026-11-16T03:01:55.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://www.khabarhub.com/wp-content/uploads/2026/11/mahasachib-400x220.jpg"
-    },
-    {
-      "title": "Water supply resumes in Beni after a month halt",
-      "url": "https://english.nepalnews.com/s/society/water-supply-resumes-in-beni-after-a-month-halt/",
-      "source": "Nepalnews",
-      "time": "2026-11-16T01:44:39.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://english.nepalnews.com/wp-content/uploads/2026/11/WATER.jpg"
-    },
-    {
-      "title": "Weather update: Western low brings patchy clouds to Himalayas",
-      "url": "https://english.nepalnews.com/s/weather/weather-update-western-low-brings-patchy-clouds-to-himalayas/",
-      "source": "Nepalnews",
-      "time": "2026-11-16T00:44:02.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://english.nepalnews.com/wp-content/uploads/2025/09/mausam-weather_R3jpNr7cXf.jpg"
-    },
-    {
-      "title": "आन्तरिक सङ्कटले थलिएका प्रधानमन्त्रीको दिल्ली तयारी",
-      "url": "https://www.onlinekhabar.com/2026/11/2057935/prime-minister-troubled-by-internal-crisis-prepares-for-delhi",
-      "source": "Onlinekhabar (Nepali)",
-      "time": "2026-11-15T16:04:48.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/jhalak-subedi-1024x500.jpg"
-    },
-    {
-      "title": "बेलौरी नगरपालिकामा अग्नि नियन्त्रण तथा उद्धार तालिम",
-      "url": "https://www.onlinekhabar.com/2026/11/2058299/fire-control-and-rescue-training-in-belauri-municipality",
-      "source": "Onlinekhabar (Nepali)",
-      "time": "2026-11-15T12:29:26.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-15-at-17.32.30-1024x576.jpeg"
-    },
-    {
-      "title": "Nepal invites UAE investment in Budhigandaki hydropower project",
-      "url": "https://english.onlinekhabar.com/nepal-invite-uae-budhigandaki-hydropower.html",
+      "title": "Sailung, where rolling hills meet breathtaking Himalayan views",
+      "url": "https://english.onlinekhabar.com/sailung-rolling-hills-himalaya.html",
       "source": "Onlinekhabar",
-      "time": "2026-11-15T08:58:41.000Z",
+      "time": "2026-11-17T00:15:00.000Z",
       "kind": "press",
       "region": "nepal",
-      "image": "https://english.onlinekhabar.com/wp-content/uploads/2021/04/budhigandaki-hydro.jpg"
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/11/Sailung.jpg"
+    },
+    {
+      "title": "१० महिनामा भित्रिए १० लाख बढी पर्यटक, बाढीपछि लयमा फर्किँदै ठमेल",
+      "url": "https://nagariknews.nagariknetwork.com/economy/foreign-tourists-are-increasingly-flocking-to-the-streets-of-thamel-39-81.html",
+      "source": "Nagarik News",
+      "time": "2026-11-16T14:52:58.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://images.nagariknewscdn.com/2025/third-party/1756796044_1%20Thamel-1200x560.jpg"
+    },
+    {
+      "title": "ठमेलका गल्लीमा विदेशी पर्यटकको चहलपहल बढ्दै",
+      "url": "https://khabarhub.com/2026/16/1048393/",
+      "source": "Khabarhub",
+      "time": "2026-11-16T14:42:40.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://www.khabarhub.com/wp-content/uploads/2019/07/thamel-700x478.jpg"
+    },
+    {
+      "title": "Bagmati province allocates Rs 6 billion for flood-affected areas",
+      "url": "https://english.nepalnews.com/s/nation/bagmati-province-allocates-rs-6-billion-for-flood-affected-areas/",
+      "source": "Nepalnews",
+      "time": "2026-11-16T13:59:02.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://english.nepalnews.com/wp-content/uploads/2026/10/rasuwa-badi-1-768x382-1.jpg"
+    },
+    {
+      "title": "Closure of Tatopani and Rasuwagadhi border points pushes up Nepal-China trade costs",
+      "url": "https://english.onlinekhabar.com/closure-of-tatopani-and-rasuwagadhi-border-points-pushes-up-nepal-china-trade-costs.html",
+      "source": "Onlinekhabar",
+      "time": "2026-11-16T13:35:28.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2018/11/Tatopani-Border-14.jpg"
+    },
+    {
+      "title": "तातोपानी नाका बन्द हुँदा ६० हजारको ढुवानी खर्च ६ लाख पुग्यो",
+      "url": "https://www.onlinekhabar.com/2026/11/2059022/transportation-costs-of-rs-60000-reached-rs-600000-when-tatopani-border-crossing-was-closed",
+      "source": "Onlinekhabar (Nepali)",
+      "time": "2026-11-16T13:00:38.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/Tatopani.jpg"
+    },
+    {
+      "title": "Minister Pun assures transparency in use of Prime Minister’s Disaster Relief Fund",
+      "url": "https://english.onlinekhabar.com/minister-pun-assures-transparency-in-use-of-prime-ministers-disaster-relief-fund.html",
+      "source": "Onlinekhabar",
+      "time": "2026-11-16T11:03:16.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://english.onlinekhabar.com/wp-content/uploads/2026/11/Mahabir-pun-1.jpg"
+    },
+    {
+      "title": "प्रधानमन्त्री दैवी प्रकोप उद्धार कोषको रकम दुरुपयोग हुँदैन : मन्त्री पुन",
+      "url": "https://www.onlinekhabar.com/2026/11/2058934/prime-ministers-disaster-relief-fund-funds-should-not-be-misused-minister-pun",
+      "source": "Onlinekhabar (Nepali)",
+      "time": "2026-11-16T10:20:51.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/Mahabir-pun-1.jpg"
+    },
+    {
+      "title": "IFRC Gen Secy urges urgent action to turn early warnings into disaster preparedness",
+      "url": "https://risingnepaldaily.com/news/88679",
+      "source": "The Rising Nepal",
+      "time": "2026-11-16T05:00:20.000Z",
+      "kind": "press",
+      "region": "nepal",
+      "image": "https://risingnepaldaily.com/storage/media/112326/unnamed-(1).jpg"
     },
     {
       "title": "Why drying Madhesh is a disaster in the making",
@@ -72,24 +99,6 @@
       "kind": "press",
       "region": "nepal",
       "image": "https://assets-cdn.kathmandupost.com/uploads/source/news/2026/news/Baburambhattarai-1794735845.jpg"
-    },
-    {
-      "title": "Hydropower firms to need 50 percent construction progress for IPOs",
-      "url": "https://kathmandupost.com/money/2026/11/15/hydropower-firms-to-need-50-percent-construction-progress-for-ipos",
-      "source": "Kathmandu Post",
-      "time": "2026-11-15T06:15:00.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://assets-cdn.kathmandupost.com/uploads/source/news/2026/news/hdyro-1794734830.jpg"
-    },
-    {
-      "title": "Who is the real prime minister?",
-      "url": "https://kathmandupost.com/columns/2026/11/14/who-is-the-real-prime-minister",
-      "source": "Kathmandu Post",
-      "time": "2026-11-14T06:15:00.000Z",
-      "kind": "press",
-      "region": "nepal",
-      "image": "https://assets-cdn.kathmandupost.com/uploads/source/news/2026/opinion/Yourparagraphtext55-1794673530.png"
     },
     {
       "title": "Magnitude 4.6 earthquake: 73 km NNW of Gyalshing, India",
@@ -191,7 +200,7 @@
       "image": "https://i.guim.co.uk/img/media/8caeb9be16646990b516498f006f95dd9fd7bc15/0_596_1206_964/master/1206.jpg?width=140&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=8155c583afb447c580bb7f2b9a020e0a"
     },
     {
-      "title": "Magnitude 3.9 earthquake: 64 km ENE of Besisahar, Nepal",
+      "title": "Magnitude 3.8 earthquake: 64 km ENE of Besisahar, Nepal",
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000u1j7",
       "source": "USGS",
       "time": "2026-10-10T22:38:58.000Z",
