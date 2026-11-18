@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-17T00:39:51.000Z",
+  "updated": "2026-11-18T02:11:09.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-18-auto-2026-11-18-partly-cloudy-skies-expected-in-four-provinces-light-s/",
+      "title": "Partly cloudy skies expected in four provinces, light snowfall likely",
+      "time": "2026-11-18T02:11:09.000Z",
+      "summary": "KATHMANDU: The influence of westerly winds has brought cloudy conditions to the Himalayan and hilly regions of Koshi, Bagmati and Gandaki Provinces while the hilly areas of Lumbini Province have experienced partly cloudy weather.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
     {
       "url": "/updates/2026-11-17-auto-2026-11-17-7a5f8e9b/",
       "title": "रसुवाको डिल्पु कुण्ड : पर्यटकलाई पर्खिरहेछ",

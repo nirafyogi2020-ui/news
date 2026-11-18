@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-17T00:39:51.000Z</news:publication_date>
+      <news:publication_date>2026-11-18T02:11:09.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,458 dead, 5,285 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-17T00:39:51.000Z</news:publication_date>
+      <news:publication_date>2026-11-18T02:11:09.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-18-auto-2026-11-18-partly-cloudy-skies-expected-in-four-provinces-light-s/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-18T02:11:09.000Z</news:publication_date>
+      <news:title>Partly cloudy skies expected in four provinces, light snowfall likely</news:title>
     </news:news>
   </url>
   <url>
@@ -65,61 +76,6 @@
       </news:publication>
       <news:publication_date>2026-11-16T03:01:55.000Z</news:publication_date>
       <news:title>पूर्वसूचनालाई विपद् पूर्वतयारीसँग जोड्न महासचिव चापागाईंको आह्वान</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-16-auto-2026-11-16-water-supply-resumes-in-beni-after-a-month-halt/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-16T01:44:39.000Z</news:publication_date>
-      <news:title>Water supply resumes in Beni after a month halt</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-16-auto-2026-11-16-weather-update-western-low-brings-patchy-clouds-to-him/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-16T00:44:02.000Z</news:publication_date>
-      <news:title>Weather update: Western low brings patchy clouds to Himalayas</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-15-auto-2026-11-15-nepal-pitches-budhigandaki-hydropower-project-to-uae-i/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-15T03:29:41.000Z</news:publication_date>
-      <news:title>Nepal pitches Budhigandaki hydropower project to UAE investors</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-15-auto-2026-11-15-71823f13/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-15T02:45:47.000Z</news:publication_date>
-      <news:title>गाजामा बाढीले ७० हजार अस्थायी टेन्ट डुबे, राहतका लागि इजरायलसँग ईयूको आग्रह</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-15-auto-2026-11-15-chhath-preserves-indigenous-knowledge-vp-yadav/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-15T01:56:43.000Z</news:publication_date>
-      <news:title>Chhath preserves indigenous knowledge: VP Yadav</news:title>
     </news:news>
   </url>
 </urlset>
