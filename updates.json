@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-18T02:56:39.000Z",
+  "updated": "2026-11-18T04:52:10.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-18-auto-2026-11-18-pregnant-woman-airlifted-to-surkhet-province-hospital/",
+      "title": "Pregnant woman airlifted to Surkhet Province Hospital",
+      "time": "2026-11-18T04:52:10.000Z",
+      "summary": "Kathmandu, November 18 A pregnant woman from Achham district was rescued by a helicopter after developing severe pregnancy complications. She was airlifted to Karnali Province Hospital on Tuesday.",
+      "sources": [
+        "Onlinekhabar"
+      ]
+    },
     {
       "url": "/updates/2026-11-18-auto-2026-11-18-5f4c2344/",
       "title": "कर्णालीका सडक ‘मृत्युमार्ग’",
