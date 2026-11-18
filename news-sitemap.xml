@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-18T02:11:09.000Z</news:publication_date>
+      <news:publication_date>2026-11-18T02:56:39.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,458 dead, 5,285 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-18T02:11:09.000Z</news:publication_date>
+      <news:publication_date>2026-11-18T02:56:39.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-18-auto-2026-11-18-5f4c2344/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-18T02:56:39.000Z</news:publication_date>
+      <news:title>कर्णालीका सडक ‘मृत्युमार्ग’</news:title>
     </news:news>
   </url>
   <url>
@@ -65,17 +76,6 @@
       </news:publication>
       <news:publication_date>2026-11-17T00:15:00.000Z</news:publication_date>
       <news:title>Sailung, where rolling hills meet breathtaking Himalayan views</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-16-auto-2026-11-16-56c093d7/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-16T03:01:55.000Z</news:publication_date>
-      <news:title>पूर्वसूचनालाई विपद् पूर्वतयारीसँग जोड्न महासचिव चापागाईंको आह्वान</news:title>
     </news:news>
   </url>
 </urlset>

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-18T02:11:09.000Z",
+  "updated": "2026-11-18T02:56:39.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-18-auto-2026-11-18-5f4c2344/",
+      "title": "कर्णालीका सडक ‘मृत्युमार्ग’",
+      "time": "2026-11-18T02:56:39.000Z",
+      "summary": "मुगुको छायानाथ रारा नगरपालिका–७ टोप्लास्थित ताल्चा–रारा सडकमा आइतबार अपराह्न ४ बजे बा १७ च १८६४ नम्बरको हाइलक्स जिप दुर्घटना हुँदा चार जनाले ज्यान गुमाए। दुर्घटनामा एक जना घाइते भए।",
+      "sources": [
+        "Nagarik News"
+      ]
+    },
     {
       "url": "/updates/2026-11-18-auto-2026-11-18-partly-cloudy-skies-expected-in-four-provinces-light-s/",
       "title": "Partly cloudy skies expected in four provinces, light snowfall likely",
