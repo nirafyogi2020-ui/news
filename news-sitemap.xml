@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-19T04:34:42.000Z</news:publication_date>
+      <news:publication_date>2026-11-20T02:05:12.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,458 dead, 5,285 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-19T04:34:42.000Z</news:publication_date>
+      <news:publication_date>2026-11-20T02:05:12.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-20-auto-2026-11-20-59e3daf9/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-20T02:05:12.000Z</news:publication_date>
+      <news:title>बाढी र पहिरोका कारण गोरखा र कालिकोटका दुई सडक पूर्णरूपमा अवरुद्ध</news:title>
     </news:news>
   </url>
   <url>
@@ -76,17 +87,6 @@
       </news:publication>
       <news:publication_date>2026-11-18T02:56:39.000Z</news:publication_date>
       <news:title>कर्णालीका सडक ‘मृत्युमार्ग’</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-18-auto-2026-11-18-partly-cloudy-skies-expected-in-four-provinces-light-s/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-18T02:11:09.000Z</news:publication_date>
-      <news:title>Partly cloudy skies expected in four provinces, light snowfall likely</news:title>
     </news:news>
   </url>
 </urlset>
