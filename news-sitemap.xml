@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-21T04:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-11-21T04:51:42.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,458 dead, 5,285 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-21T04:15:00.000Z</news:publication_date>
+      <news:publication_date>2026-11-21T04:51:42.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-21-auto-2026-11-21-297480d4/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-21T04:51:42.000Z</news:publication_date>
+      <news:title>मध्य पेरुमा ६.७ म्याग्निच्युडको भूकम्प, क्षतिको विवरण सङ्कलन हुँदै</news:title>
     </news:news>
   </url>
   <url>
@@ -76,17 +87,6 @@
       </news:publication>
       <news:publication_date>2026-11-20T01:53:15.000Z</news:publication_date>
       <news:title>विपद्को पूर्वसूचना दिने ‘सेल ब्रोडकास्टिङ’ प्रणाली परीक्षण गरिँदै, सिमकार्ड र इन्टरनेटविना पनि काम गर्ने</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-19-auto-2026-11-19-93e09c93/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-19T04:34:42.000Z</news:publication_date>
-      <news:title>हिमालयको भूगर्भीय अध्ययनलाई राष्ट्रिय विकास र नीतिनिर्माणसँग जोड्नुपर्छ : सभामुख अर्याल</news:title>
     </news:news>
   </url>
 </urlset>

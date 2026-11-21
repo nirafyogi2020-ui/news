@@ -1,6 +1,22 @@
 {
-  "updated": "2026-11-21T04:15:00.000Z",
+  "updated": "2026-11-21T04:51:42.000Z",
   "posts": [
+    {
+      "id": "auto-2026-11-21-297480d4",
+      "title": "मध्य पेरुमा ६.७ म्याग्निच्युडको भूकम्प, क्षतिको विवरण सङ्कलन हुँदै",
+      "time": "2026-11-21T04:51:42.000Z",
+      "image": "https://www.khabarhub.com/wp-content/uploads/2025/01/earthquake-1-400x220.jpg",
+      "body": [
+        "एजेन्सी– मध्य पेरुमा शुक्रबार बिहान ६.७ म्याग्निच्युडको शक्तिशाली भूकम्प गएको छ । भूकम्पबाट अहिलेसम्म मानवीय तथा ठूलो भौतिक क्षति भएको विवरण प्राप्त नभए पनि केही पहाडी क्षेत्रमा पहिरो गएको र चट्टान खसेको खबर छ ।"
+      ],
+      "sources": [
+        {
+          "name": "Khabarhub",
+          "url": "https://khabarhub.com/2026/21/1049992/"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-11-21-can-balen-bring-india-and-china-together-on-climate-cooperat",
       "title": "Can Balen bring India and China together on climate cooperation?",
