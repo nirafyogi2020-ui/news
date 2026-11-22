@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 
 import {
   cleanHeadline, isOffSubject, hasBannedWord, hasDash, isNepalDisasterHeadline, isRoadHeadline,
-  frontNews, roadNews, frontTitle, tldrLines, daysSince, figureNumber,
+  frontNews, roadNews, frontTitle, tldrLines, daysSince, figureNumber, headlineVerdict,
 } from '../src/front-rules.mjs';
 import { frontPage, rasuwaDashboard, rasuwaBriefing } from '../src/pages.mjs';
 
@@ -180,4 +180,79 @@ test('the embed box credits its source and escapes what it prints', async () => 
   assert.match(html, /Nepal Police, 14 October 2026/);
   assert.match(html, /Rasuwa &lt;flood&gt;/);
   assert.doesNotMatch(html, /<flood>/);
+});
+
+/* -- 22 Nov 2026: sport, tourism and foreign disasters on the front ------------ */
+
+test('real headlines that must stay on the front page', () => {
+  for (const t of [
+    'Flood, landslide trigger water shortage in Beni, Myagdi',
+    'Dry landslide blocks Kaligandaki corridor in Gulmi',
+    'Six Indian tourists missing in Dolpa after heavy snowfall; helicopter requested for rescue',
+    'Japanese firm raises funds for Bhotekoshi flood victims',
+    'European Union pledges 2 million euros in flood aid for Nepal',
+    'Australian PM Albanese pledges support to Nepal after devastating floods',
+    '100,000 kg of Manaslu apples stranded after floods wash away transport routes',
+    'Rs 1.7 million distributed to disaster victims as relief',
+    'Flood-displaced families in Rasuwa, Nuwakot yet to receive promised house rent support',
+    'Ncell Foundation to help reopen flood-damaged campus in Nuwakot',
+    'Nepal has failed disaster survivors before. Can Bhotekoshi be different?',
+    'Magnitude 4.5 earthquake near Lobuche shakes Solukhumbu',
+    'Forest fire spreads in Dadeldhura, army deployed',
+    'बाढी र पहिरोका कारण गोरखा र कालिकोटका दुई सडक पूर्णरूपमा अवरुद्ध',
+    'घोप्टेभीरमा फेरि पहिरो, मलेखु–मुग्लिङ सडकखण्ड बन्द',
+    'विपद प्रभावितलाई करिब १७ लाख रुपैयाँ राहत वितरण',
+    'भोटेकोशी बाढी प्रभावित क्याम्पस पुन: सञ्चालन गर्न एनसेल फाउन्डेसनको शैक्षिक पूर्वाधार सहयोग',
+    '४ युरोपेली देशमा गुञ्जिँदै ‘मंगोलियन हार्ट’, संकलित रकम बाढी प्रभावितलाई',
+    'खतरनाक बन्यो चक्रवात ‘अर्नब’, नेपालमा पनि उच्च सतर्कता',
+  ]) {
+    assert.ok(isNepalDisasterHeadline(t), `should stay: ${t}`);
+    assert.ok(!isOffSubject(t), `not off subject: ${t}`);
+  }
+});
+
+test('sport, tourism and foreign disasters stay off the front page', () => {
+  // Sport and tourism: off subject everywhere, so no automatic card either.
+  for (const t of [
+    'Government plans floodlit home grounds for all eight NPL clubs',
+    'बाढीपछि गोसाइँकुण्डमा पर्यटकको चहलपहल बढ्दै',
+    'रसुवाको डिल्पु कुण्ड : पर्यटकलाई पर्खिरहेछ',
+    'बाह्रै महिना पदयात्राका लागि आकर्षक गन्तव्य बन्दै गोसाइँकुण्ड',
+    'Dhulikhel resort wins two honours at South Asian Travel Awards',
+    'Pokhara resort wins Best New Hotel/Resort award at SATA 2026',
+    'Dusit Thani Dhulikhel holds first cake-mixing ceremony',
+    'Nepal beat UAE in rain-hit T20 tri-series opener',
+    'Rasuwa football tournament draws crowds in Dhunche',
+    'Nepse loses ground as trading slows and investors favour select stocks',
+    'Why Nepal must separate crypto from the future of banking',
+  ]) {
+    assert.ok(isOffSubject(t), `off subject: ${t}`);
+    assert.ok(!isNepalDisasterHeadline(t), `off the front: ${t}`);
+  }
+  // Another country's disaster: not off subject (it may be a world item), but
+  // not a Nepal headline, so it stays off the front page lists.
+  for (const t of [
+    'मध्य पेरुमा ६.७ म्याग्निच्युडको भूकम्प, क्षतिको विवरण सङ्कलन हुँदै',
+    'गाजामा बाढीले ७० हजार अस्थायी टेन्ट डुबे, राहतका लागि इजरायलसँग ईयूको आग्रह',
+    'Magnitude 6.7 earthquake strikes central Peru',
+    'Flash floods kill 40 in Pakistan',
+  ]) {
+    assert.ok(!isOffSubject(t), `not off subject: ${t}`);
+    assert.ok(!isNepalDisasterHeadline(t), `off the front: ${t}`);
+  }
+  // Sport rescued by a real disaster, tourists rescued by people in danger.
+  assert.ok(isNepalDisasterHeadline('Nepal cricket team donates match fees to flood victims'));
+  assert.ok(isNepalDisasterHeadline('Tourists stranded in Manang after landslide blocks road'));
+});
+
+test('the page script judges headlines with the same function and rules', () => {
+  const page = frontPage(ctx, { news, photos, events: [event] }).html;
+  assert.match(page, /var verdict = function headlineVerdict\(title, R\)/);
+  const m = page.match(/var RS = (\{.*?\}), R = \{\};/);
+  assert.ok(m, 'rules are handed to the page');
+  const RS = JSON.parse(m[1]);
+  const R = Object.fromEntries(Object.entries(RS).map(([k, [src, flags]]) => [k, new RegExp(src, flags)]));
+  assert.equal(headlineVerdict('Government plans floodlit home grounds for all eight NPL clubs', R), 'off');
+  assert.equal(headlineVerdict('मध्य पेरुमा ६.७ म्याग्निच्युडको भूकम्प', R), 'foreign');
+  assert.equal(headlineVerdict('Dry landslide blocks Kaligandaki corridor in Gulmi', R), 'nepal');
 });

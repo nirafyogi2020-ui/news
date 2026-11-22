@@ -9,7 +9,7 @@ import {
 } from './template.mjs';
 import * as C from './content.mjs';
 import {
-  DISASTER_WORDS_SOURCE, cleanHeadline, isNepalDisasterHeadline, frontNews, roadNews, frontTitle, tldrLines, daysSince,
+  FRONT_RULE_SOURCES, headlineVerdict, cleanHeadline, isNepalDisasterHeadline, frontNews, roadNews, frontTitle, tldrLines, daysSince,
 } from './front-rules.mjs';
 import { photoSrcset } from './photo.mjs';
 
@@ -2624,10 +2624,12 @@ ${lead ? `<figure class="fp-lead-media"><a href="${esc(dashPath)}"><img src="${e
      Items are built as nodes, never as markup, because the headlines are
      other people's text. The rules are the build's own, handed over below. */
   var list = document.getElementById('fp-news');
-  var disaster = new RegExp(${JSON.stringify(DISASTER_WORDS_SOURCE)}, 'i');
+  var RS = ${JSON.stringify(FRONT_RULE_SOURCES)}, R = {};
+  Object.keys(RS).forEach(function(k){ R[k] = new RegExp(RS[k][0], RS[k][1]); });
+  var verdict = ${headlineVerdict.toString()};
   function clean(t){
     t = String(t || '').replace(/\\s+[\\u2013\\u2014]\\s+/g, ', ').replace(/[\\u2013\\u2014]/g, '-').replace(/\\s+/g, ' ').trim();
-    return (!t || !disaster.test(t)) ? '' : t;
+    return (!t || verdict(t, R) !== 'nepal') ? '' : t;
   }
   function refreshNews(){
     if(!list || document.hidden) return;

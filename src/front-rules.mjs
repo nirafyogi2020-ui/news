@@ -47,11 +47,11 @@ export function cleanHeadline(title) {
    prints, and a front page about disasters should not carry a story about
    apple yields because the same feed delivered it. */
 const DISASTER_WORDS = new RegExp([
-  'flood', 'flash flood', 'landslide', 'mudslide', 'earthquake', 'quake', 'tremor', 'aftershock',
+  'flood(?!lit|light)', 'flash flood', 'landslide', 'mudslide', 'earthquake', 'quake', 'tremor', 'aftershock',
   'avalanche', 'glacier', 'glacial', 'GLOF', 'barrier lake', 'monsoon', 'heavy rain', 'rainfall',
   'storm', 'cyclone', 'lightning', 'hailstorm', 'windstorm', 'cold wave', 'heatwave', 'drought',
   'wildfire', 'forest fire', 'fire', 'disaster', 'hazard', 'rescue', 'rescued', 'missing',
-  'death toll', 'dead', 'killed', 'bodies', 'relief', 'evacuat', 'displaced', 'shelter',
+  'death toll', 'dead(?!line|lock)', 'killed', 'bodies', 'relief', 'evacuat', 'displaced', 'shelter',
   'NDRRMA', 'NEOC', 'Nepal Police', 'Nepali Army', 'Armed Police', 'Red Cross', 'ReliefWeb',
   'Rasuwa', 'Bhote ?Koshi', 'Trishuli', 'Narayani', 'Syabrubesi', 'Rasuwagadhi',
   'highway blocked', 'road blocked', 'bridge', 'washed away', 'swept away', 'inundat',
@@ -60,25 +60,56 @@ const DISASTER_WORDS = new RegExp([
   'सडक अवरुद्ध', 'राजमार्ग अवरुद्ध', 'पुल', 'रसुवा', 'भोटेकोशी', 'त्रिशूली', 'नारायणी',
 ].join('|'), 'i');
 
-/** The same test, as source text, for the page's own script to rebuild. */
-export const DISASTER_WORDS_SOURCE = DISASTER_WORDS.source;
-
 /* A Nepali newsroom also prints the world's disasters. A headline that names
    another country's event is not Nepal news, however many of the words above
-   it carries. China and India are left off this list on purpose: the Rasuwa
-   flood started in Tibet and bodies were recovered across the Indian border. */
-const FOREIGN_WORDS = /\b(?:Spain|Spanish|Italy|Italian|France|French|German[y]?|Britain|British|UK|United States|US|American|Japan(?:ese)?|Philippines?|Indonesia[n]?|Pakistan[i]?|Bangladesh[i]?|Sri Lanka[n]?|Afghan(?:istan)?|Brazil(?:ian)?|Mexic(?:o|an)|Australia[n]?|Africa[n]?|Europe(?:an)?|Turk(?:ey|ish)|Iran(?:ian)?|Vietnam(?:ese)?|Thai(?:land)?|Myanmar|Taiwan(?:ese)?|Korea[n]?|Russia[n]?|Ukrain(?:e|ian)|Canad(?:a|ian)|Chile(?:an)?|Peru(?:vian)?|Greece|Greek|Portug(?:al|uese))\b/;
+   it carries; those belong on /global/. China and India are left off this
+   list on purpose: the Rasuwa flood started in Tibet and bodies were
+   recovered across the Indian border. The Nepali spellings matter as much as
+   the English: a central Peru quake reached the front page on 22 Nov 2026 as
+   "मध्य पेरुमा ... भूकम्प". */
+const FOREIGN_WORDS = new RegExp('\\b(?:Spain|Spanish|Italy|Italian|France|French|German[y]?|Britain|British|UK|United States|US|American|Japan(?:ese)?|Philippines?|Indonesia[n]?|Pakistan[i]?|Bangladesh[i]?|Sri Lanka[n]?|Afghan(?:istan)?|Brazil(?:ian)?|Mexic(?:o|an)|Australia[n]?|Africa[n]?|Europe(?:an)?|Turk(?:ey|ish)|Iran(?:ian)?|Vietnam(?:ese)?|Thai(?:land)?|Myanmar|Taiwan(?:ese)?|Korea[n]?|Russia[n]?|Ukrain(?:e|ian)|Canad(?:a|ian)|Chile(?:an)?|Peru(?:vian)?|Greece|Greek|Portug(?:al|uese)'
+  + '|Gaza|Israel[i]?|Morocc(?:o|an)|Liby(?:a|an)|Haiti(?:an)?|Ecuador(?:ian)?|Colombia[n]?|Cuba[n]?|Malaysia[n]?|Cambodia[n]?|Bhutan(?:ese)?|Syria[n]?|Egypt(?:ian)?|Sudan(?:ese)?|Kenya[n]?|Nigeria[n]?|Ethiopia[n]?|Somalia[n]?|California|Texas|Florida|Hawaii|Caribbean|Jamaica[n]?)\\b'
+  + '|पेरु|गाजामा|गाजाको|गाजाका|गाजाबाट|गाजा पट्टी|इजरायल|अमेरिका|जापान|पाकिस्तान|बंगलादेश|बङ्गलादेश|श्रीलंका|श्रीलङ्का|अफगानिस्तान|इन्डोनेसिया|इण्डोनेसिया|फिलिपिन्स|टर्की|टर्किये|इरान|भियतनाम|थाइल्यान्ड|म्यानमार|ताइवान|कोरिया|रूस|रुसमा|रुसको|रुसी|युक्रेन|क्यानडा|चिली|मेक्सिको|ब्राजिल|अष्ट्रेलिया|अस्ट्रेलिया|अफ्रिका|युरोप|स्पेन|इटाली|फ्रान्स|जर्मनी|बेलायत|ग्रीस|पोर्चुगल|मोरक्को|लिबिया|हाइटी|इक्वेडर|कोलम्बिया|क्युबा|मलेसिया|कम्बोडिया|भुटान');
+
+/* A foreign name in a headline that is also about Nepal is a Nepal story: a
+   Japanese firm raising money for Bhotekoshi flood victims, Indian tourists
+   missing in Dolpa, a band's European tour raising money "for the flood
+   affected" (बाढी प्रभावितलाई, which in a Nepali paper means Nepal's). The
+   country name only counts when Nepal is not named. */
+const NEPAL_WORDS = /\bNepal|Bhote ?Koshi|Rasuwa|Trishuli|Kathmandu|नेपाल|भोटेकोशी|रसुवा|त्रिशूली|काठमाडौं|काठमाडौँ|बाढी ?प्रभावितलाई|बाढी ?पीडितलाई/i;
 
 /* Subjects the disaster feeds carry by accident: a newsroom's general desk
    writes about them with a district's name in the story. Roads, weather and
    rivers are deliberately absent, because those are this site's business. */
 const OFF_SUBJECT = new RegExp([
-  'Hormuz', 'होर्मुज', 'Manchester United', 'म्यानचेस्टर', 'football', 'cricket', 'apples?', 'स्याउ',
+  'Hormuz', 'होर्मुज', 'Manchester United', 'म्यानचेस्टर', 'apples?', 'स्याउ',
   'World Bank', 'विश्व बैंक', 'economic growth', 'अर्थतन्त्र', 'भ्याट', 'exported to India', 'विद्युत निर्यात',
-  'पर्यटक', 'पर्यटन', 'tourism', 'festival', 'दशैं', 'दसैँ',
+  'festival', 'दशैं', 'दसैँ',
   'election', 'candidates?', 'निर्वाचन', 'चुनाव', 'उम्मेदवार', 'मतदान',
   'shooting', 'shot dead', 'गोली प्रहार',
+  /* Sport. */
+  'football', 'futsal', 'cricket', '\\bNPL\\b', '\\bT20', '\\bODI\\b', 'wickets?', 'innings', 'tri-series',
+  'league', 'tournament', 'stadium', 'फुटबल', 'क्रिकेट', 'खेलकुद', 'खेलाडी', 'रंगशाला', 'रङ्गशाला',
 ].join('|'), 'i');
+
+/* What rescues an off-subject headline: the disaster itself, not a place
+   name. "Rasuwa" or "Trishuli" alone tied a lake's tourist season to the
+   flood; "relief" alone tied a paddy price to it. */
+const STRONG_DISASTER = new RegExp([
+  '\\bflood(?!lit|light)', 'landslide', 'mudslide', 'earthquake', '\\bquake', 'aftershock', 'avalanche',
+  'glacial', '\\bGLOF', 'barrier lake', 'heavy rain', 'cyclone', 'lightning', 'hailstorm', 'windstorm',
+  'cold wave', 'heatwave', 'drought', 'wildfire', 'forest fire', 'disaster', '\\brescue', '\\bmissing',
+  'death toll', '\\bdead\\b', '\\bkilled', '\\bbodies', '\\bevacuat', '\\bdisplaced', '\\bvictims?',
+  '\\bsurvivors?', 'washed away', 'swept away', 'inundat',
+  'बाढी', 'पहिरो', 'भूकम्प', 'भुइँचालो', 'विपद्', 'विपद', 'उद्धार', 'बेपत्ता', 'मृत्यु', 'शव',
+  'हिमपहिरो', 'चक्रवात', 'आगलागी', 'डुबान', 'चट्याङ', 'पीडित',
+].join('|'), 'i');
+
+/* Tourism and hospitality stories. A flood word does not rescue these:
+   "tourists return to Gosaikunda after the flood" is a travel story. Only
+   people in danger do (tourists missing, stranded, rescued). */
+const TOURISM_WORDS = /\b(?:tourism|tourists?|resorts?|hotels?|travel awards?|trekking destination|cake-mixing)\b|पर्यटक|पर्यटन|पदयात्रा|गन्तव्य|होटल|रिसोर्ट/i;
+const HARM_WORDS = /\b(?:dead|killed|died|death|missing|rescued?|stranded|injured|trapped|bodies|evacuat\w*|victims?|displaced)\b|बेपत्ता|उद्धार|मृत्यु|घाइते|फसे|शव|ज्यान|पीडित/i;
 
 /* Money-market stories borrow disaster words as figures of speech: a share
    index "collapses", tech stocks suffer a "landslide" (पहिरो). The disaster
@@ -92,16 +123,43 @@ const MARKET_WORDS = /\b(?:stock markets?|share markets?|stock exchange|share in
    not about a dam or a flood. Always off subject, disaster word or not. */
 const CRYPTO_WORDS = /\b(?:digital wealth|cryptocurrenc(?:y|ies)|bitcoin|crypto(?:[- ]?(?:mining|currency|assets?|exchange))?|blockchain)\b|क्रिप्टो|बिटकोइन/i;
 
+/* Floodlit grounds are cricket, not a flood (22 Nov 2026: "Government plans
+   floodlit home grounds for all eight NPL clubs" led the newsroom list). */
+const PUN_WORDS = /\bflood-?lit\b|\bflood-?lights?\b|\bflood-?lighting\b/i;
+
+const RULES = {
+  disaster: DISASTER_WORDS, foreign: FOREIGN_WORDS, nepal: NEPAL_WORDS,
+  market: MARKET_WORDS, crypto: CRYPTO_WORDS, pun: PUN_WORDS,
+  tourism: TOURISM_WORDS, harm: HARM_WORDS, off: OFF_SUBJECT, strong: STRONG_DISASTER,
+};
+
+/** The rules as [source, flags] pairs, for the page's own script to rebuild. */
+export const FRONT_RULE_SOURCES = Object.fromEntries(
+  Object.entries(RULES).map(([k, re]) => [k, [re.source, re.flags]]));
+
+/**
+ * One verdict on a headline: 'off' (off subject), 'none' (no disaster in
+ * it), 'foreign' (another country's disaster) or 'nepal'. Written without
+ * module references, because the front page's script runs this very
+ * function, from its source text, against the rules above.
+ */
+export function headlineVerdict(title, R) {
+  var t = String(title || '');
+  if (R.market.test(t) || R.crypto.test(t) || R.pun.test(t)) return 'off';
+  if (R.tourism.test(t) && !R.harm.test(t)) return 'off';
+  if (R.off.test(t) && !R.strong.test(t)) return 'off';
+  if (!R.disaster.test(t)) return 'none';
+  if (R.foreign.test(t) && !R.nepal.test(t)) return 'foreign';
+  return 'nepal';
+}
+
 /** Off subject, unless the headline itself ties it to a disaster. */
 export function isOffSubject(title) {
-  const t = String(title || '');
-  if (MARKET_WORDS.test(t) || CRYPTO_WORDS.test(t)) return true;
-  return OFF_SUBJECT.test(t) && !DISASTER_WORDS.test(t);
+  return headlineVerdict(title, RULES) === 'off';
 }
 
 export function isNepalDisasterHeadline(title) {
-  const t = String(title || '');
-  return DISASTER_WORDS.test(t) && !FOREIGN_WORDS.test(t);
+  return headlineVerdict(title, RULES) === 'nepal';
 }
 
 /* Road and access reporting, picked out of the same headlines. */
