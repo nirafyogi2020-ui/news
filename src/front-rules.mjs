@@ -62,7 +62,7 @@ const DISASTER_WORDS = new RegExp([
 
 /* A Nepali newsroom also prints the world's disasters. A headline that names
    another country's event is not Nepal news, however many of the words above
-   it carries; those belong on /global/. China and India are left off this
+   it carries, so it stays off the front page. China and India are left off this
    list on purpose: the Rasuwa flood started in Tibet and bodies were
    recovered across the Indian border. The Nepali spellings matter as much as
    the English: a central Peru quake reached the front page on 22 Nov 2026 as

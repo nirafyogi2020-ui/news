@@ -23,7 +23,6 @@ import * as NE from './pages-ne.mjs';
 import * as C from './content.mjs';
 import * as I from './investigation.mjs';
 import { renderInvestigation } from './dashboard.mjs';
-import { isDisasterWireHeadline } from '../functions/api/global.js';
 import { ensureCardVariants, photoSrcset, photoRepeats } from './photo.mjs';
 import { pageFingerprint, honestLastmod } from './lastmod.mjs';
 import { syncArchive, loadArchive } from './archive.mjs';
@@ -55,65 +54,6 @@ const modified = [today.updated, event.asOf, ...posts.map(p => p.time)]
   .sort()
   .pop();
 
-/* The world feed, fetched once per build so /global/ carries real text for a
-   crawler and for a reader with JavaScript off. The live version refreshes in
-   the browser. A build must never fail because a news feed is slow, so this
-   falls back to the last snapshot on disk, and to an empty list before there
-   has ever been one. */
-const SNAPSHOT = join(ROOT, 'data', 'global-snapshot.json');
-const GLOBAL_FEED_URL = process.env.NEPAL_GLOBAL_FEED_URL ||
-  'https://nepaldisasterupdatelive.nxtimaginelabs.com/api/global';
-function safeGlobalItems(items) {
-  return (items || []).filter(item =>
-    item && item.title && item.url &&
-    // Nepal and Brazil are already narrowed by their own named-source
-    // collectors. Preserve their non-English headlines in the static fallback.
-    (item.kind !== 'press' || item.country === 'nepal' || item.country === 'brazil' ||
-      isDisasterWireHeadline(item.title))
-  );
-}
-
-/* Reserve a small current set for every location in the built fallback. Without
-   this, a busy Nepal feed can fill all 24 snapshot slots and make Brazil, the
-   United States or the wider world look empty until JavaScript refreshes it. */
-function snapshotGlobalItems(items) {
-  const filtered = safeGlobalItems(items);
-  const reserved = [];
-  const used = new Set();
-  for (const country of ['nepal', 'brazil', 'united-states', 'global']) {
-    let kept = 0;
-    for (const item of filtered) {
-      if (item.country !== country || used.has(item.url)) continue;
-      reserved.push(item);
-      used.add(item.url);
-      kept++;
-      if (kept === 6) break;
-    }
-  }
-  const selected = reserved.concat(filtered.filter(item => !used.has(item.url)).slice(0, 24 - reserved.length));
-  return selected.sort((a, b) => new Date(b.time || 0) - new Date(a.time || 0));
-}
-
-async function loadGlobalItems() {
-  try {
-    const res = await fetch(GLOBAL_FEED_URL, {
-      signal: AbortSignal.timeout(12000)
-    });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const json = await res.json();
-    const items = snapshotGlobalItems(json.items);
-    if (items.length) {
-      writeFileSync(SNAPSHOT, JSON.stringify({ updated: json.updated, items }, null, 2) + '\n');
-      return items;
-    }
-  } catch (e) {
-    console.log(`global snapshot: live fetch failed (${e.message}), using the last one`);
-  }
-  if (existsSync(SNAPSHOT)) {
-    try { return snapshotGlobalItems(JSON.parse(readFileSync(SNAPSHOT, 'utf8')).items); } catch { return []; }
-  }
-  return [];
-}
 const ctx = { posts, event, today, modified, buildDay: nptDay(modified), get photos() { return PHOTO_INDEX; } };
 
 /* ---------------------------------------------------------------------------
