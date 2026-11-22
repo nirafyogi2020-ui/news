@@ -26,9 +26,9 @@ import { renderInvestigation } from './dashboard.mjs';
 import { isDisasterWireHeadline } from '../functions/api/global.js';
 import { ensureCardVariants, photoSrcset, photoRepeats } from './photo.mjs';
 import { pageFingerprint, honestLastmod } from './lastmod.mjs';
+import { syncArchive, loadArchive } from './archive.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const ARCHIVE = join(ROOT, 'data', 'updates');
 
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 const readJson = (p) => JSON.parse(read(p));
@@ -38,57 +38,6 @@ function write(relPath, contents) {
   mkdirSync(dirname(full), { recursive: true });
   writeFileSync(full, contents);
   return relPath;
-}
-
-function slugify(s) {
-  return String(s).toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, 70);
-}
-
-/* ---------------------------------------------------------------------------
-   The archive.
-
-   today.json holds only the current day's briefings and is overwritten each
-   time a new day is published. Anything that ever appeared there is copied
-   into data/updates/ first, so its URL keeps working forever. A URL that
-   disappears is worse than no URL at all.
-   ------------------------------------------------------------------------- */
-function syncArchive(today) {
-  mkdirSync(ARCHIVE, { recursive: true });
-  for (const post of today.posts || []) {
-    if (!post || !post.title || !post.time) continue;
-    const day = nptDay(post.time);
-    const slug = `${day}-${slugify(post.id || post.title)}`;
-    const file = join(ARCHIVE, `${slug}.json`);
-    const record = {
-      slug,
-      id: post.id || slug,
-      title: post.title,
-      time: post.time,
-      body: Array.isArray(post.body) ? post.body : [String(post.body || '')],
-      sources: post.sources || [],
-      revised: !!post.revised,
-      image: post.image || '',
-    };
-    /* Rewrite only when something actually changed, so an unchanged briefing
-       keeps its file mtime and its lastmod does not churn in the sitemap. */
-    let prev = null;
-    if (existsSync(file)) { try { prev = JSON.parse(readFileSync(file, 'utf8')); } catch { prev = null; } }
-    if (JSON.stringify(prev) !== JSON.stringify(record)) {
-      writeFileSync(file, JSON.stringify(record, null, 2) + '\n');
-    }
-  }
-}
-
-function loadArchive() {
-  if (!existsSync(ARCHIVE)) return [];
-  return readdirSync(ARCHIVE)
-    .filter(f => f.endsWith('.json'))
-    .map(f => JSON.parse(readFileSync(join(ARCHIVE, f), 'utf8')))
-    .map(p => ({ ...p, url: `/updates/${p.slug}/` }))
-    .sort((a, b) => new Date(b.time) - new Date(a.time));
 }
 
 /* ------------------------------------------------------------------------- */

@@ -28,6 +28,7 @@ import { execFileSync } from 'node:child_process';
 import { ogCard, ogStory, ogPhotoCard, ogPhotoThumb } from './og.mjs';
 import { photoForSources, loadPhoto, photoDataUri, ensureCardVariants } from './photo.mjs';
 import { ogSlug } from './template.mjs';
+import { syncArchive, loadArchive } from './archive.mjs';
 import * as C from './content.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -149,13 +150,10 @@ const P = await import('./pages.mjs');
 const NE = await import('./pages-ne.mjs');
 
 const today = JSON.parse(readFileSync(join(ROOT, 'today.json'), 'utf8'));
-const archiveDir = join(ROOT, 'data', 'updates');
-const posts = existsSync(archiveDir)
-  ? readdirSync(archiveDir).filter(f => f.endsWith('.json'))
-      .map(f => JSON.parse(readFileSync(join(archiveDir, f), 'utf8')))
-      .map(p => ({ ...p, url: `/updates/${p.slug}/` }))
-      .sort((a, b) => new Date(b.time) - new Date(a.time))
-  : [];
+/* Copy today's briefings into the archive before drawing cards, so a briefing
+   published since the last build gets its share card in this same run. */
+syncArchive(today);
+const posts = loadArchive();
 
 const ctx = { posts, event, today, modified: event.asOf, buildDay: '' };
 
