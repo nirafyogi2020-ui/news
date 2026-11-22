@@ -8,7 +8,7 @@ import { readFileSync } from 'node:fs';
 import { readDistricts } from '../functions/api/_figures-core.js';
 import { latestDistricts } from '../functions/api/figures.js';
 import { firstEarlierDetail, repairDetails } from '../src/figures-update.mjs';
-import { planCards, coveredDays, usedUrls, nptDay, oneSentence, statesAToll, pruneStaleAutoCards, pruneArchivedAutoCards, recordWithdrawn, cardId } from '../src/briefings-update.mjs';
+import { planCards, coveredDays, usedUrls, nptDay, oneSentence, statesAToll, pruneStaleAutoCards, pruneArchivedAutoCards, recordWithdrawn, cardId, titleFingerprint } from '../src/briefings-update.mjs';
 
 const BULLETIN = 'जसमध्ये रसुवामा ४५ जना, नुवाकोटमा १ सय ५५ जना, धादिङमा ५९ जना, ' +
   'चितवनमा ३ सय ४८ जना, गोरखामा ६८ जना, तनहुँमा ३८ जना, नवलपरासी पूर्वमा २ सय १७ जना र ' +
@@ -172,4 +172,13 @@ test('two Nepali headlines on one day get two different ids, and the same headli
   assert.match(a, /^auto-2026-11-05-[0-9a-f]{8}$/);
   assert.equal(cardId('2026-11-05', 'बाढीले बगर बनाएको खेतमा बदामखेती'), a);
   assert.equal(cardId('2026-11-06', 'Dry landslide blocks Kaligandaki corridor in Gulmi'), 'auto-2026-11-06-dry-landslide-blocks-kaligandaki-corridor-in-gulmi');
+});
+
+test('two different Nepali headlines get different duplicate keys', () => {
+  const a = titleFingerprint('रसुवामा बाढी, तीन जना बेपत्ता');
+  const b = titleFingerprint('चितवनमा थप दुई शव भेटिए');
+  assert.ok(a && b);
+  assert.notEqual(a, b);
+  assert.equal(titleFingerprint('Flood in Rasuwa: 3 missing'), titleFingerprint('Flood in Rasuwa — 3 missing'));
+  assert.ok(titleFingerprint('!!!'));
 });

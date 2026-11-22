@@ -154,6 +154,21 @@ export function cardId(day, title) {
 }
 
 /**
+ * The key two near-identical headlines share. It keeps letters of any script
+ * (Devanagari included, with its vowel signs), so two different Nepali
+ * headlines no longer both reduce to an empty key and drop one story.
+ */
+export function titleFingerprint(title) {
+  const key = String(title || '')
+    .normalize('NFKC')
+    .toLowerCase()
+    .replace(/[^\p{L}\p{M}\p{N}]+/gu, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 40);
+  return key || createHash('sha1').update(String(title || '')).digest('hex').slice(0, 8);
+}
+
+/**
  * Turn feed items into the cards a gap needs.
  *
  * Deliberately dull: it picks, it does not write. The headline is the
@@ -193,7 +208,7 @@ export function planCards(items, { today, archive, now = Date.now(), startedAt =
 
     /* Two newsrooms relaying the same bulletin produce near-identical
        headlines. One of them is a card; the second is noise. */
-    const fingerprint = slugify(item.title).slice(0, 40);
+    const fingerprint = titleFingerprint(item.title);
     if (takenTitles.has(fingerprint)) continue;
     takenTitles.add(fingerprint);
 

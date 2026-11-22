@@ -213,7 +213,7 @@ test('BIPAD sums the records that do carry figures', () => {
    three-day-old date, which is the failure this change exists to remove.
    ----------------------------------------------------------------------- */
 import {
-  replaceField, replaceString, readString, nptIso, nptStamp, addTimelineEntry, refreshAsOf
+  replaceField, replaceString, readString, nptIso, nptStamp, addTimelineEntry, refreshAsOf, keepNewerEvidence
 } from '../src/figures-update.mjs';
 
 const CONTENT_SAMPLE = [
@@ -444,4 +444,28 @@ test('a treatment count that does not add up leaves the district sum standing', 
   const item = { title: 'बाढी अपडेट', body, source: 'Nepal Police', url: 'https://nepalpolice.gov.np/ne/news/1/', time: '2026-10-14T12:00:00+05:45' };
   const board = verifiedBoard([item], { asOf: '2026-10-12T06:00:00+05:45', figures: { dead: { metric: 'dead', value: 1400, time: '2026-10-12T06:00:00+05:45' } } });
   assert.equal(board.dead.value, 1456);
+});
+
+test('a downward correction is written as one, not as an increase', () => {
+  const figure = { source: 'Nepal Police', time: '2026-09-02T10:29:39.000Z' };
+  const out = addTimelineEntry(CONTENT_SAMPLE, figure, { from: 800, to: 790 });
+  assert.ok(out.includes('reported at 790, down from 800'));
+  assert.ok(!out.includes('up from 800'));
+});
+
+test('a later return to an earlier count is still recorded', () => {
+  const first = addTimelineEntry(CONTENT_SAMPLE,
+    { source: 'Nepal Police', time: '2026-09-02T10:29:39.000Z' }, { from: 768, to: 800 });
+  const second = addTimelineEntry(first,
+    { source: 'Nepal Police', time: '2026-09-03T10:29:39.000Z' }, { from: 790, to: 800 });
+  assert.equal(second.split('reported at 800,').length - 1, 2);
+});
+
+test('a newer source for the same count is saved as evidence; an older one is not', () => {
+  const event = { figures: { dead: { value: 1458, source: 'Old', time: '2026-10-14T12:00:00+05:45' } } };
+  assert.equal(keepNewerEvidence(event, 'dead', { value: 1458, source: 'New', time: '2026-10-15T12:00:00+05:45' }), true);
+  assert.equal(event.figures.dead.source, 'New');
+  assert.equal(keepNewerEvidence(event, 'dead', { value: 1458, source: 'Older', time: '2026-10-13T12:00:00+05:45' }), false);
+  assert.equal(event.figures.dead.source, 'New');
+  assert.equal(keepNewerEvidence(event, 'dead', { value: 1458, source: 'Undated', time: null }), false);
 });

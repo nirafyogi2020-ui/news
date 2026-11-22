@@ -92,6 +92,7 @@ async function main() {
   if(responseMoved)event.response=board.response;
   const applied = [];
   const skipped = [];
+  let evidenceMoved = false;
 
   for (const [metric, label] of Object.entries(STAT_LABELS)) {
     const figure = board.board && board.board[metric];
@@ -101,7 +102,12 @@ async function main() {
     if (!stat) { skipped.push(`${metric}: no counter labelled "${label}"`); continue; }
 
     const current = Number(String(stat.value).replace(/\D/g, '')) || 0;
-    if (current === figure.value) continue;
+    if (current === figure.value) {
+      /* The same count from a newer bulletin is still new evidence. Save it,
+         so the "as of" line it moves points at a source the file holds. */
+      if (keepNewerEvidence(event, metric, figure)) evidenceMoved = true;
+      continue;
+    }
 
     if (current > 0 && figure.value > current * MAX_JUMP) {
       skipped.push(`${metric}: ${current} → ${figure.value} is more than ${MAX_JUMP}× — left for a person`);
@@ -149,14 +155,14 @@ async function main() {
      makes the audit correctly stop the whole publisher before it can commit. */
   const freshnessMoved = refreshAsOf(event, board.board);
 
-  if (!applied.length && !districtsMoved && !repaired && !freshnessMoved && !responseMoved) {
+  if (!applied.length && !districtsMoved && !repaired && !freshnessMoved && !responseMoved && !evidenceMoved) {
     report(false, skipped.length ? 'no counter moved. ' + skipped.join('; ') : 'no counter moved');
     return;
   }
 
   if (!applied.length) {
     writeFileSync(EVENT, JSON.stringify(event, null, 2) + '\n');
-    report(true, districtsMoved ? 'district breakdown updated' : freshnessMoved ? 'figure freshness updated' : 'counter detail repaired');
+    report(true, districtsMoved ? 'district breakdown updated' : freshnessMoved ? 'figure freshness updated' : evidenceMoved ? 'newer source for an unchanged figure' : 'counter detail repaired');
     return;
   }
 
@@ -165,11 +171,15 @@ async function main() {
   const newest = applied
     .map(a => board.board[a.metric])
     .sort((a, b) => new Date(b.time || 0) - new Date(a.time || 0))[0];
-  if (newest && newest.time) event.asOf = newest.time;
-  if (newest && newest.source) {
-    event.asOfSource = newest.statedTime
-      ? `${newest.source}, ${newest.statedTime}`
-      : newest.source;
+  /* Only ever forward: a change that arrives late, from an older bulletin,
+     must not pull the "as of" line back behind evidence already shown. */
+  if (newest && newest.time && !(Date.parse(newest.time) <= Date.parse(event.asOf))) {
+    event.asOf = newest.time;
+    if (newest.source) {
+      event.asOfSource = newest.statedTime
+        ? `${newest.source}, ${newest.statedTime}`
+        : newest.source;
+    }
   }
 
   writeFileSync(EVENT, JSON.stringify(event, null, 2) + '\n');
@@ -188,6 +198,17 @@ async function main() {
  * published figure. This changes no number. It records when the page last had
  * evidence for the numbers it is showing, which is what the audit checks.
  */
+/** Save a same-count figure when it is newer than the evidence on file. */
+export function keepNewerEvidence(event, metric, figure) {
+  const saved = event.figures && event.figures[metric];
+  const after = Date.parse(figure && figure.time);
+  if (!isFinite(after)) return false;
+  if (saved && saved.value === figure.value && Date.parse(saved.time) >= after) return false;
+  event.figures ||= {};
+  event.figures[metric] = figure;
+  return true;
+}
+
 export function refreshAsOf(event, figures) {
   const candidates = Object.values(figures || [])
     .filter(f => f && f.time && !isNaN(new Date(f.time).getTime()))
@@ -313,14 +334,23 @@ export function addTimelineEntry(text, figure, change) {
   if (end === -1) return text;
 
   const block = text.slice(start, end);
+  const to = change.to.toLocaleString('en-US');
+  const from = change.from.toLocaleString('en-US');
+  /* A correction downwards is written as one; it is not an increase. */
+  const movement = change.to > change.from ? `up from ${from}`
+    : change.to < change.from ? `down from ${from}`
+    : `unchanged from ${from}`;
   const line =
-    `Nepal's confirmed death toll is reported at ${change.to.toLocaleString('en-US')}, ` +
-    `up from ${change.from.toLocaleString('en-US')}, by ${figure.source || 'the published report'}.`;
+    `Nepal's confirmed death toll is reported at ${to}, ` +
+    `${movement}, by ${figure.source || 'the published report'}.`;
 
-  /* Already recorded, by this script or by an editor. */
-  if (block.includes(`reported at ${change.to.toLocaleString('en-US')}`)) return text;
-
+  /* Already recorded for this bulletin time. Keyed by time as well as count,
+     so a later return to an earlier count is still recorded. */
   const stamp = nptStamp(figure.time);
+  const recorded = block.split('\n').some(row =>
+    row.includes(`['${stamp}',`) && row.includes(`reported at ${to},`));
+  if (recorded) return text;
+
   const row = `  ['${stamp}', ${JSON.stringify(line)}],\n`;
   return text.slice(0, end + 1) + row + text.slice(end + 1);
 }
