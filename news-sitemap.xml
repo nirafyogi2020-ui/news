@@ -8,7 +8,7 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-22T01:12:46.000Z</news:publication_date>
+      <news:publication_date>2026-11-22T01:58:15.000Z</news:publication_date>
       <news:title>Nepal Flood Live: 1,458 dead, 5,285 missing in Rasuwa, 14 Oct</news:title>
     </news:news>
   </url>
@@ -19,8 +19,19 @@
         <news:name>Nepal Disaster Update Live</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-11-22T01:12:46.000Z</news:publication_date>
+      <news:publication_date>2026-11-22T01:58:15.000Z</news:publication_date>
       <news:title>Rasuwa flood: live updates</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-22-auto-2026-11-22-partly-cloudy-forecast-for-madhesh-and-koshi-provinces/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Nepal Disaster Update Live</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-22T01:58:15.000Z</news:publication_date>
+      <news:title>Partly cloudy forecast for Madhesh and Koshi Provinces</news:title>
     </news:news>
   </url>
   <url>
@@ -98,17 +109,6 @@
       </news:publication>
       <news:publication_date>2026-11-20T02:00:12.000Z</news:publication_date>
       <news:title>भोटेकोशी विपद्लाई विश्वका लागि चेतावनीका रूपमा प्रस्तुत</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/updates/2026-11-20-auto-2026-11-20-8efa660c/</loc>
-    <news:news>
-      <news:publication>
-        <news:name>Nepal Disaster Update Live</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-20T01:53:15.000Z</news:publication_date>
-      <news:title>विपद्को पूर्वसूचना दिने ‘सेल ब्रोडकास्टिङ’ प्रणाली परीक्षण गरिँदै, सिमकार्ड र इन्टरनेटविना पनि काम गर्ने</news:title>
     </news:news>
   </url>
 </urlset>

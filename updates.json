@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22T01:12:46.000Z",
+  "updated": "2026-11-22T01:58:15.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-22-auto-2026-11-22-partly-cloudy-forecast-for-madhesh-and-koshi-provinces/",
+      "title": "Partly cloudy forecast for Madhesh and Koshi Provinces",
+      "time": "2026-11-22T01:58:15.000Z",
+      "summary": "KATHMANDU: Western Nepal is currently experiencing the partial influence of westerly winds, while eastern Nepal is being partly affected by a low-pressure area near Odisha, India.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
     {
       "url": "/updates/2026-11-22-auto-2026-11-22-ef6afd09/",
       "title": "बाह्रै महिना पदयात्राका लागि आकर्षक गन्तव्य बन्दै गोसाइँकुण्ड",
