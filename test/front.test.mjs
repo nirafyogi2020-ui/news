@@ -205,6 +205,13 @@ test('real headlines that must stay on the front page', () => {
     'भोटेकोशी बाढी प्रभावित क्याम्पस पुन: सञ्चालन गर्न एनसेल फाउन्डेसनको शैक्षिक पूर्वाधार सहयोग',
     '४ युरोपेली देशमा गुञ्जिँदै ‘मंगोलियन हार्ट’, संकलित रकम बाढी प्रभावितलाई',
     'खतरनाक बन्यो चक्रवात ‘अर्नब’, नेपालमा पनि उच्च सतर्कता',
+    // A tourism or sport word next to real damage, danger or aid.
+    'Flood sweeps away three hotels in Melamchi',
+    'Landslide buries hotel in Rasuwa',
+    'Earthquake damages hotels in Kathmandu',
+    'Tourism minister visits flood-hit Rasuwa',
+    'बाढीले मेलम्चीका तीन होटल बगायो',
+    'भूकम्पले काठमाडौंका होटलमा क्षति',
   ]) {
     assert.ok(isNepalDisasterHeadline(t), `should stay: ${t}`);
     assert.ok(!isOffSubject(t), `not off subject: ${t}`);
@@ -223,6 +230,8 @@ test('sport, tourism and foreign disasters stay off the front page', () => {
     'Dusit Thani Dhulikhel holds first cake-mixing ceremony',
     'Nepal beat UAE in rain-hit T20 tri-series opener',
     'Rasuwa football tournament draws crowds in Dhunche',
+    'Tourists return to Gosaikunda after the flood',
+    'Cricket league resumes in Rasuwa after the flood',
     'Nepse loses ground as trading slows and investors favour select stocks',
     'Why Nepal must separate crypto from the future of banking',
   ]) {

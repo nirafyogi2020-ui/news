@@ -87,9 +87,6 @@ const OFF_SUBJECT = new RegExp([
   'festival', 'दशैं', 'दसैँ',
   'election', 'candidates?', 'निर्वाचन', 'चुनाव', 'उम्मेदवार', 'मतदान',
   'shooting', 'shot dead', 'गोली प्रहार',
-  /* Sport. */
-  'football', 'futsal', 'cricket', '\\bNPL\\b', '\\bT20', '\\bODI\\b', 'wickets?', 'innings', 'tri-series',
-  'league', 'tournament', 'stadium', 'फुटबल', 'क्रिकेट', 'खेलकुद', 'खेलाडी', 'रंगशाला', 'रङ्गशाला',
 ].join('|'), 'i');
 
 /* What rescues an off-subject headline: the disaster itself, not a place
@@ -105,11 +102,19 @@ const STRONG_DISASTER = new RegExp([
   'हिमपहिरो', 'चक्रवात', 'आगलागी', 'डुबान', 'चट्याङ', 'पीडित',
 ].join('|'), 'i');
 
-/* Tourism and hospitality stories. A flood word does not rescue these:
-   "tourists return to Gosaikunda after the flood" is a travel story. Only
-   people in danger do (tourists missing, stranded, rescued). */
+/* Sport and tourism stories. A flood word alone does not rescue these:
+   "tourists return to Gosaikunda after the flood" is a travel story. They
+   stay only when the disaster did something to someone or something in them:
+   a flood that sweeps away hotels, tourists stranded, aid for the victims,
+   a minister visiting a flood-hit district. */
+const SPORT_WORDS = new RegExp([
+  'football', 'futsal', 'cricket', '\\bNPL\\b', '\\bT20', '\\bODI\\b', 'wickets?', 'innings', 'tri-series',
+  'league', 'tournament', 'stadium', 'फुटबल', 'क्रिकेट', 'खेलकुद', 'खेलाडी', 'रंगशाला', 'रङ्गशाला',
+].join('|'), 'i');
 const TOURISM_WORDS = /\b(?:tourism|tourists?|resorts?|hotels?|travel awards?|trekking destination|cake-mixing)\b|पर्यटक|पर्यटन|पदयात्रा|गन्तव्य|होटल|रिसोर्ट/i;
-const HARM_WORDS = /\b(?:dead|killed|died|death|missing|rescued?|stranded|injured|trapped|bodies|evacuat\w*|victims?|displaced)\b|बेपत्ता|उद्धार|मृत्यु|घाइते|फसे|शव|ज्यान|पीडित/i;
+const HARM_WORDS = new RegExp('\\b(?:dead|killed|died|death|missing|rescued?|stranded|injured|trapped|bodies|evacuat\\w*|victims?|displaced'
+  + '|sweeps?|swept|bur(?:y|ies|ied)|damag(?:e|es|ed)|destro(?:y|ys|yed)|collaps(?:e|es|ed)|hit|affected|relief|aid)\\b'
+  + '|बेपत्ता|उद्धार|मृत्यु|घाइते|फसे|शव|ज्यान|पीडित|बगायो|बगाए|पुरियो|क्षति|ध्वस्त|प्रभावित|राहत', 'i');
 
 /* Money-market stories borrow disaster words as figures of speech: a share
    index "collapses", tech stocks suffer a "landslide" (पहिरो). The disaster
@@ -130,7 +135,7 @@ const PUN_WORDS = /\bflood-?lit\b|\bflood-?lights?\b|\bflood-?lighting\b/i;
 const RULES = {
   disaster: DISASTER_WORDS, foreign: FOREIGN_WORDS, nepal: NEPAL_WORDS,
   market: MARKET_WORDS, crypto: CRYPTO_WORDS, pun: PUN_WORDS,
-  tourism: TOURISM_WORDS, harm: HARM_WORDS, off: OFF_SUBJECT, strong: STRONG_DISASTER,
+  sport: SPORT_WORDS, tourism: TOURISM_WORDS, harm: HARM_WORDS, off: OFF_SUBJECT, strong: STRONG_DISASTER,
 };
 
 /** The rules as [source, flags] pairs, for the page's own script to rebuild. */
@@ -146,7 +151,7 @@ export const FRONT_RULE_SOURCES = Object.fromEntries(
 export function headlineVerdict(title, R) {
   var t = String(title || '');
   if (R.market.test(t) || R.crypto.test(t) || R.pun.test(t)) return 'off';
-  if (R.tourism.test(t) && !R.harm.test(t)) return 'off';
+  if ((R.sport.test(t) || R.tourism.test(t)) && !(R.strong.test(t) && R.harm.test(t))) return 'off';
   if (R.off.test(t) && !R.strong.test(t)) return 'off';
   if (!R.disaster.test(t)) return 'none';
   if (R.foreign.test(t) && !R.nepal.test(t)) return 'foreign';
