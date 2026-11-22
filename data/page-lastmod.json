@@ -1,7 +1,7 @@
 {
   "/": {
-    "hash": "61d4b3cc1a6ca1cd",
-    "lastmod": "2026-11-22T15:32:01.001Z"
+    "hash": "52b4a3caf5b12aa7",
+    "lastmod": "2026-11-22T15:41:04.907Z"
   },
   "/about/": {
     "hash": "11db15ee2e859dda",
@@ -60,8 +60,8 @@
     "lastmod": "2026-11-06T18:37:29.000Z"
   },
   "/nepal-flood/rasuwa/": {
-    "hash": "865ec056c32573c6",
-    "lastmod": "2026-11-22T14:54:19.797Z"
+    "hash": "c5a610486c04091c",
+    "lastmod": "2026-11-22T15:25:00.000Z"
   },
   "/nepal-flood/rasuwa/casualties/": {
     "hash": "fe33f90ff47f04c6",
@@ -84,8 +84,8 @@
     "lastmod": "2026-10-31T08:41:32.000Z"
   },
   "/nepal-flood/rasuwa/live-updates/": {
-    "hash": "2e1415b3624696b7",
-    "lastmod": "2026-11-22T02:00:06.000Z"
+    "hash": "e021a0816e2cffc9",
+    "lastmod": "2026-11-22T15:25:00.000Z"
   },
   "/nepal-flood/rasuwa/map/": {
     "hash": "0c574e027eb3d554",
@@ -108,7 +108,7 @@
     "lastmod": "2026-10-31T08:41:32.000Z"
   },
   "/updates/": {
-    "hash": "bbb98d2b8f7f2b55",
-    "lastmod": "2026-11-22T02:00:06.000Z"
+    "hash": "d8ec2847ef9c6edd",
+    "lastmod": "2026-11-22T15:25:00.000Z"
   }
 }

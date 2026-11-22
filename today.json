@@ -1,6 +1,22 @@
 {
-  "updated": "2026-11-22T01:58:15.000Z",
+  "updated": "2026-11-22T15:25:00.000Z",
   "posts": [
+    {
+      "id": "auto-2026-11-22-b5b3256d",
+      "title": "विपद्को जोखिम र स्थानीयको भावना बुझेर बस्ती पुनर्निर्माण गर्नुपर्छ : गगन थापा",
+      "time": "2026-11-22T15:25:00.000Z",
+      "image": "https://www.onlinekhabar.com/wp-content/uploads/2026/11/gagan-thapa-8.jpg",
+      "body": [
+        "सभापति थापाले पुनर्निर्माणलाई निजी आवास निर्माणमा मात्र सीमित नगरी प्रभावित क्षेत्रको समग्र पुनर्स्थापना र आर्थिक गतिविधि सञ्चालनलाई प्राथमिकता दिन सरकारसँग आग्रह गरे ।"
+      ],
+      "sources": [
+        {
+          "name": "Onlinekhabar (Nepali)",
+          "url": "https://www.onlinekhabar.com/2026/11/2063458/settlements-should-be-reconstructed-by-understanding-disaster-risks-and-the-feelings-of-locals-gagan-thapa"
+        }
+      ],
+      "auto": true
+    },
     {
       "id": "auto-2026-11-22-partly-cloudy-forecast-for-madhesh-and-koshi-provinces",
       "title": "Partly cloudy forecast for Madhesh and Koshi Provinces",
@@ -13,22 +29,6 @@
         {
           "name": "Nepalnews",
           "url": "https://english.nepalnews.com/s/weather/partly-cloudy-forecast-for-madhesh-and-koshi-provinces/"
-        }
-      ],
-      "auto": true
-    },
-    {
-      "id": "auto-2026-11-22-ef6afd09",
-      "title": "बाह्रै महिना पदयात्राका लागि आकर्षक गन्तव्य बन्दै गोसाइँकुण्ड",
-      "time": "2026-11-22T01:12:46.000Z",
-      "image": "https://www.khabarhub.com/wp-content/uploads/2026/11/gosaikunda-400x220.jpg",
-      "body": [
-        "रसुवा– रसुवाको उच्च हिमाली क्षेत्रमा अवस्थित धार्मिक तथा पर्यटकीयस्थल गोसाइँकुण्ड बाह्रै महिना पदयात्रा र धार्मिक भ्रमणका लागि आकर्षक गन्तव्य बन्दै गएको छ ।"
-      ],
-      "sources": [
-        {
-          "name": "Khabarhub",
-          "url": "https://khabarhub.com/2026/22/1050148/"
         }
       ],
       "auto": true
@@ -226,17 +226,17 @@
       "auto": true
     },
     {
-      "id": "auto-2026-11-17-7a5f8e9b",
-      "title": "रसुवाको डिल्पु कुण्ड : पर्यटकलाई पर्खिरहेछ",
-      "time": "2026-11-17T00:39:51.000Z",
-      "image": "https://www.khabarhub.com/wp-content/uploads/2026/11/dilpu-kundd-rasuwa-400x220.jpg",
+      "id": "auto-2026-11-17-beyond-hydropower-rethinking-nepal-s-energy-security-after-t",
+      "title": "Beyond hydropower: Rethinking Nepal's energy security after the Bhotekoshi disaster",
+      "time": "2026-11-17T04:58:25.000Z",
+      "image": "https://thehimalayantimes.com/thehimalayantimes/uploads/images/2026/11/17/51814.JPG",
       "body": [
-        "रसुवा– हिमाली जिल्ला रसुवा प्राकृतिक सौन्दर्य, धार्मिक आस्था र जैविक विविधतामा धनी रहेको छ । यहाँको गोसाइँकुण्ड र पार्वतीकुण्डजस्ता गन्तव्य स्वदेश तथा विदेशमा परिचित रहे पनि कतिपय आकर्षक स्थल अझै प्रचारप्रसारको पर्खाइमा छन् ।"
+        "Nepal stands at a critical turning point in its energy development journey. Over the past decade, the country has made significant progress in hydropower development, electricity a..."
       ],
       "sources": [
         {
-          "name": "Khabarhub",
-          "url": "https://khabarhub.com/2026/17/1048428/"
+          "name": "The Himalayan Times",
+          "url": "https://thehimalayantimes.com/business/beyond-hydropower-rethinking-nepals-energy-security-after-the-bhotekoshi-disaster"
         }
       ],
       "auto": true
@@ -461,22 +461,6 @@
         {
           "name": "Khabarhub",
           "url": "https://khabarhub.com/2026/13/1047169/"
-        }
-      ],
-      "auto": true
-    },
-    {
-      "id": "auto-2026-11-12-86cb352d",
-      "title": "बाढीपछि गोसाइँकुण्डमा पर्यटकको चहलपहल बढ्दै",
-      "time": "2026-11-12T00:36:58.000Z",
-      "image": "https://www.khabarhub.com/wp-content/uploads/2026/11/gosaikunda1-400x220.jpg",
-      "body": [
-        "रसुवा– धार्मिक आस्था, प्राकृतिक सौन्दर्य र जैविक विविधताले भरिपूर्ण रसुवाको प्रसिद्ध तीर्थस्थल गोसाइँकुण्डमा आन्तरिक तथा बाह्य पर्यटकको आगमन पुनः बढ्न थालेको छ ।"
-      ],
-      "sources": [
-        {
-          "name": "Khabarhub",
-          "url": "https://khabarhub.com/2026/12/1046973/"
         }
       ],
       "auto": true

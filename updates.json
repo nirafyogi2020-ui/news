@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22T01:58:15.000Z",
+  "updated": "2026-11-22T15:25:00.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -113,21 +113,21 @@
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
     {
+      "url": "/updates/2026-11-22-auto-2026-11-22-b5b3256d/",
+      "title": "विपद्को जोखिम र स्थानीयको भावना बुझेर बस्ती पुनर्निर्माण गर्नुपर्छ : गगन थापा",
+      "time": "2026-11-22T15:25:00.000Z",
+      "summary": "सभापति थापाले पुनर्निर्माणलाई निजी आवास निर्माणमा मात्र सीमित नगरी प्रभावित क्षेत्रको समग्र पुनर्स्थापना र आर्थिक गतिविधि सञ्चालनलाई प्राथमिकता दिन सरकारसँग आग्रह गरे ।",
+      "sources": [
+        "Onlinekhabar (Nepali)"
+      ]
+    },
+    {
       "url": "/updates/2026-11-22-auto-2026-11-22-partly-cloudy-forecast-for-madhesh-and-koshi-provinces/",
       "title": "Partly cloudy forecast for Madhesh and Koshi Provinces",
       "time": "2026-11-22T01:58:15.000Z",
       "summary": "KATHMANDU: Western Nepal is currently experiencing the partial influence of westerly winds, while eastern Nepal is being partly affected by a low-pressure area near Odisha, India.",
       "sources": [
         "Nepalnews"
-      ]
-    },
-    {
-      "url": "/updates/2026-11-22-auto-2026-11-22-ef6afd09/",
-      "title": "बाह्रै महिना पदयात्राका लागि आकर्षक गन्तव्य बन्दै गोसाइँकुण्ड",
-      "time": "2026-11-22T01:12:46.000Z",
-      "summary": "रसुवा– रसुवाको उच्च हिमाली क्षेत्रमा अवस्थित धार्मिक तथा पर्यटकीयस्थल गोसाइँकुण्ड बाह्रै महिना पदयात्रा र धार्मिक भ्रमणका लागि आकर्षक गन्तव्य बन्दै गएको छ ।",
-      "sources": [
-        "Khabarhub"
       ]
     },
     {
@@ -248,12 +248,12 @@
       ]
     },
     {
-      "url": "/updates/2026-11-17-auto-2026-11-17-7a5f8e9b/",
-      "title": "रसुवाको डिल्पु कुण्ड : पर्यटकलाई पर्खिरहेछ",
-      "time": "2026-11-17T00:39:51.000Z",
-      "summary": "रसुवा– हिमाली जिल्ला रसुवा प्राकृतिक सौन्दर्य, धार्मिक आस्था र जैविक विविधतामा धनी रहेको छ । यहाँको गोसाइँकुण्ड र पार्वतीकुण्डजस्ता गन्तव्य स्वदेश तथा विदेशमा परिचित रहे पनि कतिपय आकर्षक स्थल अझै प्रचारप्रसारको पर्खाइमा छन् ।",
+      "url": "/updates/2026-11-17-auto-2026-11-17-beyond-hydropower-rethinking-nepal-s-energy-security-a/",
+      "title": "Beyond hydropower: Rethinking Nepal's energy security after the Bhotekoshi disaster",
+      "time": "2026-11-17T04:58:25.000Z",
+      "summary": "Nepal stands at a critical turning point in its energy development journey. Over the past decade, the country has made significant progress in hydropower development, electricity a...",
       "sources": [
-        "Khabarhub"
+        "The Himalayan Times"
       ]
     },
     {
@@ -378,15 +378,6 @@
       "title": "झोलुङ्गे पुल निर्माणपछिस्थानीयलाई आवतजावतमा सहज",
       "time": "2026-11-13T00:12:37.000Z",
       "summary": "सिन्धुपाल्चोक– सिन्धुपाल्चोकको बाह्रबिसे नगरपालिका र त्रिपुरासुन्दरी गाउँपालिकालाई जोड्ने १६४ मिटर लामो झोलुङ्गे पुल निर्माण सम्पन्न भएको छ ।",
-      "sources": [
-        "Khabarhub"
-      ]
-    },
-    {
-      "url": "/updates/2026-11-12-auto-2026-11-12-86cb352d/",
-      "title": "बाढीपछि गोसाइँकुण्डमा पर्यटकको चहलपहल बढ्दै",
-      "time": "2026-11-12T00:36:58.000Z",
-      "summary": "रसुवा– धार्मिक आस्था, प्राकृतिक सौन्दर्य र जैविक विविधताले भरिपूर्ण रसुवाको प्रसिद्ध तीर्थस्थल गोसाइँकुण्डमा आन्तरिक तथा बाह्य पर्यटकको आगमन पुनः बढ्न थालेको छ ।",
       "sources": [
         "Khabarhub"
       ]
