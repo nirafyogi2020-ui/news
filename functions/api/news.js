@@ -133,7 +133,11 @@ const FLUFF = /expresses?\s+(deep\s+)?(sorrow|condolences?|grief|sympath\w*)|ext
 export async function onRequestGet(context) {
   const { request, env } = context;
   const cache = caches.default;
-  const cacheKey = new Request(new URL(request.url).toString(), request);
+  // No query string takes part: none changes the answer, and a random one
+  // would otherwise skip the cache and refetch every upstream source.
+  const keyUrl = new URL(request.url);
+  keyUrl.search = '';
+  const cacheKey = new Request(keyUrl.toString(), request);
 
   const cached = await cache.match(cacheKey);
   if (cached) return cached;

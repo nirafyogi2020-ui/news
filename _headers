@@ -42,9 +42,14 @@
   ! Content-Security-Policy
   Content-Security-Policy: frame-ancestors *
 
+# Every rule below that sets its own Cache-Control first detaches the one from
+# /* above. Cloudflare joins the values of every matching rule, so without the
+# "! Cache-Control" line a file was sent two lifetimes at once.
+
 # Stylesheet has no content hash in its name, so it is revalidated hourly and
 # served stale while that happens rather than blocking a page load.
 /assets/*
+  ! Cache-Control
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
 
 # The share and card pictures were being answered with `Content-Type:
@@ -53,6 +58,7 @@
 # and the cards collapsed to text. Stating the type here settles it.
 /assets/og/*
   Content-Type: image/png
+  ! Cache-Control
   Cache-Control: public, max-age=31536000, immutable
 
 /robots.txt
@@ -68,40 +74,52 @@
   Content-Type: application/xml; charset=utf-8
 
 /favicon.svg
+  ! Cache-Control
   Cache-Control: public, max-age=86400
 
 /favicon.ico
+  ! Cache-Control
   Cache-Control: public, max-age=604800
 
 /apple-touch-icon.png
+  ! Cache-Control
   Cache-Control: public, max-age=604800
 
 /favicon-96x96.png
+  ! Cache-Control
   Cache-Control: public, max-age=604800
 
 /icon-192.png
+  ! Cache-Control
   Cache-Control: public, max-age=604800
 
 /icon-512.png
+  ! Cache-Control
   Cache-Control: public, max-age=604800
 
 /logo.png
+  ! Cache-Control
   Cache-Control: public, max-age=604800
 
 /site.webmanifest
+  ! Cache-Control
   Cache-Control: public, max-age=86400
 
 /og-image.png
+  ! Cache-Control
   Cache-Control: public, max-age=86400
 
 /qr-pmo-nepal.jpg
+  ! Cache-Control
   Cache-Control: public, max-age=86400
 
 # Data files the dashboard fetches. Short cache: these carry casualty figures.
 /event.json
+  ! Cache-Control
   Cache-Control: public, max-age=60, stale-while-revalidate=300
   Access-Control-Allow-Origin: *
 
 /today.json
+  ! Cache-Control
   Cache-Control: public, max-age=60, stale-while-revalidate=300
   Access-Control-Allow-Origin: *
