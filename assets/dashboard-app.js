@@ -2026,6 +2026,7 @@ var LiveFeed = (function(){
       .then(function(data){
         latest = data.items || [];
         lastCheck = Date.now();
+        try { window.dispatchEvent(new CustomEvent('news-data', { detail: data })); } catch(e){}
         renderEconomicLoss(data.economicLoss);
         renderReliefFund(data.reliefFund);
         var editorial = latest.filter(function(i){ return i.kind !== 'quake' && i.kind !== 'video'; });
@@ -2051,7 +2052,10 @@ var LiveFeed = (function(){
         renderTodayGeneral();
 
         if(quakeEl && !latest.some(function(i){ return i.kind === 'quake'; })){
-          quakeEl.innerHTML = '<p style="font-size:0.88rem; color:var(--text-faint);">No earthquakes above magnitude 3.5 recorded in the Nepal region in this window. That is good news.</p>';
+          var quakeFailed = (data.errors || []).some(function(e){ return String(e).indexOf('usgs') === 0; });
+          quakeEl.innerHTML = quakeFailed
+            ? '<p style="font-size:0.88rem; color:var(--text-faint);">The US Geological Survey earthquake feed is not responding right now. It can be read directly at <a href="https://earthquake.usgs.gov/earthquakes/map/" target="_blank" rel="noopener">earthquake.usgs.gov</a>.</p>'
+            : '<p style="font-size:0.88rem; color:var(--text-faint);">No earthquakes above magnitude 3.5 recorded in the Nepal region in this window. That is good news.</p>';
         }
         if(badge && latest.length){ badge.hidden = false; badge.textContent = latest.length; }
         var dot = document.getElementById('live-dot');
@@ -2160,7 +2164,7 @@ var LiveFeed = (function(){
       .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)); })
       .then(function(data){
         var latest = data.latest;
-        if(!latest || !latest.pdf){
+        if(!latest || !latest.pdf || !/^https:\/\/([a-z0-9-]+\.)*gov\.np\//i.test(latest.pdf)){
           el.textContent = ' No newer official report indexed on ndrrma.gov.np yet.';
           return;
         }
@@ -2261,12 +2265,18 @@ var LiveFeed = (function(){
     return text.replace(/\s+,/g, ',').replace(/\s+/g, ' ').trim();
   }
 
+  function count(n){
+    return (typeof n === 'number' && isFinite(n) && n > 0 && Math.floor(n) === n) ? String(n) : '';
+  }
+
   function toll(item){
     var parts = [];
-    if(item.dead)    parts.push('<b>' + item.dead + '</b> dead');
-    if(item.missing) parts.push('<b>' + item.missing + '</b> missing');
-    if(item.injured) parts.push(item.injured + ' injured');
-    return parts.length ? parts.join(' &middot; ') : 'no casualties recorded';
+    var dead = count(item.dead), missing = count(item.missing), injured = count(item.injured);
+    if(dead)    parts.push('<b>' + dead + '</b> dead');
+    if(missing) parts.push('<b>' + missing + '</b> missing');
+    if(injured) parts.push(injured + ' injured');
+    if(parts.length) return parts.join(' &middot; ');
+    return item.lossKnown === false ? 'casualties not available' : 'no casualties recorded';
   }
 
   function row(item){
@@ -2288,7 +2298,7 @@ var LiveFeed = (function(){
         log.innerHTML =
           '<div class="log-head"><span>Date</span><span>Incident</span><span>People</span></div>' +
           items.map(row).join('');
-        status.textContent = items.length + ' verified records';
+        status.textContent = items.length + ' most recent records';
       })
       .catch(function(){
         log.innerHTML = '<p style="font-size:0.88rem; color:var(--text-faint);">' +
@@ -3879,15 +3889,20 @@ try {
     });
     if(stamp && updated) stamp.textContent = 'Live · checked ' + npt(updated);
   }
+  function show(data){
+    if(data && Array.isArray(data.items)) render(data.items.filter(function(i){ return i && i.kind !== 'video'; }), data.updated);
+  }
+  var shared = 0;
+  window.addEventListener('news-data', function(e){ shared = Date.now(); show(e.detail); });
   function load(){
+    if(Date.now() - shared < 75 * 1000) return;
     fetch('/api/news', { cache:'no-store' })
       .then(function(r){ return r.ok ? r.json() : null; })
-      .then(function(data){ if(data && Array.isArray(data.items)) render(data.items.filter(function(i){ return i && i.kind !== 'video'; }), data.updated); })
+      .then(show)
       .catch(function(){ /* keep the built fallback */ });
   }
-  load();
+  setTimeout(load, 15 * 1000);
   setInterval(load, 60 * 1000);
-  document.addEventListener('visibilitychange', function(){ if(!document.hidden) load(); });
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 

@@ -350,7 +350,7 @@ function ssrTollNepal() {
     + '<summary>'
     + '<span class="toll-flag" aria-hidden="true"><svg class="flag" style="width:18px;height:22px"><use href="#np-flag"></use></svg></span>'
     + 'Nepal'
-    + `<span class="toll-n critical">${escHtml(dead ? dead.value : '—')}</span>`
+    + `<span class="toll-n critical"${dead ? ' data-figure="dead"' : ''}>${escHtml(dead ? dead.value : '—')}</span>`
     + '</summary>'
     + '<div class="accord-body">'
     + `<p style="margin-bottom:10px;">${escHtml(intro)}</p>`
@@ -370,8 +370,11 @@ function ssrOfficial() {
   const stats = (event.stats || []).filter(s => s && s.icon !== 'day' && s.value !== 'auto:day');
   if (!stats.length) return '<p class="measure">No official figures are published yet.</p>';
 
+  /* data-figure lets the live update (assets/dashboard.js) repaint these
+     counts with the tiles, so the table never shows an older number. */
+  const metricOf = { 'confirmed dead': 'dead', 'listed missing in Nepal': 'missing', 'rescued so far': 'rescued' };
   const rows = stats.map(s =>
-    `<tr><td>${escHtml(s.label)}</td><td class="num-cell">${escHtml(s.value)}</td>`
+    `<tr><td>${escHtml(s.label)}</td><td class="num-cell"${metricOf[s.label] ? ` data-figure="${metricOf[s.label]}"` : ''}>${escHtml(s.value)}</td>`
     + `<td>${escHtml(shortDetail(s))}</td></tr>`
   ).join('');
 
@@ -1420,6 +1423,13 @@ for (const pg of pages) {
   if (pg.description.length < 70) problems.push(`description under 70 chars: ${pg.path}`);
   if (!pg.path.endsWith('/')) problems.push(`path must end in a slash: ${pg.path}`);
 }
+/* Stop here, before any generated folder is deleted or rewritten: a build
+   that fails its own checks must leave the last good pages in place. */
+if (problems.length) {
+  console.error('\nPROBLEMS (nothing was rewritten):');
+  for (const p of problems) console.error('  - ' + p);
+  process.exit(1);
+}
 
 /* -- honest last-modified dates (see src/lastmod.mjs) -----------------------
    A briefing page keeps its own publication day. Every other page gets the
@@ -1701,8 +1711,4 @@ Sitemap: ${SITE}/sitemap-index.xml
 console.log(`built ${count} pages + 404 + sitemap (${sitemapEntries.length} urls)`);
 console.log(`archive: ${posts.length} briefings`);
 console.log(`dateModified: ${modified}`);
-if (problems.length) {
-  console.error('\nPROBLEMS:');
-  for (const p of problems) console.error('  - ' + p);
-  process.exit(1);
-}
+
