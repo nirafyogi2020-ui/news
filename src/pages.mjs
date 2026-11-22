@@ -1435,12 +1435,13 @@ ${sources}
   const t = post.title.length > 46
     ? (post.title.length > 75 ? post.title.slice(0, 74).replace(/\s+\S*$/, '') + '\u2026' : post.title)
     : `${post.title} | ${SITE_NAME}`;
-  /* An automatic card is one sentence relaying a newsroom. It earns its place
-     while it is news; after that the page stays online as the record and is
-     left out of search, so the site is judged on its written pages. */
-  const relay = String(post.id || post.slug || '').includes('auto-');
+  /* Two kinds of card are made by the figures job, not written: a relay card
+     (one sentence from another newsroom) and a figures card (one sentence
+     saying the toll moved). Both stay online as the record and are left out
+     of search from the start, so the site is judged on its written pages.
+     In November 2026 Search Console had 4 pages indexed out of 162. */
   const shot = (ctx.photos || {})[ogSlug(path)];
-  const noindex = relay && Date.now() - new Date(post.time).getTime() > ARCHIVE_NOINDEX_DAYS * 86400000;
+  const noindex = isAutomaticCard(post);
   return {
     path, title: t, description: d, lastmod: nptDay(post.time), priority: '0.7', changefreq: 'weekly',
     noindex,
@@ -2156,11 +2157,15 @@ const FRONT_LIVE = {
   'rescued so far': 'rescued',
 };
 
+/** A card the figures job made rather than one written by hand. */
+export function isAutomaticCard(post) {
+  const id = String((post && (post.id || post.slug)) || '');
+  return id.includes('auto-') || /(?:^|-)latest-reported-figures$/.test(id);
+}
+
 /* Lead photograph, in order of preference: the picture that shows the event,
    not the newest briefing's press-conference frame. Every option is a real,
    credited news photograph already on this site; the first one present wins. */
-const ARCHIVE_NOINDEX_DAYS = 7;
-
 const LEAD_PHOTO_ORDER = [
   'updates-2026-08-27-rasuwa-flood',
   'updates-2026-08-27-cause-usgs',

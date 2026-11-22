@@ -25,6 +25,7 @@ import * as I from './investigation.mjs';
 import { renderInvestigation } from './dashboard.mjs';
 import { isDisasterWireHeadline } from '../functions/api/global.js';
 import { ensureCardVariants, photoSrcset, photoRepeats } from './photo.mjs';
+import { pageFingerprint, honestLastmod } from './lastmod.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const ARCHIVE = join(ROOT, 'data', 'updates');
@@ -1243,23 +1244,14 @@ index = index.replace(
 const NEWS_WINDOW_HOURS = 48;
 const newsCutoff = Date.now() - NEWS_WINDOW_HOURS * 3600 * 1000;
 
-const newsItems = [
-  /* The live dashboard counts as a news item in its own right: it is the URL
-     that carries the running coverage and the one people search for. */
-  {
-    loc: DASH_URL,
-    title: homeTitle,
-    date: modified,
-  },
-  {
-    loc: `${SITE}/nepal-flood/rasuwa/live-updates/`,
-    title: 'Rasuwa flood: live updates',
-    date: modified,
-  },
-  ...posts
-    .filter(p => new Date(p.time).getTime() >= newsCutoff)
-    .map(p => ({ loc: SITE + p.url, title: p.title, date: p.time })),
-].filter(e => new Date(e.date).getTime() >= newsCutoff);
+/* Only written briefings go in. The dashboard and the live-updates page were
+   listed here with the newest card's time as their publication date, but both
+   were first published in August, and the automatic cards are kept out of
+   search (see isAutomaticCard). With no written briefing in the last two days
+   the file is an empty, valid urlset, which Google reads as "nothing new". */
+const newsItems = posts
+  .filter(p => !P.isAutomaticCard(p) && new Date(p.time).getTime() >= newsCutoff)
+  .map(p => ({ loc: SITE + p.url, title: p.title, date: p.time }));
 
 const xmlEsc = (v) => String(v == null ? '' : v)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -1427,6 +1419,36 @@ for (const pg of pages) {
   if (pg.description.length > 200) problems.push(`description over 200 chars (${pg.description.length}): ${pg.path}`);
   if (pg.description.length < 70) problems.push(`description under 70 chars: ${pg.path}`);
   if (!pg.path.endsWith('/')) problems.push(`path must end in a slash: ${pg.path}`);
+}
+
+/* -- honest last-modified dates (see src/lastmod.mjs) -----------------------
+   A briefing page keeps its own publication day. Every other page gets the
+   date its visible text last changed. The live pages (front, dashboard, live
+   updates, archive) change with each briefing anyway, so only their sitemap
+   date goes through here; on the rest, the dateModified and
+   article:modified_time printed in the page follow the same honest date
+   instead of the newest briefing's time. */
+const LASTMOD_FILE = join(ROOT, 'data', 'page-lastmod.json');
+const LIVE_PATHS = new Set(['/', DASH_PATH, '/nepal-flood/rasuwa/live-updates/', '/updates/']);
+let lastmodState = {};
+try { lastmodState = JSON.parse(readFileSync(LASTMOD_FILE, 'utf8')); } catch { lastmodState = {}; }
+const nextLastmod = {};
+const buildNow = new Date().toISOString();
+for (const pg of pages) {
+  if (/^\/updates\/[^/]+\/$/.test(pg.path)) continue;
+  const entry = honestLastmod(lastmodState[pg.path], pageFingerprint(pg.html), pg.lastmod, buildNow);
+  nextLastmod[pg.path] = entry;
+  pg.lastmod = entry.lastmod;
+  if (!LIVE_PATHS.has(pg.path) && entry.lastmod !== modified) {
+    pg.html = pg.html
+      .split(`"dateModified":${JSON.stringify(modified)}`).join(`"dateModified":${JSON.stringify(entry.lastmod)}`)
+      .split(`article:modified_time" content="${modified}"`).join(`article:modified_time" content="${entry.lastmod}"`);
+  }
+}
+const lastmodJson = JSON.stringify(
+  Object.fromEntries(Object.keys(nextLastmod).sort().map(k => [k, nextLastmod[k]])), null, 2) + '\n';
+if (!existsSync(LASTMOD_FILE) || readFileSync(LASTMOD_FILE, 'utf8') !== lastmodJson) {
+  writeFileSync(LASTMOD_FILE, lastmodJson);
 }
 
 /* -- write ------------------------------------------------------------------ */

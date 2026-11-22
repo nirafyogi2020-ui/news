@@ -82,7 +82,8 @@ for (const p of pages) {
   if (!is404) {
     if (!canonical) errors.push(`${p.path}: no canonical`);
     else if (canonical !== SITE + p.path) errors.push(`${p.path}: canonical is ${canonical}, expected ${SITE + p.path}`);
-    if (robots && /noindex/i.test(robots) && !/^\/updates\/\d{4}-\d{2}-\d{2}-auto-/.test(p.path)) {
+    /* Only the cards the figures job makes may be noindex (isAutomaticCard). */
+    if (robots && /noindex/i.test(robots) && !/^\/updates\/\d{4}-\d{2}-\d{2}-(?:auto-|latest-reported-figures\/$)/.test(p.path)) {
       errors.push(`${p.path}: has noindex — it will never rank`);
     }
 
@@ -438,7 +439,9 @@ if (!existsSync(newsFile)) {
 } else {
   const news = readFileSync(newsFile, 'utf8');
   const entries = [...news.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m => m[1]);
-  if (!entries.length) errors.push('news-sitemap.xml has no entries');
+  /* Empty is allowed: only written briefings from the last 48 hours belong
+     here, and some days there are none. */
+  if (!entries.length) warnings.push('news-sitemap.xml has no entries (no written briefing in the last 48 hours)');
   if (entries.length > 1000) errors.push(`news-sitemap.xml has ${entries.length} entries, over Google's 1000 limit`);
   for (const e of entries) {
     const loc = (e.match(/<loc>([^<]+)<\/loc>/) || [])[1];
