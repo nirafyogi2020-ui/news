@@ -11,7 +11,9 @@
  *
  * Response shape:
  *   { updated, items: [ { title, titleNe, hazard, date, lat, lng,
- *                         dead, missing, injured, url } ], errors: [] }
+ *                         dead, missing, injured, lossKnown, url } ], errors: [] }
+ *   dead/missing/injured are whole numbers or null (unknown). lossKnown is
+ *   false when the casualty record was not looked up or the lookup failed.
  */
 
 const BIPAD = 'https://bipadportal.gov.np/api/v1';
@@ -25,7 +27,11 @@ let hazardCache = null;
 export async function onRequestGet(context) {
   const { request } = context;
   const cache = caches.default;
-  const cacheKey = new Request(new URL(request.url).toString(), request);
+  // No query string takes part: none changes the answer, and a random one
+  // would otherwise skip the cache and refetch every upstream source.
+  const keyUrl = new URL(request.url);
+  keyUrl.search = '';
+  const cacheKey = new Request(keyUrl.toString(), request);
 
   const cached = await cache.match(cacheKey);
   if (cached) return cached;
@@ -79,12 +85,23 @@ async function loadIncidents() {
       date: row.incidentOn || row.reportedOn || row.createdOn,
       lat: coords[1] ?? null,
       lng: coords[0] ?? null,
-      dead: loss.peopleDeathCount ?? null,
-      missing: loss.peopleMissingCount ?? null,
-      injured: loss.peopleInjuredCount ?? null,
+      // null means "not looked up or lookup failed", which is not zero.
+      dead: toCount(loss.peopleDeathCount),
+      missing: toCount(loss.peopleMissingCount),
+      injured: toCount(loss.peopleInjuredCount),
+      // An incident with no loss record has nothing recorded; one past the
+      // lookup limit, or whose lookup failed, is unknown.
+      lossKnown: !row.loss || Boolean(losses[i]),
       url: `https://bipadportal.gov.np/incidents/${row.id}`
     };
   });
+}
+
+/** A casualty count from the portal: a whole number of zero or more, or null. */
+export function toCount(value) {
+  if (typeof value === 'number') return Number.isInteger(value) && value >= 0 ? value : null;
+  if (typeof value === 'string' && /^\d{1,7}$/.test(value.trim())) return Number(value.trim());
+  return null;
 }
 
 async function loadHazards() {

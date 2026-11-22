@@ -17,7 +17,11 @@ const CACHE_SECONDS = 300;
 export async function onRequestGet(context) {
   const { request } = context;
   const cache = caches.default;
-  const cacheKey = new Request(new URL(request.url).toString(), request);
+  // No query string takes part: none changes the answer, and a random one
+  // would otherwise skip the cache and refetch every upstream source.
+  const keyUrl = new URL(request.url);
+  keyUrl.search = '';
+  const cacheKey = new Request(keyUrl.toString(), request);
 
   const cached = await cache.match(cacheKey);
   if (cached) return cached;
@@ -39,8 +43,7 @@ export async function onRequestGet(context) {
       <title>${esc(u.title)}</title>
       <link>${SITE}${esc(u.url)}</link>
       <guid isPermaLink="true">${SITE}${esc(u.url)}</guid>
-      <pubDate>${new Date(u.time).toUTCString()}</pubDate>
-      <description>${esc(u.summary || u.title)}</description>
+${pubDate(u.time)}      <description>${esc(u.summary || u.title)}</description>
     </item>`).join('');
 
   const wireEntries = items.slice(0, 30).map(item => `
@@ -49,8 +52,7 @@ export async function onRequestGet(context) {
       <link>${esc(item.url)}</link>
       <guid isPermaLink="true">${esc(item.url)}</guid>
       <source url="${SITE}/">${esc(item.source)}</source>
-      <pubDate>${new Date(item.time).toUTCString()}</pubDate>
-      <description>${esc(item.source + ': ' + item.title)}</description>
+${pubDate(item.time)}      <description>${esc(item.source + ': ' + item.title)}</description>
     </item>`).join('');
 
   const entries = ownEntries + wireEntries;
@@ -76,6 +78,15 @@ export async function onRequestGet(context) {
 
   context.waitUntil(cache.put(cacheKey, response.clone()));
   return response;
+}
+
+/** The optional <pubDate> line, left out when there is no real date: a
+ *  missing time must not print as 1970 or "Invalid Date". */
+export function pubDate(time) {
+  if (time == null || time === '') return '';
+  const t = new Date(time);
+  if (isNaN(t.getTime())) return '';
+  return `      <pubDate>${t.toUTCString()}</pubDate>\n`;
 }
 
 function esc(value) {

@@ -29,7 +29,11 @@ const KEYWORDS = [
 export async function onRequestGet(context) {
   const { request } = context;
   const cache = caches.default;
-  const cacheKey = new Request(new URL(request.url).toString(), request);
+  // No query string takes part: none changes the answer, and a random one
+  // would otherwise skip the cache and refetch every upstream source.
+  const keyUrl = new URL(request.url);
+  keyUrl.search = '';
+  const cacheKey = new Request(keyUrl.toString(), request);
 
   const cached = await cache.match(cacheKey);
   if (cached) return cached;
@@ -70,9 +74,21 @@ function normalise(row, kind) {
     title: cleanTitle(row.title),
     titleNe: cleanTitle(row.title_ne),
     date: row.date || null,
-    pdf: row.pdffile || row.file || null,
+    pdf: safeDocUrl(row.pdffile || row.file),
     kind
   };
+}
+
+/** Only an https link on a Nepal government host may become the report link. */
+export function safeDocUrl(value) {
+  try {
+    const url = new URL(String(value || ''));
+    if (url.protocol !== 'https:') return null;
+    if (url.hostname !== 'gov.np' && !url.hostname.endsWith('.gov.np')) return null;
+    return url.toString();
+  } catch (_) {
+    return null;
+  }
 }
 
 function matches(text, words) {

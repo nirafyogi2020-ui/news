@@ -146,16 +146,57 @@ function rank(url) {
   return i === -1 ? PREFERRED.length : i;
 }
 
+/**
+ * A web address this build may fetch: http(s) on a public host name. Article
+ * and picture links come from news feeds, so a link to the runner itself, a
+ * private network or a cloud metadata address is refused, at every redirect.
+ * (Names are checked, not what they resolve to; that would need a resolver.)
+ */
+export function isPublicWebUrl(value) {
+  let url;
+  try { url = new URL(String(value || '')); } catch { return false; }
+  if (url.protocol !== 'https:' && url.protocol !== 'http:') return false;
+  if (url.username || url.password) return false;
+  const host = url.hostname.toLowerCase().replace(/^\[|\]$/g, '').replace(/\.$/, '');
+  if (!host || !host.includes('.')) return false;
+  if (/(^|\.)(localhost|local|internal|localdomain|home|lan|corp)$/.test(host)) return false;
+  if (host.includes(':')) return false;                    // any IPv6 literal
+  const v4 = host.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/);
+  if (v4) {
+    const [a, b] = [Number(v4[1]), Number(v4[2])];
+    if (a === 0 || a === 10 || a === 127 || a >= 224) return false;
+    if (a === 169 && b === 254) return false;
+    if (a === 172 && b >= 16 && b <= 31) return false;
+    if (a === 192 && b === 168) return false;
+    if (a === 100 && b >= 64 && b <= 127) return false;
+  } else if (/^[\d.]+$/.test(host) || /^0x/i.test(host)) {
+    return false;                                         // odd numeric forms
+  }
+  return true;
+}
+
+const MAX_REDIRECTS = 5;
+
 async function get(url, asBuffer = false) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
   try {
-    const res = await fetch(url, {
-      signal: ctrl.signal,
-      redirect: 'follow',
-      headers: { 'user-agent': UA, accept: asBuffer ? 'image/*' : 'text/html,*/*' },
-    });
-    if (!res.ok) return null;
+    let res = null;
+    let next = url;
+    for (let hop = 0; hop <= MAX_REDIRECTS; hop++) {
+      if (!isPublicWebUrl(next)) return null;
+      res = await fetch(next, {
+        signal: ctrl.signal,
+        redirect: 'manual',
+        headers: { 'user-agent': UA, accept: asBuffer ? 'image/*' : 'text/html,*/*' },
+      });
+      if (res.status < 300 || res.status > 399) break;
+      const location = res.headers.get('location');
+      if (!location) return null;
+      next = new URL(location, next).toString();
+      res = null;
+    }
+    if (!res || !res.ok) return null;
     if (asBuffer) {
       const type = (res.headers.get('content-type') || '').toLowerCase();
       if (!/^image\/(jpeg|png|webp)/.test(type)) return null;
