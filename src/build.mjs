@@ -1225,12 +1225,28 @@ function externalStyles(html) {
 
    If the bundle does not parse, the build stops. It used to keep the blocks
    inline instead, and under a policy that refuses inline scripts that is a
-   dashboard with no behaviour at all and a green build. */
+   dashboard with no behaviour at all and a green build.
+
+   A block written <script data-lazy="name"> is code only one tab needs (the
+   map builder, the full-screen video player). It goes to its own file,
+   assets/dashboard-<name>.js under its own content stamp, and is not in the
+   first download; the page fetches it through LazyCode (section 5b of the
+   page script), which reads the addresses from the #dashboard-chunks data
+   block written into the head here. */
 function externalScripts(html) {
   const cut = html.indexOf('</main>');
   if (cut < 0) throw new Error('dashboard script: no </main> in src/rasuwa-dashboard.html');
+  const chunks = {};
+  let tail = html.slice(cut).replace(/[ \t]*<script data-lazy="([a-z]+)">([\s\S]*?)<\/script>\n?/g, (_m, name, code) => {
+    if (chunks[name]) throw new Error(`dashboard script: two data-lazy="${name}" blocks`);
+    const js = `/* Nepal Disaster Update: the Rasuwa dashboard, ${name} code, fetched on first use. Source: src/rasuwa-dashboard.html. */\n${code.trim()}\n`;
+    try { new vm.Script(js); } catch (e) { throw new Error(`dashboard script: the data-lazy="${name}" block does not parse (${e.message}). Fix src/rasuwa-dashboard.html.`); }
+    write(`assets/dashboard-${name}.js`, js);
+    chunks[name] = `/assets/dashboard-${name}.js?v=${createHash('sha256').update(js).digest('hex').slice(0, 12)}`;
+    return '';
+  });
   const blocks = [];
-  const tail = html.slice(cut).replace(/[ \t]*<script>([\s\S]*?)<\/script>\n?/g, (_m, js) => {
+  tail = tail.replace(/[ \t]*<script>([\s\S]*?)<\/script>\n?/g, (_m, js) => {
     blocks.push(js.trim());
     return '';
   });
@@ -1240,7 +1256,9 @@ function externalScripts(html) {
   try { new vm.Script(js); } catch (e) { throw new Error(`dashboard script: assets/dashboard-app.js does not parse (${e.message}). Fix src/rasuwa-dashboard.html.`); }
   const stamp = createHash('sha256').update(js).digest('hex').slice(0, 12);
   write('assets/dashboard-app.js', js);
-  const tag = `<script src="/assets/dashboard-app.js?v=${stamp}" defer></script>`;
+  const data = Object.keys(chunks).length
+    ? `<script type="application/json" id="dashboard-chunks">${JSON.stringify(chunks)}</script>\n` : '';
+  const tag = `${data}<script src="/assets/dashboard-app.js?v=${stamp}" defer></script>`;
   const head = html.slice(0, cut).replace('</head>', `${tag}\n</head>`);
   return head + tail;
 }

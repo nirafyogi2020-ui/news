@@ -384,6 +384,19 @@ if (home) {
   if (/<script src="\/assets\/dashboard-app\.js/.test(home.html) && !existsSync(join(ROOT, 'assets/dashboard-app.js'))) {
     errors.push(`${DASH}: links /assets/dashboard-app.js but the file was not built`);
   }
+  /* Code one tab needs (the map, the video player) is fetched on first use
+     from the addresses in #dashboard-chunks. A missing file would only show
+     when a reader opened that tab, so it fails here. */
+  const chunkJson = pick(home.html, /<script type="application\/json" id="dashboard-chunks">([\s\S]*?)<\/script>/);
+  if (chunkJson) {
+    let chunks = {};
+    try { chunks = JSON.parse(chunkJson); } catch { errors.push(`${DASH}: #dashboard-chunks is not valid JSON`); }
+    for (const [name, url] of Object.entries(chunks)) {
+      const m = String(url).match(/^\/(assets\/dashboard-[a-z]+\.js)\?v=[0-9a-f]{12}$/);
+      if (!m) errors.push(`${DASH}: lazy ${name} code has an address outside /assets/ or without a content stamp (${url})`);
+      else if (!existsSync(join(ROOT, m[1]))) errors.push(`${DASH}: lazy ${name} code /${m[1]} was not built or not committed`);
+    }
+  }
   const og = pick(home.html, /<meta property="og:image" content="([^"]*)"/);
   if (!og || !/^https:\/\//.test(og)) errors.push(`${DASH}: no og:image`);
   /* The briefing that used to be its own page at this address has to be in
