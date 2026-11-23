@@ -176,7 +176,9 @@ window.BriefCard = (function(){
     if(!found) return false;
     panes.forEach(function(p){ p.hidden = p.id !== id; });
     buttons.forEach(function(b){
-      b.setAttribute('aria-selected', String(b.getAttribute('data-pane') === id));
+      var on = b.getAttribute('data-pane') === id;
+      b.setAttribute('aria-selected', String(on));
+      b.setAttribute('tabindex', on ? '0' : '-1');
     });
     if(opts.scroll){
       card.scrollIntoView({ behavior:'smooth', block:'start' });
@@ -186,6 +188,17 @@ window.BriefCard = (function(){
 
   buttons.forEach(function(b){
     b.addEventListener('click', function(){ show(b.getAttribute('data-pane')); });
+    b.addEventListener('keydown', function(e){
+      var i = buttons.indexOf(b), next = null;
+      if(e.key === 'ArrowRight') next = buttons[(i + 1) % buttons.length];
+      else if(e.key === 'ArrowLeft') next = buttons[(i - 1 + buttons.length) % buttons.length];
+      else if(e.key === 'Home') next = buttons[0];
+      else if(e.key === 'End') next = buttons[buttons.length - 1];
+      if(!next) return;
+      e.preventDefault();
+      show(next.getAttribute('data-pane'));
+      next.focus();
+    });
   });
 
   function fromHash(){
@@ -206,6 +219,26 @@ window.BriefCard = (function(){
 
 /* block 4 */
 try {
+window.NewsNote = (function(){
+  var el = document.getElementById('news-note');
+  var pending = 0, timer = null;
+  function say(){
+    var n = pending;
+    pending = 0; timer = null;
+    if(!el || !n) return;
+    el.textContent = '';
+    setTimeout(function(){ el.textContent = n + (n === 1 ? ' new story' : ' new stories'); }, 150);
+  }
+  return {
+    add: function(n){
+      if(!(n > 0)) return;
+      pending += n;
+      if(timer) clearTimeout(timer);
+      timer = setTimeout(say, 1200);
+    }
+  };
+})();
+
 (function(){
   var box     = document.getElementById('reader');
   if(!box) return;
@@ -275,26 +308,12 @@ try {
   document.addEventListener('click', function(e){
     var card = e.target.closest ? e.target.closest('.today-grid .post-card') : null;
     if(!card) return;
+    if(e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     if(e.target.closest('.post-foot')) return;
     if(e.target.closest('.tc-sources')) return;
     if(e.target.closest('[data-share]')) return;
     e.preventDefault();
     open(card);
-  });
-
-  function makeFocusable(){
-    document.querySelectorAll('.today-grid .post-card:not([tabindex])').forEach(function(c){
-      c.setAttribute('tabindex', '0');
-      c.setAttribute('role', 'button');
-    });
-  }
-  makeFocusable();
-  setInterval(makeFocusable, 2000);
-  document.addEventListener('keydown', function(e){
-    if(e.key !== 'Enter' && e.key !== ' ') return;
-    var card = document.activeElement && document.activeElement.closest &&
-               document.activeElement.closest('.today-grid .post-card');
-    if(card && document.activeElement === card){ e.preventDefault(); open(card); }
   });
 
   function coverTextOnlyCards(){
@@ -334,7 +353,23 @@ try {
     });
   }
   coverTextOnlyCards();
-  setInterval(coverTextOnlyCards, 1500);
+  if('MutationObserver' in window){
+    var coverQueued = false;
+    new MutationObserver(function(list){
+      if(coverQueued) return;
+      for(var i = 0; i < list.length; i++){
+        var added = list[i].addedNodes;
+        for(var j = 0; j < added.length; j++){
+          var n = added[j];
+          if(n.nodeType === 1 && (n.classList.contains('post-card') || n.querySelector('.post-card'))){
+            coverQueued = true;
+            setTimeout(function(){ coverQueued = false; coverTextOnlyCards(); }, 0);
+            return;
+          }
+        }
+      }
+    }).observe(document.getElementById('main') || document.body, { childList:true, subtree:true });
+  }
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
@@ -1361,19 +1396,53 @@ var PostCards = (function(){
 
   var EMPTY = '<p style="font-size:0.88rem; color:var(--text-faint);">No automatic posts right now. The checked summaries elsewhere on this page still apply.</p>';
 
-  function render(container, items, limit){
-    if(!container) return;
-    if(!items.length){ container.innerHTML = EMPTY; return; }
-    container.innerHTML = '<div class="river">' +
-      items.slice(0, limit || items.length).map(card).join('') + '</div>';
+  function tabStops(el){
+    return [].filter.call(el.querySelectorAll('a[href], button'), function(e){
+      return e.getAttribute('tabindex') !== '-1' && !e.disabled;
+    });
+  }
+  function keepFocus(g){
+    var had = document.activeElement;
+    if(!had || had === g || !g.contains(had)) return null;
+    var c = had.closest('.post-card');
+    var key = c ? c.getAttribute('data-url') : '';
+    var at = c ? tabStops(c).indexOf(had) : -1;
+    return function(){
+      var now = document.activeElement;
+      if(now && now !== document.body && !g.contains(now)) return;
+      var same = null;
+      [].forEach.call(g.querySelectorAll('.post-card'), function(x){
+        if(!same && key && x.getAttribute('data-url') === key) same = x;
+      });
+      var stops = same ? tabStops(same) : [];
+      var target = (at >= 0 && stops[at]) || stops[0] || tabStops(g)[0];
+      if(target && document.activeElement !== target) target.focus({ preventScroll:true });
+    };
   }
 
-  function renderPack(container, items, limit){
+  function draw(container, items, limit){
     if(!container) return;
-    if(!items.length){ container.innerHTML = EMPTY; return; }
-    container.innerHTML = '<div class="river">' +
-      items.slice(0, limit || items.length).map(card).join('') + '</div>';
+    var list = items.slice(0, limit || items.length);
+    var sig = list.length ? JSON.stringify(list) : '';
+    if(container._sig === sig){
+      var byUrl = {};
+      list.forEach(function(i){ if(i && i.url) byUrl[i.url] = i; });
+      [].forEach.call(container.querySelectorAll('.post-card[data-url]'), function(c){
+        var i = byUrl[c.getAttribute('data-url')], w = c.querySelector('.tc-when');
+        if(i && w) w.textContent = whenLabel(i);
+      });
+      return;
+    }
+    container._sig = sig;
+    var back = keepFocus(container);
+    container.innerHTML = list.length
+      ? '<div class="river">' + list.map(card).join('') + '</div>'
+      : EMPTY;
+    if(back) setTimeout(back, 0);
   }
+  function render(container, items, limit){ draw(container, items, limit); }
+
+  function renderPack(container, items, limit){ draw(container, items, limit); }
 
   var SHARE_URL = location.origin + location.pathname;
 
@@ -1695,11 +1764,26 @@ var LiveFeed = (function(){
     if(section) section.hidden = !items.length;
   }
 
+  var seenFeed = {};
+  function noteNew(source, items){
+    var seen = seenFeed[source], fresh = 0;
+    if(!seen) seen = seenFeed[source] = {};
+    else items.forEach(function(i){ var k = i && (i.url || i.title); if(k && !seen[k]) fresh++; });
+    items.forEach(function(i){ var k = i && (i.url || i.title); if(k) seen[k] = 1; });
+    if(fresh && window.NewsNote) window.NewsNote.add(fresh);
+  }
+
+  var globalAt = 0;
+  function wantGlobal(){
+    return !!window.Tabs && (Tabs.current === 'today' || Tabs.current === 'live');
+  }
   function loadGlobal(){
+    globalAt = Date.now();
     return fetch('/api/global', { cache:'no-store', signal: fetchDeadline(30000) })
       .then(function(r){ return r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)); })
       .then(function(data){
         globalItems = Array.isArray(data.items) ? data.items : [];
+        noteNew('global', globalItems.filter(worldDisaster));
         renderTodayGeneral();
         renderFeedTab();
       })
@@ -1790,6 +1874,7 @@ var LiveFeed = (function(){
       .then(function(data){
         latest = data.items || [];
         lastCheck = Date.now();
+        noteNew('news', latest.filter(function(i){ return i.kind !== 'quake' && i.kind !== 'video'; }));
         try { window.dispatchEvent(new CustomEvent('news-data', { detail: data })); } catch(e){}
         renderEconomicLoss(data.economicLoss);
         renderReliefFund(data.reliefFund);
@@ -1886,11 +1971,21 @@ var LiveFeed = (function(){
     if(h) h.textContent = t.charAt(0).toUpperCase() + t.slice(1);
   }, 5000);
 
-  load();
-  loadGlobal();
-  setInterval(load, 60 * 1000);
-  setInterval(loadGlobal, 60 * 1000);
-  document.addEventListener('visibilitychange', function(){ if(!document.hidden) load(); });
+  var lastPoll = 0;
+  function poll(){
+    if(document.hidden) return;
+    lastPoll = Date.now();
+    load();
+    if(wantGlobal()) loadGlobal();
+  }
+  poll();
+  setInterval(poll, 60 * 1000);
+  document.addEventListener('visibilitychange', function(){
+    if(!document.hidden && Date.now() - lastPoll > 55 * 1000) poll();
+  });
+  if(window.Tabs && Tabs.onChange) Tabs.onChange(function(){
+    if(!document.hidden && wantGlobal() && Date.now() - globalAt > 55 * 1000) loadGlobal();
+  });
   var refresh = document.getElementById('feed-refresh');
   if(refresh) refresh.addEventListener('click', load);
 
@@ -2079,7 +2174,7 @@ var LiveFeed = (function(){
     load();
     // The government endpoint itself is cached for five minutes. Match that
     // clock so a visitor sees a new official incident as soon as this site can.
-    setInterval(load, 5 * 60 * 1000);
+    setInterval(function(){ if(!document.hidden) load(); }, 5 * 60 * 1000);
   }
   Tabs.onChange(maybeLoad);
   maybeLoad(Tabs.current);
@@ -2127,9 +2222,10 @@ var LiveFeed = (function(){
     return true;
   }
 
+  window.photoIndexJson = fetch('/assets/photos/index.json', { cache: 'no-cache' })
+    .then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; });
   Promise.all([
-    fetch('/assets/photos/index.json', { cache: 'no-cache' })
-      .then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }),
+    window.photoIndexJson,
     fetch('/updates.json', { cache: 'no-cache' })
       .then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
   ]).then(function(both){
@@ -2615,7 +2711,7 @@ try {
 
   function paintFreshness(){
     var el = document.getElementById('figures-checked');
-    if(!el || !lastCheckedAt) return;
+    if(!el || !lastCheckedAt || document.hidden) return;
     var s = Math.max(0, Math.round((Date.now() - lastCheckedAt) / 1000));
     el.textContent = s < 2 ? 'Sources checked just now'
       : s < 60 ? 'Sources checked ' + s + 's ago'
@@ -2823,18 +2919,21 @@ try {
     if(!rec || !rec.card || !rec.width) return '';
     return '/assets/photos/' + rec.card + ' 800w, /assets/photos/' + rec.file + ' ' + rec.width + 'w';
   }
-  fetch('/assets/photos/index.json', { cache:'no-cache' })
-    .then(function(r){ return r.ok ? r.json() : null; })
-    .then(function(j){
-      if(!j) return;
-      Object.keys(j).forEach(function(k){
-        PHOTO_CREDITS[k] = j[k] && j[k].credit;
-        PHOTO_FILES[k] = j[k] && j[k].file;
-        PHOTO_RECORDS[k] = j[k];
-      });
-      repaint();
-    })
-    .catch(function(){});
+  var photoIndex = null;
+  function loadPhotoIndex(){
+    if(!photoIndex) photoIndex = (window.photoIndexJson || fetch('/assets/photos/index.json', { cache:'no-cache' })
+      .then(function(r){ return r.ok ? r.json() : null; }))
+      .then(function(j){
+        if(!j) return;
+        Object.keys(j).forEach(function(k){
+          PHOTO_CREDITS[k] = j[k] && j[k].credit;
+          PHOTO_FILES[k] = j[k] && j[k].file;
+          PHOTO_RECORDS[k] = j[k];
+        });
+      })
+      .catch(function(){ photoIndex = null; });
+    return photoIndex;
+  }
 
   function creditLine(ogSlug, usedRemote, post){
     var outlet = post.sources && post.sources[0] && post.sources[0].name;
@@ -2955,7 +3054,7 @@ try {
   }
 
   var LAST = null;
-  function repaint(){ if(LAST) render(LAST); }
+  function repaint(){ if(LAST) render(LAST, true); }
 
   var PAGE = 24;
   var shown = PAGE;
@@ -3004,41 +3103,68 @@ try {
         target = fresh ? (tabStops(fresh)[0] || null) : null;
       } else if(key){
         var same = cards.filter(function(c){ return storyKey(c) === key; })[0];
-        if(same) target = at >= 0 ? (tabStops(same)[at] || tabStops(same)[0]) : same;
-        if(target === same && !same.hasAttribute('tabindex')){
-          same.setAttribute('tabindex', '0'); same.setAttribute('role', 'button');
-        }
+        if(same) target = (at >= 0 && tabStops(same)[at]) || tabStops(same)[0] || null;
       }
       if(!target) target = g.querySelector('.today-more-btn') || tabStops(g)[0];
       if(target && document.activeElement !== target) target.focus({ preventScroll:true });
     };
   }
 
-  function render(d){
+  function keysOf(list){ return list.slice().sort().join('|'); }
+  grids.forEach(function(g){
+    var cards = g.querySelectorAll('.post-card');
+    g._ssrSig = cards.length ? keysOf([].map.call(cards, storyKey)) : '';
+  });
+  function syncHomeMore(g, text){
+    var p = g.querySelector('.today-more');
+    if(!text){ if(p) p.remove(); return; }
+    if(!p){
+      p = document.createElement('p');
+      p.className = 'today-more';
+      var stampEl = g.querySelector('.today-updated');
+      g.insertBefore(p, stampEl && stampEl.parentNode === g ? stampEl : null);
+    }
+    p.innerHTML = '<a class="deeplink" href="#today" data-tab-link="today">' + esc(text) + '</a>';
+  }
+  function sameAsShown(g, base, updated, force){
+    var sig = base + '@' + (updated || '');
+    var same = !force && (g._sig === sig || (!g._sig && g._ssrSig && g._ssrSig === base));
+    g._sig = sig;
+    return same;
+  }
+
+  function render(d, force){
     LAST = d;
     var posts = newestFirst((d && Array.isArray(d.posts)) ? d.posts : []);
+    var updated = d && d.updated;
     var stampLine = d && d.updated
       ? '<p class="today-updated">Updated ' + esc(fmtUpdated(d.updated)) + '</p>' : '';
     var empty = '<p style="font-size:0.92rem; color:var(--text-muted);">Nothing new to report this hour. See the <a href="#live" data-tab-link="live">Live</a> tab for the raw feed.</p>';
 
     grids.forEach(function(g){
-      if(!posts.length){ g.innerHTML = empty; return; }
+      if(!posts.length){ g._sig = g._ssrSig = ''; g.innerHTML = empty; return; }
       var isHome = g.id === 'today-grid-home';
       if(isHome){
+        var homeMore = posts.length > HOME_MAX ? 'All ' + posts.length + ' stories of the day' : '';
+        if(sameAsShown(g, keysOf(posts.slice(0, HOME_MAX).map(permalink)), updated, force)){ syncHomeMore(g, homeMore); return; }
+        var homeBack = focusPlace(g);
         g.innerHTML = river(posts.slice(0, HOME_MAX)) +
-          (posts.length > HOME_MAX
+          (homeMore
             ? '<p class="today-more"><a class="deeplink" href="#today" data-tab-link="today">' +
-              'All ' + posts.length + ' stories of the day</a></p>'
+              homeMore + '</a></p>'
             : '') + stampLine;
+        if(homeBack) setTimeout(homeBack, 0);
         return;
       }
       var n = Math.min(posts.length, shown);
       var left = posts.length - n;
+      var moreText = left > 0 ? 'Show ' + Math.min(PAGE, left) + ' more of ' + posts.length + ' briefings' : '';
+      if(sameAsShown(g, keysOf(posts.slice(0, n).map(permalink)) + (moreText ? '#' + moreText : ''), updated, force)) return;
       var back = focusPlace(g);
       g.innerHTML = packHtml(posts.slice(0, n)) +
-        (left > 0
+        (moreText
           ? '<p class="today-more"><button type="button" class="deeplink today-more-btn">' +
-            'Show ' + Math.min(PAGE, left) + ' more of ' + posts.length + ' briefings</button></p>'
+            moreText + '</button></p>'
           : '') + stampLine;
       if(back) setTimeout(back, 0);
       watchMore(left > 0 ? g.querySelector('.today-more-btn') : null);
@@ -3074,25 +3200,52 @@ try {
       .catch(function(){ render(d); });
   }
 
+  var seenStories = null;
+  function noteNew(data){
+    var posts = (data && Array.isArray(data.posts)) ? data.posts : [];
+    var fresh = 0, first = !seenStories;
+    if(first) seenStories = {};
+    posts.forEach(function(p){
+      var k = permalink(p);
+      if(!k || seenStories[k]) return;
+      seenStories[k] = 1;
+      if(!first) fresh++;
+    });
+    if(fresh && window.NewsNote) window.NewsNote.add(fresh);
+  }
+
   var lastTodayUpdated = '';
+  var lastTodayTry = 0;
   function refreshToday(){
-    fetch('/today.json', { cache:'no-cache' })
+    if(document.hidden) return;
+    lastTodayTry = Date.now();
+    loadPhotoIndex()
+      .then(function(){ return fetch('/today.json', { cache:'no-cache' }); })
       .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
       .then(function(data){
         if(data && data.updated && data.updated === lastTodayUpdated) return;
         if(data && data.updated) lastTodayUpdated = data.updated;
+        noteNew(data);
         fill(data);
       })
       .catch(function(){
         grids.forEach(function(g){
           if(g.getAttribute('data-ssr') === '1' && g.textContent.trim()) return;
+          g._sig = g._ssrSig = '';
           g.innerHTML = '<p style="font-size:0.92rem; color:var(--text-muted);">Today&rsquo;s posts are not up yet. See the <a href="#live" data-tab-link="live">Live</a> tab.</p>';
         });
       });
   }
-  refreshToday();
+  var needNow = grids.some(function(g){ return !g.querySelector('.post-card'); }) ||
+    (window.Tabs && Tabs.current === 'today');
+  if(needNow) refreshToday();
+  if(window.Tabs && Tabs.onChange) Tabs.onChange(function(name){
+    if(name === 'today' && !lastTodayUpdated) refreshToday();
+  });
   setInterval(refreshToday, 60 * 1000);
-  document.addEventListener('visibilitychange', function(){ if(!document.hidden) refreshToday(); });
+  document.addEventListener('visibilitychange', function(){
+    if(!document.hidden && Date.now() - lastTodayTry > 55 * 1000) refreshToday();
+  });
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
@@ -3160,7 +3313,7 @@ try {
   var shared = 0;
   window.addEventListener('news-data', function(e){ shared = Date.now(); show(e.detail); });
   function load(){
-    if(Date.now() - shared < 75 * 1000) return;
+    if(document.hidden || Date.now() - shared < 75 * 1000) return;
     fetch('/api/news', { cache:'no-store' })
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(show)
