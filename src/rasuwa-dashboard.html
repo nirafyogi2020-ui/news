@@ -5396,41 +5396,6 @@
          from. Newest first, one bold timestamp per line. Do not hand-edit:
          the markers are rewritten on every build. -->
     <section class="ticker" id="live-ticker" aria-label="Latest updates, newest first"><!--ssr:ticker--><div class="ticker-head"><span class="tk-dot" aria-hidden="true"></span><h2>Latest updates</h2><span class="tk-when">Updated 30 Oct 2026 · 1:01 pm NPT</span></div><ol><li><time datetime="2026-10-30T07:16:21.000Z">30 Oct 2026 · 1:01 pm NPT</time><a href="/updates/2026-10-30-auto-2026-10-30-lumbini-cm-calls-for-better-coordination-and-preparedn/">Lumbini CM calls for better coordination and preparedness in disaster management</a><p class="tk-sum">Arghakhanchi, October 30 Lumbini Province Chief Minister Chet Narayan Acharya has said effective coordination and preparedness among all three tiers of…</p></li><li><time datetime="2026-10-30T01:37:08.000Z">30 Oct 2026 · 7:22 am NPT</time><a href="/updates/2026-10-30-auto-2026-10-30/">स्याफ्रुबेँसी–खाम्जिङ जोड्ने अस्थायी काठेपुल सञ्चालन</a><p class="tk-sum">रसुवा– भोटेकोशी बाढीले सडक सञ्जाल टुटेपछि अवरुद्ध रसुवाको स्याफ्रुबेँसीबाट गोसाइँकुण्ड गाउँपालिकाका विभिन्न वडालाई जोड्ने काठेपुल सञ्चालनमा आएका छन् ।</p></li><li><time datetime="2026-10-29T05:02:57.000Z">29 Oct 2026 · 10:47 am NPT</time><a href="/updates/2026-10-29-auto-2026-10-29/">मनाङमा वर्षा र हिमपातको सम्भावना, माइकिङ गरी स्थानीयलाई सचेत गराइयो</a><p class="tk-sum">सम्भावित वर्षा र हिमपातका कारण विपद्जन्य घटना हुन सक्ने भन्दै मनाङ प्रहरीले स्थानीय बासिन्दालाई सतर्क रहन आग्रह गरेको छ।</p></li><li><time datetime="2026-10-29T04:40:29.000Z">29 Oct 2026 · 10:25 am NPT</time><a href="/updates/2026-10-29-auto-2026-10-29-apples-produced-in-manaslu-region-confined-to-warehous/">Apples produced in Manaslu Region confined to warehouses</a><p class="tk-sum">GORKHA: Apples produced in the Manaslu region of northern Gorkha remain stranded in warehouses after floods in the Budhigandaki River washed away bridges…</p></li><li><time datetime="2026-10-29T00:51:52.000Z">29 Oct 2026 · 6:36 am NPT</time><a href="/updates/2026-10-29-auto-2026-10-29-mustang-produces-apples-worth-over-rs-1-14-billion/">Mustang produces apples worth over Rs 1.14 billion</a><p class="tk-sum">File: Apples stored in Jumla Mustang, October 29 Apples worth Rs 1.1496 billion have been produced in the Himalayan district of Mustang this year,…</p></li></ol><p class="tk-foot"><a class="deeplink" href="/nepal-flood/rasuwa/live-updates/">Every update, newest first</a></p><!--/ssr:ticker--></section>
-    <script>
-    /* Relative times on the ticker. The absolute Nepal time stays in the
-       markup, because that is what a crawler and a reader with JavaScript off
-       should see, and because "9:30 pm NPT" is the checkable fact. This adds
-       "2 h ago" beside it for a reader deciding whether the page is current.
-       It never replaces the stamp, only appends to it. */
-    (function () {
-      var box = document.getElementById('live-ticker');
-      if (!box) return;
-      function ago(t) {
-        var m = Math.round((Date.now() - new Date(t).getTime()) / 60000);
-        if (!isFinite(m) || m < 0) return '';
-        if (m < 1) return 'just now';
-        if (m < 60) return m + ' min ago';
-        if (m < 1440) return Math.round(m / 60) + ' h ago';
-        return Math.round(m / 1440) + ' d ago';
-      }
-      function paint() {
-        var stamps = box.querySelectorAll('time[datetime]');
-        for (var i = 0; i < stamps.length; i++) {
-          var rel = ago(stamps[i].getAttribute('datetime'));
-          if (!rel) continue;
-          var tag = stamps[i].querySelector('.tk-ago');
-          if (!tag) {
-            tag = document.createElement('span');
-            tag.className = 'tk-ago';
-            stamps[i].appendChild(tag);
-          }
-          tag.textContent = rel;
-        }
-      }
-      paint();
-      setInterval(paint, 60000);
-    })();
-    </script>
 
       </div>
 
@@ -6401,6 +6366,43 @@
   </div>
 
   </main>
+
+    <script>
+    /* Relative times on the ticker. The absolute Nepal time stays in the
+       markup, because that is what a crawler and a reader with JavaScript off
+       should see, and because "9:30 pm NPT" is the checkable fact. This adds
+       "2 h ago" beside it for a reader deciding whether the page is current.
+       It never replaces the stamp, only appends to it. It sits after </main>
+       so the build ships it in assets/dashboard-app.js, not inline. */
+    (function () {
+      var box = document.getElementById('live-ticker');
+      if (!box) return;
+      function ago(t) {
+        var m = Math.round((Date.now() - new Date(t).getTime()) / 60000);
+        if (!isFinite(m) || m < 0) return '';
+        if (m < 1) return 'just now';
+        if (m < 60) return m + ' min ago';
+        if (m < 1440) return Math.round(m / 60) + ' h ago';
+        return Math.round(m / 1440) + ' d ago';
+      }
+      function paint() {
+        var stamps = box.querySelectorAll('time[datetime]');
+        for (var i = 0; i < stamps.length; i++) {
+          var rel = ago(stamps[i].getAttribute('datetime'));
+          if (!rel) continue;
+          var tag = stamps[i].querySelector('.tk-ago');
+          if (!tag) {
+            tag = document.createElement('span');
+            tag.className = 'tk-ago';
+            stamps[i].appendChild(tag);
+          }
+          tag.textContent = rel;
+        }
+      }
+      paint();
+      setInterval(paint, 60000);
+    })();
+    </script>
 
 </div>
 

@@ -1,12 +1,15 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import vm from 'node:vm';
 
 import {
   cleanHeadline, isOffSubject, hasBannedWord, hasDash, isNepalDisasterHeadline, isRoadHeadline,
   frontNews, roadNews, frontTitle, tldrLines, daysSince, figureNumber, headlineVerdict,
 } from '../src/front-rules.mjs';
 import { frontPage, rasuwaDashboard, rasuwaBriefing } from '../src/pages.mjs';
+import { emittedAssets } from '../src/template.mjs';
 
 const event = JSON.parse(readFileSync(new URL('../event.json', import.meta.url), 'utf8'));
 
@@ -259,7 +262,14 @@ test('sport, tourism and foreign disasters stay off the front page', () => {
 });
 
 test('the page script judges headlines with the same function and rules', () => {
-  const page = frontPage(ctx, { news, photos, events: [event] }).html;
+  const html = frontPage(ctx, { news, photos, events: [event] }).html;
+  const tag = html.match(/<script src="\/assets\/front\.js\?v=([0-9a-f]{12})" defer><\/script>/);
+  assert.ok(tag, 'the page links its script file with a content stamp');
+  const page = emittedAssets().get('assets/front.js');
+  assert.ok(page, 'the front page registered assets/front.js');
+  assert.equal(createHash('sha256').update(page).digest('hex').slice(0, 12), tag[1]);
+  assert.doesNotThrow(() => new vm.Script(page), 'assets/front.js parses');
+  assert.doesNotMatch(page, /__[A-Z_]+__/, 'no placeholder left in the script');
   assert.match(page, /var verdict = function headlineVerdict\(title, R\)/);
   const m = page.match(/var RS = (\{.*?\}), R = \{\};/);
   assert.ok(m, 'rules are handed to the page');

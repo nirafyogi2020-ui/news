@@ -17,7 +17,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 
-import { SITE, SITE_NAME, nptDay, nptLong, ogFor, ogStoryFor, assetVersioned, langAttr } from './template.mjs';
+import { SITE, SITE_NAME, nptDay, nptLong, ogFor, ogStoryFor, assetVersioned, langAttr, emittedAssets } from './template.mjs';
 import * as P from './pages.mjs';
 import * as NE from './pages-ne.mjs';
 import * as C from './content.mjs';
@@ -1215,20 +1215,25 @@ function externalStyles(html) {
    document order). Each block keeps its own try/catch so one that throws
    cannot stop the others, which is how separate <script> elements behaved.
    Nothing in these blocks needs to run while the page is still parsing: the
-   theme is applied by a small script in the head, and the two scripts
-   inside <main> (photo fade-in, ticker times) stay where they are. */
+   theme is applied by a small script in the head, and the two that must run
+   mid-parse (photo fade-in at the top of <body>, the Overview panel guard)
+   stay inline, with their hashes listed in _headers.
+
+   If the bundle does not parse, the build stops. It used to keep the blocks
+   inline instead, and under a policy that refuses inline scripts that is a
+   dashboard with no behaviour at all and a green build. */
 function externalScripts(html) {
   const cut = html.indexOf('</main>');
-  if (cut < 0) return html;
+  if (cut < 0) throw new Error('dashboard script: no </main> in src/rasuwa-dashboard.html');
   const blocks = [];
   const tail = html.slice(cut).replace(/[ \t]*<script>([\s\S]*?)<\/script>\n?/g, (_m, js) => {
     blocks.push(js.trim());
     return '';
   });
-  if (blocks.length < 2) return html;
+  if (blocks.length < 2) throw new Error(`dashboard script: expected its <script> blocks after </main>, found ${blocks.length}`);
   const js = '/* Nepal Disaster Update: the Rasuwa dashboard\'s behaviour. Source: src/rasuwa-dashboard.html. */\n'
     + blocks.map((b, i) => `\n/* block ${i + 1} */\ntry {\n${b}\n} catch (e) { setTimeout(function () { throw e; }); }\n`).join('');
-  try { new vm.Script(js); } catch (e) { console.log(`dashboard script: kept inline (${e.message})`); return html; }
+  try { new vm.Script(js); } catch (e) { throw new Error(`dashboard script: assets/dashboard-app.js does not parse (${e.message}). Fix src/rasuwa-dashboard.html.`); }
   const stamp = createHash('sha256').update(js).digest('hex').slice(0, 12);
   write('assets/dashboard-app.js', js);
   const tag = `<script src="/assets/dashboard-app.js?v=${stamp}" defer></script>`;
@@ -1362,6 +1367,14 @@ for (const pg of pages) {
   count++;
 }
 write('404.html', P.notFound());
+
+/* The page scripts registered while the pages were built (scriptAsset in
+   src/template.mjs). Written after the pages, from the same run, so a page
+   never links a stamp its file does not have. */
+for (const [file, code] of emittedAssets()) {
+  const full = join(ROOT, file);
+  if (!existsSync(full) || readFileSync(full, 'utf8') !== code) write(file, code);
+}
 
 /* -- sitemap ---------------------------------------------------------------- */
 /* A briefing's own photograph, so it can be found in image search too. */

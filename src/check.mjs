@@ -64,6 +64,11 @@ for (const extra of ['/feed.xml', '/sitemap.xml', '/robots.txt', '/favicon.svg',
 
 const pick = (html, re) => { const m = html.match(re); return m ? m[1] : null; };
 
+/* The text of every /assets/ script a page links. Page behaviour lives in
+   those files, not in the HTML, so a check for what a page does reads both. */
+const linkedScripts = (html) => [...html.matchAll(/<script src="\/(assets\/[^"?]+)(?:\?v=[^"]*)?"[^>]*>/g)]
+  .map(m => join(ROOT, m[1])).filter(f => existsSync(f)).map(f => readFileSync(f, 'utf8')).join('\n');
+
 const titles = new Map();
 const descriptions = new Map();
 
@@ -371,8 +376,7 @@ if (home) {
   }
   /* The page's behaviour lives in a built file since the scripts moved out
      of the HTML; the poll must be in the page or in every script it links. */
-  const linked = [...home.html.matchAll(/<script src="\/(assets\/[^"?]+)(?:\?v=[^"]*)?"[^>]*>/g)]
-    .map(m => join(ROOT, m[1])).filter(f => existsSync(f)).map(f => readFileSync(f, 'utf8')).join('\n');
+  const linked = linkedScripts(home.html);
   if (!/fetch\('\/api\/figures'/.test(home.html + linked)) {
     errors.push(`${DASH}: the page no longer polls /api/figures, so the counters would not stay live`);
   }
@@ -421,7 +425,7 @@ if (!front) {
     if (!known.has(href)) errors.push(`/: event card links to ${href} which does not exist`);
   }
   if (!/data-live="dead"/.test(front.html)) errors.push('/: the figure strip has no live counter to repaint');
-  if (!/fetch\('\/api\/figures'/.test(front.html)) errors.push('/: the front page does not poll /api/figures');
+  if (!/fetch\('\/api\/figures'/.test(front.html + linkedScripts(front.html))) errors.push('/: the front page does not poll /api/figures');
   /* Every figure tile names where it came from. */
   const tiles = (front.html.match(/<article class="fp-fig/g) || []).length;
   const sourced = (front.html.match(/class="fp-fig-s"/g) || []).length;

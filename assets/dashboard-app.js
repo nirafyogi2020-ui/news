@@ -2,6 +2,38 @@
 
 /* block 1 */
 try {
+(function () {
+      var box = document.getElementById('live-ticker');
+      if (!box) return;
+      function ago(t) {
+        var m = Math.round((Date.now() - new Date(t).getTime()) / 60000);
+        if (!isFinite(m) || m < 0) return '';
+        if (m < 1) return 'just now';
+        if (m < 60) return m + ' min ago';
+        if (m < 1440) return Math.round(m / 60) + ' h ago';
+        return Math.round(m / 1440) + ' d ago';
+      }
+      function paint() {
+        var stamps = box.querySelectorAll('time[datetime]');
+        for (var i = 0; i < stamps.length; i++) {
+          var rel = ago(stamps[i].getAttribute('datetime'));
+          if (!rel) continue;
+          var tag = stamps[i].querySelector('.tk-ago');
+          if (!tag) {
+            tag = document.createElement('span');
+            tag.className = 'tk-ago';
+            stamps[i].appendChild(tag);
+          }
+          tag.textContent = rel;
+        }
+      }
+      paint();
+      setInterval(paint, 60000);
+    })();
+} catch (e) { setTimeout(function () { throw e; }); }
+
+/* block 2 */
+try {
 (function(){
   var btn    = document.getElementById('drawer-btn');
   var panel  = document.getElementById('drawer');
@@ -130,7 +162,7 @@ try {
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 2 */
+/* block 3 */
 try {
 window.BriefCard = (function(){
   var card = document.getElementById('briefcard');
@@ -172,7 +204,7 @@ window.BriefCard = (function(){
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 3 */
+/* block 4 */
 try {
 (function(){
   var box     = document.getElementById('reader');
@@ -306,7 +338,7 @@ try {
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 4 */
+/* block 5 */
 try {
 (function(){
   var box = document.getElementById('rail-districts');
@@ -344,7 +376,7 @@ try {
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 5 */
+/* block 6 */
 try {
 function fetchDeadline(ms){
   return (typeof AbortSignal !== 'undefined' && typeof AbortSignal.timeout === 'function')
@@ -2602,7 +2634,7 @@ var LiveFeed = (function(){
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 6 */
+/* block 7 */
 try {
 (function(){
   var root   = document.getElementById('shorts');
@@ -3831,7 +3863,7 @@ try {
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 7 */
+/* block 8 */
 try {
 (function(){
   var ticker = document.getElementById('live-ticker');
@@ -3906,7 +3938,7 @@ try {
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 8 */
+/* block 9 */
 try {
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -3926,7 +3958,7 @@ try {
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 9 */
+/* block 10 */
 try {
 (function(){
   var head = document.querySelector('.sitehead');
@@ -3989,7 +4021,7 @@ try {
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 10 */
+/* block 11 */
 try {
 (function(){
   var sel = '.inv-sec, .numblock, .inv-chart';
@@ -4021,7 +4053,7 @@ try {
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 11 */
+/* block 12 */
 try {
 (function(){
   var jump = document.getElementById('inv-jump');

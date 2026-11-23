@@ -5,13 +5,33 @@
 
 import {
   SITE, SITE_NAME, CONTACT_EMAIL, page, esc, related, faqBlock, stripTags,
-  nptLong, nptDay, ogFor, ogSlug, siteAsset, langAttr,
+  nptLong, nptDay, ogFor, ogSlug, siteAsset, langAttr, scriptAsset,
 } from './template.mjs';
 import * as C from './content.mjs';
 import {
   FRONT_RULE_SOURCES, headlineVerdict, cleanHeadline, isNepalDisasterHeadline, frontNews, roadNews, frontTitle, tldrLines, daysSince,
 } from './front-rules.mjs';
 import { photoSrcset } from './photo.mjs';
+import { readFileSync } from 'node:fs';
+
+/* Page scripts live in src/client/ and are served from /assets/ (see
+   scriptAsset in src/template.mjs), never inline, so the site's
+   Content-Security-Policy can refuse inline code. */
+const clientJs = (name) => readFileSync(new URL(`./client/${name}`, import.meta.url), 'utf8');
+
+/* The front page script carries the build's own headline rules, so a
+   headline the build kept off the page cannot come back on a refresh. */
+const FRONT_JS = (() => {
+  let js = clientJs('front.js');
+  for (const [mark, value] of [
+    ['__FRONT_RULES__', JSON.stringify(FRONT_RULE_SOURCES)],
+    ['__HEADLINE_VERDICT__', headlineVerdict.toString()],
+  ]) {
+    if (!js.includes(mark)) throw new Error(`src/client/front.js: placeholder ${mark} is missing`);
+    js = js.replace(mark, () => value);
+  }
+  return js;
+})();
 
 /* A card photograph's srcset and sizes, versioned like every other asset.
    `sizes` is how wide the picture is drawn, so the browser can pick the
@@ -833,7 +853,8 @@ ${table(['Recipient', 'Amount'], C.DAMAGE.reliefBreakdown.map(([k, v]) => [esc(k
 
 export function mapPage(ctx) {
   const path = '/nepal-flood/rasuwa/map/';
-  const placeJson = JSON.stringify(C.PLACES.map(p => ({ n: p.name, la: p.lat, lo: p.lng, e: p.elev, t: p.text })));
+  /* \u003c for '<', so a place name can never close the JSON block early. */
+  const placeJson = JSON.stringify(C.PLACES.map(p => ({ n: p.name, la: p.lat, lo: p.lng, e: p.elev, t: p.text }))).replace(/</g, '\\u003c');
 
   const body = `
 <p class="measure">The flood did not start in Nepal. It began high inside Tibet and fell more than 3,000 metres before it reached the first Nepali town. Below is every point along that route, with its coordinates, followed by an interactive satellite map.</p>
@@ -880,43 +901,8 @@ ${table(['District', 'Province', 'Role in this event'], [
 
   /* Leaflet is loaded after first paint and only once the map scrolls into
      view, so the table above it is never blocked by a 150 kB map library. */
-  const tail = `<script>
-(function(){
-  var el = document.getElementById('route-map');
-  if(!el) return;
-  var PLACES = ${placeJson};
-  var started = false;
-  function start(){
-    if(started) return; started = true;
-    var css = document.createElement('link');
-    var s = document.createElement('script');
-    s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-    s.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
-    s.crossOrigin = '';
-    s.onload = draw;
-    s.onerror = function(){ el.innerHTML = '<p style="padding:20px;font-size:.9rem;">The map could not load. Every point it shows is in the table above.</p>'; };
-    document.head.appendChild(s);
-  }
-  function draw(){
-    if(!window.L) return;
-    var map = L.map(el, { scrollWheelZoom:false, attributionControl:false });
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom:18 }).addTo(map);
-    var pts = [];
-    PLACES.forEach(function(p, i){
-      pts.push([p.la, p.lo]);
-      L.circleMarker([p.la, p.lo], { radius:8, color:'#fff', weight:2, fillColor:'#dc2626', fillOpacity:1 })
-        .addTo(map)
-        .bindPopup('<strong>' + (i+1) + '. ' + p.n + '</strong><br>' + p.e + '<br>' + p.t);
-    });
-    L.polyline(pts, { color:'#dc2626', weight:3, opacity:.85 }).addTo(map);
-    map.fitBounds(L.latLngBounds(pts).pad(0.18));
-  }
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ io.disconnect(); start(); } }); }, { rootMargin:'300px' });
-    io.observe(el);
-  } else { addEventListener('load', start); }
-})();
-</script>`;
+  const tail = `<script type="application/json" id="route-places">${placeJson}</script>
+${scriptAsset('route-map.js', clientJs('route-map.js'))}`;
 
   const t = 'Rasuwa Flood Map: The Path the Water Took, Point by Point';
   const d = 'Map of the 2026 Rasuwa flood in Nepal: seven points from the suspected break-off inside Tibet down the Bhote Koshi and Trishuli to Devighat, with coordinates and elevations.';
@@ -985,40 +971,7 @@ ${SECOND_FLOOD_WARNING}
 <p>The briefings at the top are written from named bulletins; the newswire below is a link list, and it says which newsroom each link belongs to.</p>
 `;
 
-  const tail = `<script>
-(function(){
-  var wrap = document.getElementById('wire'), state = document.getElementById('wire-state');
-  if(!wrap) return;
-  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; }); }
-  function ago(t){
-    if(!t) return '';
-    var m = Math.round((Date.now() - new Date(t)) / 60000);
-    if(!isFinite(m) || m < 0) return '';
-    if(m < 60) return m + ' min ago';
-    if(m < 1440) return Math.round(m/60) + ' h ago';
-    return Math.round(m/1440) + ' d ago';
-  }
-  fetch('/api/news').then(function(r){
-    if(!r.ok) throw new Error('HTTP ' + r.status);
-    return r.json();
-  }).then(function(d){
-    var items = (d && d.items || []).slice(0, 30);
-    if(!items.length){
-      state.textContent = 'The newswire returned nothing just now. The hand-written briefings above are unaffected. Try again in a few minutes.';
-      return;
-    }
-    state.hidden = true;
-    wrap.innerHTML = items.map(function(i){
-      return '<div class="feeditem"><a href="' + esc(i.url) + '" target="_blank" rel="noopener nofollow"' + (/[\u0900-\u097F]/.test(i.title) ? ' lang="ne"' : '') + '>' + esc(i.title) + '</a>' +
-        '<div class="meta"><span>' + esc(i.source || '') + '</span>' +
-        (ago(i.time) ? '<span>' + ago(i.time) + '</span>' : '') +
-        (i.verified ? '<span>verified</span>' : '') + '</div></div>';
-    }).join('');
-  }).catch(function(e){
-    state.textContent = 'The newswire could not be reached (' + e.message + '). This does not affect the briefings above, which are stored on this page. Emergency numbers are at the top and work regardless.';
-  });
-})();
-</script>`;
+  const tail = scriptAsset('wire.js', clientJs('wire.js'));
 
   const newest = posts[0];
   const t = 'Rasuwa Flood Live Updates: Latest News From Nepal';
@@ -2379,103 +2332,7 @@ ${lead ? `<figure class="fp-lead-media"><a href="${esc(dashPath)}"><img src="${e
   const body = leadHtml + figHtml + newsHtml + photoHtml + mapHtml + helpHtml + archiveHtml;
 
   /* -- the live layer ------------------------------------------------------- */
-  const client = `
-<script>
-(function(){
-  var ROOT = document.getElementById('fp-figs');
-  var checkedAt = 0;
-  function num(n){ var v = Number(n); return isNaN(v) ? String(n) : v.toLocaleString('en-US'); }
-  function npt(iso){
-    var d = new Date(iso); if(isNaN(d.getTime())) return '';
-    try{ return d.toLocaleString('en-GB', { timeZone:'Asia/Kathmandu', day:'numeric', month:'short', year:'numeric', hour:'numeric', minute:'2-digit', hour12:true }).replace(',', ',') + ' NPT'; }catch(e){ return ''; }
-  }
-  function paint(data){
-    if(!data || !data.board) return;
-    Object.keys(data.board).forEach(function(metric){
-      var fig = data.board[metric];
-      if(!fig || typeof fig.value !== 'number') return;
-      document.querySelectorAll('[data-live="' + metric + '"]').forEach(function(el){ el.textContent = num(fig.value); });
-      var src = document.querySelector('[data-live-src="' + metric + '"]');
-      if(src){
-        var line = [fig.source, fig.time ? npt(fig.time) : ''].filter(Boolean).join(', ');
-        if(line) src.textContent = line;
-      }
-    });
-  }
-  function freshness(){
-    var el = document.getElementById('fp-checked');
-    if(!el || !checkedAt) return;
-    var s = Math.max(0, Math.round((Date.now() - checkedAt) / 1000));
-    el.textContent = s < 2 ? 'Sources checked just now' : s < 60 ? 'Sources checked ' + s + 's ago' : 'Sources checked ' + Math.round(s / 60) + ' min ago';
-  }
-  var busy = false;
-  function poll(){
-    if(busy || document.hidden || !ROOT) return;
-    busy = true;
-    fetch('/api/figures').then(function(r){ return r.ok ? r.json() : null; }).then(function(data){
-      if(!data) return;
-      checkedAt = Date.parse(data.checkedAt || data.updated) || Date.now();
-      paint(data); freshness();
-    }).catch(function(){}).then(function(){ busy = false; });
-  }
-  poll();
-  setInterval(poll, 30000);
-  setInterval(freshness, 1000);
-  document.addEventListener('visibilitychange', function(){ if(!document.hidden) poll(); });
-
-  /* The newsroom list refreshes itself from the same feed the build read.
-     Items are built as nodes, never as markup, because the headlines are
-     other people's text. The rules are the build's own, handed over below. */
-  var list = document.getElementById('fp-news');
-  var RS = ${JSON.stringify(FRONT_RULE_SOURCES)}, R = {};
-  Object.keys(RS).forEach(function(k){ R[k] = new RegExp(RS[k][0], RS[k][1]); });
-  var verdict = ${headlineVerdict.toString()};
-  function clean(t){
-    t = String(t || '').replace(/\\s+[\\u2013\\u2014]\\s+/g, ', ').replace(/[\\u2013\\u2014]/g, '-').replace(/\\s+/g, ' ').trim();
-    return (!t || verdict(t, R) !== 'nepal') ? '' : t;
-  }
-  function refreshNews(){
-    if(!list || document.hidden) return;
-    fetch('/api/news').then(function(r){ return r.ok ? r.json() : null; }).then(function(data){
-      if(!data || !Array.isArray(data.items)) return;
-      var seen = {}, rows = [];
-      data.items.forEach(function(it){
-        if(!it || !it.title || !it.url || it.kind === 'video') return;
-        if(it.region && it.region !== 'nepal') return;
-        if(!/^https:\\/\\//.test(it.url) || seen[it.url]) return;
-        var t = clean(it.title); if(!t) return;
-        seen[it.url] = 1;
-        rows.push({ title:t, url:it.url, source:String(it.source || ''), time:it.time || '', image:/^https:\\/\\//.test(it.image || '') ? it.image : '' });
-      });
-      rows.sort(function(a, b){ return new Date(b.time || 0) - new Date(a.time || 0); });
-      rows = rows.slice(0, 12);
-      if(!rows.length) return;
-      var frag = document.createDocumentFragment();
-      rows.forEach(function(row, i){
-        var li = document.createElement('li'); li.className = 'fp-news-item';
-        var a = document.createElement('a'); a.href = row.url; a.target = '_blank'; a.rel = 'noopener nofollow';
-        var t = document.createElement('span'); t.className = 't'; t.textContent = row.title; if(/[\u0900-\u097F]/.test(row.title)) t.lang = 'ne'; a.appendChild(t); li.appendChild(a);
-        var m = document.createElement('p'); m.className = 'm';
-        if(row.time){ var tm = document.createElement('time'); tm.dateTime = row.time; tm.textContent = npt(row.time); m.appendChild(tm); }
-        var tail = (row.source ? (row.time ? ' · ' : '') + row.source : '');
-        if(i < 3 && row.image){ tail += ' · Photo: ' + (row.source || 'source'); }
-        if(tail) m.appendChild(document.createTextNode(tail));
-        li.appendChild(m);
-        if(i < 3 && row.image){
-          li.className += ' has-photo';
-          var img = document.createElement('img'); img.src = row.image; img.alt = ''; img.width = 320; img.height = 180; img.loading = 'lazy'; img.referrerPolicy = 'no-referrer';
-          img.onerror = function(){ li.classList.remove('has-photo'); img.remove(); };
-          li.appendChild(img);
-        }
-        frag.appendChild(li);
-      });
-      list.textContent = ''; list.appendChild(frag);
-    }).catch(function(){});
-  }
-  setInterval(refreshNews, 300000);
-  document.addEventListener('visibilitychange', function(){ if(!document.hidden) refreshNews(); });
-})();
-</script>`;
+  const client = scriptAsset('front.js', FRONT_JS);
 
   return {
     path, title, description,

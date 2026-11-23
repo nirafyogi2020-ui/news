@@ -6,6 +6,7 @@
    ========================================================================= */
 
 import { existsSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -105,6 +106,30 @@ export function siteAsset(path) {
   const v = ogVersion(file);
   return v ? `${path}?v=${v}` : path;
 }
+
+/**
+ * A page script served as its own file, /assets/<name>, instead of an inline
+ * <script> block, so the Content-Security-Policy can refuse inline code.
+ *
+ * Pages call this while they are built and get the <script> tag back; the
+ * code is only remembered here, and src/build.mjs writes every remembered
+ * file after the pages. That keeps the page functions free of disk writes,
+ * so the tests can call them directly. The ?v= stamp is a hash of the code,
+ * not a file time: a fresh checkout on the build server must not give every
+ * page a new URL for an unchanged script. Loaded with defer, so it runs once
+ * the page is parsed.
+ */
+const EMITTED = new Map();
+export function scriptAsset(name, code) {
+  if (!/^[a-z0-9-]+\.js$/.test(name)) throw new Error(`scriptAsset: bad file name ${name}`);
+  const prev = EMITTED.get(`assets/${name}`);
+  if (prev !== undefined && prev !== code) throw new Error(`scriptAsset: two different scripts named ${name}`);
+  EMITTED.set(`assets/${name}`, code);
+  const v = createHash('sha256').update(code).digest('hex').slice(0, 12);
+  return `<script src="/assets/${name}?v=${v}" defer></script>`;
+}
+/** Every script registered with scriptAsset(), as 'assets/x.js' -> code. */
+export const emittedAssets = () => EMITTED;
 
 /* Nepal keeps a +05:45 offset year round, so a fixed offset is exact here. */
 const NPT_OFFSET_MIN = 345;
