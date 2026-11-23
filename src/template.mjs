@@ -16,6 +16,31 @@ export const SITE_ALT_NAMES = ['Nepal Disaster Update', 'NepalDisasterUpdate', '
 export const PUBLISHER = 'Nepal Disaster Update Live';
 export const CONTACT_EMAIL = 'hello@nxtimaginelabs.com';
 
+/* The web fonts. Newsreader is asked for at one optical size (36) instead
+   of its whole 6-72 optical-size range: the range made the Latin file
+   132 kB, one size makes it 58 kB, and nothing here sets the size by hand
+   (no font-variation-settings, no font-optical-sizing). Any single size
+   costs the same; 36 is the size of the headings it mostly sets, so they
+   keep close to the shapes they were designed with, where the default (16)
+   is the looser text cut. Public Sans is one variable file whatever the weights, so listing four
+   costs nothing. Self-hosting these files would also drop the two extra
+   connections; that is a separate, larger change. */
+export function fontCss(lang = 'en') {
+  return 'https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@36,400;36,600'
+    + '&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500'
+    + (lang === 'ne' ? '&family=Noto+Sans+Devanagari:wght@400' : '')
+    + '&display=swap';
+}
+
+/* The contact address as a link. Cloudflare's email obfuscation rewrites a
+   bare address into "[email protected]" plus a decoding script, which leaves
+   a screen reader, a reader without JavaScript and the page's own script
+   policy with a dead link. The email_off comment pair tells Cloudflare to
+   leave this one alone. */
+export function mailLink(inner = CONTACT_EMAIL) {
+  return `<!--email_off--><a href="mailto:${CONTACT_EMAIL}">${inner}</a><!--/email_off-->`;
+}
+
 export function esc(s) {
   return String(s == null ? '' : s)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -242,8 +267,8 @@ const CHROME = {
     livePill: 'Live coverage',
     archivePill: 'Archived event',
     foot1: `<strong>${SITE_NAME}</strong> is an independent volunteer briefing. It is not a government site and has no official status. No ads. No money is collected here: every giving link points at the Government of Nepal's own relief fund.`,
-    foot2: `Found something wrong? Write to <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> and we will fix it.`,
-    foot3: `Contact: <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> &middot; <a href="/sources/">Sources</a> &middot; <a href="/about/">About this project</a> &middot; <a href="${SITE}/feed.xml">RSS feed</a>`,
+    foot2: `Found something wrong? Write to ${mailLink()} and we will fix it.`,
+    foot3: `Contact: ${mailLink()} &middot; <a href="/sources/">Sources</a> &middot; <a href="/about/">About this project</a> &middot; <a href="${SITE}/feed.xml">RSS feed</a>`,
   },
   ne: {
     skip: 'मुख्य सामग्रीमा जानुहोस्',
@@ -255,8 +280,8 @@ const CHROME = {
     livePill: 'प्रत्यक्ष',
     archivePill: 'सङ्ग्रहित',
     foot1: 'यो एउटा स्वतन्त्र स्वयंसेवी ब्रिफिङ हो। यो सरकारी वेबसाइट होइन र यसको कुनै आधिकारिक हैसियत छैन। विज्ञापन छैन। यहाँ पैसा उठाइँदैन: दान गर्ने हरेक लिङ्क नेपाल सरकारकै कोषमा जान्छ।',
-    foot2: `यो साइट र आधिकारिक स्रोतबीच फरक परे आधिकारिक स्रोत नै सही हो। केही गलत भेट्नुभयो? <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> मा लेख्नुहोस्, सच्याइन्छ वा हटाइन्छ।`,
-    foot3: `सम्पर्क: <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> &middot; <a href="/sources/">स्रोतहरू</a> &middot; <a href="/about/">परियोजनाबारे</a>`,
+    foot2: `यो साइट र आधिकारिक स्रोतबीच फरक परे आधिकारिक स्रोत नै सही हो। केही गलत भेट्नुभयो? ${mailLink()} मा लेख्नुहोस्, सच्याइन्छ वा हटाइन्छ।`,
+    foot3: `सम्पर्क: ${mailLink()} &middot; <a href="/sources/">स्रोतहरू</a> &middot; <a href="/about/">परियोजनाबारे</a>`,
   },
 };
 
@@ -500,7 +525,7 @@ ${o.modified ? `<meta property="article:modified_time" content="${esc(o.modified
 <meta name="twitter:image:alt" content="${esc(o.ogImageAlt || SITE_NAME)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500${lang === 'ne' ? '&family=Noto+Sans+Devanagari:wght@400' : ''}&display=swap" rel="stylesheet">
+<link href="${fontCss(lang)}" rel="stylesheet">
 <link rel="stylesheet" href="${siteAsset('/assets/site.css')}">
 ${o.head || ''}
 <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}</script>

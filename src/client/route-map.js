@@ -1,6 +1,7 @@
 /* The route map on /nepal-flood/rasuwa/map/. Served as /assets/route-map.js.
    Leaflet is loaded after first paint and only once the map scrolls into
    view, so the table above it is never blocked by a 150 kB map library.
+   Its stylesheet is fetched at the same moment, not from the page head.
    The points come from the page's own JSON block, #route-places. */
 (function(){
   var el = document.getElementById('route-map');
@@ -9,12 +10,25 @@
   var started = false;
   function start(){
     if(started) return; started = true;
+    /* The stylesheet comes with the map, not in the page head, so it never
+       holds up the first paint of the text. The map is drawn once both the
+       stylesheet and the library have arrived, so the tiles never show
+       unstyled. */
+    var waiting = 2;
+    function ready(){ if(--waiting === 0) draw(); }
     var css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    css.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
+    css.crossOrigin = '';
+    css.onload = ready;
+    css.onerror = ready;
+    document.head.appendChild(css);
     var s = document.createElement('script');
     s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
     s.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
     s.crossOrigin = '';
-    s.onload = draw;
+    s.onload = ready;
     s.onerror = function(){ el.innerHTML = '<p style="padding:20px;font-size:.9rem;">The map could not load. Every point it shows is in the table above.</p>'; };
     document.head.appendChild(s);
   }

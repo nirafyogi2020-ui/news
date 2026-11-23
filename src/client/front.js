@@ -11,11 +11,17 @@
     var d = new Date(iso); if(isNaN(d.getTime())) return '';
     try{ return d.toLocaleString('en-GB', { timeZone:'Asia/Kathmandu', day:'numeric', month:'short', year:'numeric', hour:'numeric', minute:'2-digit', hour12:true }).replace(',', ',') + ' NPT'; }catch(e){ return ''; }
   }
+  /* A screen reader is told when the toll or the missing count moves, in
+     one short line; the rest of the repaint stays silent. */
+  var SPOKEN = { dead:'Confirmed dead now ', missing:'Still missing now ' };
   function paint(data){
     if(!data || !data.board) return;
+    var said = [];
     Object.keys(data.board).forEach(function(metric){
       var fig = data.board[metric];
       if(!fig || typeof fig.value !== 'number') return;
+      var shown = document.querySelector('[data-live="' + metric + '"]');
+      if(shown && SPOKEN[metric] && shown.textContent !== num(fig.value)) said.push(SPOKEN[metric] + num(fig.value));
       document.querySelectorAll('[data-live="' + metric + '"]').forEach(function(el){ el.textContent = num(fig.value); });
       var src = document.querySelector('[data-live-src="' + metric + '"]');
       if(src){
@@ -23,6 +29,8 @@
         if(line) src.textContent = line;
       }
     });
+    var status = document.getElementById('fp-announce');
+    if(status && said.length) status.textContent = said.join('. ') + '.';
   }
   function freshness(){
     var el = document.getElementById('fp-checked');

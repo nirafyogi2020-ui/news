@@ -6,7 +6,7 @@
    the number once and both languages move together.
    ========================================================================= */
 
-import { SITE, SITE_NAME, CONTACT_EMAIL, page, esc, faqBlock, nptLong, siteAsset, ogFor } from './template.mjs';
+import { SITE, SITE_NAME, mailLink, page, esc, faqBlock, nptLong, siteAsset, ogFor } from './template.mjs';
 import * as C from './content.mjs';
 import { ne, neCount, NE_DISTRICTS, NE_MISSING_GROUPS, NE_EMERGENCY, NE_MISSING_STEPS, NE_HAZARD_STEPS, NE_SOURCES } from './content-ne.mjs';
 
@@ -45,10 +45,10 @@ const DIAL_STRIP = `<div class="callout callout-alert">
   <p class="callout-title">अहिल्यै खतरामा हुनुहुन्छ?</p>
   <p><strong>१००</strong> (नेपाल प्रहरी) वा मोबाइलबाट <strong>११२</strong> मा फोन गर्नुहोस्। यो पृष्ठको अरू केही लोड हुन नपर्खनुहोस्।</p>
   <div class="dialrow" style="margin-top:12px;margin-bottom:0;">
-    <a class="dial" href="tel:100"><b>१००</b><span>प्रहरी</span></a>
-    <a class="dial" href="tel:112"><b>११२</b><span>मोबाइलबाट</span></a>
-    <a class="dial" href="tel:102"><b>१०२</b><span>एम्बुलेन्स</span></a>
-    <a class="dial" href="tel:1149"><b>११४९</b><span>विपद् हटलाइन</span></a>
+    <a class="dial" href="tel:100"><b>१००</b><span class="visually-hidden">, </span><span>प्रहरी</span></a>
+    <a class="dial" href="tel:112"><b>११२</b><span class="visually-hidden">, </span><span>मोबाइलबाट</span></a>
+    <a class="dial" href="tel:102"><b>१०२</b><span class="visually-hidden">, </span><span>एम्बुलेन्स</span></a>
+    <a class="dial" href="tel:1149"><b>११४९</b><span class="visually-hidden">, </span><span>विपद् हटलाइन</span></a>
   </div>
   <p class="faint" style="margin-top:10px;margin-bottom:0;"><a href="/ne/aapatkalin-number/">सबै आपतकालीन नम्बर र कुन कामका लागि हो</a></p>
 </div>`;
@@ -170,7 +170,7 @@ ${faq.html}
 
 <h2>यो पृष्ठ कसरी बनेको हो</h2>
 <p>मृत्यु, सम्पर्कविहीन र उद्धारको पछिल्लो सङ्ख्या NDRRMA को ${esc(NDRRMA_NE)} को अपडेटबाट लिइएको हो। क्षति र प्रतिकार्यका पुराना विवरण संयुक्त राष्ट्रसंघीय OCHA को २७ अगस्टको स्थिति विवरणबाट लिइएका हुन्। दुई स्रोत बाझिए कम भएको तर पुष्टि भएको सङ्ख्या राखिन्छ, स्रोत र समयसहित।</p>
-<p>यहाँ केही गलत भेट्नुभयो भने <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> मा लेख्नुहोस्। सच्याइन्छ वा हटाइन्छ।</p>
+<p>यहाँ केही गलत भेट्नुभयो भने ${mailLink()} मा लेख्नुहोस्। सच्याइन्छ वा हटाइन्छ।</p>
 <p lang="en"><a href="/nepal-flood/rasuwa/">This briefing in English, with the map and full damage assessment</a></p>
 `;
 
@@ -335,10 +335,10 @@ export function neMissing(ctx) {
   <p class="callout-title">अहिल्यै खबर गर्न</p>
   <p>नजिकको जिल्ला प्रहरी कार्यालय वा <strong>१००</strong> मा फोन गर्नुहोस्। नेपालबाहिरबाट भए पहिले काठमाडौंस्थित आफ्नो देशको दूतावासमा सम्पर्क गर्नुहोस्। दूतावासले विदेशी नागरिकबारे नेपाल प्रहरीसँग सिधै समन्वय गर्छ।</p>
   <div class="dialrow" style="margin-top:12px;margin-bottom:0;">
-    <a class="dial" href="tel:100"><b>१००</b><span>नेपाल प्रहरी</span></a>
-    <a class="dial" href="tel:1155"><b>११५५</b><span>प्रहरी हेल्पलाइन</span></a>
-    <a class="dial" href="tel:1144"><b>११४४</b><span>पर्यटक प्रहरी</span></a>
-    <a class="dial" href="tel:1149"><b>११४९</b><span>विपद् हटलाइन</span></a>
+    <a class="dial" href="tel:100"><b>१००</b><span class="visually-hidden">, </span><span>नेपाल प्रहरी</span></a>
+    <a class="dial" href="tel:1155"><b>११५५</b><span class="visually-hidden">, </span><span>प्रहरी हेल्पलाइन</span></a>
+    <a class="dial" href="tel:1144"><b>११४४</b><span class="visually-hidden">, </span><span>पर्यटक प्रहरी</span></a>
+    <a class="dial" href="tel:1149"><b>११४९</b><span class="visually-hidden">, </span><span>विपद् हटलाइन</span></a>
   </div>
 </div>
 

@@ -4,7 +4,7 @@
    ========================================================================= */
 
 import {
-  SITE, SITE_NAME, CONTACT_EMAIL, page, esc, related, faqBlock, stripTags,
+  SITE, SITE_NAME, CONTACT_EMAIL, mailLink, page, esc, related, faqBlock, stripTags,
   nptLong, nptDay, ogFor, ogSlug, siteAsset, langAttr, scriptAsset,
 } from './template.mjs';
 import * as C from './content.mjs';
@@ -187,10 +187,10 @@ const EMERGENCY_STRIP = `<div class="callout callout-alert">
   <p class="callout-title">In danger right now?</p>
   <p>Call <strong>100</strong> (Nepal Police) or <strong>112</strong> from any mobile. Do not wait for anything on this page to load.</p>
   <div class="dialrow" style="margin-top:12px;margin-bottom:0;">
-    <a class="dial" href="tel:100"><b>100</b><span>Police</span></a>
-    <a class="dial" href="tel:112"><b>112</b><span>Any mobile</span></a>
-    <a class="dial" href="tel:102"><b>102</b><span>Ambulance</span></a>
-    <a class="dial" href="tel:1149"><b>1149</b><span>Disaster hotline</span></a>
+    <a class="dial" href="tel:100"><b>100</b><span class="visually-hidden">, </span><span>Police</span></a>
+    <a class="dial" href="tel:112"><b>112</b><span class="visually-hidden">, </span><span>Any mobile</span></a>
+    <a class="dial" href="tel:102"><b>102</b><span class="visually-hidden">, </span><span>Ambulance</span></a>
+    <a class="dial" href="tel:1149"><b>1149</b><span class="visually-hidden">, </span><span>Disaster hotline</span></a>
   </div>
   <p class="faint" style="margin-top:10px;margin-bottom:0;"><a href="/nepal-flood/emergency-numbers/">Full list of Nepal emergency numbers, and what each one is for</a></p>
 </div>`;
@@ -523,10 +523,10 @@ export function missingPersons(ctx) {
   <p class="callout-title">Reporting someone missing, right now</p>
   <p>Call <strong>100</strong> (Nepal Police) or the nearest District Police Office. From outside Nepal, contact your own country’s embassy in Kathmandu first. Embassies coordinate directly with Nepal Police on foreign nationals.</p>
   <div class="dialrow" style="margin-top:12px;margin-bottom:0;">
-    <a class="dial" href="tel:100"><b>100</b><span>Nepal Police</span></a>
-    <a class="dial" href="tel:1155"><b>1155</b><span>Police helpline</span></a>
-    <a class="dial" href="tel:1144"><b>1144</b><span>Tourist Police</span></a>
-    <a class="dial" href="tel:1149"><b>1149</b><span>Disaster hotline</span></a>
+    <a class="dial" href="tel:100"><b>100</b><span class="visually-hidden">, </span><span>Nepal Police</span></a>
+    <a class="dial" href="tel:1155"><b>1155</b><span class="visually-hidden">, </span><span>Police helpline</span></a>
+    <a class="dial" href="tel:1144"><b>1144</b><span class="visually-hidden">, </span><span>Tourist Police</span></a>
+    <a class="dial" href="tel:1149"><b>1149</b><span class="visually-hidden">, </span><span>Disaster hotline</span></a>
   </div>
 </div>
 
@@ -896,11 +896,11 @@ ${table(['District', 'Province', 'Role in this event'], [
 <p><a href="/nepal-flood/rasuwa/casualties/">See the district-by-district recovery figures</a>.</p>
 `;
 
-  const head = `<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-<link rel="preconnect" href="https://server.arcgisonline.com">`;
+  const head = `<link rel="preconnect" href="https://server.arcgisonline.com">`;
 
-  /* Leaflet is loaded after first paint and only once the map scrolls into
-     view, so the table above it is never blocked by a 150 kB map library. */
+  /* Leaflet, script and stylesheet both, is loaded after first paint and
+     only once the map scrolls into view, so the table above it is never
+     blocked by a 150 kB map library or a render-blocking stylesheet. */
   const tail = `<script type="application/json" id="route-places">${placeJson}</script>
 ${scriptAsset('route-map.js', clientJs('route-map.js'))}`;
 
@@ -938,6 +938,9 @@ ${scriptAsset('route-map.js', clientJs('route-map.js'))}`;
 }
 
 /* -- 9. /nepal-flood/rasuwa/live-updates/ ----------------------------------- */
+
+/* The same cap the dashboard's LiveBlogPosting uses (src/build.mjs). */
+export const LIVEBLOG_SCHEMA_MAX = 25;
 
 export function liveUpdates(ctx) {
   const path = '/nepal-flood/rasuwa/live-updates/';
@@ -1020,7 +1023,11 @@ ${SECOND_FLOOD_WARNING}
           publisher: ORG,
           mainEntityOfPage: { '@id': `${SITE}${path}#webpage` },
           about: EVENT_ABOUT,
-          liveBlogUpdate: posts.map(p => ({
+          /* Only the newest updates go in the structured data. The block
+             sits in <head>, so every entry is downloaded before any text
+             shows; all 300-odd updates made it 316 kB of a 514 kB page.
+             The visible list below still carries every briefing. */
+          liveBlogUpdate: posts.slice(0, LIVEBLOG_SCHEMA_MAX).map(p => ({
             '@type': 'BlogPosting',
             '@id': SITE + p.url + '#post',
             headline: p.title,
@@ -1067,7 +1074,7 @@ export function emergencyNumbers(ctx) {
 </div>
 
 <div class="dialrow">
-${C.EMERGENCY_NUMBERS.map(([n, who]) => `<a class="dial" href="tel:${n}"><b>${n}</b><span>${esc(who)}</span></a>`).join('\n')}
+${C.EMERGENCY_NUMBERS.map(([n, who]) => `<a class="dial" href="tel:${n}"><b>${n}</b><span class="visually-hidden">, </span><span>${esc(who)}</span></a>`).join('\n')}
 </div>
 
 <h2>Every national emergency number, and what it is for</h2>
@@ -1482,7 +1489,7 @@ export function about(ctx) {
 </ul>
 
 <h2>Corrections</h2>
-<p>Errors get corrected or removed, not quietly edited around. If a figure, a date, a name or a source here is wrong, write to <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> and say what is wrong and, if you can, what the correct source is. <a href="/contact/">The contact page</a> explains what to include.</p>
+<p>Errors get corrected or removed, not quietly edited around. If a figure, a date, a name or a source here is wrong, write to ${mailLink()} and say what is wrong and, if you can, what the correct source is. <a href="/contact/">The contact page</a> explains what to include.</p>
 
 <h2>Use these figures on your site</h2>
 <p>Newsrooms, schools and community sites are welcome to show the latest figures. Paste this into any page. The box updates itself and credits the source.</p>
@@ -1578,7 +1585,7 @@ export function contact(ctx) {
 </div>
 
 <h2>Email</h2>
-<p style="font-size:1.15rem;"><a href="mailto:${CONTACT_EMAIL}"><strong>${CONTACT_EMAIL}</strong></a></p>
+<p style="font-size:1.15rem;">${mailLink(`<strong>${CONTACT_EMAIL}</strong>`)}</p>
 
 <h2>Reporting an error</h2>
 <p>Corrections are the most useful message this project receives. Errors get corrected or removed, not quietly edited around.</p>
@@ -1998,7 +2005,9 @@ function newsItem(item, i, withPhoto) {
     + (item.source ? `${item.time ? ' · ' : ''}${esc(item.source)}` : '')
     + (photo ? ` · Photo: ${esc(item.source || hostOf(item.image))}` : '') + '</p>'
     + (photo
-      ? `<img src="${esc(item.image)}" alt="${esc(item.title)}" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fail="unphoto">`
+      /* alt is empty: the headline right beside it already names the
+         picture, and a screen reader would otherwise read it twice. */
+      ? `<img src="${esc(item.image)}" alt="" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fail="unphoto">`
       : '')
     + '</li>';
 }
@@ -2101,8 +2110,10 @@ const FRONT_CSS = `
    stand-in alike from 640 px up. At 13.2em the first line ("...confirmed
    dead,") fitted the web font by a few pixels and not the fallback, so the
    page jumped a headline line when the font arrived (CLS 0.37 at 768 px);
-   Newsreader's optical sizing makes its em width grow with the type size,
-   so no single fallback ratio could close that gap. */
+   Newsreader's optical sizing made its em width grow with the type size,
+   so no single fallback ratio could close that gap. (Since 23 Nov 2026 the
+   font is loaded at one optical size, so its width no longer moves with the
+   type size; the 768 px case has not been re-measured.) */
 .fp .pagehead h1{font-size:clamp(2.05rem, 1.3rem + 3.3vw, 3.5rem); font-weight:500; line-height:1.04; letter-spacing:-0.02em; margin:0 0 .4em; max-width:12.4em;}
 .fp .pagehead h1 b{font-weight:600; font-family:'Newsreader', 'Newsreader Figures Fallback', Georgia, 'Times New Roman', serif;}
 .fp .status-row{display:flex; flex-wrap:wrap; gap:6px 10px; align-items:center; font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-faint); margin:0 0 14px;}
@@ -2247,6 +2258,7 @@ export function frontPage(ctx, extra = {}) {
     + (day ? `<span class="sep" aria-hidden="true"></span><span>Day ${day}</span>` : '')
     ;
   const leadHtml = `
+<p id="fp-announce" class="visually-hidden" role="status"></p>
 ${tldr.length ? `<ol class="fp-tldr" aria-label="In short">${tldr.map(l => `<li><span class="k">${esc(l.k)}</span><p class="t">${esc(l.t)}</p></li>`).join('')}</ol>` : ''}
 ${lead ? `<figure class="fp-lead-media"><a href="${esc(dashPath)}"><img src="${esc(siteAsset('/assets/photos/' + lead.file))}"${photoSet(lead, LEAD_SIZES)} alt="${esc(event.name || 'The event')}: the river in flood through Rasuwa district, Nepal" width="1200" height="675" fetchpriority="high" decoding="async"></a><figcaption>Photograph: ${esc(lead.credit)}</figcaption></figure>` : ''}
 <p class="fp-sec-sub"><a href="${esc(dashPath)}">Open the live dashboard</a>: every counter, the district table, the map, the videos and the Investigation board.</p>`;
@@ -2273,7 +2285,11 @@ ${lead ? `<figure class="fp-lead-media"><a href="${esc(dashPath)}"><img src="${e
   <div class="fp-sec-head"><h2 id="fp-photo-h">From the area</h2><a href="/updates/">All briefings</a></div>
   <p class="fp-sec-sub">Photographs published by the newsrooms the briefings cite, credited to each one.</p>
   <div class="fp-photos">${photos.map(p =>
-    `<figure><a href="${esc(p.url)}"><img src="${esc(siteAsset('/assets/photos/' + p.file))}"${photoSet(p.rec, AREA_SIZES)} alt="${esc(p.title)}" width="800" height="600" loading="lazy" decoding="async">`
+    /* alt is empty because the caption inside the same link names the
+       picture; repeating it made a screen reader read every headline twice.
+       The smallest copy on disk is the 800 px card, so there is no smaller
+       size to offer the narrow slots yet. */
+    `<figure><a href="${esc(p.url)}"><img src="${esc(siteAsset('/assets/photos/' + p.file))}"${photoSet(p.rec, AREA_SIZES)} alt="" width="800" height="600" loading="lazy" decoding="async">`
     + `<figcaption><span${langAttr(p.title)}>${esc(p.title)}</span><span class="c">Photograph: ${esc(p.credit)}</span></figcaption></a></figure>`).join('')}</div>
 </section>` : '';
 
@@ -2299,7 +2315,7 @@ ${lead ? `<figure class="fp-lead-media"><a href="${esc(dashPath)}"><img src="${e
 
   /* -- who to call, how to give --------------------------------------------- */
   const dials = C.EMERGENCY_NUMBERS.slice(0, 4).map(([n, who]) =>
-    `<a class="fp-dial" href="tel:${esc(n)}"><b>${esc(n)}</b><span>${esc(who)}</span></a>`).join('');
+    `<a class="fp-dial" href="tel:${esc(n)}"><b>${esc(n)}</b><span class="visually-hidden">, </span><span>${esc(who)}</span></a>`).join('');
   const reliefSentence = relief ? statSentence(relief) : '';
   const helpHtml = `
 <section class="fp-sec" id="help" aria-labelledby="fp-help-h">
