@@ -5,6 +5,11 @@
   const safe = url => { try { return new URL(url).protocol === 'https:'; } catch { return false; } };
   /* The outside-link arrow, hidden from screen readers like the build's own. */
   const arrow = () => { const s = document.createElement('span'); s.setAttribute('aria-hidden', 'true'); s.textContent = '↗'; return s; };
+  /* The hidden "(opens in a new tab)" the build puts in every new-tab link.
+     A repaint that replaces a link's contents puts it back. */
+  const NEW_TAB_TEXT = ' (opens in a new tab)';
+  const newTab = () => { const s = document.createElement('span'); s.className = 'visually-hidden'; s.lang = 'en'; s.textContent = NEW_TAB_TEXT; return s; };
+  const linkText = el => (el?.textContent || '').split(NEW_TAB_TEXT).join('');
   let event;
   const labels = {dead:'confirmed dead',missing:'listed missing in Nepal',rescued:'rescued so far'};
   function synchronize(data) {
@@ -24,7 +29,7 @@
       document.querySelectorAll('[data-response-source] a,[data-source-for="response:identified"] a').forEach(a=>{if(safe(response.url))a.href=response.url;});
       const stamp=$('[data-response-stamp]');
       if(stamp && response.time && safe(response.url)){
-        const a=document.createElement('a');a.href=response.url;a.target='_blank';a.rel='noopener noreferrer';a.append('Source ',arrow());
+        const a=document.createElement('a');a.href=response.url;a.target='_blank';a.rel='noopener noreferrer';a.append('Source ',arrow(),newTab());
         stamp.replaceChildren(document.createTextNode(new Date(response.time).toLocaleString('en-GB',{timeZone:'Asia/Kathmandu',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+' NPT · '),a);
       }
       document.querySelectorAll('[data-response]').forEach(el=>{const value=response[el.dataset.response];if(Number.isFinite(value))el.textContent=fmt(value);});
@@ -32,7 +37,7 @@
     }
     ['dead','missing','rescued'].forEach(metric=>{
       const figure=data.board[metric];const slot=document.querySelector('[data-source-for="'+metric+'"]');
-      if(slot && figure && safe(figure.url)){const a=slot.querySelector('a');if(a){a.href=figure.url;a.replaceChildren(figure.source.split(' · ')[0]+' ',arrow());a.title=figure.time;}}
+      if(slot && figure && safe(figure.url)){const a=slot.querySelector('a');if(a){a.href=figure.url;a.replaceChildren(figure.source.split(' · ')[0]+' ',arrow(),...(a.target==='_blank'?[newTab()]:[]));a.title=figure.time;}}
     });
     const d = data.districts;
     if (d?.rows?.length) {
@@ -151,8 +156,8 @@
     if(q.length<2)return;
     const seen=new Set();const links=[];
     document.querySelectorAll('.post-card .tc-title a, .ticker li>a').forEach(a=>{
-      const title=a.textContent.trim();const href=a.getAttribute('href');
-      if(!(a.closest('.post-card')?.textContent || title).toLocaleLowerCase().includes(q)||!href||seen.has(title))return;
+      const title=linkText(a).trim();const href=a.getAttribute('href');
+      if(!(linkText(a.closest('.post-card')) || title).toLocaleLowerCase().includes(q)||!href||seen.has(title))return;
       let u;try{u=new URL(href,location.origin);}catch{return;}
       if(u.origin!==location.origin&&!safe(u.href))return;
       seen.add(title);links.push({title,url:u.href,external:u.origin!==location.origin,when:a.closest('.post-card')?.querySelector('.tc-kicker')?.textContent.trim()||''});
@@ -160,7 +165,7 @@
     if(links.length){
       searchResults.querySelector('.search-empty')?.remove();
       const heading=document.createElement('p');heading.className='search-result-heading';heading.textContent='Recent reporting';searchResults.append(heading);
-      links.slice(0,8).forEach(item=>{const a=document.createElement('a');a.className='search-story';a.textContent=item.title;if(item.when){const when=document.createElement('small');when.textContent=item.when;a.append(when);}a.href=item.url;if(item.external){a.target='_blank';a.rel='noopener noreferrer';}searchResults.append(a);});
+      links.slice(0,8).forEach(item=>{const a=document.createElement('a');a.className='search-story';a.textContent=item.title;if(item.when){const when=document.createElement('small');when.textContent=item.when;a.append(when);}a.href=item.url;if(item.external){a.target='_blank';a.rel='noopener noreferrer';a.append(newTab());}searchResults.append(a);});
     }
   });
   $('#search-pop')?.addEventListener('keydown',e=>{

@@ -17,7 +17,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 
-import { SITE, SITE_NAME, nptDay, nptLong, ogFor, ogStoryFor, assetVersioned, langAttr, EXT_ARROW, emittedAssets, hashedAsset, hashedAssets, IMG_FAIL_JS } from './template.mjs';
+import { SITE, SITE_NAME, nptDay, nptLong, ogFor, ogStoryFor, assetVersioned, langAttr, EXT_ARROW, markNewTab, emittedAssets, hashedAsset, hashedAssets, IMG_FAIL_JS } from './template.mjs';
 import { HASHED_FILE, planPrune } from './asset-names.mjs';
 import * as P from './pages.mjs';
 import * as NE from './pages-ne.mjs';
@@ -1268,7 +1268,9 @@ function externalScripts(html) {
   const head = html.slice(0, cut).replace('</head>', `${tag}\n</head>`);
   return head + tail;
 }
-const dashboardHtml = externalScripts(externalStyles(lighten(index)));
+/* markNewTab: every new-tab link in the dashboard's markup says so in hidden
+   English text, as the article pages do (src/template.mjs). */
+const dashboardHtml = markNewTab(externalScripts(externalStyles(lighten(index))), 'en');
 
 /* The newsroom feed, fetched once per build so the front page carries real
    headlines for a crawler and for a reader with JavaScript off; the page

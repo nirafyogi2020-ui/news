@@ -2,6 +2,7 @@
 --bg:#f2f4f6; --surface:#ffffff; --surface-2:#e9edf1;
 --text:#0f1720; --text-muted:#4a5764; --text-faint:#78848f;
 --border:#dde3e9; --border-strong:#bcc7d1;
+--link-line:#768490;
 --critical:#b3261e; --crimson:#DC143C; --navy:#003893;
 --calm:#1d5e7a;
 --tint:rgba(15,23,32,0.05);
@@ -18,6 +19,7 @@
 --bg:#0a0f16; --surface:#141c26; --surface-2:#101822;
 --text:#eef3f8; --text-muted:#9fb0c0; --text-faint:#6d7f90;
 --border:#22303e; --border-strong:#33455a;
+--link-line:#5a6f88;
 --critical:#ff6b5e;
 --calm:#6fc3d9;
 --tint:rgba(255,255,255,0.04);
@@ -36,7 +38,7 @@ font-family:var(--font-body); font-size:16px; line-height:1.6;
 min-height:100%; overscroll-behavior-y:none;
 padding-top:env(safe-area-inset-top); padding-bottom:env(safe-area-inset-bottom);
 }
-a{color:var(--text); text-decoration-color:var(--border-strong); text-underline-offset:2px;}
+a{color:var(--text); text-decoration-color:var(--link-line); text-underline-offset:2px;}
 a:hover{text-decoration-color:var(--text);}
 a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible{outline:2px solid var(--text); outline-offset:2px; border-radius:2px;}
 .visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
@@ -2973,7 +2975,7 @@ margin:0; font-size:var(--meta); color:var(--text-faint); line-height:1.5;
 font-family:var(--font-mono); font-size:var(--meta-xs); font-weight:600;
 letter-spacing:0.08em; text-transform:uppercase; color:var(--text-faint);
 }
-.today-card .tc-sources a{color:var(--text-muted); text-decoration-color:var(--border-strong);}
+.today-card .tc-sources a{color:var(--text-muted); text-decoration-color:var(--link-line);}
 .today-card .tc-sources a:hover{color:var(--critical);}
 .river .post-btn, .pack .post-btn{font-size:var(--meta-lg); font-weight:600;}
 .river .post-btn:hover, .pack .post-btn:hover{color:var(--critical);}

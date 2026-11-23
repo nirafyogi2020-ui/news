@@ -18,6 +18,36 @@ export const SITE_NAME = 'Nepal Disaster Update Live';
    link's name, so they are hidden from it. */
 export const EXT_ARROW = '<span aria-hidden="true">&#8599;</span>';
 export const CHEVRON = '<span aria-hidden="true">&rsaquo;</span>';
+/* A link that opens a new tab says so to a screen reader, in hidden text at
+   the end of its name. The span carries its own lang, because the link (or
+   the line round it) may be in the other language: a Nepali headline on an
+   English page, an English bank name on a Nepali one. The Nepali wording
+   mirrors the "ट्याब" already used on the dashboard; it wants a native
+   speaker's check. */
+export const NEW_TAB_TEXT = { en: ' (opens in a new tab)', ne: ' (नयाँ ट्याबमा खुल्छ)' };
+export const newTabNote = (lang = 'en') => {
+  const l = lang === 'ne' ? 'ne' : 'en';
+  return `<span class="visually-hidden" lang="${l}">${NEW_TAB_TEXT[l]}</span>`;
+};
+/* Every <a target="_blank"> outside a script block gets the hidden note
+   before its </a>, in the page's language. A link that already has one is
+   left alone, a link hidden from screen readers needs none, and a link
+   named by aria-label gets the words added to the label instead (the
+   label would hide the span). Script blocks are left byte for byte, so
+   their CSP hashes cannot move. */
+export function markNewTab(html, lang = 'en') {
+  const l = lang === 'ne' ? 'ne' : 'en';
+  return html.split(/(<script\b[\s\S]*?<\/script>)/).map((part, i) => i % 2 ? part
+    : part.replace(/<a\b([^>]*)>([\s\S]*?)<\/a>/g, (m, attrs, inner) => {
+      if (!/\starget=["']?_blank/.test(attrs) || /\saria-hidden="true"/.test(attrs)) return m;
+      if (inner.includes(NEW_TAB_TEXT.en) || inner.includes(NEW_TAB_TEXT.ne)) return m;
+      if (/\saria-label="/.test(attrs)) {
+        return attrs.includes(NEW_TAB_TEXT[l]) ? m
+          : `<a${attrs.replace(/(\saria-label="[^"]*)"/, (_x, a) => `${a}${NEW_TAB_TEXT[l]}"`)}>${inner}</a>`;
+      }
+      return `<a${attrs}>${inner}${newTabNote(l)}</a>`;
+    })).join('');
+}
 export const SITE_ALT_NAMES = ['Nepal Disaster Update', 'NepalDisasterUpdate', 'Nepal Disaster Live', 'Nepal Disaster Update Live Nepal'];
 export const PUBLISHER = 'Nepal Disaster Update Live';
 export const CONTACT_EMAIL = 'support@nxtimaginelabs.com';
@@ -504,7 +534,7 @@ export function page(o) {
       `\n<link rel="alternate" hreflang="x-default" href="${SITE}${o.alternates.find(a => a.hreflang === 'en') ? o.alternates.find(a => a.hreflang === 'en').path : o.path}">`
     : '';
 
-  return markCurrent(o.path, `<!DOCTYPE html>
+  return markNewTab(markCurrent(o.path, `<!DOCTYPE html>
 <html lang="${lang === 'ne' ? 'ne' : 'en'}">
 <head>
 <meta charset="UTF-8">
@@ -622,7 +652,7 @@ ${bodyRelated ? `<div class="page-related">${bodyRelated}</div>` : ''}
 ${o.tail || ''}
 </body>
 </html>
-`);
+`), lang);
 }
 
 /** Related-pages block, rendered at the foot of an article. */

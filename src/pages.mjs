@@ -938,6 +938,21 @@ ${scriptAsset('route-map.js', clientJs('route-map.js'))}`;
   };
 }
 
+/* One briefing in a list of briefings (the live-updates page, the archive).
+   Only the headline is the link, so a screen reader's link list reads as a
+   list of headlines rather than 287 links that all begin with a date. The
+   card still opens on a click anywhere: the headline link's ::after is
+   stretched over it (see .postcard in assets/site.css). The time stays a
+   <time> outside the link. */
+function postCard(p, max) {
+  const lead = p.body[0] || '';
+  return `<li><div class="postcard">
+  <time datetime="${esc(p.time)}">${esc(nptLong(p.time))}</time>
+  <h2${langAttr(p.title)}><a href="${esc(p.url)}">${esc(p.title)}</a></h2>
+  <p${langAttr(lead)}>${esc(lead.slice(0, max))}${lead.length > max ? '…' : ''}</p>
+</div></li>`;
+}
+
 /* -- 9. /nepal-flood/rasuwa/live-updates/ ----------------------------------- */
 
 /* The same cap the dashboard's LiveBlogPosting uses (src/build.mjs). */
@@ -954,11 +969,7 @@ ${EMERGENCY_STRIP}
 <p class="measure">Each entry below is written and checked by hand against the sources named under it. Newest first. The automatically collected newswire feed follows underneath.</p>
 
 <ul class="postlist">
-${posts.map(p => `<li><a class="postcard" href="${esc(p.url)}">
-  <time datetime="${esc(p.time)}">${esc(nptLong(p.time))}</time>
-  <h2${langAttr(p.title)}>${esc(p.title)}</h2>
-  <p${langAttr(p.body[0])}>${esc((p.body[0] || '').slice(0, 190))}${(p.body[0] || '').length > 190 ? '…' : ''}</p>
-</a></li>`).join('\n')}
+${posts.map(p => postCard(p, 190)).join('\n')}
 </ul>
 <p><a href="/updates/">Browse the full update archive</a>.</p>
 
@@ -1320,11 +1331,7 @@ export function updateIndex(ctx) {
 <p class="measure">Every briefing published on this site, newest first. Each one names its sources and carries the time it was published in Nepal time.</p>
 
 <ul class="postlist">
-${posts.map(p => `<li><a class="postcard" href="${esc(p.url)}">
-  <time datetime="${esc(p.time)}">${esc(nptLong(p.time))}</time>
-  <h2${langAttr(p.title)}>${esc(p.title)}</h2>
-  <p${langAttr(p.body[0])}>${esc((p.body[0] || '').slice(0, 200))}${(p.body[0] || '').length > 200 ? '…' : ''}</p>
-</a></li>`).join('\n')}
+${posts.map(p => postCard(p, 200)).join('\n')}
 </ul>
 
 <p>For the automatically collected newswire from Nepali and international newsrooms, see <a href="/nepal-flood/rasuwa/live-updates/">the live updates page</a>, or subscribe to <a href="${SITE}/feed.xml">the RSS feed</a>.</p>

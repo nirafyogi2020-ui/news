@@ -431,7 +431,7 @@
       '<div class="ss-sub">' + esc(it.source || 'YouTube') +
         (it.time ? ' &middot; ' + esc(longDate(it.time)) : '') + '</div>' +
       '<div class="ss-desc">' + esc(desc) + '</div>' +
-      '<a class="ss-link" href="' + esc(it.url) + '" target="_blank" rel="noopener">Open on YouTube</a>';
+      '<a class="ss-link" href="' + esc(it.url) + '" target="_blank" rel="noopener">Open on YouTube' + NEW_TAB_HTML + '</a>';
     sheet.hidden = false; scrim.hidden = false;
     requestAnimationFrame(function(){ sheet.classList.add('on'); scrim.classList.add('on'); });
   }

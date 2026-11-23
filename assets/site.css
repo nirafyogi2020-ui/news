@@ -16,6 +16,12 @@
      dark palette keeps its own value, which already passes. */
   --text-faint:#6b6a65;
   --border:#e1e0d9; --border-strong:#c3c2b7;
+  /* The underline under a link in running text. A link is the same colour
+     as the words round it, so the line is the only thing that says "link".
+     In --border-strong it was 1.7:1 and easy to miss; this is 3.3:1 or more
+     on every surface (3.56 page, 3.65 card, 3.29 grey and red-tinted box),
+     and still a thin grey line. */
+  --link-line:#85847e;
   /* Red is also a text colour (the Front page link, the live pill), so it
      has to carry small type on the grey surface: #c23333 is 4.8:1 there. */
   --critical:#c23333; --crimson:#DC143C; --navy:#003893;
@@ -61,6 +67,7 @@
   --bg:#0d0d0d; --surface:#1a1a19; --surface-2:#161615;
   --text:#ffffff; --text-muted:#c3c2b7; --text-faint:#8e8c86;
   --border:#2c2c2a; --border-strong:#383835;
+  --link-line:#706f6a;
   --critical:#e0685f;
   --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.4);
 }
@@ -69,6 +76,7 @@
     --bg:#0d0d0d; --surface:#1a1a19; --surface-2:#161615;
     --text:#ffffff; --text-muted:#c3c2b7; --text-faint:#8e8c86;
     --border:#2c2c2a; --border-strong:#383835;
+    --link-line:#706f6a;
     --critical:#e0685f;
     --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.4);
   }
@@ -85,7 +93,7 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 img,svg{max-width:100%; display:block;}
-a{color:var(--text); text-decoration-color:var(--border-strong); text-underline-offset:2px;}
+a{color:var(--text); text-decoration-color:var(--link-line); text-underline-offset:2px;}
 a:hover{text-decoration-color:var(--critical); color:var(--critical);}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--text); outline-offset:2px; border-radius:2px;}
 .visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
@@ -105,7 +113,7 @@ strong{font-weight:600;}
 .eyebrow{font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-faint); font-weight:500; margin:0 0 .5em;}
 .small{font-size:0.86rem; color:var(--text-muted);}
 .faint{font-size:0.8rem; color:var(--text-faint);}
-.faint a, .small a{color:var(--text-muted); text-decoration-color:var(--border-strong);}
+.faint a, .small a{color:var(--text-muted); text-decoration-color:var(--link-line);}
 .faint a:hover, .small a:hover{color:var(--critical);}
 .num{font-family:var(--font-mono); font-variant-numeric:tabular-nums;}
 
@@ -328,8 +336,16 @@ a.card .go{display:inline-block; margin-top:.6em; font-size:0.8rem; font-weight:
 /* ---- update article list ------------------------------------------------ */
 .postlist{list-style:none; padding:0; margin:0 0 26px; display:grid; gap:12px;}
 .postlist li{margin:0;}
-.postcard{display:block; text-decoration:none; border:1px solid var(--border); background:var(--surface); border-radius:14px; padding:16px 18px; box-shadow:var(--shadow);}
+/* Only the headline is a link; its ::after is stretched over the card so a
+   click anywhere still opens it, as when the whole card was the link. The
+   focus ring goes round the card where :has() works, and stays on the
+   headline where it does not. */
+.postcard{position:relative; display:block; border:1px solid var(--border); background:var(--surface); border-radius:14px; padding:16px 18px; box-shadow:var(--shadow);}
 .postcard:hover{border-color:var(--border-strong); color:var(--text); }
+.postcard h2 a{color:inherit; text-decoration:none;}
+.postcard h2 a::after{content:""; position:absolute; inset:0; border-radius:inherit;}
+.postcard:has(h2 a:focus-visible){outline:2px solid var(--text); outline-offset:2px;}
+.postcard:has(h2 a:focus-visible) h2 a{outline:none;}
 .postcard time{display:block; font-family:var(--font-mono); font-size:0.71rem; letter-spacing:.05em; text-transform:uppercase; color:var(--critical); margin-bottom:5px;}
 .postcard h2{margin:0 0 .3em; font-size:1.12rem; font-family:var(--font-display); font-weight:600;}
 .postcard p{margin:0; font-size:0.92rem; color:var(--text-muted);}

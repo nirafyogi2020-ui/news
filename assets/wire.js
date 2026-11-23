@@ -23,7 +23,7 @@
     }
     state.hidden = true;
     wrap.innerHTML = items.map(function(i){
-      return '<div class="feeditem"><a href="' + esc(i.url) + '" target="_blank" rel="noopener nofollow"' + (/[\u0900-\u097F]/.test(i.title) ? ' lang="ne"' : '') + '>' + esc(i.title) + '</a>' +
+      return '<div class="feeditem"><a href="' + esc(i.url) + '" target="_blank" rel="noopener nofollow"' + (/[\u0900-\u097F]/.test(i.title) ? ' lang="ne"' : '') + '>' + esc(i.title) + '<span class="visually-hidden" lang="en"> (opens in a new tab)</span></a>' +
         '<div class="meta"><span>' + esc(i.source || '') + '</span>' +
         (ago(i.time) ? '<span>' + ago(i.time) + '</span>' : '') +
         (i.verified ? '<span>verified</span>' : '') + '</div></div>';

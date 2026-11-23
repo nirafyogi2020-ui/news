@@ -67,8 +67,8 @@ function buildFloodMap(){
   layers.sat.addTo(map);
 
   document.getElementById('map-attrib').innerHTML =
-    ESRI_CREDIT + ' &middot; terrain &copy; <a href="https://opentopomap.org/" target="_blank" rel="noopener">OpenTopoMap</a> &middot; ' +
-    'streets &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &middot; map by Leaflet.';
+    ESRI_CREDIT + ' &middot; terrain &copy; <a href="https://opentopomap.org/" target="_blank" rel="noopener">OpenTopoMap' + NEW_TAB_HTML + '</a> &middot; ' +
+    'streets &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap' + NEW_TAB_HTML + '</a> contributors &middot; map by Leaflet.';
 
   document.querySelectorAll('[data-layer]').forEach(function(chip){
     chip.addEventListener('click', function(){
@@ -146,7 +146,7 @@ function buildFloodMap(){
       '<h4>' + place.name + '</h4>' +
       '<div class="pop-meta">' + place.step + ' &middot; ' + place.elev + '</div>' +
       '<div>' + place.blurb + '</div>' +
-      '<a class="pop-btn" style="display:inline-block; text-decoration:none;" target="_blank" rel="noopener" href="https://www.google.com/maps/@' + place.lat + ',' + place.lng + ',15z/data=!3m1!1e3">Open in Google Maps</a>'
+      '<a class="pop-btn" style="display:inline-block; text-decoration:none;" target="_blank" rel="noopener" href="https://www.google.com/maps/@' + place.lat + ',' + place.lng + ',15z/data=!3m1!1e3">Open in Google Maps' + NEW_TAB_HTML + '</a>'
     );
     marker.on('click', function(){ select(place.id, false); });
     markers[place.id] = marker;
@@ -205,7 +205,7 @@ function buildFloodMap(){
         var parts = f.split(': ');
         return parts.length > 1 ? '<span>' + parts[0] + ': <b>' + parts.slice(1).join(': ') + '</b></span>' : '<span>' + f + '</span>';
       }).join('') +
-      '<a class="chip" style="margin-top:6px; display:inline-block; text-decoration:none;" target="_blank" rel="noopener" href="https://www.google.com/maps/@' + place.lat + ',' + place.lng + ',15z/data=!3m1!1e3">Open in Google Maps</a></div>';
+      '<a class="chip" style="margin-top:6px; display:inline-block; text-decoration:none;" target="_blank" rel="noopener" href="https://www.google.com/maps/@' + place.lat + ',' + place.lng + ',15z/data=!3m1!1e3">Open in Google Maps' + NEW_TAB_HTML + '</a></div>';
 
     if(fly){
       map.flyTo([place.lat, place.lng], place.zoom, { duration: 1.1 });

@@ -84,7 +84,7 @@
       rows.forEach(function(row, i){
         var li = document.createElement('li'); li.className = 'fp-news-item';
         var a = document.createElement('a'); a.href = row.url; a.target = '_blank'; a.rel = 'noopener nofollow';
-        var t = document.createElement('span'); t.className = 't'; t.textContent = row.title; if(/[\u0900-\u097F]/.test(row.title)) t.lang = 'ne'; a.appendChild(t); li.appendChild(a);
+        var t = document.createElement('span'); t.className = 't'; t.textContent = row.title; if(/[\u0900-\u097F]/.test(row.title)) t.lang = 'ne'; a.appendChild(t); var nt = document.createElement('span'); nt.className = 'visually-hidden'; nt.lang = 'en'; nt.textContent = ' (opens in a new tab)'; a.appendChild(nt); li.appendChild(a);
         var m = document.createElement('p'); m.className = 'm';
         if(row.time){ var tm = document.createElement('time'); tm.dateTime = row.time; tm.textContent = npt(row.time); m.appendChild(tm); }
         var tail = (row.source ? (row.time ? ' · ' : '') + row.source : '');

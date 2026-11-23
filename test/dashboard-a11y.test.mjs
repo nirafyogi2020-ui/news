@@ -156,3 +156,61 @@ test('the dashboard step boxes are ordered lists with the old spacing', () => {
   assert.match(SRC, /\.checklist\{[^}]*margin:16px 0 0; padding:0; list-style:none;\}/);
   assert.match(SRC, /\.check-row\{[^}]*margin:0;/);
 });
+
+/* Round 4, 23 Nov 2026: link underlines and the new-tab warning. */
+function lum(hex) {
+  const c = hex.replace('#', '').match(/../g).map(x => parseInt(x, 16) / 255)
+    .map(v => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+}
+function ratio(a, b) { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); }
+
+test('the dashboard link underline is at least 3:1 on every surface, light and dark', () => {
+  const css = SRC.match(/<style>([\s\S]*?)<\/style>/)[1].replace(/\/\*[\s\S]*?\*\//g, '');
+  /* Every token block in page order, the later overrides included; the
+     print block (":root, :root[data-theme=dark]") is not a theme. */
+  const merge = re => {
+    const t = {};
+    for (const m of css.matchAll(re)) for (const d of m[1].matchAll(/--([a-z0-9-]+):\s*(#[0-9a-fA-F]{6})/g)) t[d[1]] = d[2];
+    return t;
+  };
+  const light = merge(/(?<![,\w\]])\s:root\{([^}]*)\}/g);
+  const dark = { ...light, ...merge(/(?<!, ):root\[data-theme="dark"\]\{([^}]*)\}/g) };
+  for (const [name, t] of [['light', light], ['dark', dark]]) {
+    assert.ok(t['link-line'], `${name}: --link-line is set`);
+    for (const s of ['bg', 'surface', 'surface-2']) {
+      assert.ok(ratio(t['link-line'], t[s]) >= 3, `${name}: ${t['link-line']} on --${s} ${t[s]} is ${ratio(t['link-line'], t[s]).toFixed(2)}:1`);
+    }
+  }
+  assert.match(css, /\ba\{color:var\(--text\); text-decoration-color:var\(--link-line\); text-underline-offset:2px;\}/);
+  assert.doesNotMatch(css, /text-decoration-color:var\(--border-strong\)/, 'no underline left at the old 1.6:1');
+});
+
+test('links the dashboard scripts write into a new tab carry the hidden note', () => {
+  const script = [...SRC.slice(SRC.indexOf('</main>')).matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)].map(m => m[1]).join('\n');
+  assert.match(script, /var NEW_TAB_HTML = '<span class="visually-hidden" lang="en">' \+ NEW_TAB_TEXT \+ '<\/span>';/);
+  let strings = 0, nodes = 0;
+  /* Markup in strings: everything from target="_blank" to the next </a>. */
+  for (const m of script.matchAll(/target="_blank"[\s\S]*?<\/a>/g)) {
+    if (/^target="_blank"[^>]*aria-hidden="true"/.test(m[0])) continue; // the photo link, hidden from screen readers
+    if (m[0].startsWith(`target="_blank" rel="noopener"' : ''`)) continue; // the "away" variable, checked below
+    strings++;
+    assert.match(m[0], /\+ NEW_TAB_HTML \+ '<\/a>/, m[0].slice(0, 160));
+  }
+  /* The " target=..." held in a variable, for a picture strip link. */
+  assert.match(script, /'>' \+ inner \+ \(away \? NEW_TAB_HTML : ''\) \+ '<\/a>'/);
+  /* Links built as nodes. */
+  for (const m of script.matchAll(/(\w+)\.target = '_blank';[\s\S]{0,400}/g)) {
+    nodes++;
+    assert.match(m[0], new RegExp(`${m[1]}\\.appendChild\\(newTabNote\\(\\)\\)`), m[0].slice(0, 160));
+  }
+  assert.ok(strings >= 14 && nodes === 2, `${strings} string links, ${nodes} node links`);
+});
+
+test('the live repaint keeps the note, and search does not read it as a title', () => {
+  assert.match(DASH_JS, /a\.append\('Source ',arrow\(\),newTab\(\)\)/);
+  assert.match(DASH_JS, /a\.replaceChildren\(figure\.source\.split\(' · '\)\[0\]\+' ',arrow\(\),\.\.\.\(a\.target==='_blank'\?\[newTab\(\)\]:\[\]\)\)/);
+  assert.match(DASH_JS, /if\(item\.external\)\{a\.target='_blank';a\.rel='noopener noreferrer';a\.append\(newTab\(\)\);\}/);
+  assert.match(DASH_JS, /const title=linkText\(a\)\.trim\(\);/);
+  assert.doesNotMatch(DASH_JS, /a\.textContent\.trim\(\)/);
+});

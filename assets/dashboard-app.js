@@ -2,6 +2,19 @@
 
 /* block 1 */
 try {
+var NEW_TAB_TEXT = ' (opens in a new tab)';
+    var NEW_TAB_HTML = '<span class="visually-hidden" lang="en">' + NEW_TAB_TEXT + '</span>';
+    var newTabNote = function () {
+      var s = document.createElement('span');
+      s.className = 'visually-hidden';
+      s.lang = 'en';
+      s.textContent = NEW_TAB_TEXT;
+      return s;
+    };
+} catch (e) { setTimeout(function () { throw e; }); }
+
+/* block 2 */
+try {
 (function () {
       var box = document.getElementById('live-ticker');
       if (!box) return;
@@ -32,7 +45,7 @@ try {
     })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 2 */
+/* block 3 */
 try {
 (function(){
   var btn    = document.getElementById('drawer-btn');
@@ -162,7 +175,7 @@ try {
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 3 */
+/* block 4 */
 try {
 window.BriefCard = (function(){
   var card = document.getElementById('briefcard');
@@ -217,7 +230,7 @@ window.BriefCard = (function(){
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 4 */
+/* block 5 */
 try {
 window.NewsNote = (function(){
   var el = document.getElementById('news-note');
@@ -328,7 +341,7 @@ window.NewsNote = (function(){
       }
       if(media.querySelector('.tc-cover')) return;
       var head = card.getAttribute('data-title') ||
-                 (card.querySelector('.tc-title') ? card.querySelector('.tc-title').textContent.trim() : '');
+                 (card.querySelector('.tc-title') ? card.querySelector('.tc-title').textContent.replace(NEW_TAB_TEXT, '').trim() : '');
       if(!head) return;
       var kick = card.querySelector('.tc-kicker');
       var source = '';
@@ -373,7 +386,7 @@ window.NewsNote = (function(){
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 5 */
+/* block 6 */
 try {
 (function(){
   var box = document.getElementById('rail-districts');
@@ -411,7 +424,7 @@ try {
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 6 */
+/* block 7 */
 try {
 function fetchDeadline(ms){
   return (typeof AbortSignal !== 'undefined' && typeof AbortSignal.timeout === 'function')
@@ -780,6 +793,7 @@ var Tabs = (function(){
       a.className = 'detail-src';
       try { a.textContent = new URL(m[1]).hostname.replace(/^www\./, ''); }
       catch(err){ a.textContent = 'the report'; }
+      a.appendChild(newTabNote());
       out.appendChild(document.createTextNode(' '));
       out.appendChild(a);
       at = m.index + m[0].length;
@@ -967,7 +981,7 @@ var PostCards = (function(){
           '<p class="tc-kicker">' + escapeHtml(item.source || 'Source') + verifiedMark +
             '<span class="tc-when">' + escapeHtml(whenLabel(item)) + '</span></p>' +
           '<p class="tc-title"' + (/[\u0900-\u097F]/.test(item.title) ? ' lang="ne"' : '') + '><a href="' + escapeHtml(item.url) + '" target="_blank" rel="noopener nofollow">' +
-            escapeHtml(item.title) + '</a></p>' +
+            escapeHtml(item.title) + NEW_TAB_HTML + '</a></p>' +
           (summary ? '<p class="post-summary clamped" id="' + uid + '" data-expand="' + uid + '"' + (/[\u0900-\u097F]/.test(summary) ? ' lang="ne"' : '') + '>' + escapeHtml(summary) + '</p>' : '') +
           (credit ? '<p class="tc-credit">' + credit + '</p>' : '') +
           (corrob ? '<div class="tc-sources">' + escapeHtml(corrob) + '</div>' : '') +
@@ -1059,7 +1073,7 @@ var PostCards = (function(){
   function shareRow(key, label, href, attrs){
     return '<a class="sm-item" href="' + href + '" target="_blank" rel="noopener"' + (attrs || '') + '>' +
       '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' + SHARE_ICON[key] + '</svg>' +
-      '<span>' + label + '</span></a>';
+      '<span>' + label + '</span>' + NEW_TAB_HTML + '</a>';
   }
 
   function openShareSheet(btn, title, url, storyImg){
@@ -1427,7 +1441,7 @@ var LiveFeed = (function(){
       return '<div class="update">' +
         '<time datetime="' + escapeHtml(item.time || '') + '">' + PostCards.timeAgo(item.time) + '</time>' +
         '<div><div class="src">' + escapeHtml(item.source || 'Source') + '</div>' +
-        '<p><a href="' + escapeHtml(item.url) + '" target="_blank" rel="noopener">' + escapeHtml(item.title) + ' <span aria-hidden="true">&#8599;</span></a></p>' +
+        '<p><a href="' + escapeHtml(item.url) + '" target="_blank" rel="noopener">' + escapeHtml(item.title) + ' <span aria-hidden="true">&#8599;</span>' + NEW_TAB_HTML + '</a></p>' +
         '</div></div>';
     }).join('');
   }
@@ -1495,7 +1509,7 @@ var LiveFeed = (function(){
         if(quakeEl && !latest.some(function(i){ return i.kind === 'quake'; })){
           var quakeFailed = (data.errors || []).some(function(e){ return String(e).indexOf('usgs') === 0; });
           quakeEl.innerHTML = quakeFailed
-            ? '<p style="font-size:0.88rem; color:var(--text-faint);">The US Geological Survey earthquake feed is not responding right now. It can be read directly at <a href="https://earthquake.usgs.gov/earthquakes/map/" target="_blank" rel="noopener">earthquake.usgs.gov</a>.</p>'
+            ? '<p style="font-size:0.88rem; color:var(--text-faint);">The US Geological Survey earthquake feed is not responding right now. It can be read directly at <a href="https://earthquake.usgs.gov/earthquakes/map/" target="_blank" rel="noopener">earthquake.usgs.gov' + NEW_TAB_HTML + '</a>.</p>'
             : '<p style="font-size:0.88rem; color:var(--text-faint);">No earthquakes above magnitude 3.5 recorded in the Nepal region in this window. That is good news.</p>';
         }
         if(badge && latest.length){ badge.hidden = false; badge.textContent = latest.length; }
@@ -1621,7 +1635,7 @@ var LiveFeed = (function(){
         }
         el.innerHTML = ' Newest official report indexed on their site: <a href="' +
           escapeHtml(latest.pdf) + '" target="_blank" rel="noopener">' + escapeHtml(latest.title) +
-          (latest.date ? ' (' + escapeHtml(latest.date) + ')' : '') + ' <span aria-hidden="true">&#8599;</span></a>';
+          (latest.date ? ' (' + escapeHtml(latest.date) + ')' : '') + ' <span aria-hidden="true">&#8599;</span>' + NEW_TAB_HTML + '</a>';
       })
       .catch(function(){
         el.textContent = ' (Could not check ndrrma.gov.np just now.)';
@@ -1754,7 +1768,7 @@ var LiveFeed = (function(){
       .catch(function(){
         log.innerHTML = '<p style="font-size:0.88rem; color:var(--text-faint);">' +
           'Nepal\u2019s incident portal is not responding right now. It can be read directly at ' +
-          '<a href="https://bipadportal.gov.np/" target="_blank" rel="noopener">bipadportal.gov.np</a>.</p>';
+          '<a href="https://bipadportal.gov.np/" target="_blank" rel="noopener">bipadportal.gov.np' + NEW_TAB_HTML + '</a>.</p>';
         status.textContent = 'Offline';
       });
   }
@@ -1807,7 +1821,7 @@ var LiveFeed = (function(){
         (it.credit ? '<i>' + esc(it.credit) + '</i>' : '') + '</span>';
       if(!it.href) return '<span class="ph">' + inner + '</span>';
       var away = /^https?:/i.test(it.href) ? ' target="_blank" rel="noopener"' : '';
-      return '<a href="' + esc(it.href) + '"' + away + '>' + inner + '</a>';
+      return '<a href="' + esc(it.href) + '"' + away + '>' + inner + (away ? NEW_TAB_HTML : '') + '</a>';
     }).join('');
     var wrap = strip.closest('.preview');
     if(wrap) wrap.hidden = false;
@@ -1915,7 +1929,7 @@ var LiveFeed = (function(){
     return '<div class="media-card"><figure>' + media +
       '<figcaption>' + esc(captionFor(page.title)) +
       '<span class="credit">' + (date ? esc(date) + ' &middot; ' : '') + esc(author) + ' &middot; ' + esc(licence) +
-      ' &middot; <a href="' + esc(info.descriptionurl) + '" target="_blank" rel="noopener">file page</a></span>' +
+      ' &middot; <a href="' + esc(info.descriptionurl) + '" target="_blank" rel="noopener">file page' + NEW_TAB_HTML + '</a></span>' +
       '</figcaption></figure></div>';
   }
 
@@ -2020,7 +2034,7 @@ var LiveFeed = (function(){
       '<img src="' + escapeHtml(src) + '" alt="' + name + '" loading="lazy" referrerpolicy="no-referrer">' +
       '<figcaption>' + name +
       '<span class="credit">' + author + ' &middot; ' + lic +
-      ' &middot; <a href="' + escapeHtml(filePage) + '" target="_blank" rel="noopener">file page</a></span>' +
+      ' &middot; <a href="' + escapeHtml(filePage) + '" target="_blank" rel="noopener">file page' + NEW_TAB_HTML + '</a></span>' +
       '</figcaption></figure></div>';
   }
 
@@ -2054,7 +2068,7 @@ var LiveFeed = (function(){
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 7 */
+/* block 8 */
 try {
 (function(){
   var grid = document.getElementById('numgrid');
@@ -2558,7 +2572,7 @@ try {
 
     var srcHtml = (post.sources || []).map(function(s){
       var n = esc(s.name || s.url || '');
-      return s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + n + '</a>' : n;
+      return s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + n + NEW_TAB_HTML + '</a>' : n;
     }).join(', ');
 
     var rev = post.revised ? ' <span class="rev">updated</span>' : (post.earlier ? ' <span class="rev earlier">earlier</span>' : '');
@@ -2841,7 +2855,7 @@ try {
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 8 */
+/* block 9 */
 try {
 (function(){
   var ticker = document.getElementById('live-ticker');
@@ -2886,6 +2900,7 @@ try {
       link.target = '_blank';
       link.rel = 'noopener';
       link.textContent = item.title;
+      link.appendChild(newTabNote());
       if(/[\u0900-\u097F]/.test(item.title)) link.lang = 'ne';
       li.append(time, link);
       if(item.summary){
@@ -2916,7 +2931,7 @@ try {
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 9 */
+/* block 10 */
 try {
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -2936,7 +2951,7 @@ try {
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 10 */
+/* block 11 */
 try {
 (function(){
   var head = document.querySelector('.sitehead');
@@ -2999,7 +3014,7 @@ try {
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 11 */
+/* block 12 */
 try {
 (function(){
   var sel = '.inv-sec, .numblock, .inv-chart';
@@ -3031,7 +3046,7 @@ try {
 })();
 } catch (e) { setTimeout(function () { throw e; }); }
 
-/* block 12 */
+/* block 13 */
 try {
 (function(){
   var jump = document.getElementById('inv-jump');

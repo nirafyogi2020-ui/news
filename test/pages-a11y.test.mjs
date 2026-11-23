@@ -3,11 +3,11 @@
    23 Nov 2026: the pages the first review did not cover. */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 
-import { relief, timeline, about, hazardGuide, emergencyNumbers, missingPersons, contact, foreignNationals, hazardPages } from '../src/pages.mjs';
+import { relief, timeline, about, hazardGuide, emergencyNumbers, missingPersons, contact, foreignNationals, hazardPages, updateIndex, liveUpdates } from '../src/pages.mjs';
 import { neEvent, neEmergency, neRelief, neMissing } from '../src/pages-ne.mjs';
-import { markCurrent } from '../src/template.mjs';
+import { markCurrent, markNewTab, NEW_TAB_TEXT } from '../src/template.mjs';
 
 const CSS = readFileSync(new URL('../assets/site.css', import.meta.url), 'utf8');
 const event = JSON.parse(readFileSync(new URL('../event.json', import.meta.url), 'utf8'));
@@ -151,4 +151,83 @@ test('numbered step boxes are ordered lists that look the same as before', () =>
   }
   assert.match(CSS, /\.checklist\{[^}]*margin:0 0 22px;[^}]*padding:0;[^}]*list-style:none/);
   assert.match(CSS, /\.check-row\{[^}]*margin:0;/, 'the global li margin does not reach the step rows');
+});
+
+/* Round 4, 23 Nov 2026: link underlines, archive cards, new-tab warning. */
+
+test('the underline under a body-text link is at least 3:1 on every surface, light and dark', () => {
+  const light = CSS.match(/:root\{([^}]*)\}/)[1];
+  const dark = CSS.match(/:root\[data-theme="dark"\]\{([^}]*)\}/)[1];
+  const media = CSS.match(/@media \(prefers-color-scheme: dark\)\{\s*:root:not\(\[data-theme="light"\]\)\{([^}]*)\}/)[1];
+  for (const [name, block] of [['light', light], ['dark', dark], ['device dark', media]]) {
+    const line = token(block, 'link-line');
+    assert.ok(line, `${name}: --link-line is set`);
+    const surfaces = ['bg', 'surface', 'surface-2'].map(n => token(block, n) || token(light, n));
+    const alertBox = mix(token(block, 'critical') || token(light, 'critical'), token(block, 'surface') || token(light, 'surface'), 0.07);
+    for (const s of [...surfaces, alertBox]) assert.ok(ratio(line, s) >= 3, `${name}: ${line} on ${s} is ${ratio(line, s).toFixed(2)}:1`);
+  }
+  assert.equal(token(media, 'link-line'), token(dark, 'link-line'), 'both dark palettes agree');
+  assert.match(CSS, /\na\{color:var\(--text\); text-decoration-color:var\(--link-line\); text-underline-offset:2px;\}/);
+  assert.match(CSS, /\.faint a, \.small a\{color:var\(--text-muted\); text-decoration-color:var\(--link-line\);\}/);
+  assert.doesNotMatch(CSS, /text-decoration-color:var\(--border-strong\)/, 'no underline left at the old 1.7:1');
+});
+
+test('a briefing card has one link, and it is the headline alone', () => {
+  const many = Array.from({ length: 3 }, (_, i) => ({ ...posts[0], slug: `p${i}`, url: `/updates/p${i}/`, title: `Briefing ${i}`, body: ['Lead line. '.repeat(30)] }));
+  const c = { ...ctx, posts: many };
+  for (const [name, pg] of [['archive', updateIndex(c)], ['live updates', liveUpdates(c)]]) {
+    const cards = [...html(pg).matchAll(/<li><div class="postcard">([\s\S]*?)<\/div><\/li>/g)].map(m => m[1]);
+    assert.equal(cards.length, 3, `${name}: every briefing is a card`);
+    assert.doesNotMatch(html(pg), /<a class="postcard"/, `${name}: no whole-card link left`);
+    cards.forEach((card, i) => {
+      const links = card.match(/<a\b[^>]*>[\s\S]*?<\/a>/g) || [];
+      assert.equal(links.length, 1, `${name}: one link per card`);
+      assert.equal(links[0], `<a href="/updates/p${i}/">Briefing ${i}</a>`, `${name}: the link wraps the headline text only`);
+      assert.match(card, new RegExp(`^\\s*<time datetime="[^"]+">[^<]+</time>\\s*<h2><a href="/updates/p${i}/">`), `${name}: the time sits outside the link, before the headline`);
+    });
+  }
+  assert.match(CSS, /\.postcard\{position:relative;/);
+  assert.match(CSS, /\.postcard h2 a::after\{content:""; position:absolute; inset:0;/, 'the headline link still covers the card');
+  assert.match(CSS, /\.postcard:hover\{border-color:var\(--border-strong\)/, 'hover look unchanged');
+  assert.match(CSS, /\.postcard:has\(h2 a:focus-visible\)\{outline:2px solid var\(--text\)/, 'the focus ring goes round the card');
+});
+
+test('markNewTab adds the hidden note once, in the page language, and leaves scripts alone', () => {
+  const src = '<a href="https://x.org/" target="_blank">X</a><a href="/y/">Y</a><script>var s=\'<a target="_blank">\';</script>';
+  const en = markNewTab(src, 'en');
+  assert.equal(en, '<a href="https://x.org/" target="_blank">X<span class="visually-hidden" lang="en"> (opens in a new tab)</span></a><a href="/y/">Y</a><script>var s=\'<a target="_blank">\';</script>');
+  assert.equal(markNewTab(en, 'en'), en, 'running twice adds nothing');
+  assert.match(markNewTab(src, 'ne'), /X<span class="visually-hidden" lang="ne"> \(नयाँ ट्याबमा खुल्छ\)<\/span><\/a>/);
+  assert.equal(markNewTab('<a href="https://x.org/" target="_blank" aria-label="X">X</a>', 'en'), '<a href="https://x.org/" target="_blank" aria-label="X (opens in a new tab)">X</a>');
+  assert.equal(markNewTab('<a href="https://x.org/" target="_blank" aria-hidden="true" tabindex="-1">X</a>', 'en'), '<a href="https://x.org/" target="_blank" aria-hidden="true" tabindex="-1">X</a>');
+});
+
+test('every link in the built pages that opens a new tab says so, in the page language', () => {
+  const root = new URL('../', import.meta.url);
+  const files = ['index.html', '404.html'];
+  for (const dir of ['about', 'contact', 'ne', 'nepal-disasters', 'nepal-flood', 'sources', 'updates']) {
+    if (!existsSync(new URL(dir, root))) continue;
+    for (const f of readdirSync(new URL(dir, root), { recursive: true })) if (/(^|\/)index\.html$/.test(f)) files.push(`${dir}/${f}`);
+  }
+  let checked = 0, nepali = 0;
+  for (const f of files) {
+    const h = readFileSync(new URL(f, root), 'utf8');
+    const lang = h.match(/<html lang="(en|ne)"/)[1];
+    const note = `<span class="visually-hidden" lang="${lang}">${NEW_TAB_TEXT[lang]}</span>`;
+    for (const part of h.split(/<script\b[\s\S]*?<\/script>/)) {
+      for (const m of part.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)) {
+        if (!/\starget="?_blank/.test(m[1]) || /aria-hidden="true"/.test(m[1])) continue;
+        checked++; if (lang === 'ne') nepali++;
+        assert.ok(m[2].endsWith(note), `${f}: ${m[0].slice(0, 160)}`);
+      }
+    }
+  }
+  assert.ok(files.length > 300 && checked > 400 && nepali > 10, `${files.length} pages, ${checked} new-tab links, ${nepali} on Nepali pages`);
+});
+
+test('the newswire and front-page scripts write the note into their new-tab links', () => {
+  const wire = readFileSync(new URL('../src/client/wire.js', import.meta.url), 'utf8');
+  const front = readFileSync(new URL('../src/client/front.js', import.meta.url), 'utf8');
+  assert.match(wire, /target="_blank"[^\n]*\+ esc\(i\.title\) \+ '<span class="visually-hidden" lang="en"> \(opens in a new tab\)<\/span><\/a>'/);
+  assert.match(front, /a\.target = '_blank';[^\n]*\n[^\n]*nt\.lang = 'en'; nt\.textContent = ' \(opens in a new tab\)'; a\.appendChild\(nt\);/);
 });
