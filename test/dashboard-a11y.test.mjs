@@ -76,7 +76,7 @@ test('polling pauses in a background tab and skips the load-time today.json fetc
   assert.match(SRC, /if\(document\.hidden \|\| Date\.now\(\) - shared < 75 \* 1000\) return;/, 'the ticker fallback pauses while hidden');
   assert.match(SRC, /function refreshToday\(\)\{\s*if\(document\.hidden\) return;/, 'the Today refresh pauses while hidden');
   assert.doesNotMatch(SRC, /\n  refreshToday\(\);\n/, 'no unconditional today.json fetch on load');
-  assert.doesNotMatch(SRC, /\n  fetch\('\/assets\/photos\/index\.json'/, 'the photo manifest is not fetched on load');
+  assert.match(SRC, /window\.photoIndexJson \|\| fetch\('\/assets\/photos\/index\.json'/, 'the Today cards reuse the photo strip\'s manifest download');
 });
 
 test('font, motion, contrast and lazy QR fixes hold', () => {

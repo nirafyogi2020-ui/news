@@ -9082,9 +9082,12 @@ var LiveFeed = (function(){
      briefing index holds that briefing's headline. Joining the two is what
      puts "Missing flood victims' families called for DNA testing" under a
      frame instead of the slug read back as words. */
+  /* Kept on window so the Today cards reuse this one download of the
+     manifest (about 140 KB) instead of asking for it a second time. */
+  window.photoIndexJson = fetch('/assets/photos/index.json', { cache: 'no-cache' })
+    .then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; });
   Promise.all([
-    fetch('/assets/photos/index.json', { cache: 'no-cache' })
-      .then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }),
+    window.photoIndexJson,
     fetch('/updates.json', { cache: 'no-cache' })
       .then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
   ]).then(function(both){
@@ -10818,13 +10821,13 @@ function buildFloodMap(){
     return '/assets/photos/' + rec.card + ' 800w, /assets/photos/' + rec.file + ' ' + rec.width + 'w';
   }
   /* The photograph manifest (about 140 KB) is only needed to draw cards in
-     the browser. The cards served with the page already carry their
-     pictures, so it is fetched with the first refresh of the stories, not on
-     every page load. */
+     the browser. The photo strip on the Now tab has usually fetched it
+     already (window.photoIndexJson); otherwise it is fetched with the first
+     refresh of the stories, not on page load. */
   var photoIndex = null;
   function loadPhotoIndex(){
-    if(!photoIndex) photoIndex = fetch('/assets/photos/index.json', { cache:'no-cache' })
-      .then(function(r){ return r.ok ? r.json() : null; })
+    if(!photoIndex) photoIndex = (window.photoIndexJson || fetch('/assets/photos/index.json', { cache:'no-cache' })
+      .then(function(r){ return r.ok ? r.json() : null; }))
       .then(function(j){
         if(!j) return;
         Object.keys(j).forEach(function(k){
