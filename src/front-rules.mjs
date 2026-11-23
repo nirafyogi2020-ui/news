@@ -87,6 +87,14 @@ const OFF_SUBJECT = new RegExp([
   'festival', 'दशैं', 'दसैँ',
   'election', 'candidates?', 'निर्वाचन', 'चुनाव', 'उम्मेदवार', 'मतदान',
   'shooting', 'shot dead', 'गोली प्रहार',
+  /* Entertainment. "Shark Tank Nepal Season 2 to premiere on December 2"
+     became an automatic briefing on 23 Nov 2026 because no word above
+     caught it. A concert or film for flood victims stays: the disaster
+     words rescue it. */
+  '\\bShark Tank', '\\bpremier(?:e|es|ed)\\b', 'reality show', '\\bseason \\d+', 'box office',
+  '\\bmovies?\\b', '\\bfilms?\\b', 'web series', '\\btrailer\\b', '\\balbum\\b', 'music video',
+  '\\bconcerts?\\b', 'beauty pageant', 'Miss Nepal',
+  'चलचित्र', 'फिल्म', 'प्रिमियर', 'रियालिटी शो', 'कन्सर्ट', 'एल्बम', 'म्युजिक भिडियो',
 ].join('|'), 'i');
 
 /* What rescues an off-subject headline: the disaster itself, not a place

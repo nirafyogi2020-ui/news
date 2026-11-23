@@ -148,6 +148,10 @@ test('the dashboard metadata and the folded briefing describe the same page', ()
 });
 
 test('off-subject stories are dropped, road and weather reports are not', () => {
+  assert.ok(isOffSubject('Shark Tank Nepal Season 2 to premiere on December 2'));
+  assert.ok(isOffSubject('नयाँ चलचित्र मंसिरमा प्रदर्शन हुने'));
+  assert.ok(!isOffSubject('Concert raises funds for Rasuwa flood victims'));
+  assert.ok(!isOffSubject('Film crew helps rescue stranded villagers after landslide'));
   assert.ok(isOffSubject('Mustang produces apples worth over Rs 1.14 billion'));
   assert.ok(isOffSubject('World Bank projects Nepal economic growth to slow'));
   assert.ok(!isOffSubject('100,000 kg of Manaslu apples stranded after floods wash away transport'));
