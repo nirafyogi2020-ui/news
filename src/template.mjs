@@ -131,6 +131,48 @@ export function scriptAsset(name, code) {
 /** Every script registered with scriptAsset(), as 'assets/x.js' -> code. */
 export const emittedAssets = () => EMITTED;
 
+/**
+ * What a picture does when it fails to load, without an inline onerror
+ * handler (the Content-Security-Policy refuses those). A failing <img> says
+ * what it wants in data-fail:
+ *   unphoto  drop the picture and the parent's has-photo class
+ *   blank    mark the .tc-media frame blank and drop the picture with its link
+ *   backup   try data-backup once, then behave as blank
+ *   lead     drop the whole .lead-media figure
+ *   hide     hide the picture, keep its box
+ *   remove   drop the picture
+ * `error` does not bubble, so this listens in the capture phase on the
+ * document, and it has to be registered before the first picture can fail:
+ * it rides in the small inline script in every page's head, and the
+ * dashboard pastes the same text into its first body script (src/build.mjs
+ * fills the placeholder). That inline script's hash is listed in _headers,
+ * so any change here needs the new hash pasted there; src/check.mjs prints
+ * it. No comments inside: the dashboard build strips script comments, and
+ * both copies must stay byte for byte the same.
+ */
+export const IMG_FAIL_JS = `document.addEventListener('error', function(e){
+  var t = e.target, how = t && t.tagName === 'IMG' && t.getAttribute('data-fail');
+  if(!how) return;
+  if(how === 'backup'){
+    var b = t.getAttribute('data-backup');
+    if(b){ t.removeAttribute('data-backup'); t.src = b; return; }
+    how = 'blank';
+  }
+  if(how === 'blank'){
+    var m = t.closest('.tc-media'); if(m) m.classList.add('tc-media-blank');
+    (t.closest('a.post-photo-link') || t).remove();
+  } else if(how === 'lead'){
+    var l = t.closest('.lead-media'); if(l) l.remove();
+  } else if(how === 'unphoto'){
+    if(t.parentNode) t.parentNode.classList.remove('has-photo');
+    t.remove();
+  } else if(how === 'hide'){
+    t.style.display = 'none';
+  } else if(how === 'remove'){
+    t.remove();
+  }
+}, true);`;
+
 /* Nepal keeps a +05:45 offset year round, so a fixed offset is exact here. */
 const NPT_OFFSET_MIN = 345;
 
@@ -408,7 +450,9 @@ ${alt}
 <!-- The dashboard's theme switch writes the reader's choice to localStorage.
      These pages honour it before first paint, so following a link off the
      dashboard does not flash the other theme. With no stored choice nothing is
-     set and the stylesheet's prefers-color-scheme rule decides. -->
+     set and the stylesheet's prefers-color-scheme rule decides. The same
+     script registers the picture fallbacks (IMG_FAIL_JS). Its sha256 is in
+     _headers: change a byte here and paste the hash src/check.mjs prints. -->
 <script>
 (function(){
   try{
@@ -422,6 +466,7 @@ ${alt}
     }
   }catch(e){}
 })();
+${IMG_FAIL_JS}
 </script>
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">

@@ -15,7 +15,9 @@
 <!-- The dashboard's theme switch writes the reader's choice to localStorage.
      These pages honour it before first paint, so following a link off the
      dashboard does not flash the other theme. With no stored choice nothing is
-     set and the stylesheet's prefers-color-scheme rule decides. -->
+     set and the stylesheet's prefers-color-scheme rule decides. The same
+     script registers the picture fallbacks (IMG_FAIL_JS). Its sha256 is in
+     _headers: change a byte here and paste the hash src/check.mjs prints. -->
 <script>
 (function(){
   try{
@@ -29,6 +31,28 @@
     }
   }catch(e){}
 })();
+document.addEventListener('error', function(e){
+  var t = e.target, how = t && t.tagName === 'IMG' && t.getAttribute('data-fail');
+  if(!how) return;
+  if(how === 'backup'){
+    var b = t.getAttribute('data-backup');
+    if(b){ t.removeAttribute('data-backup'); t.src = b; return; }
+    how = 'blank';
+  }
+  if(how === 'blank'){
+    var m = t.closest('.tc-media'); if(m) m.classList.add('tc-media-blank');
+    (t.closest('a.post-photo-link') || t).remove();
+  } else if(how === 'lead'){
+    var l = t.closest('.lead-media'); if(l) l.remove();
+  } else if(how === 'unphoto'){
+    if(t.parentNode) t.parentNode.classList.remove('has-photo');
+    t.remove();
+  } else if(how === 'hide'){
+    t.style.display = 'none';
+  } else if(how === 'remove'){
+    t.remove();
+  }
+}, true);
 </script>
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">

@@ -10,6 +10,7 @@ import {
 } from '../src/front-rules.mjs';
 import { frontPage, rasuwaDashboard, rasuwaBriefing } from '../src/pages.mjs';
 import { emittedAssets } from '../src/template.mjs';
+import { scriptPolicies, pageProblems } from '../src/csp-rules.mjs';
 
 const event = JSON.parse(readFileSync(new URL('../event.json', import.meta.url), 'utf8'));
 
@@ -278,4 +279,12 @@ test('the page script judges headlines with the same function and rules', () => 
   assert.equal(headlineVerdict('Government plans floodlit home grounds for all eight NPL clubs', R), 'off');
   assert.equal(headlineVerdict('मध्य पेरुमा ६.७ म्याग्निच्युडको भूकम्प', R), 'foreign');
   assert.equal(headlineVerdict('Dry landslide blocks Kaligandaki corridor in Gulmi', R), 'nepal');
+});
+
+test('the front page runs no code the strict script policy would refuse', () => {
+  const html = frontPage(ctx, { news, photos, events: [event] }).html;
+  const policies = scriptPolicies(readFileSync(new URL('../_headers', import.meta.url), 'utf8'));
+  assert.deepEqual(pageProblems(html, policies), []);
+  assert.match(html, /<img [^>]*data-fail="unphoto"/, 'a news photo falls back through data-fail');
+  assert.doesNotMatch(html, /\sonerror=/);
 });

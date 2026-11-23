@@ -13,6 +13,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { hasBannedWord, hasDash } from './front-rules.mjs';
+import { scriptPolicies, policyProblems, pageProblems, localAssets, handlerStringsInJs } from './csp-rules.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://nepaldisasterupdatelive.nxtimaginelabs.com';
@@ -628,6 +629,27 @@ for (const page of pages) {
   if (fault) {
     errors.push(`${page.path}: the markup does not nest — ${fault}. ` +
       'A browser recovers from this by moving elements out of the layout, which silently breaks the page.');
+  }
+}
+
+/* -- script policy (see src/csp-rules.mjs) -------------------------------------
+   The policy in _headers refuses inline code except the few blocks it lists
+   by hash. A page that breaks that would lose its behaviour in the browser
+   with nothing in the build to say so, so it fails here instead. */
+{
+  const policies = scriptPolicies(readFileSync(join(ROOT, '_headers'), 'utf8'));
+  errors.push(...policyProblems(policies));
+  for (const p of pages) {
+    for (const problem of pageProblems(p.html, policies)) errors.push(`${p.path}: ${problem}`);
+    for (const asset of localAssets(p.html)) {
+      if (!existsSync(join(ROOT, asset))) errors.push(`${p.path}: links /${asset}, which was not built or not committed`);
+    }
+  }
+  for (const name of readdirSync(join(ROOT, 'assets'))) {
+    if (!name.endsWith('.js')) continue;
+    for (const h of new Set(handlerStringsInJs(readFileSync(join(ROOT, 'assets', name), 'utf8')))) {
+      errors.push(`assets/${name}: writes an inline handler (${h}) into markup; use data-fail or a listener`);
+    }
   }
 }
 

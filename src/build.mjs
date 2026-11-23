@@ -17,7 +17,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 
-import { SITE, SITE_NAME, nptDay, nptLong, ogFor, ogStoryFor, assetVersioned, langAttr, emittedAssets } from './template.mjs';
+import { SITE, SITE_NAME, nptDay, nptLong, ogFor, ogStoryFor, assetVersioned, langAttr, emittedAssets, IMG_FAIL_JS } from './template.mjs';
 import * as P from './pages.mjs';
 import * as NE from './pages-ne.mjs';
 import * as C from './content.mjs';
@@ -151,7 +151,7 @@ function ssrTodayCards(list) {
           + `<a class="post-photo-link" href="${escAttr(post.url)}" tabindex="-1" aria-hidden="true">`
           + `<img class="post-photo" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="800" height="450"`
           + ` src="${escAttr(photo)}"${sizes} alt="${escAttr(post.title)}"`
-          + ` onerror="this.closest('.tc-media').classList.add('tc-media-blank');this.remove()"></a>`
+          + ` data-fail="blank"></a>`
           + '</div>'
         : '')
       + '<div class="post-body">'
@@ -288,6 +288,10 @@ const DASH_PATH = '/nepal-flood/rasuwa/';
 const DASH_URL = SITE + DASH_PATH;
 const dash = P.rasuwaDashboard(ctx);
 let index = read('src/rasuwa-dashboard.html');
+/* The picture fallbacks, the same text every other page carries (see
+   IMG_FAIL_JS in src/template.mjs). */
+if (!index.includes('/*@img-fail@*/')) throw new Error('src/rasuwa-dashboard.html: the /*@img-fail@*/ placeholder is missing');
+index = index.replace('/*@img-fail@*/', () => IMG_FAIL_JS);
 /* Files the dashboard links by a fixed name get a content stamp, so a
    replaced file reaches readers through the edge cache. */
 for (const file of ['assets/dashboard.css','assets/dashboard.js','qr-pmo-nepal.jpg']) {

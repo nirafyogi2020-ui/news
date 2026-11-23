@@ -7,6 +7,18 @@
 #               ('unsafe-inline' is needed for those), Leaflet from unpkg, the
 #               YouTube player API, Cloudflare's analytics beacon (injected at
 #               the edge) and Cloudflare's own /cdn-cgi/ scripts (same origin)
+#
+# Moving off 'unsafe-inline' for scripts: the page scripts are now own files
+# under /assets/, pictures fall back through data-fail instead of onerror,
+# and only four small inline blocks remain, each allowed by its sha256 (the
+# theme and picture-fallback script in every page's head, and the dashboard's
+# theme, photo fade-in and Overview guard). The Report-Only policy below is
+# that strict policy: browsers report what it would block in the console and
+# block nothing. Once it is clean on the live site it replaces the enforced
+# one. src/check.mjs fails the build if an inline block's hash is missing from
+# a policy without 'unsafe-inline', and prints the hash to paste. Cloudflare
+# Rocket Loader, Zaraz and bot "JavaScript detections" inject inline scripts:
+# do not switch them on without adding for them here.
 #   styles      own, inline, Google Fonts, Leaflet's stylesheet
 #   fonts       own TTFs and fonts.gstatic.com
 #   images      any https host: news thumbnails come from every newsroom, map
@@ -33,6 +45,7 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.youtube.com https://s.ytimg.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' https:; connect-src 'self' https://commons.wikimedia.org https://cloudflareinsights.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://maps.google.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'sha256-ZpXskKSor6kbp2BHVBLuPmWm55UU6Id4I4KrUbltXao=' 'sha256-x4EW/0ZBC3y0fGYR0svroVNt4nHr0fZ7xhN81+1EbSE=' 'sha256-ueTxgs+U3gICNGTgLWmaLVWDvmE2xJNHoOwQrEVV7Sc=' 'sha256-ykihmDhPKGoBCBItAt/RCJSzM6SUn6W5AxdlUhL9SJ0=' https://unpkg.com/leaflet@1.9.4/ https://www.youtube.com https://s.ytimg.com https://static.cloudflareinsights.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' https:; connect-src 'self' https://commons.wikimedia.org https://cloudflareinsights.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://maps.google.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; manifest-src 'self'; worker-src 'self'
 
 # The figures box other sites paste in. Served by functions/embed.js, which
 # the rules above do not reach; stated here so that a static copy of it would
@@ -40,6 +53,7 @@
 /embed
   ! X-Frame-Options
   ! Content-Security-Policy
+  ! Content-Security-Policy-Report-Only
   Content-Security-Policy: frame-ancestors *
 
 # Every rule below that sets its own Cache-Control first detaches the one from

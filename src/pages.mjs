@@ -1998,7 +1998,7 @@ function newsItem(item, i, withPhoto) {
     + (item.source ? `${item.time ? ' · ' : ''}${esc(item.source)}` : '')
     + (photo ? ` · Photo: ${esc(item.source || hostOf(item.image))}` : '') + '</p>'
     + (photo
-      ? `<img src="${esc(item.image)}" alt="${esc(item.title)}" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.classList.remove('has-photo');this.remove();">`
+      ? `<img src="${esc(item.image)}" alt="${esc(item.title)}" width="320" height="180" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fail="unphoto">`
       : '')
     + '</li>';
 }

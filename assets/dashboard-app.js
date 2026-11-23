@@ -1592,7 +1592,7 @@ var PostCards = (function(){
     var media = '';
     if(ytId){
       media = '<div class="tc-media"><div class="post-video" data-yt-id="' + escapeHtml(ytId) + '">' +
-        (item.image ? '<img class="post-photo" loading="lazy" referrerpolicy="no-referrer" src="' + escapeHtml(item.image) + '" alt="" onerror="this.style.display=\'none\'">' : '') +
+        (item.image ? '<img class="post-photo" loading="lazy" referrerpolicy="no-referrer" src="' + escapeHtml(item.image) + '" alt="" data-fail="hide">' : '') +
         '<button class="post-play" type="button" data-play-video="1" aria-label="Play video">' +
           '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>' +
         '</button>' +
@@ -1602,7 +1602,7 @@ var PostCards = (function(){
       media = '<div class="tc-media">' +
         '<a class="post-photo-link" href="' + escapeHtml(item.url) + '" target="_blank" rel="noopener nofollow" tabindex="-1" aria-hidden="true">' +
         '<img class="post-photo" loading="lazy" referrerpolicy="no-referrer" src="' + escapeHtml(photoSrc) + '" alt="' + escapeHtml(item.title) + '" width="800" height="450" ' +
-        'onerror="var m=this.closest(\'.tc-media\'); m.classList.add(\'tc-media-blank\'); this.closest(\'a\').remove();">' +
+        'data-fail="blank">' +
       '</a></div>';
     }
 
@@ -1856,12 +1856,12 @@ var LiveFeed = (function(){
       var verifiedMark = PostCards.sourceMark(it);
       return '<article class="video-card" data-yt="' + vid + '" data-url="' + escapeHtml(url) + '" data-title="' + title + '">' +
         '<div class="video-thumb">' +
-          (image ? '<img loading="lazy" referrerpolicy="no-referrer" src="' + image + '" alt="" onerror="this.style.display=\'none\'">' : '') +
+          (image ? '<img loading="lazy" referrerpolicy="no-referrer" src="' + image + '" alt="" data-fail="hide">' : '') +
           '<button class="v-play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></button>' +
         '</div>' +
         '<div class="video-meta">' +
           '<div class="v-ava" aria-hidden="true">' + (avatar
-            ? '<img referrerpolicy="no-referrer" src="' + avatar + '" alt="" onerror="this.remove()">'
+            ? '<img referrerpolicy="no-referrer" src="' + avatar + '" alt="" data-fail="remove">'
             : initials(it.source)) + '</div>' +
           '<div class="video-info">' +
             '<div class="video-title">' + title + '</div>' +
@@ -2741,7 +2741,7 @@ try {
       '<div class="short-info">' +
         '<div class="short-chan">' +
           '<span class="short-ava">' + (it.avatar
-              ? '<img referrerpolicy="no-referrer" src="' + esc(it.avatar) + '" alt="" onerror="this.remove()">'
+              ? '<img referrerpolicy="no-referrer" src="' + esc(it.avatar) + '" alt="" data-fail="remove">'
               : esc(initials(it.source))) + '</span>' +
           '<span class="short-name">' + esc(it.source || 'YouTube') + '</span>' +
         '</div>' +
@@ -3652,10 +3652,7 @@ try {
       var tag = '<img class="post-photo" loading="lazy" decoding="async" referrerpolicy="no-referrer" ' +
         'src="' + esc(img) + '" ' + (set ? 'srcset="' + esc(set) + '" sizes="' + CARD_SIZES + '" ' : '') +
         'alt="' + esc(post.title || '') + '" width="800" height="450" ' +
-        'data-backup="' + esc(backup) + '" ' +
-        'onerror="var b=this.getAttribute(\'data-backup\'); ' +
-          'if(b){ this.removeAttribute(\'data-backup\'); this.src=b; return; } ' +
-          'this.closest(\'.tc-media\').classList.add(\'tc-media-blank\'); this.remove();">';
+        'data-backup="' + esc(backup) + '" data-fail="backup">';
       media = '<div class="tc-media">' +
         (perma ? '<a class="post-photo-link" href="' + esc(perma) + '" tabindex="-1" aria-hidden="true">' + tag + '</a>' : tag) +
       '</div>';
