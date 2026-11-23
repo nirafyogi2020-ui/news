@@ -99,3 +99,60 @@ test('font, motion, contrast and lazy QR fixes hold', () => {
   assert.match(SRC, /\.inv-jump a\.is-here span\{color:#fff;\}/);
   assert.match(SRC, /\.chip-play\[aria-pressed="true"\]\{background:var\(--alert\);/);
 });
+
+/* Round 3 (23 Nov 2026): the decorative arrows, the dashboard's own footer
+   link, and the numbered step boxes. */
+const DASH_CSS = readFileSync(new URL('../assets/dashboard.css', import.meta.url), 'utf8');
+const DASH_JS = readFileSync(new URL('../assets/dashboard.js', import.meta.url), 'utf8');
+const GLYPH = /&#8599;|↗|&rsaquo;|›/;
+const hideGlyphs = s => s.replace(/<span[^>]*aria-hidden="true"[^>]*>[^<]*<\/span>/g, '');
+
+test('no arrow or chevron inside a dashboard link is read aloud', async () => {
+  const { renderInvestigation } = await import('../src/dashboard.mjs');
+  const C = await import('../src/content.mjs');
+  const event = JSON.parse(readFileSync(new URL('../event.json', import.meta.url), 'utf8'));
+  const inv = renderInvestigation(event, C.SOURCE_GROUPS);
+  const app = BUILT ? (() => {
+    const m = BUILT.match(/src="\/(assets\/dashboard-app\.[0-9a-f]+\.js)"/);
+    return m ? readFileSync(new URL(`../${m[1]}`, import.meta.url), 'utf8') : '';
+  })() : '';
+  for (const [where, html] of [...pages, ['investigation block', inv], ...(app ? [['bundled script', app]] : [])]) {
+    let links = 0;
+    for (const a of html.matchAll(/<a\b[^>]*>([\s\S]*?)<\/a>/g)) {
+      links++;
+      assert.doesNotMatch(hideGlyphs(a[1]), GLYPH, `${where}: ${a[0].slice(0, 140)}`);
+    }
+    assert.ok(links > 0, `${where}: links found`);
+  }
+  assert.match(inv, /Open map <span aria-hidden="true">↗<\/span><\/a>/);
+  assert.equal((DASH_JS.match(/↗/g) || []).length, 1, 'the live repaint draws its arrows only through the hidden-span helper');
+  assert.match(DASH_JS, /setAttribute\('aria-hidden', 'true'\); s\.textContent = '↗'/);
+});
+
+test('a hidden arrow span picks up no styling meant for the label spans', () => {
+  assert.match(DASH_CSS, /\.help-quick a>span\{/);
+  assert.match(DASH_CSS, /\.field-guide>a>span\{/);
+  assert.match(DASH_CSS, /\.help-top \.ht-qr figcaption>span\{display:none\}/);
+  assert.match(SRC, /\.ht-qr figcaption>span\{/);
+  assert.match(SRC, /\.inv-srcgroup li>span\{/);
+  assert.doesNotMatch(DASH_CSS + SRC, /\.help-quick span\{|\.field-guide>a span\{|figcaption span\{|\.inv-srcgroup li span\{/);
+});
+
+test('the dashboard footer marks its own link as the current page', () => {
+  for (const [where, html] of pages) {
+    for (const tag of html.match(/<a\b[^>]*href="\/nepal-flood\/rasuwa\/"[^>]*>/g) || []) {
+      assert.match(tag, /aria-current="page"/, `${where}: ${tag}`);
+    }
+  }
+});
+
+test('the dashboard step boxes are ordered lists with the old spacing', () => {
+  for (const [where, html] of pages) {
+    assert.doesNotMatch(html, /<div class="checklist">|<div class="check-row">/, `${where}: no div step boxes`);
+    const lists = html.match(/<ol class="checklist" role="list">[\s\S]*?<\/ol>/g) || [];
+    assert.equal(lists.length, 2, `${where}: missing-person and prepare steps`);
+    for (const l of lists) assert.ok((l.match(/<li class="check-row"><span class="mark">\d\d<\/span>/g) || []).length >= 4);
+  }
+  assert.match(SRC, /\.checklist\{[^}]*margin:16px 0 0; padding:0; list-style:none;\}/);
+  assert.match(SRC, /\.check-row\{[^}]*margin:0;/);
+});

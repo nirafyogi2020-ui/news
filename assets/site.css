@@ -276,8 +276,8 @@ a.card .go{display:inline-block; margin-top:.6em; font-size:0.8rem; font-weight:
 .tl-item p{margin:0; font-size:0.96rem;}
 
 /* ---- checklist ---------------------------------------------------------- */
-.checklist{display:grid; gap:8px; margin:0 0 22px; counter-reset:step;}
-.check-row{display:flex; gap:12px; align-items:flex-start; border:1px solid var(--border); background:var(--surface); border-radius:12px; padding:12px 14px;}
+.checklist{display:grid; gap:8px; margin:0 0 22px; padding:0; list-style:none; counter-reset:step;}
+.check-row{display:flex; gap:12px; align-items:flex-start; margin:0; border:1px solid var(--border); background:var(--surface); border-radius:12px; padding:12px 14px;}
 .check-row .mark{font-family:var(--font-mono); font-size:0.72rem; color:var(--critical); border:1px solid var(--border); border-radius:7px; padding:2px 7px; flex-shrink:0; margin-top:2px;}
 .check-row p{margin:0; font-size:0.94rem;}
 

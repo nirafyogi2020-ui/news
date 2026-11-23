@@ -403,6 +403,20 @@ function breadcrumbNode(crumbs, url) {
   };
 }
 
+/* A link to the page the reader is already on, in a shared block (the
+   footer list, the footer contact line, a rail card, the brand), is marked
+   aria-current="page", the way the header nav already marks it, so a screen
+   reader says "current page" instead of offering a link that only reloads.
+   Exact href matches only; nothing on the page is restyled by this. Script
+   blocks are left byte for byte, so their CSP hashes cannot move. */
+export function markCurrent(path, html) {
+  if (!path) return html;
+  const href = `href="${path}"`;
+  return html.split(/(<script\b[\s\S]*?<\/script>)/).map((part, i) => i % 2 ? part
+    : part.replace(/<a\b[^>]*>/g, tag =>
+      tag.includes(href) && !/\saria-current=/.test(tag) ? tag.replace(/>$/, ' aria-current="page">') : tag)).join('');
+}
+
 /**
  * Render a full page.
  *
@@ -490,7 +504,7 @@ export function page(o) {
       `\n<link rel="alternate" hreflang="x-default" href="${SITE}${o.alternates.find(a => a.hreflang === 'en') ? o.alternates.find(a => a.hreflang === 'en').path : o.path}">`
     : '';
 
-  return `<!DOCTYPE html>
+  return markCurrent(o.path, `<!DOCTYPE html>
 <html lang="${lang === 'ne' ? 'ne' : 'en'}">
 <head>
 <meta charset="UTF-8">
@@ -608,7 +622,7 @@ ${bodyRelated ? `<div class="page-related">${bodyRelated}</div>` : ''}
 ${o.tail || ''}
 </body>
 </html>
-`;
+`);
 }
 
 /** Related-pages block, rendered at the foot of an article. */

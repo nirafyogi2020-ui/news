@@ -554,9 +554,9 @@ ${table(['Group', 'Out of contact'], C.OUT_OF_CONTACT.map(([k, v]) => [esc(k), v
 </div>
 
 <h2>How to report a missing person</h2>
-<div class="checklist">
-${C.MISSING_STEPS.map((s, i) => `<div class="check-row"><span class="mark">${String(i + 1).padStart(2, '0')}</span><p>${esc(s)}</p></div>`).join('\n')}
-</div>
+<ol class="checklist" role="list">
+${C.MISSING_STEPS.map((s, i) => `<li class="check-row"><span class="mark">${String(i + 1).padStart(2, '0')}</span><p>${esc(s)}</p></li>`).join('\n')}
+</ol>
 
 <h3>What information to have ready</h3>
 <ul>
@@ -1091,9 +1091,9 @@ ${C.DIRECTORIES.map(([u, l]) => `<a href="${esc(u)}" target="_blank" rel="noopen
 </div>
 
 <h2>Reporting someone missing</h2>
-<div class="checklist">
-${C.MISSING_STEPS.slice(0, 4).map((s, i) => `<div class="check-row"><span class="mark">${String(i + 1).padStart(2, '0')}</span><p>${esc(s)}</p></div>`).join('\n')}
-</div>
+<ol class="checklist" role="list">
+${C.MISSING_STEPS.slice(0, 4).map((s, i) => `<li class="check-row"><span class="mark">${String(i + 1).padStart(2, '0')}</span><p>${esc(s)}</p></li>`).join('\n')}
+</ol>
 <p><a href="/nepal-flood/rasuwa/missing-persons/">The full missing-persons guide</a>, including what information to have ready and the route for foreign nationals.</p>
 
 <h2>Foreign nationals and families abroad</h2>
@@ -1259,9 +1259,9 @@ ${C.HAZARDS.map(h => `
 <p><a class="more-link" href="/nepal-disasters/${h.slug}/">${esc(h.name)}: the full page, with the warning signs in order and the common questions answered ${CHEVRON}</a></p>`).join('\n')}
 
 <h2>If you live near a mountain river</h2>
-<div class="checklist">
-${C.RIVER_SAFETY.map((s, i) => `<div class="check-row"><span class="mark">${String(i + 1).padStart(2, '0')}</span><p>${esc(s)}</p></div>`).join('\n')}
-</div>
+<ol class="checklist" role="list">
+${C.RIVER_SAFETY.map((s, i) => `<li class="check-row"><span class="mark">${String(i + 1).padStart(2, '0')}</span><p>${esc(s)}</p></li>`).join('\n')}
+</ol>
 
 <h2>The warning-time problem</h2>
 <p>A burst lake can reach a village in under an hour. Some Nepali lakes now have sensors and sirens. Most, especially those across the border in Tibet, do not, so the first warning is often the sound of the river itself. In the 2026 Rasuwa flood, most of the river gauges that did exist downstream were destroyed by the first wave, cutting warning time for anything that followed.</p>
@@ -1593,11 +1593,11 @@ export function contact(ctx) {
 
 <h2>Reporting an error</h2>
 <p>Corrections are the most useful message this project receives. Errors get corrected or removed, not quietly edited around.</p>
-<div class="checklist">
-  <div class="check-row"><span class="mark">01</span><p>Say which page, and quote the exact figure, date or sentence that is wrong.</p></div>
-  <div class="check-row"><span class="mark">02</span><p>Say what the correct information is, and where it comes from. A link to the bulletin or article is ideal.</p></div>
-  <div class="check-row"><span class="mark">03</span><p>If it is a number, say which bulletin and what time it was published. Two correct sources often disagree only because one is older.</p></div>
-</div>
+<ol class="checklist" role="list">
+  <li class="check-row"><span class="mark">01</span><p>Say which page, and quote the exact figure, date or sentence that is wrong.</p></li>
+  <li class="check-row"><span class="mark">02</span><p>Say what the correct information is, and where it comes from. A link to the bulletin or article is ideal.</p></li>
+  <li class="check-row"><span class="mark">03</span><p>If it is a number, say which bulletin and what time it was published. Two correct sources often disagree only because one is older.</p></li>
+</ol>
 <p>Anything sourced to an official Nepali bulletin will be taken over what is currently on the page.</p>
 
 <h2>Sending a photograph</h2>
@@ -1682,14 +1682,14 @@ export function hazardPage(hazard, ctx) {
 ${d.long.map(p => `<p class="measure">${esc(p)}</p>`).join('\n')}
 
 <h2>Warning signs</h2>
-<div class="checklist">
-${d.signsLong.map((s, i) => `<div class="check-row"><span class="mark">${String(i + 1).padStart(2, '0')}</span><p>${esc(s)}</p></div>`).join('\n')}
-</div>
+<ol class="checklist" role="list">
+${d.signsLong.map((s, i) => `<li class="check-row"><span class="mark">${String(i + 1).padStart(2, '0')}</span><p>${esc(s)}</p></li>`).join('\n')}
+</ol>
 
 <h2>What to do</h2>
-<div class="checklist">
-${d.todoLong.map((s, i) => `<div class="check-row"><span class="mark">${String(i + 1).padStart(2, '0')}</span><p>${esc(s)}</p></div>`).join('\n')}
-</div>
+<ol class="checklist" role="list">
+${d.todoLong.map((s, i) => `<li class="check-row"><span class="mark">${String(i + 1).padStart(2, '0')}</span><p>${esc(s)}</p></li>`).join('\n')}
+</ol>
 
 <h2>Where Nepal stands</h2>
 <p class="measure">${esc(hazard.exposure)}</p>
@@ -1847,11 +1847,11 @@ ${C.TOLL.rescuedBreakdown.length ? table(['Agency', 'Rescued'], C.TOLL.rescuedBr
 <p class="measure">A consular section is the right first call for a family outside Nepal. They can ask the Nepali authorities questions that an individual cannot, they are already in contact with the police and NDRRMA about this event, and they can help with documents if someone has lost everything. Contact details for the missions in Kathmandu are on the <a href="/nepal-flood/emergency-numbers/">emergency numbers page</a>.</p>
 
 <h2>What not to do</h2>
-<div class="checklist">
-  <div class="check-row"><span class="mark">01</span><p>Do not treat a name on a social media list as confirmation of anything, in either direction. Several of those lists have named people who were later found safe.</p></div>
-  <div class="check-row"><span class="mark">02</span><p>Do not send money to anyone who contacts you claiming they can find a specific person. Disasters attract this.</p></div>
-  <div class="check-row"><span class="mark">03</span><p>Do not travel to the affected valley to search. The road is destroyed, the helicopters are needed for rescue, and one more person in the valley is one more person to account for.</p></div>
-</div>
+<ol class="checklist" role="list">
+  <li class="check-row"><span class="mark">01</span><p>Do not treat a name on a social media list as confirmation of anything, in either direction. Several of those lists have named people who were later found safe.</p></li>
+  <li class="check-row"><span class="mark">02</span><p>Do not send money to anyone who contacts you claiming they can find a specific person. Disasters attract this.</p></li>
+  <li class="check-row"><span class="mark">03</span><p>Do not travel to the affected valley to search. The road is destroyed, the helicopters are needed for rescue, and one more person in the valley is one more person to account for.</p></li>
+</ol>
 
 <h2>Common questions</h2>
 ${faq.html}

@@ -3,6 +3,8 @@
   const $ = selector => document.querySelector(selector);
   const fmt = n => Number(n).toLocaleString('en-US');
   const safe = url => { try { return new URL(url).protocol === 'https:'; } catch { return false; } };
+  /* The outside-link arrow, hidden from screen readers like the build's own. */
+  const arrow = () => { const s = document.createElement('span'); s.setAttribute('aria-hidden', 'true'); s.textContent = '↗'; return s; };
   let event;
   const labels = {dead:'confirmed dead',missing:'listed missing in Nepal',rescued:'rescued so far'};
   function synchronize(data) {
@@ -22,7 +24,7 @@
       document.querySelectorAll('[data-response-source] a,[data-source-for="response:identified"] a').forEach(a=>{if(safe(response.url))a.href=response.url;});
       const stamp=$('[data-response-stamp]');
       if(stamp && response.time && safe(response.url)){
-        const a=document.createElement('a');a.href=response.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Source ↗';
+        const a=document.createElement('a');a.href=response.url;a.target='_blank';a.rel='noopener noreferrer';a.append('Source ',arrow());
         stamp.replaceChildren(document.createTextNode(new Date(response.time).toLocaleString('en-GB',{timeZone:'Asia/Kathmandu',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+' NPT · '),a);
       }
       document.querySelectorAll('[data-response]').forEach(el=>{const value=response[el.dataset.response];if(Number.isFinite(value))el.textContent=fmt(value);});
@@ -30,7 +32,7 @@
     }
     ['dead','missing','rescued'].forEach(metric=>{
       const figure=data.board[metric];const slot=document.querySelector('[data-source-for="'+metric+'"]');
-      if(slot && figure && safe(figure.url)){const a=slot.querySelector('a');if(a){a.href=figure.url;a.textContent=figure.source.split(' · ')[0]+' ↗';a.title=figure.time;}}
+      if(slot && figure && safe(figure.url)){const a=slot.querySelector('a');if(a){a.href=figure.url;a.replaceChildren(figure.source.split(' · ')[0]+' ',arrow());a.title=figure.time;}}
     });
     const d = data.districts;
     if (d?.rows?.length) {

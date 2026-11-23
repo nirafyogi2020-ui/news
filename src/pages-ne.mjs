@@ -41,7 +41,9 @@ function table(head, rows, caption, opts = {}) {
     rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 }
 
-const DIAL_STRIP = `<div class="callout callout-alert">
+/* On /ne/aapatkalin-number/ itself the last line points down the page to the
+   full table instead of back at the page the reader is on. */
+const dialStrip = (numbersHref = '/ne/aapatkalin-number/') => `<div class="callout callout-alert">
   <p class="callout-title">अहिल्यै खतरामा हुनुहुन्छ?</p>
   <p><strong>१००</strong> (नेपाल प्रहरी) वा मोबाइलबाट <strong>११२</strong> मा फोन गर्नुहोस्। यो पृष्ठको अरू केही लोड हुन नपर्खनुहोस्।</p>
   <div class="dialrow" style="margin-top:12px;margin-bottom:0;">
@@ -50,7 +52,7 @@ const DIAL_STRIP = `<div class="callout callout-alert">
     <a class="dial" href="tel:102"><b>१०२</b><span class="visually-hidden">, </span><span>एम्बुलेन्स</span></a>
     <a class="dial" href="tel:1149"><b>११४९</b><span class="visually-hidden">, </span><span>विपद् हटलाइन</span></a>
   </div>
-  <p class="faint" style="margin-top:10px;margin-bottom:0;"><a href="/ne/aapatkalin-number/">सबै आपतकालीन नम्बर र कुन कामका लागि हो</a></p>
+  <p class="faint" style="margin-top:10px;margin-bottom:0;"><a href="${numbersHref}">सबै आपतकालीन नम्बर र कुन कामका लागि हो</a></p>
 </div>`;
 
 /* The "Related" block at the foot of each Nepali page: the other Nepali pages
@@ -127,7 +129,7 @@ export function neEvent(ctx) {
   ]);
 
   const body = `
-${DIAL_STRIP}
+${dialStrip()}
 
 <h2>सङ्ख्या अहिले कहाँ छ</h2>
 ${numbersNe()}
@@ -259,9 +261,9 @@ export function neEmergency(ctx) {
   ]);
 
   const body = `
-${DIAL_STRIP}
+${dialStrip('#sabai-number')}
 
-<h2>सबै राष्ट्रिय आपतकालीन नम्बर</h2>
+<h2 id="sabai-number">सबै राष्ट्रिय आपतकालीन नम्बर</h2>
 ${table(['नम्बर', 'कसले उठाउँछ', 'कुन कामका लागि'], NE_EMERGENCY.map(([nd, raw, who, note]) =>
     [`<a href="tel:${raw}"><strong class="num">${nd}</strong></a>`, esc(who), esc(note)]),
     'नेपालभित्र जहाँबाट पनि एरिया कोडबिना लाग्ने राष्ट्रिय नम्बर।')}
@@ -280,9 +282,9 @@ ${table(['नम्बर', 'कसले उठाउँछ', 'कुन का
 </div>
 
 <h2>बेपत्ता व्यक्तिको खबर कसरी गर्ने</h2>
-<div class="checklist">
-${NE_MISSING_STEPS.slice(0, 4).map((s, i) => `<div class="check-row"><span class="mark">${ne(String(i + 1).padStart(2, '0'))}</span><p>${esc(s)}</p></div>`).join('\n')}
-</div>
+<ol class="checklist" role="list">
+${NE_MISSING_STEPS.slice(0, 4).map((s, i) => `<li class="check-row"><span class="mark">${ne(String(i + 1).padStart(2, '0'))}</span><p>${esc(s)}</p></li>`).join('\n')}
+</ol>
 <p><a href="/ne/bepatta/">पूरा तरिका यहाँ छ</a>।</p>
 
 <h2>विदेशी नागरिक र विदेशमा भएका परिवार</h2>
@@ -294,9 +296,9 @@ ${NE_FOREIGN}
 
 <h2>आपत् आउनुअघि गर्ने काम</h2>
 <p>यो पृष्ठको सबैभन्दा उपयोगी काम यही हो: पढ्न छाडेर १००, ११२ र ११४९ अहिल्यै फोनमा सेभ गर्नुहोस्। घटना हुँदा नेटवर्क व्यस्त हुन्छ र वेब पृष्ठ फोनमा सबैभन्दा ढिलो कुरा हो। सेभ गरिएको सम्पर्कलाई नेटवर्क चाहिँदैन।</p>
-<div class="checklist">
-${NE_HAZARD_STEPS.map((s, i) => `<div class="check-row"><span class="mark">${ne(String(i + 1).padStart(2, '0'))}</span><p>${esc(s)}</p></div>`).join('\n')}
-</div>
+<ol class="checklist" role="list">
+${NE_HAZARD_STEPS.map((s, i) => `<li class="check-row"><span class="mark">${ne(String(i + 1).padStart(2, '0'))}</span><p>${esc(s)}</p></li>`).join('\n')}
+</ol>
 
 <h2>प्रायः सोधिने प्रश्न</h2>
 ${faq.html}
@@ -356,9 +358,9 @@ ${table(['समूह', 'बेपत्ता सूचीमा'], C.MISSING_
 </div>
 
 <h2>बेपत्ता व्यक्तिको खबर कसरी गर्ने</h2>
-<div class="checklist">
-${NE_MISSING_STEPS.map((s, i) => `<div class="check-row"><span class="mark">${ne(String(i + 1).padStart(2, '0'))}</span><p>${esc(s)}</p></div>`).join('\n')}
-</div>
+<ol class="checklist" role="list">
+${NE_MISSING_STEPS.map((s, i) => `<li class="check-row"><span class="mark">${ne(String(i + 1).padStart(2, '0'))}</span><p>${esc(s)}</p></li>`).join('\n')}
+</ol>
 
 <h3>के-के जानकारी तयार राख्ने</h3>
 <ul>

@@ -1427,7 +1427,7 @@ var LiveFeed = (function(){
       return '<div class="update">' +
         '<time datetime="' + escapeHtml(item.time || '') + '">' + PostCards.timeAgo(item.time) + '</time>' +
         '<div><div class="src">' + escapeHtml(item.source || 'Source') + '</div>' +
-        '<p><a href="' + escapeHtml(item.url) + '" target="_blank" rel="noopener">' + escapeHtml(item.title) + ' &#8599;</a></p>' +
+        '<p><a href="' + escapeHtml(item.url) + '" target="_blank" rel="noopener">' + escapeHtml(item.title) + ' <span aria-hidden="true">&#8599;</span></a></p>' +
         '</div></div>';
     }).join('');
   }
@@ -1621,7 +1621,7 @@ var LiveFeed = (function(){
         }
         el.innerHTML = ' Newest official report indexed on their site: <a href="' +
           escapeHtml(latest.pdf) + '" target="_blank" rel="noopener">' + escapeHtml(latest.title) +
-          (latest.date ? ' (' + escapeHtml(latest.date) + ')' : '') + ' &#8599;</a>';
+          (latest.date ? ' (' + escapeHtml(latest.date) + ')' : '') + ' <span aria-hidden="true">&#8599;</span></a>';
       })
       .catch(function(){
         el.textContent = ' (Could not check ndrrma.gov.np just now.)';

@@ -17,7 +17,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 
-import { SITE, SITE_NAME, nptDay, nptLong, ogFor, ogStoryFor, assetVersioned, langAttr, emittedAssets, hashedAsset, hashedAssets, IMG_FAIL_JS } from './template.mjs';
+import { SITE, SITE_NAME, nptDay, nptLong, ogFor, ogStoryFor, assetVersioned, langAttr, EXT_ARROW, emittedAssets, hashedAsset, hashedAssets, IMG_FAIL_JS } from './template.mjs';
 import { HASHED_FILE, planPrune } from './asset-names.mjs';
 import * as P from './pages.mjs';
 import * as NE from './pages-ne.mjs';
@@ -451,7 +451,7 @@ function invBoard() {
          archived note down with them. */
       + '<td class="inv-b-said">'
       + `<span class="inv-b-sentence">${escHtml(now) || 'No sentence recorded.'}</span>`
-      + (url ? `<a class="inv-b-src" href="${escAttr(url)}" target="_blank" rel="noopener nofollow">${escHtml(host)} &#8599;</a>` : '<span class="inv-b-src"></span>')
+      + (url ? `<a class="inv-b-src" href="${escAttr(url)}" target="_blank" rel="noopener nofollow">${escHtml(host)} ${EXT_ARROW}</a>` : '<span class="inv-b-src"></span>')
       + (earlier ? `<details class="inv-earlier"><summary>What this counter said before</summary><p>${escHtml(earlier)}</p></details>` : '')
       + '</td></tr>';
   }).join('');
@@ -489,7 +489,7 @@ function invDistricts() {
     + `<p class="inv-foot" id="inv-dist-note">${escHtml(d.source || 'Nepal Police')} bulletin`
     + (d.time ? `, ${escHtml(nptLong(d.time))}` : '')
     + `, totalling ${escHtml(total.toLocaleString('en-US'))}, which is the same total the bulletin itself states. `
-    + `<a href="${escAttr(d.url || 'https://nepalpolice.gov.np/')}" target="_blank" rel="noopener nofollow">Read the bulletin &#8599;</a></p>`;
+    + `<a href="${escAttr(d.url || 'https://nepalpolice.gov.np/')}" target="_blank" rel="noopener nofollow">Read the bulletin ${EXT_ARROW}</a></p>`;
 }
 
 /* The descent. Seven places between the ice and the last reported damage,
@@ -673,7 +673,7 @@ function invSources(groups) {
     + `<h4>${escHtml(g.title)}</h4>`
     + `<p class="inv-card-note">${escHtml(g.note)}</p>`
     + '<ul>' + g.links.map(([url, name, what]) =>
-        `<li><a href="${escAttr(url)}" target="_blank" rel="noopener nofollow">${escHtml(name)} &#8599;</a>`
+        `<li><a href="${escAttr(url)}" target="_blank" rel="noopener nofollow">${escHtml(name)} ${EXT_ARROW}</a>`
         + (what ? `<span>${escHtml(what)}</span>` : '') + '</li>').join('')
     + '</ul></div>').join('');
   return invHead('10', 'Sources', 'Everything this site reads, and what it reads it for',

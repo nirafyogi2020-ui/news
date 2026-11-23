@@ -5,8 +5,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
-import { relief, timeline, about, hazardGuide, emergencyNumbers } from '../src/pages.mjs';
-import { neEvent, neEmergency, neRelief } from '../src/pages-ne.mjs';
+import { relief, timeline, about, hazardGuide, emergencyNumbers, missingPersons, contact, foreignNationals, hazardPages } from '../src/pages.mjs';
+import { neEvent, neEmergency, neRelief, neMissing } from '../src/pages-ne.mjs';
+import { markCurrent } from '../src/template.mjs';
 
 const CSS = readFileSync(new URL('../assets/site.css', import.meta.url), 'utf8');
 const event = JSON.parse(readFileSync(new URL('../event.json', import.meta.url), 'utf8'));
@@ -107,4 +108,47 @@ test('the Related block is a named region, not loose content outside the landmar
   const h = pages.about;
   assert.match(h, /<section class="related" aria-labelledby="related-title"><h2 id="related-title">/);
   assert.equal((h.match(/id="related-title"/g) || []).length, 1, 'one per page');
+});
+
+/* Round 3 (23 Nov 2026): findings 11, 14 and 16 of the second review. */
+const stepPages = {
+  missingPersons: html(missingPersons(ctx)), emergency: pages.emergency, hazards: pages.hazards, contact: html(contact(ctx)),
+  foreignNationals: html(foreignNationals(ctx)), neEmergency: pages.neEmergency, neMissing: html(neMissing(ctx)),
+  ...Object.fromEntries(hazardPages(ctx).map((pg, i) => [`hazard${i}`, html(pg)])),
+};
+
+test('no page links to itself without saying it is the current page', () => {
+  const all = { ...pages, ...stepPages };
+  for (const [name, h] of Object.entries(all)) {
+    const path = h.match(/<link rel="canonical" href="https:\/\/[^/"]+(\/[^"]*)"/)[1];
+    for (const tag of body(h).match(/<a\b[^>]*>/g)) {
+      if (tag.includes(`href="${path}"`)) assert.match(tag, /aria-current="page"/, `${name}: ${tag}`);
+    }
+  }
+});
+
+test('the Nepali numbers page danger box points down the page, not back at itself', () => {
+  const h = pages.neEmergency;
+  assert.match(h, /<a href="#sabai-number">सबै आपतकालीन नम्बर र कुन कामका लागि हो<\/a>/);
+  assert.match(h, /<h2 id="sabai-number">/);
+  assert.match(pages.neHome, /<a href="\/ne\/aapatkalin-number\/">सबै आपतकालीन नम्बर र कुन कामका लागि हो<\/a>/, 'other pages keep the link');
+});
+
+test('markCurrent leaves script blocks byte for byte', () => {
+  const src = '<a href="/x/">X</a><script>var s=\'<a href="/x/">\';</script><a href="/y/">Y</a>';
+  assert.equal(markCurrent('/x/', src), '<a href="/x/" aria-current="page">X</a><script>var s=\'<a href="/x/">\';</script><a href="/y/">Y</a>');
+});
+
+test('numbered step boxes are ordered lists that look the same as before', () => {
+  for (const [name, h] of Object.entries(stepPages)) {
+    assert.doesNotMatch(h, /<div class="checklist">|<div class="check-row">/, `${name}: no div step boxes left`);
+    const lists = [...h.matchAll(/<ol class="checklist" role="list">([\s\S]*?)<\/ol>/g)];
+    assert.ok(lists.length >= 1, `${name}: has a step list`);
+    for (const l of lists) {
+      const rows = l[1].match(/<li class="check-row"><span class="mark">[^<]+<\/span><p>/g) || [];
+      assert.ok(rows.length >= 2, `${name}: each step is a list item with its visible number`);
+    }
+  }
+  assert.match(CSS, /\.checklist\{[^}]*margin:0 0 22px;[^}]*padding:0;[^}]*list-style:none/);
+  assert.match(CSS, /\.check-row\{[^}]*margin:0;/, 'the global li margin does not reach the step rows');
 });
