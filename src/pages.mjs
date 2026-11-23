@@ -5,7 +5,7 @@
 
 import {
   SITE, SITE_NAME, CONTACT_EMAIL, mailLink, page, esc, related, faqBlock, stripTags,
-  nptLong, nptDay, ogFor, ogSlug, siteAsset, langAttr, scriptAsset,
+  nptLong, nptDay, ogFor, ogSlug, siteAsset, langAttr, scriptAsset, EXT_ARROW, CHEVRON,
 } from './template.mjs';
 import * as C from './content.mjs';
 import {
@@ -82,7 +82,8 @@ const EVENT_ABOUT = [{ '@id': EVENT_ID }];
 function table(head, rows, caption, opts = {}) {
   const label = h => esc(h.t !== undefined ? h.t : h);
   const st = !!opts.stack;
-  const cls = st ? ' class="stack" role="table"' : head.length <= 2 ? ' class="narrow"' : '';
+  const cls = (st ? ' class="stack" role="table"' : head.length <= 2 ? ' class="narrow"' : '')
+    + (opts.labelledby ? ` aria-labelledby="${opts.labelledby}"` : '');
   const rg = st ? ' role="rowgroup"' : '', rr = st ? ' role="row"' : '';
   const cell = i => st ? ` role="cell" data-label="${label(head[i])}"` : '';
   return `<div class="table-scroll"><table${cls}>${caption ? `<caption>${caption}</caption>` : ''}<thead${rg}><tr${rr}>${
@@ -570,10 +571,10 @@ ${C.MISSING_STEPS.map((s, i) => `<div class="check-row"><span class="mark">${Str
 <h2>Foreign nationals and families outside Nepal</h2>
 <p>If the person you are looking for is not a Nepali citizen, the fastest route is through their own embassy in Kathmandu rather than direct to a district police office. Embassies have a standing channel to Nepal Police for exactly this, and the Department of Immigration holds the entry records that confirm whether someone actually entered the district.</p>
 <div class="sourcelinks">
-  <a href="https://mofa.gov.np/foreign-mission-in-nepal/" target="_blank" rel="noopener nofollow">Embassies in Nepal, official list &#8599;</a>
-  <a href="https://www.immigration.gov.np/" target="_blank" rel="noopener nofollow">Department of Immigration &#8599;</a>
-  <a href="https://www.nepalpolice.gov.np/index.php/contact-us" target="_blank" rel="noopener nofollow">Nepal Police district offices &#8599;</a>
-  <a href="https://neoc.gov.np/" target="_blank" rel="noopener nofollow">National Emergency Operation Centre &#8599;</a>
+  <a href="https://mofa.gov.np/foreign-mission-in-nepal/" target="_blank" rel="noopener nofollow">Embassies in Nepal, official list ${EXT_ARROW}</a>
+  <a href="https://www.immigration.gov.np/" target="_blank" rel="noopener nofollow">Department of Immigration ${EXT_ARROW}</a>
+  <a href="https://www.nepalpolice.gov.np/index.php/contact-us" target="_blank" rel="noopener nofollow">Nepal Police district offices ${EXT_ARROW}</a>
+  <a href="https://neoc.gov.np/" target="_blank" rel="noopener nofollow">National Emergency Operation Centre ${EXT_ARROW}</a>
 </div>
 
 <h2>Why this site does not publish a missing-persons list</h2>
@@ -628,9 +629,9 @@ export function timeline(ctx) {
 <p class="measure">Pieced together from Nepal Police bulletins, NDRRMA situation reports, local officials and named newsrooms. Times are Nepal time (NPT, UTC+05:45) and some are approximate. Where a source gives "morning" rather than a clock time, that is what is printed here rather than a guess.</p>
 
 <h2>Hour by hour</h2>
-<div class="timeline">
-${C.TIMELINE.map(([t, txt]) => `<div class="tl-item"><div class="tl-time">${esc(t)}</div><p>${esc(txt)}</p></div>`).join('\n')}
-</div>
+<ol class="timeline" role="list">
+${C.TIMELINE.map(([t, txt]) => `<li class="tl-item"><div class="tl-time">${esc(t)}</div><p>${esc(txt)}</p></li>`).join('\n')}
+</ol>
 
 <h2>Where the water went, and when</h2>
 <p>The flood covered roughly 90 kilometres of river in a single day, dropping about 4,500 metres from the suspected break-off point to the furthest reported damage. That speed is the whole story of this event: it is why warning time was measured in minutes, and why the death toll is concentrated in the first two towns.</p>
@@ -1086,7 +1087,7 @@ ${table(['Number', 'Who answers', 'Use it for'], C.EMERGENCY_NUMBERS.map(([n, wh
 <h2>District and hospital numbers</h2>
 <p>Numbers below the national ones change by district and by hospital, and printing them here would mean printing figures that go out of date without anyone noticing. Instead, these are the official directories that publish and maintain them. Every link is a government or Red Cross page.</p>
 <div class="sourcelinks">
-${C.DIRECTORIES.map(([u, l]) => `<a href="${esc(u)}" target="_blank" rel="noopener nofollow">${esc(l)} &#8599;</a>`).join('\n')}
+${C.DIRECTORIES.map(([u, l]) => `<a href="${esc(u)}" target="_blank" rel="noopener nofollow">${esc(l)} ${EXT_ARROW}</a>`).join('\n')}
 </div>
 
 <h2>Reporting someone missing</h2>
@@ -1098,8 +1099,8 @@ ${C.MISSING_STEPS.slice(0, 4).map((s, i) => `<div class="check-row"><span class=
 <h2>Foreign nationals and families abroad</h2>
 <p>Contact your own country’s embassy in Kathmandu first. Embassies coordinate directly with Nepal Police on foreign nationals, and the Department of Immigration holds entry records that help confirm whether someone entered a given district.</p>
 <div class="sourcelinks">
-  <a href="https://mofa.gov.np/foreign-mission-in-nepal/" target="_blank" rel="noopener nofollow">Embassies in Nepal, official list &#8599;</a>
-  <a href="https://www.immigration.gov.np/" target="_blank" rel="noopener nofollow">Department of Immigration &#8599;</a>
+  <a href="https://mofa.gov.np/foreign-mission-in-nepal/" target="_blank" rel="noopener nofollow">Embassies in Nepal, official list ${EXT_ARROW}</a>
+  <a href="https://www.immigration.gov.np/" target="_blank" rel="noopener nofollow">Department of Immigration ${EXT_ARROW}</a>
 </div>
 
 <h2>Before the emergency: save these now</h2>
@@ -1150,8 +1151,11 @@ ${faq.html}
 
 export function relief(ctx) {
   const path = '/nepal-flood/relief/';
-  const bankTable = (rows) => table(['Bank', 'Account number'], rows.map(([b, accs]) =>
-    [esc(b), accs.map(a => `<span class="num">${esc(a)}</span>`).join('<br>')]));
+  /* The two account tables have no caption of their own: each is named by
+     the heading or line above it, so a screen reader moving by table hears
+     which fund the accounts belong to. */
+  const bankTable = (rows, labelledby) => table(['Bank', 'Account number'], rows.map(([b, accs]) =>
+    [esc(b), accs.map(a => `<span class="num">${esc(a)}</span>`).join('<br>')]), '', { labelledby });
 
   const body = `
 <div class="callout">
@@ -1159,7 +1163,7 @@ export function relief(ctx) {
   <p>There is no donate button here and no payment processor. Every account below belongs to the Government of Nepal, transcribed by hand from the Prime Minister’s Office’s own published graphic on 26 August 2026. Check the account name at your bank before sending anything.</p>
 </div>
 
-<h2>Prime Minister’s Natural Disaster Relief Fund</h2>
+<h2 id="pm-fund">Prime Minister’s Natural Disaster Relief Fund</h2>
 <p>Nepal’s own government fund for disaster rescue and rebuilding, run by the Office of the Prime Minister. It is the only channel this site recommends, because it is the only one whose accounts can be checked against an official published source.</p>
 <div class="callout">
   <p class="callout-title">Giving by card from outside Nepal</p>
@@ -1167,9 +1171,9 @@ export function relief(ctx) {
   <p>This is the one payment link on this site, and it is here because the Office of the Prime Minister published it itself: ${C.RELIEF_PORTAL.confirmedBy.map(([name, url]) => `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(name)}</a>`).join(', ')}. Anything else asking for flood money, in any message, is not vouched for here.</p>
   <p class="faint">The older address <span class="num">pmrelief.opmcm.gov.np</span> still does not load, checked 28 August 2026.</p>
 </div>
-${bankTable(C.RELIEF_BANKS)}
-<p class="faint">Prime Minister’s Relief Fund (general fund, not disaster-specific):</p>
-${bankTable(C.RELIEF_BANKS_GENERAL)}
+${bankTable(C.RELIEF_BANKS, 'pm-fund')}
+<p class="faint" id="pm-fund-general">Prime Minister’s Relief Fund (general fund, not disaster-specific):</p>
+${bankTable(C.RELIEF_BANKS_GENERAL, 'pm-fund-general')}
 
 <h3>Official QR code</h3>
 <p><img src="${siteAsset('/qr-pmo-nepal.jpg')}" alt="Official donation QR code published by the Office of the Prime Minister of Nepal for the Natural Disaster Relief Fund" width="556" height="472" loading="lazy" decoding="async" style="max-width:340px;height:auto;border:1px solid var(--border);border-radius:14px;padding:10px;background:#fff;"></p>
@@ -1199,10 +1203,10 @@ ${table(['Recipient', 'Amount'], C.DAMAGE.reliefBreakdown.map(([k, v]) => [esc(k
 
 <h2>Official organisations</h2>
 <div class="sourcelinks">
-  <a href="https://www.opmcm.gov.np/" target="_blank" rel="noopener nofollow">Office of the Prime Minister &#8599;</a>
-  <a href="https://ndrrma.gov.np/" target="_blank" rel="noopener nofollow">NDRRMA, national disaster authority &#8599;</a>
-  <a href="https://www.nrcs.org/" target="_blank" rel="noopener nofollow">Nepal Red Cross Society &#8599;</a>
-  <a href="https://neoc.gov.np/" target="_blank" rel="noopener nofollow">National Emergency Operation Centre &#8599;</a>
+  <a href="https://www.opmcm.gov.np/" target="_blank" rel="noopener nofollow">Office of the Prime Minister ${EXT_ARROW}</a>
+  <a href="https://ndrrma.gov.np/" target="_blank" rel="noopener nofollow">NDRRMA, national disaster authority ${EXT_ARROW}</a>
+  <a href="https://www.nrcs.org/" target="_blank" rel="noopener nofollow">Nepal Red Cross Society ${EXT_ARROW}</a>
+  <a href="https://neoc.gov.np/" target="_blank" rel="noopener nofollow">National Emergency Operation Centre ${EXT_ARROW}</a>
 </div>
 `;
   const t = 'Nepal Flood Relief: How to Donate Safely to the Government Fund';
@@ -1252,7 +1256,7 @@ ${C.HAZARDS.map(h => `
   <div class="card"><h3>What to do</h3><p>${esc(h.todo)}</p></div>
   <div class="card"><h3>Nepal’s exposure</h3><p>${esc(h.exposure)}</p></div>
 </div>
-<p><a class="more-link" href="/nepal-disasters/${h.slug}/">${esc(h.name)}: the full page, with the warning signs in order and the common questions answered &rsaquo;</a></p>`).join('\n')}
+<p><a class="more-link" href="/nepal-disasters/${h.slug}/">${esc(h.name)}: the full page, with the warning signs in order and the common questions answered ${CHEVRON}</a></p>`).join('\n')}
 
 <h2>If you live near a mountain river</h2>
 <div class="checklist">
@@ -1274,11 +1278,11 @@ ${C.RIVER_SAFETY.map((s, i) => `<div class="check-row"><span class="mark">${Stri
 
 <h2>Learn from the people who study this</h2>
 <div class="sourcelinks">
-  <a href="https://www.icimod.org/" target="_blank" rel="noopener nofollow">ICIMOD, Himalayan research &#8599;</a>
-  <a href="https://bipad.gov.np/" target="_blank" rel="noopener nofollow">BIPAD, Nepal’s disaster portal &#8599;</a>
-  <a href="https://www.dhm.gov.np/" target="_blank" rel="noopener nofollow">Dept. of Hydrology &amp; Meteorology &#8599;</a>
-  <a href="https://seismonepal.gov.np/" target="_blank" rel="noopener nofollow">National Seismological Centre &#8599;</a>
-  <a href="https://drrportal.gov.np/" target="_blank" rel="noopener nofollow">Disaster Risk Reduction Portal &#8599;</a>
+  <a href="https://www.icimod.org/" target="_blank" rel="noopener nofollow">ICIMOD, Himalayan research ${EXT_ARROW}</a>
+  <a href="https://bipad.gov.np/" target="_blank" rel="noopener nofollow">BIPAD, Nepal’s disaster portal ${EXT_ARROW}</a>
+  <a href="https://www.dhm.gov.np/" target="_blank" rel="noopener nofollow">Dept. of Hydrology &amp; Meteorology ${EXT_ARROW}</a>
+  <a href="https://seismonepal.gov.np/" target="_blank" rel="noopener nofollow">National Seismological Centre ${EXT_ARROW}</a>
+  <a href="https://drrportal.gov.np/" target="_blank" rel="noopener nofollow">Disaster Risk Reduction Portal ${EXT_ARROW}</a>
 </div>
 `;
   const t = 'Nepal Natural Disasters: Floods, Earthquakes, Landslides, GLOFs';
@@ -2308,7 +2312,7 @@ ${lead ? `<figure class="fp-lead-media"><a href="${esc(dashPath)}"><img src="${e
     <a class="fp-card" href="${esc(dashPath)}map/">
       <h3>Map of the flood path</h3>
       <p>Seven points from the suspected break-off in Tibet to Devighat in Nuwakot, with the coordinates for each one, on satellite and terrain layers.</p>
-      <span class="go">Open the map &rsaquo;</span>
+      <span class="go">Open the map ${CHEVRON}</span>
     </a>${roadsHtml}
   </div>
 </section>`;
@@ -2331,7 +2335,7 @@ ${lead ? `<figure class="fp-lead-media"><a href="${esc(dashPath)}"><img src="${e
       ${relief ? `<p class="fp-fund"><b>${esc(relief.value)}</b><span>${esc(relief.label)}</span></p>` : ''}
       ${reliefSentence ? `<p>${esc(reliefSentence)}</p>` : ''}
       <p>The Prime Minister’s Natural Disaster Relief Fund is the one channel this site points to, because its accounts can be checked against the government’s own published graphic. Card payments from abroad go through <a href="${esc(C.RELIEF_PORTAL.url)}" target="_blank" rel="noopener">${esc(C.RELIEF_PORTAL.host)}</a>.</p>
-      <a class="go" href="/nepal-flood/relief/">Bank details, QR code and how to spot a fake appeal &rsaquo;</a>
+      <a class="go" href="/nepal-flood/relief/">Bank details, QR code and how to spot a fake appeal ${CHEVRON}</a>
     </div>
   </div>
 </section>`;

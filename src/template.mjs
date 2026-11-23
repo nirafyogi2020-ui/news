@@ -12,6 +12,12 @@ import { hashedName } from './asset-names.mjs';
 
 export const SITE = 'https://nepaldisasterupdatelive.nxtimaginelabs.com';
 export const SITE_NAME = 'Nepal Disaster Update Live';
+/* The arrow after a link that leaves the site, and the chevron after "Read
+   more". Both are decoration: a screen reader read them out as "north east
+   arrow" and "single right-pointing angle quotation mark" at the end of the
+   link's name, so they are hidden from it. */
+export const EXT_ARROW = '<span aria-hidden="true">&#8599;</span>';
+export const CHEVRON = '<span aria-hidden="true">&rsaquo;</span>';
 export const SITE_ALT_NAMES = ['Nepal Disaster Update', 'NepalDisasterUpdate', 'Nepal Disaster Live', 'Nepal Disaster Update Live Nepal'];
 export const PUBLISHER = 'Nepal Disaster Update Live';
 export const CONTACT_EMAIL = 'support@nxtimaginelabs.com';
@@ -561,7 +567,7 @@ ${o.head || ''}
 
 <header class="sitehead">
   <div class="sitehead-inner">
-    <a href="${lang === 'ne' ? '/ne/' : '/'}" class="brand" aria-label="${esc(SITE_NAME)}">
+    <a href="${lang === 'ne' ? '/ne/' : '/'}" class="brand"${lang === 'ne' ? '' : ` aria-label="${esc(SITE_NAME)}"`}>
       <span class="brand-mark">${FLAG_SVG}</span>
       <span class="brand-text">
         <span class="brand-name">${esc(t.brand)}</span>
@@ -608,8 +614,8 @@ ${o.tail || ''}
 /** Related-pages block, rendered at the foot of an article. */
 export function related(title, items) {
   if (!items.length) return '';
-  return `<section class="related"><h2>${esc(title)}</h2><div class="cards">${items.map(i =>
-    `<a class="card" href="${esc(i.href)}"><h3${langAttr(i.title)}>${esc(i.title)}</h3><p${langAttr(i.text)}>${esc(i.text)}</p><span class="go">Read ${esc(i.verb || 'more')} &rsaquo;</span></a>`
+  return `<section class="related" aria-labelledby="related-title"><h2 id="related-title">${esc(title)}</h2><div class="cards">${items.map(i =>
+    `<a class="card" href="${esc(i.href)}"><h3${langAttr(i.title)}>${esc(i.title)}</h3><p${langAttr(i.text)}>${esc(i.text)}</p><span class="go">Read ${esc(i.verb || 'more')} ${CHEVRON}</span></a>`
   ).join('')}</div></section>`;
 }
 

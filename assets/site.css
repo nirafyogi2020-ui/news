@@ -52,10 +52,14 @@
    switch, which is nearly everyone arriving from a search result. Without it
    these pages stayed white on a phone in dark mode while the dashboard went
    dark, so the two halves of the site did not look like one publication. It is
-   skipped when the reader has explicitly asked for light. */
+   skipped when the reader has explicitly asked for light.
+
+   Dark faint text was #898781, which fell to 4.48:1 on the red-tinted
+   "In danger right now?" box, under the 4.5:1 small text needs. #8e8c86
+   clears it there (4.79) and on every other dark surface (5.2-5.8). */
 :root[data-theme="dark"]{
   --bg:#0d0d0d; --surface:#1a1a19; --surface-2:#161615;
-  --text:#ffffff; --text-muted:#c3c2b7; --text-faint:#898781;
+  --text:#ffffff; --text-muted:#c3c2b7; --text-faint:#8e8c86;
   --border:#2c2c2a; --border-strong:#383835;
   --critical:#e0685f;
   --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.4);
@@ -63,7 +67,7 @@
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#0d0d0d; --surface:#1a1a19; --surface-2:#161615;
-    --text:#ffffff; --text-muted:#c3c2b7; --text-faint:#898781;
+    --text:#ffffff; --text-muted:#c3c2b7; --text-faint:#8e8c86;
     --border:#2c2c2a; --border-strong:#383835;
     --critical:#e0685f;
     --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.4);
@@ -71,7 +75,10 @@
 }
 
 *{box-sizing:border-box;}
-html{background:var(--bg); -webkit-text-size-adjust:100%;}
+/* The masthead is sticky and 60px tall. Without this, the skip link and any
+   in-page anchor scrolled their target under it, and a link reached by
+   Shift+Tab could sit hidden behind it (WCAG 2.4.11, focus not obscured). */
+html{background:var(--bg); -webkit-text-size-adjust:100%; scroll-padding-top:76px;}
 body{
   margin:0; background:var(--bg); color:var(--text);
   font-family:var(--font-body); font-size:17px; line-height:1.65;
@@ -140,7 +147,7 @@ strong{font-weight:600;}
 .crumbs{font-size:0.8rem; color:var(--text-faint); padding:18px 0 0; margin:0;}
 .crumbs ol{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:6px; align-items:center;}
 .crumbs li{margin:0; display:flex; gap:6px; align-items:center;}
-.crumbs li+li::before{content:"›"; color:var(--border-strong);}
+.crumbs li+li::before{content:"›"; content:"›" / ""; color:var(--border-strong);}
 .crumbs a{color:var(--text-muted); text-decoration:none;}
 .crumbs a:hover{text-decoration:underline; color:var(--critical);}
 .crumbs [aria-current]{color:var(--text-faint);}
@@ -259,7 +266,10 @@ a.card .go{display:inline-block; margin-top:.6em; font-size:0.8rem; font-weight:
 .sourcelinks a:hover{border-color:var(--border-strong); color:var(--text);}
 
 /* ---- timeline ----------------------------------------------------------- */
-.timeline{margin:0 0 22px; border-left:2px solid var(--border); padding-left:18px;}
+/* An ordered list, so a screen reader says how many entries there are and
+   can skip past them. role="list" in the page keeps that in Safari, which
+   drops list semantics once the markers are turned off. */
+.timeline{margin:0 0 22px; border-left:2px solid var(--border); padding-left:18px; list-style:none;}
 .tl-item{position:relative; margin:0 0 20px;}
 .tl-item::before{content:""; position:absolute; left:-25px; top:7px; width:10px; height:10px; border-radius:50%; background:var(--critical); border:2px solid var(--bg);}
 .tl-time{font-family:var(--font-mono); font-size:0.74rem; letter-spacing:.05em; text-transform:uppercase; color:var(--critical); margin-bottom:2px;}
@@ -277,8 +287,11 @@ a.card .go{display:inline-block; margin-top:.6em; font-size:0.8rem; font-weight:
 .faq details:last-child{border-bottom:0;}
 .faq summary{cursor:pointer; padding:14px 16px; font-weight:600; font-size:0.98rem; list-style:none; display:flex; justify-content:space-between; gap:12px;}
 .faq summary::-webkit-details-marker{display:none;}
-.faq summary::after{content:"+"; color:var(--text-faint); font-family:var(--font-mono);}
-.faq details[open] summary::after{content:"−";}
+/* The plus and minus are drawn, not said: with no alt text after the slash a
+   screen reader read every question as "What happened? plus". The second
+   content line is skipped by browsers that do not know the syntax. */
+.faq summary::after{content:"+"; content:"+" / ""; color:var(--text-faint); font-family:var(--font-mono);}
+.faq details[open] summary::after{content:"−"; content:"−" / "";}
 .faq .faq-body{padding:0 16px 15px; font-size:0.95rem; color:var(--text-muted);}
 .faq .faq-body p:last-child{margin-bottom:0;}
 

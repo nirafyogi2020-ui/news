@@ -6,7 +6,7 @@
    the number once and both languages move together.
    ========================================================================= */
 
-import { SITE, SITE_NAME, mailLink, page, esc, faqBlock, nptLong, siteAsset, ogFor } from './template.mjs';
+import { SITE, SITE_NAME, mailLink, page, esc, faqBlock, nptLong, siteAsset, ogFor, EXT_ARROW } from './template.mjs';
 import * as C from './content.mjs';
 import { ne, neCount, NE_DISTRICTS, NE_MISSING_GROUPS, NE_EMERGENCY, NE_MISSING_STEPS, NE_HAZARD_STEPS, NE_SOURCES } from './content-ne.mjs';
 
@@ -35,8 +35,8 @@ const NDRRMA_NE = neTime(C.RESCUE_AS_OF);
 const BODIES_NE = neTime(C.BODIES_AS_OF);
 const MISSING_BREAKDOWN_NE = neTime(C.MISSING_BREAKDOWN_AS_OF);
 
-function table(head, rows, caption) {
-  return `<div class="table-scroll"><table${head.length <= 2 ? ' class="narrow"' : ''}>${caption ? `<caption>${caption}</caption>` : ''}<thead><tr>${
+function table(head, rows, caption, opts = {}) {
+  return `<div class="table-scroll"><table${head.length <= 2 ? ' class="narrow"' : ''}${opts.labelledby ? ` aria-labelledby="${opts.labelledby}"` : ''}>${caption ? `<caption>${caption}</caption>` : ''}<thead><tr>${
     head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${
     rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 }
@@ -232,8 +232,8 @@ ${faq.html}
 /* What a family abroad does first. Printed on /ne/bepatta/ and again on
    /ne/aapatkalin-number/, as the English pages do, from this one copy. */
 const NE_FOREIGN = '<p>खोजिएको व्यक्ति नेपाली नागरिक होइन भने सबैभन्दा छिटो बाटो जिल्ला प्रहरी कार्यालय होइन, काठमाडौंस्थित उनीहरूकै देशको दूतावास हो। दूतावाससँग यसैका लागि नेपाल प्रहरीसँग स्थायी माध्यम हुन्छ, र अध्यागमन विभागसँग व्यक्ति साँच्चै त्यो जिल्लामा पसेको थियो कि थिएन भन्ने अभिलेख हुन्छ।</p>';
-const NE_EMBASSY_LINK = '<a href="https://mofa.gov.np/foreign-mission-in-nepal/" target="_blank" rel="noopener nofollow">नेपालका दूतावासहरूको आधिकारिक सूची &#8599;</a>';
-const NE_IMMIGRATION_LINK = '<a href="https://www.immigration.gov.np/" target="_blank" rel="noopener nofollow">अध्यागमन विभाग &#8599;</a>';
+const NE_EMBASSY_LINK = `<a href="https://mofa.gov.np/foreign-mission-in-nepal/" target="_blank" rel="noopener nofollow">नेपालका दूतावासहरूको आधिकारिक सूची ${EXT_ARROW}</a>`;
+const NE_IMMIGRATION_LINK = `<a href="https://www.immigration.gov.np/" target="_blank" rel="noopener nofollow">अध्यागमन विभाग ${EXT_ARROW}</a>`;
 
 /* -- /ne/aapatkalin-number/ ------------------------------------------------- */
 
@@ -270,13 +270,13 @@ ${table(['नम्बर', 'कसले उठाउँछ', 'कुन का
 <h2>जिल्ला र अस्पतालका नम्बर</h2>
 <p>राष्ट्रिय नम्बरभन्दा तलका नम्बर जिल्ला र अस्पतालअनुसार फरक हुन्छन् र फेरिइरहन्छन्। त्यसैले यहाँ अङ्क छापिएको छैन। बरु ती नम्बर आफैँ प्रकाशित र अद्यावधिक गर्ने आधिकारिक निर्देशिकाका लिङ्क छन्। हरेक लिङ्क सरकारी वा रेडक्रसको पृष्ठ हो।</p>
 <div class="sourcelinks">
-  <a href="https://neoc.gov.np/" target="_blank" rel="noopener nofollow">राष्ट्रिय आपतकालीन कार्य सञ्चालन केन्द्र &#8599;</a>
-  <a href="https://bipad.gov.np/" target="_blank" rel="noopener nofollow">BIPAD पोर्टल, जिल्लागत सम्पर्क &#8599;</a>
-  <a href="https://www.nepalpolice.gov.np/index.php/contact-us" target="_blank" rel="noopener nofollow">नेपाल प्रहरी, जिल्ला कार्यालय निर्देशिका &#8599;</a>
-  <a href="https://www.nrcs.org/" target="_blank" rel="noopener nofollow">नेपाल रेडक्रस सोसाइटी &#8599;</a>
-  <a href="https://mohp.gov.np/" target="_blank" rel="noopener nofollow">स्वास्थ्य मन्त्रालय, अस्पताल निर्देशिका &#8599;</a>
-  <a href="https://www.aponepal.gov.np/" target="_blank" rel="noopener nofollow">सशस्त्र प्रहरी बल नेपाल &#8599;</a>
-  <a href="https://www.nepalarmy.mil.np/" target="_blank" rel="noopener nofollow">नेपाली सेना &#8599;</a>
+  <a href="https://neoc.gov.np/" target="_blank" rel="noopener nofollow">राष्ट्रिय आपतकालीन कार्य सञ्चालन केन्द्र ${EXT_ARROW}</a>
+  <a href="https://bipad.gov.np/" target="_blank" rel="noopener nofollow">BIPAD पोर्टल, जिल्लागत सम्पर्क ${EXT_ARROW}</a>
+  <a href="https://www.nepalpolice.gov.np/index.php/contact-us" target="_blank" rel="noopener nofollow">नेपाल प्रहरी, जिल्ला कार्यालय निर्देशिका ${EXT_ARROW}</a>
+  <a href="https://www.nrcs.org/" target="_blank" rel="noopener nofollow">नेपाल रेडक्रस सोसाइटी ${EXT_ARROW}</a>
+  <a href="https://mohp.gov.np/" target="_blank" rel="noopener nofollow">स्वास्थ्य मन्त्रालय, अस्पताल निर्देशिका ${EXT_ARROW}</a>
+  <a href="https://www.aponepal.gov.np/" target="_blank" rel="noopener nofollow">सशस्त्र प्रहरी बल नेपाल ${EXT_ARROW}</a>
+  <a href="https://www.nepalarmy.mil.np/" target="_blank" rel="noopener nofollow">नेपाली सेना ${EXT_ARROW}</a>
 </div>
 
 <h2>बेपत्ता व्यक्तिको खबर कसरी गर्ने</h2>
@@ -375,7 +375,7 @@ ${NE_FOREIGN}
 <div class="sourcelinks">
   ${NE_EMBASSY_LINK}
   ${NE_IMMIGRATION_LINK}
-  <a href="https://www.nepalpolice.gov.np/index.php/contact-us" target="_blank" rel="noopener nofollow">नेपाल प्रहरी जिल्ला कार्यालय &#8599;</a>
+  <a href="https://www.nepalpolice.gov.np/index.php/contact-us" target="_blank" rel="noopener nofollow">नेपाल प्रहरी जिल्ला कार्यालय ${EXT_ARROW}</a>
 </div>
 
 <h2>यो साइटले बेपत्ताको नामावली किन छाप्दैन</h2>
@@ -428,8 +428,10 @@ ${NE_FOREIGN}
 
 export function neRelief(ctx) {
   const path = '/ne/rahat/';
-  const bankTable = (rows) => table(['बैंक', 'खाता नम्बर'], rows.map(([b, accs]) =>
-    [esc(b), accs.map(a => `<span class="num">${esc(a)}</span>`).join('<br>')]));
+  /* Named by the heading or line above, as on the English page. The bank
+     names are English, so they are marked English for the voice. */
+  const bankTable = (rows, labelledby) => table(['बैंक', 'खाता नम्बर'], rows.map(([b, accs]) =>
+    [`<span lang="en">${esc(b)}</span>`, accs.map(a => `<span class="num">${esc(a)}</span>`).join('<br>')]), '', { labelledby });
 
   const body = `
 <div class="callout">
@@ -437,7 +439,7 @@ export function neRelief(ctx) {
   <p>यहाँ कुनै दान बटन छैन र कुनै भुक्तानी प्रणाली छैन। तलका सबै खाता नेपाल सरकारका हुन्, प्रधानमन्त्री कार्यालयले आफैँ प्रकाशित गरेको सामग्रीबाट २६ अगस्ट २०२६ मा हातैले उतारिएका। पैसा पठाउनुअघि बैंकमा खाताको नाम मिल्छ कि मिल्दैन जाँच्नुहोस्।</p>
 </div>
 
-<h2>प्रधानमन्त्री प्राकृतिक विपद् उद्धार कोष</h2>
+<h2 id="pm-fund">प्रधानमन्त्री प्राकृतिक विपद् उद्धार कोष</h2>
 <p>विपद्को उद्धार र पुनर्निर्माणका लागि नेपाल सरकारकै कोष, प्रधानमन्त्री तथा मन्त्रिपरिषद्को कार्यालयले चलाउने। यो साइटले सिफारिस गर्ने एउटै माध्यम यही हो, किनभने खाता आधिकारिक प्रकाशित स्रोतसँग मिलाएर जाँच्न सकिने यही एउटा हो।</p>
 <div class="callout">
   <p class="callout-title">विदेशबाट कार्डबाट सहयोग गर्ने बाटो</p>
@@ -445,9 +447,9 @@ export function neRelief(ctx) {
   <p>यो साइटमा भएको एक मात्र भुक्तानी लिंक यही हो, र यो यहाँ छ किनभने प्रधानमन्त्री कार्यालयले आफैँले प्रकाशित गरेको हो। बाढीको नाममा पैसा माग्ने अरू कुनै सन्देशको जिम्मा यो साइट लिँदैन।</p>
   <p class="faint">पुरानो ठेगाना <span class="num">pmrelief.opmcm.gov.np</span> अझै खुल्दैन, २८ अगस्ट २०२६ मा जाँचिएको।</p>
 </div>
-${bankTable(C.RELIEF_BANKS)}
-<p class="faint">प्रधानमन्त्री राहत कोष (सामान्य कोष, विपद्-विशेष होइन):</p>
-${bankTable(C.RELIEF_BANKS_GENERAL)}
+${bankTable(C.RELIEF_BANKS, 'pm-fund')}
+<p class="faint" id="pm-fund-general">प्रधानमन्त्री राहत कोष (सामान्य कोष, विपद्-विशेष होइन):</p>
+${bankTable(C.RELIEF_BANKS_GENERAL, 'pm-fund-general')}
 
 <h3>आधिकारिक QR</h3>
 <p><img src="${siteAsset('/qr-pmo-nepal.jpg')}" alt="नेपाल सरकारको प्रधानमन्त्री तथा मन्त्रिपरिषद्को कार्यालयले प्रकाशित गरेको प्राकृतिक विपद् उद्धार कोषको आधिकारिक दान QR" width="556" height="472" loading="lazy" decoding="async" style="max-width:340px;height:auto;border:1px solid var(--border);border-radius:14px;padding:10px;background:#fff;"></p>
@@ -482,9 +484,9 @@ ${table(['कहाँ', 'रकम'], [
 
 <h2>आधिकारिक संस्थाहरू</h2>
 <div class="sourcelinks">
-  <a href="https://www.opmcm.gov.np/" target="_blank" rel="noopener nofollow">प्रधानमन्त्री तथा मन्त्रिपरिषद्को कार्यालय &#8599;</a>
-  <a href="https://ndrrma.gov.np/" target="_blank" rel="noopener nofollow">राष्ट्रिय विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन प्राधिकरण &#8599;</a>
-  <a href="https://www.nrcs.org/" target="_blank" rel="noopener nofollow">नेपाल रेडक्रस सोसाइटी &#8599;</a>
+  <a href="https://www.opmcm.gov.np/" target="_blank" rel="noopener nofollow">प्रधानमन्त्री तथा मन्त्रिपरिषद्को कार्यालय ${EXT_ARROW}</a>
+  <a href="https://ndrrma.gov.np/" target="_blank" rel="noopener nofollow">राष्ट्रिय विपद् जोखिम न्यूनीकरण तथा व्यवस्थापन प्राधिकरण ${EXT_ARROW}</a>
+  <a href="https://www.nrcs.org/" target="_blank" rel="noopener nofollow">नेपाल रेडक्रस सोसाइटी ${EXT_ARROW}</a>
 </div>
 
 <p lang="en"><a href="/nepal-flood/relief/">This page in English</a></p>
