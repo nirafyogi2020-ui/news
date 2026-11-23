@@ -3460,7 +3460,12 @@ try {
         if(e.isIntersecting) current = e.target.id;
       });
       if(current && links[current]){
-        Object.keys(links).forEach(function(id){ links[id].classList.toggle('is-here', id === current); });
+        Object.keys(links).forEach(function(id){
+          var on = id === current;
+          links[id].classList.toggle('is-here', on);
+          if(on) links[id].setAttribute('aria-current', 'location');
+          else links[id].removeAttribute('aria-current');
+        });
         var here = links[current];
         var l = here.offsetLeft, r = l + here.offsetWidth;
         if(l < jump.scrollLeft || r > jump.scrollLeft + jump.clientWidth){
