@@ -117,7 +117,7 @@ async function getJson(url) {
   const res = await fetch(url, {
     headers: {
       'accept': 'application/json',
-      'user-agent': 'nepaldisasterupdatelive.nxtimaginelabs.com (hello@nxtimaginelabs.com)'
+      'user-agent': 'nepaldisasterupdatelive.nxtimaginelabs.com (support@nxtimaginelabs.com)'
     }
   });
   if (!res.ok) throw new Error('HTTP ' + res.status);

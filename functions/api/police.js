@@ -315,7 +315,7 @@ async function getText(url, attempt = 0) {
     res = await fetch(url, {
       headers: {
         'accept': 'text/html',
-        'user-agent': 'nepaldisasterupdatelive.nxtimaginelabs.com (hello@nxtimaginelabs.com)'
+        'user-agent': 'nepaldisasterupdatelive.nxtimaginelabs.com (support@nxtimaginelabs.com)'
       }
     });
   } catch (e) {

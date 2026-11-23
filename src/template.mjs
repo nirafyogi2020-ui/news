@@ -14,7 +14,7 @@ export const SITE = 'https://nepaldisasterupdatelive.nxtimaginelabs.com';
 export const SITE_NAME = 'Nepal Disaster Update Live';
 export const SITE_ALT_NAMES = ['Nepal Disaster Update', 'NepalDisasterUpdate', 'Nepal Disaster Live', 'Nepal Disaster Update Live Nepal'];
 export const PUBLISHER = 'Nepal Disaster Update Live';
-export const CONTACT_EMAIL = 'hello@nxtimaginelabs.com';
+export const CONTACT_EMAIL = 'support@nxtimaginelabs.com';
 
 /* The web fonts. Newsreader is asked for at one optical size (36) instead
    of its whole 6-72 optical-size range: the range made the Latin file

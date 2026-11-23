@@ -550,7 +550,7 @@ function fetchArticlePage(url) {
   return fetchPublic(url, {
     headers: {
       'accept': 'text/html',
-      'user-agent': 'nepaldisasterupdatelive.nxtimaginelabs.com (hello@nxtimaginelabs.com)'
+      'user-agent': 'nepaldisasterupdatelive.nxtimaginelabs.com (support@nxtimaginelabs.com)'
     },
     signal: AbortSignal.timeout(3500)
   });
@@ -1155,7 +1155,7 @@ export async function getText(url) {
     signal: AbortSignal.timeout(12000),
     headers: {
       'accept': 'application/rss+xml, application/xml, application/json;q=0.9, */*;q=0.8',
-      'user-agent': 'nepaldisasterupdatelive.nxtimaginelabs.com (hello@nxtimaginelabs.com)'
+      'user-agent': 'nepaldisasterupdatelive.nxtimaginelabs.com (support@nxtimaginelabs.com)'
     }
   });
   if (!res.ok) throw new Error('HTTP ' + res.status);
