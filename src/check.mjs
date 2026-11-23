@@ -13,6 +13,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { hasBannedWord, hasDash } from './front-rules.mjs';
+import { HASHED_FILE, hashedName } from './asset-names.mjs';
 import { scriptPolicies, policyProblems, pageProblems, localAssets, handlerStringsInJs } from './csp-rules.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -381,9 +382,9 @@ if (home) {
   if (!/fetch\('\/api\/figures'/.test(home.html + linked)) {
     errors.push(`${DASH}: the page no longer polls /api/figures, so the counters would not stay live`);
   }
-  if (/<script src="\/assets\/dashboard-app\.js/.test(home.html) && !existsSync(join(ROOT, 'assets/dashboard-app.js'))) {
-    errors.push(`${DASH}: links /assets/dashboard-app.js but the file was not built`);
-  }
+  const app = pick(home.html, /<script src="\/(assets\/dashboard-app\.[0-9a-f]{12}\.js)"/);
+  if (!app) errors.push(`${DASH}: does not link its hashed /assets/dashboard-app.<hash>.js`);
+  else if (!existsSync(join(ROOT, app))) errors.push(`${DASH}: links /${app} but the file was not built`);
   /* Code one tab needs (the map, the video player) is fetched on first use
      from the addresses in #dashboard-chunks. A missing file would only show
      when a reader opened that tab, so it fails here. */
@@ -392,8 +393,8 @@ if (home) {
     let chunks = {};
     try { chunks = JSON.parse(chunkJson); } catch { errors.push(`${DASH}: #dashboard-chunks is not valid JSON`); }
     for (const [name, url] of Object.entries(chunks)) {
-      const m = String(url).match(/^\/(assets\/dashboard-[a-z]+\.js)\?v=[0-9a-f]{12}$/);
-      if (!m) errors.push(`${DASH}: lazy ${name} code has an address outside /assets/ or without a content stamp (${url})`);
+      const m = String(url).match(/^\/(assets\/dashboard-[a-z]+\.[0-9a-f]{12}\.js)$/);
+      if (!m) errors.push(`${DASH}: lazy ${name} code has an address outside /assets/ or without a content hash in its name (${url})`);
       else if (!existsSync(join(ROOT, m[1]))) errors.push(`${DASH}: lazy ${name} code /${m[1]} was not built or not committed`);
     }
   }
@@ -655,7 +656,18 @@ for (const page of pages) {
   for (const p of pages) {
     for (const problem of pageProblems(p.html, policies)) errors.push(`${p.path}: ${problem}`);
     for (const asset of localAssets(p.html)) {
-      if (!existsSync(join(ROOT, asset))) errors.push(`${p.path}: links /${asset}, which was not built or not committed`);
+      if (!existsSync(join(ROOT, asset))) { errors.push(`${p.path}: links /${asset}, which was not built or not committed`); continue; }
+      /* The site's own scripts and stylesheets are linked by a name that
+         carries a hash of their content (src/asset-names.mjs). A ?v= stamp
+         is ignored by Cloudflare, so a mid-deploy request can pin old code
+         at the edge under the new address. */
+      const name = asset.replace(/^assets\//, '');
+      if (/^assets\/[^/]+\.(?:js|css)$/.test(asset)) {
+        if (!HASHED_FILE.test(name)) errors.push(`${p.path}: links /${asset} without a content hash in the file name`);
+        else if (hashedName(asset.replace(/\.[0-9a-f]{12}(\.(?:js|css))$/, '$1'), readFileSync(join(ROOT, asset), 'utf8')) !== asset) {
+          errors.push(`${p.path}: /${asset} does not match the hash in its name`);
+        }
+      }
     }
   }
   for (const name of readdirSync(join(ROOT, 'assets'))) {

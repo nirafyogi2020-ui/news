@@ -34,7 +34,7 @@ test('a hash next to unsafe-inline, or unsafe-hashes, is a policy fault', () => 
 
 test('inline scripts are hashed the way a browser does, data blocks skipped', () => {
   const html = '<script>alert(1)</script><script type="application/ld+json">{}</script>'
-    + '<script type="application/json" id="x">[]</script><script src="/assets/a.js?v=1" defer></script>'
+    + '<script type="application/json" id="x">[]</script><script src="/assets/a.0123456789ab.js" defer></script>'
     + '<script type="module">alert(1)</script>';
   const found = inlineScripts(html);
   assert.equal(found.length, 2);
@@ -71,12 +71,12 @@ test('javascript: URLs are found', () => {
   assert.deepEqual(javascriptUrls('<a href="/javascript-guide/">x</a><p>javascript: is refused</p>'), []);
 });
 
-test('local scripts and stylesheets are listed without their stamp', () => {
-  const html = '<script src="/assets/front.js?v=abc" defer></script><script src="https://unpkg.com/x.js"></script>'
+test('local scripts and stylesheets are listed by their path', () => {
+  const html = '<script src="/assets/front.0123456789ab.js" defer></script><script src="https://unpkg.com/x.js"></script>'
     + '<script src="/cdn-cgi/scripts/e.js"></script><script src="//cdn.example/x.js"></script>'
-    + '<link rel="stylesheet" href="/assets/site.css?v=1"><link rel="icon" href="/favicon.ico">'
+    + '<link rel="stylesheet" href="/assets/site.0123456789ab.css"><link rel="icon" href="/favicon.ico">'
     + '<link rel="stylesheet" href="https://fonts.googleapis.com/css2">';
-  assert.deepEqual(localAssets(html).sort(), ['assets/front.js', 'assets/site.css']);
+  assert.deepEqual(localAssets(html).sort(), ['assets/front.0123456789ab.js', 'assets/site.0123456789ab.css']);
 });
 
 test('handler attributes written from script are found, property assignments are not', () => {

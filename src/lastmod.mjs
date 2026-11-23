@@ -7,7 +7,8 @@
 
    A page's date now moves only when what a reader sees in it moves: the
    title, the description and the <main> text. The "Last checked" byline and
-   the ?v= cache stamps are left out, because they change on every build.
+   the ?v= cache stamps and the hashes in script names are left out, because
+   they change without the text changing.
    The fingerprint and the date it was first seen are kept in
    data/page-lastmod.json, which the build commits like any generated file. */
 import { createHash } from 'node:crypto';
@@ -18,7 +19,8 @@ export function pageFingerprint(html) {
   const desc = (s.match(/<meta name="description" content="([^"]*)"/i) || [])[1] || '';
   const main = ((s.match(/<main[^>]*>([\s\S]*?)<\/main>/i) || [])[1] || s)
     .replace(/<p class="byline">[\s\S]*?<\/p>/g, '')
-    .replace(/\?v=\d+/g, '');
+    .replace(/\?v=\d+/g, '')
+    .replace(/\.[0-9a-f]{12}\.(js|css)\b/g, '.$1');
   return createHash('sha1').update(`${title}\n${desc}\n${main}`).digest('hex').slice(0, 16);
 }
 

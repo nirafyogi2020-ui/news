@@ -54,8 +54,11 @@
 # /* above. Cloudflare joins the values of every matching rule, so without the
 # "! Cache-Control" line a file was sent two lifetimes at once.
 
-# Stylesheet has no content hash in its name, so it is revalidated hourly and
-# served stale while that happens rather than blocking a page load.
+# The pages link the site's own scripts and stylesheets by a name carrying a
+# hash of their content (assets/front.<hash>.js, see src/asset-names.mjs), so
+# a changed file is a new address. Pictures and the unhashed copies kept for
+# old cached pages are revalidated hourly and served stale while that happens
+# rather than blocking a page load.
 /assets/*
   ! Cache-Control
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400

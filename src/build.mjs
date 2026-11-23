@@ -17,7 +17,8 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 
-import { SITE, SITE_NAME, nptDay, nptLong, ogFor, ogStoryFor, assetVersioned, langAttr, emittedAssets, IMG_FAIL_JS } from './template.mjs';
+import { SITE, SITE_NAME, nptDay, nptLong, ogFor, ogStoryFor, assetVersioned, langAttr, emittedAssets, hashedAsset, hashedAssets, IMG_FAIL_JS } from './template.mjs';
+import { HASHED_FILE, planPrune } from './asset-names.mjs';
 import * as P from './pages.mjs';
 import * as NE from './pages-ne.mjs';
 import * as C from './content.mjs';
@@ -292,9 +293,16 @@ let index = read('src/rasuwa-dashboard.html');
    IMG_FAIL_JS in src/template.mjs). */
 if (!index.includes('/*@img-fail@*/')) throw new Error('src/rasuwa-dashboard.html: the /*@img-fail@*/ placeholder is missing');
 index = index.replace('/*@img-fail@*/', () => IMG_FAIL_JS);
-/* Files the dashboard links by a fixed name get a content stamp, so a
-   replaced file reaches readers through the edge cache. */
-for (const file of ['assets/dashboard.css','assets/dashboard.js','qr-pmo-nepal.jpg']) {
+/* The hand-written stylesheet and script are linked by a hashed copy of
+   themselves (assets/dashboard.<hash>.css, see src/asset-names.mjs), so a
+   replaced file reaches readers through the edge cache and a copy of the site
+   that does not have it yet answers 404 instead of the old file. The QR
+   picture keeps a ?v= content stamp. */
+for (const file of ['assets/dashboard.css','assets/dashboard.js']) {
+  const hashed = hashedAsset(file, read(file));
+  index = index.replace(new RegExp('/'+file.replace('.', '\\.')+'(?:\\?v=[^"\\s]+)?(?=")','g'), () => '/'+hashed);
+}
+for (const file of ['qr-pmo-nepal.jpg']) {
   const version=createHash('sha256').update(read(file)).digest('hex').slice(0,12);
   index=index.replace(new RegExp('/'+file.replace('.', '\\.')+'(?:\\?v=[^"\\s]+)?','g'), '/'+file+'?v='+version);
 }
@@ -1206,9 +1214,8 @@ function externalStyles(html) {
   const m = html.match(/<style>([\s\S]*?)<\/style>/);
   if (!m || m[1].length < 50000) return html;
   const css = m[1].replace(/^\n+/, '');
-  const stamp = createHash('sha256').update(css).digest('hex').slice(0, 12);
   write('assets/dashboard-main.css', css);
-  return html.replace(m[0], `<link rel="stylesheet" href="/assets/dashboard-main.css?v=${stamp}">`);
+  return html.replace(m[0], () => `<link rel="stylesheet" href="/${hashedAsset('assets/dashboard-main.css', css)}">`);
 }
 /* The dashboard's behaviour is written as a dozen <script> blocks after
    </main>, 184 KB of them, and they too rode inside every copy of the page.
@@ -1242,7 +1249,7 @@ function externalScripts(html) {
     const js = `/* Nepal Disaster Update: the Rasuwa dashboard, ${name} code, fetched on first use. Source: src/rasuwa-dashboard.html. */\n${code.trim()}\n`;
     try { new vm.Script(js); } catch (e) { throw new Error(`dashboard script: the data-lazy="${name}" block does not parse (${e.message}). Fix src/rasuwa-dashboard.html.`); }
     write(`assets/dashboard-${name}.js`, js);
-    chunks[name] = `/assets/dashboard-${name}.js?v=${createHash('sha256').update(js).digest('hex').slice(0, 12)}`;
+    chunks[name] = '/' + hashedAsset(`assets/dashboard-${name}.js`, js);
     return '';
   });
   const blocks = [];
@@ -1254,11 +1261,10 @@ function externalScripts(html) {
   const js = '/* Nepal Disaster Update: the Rasuwa dashboard\'s behaviour. Source: src/rasuwa-dashboard.html. */\n'
     + blocks.map((b, i) => `\n/* block ${i + 1} */\ntry {\n${b}\n} catch (e) { setTimeout(function () { throw e; }); }\n`).join('');
   try { new vm.Script(js); } catch (e) { throw new Error(`dashboard script: assets/dashboard-app.js does not parse (${e.message}). Fix src/rasuwa-dashboard.html.`); }
-  const stamp = createHash('sha256').update(js).digest('hex').slice(0, 12);
   write('assets/dashboard-app.js', js);
   const data = Object.keys(chunks).length
     ? `<script type="application/json" id="dashboard-chunks">${JSON.stringify(chunks)}</script>\n` : '';
-  const tag = `${data}<script src="/assets/dashboard-app.js?v=${stamp}" defer></script>`;
+  const tag = `${data}<script src="/${hashedAsset('assets/dashboard-app.js', js)}" defer></script>`;
   const head = html.slice(0, cut).replace('</head>', `${tag}\n</head>`);
   return head + tail;
 }
@@ -1396,6 +1402,28 @@ write('404.html', P.notFound());
 for (const [file, code] of emittedAssets()) {
   const full = join(ROOT, file);
   if (!existsSync(full) || readFileSync(full, 'utf8') !== code) write(file, code);
+}
+
+/* The hashed copies the pages link (src/asset-names.mjs). The unhashed files
+   above are still written, so a page cached before the switch still finds its
+   scripts. Old hashed copies stay until no page links them and they were
+   last linked more than KEEP_DAYS ago; data/asset-history.json remembers the
+   day each stopped being linked, and is only rewritten when that changes, so
+   a rebuild with nothing new leaves Git clean. */
+{
+  const linked = hashedAssets();
+  for (const [file, content] of linked) {
+    const full = join(ROOT, file);
+    if (!existsSync(full) || readFileSync(full, 'utf8') !== content) write(file, content);
+  }
+  const HISTORY = 'data/asset-history.json';
+  const before = existsSync(join(ROOT, HISTORY)) ? readJson(HISTORY) : {};
+  const onDisk = readdirSync(join(ROOT, 'assets')).filter(n => HASHED_FILE.test(n)).map(n => `assets/${n}`);
+  const { history, remove } = planPrune({ history: before, referenced: [...linked.keys()], onDisk, today: buildNow.slice(0, 10) });
+  for (const file of remove) rmSync(join(ROOT, file), { force: true });
+  const text = JSON.stringify(history, null, 2) + '\n';
+  if (!existsSync(join(ROOT, HISTORY)) || read(HISTORY) !== text) write(HISTORY, text);
+  if (remove.length) console.log(`assets: removed ${remove.length} old hashed file(s): ${remove.join(', ')}`);
 }
 
 /* -- sitemap ---------------------------------------------------------------- */

@@ -37,3 +37,8 @@ test('relay and figures cards are automatic, written briefings are not', () => {
   assert.ok(!isAutomaticCard({ id: 'barrier-lake-burst', slug: '2026-08-29-barrier-lake-burst' }));
   assert.ok(!isAutomaticCard({ id: 'damage-cost' }));
 });
+
+test('fingerprint ignores the content hash in a script or stylesheet name', () => {
+  const at = (h) => `<title>T</title><main><p>x</p><script src="/assets/route-map.${h}.js" defer></script></main>`;
+  assert.equal(pageFingerprint(at('aaaaaaaaaaaa')), pageFingerprint(at('bbbbbbbbbbbb')));
+});

@@ -5,10 +5,10 @@
    data stay identical across the site and cannot drift page to page.
    ========================================================================= */
 
-import { existsSync, statSync } from 'node:fs';
-import { createHash } from 'node:crypto';
+import { existsSync, statSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { hashedName } from './asset-names.mjs';
 
 export const SITE = 'https://nepaldisasterupdatelive.nxtimaginelabs.com';
 export const SITE_NAME = 'Nepal Disaster Update Live';
@@ -139,10 +139,11 @@ export function siteAsset(path) {
  * Pages call this while they are built and get the <script> tag back; the
  * code is only remembered here, and src/build.mjs writes every remembered
  * file after the pages. That keeps the page functions free of disk writes,
- * so the tests can call them directly. The ?v= stamp is a hash of the code,
- * not a file time: a fresh checkout on the build server must not give every
- * page a new URL for an unchanged script. Loaded with defer, so it runs once
- * the page is parsed.
+ * so the tests can call them directly. The link carries a hash of the code in
+ * the file name (/assets/front.<hash>.js, see src/asset-names.mjs), not a
+ * file time: a fresh checkout on the build server must not give every page a
+ * new URL for an unchanged script. Loaded with defer, so it runs once the
+ * page is parsed.
  */
 const EMITTED = new Map();
 export function scriptAsset(name, code) {
@@ -150,11 +151,36 @@ export function scriptAsset(name, code) {
   const prev = EMITTED.get(`assets/${name}`);
   if (prev !== undefined && prev !== code) throw new Error(`scriptAsset: two different scripts named ${name}`);
   EMITTED.set(`assets/${name}`, code);
-  const v = createHash('sha256').update(code).digest('hex').slice(0, 12);
-  return `<script src="/assets/${name}?v=${v}" defer></script>`;
+  return `<script src="/${hashedAsset(`assets/${name}`, code)}" defer></script>`;
 }
 /** Every script registered with scriptAsset(), as 'assets/x.js' -> code. */
 export const emittedAssets = () => EMITTED;
+
+/**
+ * The hashed copy of one of the site's own scripts or stylesheets:
+ * hashedAsset('assets/x.js', code) remembers the code and returns
+ * 'assets/x.<hash>.js'. src/build.mjs writes every remembered file and keeps
+ * the list of what this build linked, so old copies can be cleared later.
+ */
+const HASHED = new Map();
+export function hashedAsset(path, content) {
+  const name = hashedName(path, content);
+  HASHED.set(name, content);
+  return name;
+}
+/** Every hashed file this build linked, as 'assets/x.<hash>.js' -> content. */
+export const hashedAssets = () => HASHED;
+
+/**
+ * A hand-written file under /assets/ (site.css), linked by a hashed copy of
+ * itself: '/assets/site.css' -> '/assets/site.<hash>.css'. The source stays
+ * where it is; the copy is written next to it, so its relative url()s still
+ * resolve.
+ */
+export function ownAsset(path) {
+  const rel = path.replace(/^\//, '');
+  return '/' + hashedAsset(rel, readFileSync(join(ROOT_DIR, rel), 'utf8'));
+}
 
 /**
  * What a picture does when it fails to load, without an inline onerror
@@ -526,7 +552,7 @@ ${o.modified ? `<meta property="article:modified_time" content="${esc(o.modified
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="${fontCss(lang)}" rel="stylesheet">
-<link rel="stylesheet" href="${siteAsset('/assets/site.css')}">
+<link rel="stylesheet" href="${ownAsset('/assets/site.css')}">
 ${o.head || ''}
 <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })}</script>
 </head>
