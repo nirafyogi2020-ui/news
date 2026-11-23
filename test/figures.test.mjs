@@ -207,27 +207,19 @@ test('BIPAD sums the records that do carry figures', () => {
    Keeping the rest of the page in step with the figures
 
    A number that moves on its own is only half the job. The static pages read
-   their figures from src/content.mjs, print them next to an "as of" line, and
+   their figures from event.json, print them next to an "as of" line, and
    the whole site derives its "last modified" from today.json. Moving the
    number without moving those leaves the page stating a fresh figure over a
    three-day-old date, which is the failure this change exists to remove.
    ----------------------------------------------------------------------- */
 import {
-  replaceField, replaceString, readString, nptIso, nptStamp, addTimelineEntry, refreshAsOf, keepNewerEvidence
+  nptStamp, addTimelineEntry, refreshAsOf, keepNewerEvidence
 } from '../src/figures-update.mjs';
+import { nptIso } from '../src/figure-record.mjs';
 
-const CONTENT_SAMPLE = [
-  "export const TOLL_AS_OF = '2026-08-30T14:00:00+05:45';",
-  "export const TOLL_SOURCE = 'Nepal Police bulletin 10275, 2pm Sunday';",
-  'export const TOLL = {',
-  '  deadNepal: 768,',
-  '  deadNepalEarlier: 752,',
-  '};',
-  '',
-  'export const TIMELINE = [',
-  "  ['14:00 NPT, 30 August', 'Nepal Police bulletin 10275 reports 768 bodies found in Nepal.'],",
-  '];'
-].join('\n');
+const TIMELINE_SAMPLE = [
+  ['14:00 NPT, 30 August', 'Nepal Police bulletin 10275 reports 768 bodies found in Nepal.']
+];
 
 test('a later source confirmation advances the shared as-of stamp without changing a figure', () => {
   const event = { asOf: '2026-09-05T13:15:36.000Z', asOfSource: 'Yesterday' };
@@ -237,24 +229,6 @@ test('a later source confirmation advances the shared as-of stamp without changi
   assert.equal(changed, true);
   assert.equal(event.asOf, '2026-09-06T09:40:04.000Z');
   assert.equal(event.asOfSource, 'Nepal Police, 17:00 NPT');
-});
-
-test('moves one numeric field and nothing else', () => {
-  const out = replaceField(CONTENT_SAMPLE, 'deadNepal', 1114);
-  assert.ok(out.includes('deadNepal: 1114,'));
-  assert.ok(out.includes('deadNepalEarlier: 752,'), 'the neighbouring field is untouched');
-});
-
-test('an unknown field is left alone rather than appended', () => {
-  assert.equal(replaceField(CONTENT_SAMPLE, 'noSuchField', 5), CONTENT_SAMPLE);
-  assert.equal(replaceString(CONTENT_SAMPLE, 'NO_SUCH_STAMP', 'x'), CONTENT_SAMPLE);
-});
-
-test('moves the "as of" stamp and the source name with the figure', () => {
-  let out = replaceString(CONTENT_SAMPLE, 'TOLL_AS_OF', '2026-09-02T16:14:39+05:45');
-  out = replaceString(out, 'TOLL_SOURCE', 'Onlinekhabar');
-  assert.equal(readString(out, 'TOLL_AS_OF'), '2026-09-02T16:14:39+05:45');
-  assert.equal(readString(out, 'TOLL_SOURCE'), 'Onlinekhabar');
 });
 
 test('timestamps are written in Nepal time, not somebody else’s clock', () => {
@@ -269,23 +243,22 @@ test('a moved toll is recorded in the timeline, once', () => {
   const figure = { source: 'Onlinekhabar', time: '2026-09-02T10:29:39.000Z' };
   const change = { from: 768, to: 1114 };
 
-  const once = addTimelineEntry(CONTENT_SAMPLE, figure, change);
-  assert.ok(once.includes('reported at 1,114'));
-  assert.ok(once.includes('16:14 NPT, 2 September'));
+  const once = addTimelineEntry(TIMELINE_SAMPLE, figure, change);
+  assert.equal(once.length, 2);
+  assert.equal(once[1][0], '16:14 NPT, 2 September');
+  assert.ok(once[1][1].includes('reported at 1,114, up from 768'));
+  assert.equal(TIMELINE_SAMPLE.length, 1, 'the input list is not changed in place');
 
-  // running again must not grow the file
+  // running again must not grow the list
   const twice = addTimelineEntry(once, figure, change);
   assert.equal(twice, once);
 });
 
-test('the timeline row is valid JavaScript, quotes and all', async () => {
+test('a timeline row survives a round trip through JSON, quotes and all', () => {
   const figure = { source: "Nepal's own bureau", time: '2026-09-02T10:29:39.000Z' };
-  const out = addTimelineEntry(CONTENT_SAMPLE, figure, { from: 768, to: 1114 });
-  const block = out.slice(out.indexOf('export const TIMELINE'));
-  // eslint-disable-next-line no-new-func
-  const rows = new Function('return ' + block.replace('export const TIMELINE =', '').replace(/;\s*$/, ''))();
-  assert.ok(Array.isArray(rows));
-  assert.ok(rows.some(r => r[1].includes('1,114')));
+  const out = addTimelineEntry([], figure, { from: 1114, to: 768 });
+  assert.deepEqual(JSON.parse(JSON.stringify(out)), out);
+  assert.ok(out[0][1].includes("down from 1,114, by Nepal's own bureau"));
 });
 
 /* --------------------------------------------------------------------------
@@ -448,17 +421,17 @@ test('a treatment count that does not add up leaves the district sum standing', 
 
 test('a downward correction is written as one, not as an increase', () => {
   const figure = { source: 'Nepal Police', time: '2026-09-02T10:29:39.000Z' };
-  const out = addTimelineEntry(CONTENT_SAMPLE, figure, { from: 800, to: 790 });
-  assert.ok(out.includes('reported at 790, down from 800'));
-  assert.ok(!out.includes('up from 800'));
+  const [[, line]] = addTimelineEntry([], figure, { from: 800, to: 790 });
+  assert.ok(line.includes('reported at 790, down from 800'));
+  assert.ok(!line.includes('up from 800'));
 });
 
 test('a later return to an earlier count is still recorded', () => {
-  const first = addTimelineEntry(CONTENT_SAMPLE,
+  const first = addTimelineEntry(TIMELINE_SAMPLE,
     { source: 'Nepal Police', time: '2026-09-02T10:29:39.000Z' }, { from: 768, to: 800 });
   const second = addTimelineEntry(first,
     { source: 'Nepal Police', time: '2026-09-03T10:29:39.000Z' }, { from: 790, to: 800 });
-  assert.equal(second.split('reported at 800,').length - 1, 2);
+  assert.equal(second.filter(([, text]) => text.includes('reported at 800,')).length, 2);
 });
 
 test('a newer source for the same count is saved as evidence; an older one is not', () => {

@@ -474,7 +474,7 @@ for (const p of pages) {
   const m = p.html.match(SECRET);
   if (m) errors.push(`${p.path}: looks like a secret in the page source (${m[1].slice(0, 8)}…)`);
 }
-for (const f of ['event.json', 'today.json', 'src/content.mjs']) {
+for (const f of ['event.json', 'today.json', 'src/content.mjs', 'data/toll-timeline.json']) {
   const m = readFileSync(join(ROOT, f), 'utf8').match(SECRET);
   if (m) errors.push(`${f}: looks like a secret in a committed file`);
 }
@@ -510,24 +510,20 @@ try {
         `the figures are ${Math.round(lagH)}h older than their own report card. ` +
         `event.json asOf is ${ev.asOf} but the latest-reported-figures card is dated ` +
         `${new Date(figureCardTime).toISOString()}. Re-check the toll and the missing ` +
-        `count against the newest bulletin and update event.json AND src/content.mjs, ` +
+        `count against the newest bulletin and update event.json, ` +
         `or, if the figures genuinely have not moved, set asOf to the bulletin that ` +
         `most recently confirmed them. Do not just raise the limit.`
       );
     }
   }
 
-  /* And the two files that hold the toll must agree with each other. */
-  const evToll = (ev.stats || []).find(s => s.label === 'confirmed dead');
-  const srcToll = readFileSync(join(ROOT, 'src', 'content.mjs'), 'utf8')
-    .match(/deadNepal:\s*(\d+)/);
-  if (evToll && srcToll && String(evToll.value).replace(/\D/g, '') !== srcToll[1]) {
-    errors.push(
-      `the toll disagrees between files: event.json says ${evToll.value}, ` +
-      `src/content.mjs deadNepal says ${srcToll[1]}. The hero counter and the ` +
-      `article pages would show different numbers.`
-    );
-  }
+  /* The live figures are stored once, in event.json, and every generated
+     page reads them through src/figure-record.mjs. Loading the editorial
+     module runs the same check the build does, so a record a page could not
+     be built from (a counter that disagrees with its own evidence, a stamp
+     that does not parse) fails here too, with the field named. */
+  const C = await import('./content.mjs');
+
   /* And the story cards must not still be printing a toll the police have
      overtaken. This is the failure the site owner actually saw: event.json and
      every article page said 469, while the lead card on the Today tab was
@@ -537,12 +533,8 @@ try {
      Only toll wording is read: "toll at N", "N dead", "N bodies recovered".
      A card may still quote the older figure where it says so, as in "up from
      389", which is how a rising toll is honestly written. */
-  const src = readFileSync(join(ROOT, 'src', 'content.mjs'), 'utf8');
-  const num = (name) => {
-    const m = src.match(new RegExp(name + ':\\s*(\\d+)'));
-    return m ? m[1] : null;
-  };
-  const current = [num('deadNepal'), num('deadChina')].filter(Boolean);
+  const current = [C.TOLL.deadNepal, C.TOLL.deadChina]
+    .filter(n => Number.isFinite(n)).map(String);
   const TOLL_PATTERNS = [
     /toll(?:\s+\w+){0,3}?\s+(?:at|of|to|passes|passed|tops|topped|hits|hit|reaches|reached)\s+([\d,]+)/gi,
     /([\d,]+)\s+(?:confirmed\s+)?dead\b/gi,
@@ -569,7 +561,7 @@ try {
           if (current.includes(found)) continue;
           errors.push(
             `today.json card "${post.id}" still prints a toll of ${found}: ` +
-            `"${hit[0].trim()}". src/content.mjs says ${current[0]} dead in Nepal. ` +
+            `"${hit[0].trim()}". event.json says ${current[0]} dead in Nepal. ` +
             `Rewrite the card, or say plainly that ${found} was the earlier figure.`
           );
         }

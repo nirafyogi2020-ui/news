@@ -35,41 +35,27 @@ import { fileURLToPath } from 'node:url';
 import { resolveBoard, METRICS } from '../functions/api/_figures-core.js';
 import { latestDistricts } from '../functions/api/figures.js';
 import { loadPoliceNews } from '../functions/api/police.js';
+import {
+  STAT_LABELS, TIMELINE_FILE, figureRecord, nptIso, sourceLabel, readTollTimeline
+} from './figure-record.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const EVENT = join(ROOT, 'event.json');
-const CONTENT = join(ROOT, 'src', 'content.mjs');
 const TODAY = join(ROOT, 'today.json');
 
 const SITE = process.env.SITE_ORIGIN ||
   'https://nepaldisasterupdatelive.nxtimaginelabs.com';
 
-/* Which counter in event.json each metric belongs to, matched on the label
-   the file already uses. A label that is not present is skipped rather than
-   created: adding a counter is an editorial decision, not this script's. */
-const STAT_LABELS = {
-  dead: 'confirmed dead',
-  missing: 'listed missing in Nepal',
-  rescued: 'rescued so far'
-};
+/* Which counter each metric belongs to is matched on the label event.json
+   already uses (STAT_LABELS, in src/figure-record.mjs). A label that is not
+   present is skipped rather than created: adding a counter is an editorial
+   decision, not this script's.
 
-/* The static article pages read their figures from the TOLL block in
-   src/content.mjs, not from event.json. Both files therefore have to move
-   together: the site's own audit fails the build when the hero counter and
-   the article pages disagree, which is the correct behaviour and the reason
-   this script writes both. */
-const TOLL_FIELDS = { dead: 'deadNepal', missing: 'missing', rescued: 'rescued' };
-
-/* Every figure on the static pages is printed next to an "as of" line and the
-   name of whoever published it. Moving the number without moving those two is
-   worse than not moving it at all: the page then states a fresh figure over a
-   stale timestamp, which is the specific failure this whole change exists to
-   remove. Each metric therefore owns the constants that describe it. */
-const STAMP_FIELDS = {
-  dead:    [['TOLL_AS_OF', 'TOLL_SOURCE'], ['BODIES_AS_OF', 'BODIES_SOURCE']],
-  missing: [['MISSING_AS_OF', 'MISSING_SOURCE']],
-  rescued: [['RESCUE_AS_OF', 'RESCUE_SOURCE']]
-};
+   event.json is the only file that holds the live figures. The article pages,
+   the Nepali pages and the share images read it through src/figure-record.mjs,
+   so moving a number here moves it everywhere on the next build, with its
+   "as of" stamp and source, and no source code is rewritten to keep a copy in
+   step. */
 
 /* A single run will not move a counter by more than this multiple of its
    current value. A parser fault or a garbled bulletin that produced, say,
@@ -136,6 +122,10 @@ async function main() {
     stat.priorDetail = firstEarlierDetail(stat.priorDetail);
 
     event.figures ||= {};
+    /* The toll it moved up from, with the stamp that toll was published
+       with, for the "how the toll has moved" row and the "up from" wording.
+       Read before the figure it describes is replaced. */
+    if (metric === 'dead') event.tollEarlier = earlierToll(event, current);
     event.figures[metric] = figure;
     stat.value = figure.value.toLocaleString('en-US');
     stat.detail = sourceSentence(figure, current, stat.priorDetail, stat.priorAsOf);
@@ -148,7 +138,6 @@ async function main() {
      often restates the districts without moving the national figure, and
      that is still a change worth publishing. */
   const districtsMoved = applyDistricts(event, board.districts);
-  if(districtsMoved) syncDistrictContent(event.districts);
   const repaired = repairDetails(event);
   /* A bulletin can confirm the same number again. That is still new evidence,
      and it must move the page's "as of" line. Otherwise a new story card
@@ -161,7 +150,7 @@ async function main() {
   }
 
   if (!applied.length) {
-    writeFileSync(EVENT, JSON.stringify(event, null, 2) + '\n');
+    saveEvent(event);
     report(true, districtsMoved ? 'district breakdown updated' : freshnessMoved ? 'figure freshness updated' : evidenceMoved ? 'newer source for an unchanged figure' : 'counter detail repaired');
     return;
   }
@@ -182,8 +171,8 @@ async function main() {
     }
   }
 
-  writeFileSync(EVENT, JSON.stringify(event, null, 2) + '\n');
-  syncContent(applied, board.board);
+  saveEvent(event);
+  recordTimeline(applied, board.board);
   syncToday(applied, board.board);
 
   for (const a of applied) {
@@ -242,75 +231,46 @@ export function applyDistricts(event, districts) {
 }
 
 /**
- * Move the same figures in src/content.mjs.
+ * Write event.json, but only a record the pages can build from.
  *
- * A targeted replacement of one numeric field at a time, anchored on the
- * field name, so nothing else in a 58,000-character editorial file can be
- * touched by accident. A field that is not found is left alone and reported
- * rather than appended.
- *
- * `deadNepalEarlier` carries the previous toll so the prose can say "up
- * from"; it moves to what the dead figure used to be.
+ * The same check the build runs is run here first. A record it would refuse
+ * (a counter that disagrees with its own evidence, a stamp that does not
+ * parse) is never written: the run fails with the reason and every file stays
+ * as it was, rather than committing a state that stops the next build.
  */
-export function syncContent(applied, figures) {
-  let text;
+export function saveEvent(event, file = EVENT) {
+  figureRecord(event);
+  writeFileSync(file, JSON.stringify(event, null, 2) + '\n');
+}
+
+/** The toll a new figure replaces, with the stamp and source it carried. */
+export function earlierToll(event, value) {
+  const prior = event.figures && event.figures.dead;
+  if (prior && prior.time && prior.source) {
+    return { value, time: nptIso(prior.time), source: sourceLabel(prior) };
+  }
+  return { value, time: nptIso(event.asOf), source: event.asOfSource || 'the published report' };
+}
+
+/**
+ * Record a moved toll in data/toll-timeline.json, which the event timeline
+ * appends after its hand-written rows.
+ */
+export function recordTimeline(applied, figures, file = TIMELINE_FILE) {
+  const change = applied.find(a => a.metric === 'dead');
+  if (!change) return false;
+  let rows;
   try {
-    text = readFileSync(CONTENT, 'utf8');
+    rows = readTollTimeline(file);
   } catch (e) {
-    console.log('  content.mjs: ' + e.message);
+    console.log('  toll timeline: ' + e.message);
     return false;
   }
-
-  const before = text;
-  for (const change of applied) {
-    const figure = (figures && figures[change.metric]) || {};
-    const field = TOLL_FIELDS[change.metric];
-    if (field) text = replaceField(text, field, change.to);
-
-    if (change.metric === 'dead') {
-      /* The "how the toll has moved" row keeps the figure it was published
-         with, so it has to carry the stamp that figure was published with
-         too. Both are read before either is overwritten. */
-      text = replaceField(text, 'deadNepalEarlier', change.from);
-      text = replaceString(text, 'TOLL_EARLIER_AS_OF', readString(before, 'TOLL_AS_OF'));
-      text = replaceString(text, 'TOLL_EARLIER_SOURCE', readString(before, 'TOLL_SOURCE'));
-    }
-
-    for (const [asOfField, sourceField] of STAMP_FIELDS[change.metric] || []) {
-      if (figure.time) text = replaceString(text, asOfField, nptIso(figure.time));
-      if (figure.source) text = replaceString(text, sourceField, sourceLabel(figure));
-    }
-
-    if (change.metric === 'dead') text = addTimelineEntry(text, figure, change);
-  }
-
-  if (text === before) return false;
-  writeFileSync(CONTENT, text);
-  console.log('  src/content.mjs kept in step');
+  const next = addTimelineEntry(rows, (figures && figures.dead) || {}, change);
+  if (next === rows) return false;
+  writeFileSync(file, JSON.stringify(next, null, 2) + '\n');
+  console.log('  toll timeline: one row added');
   return true;
-}
-
-/** Read the current value of an `export const NAME = '...'` string. */
-export function readString(text, name) {
-  const m = text.match(new RegExp('\\b' + name + "\\s*=\\s*'([^']*)'"));
-  return m ? m[1] : null;
-}
-
-/** Replace one `export const NAME = '...'` string, and nothing else. */
-export function replaceString(text, name, value) {
-  if (value == null) return text;
-  const pattern = new RegExp("(\\b" + name + "\\s*=\\s*')[^']*(')");
-  if (!pattern.test(text)) {
-    console.log(`  content.mjs has no ${name} — left alone`);
-    return text;
-  }
-  return text.replace(pattern, '$1' + String(value).replace(/'/g, "\\'") + '$2');
-}
-
-/** How a figure names itself on the page: who said it, and at what hour. */
-export function sourceLabel(figure) {
-  const when = figure.statedTime ? `, ${figure.statedTime}` : '';
-  return `${figure.source}${when}`;
 }
 
 /**
@@ -326,14 +286,7 @@ export function sourceLabel(figure) {
  * file. The wording is a fixed template with the source's own name in it —
  * this script does not write prose, it writes a record.
  */
-export function addTimelineEntry(text, figure, change) {
-  const marker = '\nexport const TIMELINE = [';
-  const start = text.indexOf(marker);
-  if (start === -1) return text;
-  const end = text.indexOf('\n];', start);
-  if (end === -1) return text;
-
-  const block = text.slice(start, end);
+export function addTimelineEntry(rows, figure, change) {
   const to = change.to.toLocaleString('en-US');
   const from = change.from.toLocaleString('en-US');
   /* A correction downwards is written as one; it is not an increase. */
@@ -347,24 +300,11 @@ export function addTimelineEntry(text, figure, change) {
   /* Already recorded for this bulletin time. Keyed by time as well as count,
      so a later return to an earlier count is still recorded. */
   const stamp = nptStamp(figure.time);
-  const recorded = block.split('\n').some(row =>
-    row.includes(`['${stamp}',`) && row.includes(`reported at ${to},`));
-  if (recorded) return text;
+  const recorded = rows.some(([when, text]) =>
+    when === stamp && text.includes(`reported at ${to},`));
+  if (recorded) return rows;
 
-  const row = `  ['${stamp}', ${JSON.stringify(line)}],\n`;
-  return text.slice(0, end + 1) + row + text.slice(end + 1);
-}
-
-/**
- * The same instant written in Nepal time, which is the convention every
- * timestamp in content.mjs already follows. A UTC "Z" stamp would parse
- * identically and read as somebody else's clock on a Nepali page.
- */
-export function nptIso(iso) {
-  const d = new Date(iso);
-  if (isNaN(d.getTime())) return iso;
-  const npt = new Date(d.getTime() + (5 * 60 + 45) * 60000);
-  return npt.toISOString().replace(/\.\d+Z$/, '') + '+05:45';
+  return [...rows, [stamp, line]];
 }
 
 /** "14:00 NPT, 30 August", the format the timeline already uses. */
@@ -462,16 +402,6 @@ function dedupeSources(figures) {
     out.push({ name: f.source, url: f.url });
   }
   return out;
-}
-
-/** Replace `name: <number>` once, leaving everything else untouched. */
-export function replaceField(text, name, value) {
-  const pattern = new RegExp('(\\b' + name + ':\\s*)\\d+');
-  if (!pattern.test(text)) {
-    console.log(`  content.mjs has no ${name} field — left alone`);
-    return text;
-  }
-  return text.replace(pattern, '$1' + value);
 }
 
 /**
@@ -621,7 +551,7 @@ function report(changed, message) {
  *
  * Without this guard, importing the module runs the whole update as a side
  * effect — which means the test file that imports one helper out of it would
- * reach across the network and rewrite event.json, src/content.mjs and
+ * reach across the network and rewrite event.json, the toll timeline and
  * today.json on whatever machine ran `npm test`. That is not a hypothetical:
  * it happened here, and a figure reached a commit without anybody having
  * looked at it. A script that writes to the repository has to be impossible
@@ -634,13 +564,4 @@ if (runDirectly) {
     console.error('figures-update failed: ' + err.message);
     report(false, 'failed — nothing written');
   });
-}
-
-function syncDistrictContent(districts) {
-  const before=readFileSync(CONTENT,'utf8');
-  const rows=districts.rows.map(r=>[r.district,r.value]);
-  let next=before.replace(/export const BODIES_BY_DISTRICT = \[[\s\S]*?\n\];/, 'export const BODIES_BY_DISTRICT = '+JSON.stringify(rows,null,2)+';');
-  next=replaceString(next,'BODIES_AS_OF',districts.time);
-  next=replaceString(next,'BODIES_SOURCE',districts.source);
-  if(next!==before)writeFileSync(CONTENT,next);
 }

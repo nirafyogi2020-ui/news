@@ -2,10 +2,11 @@
 #
 # The script this runs reads the site's own /api/figures board, which reads the
 # government bulletins and the newsrooms directly. When a figure has moved it
-# writes the new number into event.json, keeps src/content.mjs in step so the
-# article pages cannot disagree with the hero, moves every "as of" stamp that
-# describes those figures, records the move in the event timeline, and refreshes
-# the one briefing card that carries the current numbers. Then it rebuilds the
+# writes the new number, with its "as of" stamp and source, into event.json,
+# which is the only file that holds the live figures (the article pages read it
+# too, so they cannot disagree with the hero), records the move in
+# data/toll-timeline.json for the event timeline, and refreshes the one
+# briefing card that carries the current numbers. Then it rebuilds the
 # static pages and the share images the same way a deploy does, runs the site's
 # own audit, and pushes.
 #

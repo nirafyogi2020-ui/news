@@ -185,5 +185,10 @@
         "value": 99.8
       }
     ]
+  },
+  "tollEarlier": {
+    "value": 1456,
+    "time": "2026-10-12T06:00:00+05:45",
+    "source": "Nepal Police"
   }
 }
