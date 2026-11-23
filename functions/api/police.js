@@ -18,6 +18,7 @@
  */
 
 import { latinDigits, nepaliNumber, readFigures, statedHour } from './_figures-core.js';
+import { fetchPublic } from './_public-url.js';
 
 export { latinDigits, nepaliNumber };
 
@@ -312,7 +313,9 @@ export function tollFromPolice(items) {
 async function getText(url, attempt = 0) {
   let res;
   try {
-    res = await fetch(url, {
+    // fetchPublic re-checks every redirect, so the police site (or anyone
+    // answering for it) cannot point this function at a private address.
+    res = await fetchPublic(url, {
       headers: {
         'accept': 'text/html',
         'user-agent': 'nepaldisasterupdatelive.nxtimaginelabs.com (support@nxtimaginelabs.com)'
