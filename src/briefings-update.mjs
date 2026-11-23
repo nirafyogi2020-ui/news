@@ -30,7 +30,7 @@ import { readFileSync, writeFileSync, existsSync, readdirSync, unlinkSync } from
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
-import { isOffSubject, hasBannedWord } from './front-rules.mjs';
+import { isOnSubjectCard, hasBannedWord } from './front-rules.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const TODAY = join(ROOT, 'today.json');
@@ -190,7 +190,7 @@ export function planCards(items, { today, archive, now = Date.now(), startedAt =
     .filter(item => !used.has(String(item.url).split('#')[0]))
     .filter(item => oneSentence(item.summary).length >= 60)
     .filter(item => !statesAToll(item.title))
-    .filter(item => !isOffSubject(item.title))
+    .filter(item => isOnSubjectCard(item.title, item.summary))
     /* A newsroom's summary can open with its own picture caption. One that
        reads "AI-generated image ..." is not a sentence this site prints. */
     .filter(item => !hasBannedWord(item.title) && !hasBannedWord(item.summary))
@@ -260,7 +260,7 @@ export function pruneStaleAutoCards(today) {
   const kept = posts.filter(post => {
     if (!post || !post.auto) return true;
     const text = [post.title, ...(Array.isArray(post.body) ? post.body : [])].join(' ');
-    return !statesAToll(text) && !isOffSubject(post.title) && !hasBannedWord(text);
+    return !statesAToll(text) && isOnSubjectCard(post.title, text) && !hasBannedWord(text);
   });
   if (kept.length === posts.length) return 0;
   const dropped = posts.length - kept.length;
@@ -290,7 +290,7 @@ export function pruneArchivedAutoCards(dir = ARCHIVE, ledger = WITHDRAWN) {
     try { post = JSON.parse(readFileSync(join(dir, name), 'utf8')); } catch { continue; }
     if (!post || !/^auto-/.test(String(post.id || ''))) continue;
     const text = [post.title, ...(Array.isArray(post.body) ? post.body : [])].join(' ');
-    if (!isOffSubject(post.title) && !hasBannedWord(text)) continue;
+    if (isOnSubjectCard(post.title, text) && !hasBannedWord(text)) continue;
     unlinkSync(join(dir, name));
     removed.push(post.slug || name.replace(/\.json$/, ''));
   }

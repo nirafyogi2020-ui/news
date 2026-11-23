@@ -81,8 +81,8 @@ test('the briefing filler covers a thin day and leaves a covered one alone', () 
     ]
   };
   const items = [
-    { kind: 'press', source: 'The Kathmandu Post', title: 'A covered day gets nothing new', url: 'https://example.com/d', time: '2026-09-01T13:00:00+05:45', summary: 'x'.repeat(80) },
-    { kind: 'press', source: 'The Kathmandu Post', title: 'An empty day is filled', url: 'https://example.com/e', time: '2026-08-31T13:00:00+05:45', summary: 'y'.repeat(80) },
+    { kind: 'press', source: 'The Kathmandu Post', title: 'Flood relief: a covered day gets nothing new', url: 'https://example.com/d', time: '2026-09-01T13:00:00+05:45', summary: 'x'.repeat(80) },
+    { kind: 'press', source: 'The Kathmandu Post', title: 'Landslide news fills an empty day', url: 'https://example.com/e', time: '2026-08-31T13:00:00+05:45', summary: 'y'.repeat(80) },
     { kind: 'video', source: 'Kantipur TV', title: 'Video is never a briefing', url: 'https://example.com/f', time: '2026-08-31T14:00:00+05:45', summary: 'z'.repeat(80) },
     { kind: 'press', source: 'Some Blog Nobody Checked', title: 'An unvetted source is never a card', url: 'https://example.com/g', time: '2026-08-31T15:00:00+05:45', summary: 'w'.repeat(80) }
   ];
@@ -155,7 +155,7 @@ test('a card that already stated a figure is dropped, a hand-written one is kept
     posts: [
       { auto: true, title: 'Toll reaches 1,204', body: [] },
       { title: 'A person wrote this about 1,204 dead', body: [] },
-      { auto: true, title: 'Ncell extends free data', body: ['No figures here.'] },
+      { auto: true, title: 'Ncell extends free data in flood-hit Rasuwa', body: ['No figures here.'] },
       { auto: true, title: 'Should Nepal turn its hydropower surplus into digital wealth?', body: ['AI-generated image Nepal has long been...'] },
       { auto: true, title: 'विश्वभरिका टेक कम्पनीको सेयरमा किन गयो पहिरो ?', body: ['...'] }
     ]

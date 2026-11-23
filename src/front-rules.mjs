@@ -182,6 +182,27 @@ export function isRoadHeadline(title) {
   return ROAD_WORDS.test(String(title || ''));
 }
 
+/* Weather is this site's business too (forecasts, snow, a cold spell), but
+   the disaster words above do not name an ordinary forecast. */
+const WEATHER_WORDS = /\b(?:weather|forecast|cloudy|rain|snow(?:fall)?|cold|fog|temperature|westerly|low[- ]pressure)\b|मौसम|बदली|हिउँ|चिसो|हुस्सु|तापक्रम/i;
+
+/**
+ * Whether a newsroom story belongs on this site as an automatic briefing.
+ * Not being off subject was the old test, and it let through anything no
+ * rule named: "Nuwakot farmers take up aromatic rice" led the Today feed on
+ * 23 Nov 2026. A card now has to be Nepal disaster news by its headline, or
+ * have a headline with no disaster in it whose summary is about one, or be
+ * about roads or the weather. Another country's disaster stays off, as it
+ * does on the front page.
+ */
+export function isOnSubjectCard(title, text) {
+  const verdict = headlineVerdict(title, RULES);
+  if (verdict === 'nepal') return true;
+  if (verdict !== 'none') return false;
+  return DISASTER_WORDS.test(String(text || '')) || isRoadHeadline(title)
+    || WEATHER_WORDS.test(String(title || ''));
+}
+
 /**
  * The newsroom items a national front will print, newest first.
  *
