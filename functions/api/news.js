@@ -37,6 +37,7 @@
  */
 
 import { loadPoliceNews } from './police.js';
+import { fetchPublic } from './_public-url.js';
 
 const CACHE_SECONDS = 60;
 /* The verified Watch list is cheap to read, so it can check often. */
@@ -130,18 +131,139 @@ const PLACE = [
  *  not what this page is for, so they're dropped rather than shown. */
 const FLUFF = /expresses?\s+(deep\s+)?(sorrow|condolences?|grief|sympath\w*)|extends?\s+(its\s+|his\s+|her\s+)?condolences?|offers?\s+condolences?|\bmourns\b|prayers?\s+(are|go)\s+(out\s+)?with|stands?\s+in\s+solidarity|solidarity\s+with\s+nepal/i;
 
+/* Stale-while-revalidate. The stored copy is kept for STALE_SECONDS; once it
+   is older than CACHE_SECONDS a visitor still gets it at once while one
+   rebuild runs in the background. Only a visitor with nothing usable stored
+   waits for the sources, and even then not for the article pictures. */
+const STALE_SECONDS = 3600;
+const REFRESH_LOCK_SECONDS = 30;
+const IMAGE_BACKFILL_LIMIT = 14;
+const BUILT_HEADER = 'x-news-built';
+
 export async function onRequestGet(context) {
-  const { request, env } = context;
-  const cache = caches.default;
   // No query string takes part: none changes the answer, and a random one
   // would otherwise skip the cache and refetch every upstream source.
-  const keyUrl = new URL(request.url);
+  const keyUrl = new URL(context.request.url);
   keyUrl.search = '';
-  const cacheKey = new Request(keyUrl.toString(), request);
+  return serveFeed(context, {
+    cache: caches.default,
+    key: keyUrl.toString(),
+    build: () => buildFeed(context),
+    addImages: addFeedImages
+  });
+}
 
-  const cached = await cache.match(cacheKey);
-  if (cached) return cached;
+/** The headers every /api/news answer carries, fresh or stored. */
+function feedResponse(body) {
+  return new Response(body, {
+    headers: {
+      'content-type': 'application/json; charset=utf-8',
+      'cache-control': `public, max-age=30, s-maxage=${CACHE_SECONDS}`,
+      'access-control-allow-origin': '*'
+    }
+  });
+}
 
+function storeFeed(cache, cacheKey, body, builtAt) {
+  return cache.put(cacheKey, new Response(body, {
+    headers: {
+      'content-type': 'application/json; charset=utf-8',
+      'cache-control': `public, max-age=${STALE_SECONDS}`,
+      [BUILT_HEADER]: String(builtAt)
+    }
+  }));
+}
+
+/**
+ * Answers from the stored feed when there is one, refreshing it off the
+ * response path when it is past CACHE_SECONDS. build() makes a feed payload
+ * without article pictures; addImages(payload, known) fills them in and is
+ * only ever awaited inside waitUntil. Exported for tests.
+ */
+export async function serveFeed(context, { cache, key, build, addImages, now = Date.now }) {
+  const cacheKey = new Request(key);
+  const lockKey = new Request(key + '?refreshing');
+  const cached = await cache.match(cacheKey).catch(() => null);
+
+  if (cached) {
+    const builtAt = Number(cached.headers.get(BUILT_HEADER)) || 0;
+    const age = (now() - builtAt) / 1000;
+    if (age >= 0 && age < STALE_SECONDS) {
+      const body = await cached.text();
+      if (age >= CACHE_SECONDS) {
+        context.waitUntil(refreshFeed({ cache, cacheKey, lockKey, build, addImages, now, previous: body }));
+      }
+      return feedResponse(body);
+    }
+  }
+
+  // Nothing usable stored: build now, answer without waiting for pictures,
+  // then store the copy with pictures for whoever asks next.
+  const payload = await build();
+  const builtAt = now();
+  const body = JSON.stringify(payload);
+  context.waitUntil((async () => {
+    try {
+      await storeFeed(cache, cacheKey, body, builtAt);
+      if (!(await addImages(payload, null))) return;
+      // A newer rebuild may have landed meanwhile; never overwrite it.
+      const current = await cache.match(cacheKey);
+      if (current && Number(current.headers.get(BUILT_HEADER)) !== builtAt) return;
+      await storeFeed(cache, cacheKey, JSON.stringify(payload), builtAt);
+    } catch (e) { /* the next visitor rebuilds */ }
+  })());
+  return feedResponse(body);
+}
+
+async function refreshFeed({ cache, cacheKey, lockKey, build, addImages, now, previous }) {
+  try {
+    // One rebuild at a time per location: the lock lapses by itself in case
+    // a rebuild dies halfway.
+    if (await cache.match(lockKey)) return;
+    await cache.put(lockKey, new Response('1', {
+      headers: { 'cache-control': `public, max-age=${REFRESH_LOCK_SECONDS}` }
+    }));
+    const payload = await build();
+    await addImages(payload, knownImages(previous));
+    await storeFeed(cache, cacheKey, JSON.stringify(payload), now());
+  } catch (e) {
+    /* keep serving the stored copy; the next visitor past the lock retries */
+  } finally {
+    try { await cache.delete(lockKey); } catch (e) { /* lapses on its own */ }
+  }
+}
+
+/** Article pictures already found last time, by article address, so a
+ *  rebuild does not read the same article pages again every minute. */
+export function knownImages(previousBody) {
+  const known = new Map();
+  try {
+    const prev = JSON.parse(previousBody || 'null');
+    for (const item of (prev && prev.items) || []) {
+      if (item && item.kind === 'press' && item.url && item.image) known.set(item.url, item.image);
+    }
+  } catch (e) { /* nothing to carry over */ }
+  return known;
+}
+
+/** Fills in card pictures; true when any item gained one. */
+export async function addFeedImages(payload, known, fetchPage) {
+  const items = (payload && payload.items) || [];
+  let added = 0;
+  if (known && known.size) {
+    for (const item of items) {
+      if (item.kind === 'press' && !item.image && known.has(item.url)) {
+        item.image = known.get(item.url);
+        added++;
+      }
+    }
+  }
+  added += await backfillImages(items, IMAGE_BACKFILL_LIMIT, fetchPage);
+  return added > 0;
+}
+
+async function buildFeed(context) {
+  const { request, env } = context;
   const errors = [];
   const groups = await Promise.all([
     fetchReliefWeb().catch(track(errors, 'reliefweb')),
@@ -213,10 +335,8 @@ export async function onRequestGet(context) {
     .slice(0, 100);
   const finalItems = liveItems.concat(videos).sort(byTimeDesc);
 
-  await backfillImages(finalItems, 14);
-
   const updated = new Date().toISOString();
-  const response = new Response(JSON.stringify({
+  return {
     updated,
     items: finalItems,
     videoFeed: {
@@ -236,16 +356,7 @@ export async function onRequestGet(context) {
     economicLoss: findEconomicLoss(finalItems),
     reliefFund: findReliefFund(finalItems),
     errors
-  }), {
-    headers: {
-      'content-type': 'application/json; charset=utf-8',
-      'cache-control': `public, max-age=30, s-maxage=${CACHE_SECONDS}`,
-      'access-control-allow-origin': '*'
-    }
-  });
-
-  context.waitUntil(cache.put(cacheKey, response.clone()));
-  return response;
+  };
 }
 
 /** Newest first. Items with no usable timestamp sort last rather than posing
@@ -404,36 +515,45 @@ function cluster(items) {
  * publish no image still have one on the article page, so for the first few
  * cards, and only those, the article's own link-preview image is read and
  * used. Anything slow, missing or not an image is skipped: no placeholder and
- * no guessed picture.
+ * no guessed picture. The article address comes from a publisher's feed, so it
+ * is read through fetchPublic: no private or local address, redirects checked
+ * hop by hop. Runs off the response path (see serveFeed). Returns how many
+ * items gained a picture.
  */
-async function backfillImages(items, limit) {
+export async function backfillImages(items, limit, fetchPage = fetchArticlePage) {
   const targets = items
     .filter(item => item.kind === 'press' && !item.image && item.url)
     .slice(0, limit);
-  if (!targets.length) return;
+  if (!targets.length) return 0;
 
+  let added = 0;
   await Promise.all(targets.map(async item => {
     try {
-      const res = await fetch(item.url, {
-        headers: {
-          'accept': 'text/html',
-          'user-agent': 'nepaldisasterupdatelive.nxtimaginelabs.com (hello@nxtimaginelabs.com)'
-        },
-        signal: AbortSignal.timeout(3500)
-      });
-      if (!res.ok) return;
+      const res = await fetchPage(item.url);
+      if (!res || !res.ok) return;
       const html = (await res.text()).slice(0, 120000);
       const found =
         html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i) ||
         html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i) ||
         html.match(/<meta[^>]+name=["']twitter:image["'][^>]+content=["']([^"']+)["']/i);
       if (!found) return;
-      const url = decodeEntities(found[1]).trim();
-      if (/^https?:\/\//i.test(url)) item.image = url;
+      const url = safeHttpsUrl(decodeEntities(found[1]).trim());
+      if (url) { item.image = url; added++; }
     } catch (e) {
       /* an image is a nice-to-have; the card still works without one */
     }
   }));
+  return added;
+}
+
+function fetchArticlePage(url) {
+  return fetchPublic(url, {
+    headers: {
+      'accept': 'text/html',
+      'user-agent': 'nepaldisasterupdatelive.nxtimaginelabs.com (hello@nxtimaginelabs.com)'
+    },
+    signal: AbortSignal.timeout(3500)
+  });
 }
 
 /**
@@ -1031,7 +1151,7 @@ function matches(text, words) {
 export async function getText(url) {
   const safeUrl = safeHttpsUrl(url);
   if (!safeUrl) throw new Error('refused non-HTTPS upstream URL');
-  const res = await fetch(safeUrl, {
+  const res = await fetchPublic(safeUrl, {
     signal: AbortSignal.timeout(12000),
     headers: {
       'accept': 'application/rss+xml, application/xml, application/json;q=0.9, */*;q=0.8',
