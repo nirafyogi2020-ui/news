@@ -85,3 +85,14 @@ test('the contact address is kept away from Cloudflare email obfuscation', () =>
   const unwrapped = html.replace(/<!--email_off-->[\s\S]*?<!--\/email_off-->/g, '');
   assert.doesNotMatch(unwrapped, /mailto:/, 'every mailto link sits inside an email_off pair');
 });
+
+test('the dashboard language strings load only when a reader picks a language', () => {
+  const src = readFileSync(new URL('../src/rasuwa-dashboard.html', import.meta.url), 'utf8');
+  const lazy = src.match(/<script data-lazy="lang">([\s\S]*?)<\/script>/);
+  assert.ok(lazy, 'the data-lazy="lang" block exists');
+  assert.match(lazy[1], /window\.DASHBOARD_DICT = \{\s*ne: \{/);
+  for (const lang of ['hi', 'zh']) assert.match(lazy[1], new RegExp(`\\n    ${lang}: \\{`));
+  const main = src.replace(lazy[0], '');
+  assert.doesNotMatch(main, /'hero\.h1': '/, 'no translated strings left in the main script');
+  assert.match(main, /LazyCode\.load\('lang'\)/);
+});
