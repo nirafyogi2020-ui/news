@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-24T01:46:00.000Z",
+  "updated": "2026-11-24T03:01:37.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-24-auto-2026-11-24-fce1a268/",
+      "title": "दोधारा चाँदनी झोलुङ्गे पुल पुनर्निर्माणका लागि बजेट माग",
+      "time": "2026-11-24T03:01:37.000Z",
+      "summary": "महेन्द्रनगर– कञ्चनपुरको महाकाली नदीमा पुनर्निर्माणको पर्खाइमा रहेको दोधारा चाँदनी झोलुङ्गे पुलका लागि पाँच करोड बजेट माग गरिएको छ । गत असोज १४ गते महाकाली नदीमा आएको बाढीले पुलको एउटा स्तम्भ भत्काएपछि आवागमन पूर्ण रुपमा बन्द छ ।",
+      "sources": [
+        "Khabarhub"
+      ]
+    },
     {
       "url": "/updates/2026-11-24-auto-2026-11-24-infrastructure-development-office-established-in-nuwak/",
       "title": "Infrastructure Development Office established in Nuwakot",
