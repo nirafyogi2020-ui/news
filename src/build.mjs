@@ -1209,13 +1209,32 @@ function lighten(html) {
    under a content stamp, which the browser keeps for an hour and the edge
    for a day (see _headers), so a returning reader fetches the page and not
    the styles. The link stays in the head, where it blocks rendering exactly
-   as the inline block did, so nothing paints unstyled. */
+   as the inline block did, so nothing paints unstyled.
+
+   A block written <style data-lazy="name"> holds styles only some tabs use
+   (the Map, Investigation and Watch tabs and the video player). It goes to
+   assets/v/dashboard-<name>.<hash>.css, linked right after the main
+   stylesheet as rel="preload": fetched without holding up the first paint,
+   and applied by the page script (LazyCode.css, section 2b), which turns
+   that same element into a stylesheet, so its rules keep their place in the
+   cascade between the main stylesheet and /assets/dashboard.css. */
 function externalStyles(html) {
   const m = html.match(/<style>([\s\S]*?)<\/style>/);
   if (!m || m[1].length < 50000) return html;
   const css = m[1].replace(/^\n+/, '');
   write('assets/dashboard-main.css', css);
-  return html.replace(m[0], () => `<link rel="stylesheet" href="/${hashedAsset('assets/dashboard-main.css', css)}">`);
+  let links = `<link rel="stylesheet" href="/${hashedAsset('assets/dashboard-main.css', css)}">`;
+  const seen = new Set();
+  html = html.replace(/[ \t]*<style data-lazy="([a-z]+)">([\s\S]*?)<\/style>\n?/g, (_m, name, body) => {
+    if (seen.has(name)) throw new Error(`dashboard styles: two data-lazy="${name}" blocks`);
+    seen.add(name);
+    const lazy = body.replace(/^\n+/, '');
+    if (!/\{[^}]*:/.test(lazy)) throw new Error(`dashboard styles: the data-lazy="${name}" block is empty`);
+    write(`assets/dashboard-${name}.css`, lazy);
+    links += `\n<link rel="preload" as="style" href="/${hashedAsset(`assets/dashboard-${name}.css`, lazy)}" data-lazy-css="${name}" fetchpriority="low">`;
+    return '';
+  });
+  return html.replace(m[0], () => links);
 }
 /* The dashboard's behaviour is written as a dozen <script> blocks after
    </main>, 184 KB of them, and they too rode inside every copy of the page.
@@ -1237,7 +1256,7 @@ function externalStyles(html) {
    A block written <script data-lazy="name"> is code only one tab needs (the
    map builder, the full-screen video player). It goes to its own file,
    assets/v/dashboard-<name>.<hash>.js, and is not in the
-   first download; the page fetches it through LazyCode (section 5b of the
+   first download; the page fetches it through LazyCode (section 2b of the
    page script), which reads the addresses from the #dashboard-chunks data
    block written into the head here. */
 function externalScripts(html) {

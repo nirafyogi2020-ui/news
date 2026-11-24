@@ -579,10 +579,57 @@ var SITE = {
   window.closeHeaderPopovers = function(){ closeAll(null); };
 })();
 
+var LazyCode = (function(){
+  var urls = {};
+  try { urls = JSON.parse(document.getElementById('dashboard-chunks').textContent) || {}; } catch(e){ urls = {}; }
+  var asked = {}, styled = {};
+  var STYLES_FOR = { shorts: 'tabs' };
+  function css(name){
+    if(asked['css:' + name]) return asked['css:' + name];
+    asked['css:' + name] = new Promise(function(resolve){
+      var link = document.querySelector('link[data-lazy-css="' + name + '"]');
+      var started = Date.now();
+      function done(){ if(styled[name]) return; styled[name] = true; resolve(); }
+      if(!link || link.rel === 'stylesheet'){ done(); return; }
+      link.addEventListener('load', done);
+      link.addEventListener('error', done);
+      link.rel = 'stylesheet';
+      (function wait(){
+        if(styled[name]) return;
+        if(link.sheet || Date.now() - started > 10000){ done(); return; }
+        setTimeout(wait, 50);
+      })();
+    });
+    return asked['css:' + name];
+  }
+  function load(name){
+    if(asked[name]) return asked[name];
+    var code = new Promise(function(resolve, reject){
+      var src = urls[name];
+      if(!src){ resolve(); return; }
+      var s = document.createElement('script');
+      s.src = src; s.async = true;
+      s.onload = function(){ resolve(); };
+      s.onerror = function(){ delete asked[name]; s.remove(); reject(new Error('could not load ' + name)); };
+      document.head.appendChild(s);
+    });
+    asked[name] = STYLES_FOR[name] ? Promise.all([code, css(STYLES_FOR[name])]) : code;
+    return asked[name];
+  }
+  function idle(fn){ if(window.requestIdleCallback) requestIdleCallback(fn, { timeout: 2000 }); else setTimeout(fn, 200); }
+  window.addEventListener('load', function(){ idle(function(){ css('tabs'); }); });
+  return {
+    load: load,
+    css: css,
+    styled: function(name){ return !!styled[name]; }
+  };
+})();
+
 var Tabs = (function(){
   var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-tab]'));
   var listeners = [];
   var current = 'overview';
+  var TAB_STYLES = { map: 1, investigation: 1, video: 1 };
 
   var ALIAS = {
     feed:      { tab:'live',  at:'feed-tab' },
@@ -621,6 +668,13 @@ var Tabs = (function(){
     document.querySelectorAll('.tabpanel').forEach(function(panel){
       panel.hidden = panel.id !== 'panel-' + name;
     });
+    var shown = document.getElementById('panel-' + name);
+    if(TAB_STYLES[name] && !LazyCode.styled('tabs')){
+      shown.setAttribute('data-styles-wait', '');
+      var reveal = function(){ shown.removeAttribute('data-styles-wait'); };
+      LazyCode.css('tabs').then(reveal);
+      setTimeout(reveal, 1500);
+    }
 
     buildToc();
     var target = options._jumpTo && document.getElementById(options._jumpTo);
@@ -800,26 +854,6 @@ var Tabs = (function(){
     }
     out.appendChild(document.createTextNode(text.slice(at)));
   });
-})();
-
-var LazyCode = (function(){
-  var urls = {};
-  try { urls = JSON.parse(document.getElementById('dashboard-chunks').textContent) || {}; } catch(e){ urls = {}; }
-  var asked = {};
-  function load(name){
-    if(asked[name]) return asked[name];
-    asked[name] = new Promise(function(resolve, reject){
-      var src = urls[name];
-      if(!src){ resolve(); return; }
-      var s = document.createElement('script');
-      s.src = src; s.async = true;
-      s.onload = function(){ resolve(); };
-      s.onerror = function(){ delete asked[name]; s.remove(); reject(new Error('could not load ' + name)); };
-      document.head.appendChild(s);
-    });
-    return asked[name];
-  }
-  return { load: load };
 })();
 
 var FloodMap = (function(){
@@ -1289,8 +1323,9 @@ var LiveFeed = (function(){
             'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
         }
       };
-      // The player is its own file (see 5b); the first tap fetches it.
-      if(window.ShortsFeed){ if(!window.ShortsFeed.open(list, at)) inline(); return; }
+      // The player is its own file, and so are its styles (see 2b); the first
+      // tap fetches what is missing.
+      if(window.ShortsFeed && LazyCode.styled('tabs')){ if(!window.ShortsFeed.open(list, at)) inline(); return; }
       card.setAttribute('aria-busy', 'true');
       LazyCode.load('shorts').then(function(){
         card.removeAttribute('aria-busy');

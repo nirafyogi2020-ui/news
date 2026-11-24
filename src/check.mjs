@@ -398,6 +398,14 @@ if (home) {
       else if (!existsSync(join(ROOT, m[1]))) errors.push(`${DASH}: lazy ${name} code /${m[1]} was not built or not committed`);
     }
   }
+  /* The same for the styles only the Map, Investigation and Watch tabs and
+     the video player use: preloaded in the head, switched on by the page
+     script (LazyCode.css). A missing file would leave those tabs unstyled. */
+  for (const [, url, name] of home.html.matchAll(/<link rel="preload" as="style" href="\/([^"]+)" data-lazy-css="([a-z]+)"/g)) {
+    if (!/^assets\/v\/dashboard-[a-z]+\.[0-9a-f]{12}\.css$/.test(url)) errors.push(`${DASH}: lazy ${name} styles have an address outside /assets/v/ or without a content hash in its name (/${url})`);
+    else if (!existsSync(join(ROOT, url))) errors.push(`${DASH}: lazy ${name} styles /${url} were not built or not committed`);
+  }
+  if (/<style data-lazy=/.test(home.html)) errors.push(`${DASH}: a data-lazy style block was left inline in the page`);
   const og = pick(home.html, /<meta property="og:image" content="([^"]*)"/);
   if (!og || !/^https:\/\//.test(og)) errors.push(`${DASH}: no og:image`);
   /* The briefing that used to be its own page at this address has to be in
