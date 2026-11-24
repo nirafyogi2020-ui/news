@@ -176,7 +176,7 @@ export function siteAsset(path) {
  * code is only remembered here, and src/build.mjs writes every remembered
  * file after the pages. That keeps the page functions free of disk writes,
  * so the tests can call them directly. The link carries a hash of the code in
- * the file name (/assets/front.<hash>.js, see src/asset-names.mjs), not a
+ * the file name (/assets/v/front.<hash>.js, see src/asset-names.mjs), not a
  * file time: a fresh checkout on the build server must not give every page a
  * new URL for an unchanged script. Loaded with defer, so it runs once the
  * page is parsed.
@@ -195,7 +195,7 @@ export const emittedAssets = () => EMITTED;
 /**
  * The hashed copy of one of the site's own scripts or stylesheets:
  * hashedAsset('assets/x.js', code) remembers the code and returns
- * 'assets/x.<hash>.js'. src/build.mjs writes every remembered file and keeps
+ * 'assets/v/x.<hash>.js'. src/build.mjs writes every remembered file and keeps
  * the list of what this build linked, so old copies can be cleared later.
  */
 const HASHED = new Map();
@@ -204,14 +204,14 @@ export function hashedAsset(path, content) {
   HASHED.set(name, content);
   return name;
 }
-/** Every hashed file this build linked, as 'assets/x.<hash>.js' -> content. */
+/** Every hashed file this build linked, as 'assets/v/x.<hash>.js' -> content. */
 export const hashedAssets = () => HASHED;
 
 /**
  * A hand-written file under /assets/ (site.css), linked by a hashed copy of
- * itself: '/assets/site.css' -> '/assets/site.<hash>.css'. The source stays
- * where it is; the copy is written next to it, so its relative url()s still
- * resolve.
+ * itself: '/assets/site.css' -> '/assets/v/site.<hash>.css'. The source stays
+ * where it is; the copy goes one folder down, so its url()s must be absolute
+ * (hashedName refuses a relative one).
  */
 export function ownAsset(path) {
   const rel = path.replace(/^\//, '');

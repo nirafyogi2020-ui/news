@@ -13,7 +13,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { hasBannedWord, hasDash } from './front-rules.mjs';
-import { HASHED_FILE, hashedName } from './asset-names.mjs';
+import { HASHED_DIR, hashedName, sourceName, relativeCssUrls, immutableRuleProblems } from './asset-names.mjs';
 import { scriptPolicies, policyProblems, pageProblems, localAssets, handlerStringsInJs } from './csp-rules.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -382,8 +382,8 @@ if (home) {
   if (!/fetch\('\/api\/figures'/.test(home.html + linked)) {
     errors.push(`${DASH}: the page no longer polls /api/figures, so the counters would not stay live`);
   }
-  const app = pick(home.html, /<script src="\/(assets\/dashboard-app\.[0-9a-f]{12}\.js)"/);
-  if (!app) errors.push(`${DASH}: does not link its hashed /assets/dashboard-app.<hash>.js`);
+  const app = pick(home.html, /<script src="\/(assets\/v\/dashboard-app\.[0-9a-f]{12}\.js)"/);
+  if (!app) errors.push(`${DASH}: does not link its hashed /assets/v/dashboard-app.<hash>.js`);
   else if (!existsSync(join(ROOT, app))) errors.push(`${DASH}: links /${app} but the file was not built`);
   /* Code one tab needs (the map, the video player) is fetched on first use
      from the addresses in #dashboard-chunks. A missing file would only show
@@ -393,8 +393,8 @@ if (home) {
     let chunks = {};
     try { chunks = JSON.parse(chunkJson); } catch { errors.push(`${DASH}: #dashboard-chunks is not valid JSON`); }
     for (const [name, url] of Object.entries(chunks)) {
-      const m = String(url).match(/^\/(assets\/dashboard-[a-z]+\.[0-9a-f]{12}\.js)$/);
-      if (!m) errors.push(`${DASH}: lazy ${name} code has an address outside /assets/ or without a content hash in its name (${url})`);
+      const m = String(url).match(/^\/(assets\/v\/dashboard-[a-z]+\.[0-9a-f]{12}\.js)$/);
+      if (!m) errors.push(`${DASH}: lazy ${name} code has an address outside /assets/v/ or without a content hash in its name (${url})`);
       else if (!existsSync(join(ROOT, m[1]))) errors.push(`${DASH}: lazy ${name} code /${m[1]} was not built or not committed`);
     }
   }
@@ -661,21 +661,32 @@ for (const page of pages) {
          carries a hash of their content (src/asset-names.mjs). A ?v= stamp
          is ignored by Cloudflare, so a mid-deploy request can pin old code
          at the edge under the new address. */
-      const name = asset.replace(/^assets\//, '');
-      if (/^assets\/[^/]+\.(?:js|css)$/.test(asset)) {
-        if (!HASHED_FILE.test(name)) errors.push(`${p.path}: links /${asset} without a content hash in the file name`);
-        else if (hashedName(asset.replace(/\.[0-9a-f]{12}(\.(?:js|css))$/, '$1'), readFileSync(join(ROOT, asset), 'utf8')) !== asset) {
+      if (/^assets\/.+\.(?:js|css)$/.test(asset)) {
+        const src = sourceName(asset);
+        if (!src) errors.push(`${p.path}: links /${asset}, not a hashed copy in /${HASHED_DIR}/ (the only own scripts and stylesheets _headers serves as immutable)`);
+        else if (hashedName(src, readFileSync(join(ROOT, asset), 'utf8')) !== asset) {
           errors.push(`${p.path}: /${asset} does not match the hash in its name`);
         }
       }
     }
   }
-  for (const name of readdirSync(join(ROOT, 'assets'))) {
-    if (!name.endsWith('.js')) continue;
-    for (const h of new Set(handlerStringsInJs(readFileSync(join(ROOT, 'assets', name), 'utf8')))) {
-      errors.push(`assets/${name}: writes an inline handler (${h}) into markup; use data-fail or a listener`);
+  for (const dir of ['assets', HASHED_DIR]) {
+    if (!existsSync(join(ROOT, dir))) continue;
+    for (const name of readdirSync(join(ROOT, dir))) {
+      if (name.endsWith('.css') && dir === HASHED_DIR) {
+        for (const u of relativeCssUrls(readFileSync(join(ROOT, dir, name), 'utf8'))) {
+          errors.push(`${dir}/${name}: relative url(${u}) resolves inside /${HASHED_DIR}/ and breaks; make it absolute`);
+        }
+      }
+      if (!name.endsWith('.js')) continue;
+      for (const h of new Set(handlerStringsInJs(readFileSync(join(ROOT, dir, name), 'utf8')))) {
+        errors.push(`${dir}/${name}: writes an inline handler (${h}) into markup; use data-fail or a listener`);
+      }
     }
   }
+  /* The hashed copies never change, so _headers serves their folder as
+     immutable for a year, and everything else in /assets/ short. */
+  errors.push(...immutableRuleProblems(readFileSync(join(ROOT, '_headers'), 'utf8')));
 }
 
 /* -- report ----------------------------------------------------------------- */

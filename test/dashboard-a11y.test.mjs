@@ -113,7 +113,7 @@ test('no arrow or chevron inside a dashboard link is read aloud', async () => {
   const event = JSON.parse(readFileSync(new URL('../event.json', import.meta.url), 'utf8'));
   const inv = renderInvestigation(event, C.SOURCE_GROUPS);
   const app = BUILT ? (() => {
-    const m = BUILT.match(/src="\/(assets\/dashboard-app\.[0-9a-f]+\.js)"/);
+    const m = BUILT.match(/src="\/(assets\/v\/dashboard-app\.[0-9a-f]+\.js)"/);
     return m ? readFileSync(new URL(`../${m[1]}`, import.meta.url), 'utf8') : '';
   })() : '';
   for (const [where, html] of [...pages, ['investigation block', inv], ...(app ? [['bundled script', app]] : [])]) {

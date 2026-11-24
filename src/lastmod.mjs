@@ -20,6 +20,7 @@ export function pageFingerprint(html) {
   const main = ((s.match(/<main[^>]*>([\s\S]*?)<\/main>/i) || [])[1] || s)
     .replace(/<p class="byline">[\s\S]*?<\/p>/g, '')
     .replace(/\?v=\d+/g, '')
+    .replace(/\/assets\/v\/([a-z0-9-]+)\.[0-9a-f]{12}\.(js|css)\b/g, '/assets/$1.$2')
     .replace(/\.[0-9a-f]{12}\.(js|css)\b/g, '.$1');
   return createHash('sha1').update(`${title}\n${desc}\n${main}`).digest('hex').slice(0, 16);
 }

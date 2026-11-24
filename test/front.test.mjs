@@ -264,7 +264,7 @@ test('sport, tourism and foreign disasters stay off the front page', () => {
 
 test('the page script judges headlines with the same function and rules', () => {
   const html = frontPage(ctx, { news, photos, events: [event] }).html;
-  const tag = html.match(/<script src="\/assets\/front\.([0-9a-f]{12})\.js" defer><\/script>/);
+  const tag = html.match(/<script src="\/assets\/v\/front\.([0-9a-f]{12})\.js" defer><\/script>/);
   assert.ok(tag, 'the page links its script file by a name carrying its content hash');
   const page = emittedAssets().get('assets/front.js');
   assert.ok(page, 'the front page registered assets/front.js');

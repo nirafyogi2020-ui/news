@@ -54,14 +54,23 @@
 # /* above. Cloudflare joins the values of every matching rule, so without the
 # "! Cache-Control" line a file was sent two lifetimes at once.
 
-# The pages link the site's own scripts and stylesheets by a name carrying a
-# hash of their content (assets/front.<hash>.js, see src/asset-names.mjs), so
-# a changed file is a new address. Pictures and the unhashed copies kept for
-# old cached pages are revalidated hourly and served stale while that happens
+# Pictures, fonts and the unhashed script and stylesheet copies kept for old
+# cached pages are revalidated hourly and served stale while that happens
 # rather than blocking a page load.
 /assets/*
   ! Cache-Control
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+# The pages link the site's own scripts and stylesheets by a name carrying a
+# hash of their content, in their own folder (assets/v/front.<hash>.js, see
+# src/asset-names.mjs). A changed file is a new name, so a file there never
+# changes and a returning reader keeps it for a year without asking again.
+# It has to be its own folder: a pattern here cannot tell front.<hash>.js
+# from front.js inside one folder. Must stay below /assets/*, whose
+# Cache-Control the "!" line drops (src/check.mjs checks this).
+/assets/v/*
+  ! Cache-Control
+  Cache-Control: public, max-age=31536000, immutable
 
 # The share and card pictures were being answered with `Content-Type:
 # text/html`. Paired with the `nosniff` above — which is correct and stays —

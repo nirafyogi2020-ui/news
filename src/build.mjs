@@ -18,7 +18,7 @@ import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 
 import { SITE, SITE_NAME, nptDay, nptLong, ogFor, ogStoryFor, assetVersioned, langAttr, EXT_ARROW, markNewTab, emittedAssets, hashedAsset, hashedAssets, IMG_FAIL_JS } from './template.mjs';
-import { HASHED_FILE, planPrune } from './asset-names.mjs';
+import { HASHED_FILE, HASHED_DIR, LEGACY_HASHED_DIR, planPrune } from './asset-names.mjs';
 import * as P from './pages.mjs';
 import * as NE from './pages-ne.mjs';
 import * as C from './content.mjs';
@@ -294,7 +294,7 @@ let index = read('src/rasuwa-dashboard.html');
 if (!index.includes('/*@img-fail@*/')) throw new Error('src/rasuwa-dashboard.html: the /*@img-fail@*/ placeholder is missing');
 index = index.replace('/*@img-fail@*/', () => IMG_FAIL_JS);
 /* The hand-written stylesheet and script are linked by a hashed copy of
-   themselves (assets/dashboard.<hash>.css, see src/asset-names.mjs), so a
+   themselves (assets/v/dashboard.<hash>.css, see src/asset-names.mjs), so a
    replaced file reaches readers through the edge cache and a copy of the site
    that does not have it yet answers 404 instead of the old file. The QR
    picture keeps a ?v= content stamp. */
@@ -1236,7 +1236,7 @@ function externalStyles(html) {
 
    A block written <script data-lazy="name"> is code only one tab needs (the
    map builder, the full-screen video player). It goes to its own file,
-   assets/dashboard-<name>.js under its own content stamp, and is not in the
+   assets/v/dashboard-<name>.<hash>.js, and is not in the
    first download; the page fetches it through LazyCode (section 5b of the
    page script), which reads the addresses from the #dashboard-chunks data
    block written into the head here. */
@@ -1420,7 +1420,10 @@ for (const [file, code] of emittedAssets()) {
   }
   const HISTORY = 'data/asset-history.json';
   const before = existsSync(join(ROOT, HISTORY)) ? readJson(HISTORY) : {};
-  const onDisk = readdirSync(join(ROOT, 'assets')).filter(n => HASHED_FILE.test(n)).map(n => `assets/${n}`);
+  /* assets/v/ is where they are written now; assets/ is where they were
+     written before 23 Nov 2026, kept until those copies age out too. */
+  const onDisk = [HASHED_DIR, LEGACY_HASHED_DIR].flatMap(dir => existsSync(join(ROOT, dir))
+    ? readdirSync(join(ROOT, dir)).filter(n => HASHED_FILE.test(n)).map(n => `${dir}/${n}`) : []);
   const { history, remove } = planPrune({ history: before, referenced: [...linked.keys()], onDisk, today: buildNow.slice(0, 10) });
   for (const file of remove) rmSync(join(ROOT, file), { force: true });
   const text = JSON.stringify(history, null, 2) + '\n';

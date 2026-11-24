@@ -41,4 +41,8 @@ test('relay and figures cards are automatic, written briefings are not', () => {
 test('fingerprint ignores the content hash in a script or stylesheet name', () => {
   const at = (h) => `<title>T</title><main><p>x</p><script src="/assets/route-map.${h}.js" defer></script></main>`;
   assert.equal(pageFingerprint(at('aaaaaaaaaaaa')), pageFingerprint(at('bbbbbbbbbbbb')));
+  /* Moving the hashed copies to /assets/v/ (23 Nov 2026) is not a change a
+     reader sees, so it must not move every page's lastmod either. */
+  const moved = at('cccccccccccc').replace('/assets/', '/assets/v/');
+  assert.equal(pageFingerprint(moved), pageFingerprint(at('aaaaaaaaaaaa')));
 });
