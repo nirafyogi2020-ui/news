@@ -4,7 +4,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/</loc>
-    <lastmod>2026-11-24T00:47:50.000Z</lastmod>
+    <lastmod>2026-11-24T01:31:32.974Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/</loc>
-    <lastmod>2026-11-24T00:47:50.000Z</lastmod>
+    <lastmod>2026-11-24T01:31:32.974Z</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/rasuwa/"/>
@@ -84,7 +84,7 @@
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/relief/</loc>
-    <lastmod>2026-11-23T14:39:11.501Z</lastmod>
+    <lastmod>2026-11-24T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/relief/"/>
@@ -664,7 +664,7 @@
   </url>
   <url>
     <loc>https://nepaldisasterupdatelive.nxtimaginelabs.com/ne/rahat/</loc>
-    <lastmod>2026-11-23T14:39:11.501Z</lastmod>
+    <lastmod>2026-11-24T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nepaldisasterupdatelive.nxtimaginelabs.com/nepal-flood/relief/"/>

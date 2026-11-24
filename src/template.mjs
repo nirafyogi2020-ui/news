@@ -8,7 +8,7 @@
 import { existsSync, statSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { hashedName } from './asset-names.mjs';
+import { hashedName, hash12 } from './asset-names.mjs';
 
 export const SITE = 'https://nepaldisasterupdatelive.nxtimaginelabs.com';
 export const SITE_NAME = 'Nepal Disaster Update Live';
@@ -111,10 +111,20 @@ export function ogSlug(path) {
 }
 
 /* Facebook, WhatsApp and X cache a preview picture against its URL and will
-   happily keep showing a card with yesterday's death toll on it. The file's
-   own modification time is appended so a redrawn card is a new URL to them. */
+   happily keep showing a card with yesterday's death toll on it. A hash of
+   the picture's bytes is appended so a redrawn card is a new URL to them.
+   It used to be the file's modification time, but a fresh checkout (the
+   figures job) gives every file a new time, so each automatic rebuild changed
+   every page's picture address and the next local build changed them back. */
+const OG_VERSIONS = new Map();
 function ogVersion(file) {
-  try { return String(Math.floor(statSync(file).mtimeMs / 1000)); } catch { return ''; }
+  let key;
+  try { const st = statSync(file); key = `${file}|${st.mtimeMs}|${st.size}`; } catch { return ''; }
+  if (OG_VERSIONS.has(key)) return OG_VERSIONS.get(key);
+  let v = '';
+  try { v = hash12(readFileSync(file)); } catch { v = ''; }
+  OG_VERSIONS.set(key, v);
+  return v;
 }
 
 export function ogFor(path) {

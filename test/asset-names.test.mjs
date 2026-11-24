@@ -150,3 +150,16 @@ test('no hashed stylesheet copy carries a relative url()', () => {
   assert.ok(css.length >= 2, 'site and dashboard stylesheets are there');
   for (const n of css) assert.deepEqual(relativeCssUrls(readFileSync(new URL(n, dir), 'utf8')), [], n);
 });
+
+test('share picture addresses carry a hash of the picture, not its file date', async () => {
+  const { ogFor } = await import('../src/template.mjs');
+  const { createHash } = await import('node:crypto');
+  const { readFileSync, utimesSync, statSync } = await import('node:fs');
+  const file = new URL('../assets/og/about.png', import.meta.url);
+  const want = createHash('sha256').update(readFileSync(file)).digest('hex').slice(0, 12);
+  assert.ok(ogFor('/about/').endsWith(`about.png?v=${want}`));
+  const st = statSync(file);
+  utimesSync(file, st.atime, new Date(st.mtimeMs + 60000)); // a fresh checkout's new date
+  try { assert.ok(ogFor('/about/').endsWith(`about.png?v=${want}`)); }
+  finally { utimesSync(file, st.atime, st.mtime); }
+});
