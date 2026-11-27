@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27T01:06:00.000Z",
+  "updated": "2026-11-27T01:53:55.000Z",
   "figures": {
     "dead": {
       "metric": "dead",
@@ -112,6 +112,15 @@
   },
   "site": "https://nepaldisasterupdatelive.nxtimaginelabs.com",
   "updates": [
+    {
+      "url": "/updates/2026-11-27-auto-2026-11-27-partly-cloudy-over-himalayan-and-hilly-regions/",
+      "title": "Partly cloudy over Himalayan and Hilly regions",
+      "time": "2026-11-27T01:53:55.000Z",
+      "summary": "KATHMANDU: No significant weather system is currently affecting Nepal. The Meteorological Forecasting Division said skies will be partly cloudy over the Himalayan and Hilly regions of Koshi, Lumbini, Karnali and Sudurpashchim Provinces.",
+      "sources": [
+        "Nepalnews"
+      ]
+    },
     {
       "url": "/updates/2026-11-27-auto-2026-11-27-49c29fad/",
       "title": "डेढ दशकपछि उत्पादनको चरणमा राहुघाट जलविद्युत् आयोजना",
